@@ -2,21 +2,24 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Вино и Домены — дегустации Лангедок | Tours Languedoc by Irène</title>
+  <title>Дегустации — Вино и Домены</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css">
+  <!-- локальные стили из той же папки -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Topbar + header как на главной -->
+<!-- Topbar -->
 <div class="topbar">
   <div class="inner">
     <div class="note">Авторские туры по Югу Франции</div>
-    <div class="lang" role="navigation" aria-label="Language switcher">
+    <div class="lang">
       <a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a>
     </div>
   </div>
 </div>
+
+<!-- Header -->
 <header>
   <div class="container nav">
     <div class="brand">
@@ -35,12 +38,12 @@
   </div>
 </header>
 
-<!-- Герой с фоном виноградника (картинка задаётся в CSS через --hero-img) -->
-<section class="page-hero">
-  <div class="container" style="padding:36px 20px">
-    <h2 class="title">Вино и Домены — дегустации</h2>
-    <p class="lead">Подбор визитов в семейные хозяйства Лангедока: вулканические руфы Салагу, терруары Пик Сен-Лу, белые известняки у моря.</p>
-    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+<!-- Герой с фоном и надписью (только на этой странице) -->
+<section class="page-hero" style="--hero-img:url('../assets/img/degustation-hero.jpg')">
+  <div class="container">
+    <h2 class="title">Дегустации — Вино и Домены</h2>
+    <p class="lead">Семейные хозяйства Лангедока: терруары Салагу и Пик Сен-Лу, дегустации у источника. Выберите домен ниже.</p>
+    <div class="actions">
       <a class="btn" href="../index.html#tours">← Ко всем программам</a>
       <a class="btn primary" href="../index.html#contact">Запросить даты</a>
     </div>
@@ -48,18 +51,17 @@
 </section>
 
 <main class="container" style="padding:28px 0 56px">
-  <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:22px">
-
-    <!-- CARD 1: Bois Bories -->
+  <div class="grid">
+    <!-- 1) Bois Bories -->
     <article class="card">
       <a class="cover" href="bois-bories.html" aria-label="Domaine Bois Bories — подробнее">
         <span class="badge">HIT</span>
-        <img loading="lazy" decoding="async" src="../assets/img/bois-bories-1.jpg" alt="Domaine Bois Bories у озера Салагу">
+        <img src="../assets/img/bois-bories-1.jpg" alt="Domaine Bois Bories">
       </a>
       <div class="body">
-        <h3 style="margin:0 0 8px">Domaine Bois Bories</h3>
+        <h3>Domaine Bois Bories</h3>
         <div class="meta"><span>Клермон-л’Эро • Coteaux du Salagou</span></div>
-        <p class="section-sub" style="margin:10px 0 0">Viognier, Les Peyrades (Rosé/Chardonnay/Rouge), Sortie du Temps.</p>
+        <p class="section-sub" style="margin-top:8px">Viognier, Les Peyrades (Rosé/Chardonnay/Rouge), Sortie du Temps.</p>
       </div>
       <div class="foot">
         <div class="price">от 25–35€ / дегустация*</div>
@@ -67,46 +69,44 @@
       </div>
     </article>
 
-    <!-- Скопируй этот блок для других доменов -->
-    <!--
+    <!-- 2) Domaine des Roches -->
     <article class="card">
-      <a class="cover" href="domain-2.html">
-        <img loading="lazy" src="../assets/img/domain-2.jpg" alt="Название домена">
+      <a class="cover" href="domaine-roches.html" aria-label="Domaine des Roches — подробнее">
+        <img src="../assets/img/roches-1.jpg" alt="Domaine des Roches">
       </a>
       <div class="body">
-        <h3>Название домена</h3>
-        <div class="meta"><span>Локация • Апелласьон</span></div>
-        <p class="section-sub" style="margin:10px 0 0">Краткое описание/сортовой состав.</p>
+        <h3>Domaine des Roches</h3>
+        <div class="meta"><span>Гар • IGP Oc</span></div>
+        <p class="section-sub" style="margin-top:8px">Grenache/Carignan, белые на известняке.</p>
       </div>
       <div class="foot">
-        <div class="price">ориентир цены</div>
-        <a class="btn" href="domain-2.html">Подробнее</a>
+        <div class="price">от 20–30€</div>
+        <a class="btn" href="domaine-roches.html">Подробнее</a>
       </div>
     </article>
-    -->
 
+    <!-- 3) Domaine du Pic -->
+    <article class="card">
+      <a class="cover" href="domaine-pic.html" aria-label="Domaine du Pic — подробнее">
+        <img src="../assets/img/pic-1.jpg" alt="Domaine du Pic">
+      </a>
+      <div class="body">
+        <h3>Domaine du Pic</h3>
+        <div class="meta"><span>Пик Сен-Лу • AOP Languedoc</span></div>
+        <p class="section-sub" style="margin-top:8px">Syrah на известняке, свежие белые.</p>
+      </div>
+      <div class="foot">
+        <div class="price">от 25–40€</div>
+        <a class="btn" href="domaine-pic.html">Подробнее</a>
+      </div>
+    </article>
   </div>
-  <p class="section-sub" style="margin-top:14px; color:var(--muted)">* ориентир; условия на месте могут отличаться. Визит бронируем заранее.</p>
+
+  <p class="section-sub" style="margin-top:14px; color:var(--muted)">* ориентир; условия на месте могут отличаться. Бронируем заранее.</p>
 </main>
 
-<footer>
-  <div class="container">
-    <div class="footgrid">
-      <div>
-        <strong>Tours Languedoc by Irène</strong>
-        <p>Des voyages avec goût</p>
-      </div>
-      <div>
-        <p><a href="../index.html#why">Почему с нами</a></p>
-        <p><a href="../index.html#tours">Программы</a></p>
-      </div>
-      <div>
-        <p><a href="../index.html#format">Формат</a></p>
-        <p><a href="../index.html#contact">Контакты</a></p>
-      </div>
-    </div>
-    <div class="copy">© 2025 — Languedoc, France</div>
-  </div>
+<footer class="container" style="padding-top:24px; margin-bottom:28px; color:var(--muted)">
+  <small>© Voyages de l’Auteur</small>
 </footer>
 
 </body>
