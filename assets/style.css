@@ -53,33 +53,41 @@ nav a.cta{background:var(--brand); color:#fff; border-radius:14px; padding:12px 
 nav a.cta:hover{background:var(--brand-2)}
 @media (max-width:640px){ nav ul{display:none} }
 
-/* Hero with vineyard background */
+/* ===================== HERO ===================== */
+/* фон по умолчанию (если на странице свою картинку не задали) */
+.page-hero{ --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg'); }
+
+/* каркас героя */
+.page-hero{
+  position:relative; min-height:44vh;
+  display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
+}
 .page-hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
-  background:var(--hero-img) center/cover no-repeat;
-  filter:brightness(.72); pointer-events:none
+  /* важно: именно background-image с var(--hero-img) */
+  background-image: var(--hero-img);
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  filter:brightness(.72); pointer-events:none;
 }
 .page-hero::after{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:
     radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
-    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25))
+    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
 }
 .page-hero .container{position:relative; z-index:1}
-.title{
-  font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px
-}
+.title{font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px}
 .lead{color:#f7f7f7; max-width:720px}
 .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
 @media (max-width:640px){ .title{font-size:34px} }
 
-/* Hero WITHOUT text (for detail pages) */
+/* вариант без стандартного заголовка (детальные страницы) */
 .page-hero.plain{ min-height:36vh }
 .page-hero.plain .title,
 .page-hero.plain .lead,
 .page-hero.plain .actions{ display:none }
 
-/* Cards grid (list page) */
+/* ===================== CARDS & GRID ===================== */
 .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
 .card{
   background:var(--paper); border:1px solid #eee; border-radius:var(--radius);
@@ -98,7 +106,7 @@ nav a.cta:hover{background:var(--brand-2)}
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:640px){ .grid{grid-template-columns:1fr} }
 
-/* Gallery mosaic (detail pages: 1 big + 3 small) */
+/* ===================== GALLERY MOSAIC ===================== */
 .gallery-mosaic{
   display:grid; grid-template-columns:repeat(4,1fr); gap:12px; grid-auto-rows:180px; margin-top:24px
 }
@@ -110,15 +118,33 @@ nav a.cta:hover{background:var(--brand-2)}
   .gallery-mosaic .card:first-child{ grid-column:1 / -1; grid-row:auto }
 }
 
-/* Wines block */
+/* ===================== WINES ===================== */
 .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
 .section-sub{color:var(--muted); margin:0}
+
 .wines{display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0}
-.wine{
-  display:grid; grid-template-columns:1.1fr .9fr; gap:14px; align-items:start;
+
+/* Контейнер одного ряда (2 вина на десктопе) */
+.wines .wine{
+  display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;
   padding:16px; border-radius:16px; background:var(--paper);
   border:1px solid #eee; box-shadow:var(--shadow)
 }
+
+/* Каждое вино: слева бутылка (96px), справа текст */
+.wines .wine > div{
+  display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px; align-items:start;
+}
+.wines .wine > div .thumb{
+  --size:96px; width:var(--size); height:var(--size);
+  object-fit:contain; background:#fff; padding:8px;
+  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
+  margin:0; justify-self:center;
+}
+.wines .wine > div h4,
+.wines .wine > div .meta,
+.wines .wine > div .notes{ grid-column:2 }
+
 .wine h4{margin:0 0 6px; font-size:18px; line-height:1.2}
 .wine .meta{display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
 .pill{
@@ -130,71 +156,10 @@ nav a.cta:hover{background:var(--brand-2)}
   display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800;
   border:1px solid #e4d7b6; background:#E9DFC5
 }
-@media (max-width:1000px){ .wine{grid-template-columns:1fr} }
 
-/* Bottle thumbs: square center (no crop) */
-.wine .thumb{
-  --size:96px;
-  width:var(--size); height:var(--size);
-  display:block; margin:8px auto 10px;
-  object-fit:contain; background:#fff; padding:8px;
-  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
+@media (max-width:1000px){
+  .wines .wine{ grid-template-columns:1fr; } /* по одному в ряд на узких */
 }
 
-/* Footer */
+/* ===================== FOOTER ===================== */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
-/* Фон по умолчанию для hero — виноградник */
-.page-hero{
-  --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg');
-}
-/* Hero: фон картинкой через CSS-переменную */
-.page-hero{
-  position:relative; min-height:44vh; display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
-}
-.page-hero::before{
-  content:""; position:absolute; inset:0; z-index:-2;
-  background:var(--hero-img) center/cover no-repeat;
-  filter:brightness(.72); pointer-events:none;
-}
-.page-hero::after{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:
-    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
-    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
-}
-
-/* Версия без текста для детальных страниц */
-.page-hero.plain{ min-height:36vh; }
-.page-hero.plain .title,
-.page-hero.plain .lead,
-.page-hero.plain .actions{ display:none; }
-
-
-/* === Вина: фото слева, описание справа === */
-.wines .wine{
-  display:grid;
-  grid-template-columns:1fr 1fr; /* два вина в ряд на десктопе */
-  gap:18px;
-}
-
-.wines .wine > div{
-  display:grid;
-  grid-template-columns:96px 1fr; /* слева мини-бутылка, справа текст */
-  gap:12px;
-  align-items:start;
-}
-
-.wines .wine > div .thumb{
-  margin:0;              /* убираем центрирование сверху */
-  justify-self:center;   /* бутылка по центру своей колонки */
-}
-
-.wines .wine > div h4,
-.wines .wine > div .meta,
-.wines .wine > div .notes{
-  grid-column:2;         /* весь текст строго справа от фото */
-}
-
-@media (max-width: 900px){
-  .wines .wine{ grid-template-columns:1fr; } /* по одному в ряд на мобиле */
-}
