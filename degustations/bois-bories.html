@@ -5,6 +5,30 @@
   <title>Domaine Bois Bories — дегустация</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=7">
+  <style>
+    /* Карточка с описанием поверх фона (слева-сверху) */
+    .hero-card{
+      position:relative;               /* по умолчанию — обычный поток (мобилки) */
+      max-width:600px;
+      background:rgba(255,255,255,.9);
+      border:1px solid #eee;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      padding:16px 18px;
+      backdrop-filter:saturate(140%) blur(2px);
+    }
+    @media (min-width: 860px){
+      .page-hero .container{position:relative}
+      .hero-card{position:absolute; top:22px; left:20px; margin:0}
+    }
+    /* Мини-фото внутри описания */
+    .mini-photos{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 6px}
+    .mini-photos img{
+      width:84px; height:84px; object-fit:cover;
+      border-radius:10px; border:1px solid #e8e8e8; background:#fff;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
+    }
+  </style>
 </head>
 <body>
 
@@ -27,31 +51,24 @@
   </div>
 </header>
 
-<!-- Фон БЕЗ надписей (будет фото, не зелёная полоса) -->
-<section class="page-hero plain" style="--hero-img:url('/voyages-de-l-auteur/assets/img/bois-bories-hero.jpg')">
-  <div class="container"></div>
-</section>
-
-<main class="container">
-
-  <!-- О домене (описание + мини-фото) -->
-  <section class="mt">
-    <h3 class="section-title">О домене</h3>
-    <div class="card" style="padding:18px">
+<!-- Фон БЕЗ надписей; описание — в карточке слева сверху -->
+<section
+  class="page-hero plain"
+  style="--hero-img:url('https://images.unsplash.com/photo-1470324161839-ce10d3f58370?q=80&w=1600&auto=format&fit=crop')">
+  <div class="container">
+    <div class="hero-card">
+      <h3 class="section-title" style="margin-bottom:8px">О домене</h3>
       <p class="section-sub" style="margin:0 0 10px">
         Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
         Терруар сочетает вулканические руфы у Les Bories и глино-известняк для шардоне.
         Домен ведут Винсент и Дельфин Реймон. Упоминается в
         <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.
       </p>
-
-      <!-- мини-фото по центру -->
-      <div class="mini-photos">
-        <img src="/voyages-de-l-auteur/assets/img/bois-bories-2.jpg" alt="Погреб Bois Bories">
-        <img src="/voyages-de-l-auteur/assets/img/bois-bories-3.jpg" alt="Озеро Салагу">
-        <img src="/voyages-de-l-auteur/assets/img/bois-bories-4.jpg" alt="Дегустация в домене">
+      <div class="mini-photos" aria-label="Фотографии домена">
+        <img src="https://images.unsplash.com/photo-1514820720301-4c4790309f46?auto=format&fit=crop&w=180&h=180&q=80" alt="Погреб Bois Bories">
+        <img src="https://images.unsplash.com/photo-1558138838-762b9e0b4bd1?auto=format&fit=crop&w=180&h=180&q=80" alt="Озеро Салагу">
+        <img src="https://images.unsplash.com/photo-1555597408-8499b87a2dfa?auto=format&fit=crop&w=180&h=180&q=80" alt="Дегустация в домене">
       </div>
-
       <div class="meta" style="flex-wrap:wrap; gap:10px">
         <span class="pill">Клермон-л’Эро</span>
         <span class="pill">Coteaux du Salagou</span>
@@ -59,21 +76,23 @@
         <span class="pill">agriculture raisonnée</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Галерея 1+3 (останется как была) -->
+<main class="container">
+
+  <!-- Галерея 1+3 -->
   <div class="gallery-mosaic">
-    <div class="card"><div class="cover"><img src="/voyages-de-l-auteur/assets/img/bois-bories-1.jpg" alt="Виноградники Bois Bories"></div></div>
-    <div class="card"><div class="cover"><img src="/voyages-de-l-auteur/assets/img/bois-bories-2.jpg" alt="Погреб"></div></div>
-    <div class="card"><div class="cover"><img src="/voyages-de-l-auteur/assets/img/bois-bories-3.jpg" alt="Озеро Салагу"></div></div>
-    <div class="card"><div class="cover"><img src="/voyages-de-l-auteur/assets/img/bois-bories-4.jpg" alt="Дегустация"></div></div>
+    <div class="card"><div class="cover"><img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1200&q=80" alt="Виноградники Bois Bories"></div></div>
+    <div class="card"><div class="cover"><img src="https://images.unsplash.com/photo-1528821154947-1aa3d1bbf6dc?auto=format&fit=crop&w=800&q=80" alt="Погреб"></div></div>
+    <div class="card"><div class="cover"><img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=800&q=80" alt="Озеро Салагу"></div></div>
+    <div class="card"><div class="cover"><img src="https://images.unsplash.com/photo-1509057199576-632a47484ece?auto=format&fit=crop&w=800&q=80" alt="Дегустация"></div></div>
   </div>
 
   <!-- Что делают (мини-фото бутылок квадратные по центру) -->
   <section class="mt">
     <h3 class="section-title">Что делают</h3>
     <div class="wines">
-
       <article class="wine">
         <div>
           <h4>Viognier <span class="pill">IGP Oc</span></h4>
@@ -117,7 +136,6 @@
           <p class="notes">Удобный формат для пикников и вечеринок.</p>
         </div>
       </article>
-
     </div>
   </section>
 
@@ -139,3 +157,4 @@
 <footer class="container"><small>© Voyages de l’Auteur</small></footer>
 </body>
 </html>
+
