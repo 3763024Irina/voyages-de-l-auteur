@@ -125,3 +125,21 @@ img{ max-width:100%; height:auto; display:block }
   .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px }
 }
 
+/* === FINAL OVERRIDES === */
+.page-hero::before,.page-hero::after{pointer-events:none}
+.page-hero .container{position:relative;z-index:1}
+
+/* Галерея: плитки заполняем блок, но не искажаем */
+.gallery img{height:100% !important; max-height:none !important; object-fit:cover !important;}
+
+/* В карточках только обложка тянется; контентные img остаются естественными */
+.card .cover img{width:100% !important; height:100% !important; object-fit:cover !important;}
+.card .body img:not(.thumb){max-width:100% !important; height:auto !important;}
+
+/* Мини-фото в описаниях вин — маленькие и по центру */
+.wine img.thumb{
+  --size:88px;
+  width:var(--size) !important; height:var(--size) !important;
+  margin:6px auto 10px !important; display:block !important;
+  object-fit:cover !important; border-radius:12px; border:1px solid #e8e8e8; box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
