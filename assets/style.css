@@ -1,68 +1,3 @@
-/* мини-фото в карточках вин */
-.wine .thumb{
-  --size: 88px;                /* можно менять размер тут */
-  width: var(--size);
-  height: var(--size);
-  display:block;
-  margin: 6px auto 10px;       /* по центру */
-  object-fit: cover;           /* аккуратно заполняет */
-  border-radius: 12px;
-  border: 1px solid #e8e8e8;
-  background:#fff;
-  box-shadow: 0 6px 16px rgba(0,0,0,.06);
-}
-.wine .thumb.round{ border-radius: 50%; } /* если хочешь круглые */
-
-
-/* ==== Стили для фото в карточках и галерее ==== */
-.card img,
-.gallery img {
-  width: 100%;
-  height: auto;
-  max-height: 280px;      /* ограничиваем высоту */
-  object-fit: cover;      /* кадрируем, если пропорции разные */
-  border-radius: 10px;    /* слегка скругляем */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* лёгкая тень */
-}
-
-/* Галерея в 4 колонки на десктопе, 2 на планшете, 1 на телефоне */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 12px;
-}
-
-
-/* Форма справа в герое */
-.hero .inner{
-  display:grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap:40px;
-  align-items:center;
-  min-height:76vh;
-}
-.hero .inner > .card{
-  grid-column:2;
-  justify-self:end;
-  max-width:520px;
-  width:100%;
-}
-@media (max-width:1000px){
-  .hero .inner{ grid-template-columns:1fr; }
-  .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px; }
-}
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
 /* === Header (topbar + sticky nav) === */
 .topbar{
   height:38px; display:flex; align-items:center; justify-content:center;
@@ -90,7 +25,6 @@ header{
 .brand h1{
   font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0
 }
-
 nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
 nav a{
   display:inline-flex; align-items:center; gap:8px;
@@ -102,75 +36,92 @@ nav a.cta{
   box-shadow:var(--shadow,0 10px 30px rgba(0,0,0,.08))
 }
 nav a.cta:hover{background:var(--brand-2,#174936)}
+@media (max-width: 640px){ nav ul{display:none} }
 
-@media (max-width: 640px){
-  nav ul{display:none} /* при желании добавишь бургер */
+/* === Page hero with vineyard background (кликабельно насквозь) === */
+.page-hero{
+  position: relative; min-height: 52vh; display: grid; align-items: center; isolation: isolate;
+  background: #0d2b1e;
+  --hero-img: url('https://unsplash.com/photos/ukpPeOxFChU/download?force=true&w=1600');
 }
+.page-hero::before{
+  content:""; position:absolute; inset:0; z-index:-2;
+  background-image: var(--hero-img); background-size: cover; background-position: center;
+  filter: brightness(.72); pointer-events:none;
+}
+.page-hero::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
+    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
+}
+.page-hero .title{ font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px; }
+.page-hero .lead{ color:#f7f7f7; max-width:680px; }
+.page-hero .container{ position:relative; z-index:1; }
+@media (max-width:640px){ .page-hero{ min-height:44vh } .page-hero .title{ font-size:34px } }
+
+/* === Общие изображения: без глобального растягивания === */
+img{ max-width:100%; height:auto; display:block }
+
+/* === Галерея (компактные плитки, без “растягивания всего”) === */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:12px;
+  grid-auto-rows:180px;          /* контролируем высоту плиток */
+  margin:20px 0;
+}
+.gallery img{
+  width:100%; height:100%; object-fit:cover;   /* аккуратно кадрируем, НЕ искажаем */
+  border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
+
+/* Если используешь карточки с обложкой — только обложку тянем, не все img */
+.card .cover{ aspect-ratio:4/3; overflow:hidden; border-radius:12px; }
+.card .cover img{ width:100%; height:100%; object-fit:cover; }
+.card .body img{ max-width:100%; height:auto } /* inline-изображения в тексте не тянем */
 
 /* === Wine list (Описание вин) === */
-.wines{
-  display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0
-}
+.wines{ display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0 }
 .wine{
   display:grid; grid-template-columns:1.1fr .9fr; gap:14px; align-items:start;
   padding:16px; border-radius:16px; background:var(--paper,#fff);
   border:1px solid #eee; box-shadow:var(--shadow,0 10px 30px rgba(0,0,0,.08))
 }
-.wine h4{margin:0 0 6px; font-size:18px; line-height:1.2}
-.wine .meta{display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted,#6c6c6c)}
+.wine h4{ margin:0 0 6px; font-size:18px; line-height:1.2 }
+.wine .meta{ display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted,#6c6c6c) }
 .pill{
   display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
   border:1px solid #e8e8e8; border-radius:999px; background:#fff; font-weight:600; font-size:12px
 }
-.wine ul{margin:8px 0 0 18px; padding:0}
-.wine li{margin:4px 0}
-.wine .notes{margin-top:8px; color:var(--ink,#1b1b1b)}
+.wine ul{ margin:8px 0 0 18px; padding:0 }
+.wine li{ margin:4px 0 }
+.wine .notes{ margin-top:8px; color:var(--ink,#1b1b1b) }
 .badge-oak,.badge-vip{
   display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.2px;
   border:1px solid #e8e8e8; background:#fff
 }
-.badge-oak{border-color:#e4d7b6; background:var(--accent-2,#E9DFC5)}
-.badge-vip{border-color:#cfd8d3}
+.badge-oak{ border-color:#e4d7b6; background:var(--accent-2,#E9DFC5) }
+.badge-vip{ border-color:#cfd8d3 }
+@media (max-width:1000px){ .wine{ grid-template-columns:1fr } }
 
-@media (max-width: 1000px){
-  .wine{grid-template-columns:1fr}
+/* === Мини-фото в карточках вин — маленькие и по центру === */
+.wine .thumb{
+  --size:88px;
+  width:var(--size); height:var(--size);
+  margin:6px auto 10px; object-fit:cover;
+  border-radius:12px; border:1px solid #e8e8e8; background:#fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.06);
 }
-/* === Page hero with vineyard background === */
-.page-hero{
-  position: relative;
-  min-height: 52vh;
-  display: grid;
-  align-items: center;
-  isolation: isolate;           /* чтобы оверлей был поверх bg */
-  background: #0d2b1e;          /* фолбэк цвет */
-  /* 👉 тут меняешь фото: */
-  --hero-img: url('https://unsplash.com/photos/ukpPeOxFChU/download?force=true&w=1600'); /* Pic Saint-Loup vineyard */
-}
-.page-hero::before{
-  content:"";
-  position:absolute; inset:0; z-index:-2;
-  background-image: var(--hero-img);
-  background-size: cover;
-  background-position: center;
-  filter: brightness(.72);
-}
-.page-hero::after{
-  content:"";
-  position:absolute; inset:0; z-index:-1;
-  /* мягкий бленд в фирменных тонах */
-  background:
-    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
-    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
-}
+.wine .thumb.round{ border-radius:50% }
 
-/* опционально: стиль заголовка внутри .page-hero */
-.page-hero .title{
-  font-family:"Cormorant Garamond",serif;
-  font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px;
+/* === Форма справа в герое (если используется) === */
+.hero .inner{
+  display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; min-height:76vh;
 }
-.page-hero .lead{ color:#f7f7f7; max-width:680px; }
-@media (max-width:640px){
-  .page-hero{ min-height: 44vh; }
-  .page-hero .title{ font-size:34px; }
+.hero .inner > .card{ grid-column:2; justify-self:end; max-width:520px; width:100% }
+@media (max-width:1000px){
+  .hero .inner{ grid-template-columns:1fr }
+  .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px }
 }
 
