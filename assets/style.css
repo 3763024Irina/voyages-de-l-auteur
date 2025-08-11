@@ -150,4 +150,44 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 .page-hero{
   --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg');
 }
+/* Hero: фон картинкой через CSS-переменную */
+.page-hero{
+  position:relative; min-height:44vh; display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
+}
+.page-hero::before{
+  content:""; position:absolute; inset:0; z-index:-2;
+  background:var(--hero-img) center/cover no-repeat;
+  filter:brightness(.72); pointer-events:none;
+}
+.page-hero::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
+    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
+}
+
+/* Версия без текста для детальных страниц */
+.page-hero.plain{ min-height:36vh; }
+.page-hero.plain .title,
+.page-hero.plain .lead,
+.page-hero.plain .actions{ display:none; }
+
+/* Мини-фото в описании домена (по центру) */
+.mini-photos{
+  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+  margin:10px 0 6px;
+}
+.mini-photos img{
+  width:90px; height:90px; object-fit:cover;
+  border-radius:10px; border:1px solid #e8e8e8; background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+
+/* Квадратные мини-фото бутылок */
+.wine .thumb{
+  --size:96px; width:var(--size); height:var(--size);
+  display:block; margin:8px auto 10px;
+  object-fit:contain; background:#fff; padding:8px;
+  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
+}
 
