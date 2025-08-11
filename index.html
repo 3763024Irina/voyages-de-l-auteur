@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Авторские туры по Югу Франции — Лангедок и побережье | Oysters • Wine • Sea • Castles</title>
-  <meta name="description" content="Авторские туры по Лангедоку и югу Франции: устрицы и винные дегустации, горы и замки, море и водные виды спорта. Индивидуально и для мини‑групп." />
+  <meta name="description" content="Авторские туры по Лангедоку и югу Франции: устрицы и винные дегустации, горы и замки, море и водные виды спорта. Индивидуально и для мини-групп." />
   <meta property="og:title" content="Авторские туры по Югу Франции — Лангедок" />
   <meta property="og:description" content="Устрицы, вино, горы, замки, море и морские виды спорта. 10 готовых программ + VIP." />
   <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
     a{color:inherit}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
-    /* Topbar (Cartier‑like minimal strip) */
+    /* Topbar */
     .topbar{height:38px; display:flex; align-items:center; justify-content:center; padding:0 14px; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)}
     .topbar .inner{width:100%; max-width:var(--container); display:flex; align-items:center; justify-content:space-between}
     .lang{display:flex; gap:10px; font-weight:600}
@@ -55,12 +55,14 @@
     .hero p{color:#f7f7f7; font-size:18px; max-width:640px}
     .hero .card{background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
     .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .tag{font-size:13px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid #e8e8e8; background:#fff}
+    .tag{font-size:13px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid #e8e8e8; background:#fff; text-decoration:none}
+    .tag:hover{background:#f0f0f0}
 
     /* Icons row */
     .icons{display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:18px}
-    .icon{background:var(--paper); border:1px solid #eee; border-radius:16px; padding:14px; text-align:center; box-shadow:var(--shadow)}
+    .icon{background:var(--paper); border:1px solid #eee; border-radius:16px; padding:14px; text-align:center; box-shadow:var(--shadow); text-decoration:none; display:block}
     .icon span{font-size:12px; color:var(--muted)}
+    .icon:hover{background:#f7f7f7}
 
     /* Filters */
     .filters{display:flex; flex-wrap:wrap; gap:10px; margin:34px 0}
@@ -101,7 +103,7 @@
     /* Contact */
     .contact{display:grid; grid-template-columns:1.2fr .8fr; gap:24px}
     form{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    label{display:block; font-size:13px; color:var(--muted); margin:12px 0 6px}
+    label{display:block; font-size:13px; color:#(muted); margin:12px 0 6px}
     input, select, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px}
 
@@ -168,36 +170,37 @@
     <div class="bg">
       <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?q=80&w=1600&auto=format&fit=crop" alt="Юг Франции — море и виноградники"/>
       <div class="overlay"></div>
-  </div>
-<div class="container inner">
-  <div>
-    <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
-    <p data-i18n="hero.text">
-      10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы:
-      дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро
-      и водные виды спорта на Средиземном море.
-    </p>
+    </div>
 
- <div class="tags">
-  <a class="tag" href="oysters.html">Устрицы & Étang de Thau</a>
-  <a class="tag" href="https://3763024irina.github.io/voyages-de-l-auteur/degustations/index.html">Вино и Домены</a>
-  <a class="tag" href="castles.html">Замки & История</a>
-  <a class="tag" href="mountains.html">Горы & Трекинг</a>
-  <a class="tag" href="sea.html">Море & SUP/Каяк</a>
-  <a class="tag" href="photo.html">Фото-локи</a>
-</div>
+    <div class="container inner">
+      <div>
+        <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
+        <p data-i18n="hero.text">
+          10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы:
+          дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро
+          и водные виды спорта на Средиземном море.
+        </p>
 
-<div class="icons">
-  <a class="icon" href="oysters.html"><div>🦪</div><span>устрицы</span></a>
-  <a class="icon" href="https://3763024irina.github.io/voyages-de-l-auteur/degustations/index.html">
-    <div>🍷</div><span>Винодегустации</span>
-  </a>
-  <a class="icon" href="castles.html"><div>🏰</div><span>замки</span></a>
-  <a class="icon" href="mountains.html"><div>⛰️</div><span>горы</span></a>
-  <a class="icon" href="sea.html"><div>🌊</div><span>море</span></a>
-  <a class="icon" href="sup.html"><div>🏄</div><span>водный спорт</span></a>
-</div>
+        <!-- ВСЕ теги — ссылки -->
+        <div class="tags">
+          <a class="tag" href="oysters.html">Устрицы & Étang de Thau</a>
+          <a class="tag" href="https://3763024irina.github.io/voyages-de-l-auteur/degustations/index.html">Вино и Домены</a>
+          <a class="tag" href="castles.html">Замки & История</a>
+          <a class="tag" href="mountains.html">Горы & Трекинг</a>
+          <a class="tag" href="sea.html">Море & SUP/Каяк</a>
+          <a class="tag" href="photo.html">Фото-локи</a>
+        </div>
 
+        <!-- ВСЕ иконки — ссылки -->
+        <div class="icons">
+          <a class="icon" href="oysters.html"><div>🦪</div><span>устрицы</span></a>
+          <a class="icon" href="https://3763024irina.github.io/voyages-de-l-auteur/degustations/index.html"><div>🍷</div><span>Винодегустации</span></a>
+          <a class="icon" href="castles.html"><div>🏰</div><span>замки</span></a>
+          <a class="icon" href="mountains.html"><div>⛰️</div><span>горы</span></a>
+          <a class="icon" href="sea.html"><div>🌊</div><span>море</span></a>
+          <a class="icon" href="sup.html"><div>🏄</div><span>водный спорт</span></a>
+        </div>
+      </div>
 
       <div class="card">
         <strong data-i18n="form.fast">Быстрый запрос</strong>
@@ -257,11 +260,9 @@
     <div style="display:flex; align-items:end; justify-content:space-between; gap:16px">
       <div>
         <h3 class="section-title" data-i18n="tours.title">10 программ на выбор</h3>
-        <p class="section-sub" data-i18n="tours.sub">Однодневные, полудневные и уик‑энд туры. Индивидуально 1–6 гостей или мини‑группа.</p>
+        <p class="section-sub" data-i18n="tours.sub">Однодневные, полудневные и уик-энд туры. Индивидуально 1–6 гостей или мини-группа.</p>
       </div>
-      <div>
-        <div class="filters" id="filters"></div>
-      </div>
+      <div><div class="filters" id="filters"></div></div>
     </div>
     <div class="grid" id="grid"></div>
   </section>
@@ -333,7 +334,7 @@
         <div class="card" style="padding:18px">
           <h3>WhatsApp</h3>
           <p><a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">+33 6 00 00 00 00</a></p>
-          <h3>E‑mail</h3>
+          <h3>E-mail</h3>
           <p><a href="mailto:hello@example.com">hello@example.com</a></p>
           <h3 data-i18n="contact.area">Регион</h3>
           <p>Hérault, Aude, Gard — Languedoc & Roussillon</p>
@@ -383,14 +384,14 @@
         'top.note': 'Авторские туры по Югу Франции',
         'nav.why': 'Почему с нами', 'nav.tours': 'Программы', 'nav.format': 'Формат', 'nav.contacts': 'Контакты', 'nav.book': 'Забронировать',
         'hero.title': 'Юг Франции без шаблонов: устрицы, вино, горы, замки и море',
-        'hero.text': '10 готовых маршрутов по Лангедоку и Руссильону + VIP‑программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен‑Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.',
+        'hero.text': '10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.',
         'form.fast': 'Быстрый запрос', 'form.sub': 'Отправьте пожелания — подберу маршрут и даты в течение дня.',
         'form.name': 'Имя', 'form.contact': 'Контакт (WhatsApp/Email)', 'form.interest': 'Интересы', 'form.msg': 'Сообщение', 'form.send': 'Отправить', 'form.whatsapp':'Написать в WhatsApp',
         'why.title': 'Почему с нами', 'why.sub': 'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
         'why.1.title': 'Гастрономия у истоков', 'why.1.text': 'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
         'why.2.title': 'Природа и актив', 'why.2.text': 'Пешеходные маршруты, каяк и SUP на Средиземном море, ущелья и панорамы.',
         'why.3.title': 'История и стиль', 'why.3.text': 'Каркасон, аббатства, рыцарские легенды — со вкусом и без толп.',
-        'tours.title': '10 программ на выбор', 'tours.sub': 'Однодневные, полудневные и уик‑энд туры. Индивидуально 1–6 гостей или мини‑группа.',
+        'tours.title': '10 программ на выбор', 'tours.sub': 'Однодневные, полудневные и уик-энд туры. Индивидуально 1–6 гостей или мини-группа.',
         'format.title': 'Формат путешествий',
         'format.1.title':'Приватно и удобно', 'format.1.text':'Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.',
         'format.2.title':'Без посредников', 'format.2.text':'Работаем напрямую с доменами и фермерами — честный продукт и цены.',
@@ -402,14 +403,14 @@
         'top.note': 'Voyages sur mesure dans le Sud de la France',
         'nav.why': 'Pourquoi nous', 'nav.tours': 'Programmes', 'nav.format': 'Format', 'nav.contacts': 'Contacts', 'nav.book': 'Réserver',
         'hero.title': 'Le Sud de la France sans clichés : huîtres, vin, montagnes, châteaux et mer',
-        'hero.text': '10 itinéraires prêts + programmes VIP selon vos intérêts : dégustations sur l’étang de Thau, randos au Pic Saint‑Loup, Carcassonne médiévale, gorges turquoise de l’Hérault et sports nautiques en Méditerranée.',
+        'hero.text': '10 itinéraires prêts + programmes VIP selon vos intérêts : dégustations sur l’étang de Thau, randos au Pic Saint-Loup, Carcassonne médiévale, gorges turquoise de l’Hérault et sports nautiques en Méditerranée.',
         'form.fast': 'Demande rapide', 'form.sub': 'Envoyez vos souhaits — je propose un itinéraire et des dates dans la journée.',
         'form.name': 'Nom', 'form.contact': 'Contact (WhatsApp/Email)', 'form.interest': 'Intérêts', 'form.msg': 'Message', 'form.send': 'Envoyer', 'form.whatsapp':'Écrire sur WhatsApp',
         'why.title': 'Pourquoi nous', 'why.sub': 'Expertise locale, transport privé, focus gastronomie et nature.',
         'why.1.title': 'Gastronomie à la source', 'why.1.text': 'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
         'why.2.title': 'Nature & activités', 'why.2.text': 'Randonnées, kayak et paddle en Méditerranée, gorges et panoramas.',
         'why.3.title': 'Histoire & style', 'why.3.text': 'Carcassonne, abbayes, légendes — sans foules.',
-        'tours.title': '10 programmes au choix', 'tours.sub': 'Demi‑journée, journée, week‑end. 1–6 personnes ou mini‑groupe.',
+        'tours.title': '10 programmes au choix', 'tours.sub': 'Demi-journée, journée, week-end. 1–6 personnes ou mini-groupe.',
         'format.title': 'Format des voyages',
         'format.1.title':'Privé & confortable', 'format.1.text':'Transport privé, rythme flexible, arrêts à la demande, meilleurs points de vue.',
         'format.2.title':'Sans intermédiaires', 'format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
@@ -445,11 +446,11 @@
     // Simple tours data (10 programs)
     const tours = [
       {t:'Устрицы на лагуне Thau', c:'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop', d:'3–4 часа • дегустация устриц и вина прямо у производителей.', p:'от 180€ / чел', b:'hit'},
-      {t:'Винные домены Пик Сен‑Лу', c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop', d:'День • 2–3 домена, терруары и панорамы.', p:'от 220€ / чел'},
+      {t:'Винные домены Пик Сен-Лу', c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop', d:'День • 2–3 домена, терруары и панорамы.', p:'от 220€ / чел'},
       {t:'Каркасон и аббатства', c:'https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=1200&auto=format&fit=crop', d:'День • крепость + аббатство Фонтфруад.', p:'от 230€ / чел'},
       {t:'Горы и ущелья Эро', c:'https://images.unsplash.com/photo-1526481280698-8fcc13fd283f?q=80&w=1200&auto=format&fit=crop', d:'День • лёгкий трекинг, купание, пикник.', p:'от 210€ / чел'},
       {t:'Средиземное море: SUP/Каяк', c:'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=1200&auto=format&fit=crop', d:'3 часа • рассветный сап или каякинг.', p:'от 150€ / чел'},
-      {t:'Монтпелье и гастро‑рынки', c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop', d:'Полдня • исторический центр + дегустации.', p:'от 160€ / чел'},
+      {t:'Монтпелье и гастро-рынки', c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop', d:'Полдня • исторический центр + дегустации.', p:'от 160€ / чел'},
       {t:'Канал дю Миди и вино', c:'https://images.unsplash.com/photo-1592078615290-033f0a23a1eb?q=80&w=1200&auto=format&fit=crop', d:'День • прогулка по каналу, домены.', p:'от 210€ / чел'},
       {t:'Соляные розовые поля', c:'https://images.unsplash.com/photo-1536868313473-748eb07f3510?q=80&w=1200&auto=format&fit=crop', d:'Полдня • фотопрогулка и дегустации.', p:'от 170€ / чел'},
       {t:'Нарбон и Лагедок Руссильон', c:'https://images.unsplash.com/photo-1599661040040-0a38c809bdb1?q=80&w=1200&auto=format&fit=crop', d:'День • рынок, винные бары, история.', p:'от 210€ / чел'},
