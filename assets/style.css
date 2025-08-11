@@ -1,17 +1,38 @@
-/* === Header (topbar + sticky nav) === */
+:root{
+  --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c;
+  --brand:#0D2B1E; --brand-2:#174936; --shadow:0 10px 30px rgba(0,0,0,.08);
+  --radius:18px; --container:1100px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
+a{color:inherit; text-decoration:none}
+img{max-width:100%; height:auto; display:block}
+.container{max-width:var(--container); margin:auto; padding:0 20px}
+.mt{margin-top:28px}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6;
+  background:#fff; font-weight:700; cursor:pointer
+}
+.btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
+
+/* Topbar + Header */
 .topbar{
   height:38px; display:flex; align-items:center; justify-content:center;
   padding:0 14px; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)
 }
-.topbar .inner{width:100%; max-width:var(--container,1100px); display:flex; align-items:center; justify-content:space-between}
+.topbar .inner{width:100%; max-width:var(--container); display:flex; align-items:center; justify-content:space-between}
 .topbar .note{font-size:13px; opacity:.9}
 .lang{display:flex; gap:10px; font-weight:600}
-.lang a{color:#e9e9e9; text-decoration:none; opacity:.8}
+.lang a{color:#e9e9e9; opacity:.8}
 .lang a.active{opacity:1; text-decoration:underline}
 
 header{
   position:sticky; top:0; z-index:50;
-  -webkit-backdrop-filter:saturate(140%) blur(8px);
   backdrop-filter:saturate(140%) blur(8px);
   background:rgba(255,255,255,.7); border-bottom:1px solid #eee
 }
@@ -19,127 +40,110 @@ header{
 .brand{display:flex; align-items:center; gap:14px}
 .logo{
   width:46px; height:46px; border-radius:50%;
-  background:linear-gradient(145deg,var(--brand,#0D2B1E),#123c2c);
-  display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow,0 10px 30px rgba(0,0,0,.08))
+  background:linear-gradient(145deg,var(--brand),#123c2c);
+  display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)
 }
 .brand h1{
   font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0
 }
 nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
-nav a{
-  display:inline-flex; align-items:center; gap:8px;
-  text-decoration:none; font-weight:600; padding:10px 12px; border-radius:12px; color:inherit
-}
+nav a{display:inline-flex; align-items:center; gap:8px; font-weight:600; padding:10px 12px; border-radius:12px}
 nav a:hover{background:#f0f0f0}
-nav a.cta{
-  background:var(--brand,#0D2B1E); color:#fff; border-radius:14px; padding:12px 16px;
-  box-shadow:var(--shadow,0 10px 30px rgba(0,0,0,.08))
-}
-nav a.cta:hover{background:var(--brand-2,#174936)}
-@media (max-width: 640px){ nav ul{display:none} }
+nav a.cta{background:var(--brand); color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow)}
+nav a.cta:hover{background:var(--brand-2)}
+@media (max-width:640px){ nav ul{display:none} }
 
-/* === Page hero with vineyard background (кликабельно насквозь) === */
+/* Hero with vineyard background */
 .page-hero{
-  position: relative; min-height: 52vh; display: grid; align-items: center; isolation: isolate;
-  background: #0d2b1e;
-  --hero-img: url('https://unsplash.com/photos/ukpPeOxFChU/download?force=true&w=1600');
+  position:relative; min-height:44vh; display:grid; align-items:center; isolation:isolate; background:#0d2b1e
 }
 .page-hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
-  background-image: var(--hero-img); background-size: cover; background-position: center;
-  filter: brightness(.72); pointer-events:none;
+  background:var(--hero-img) center/cover no-repeat;
+  filter:brightness(.72); pointer-events:none
 }
 .page-hero::after{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:
     radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
-    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
+    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25))
 }
-.page-hero .title{ font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px; }
-.page-hero .lead{ color:#f7f7f7; max-width:680px; }
-.page-hero .container{ position:relative; z-index:1; }
-@media (max-width:640px){ .page-hero{ min-height:44vh } .page-hero .title{ font-size:34px } }
-
-/* === Общие изображения: без глобального растягивания === */
-img{ max-width:100%; height:auto; display:block }
-
-/* === Галерея (компактные плитки, без “растягивания всего”) === */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-  gap:12px;
-  grid-auto-rows:180px;          /* контролируем высоту плиток */
-  margin:20px 0;
+.page-hero .container{position:relative; z-index:1}
+.title{
+  font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px
 }
-.gallery img{
-  width:100%; height:100%; object-fit:cover;   /* аккуратно кадрируем, НЕ искажаем */
-  border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.15);
+.lead{color:#f7f7f7; max-width:720px}
+.actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+@media (max-width:640px){ .title{font-size:34px} }
+
+/* Hero WITHOUT text (for detail pages) */
+.page-hero.plain{ min-height:36vh }
+.page-hero.plain .title,
+.page-hero.plain .lead,
+.page-hero.plain .actions{ display:none }
+
+/* Cards grid (list page) */
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.card{
+  background:var(--paper); border:1px solid #eee; border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column
+}
+.cover{aspect-ratio:16/10; background:#ddd; position:relative; overflow:hidden}
+.cover img{width:100%; height:100%; object-fit:cover; display:block}
+.badge{
+  position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94);
+  border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px
+}
+.card .body{padding:16px}
+.card h3{margin:0 0 8px; font-size:20px}
+.meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
+.card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
+@media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+/* Gallery mosaic (detail pages: 1 big + 3 small) */
+.gallery-mosaic{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px; grid-auto-rows:180px; margin-top:24px
+}
+.gallery-mosaic .card:first-child{ grid-column:1 / span 2; grid-row:1 / span 2 }
+.gallery-mosaic .cover{ height:100% }
+.gallery-mosaic .cover img{ width:100%; height:100%; object-fit:cover; display:block }
+@media (max-width:900px){
+  .gallery-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px }
+  .gallery-mosaic .card:first-child{ grid-column:1 / -1; grid-row:auto }
 }
 
-/* Если используешь карточки с обложкой — только обложку тянем, не все img */
-.card .cover{ aspect-ratio:4/3; overflow:hidden; border-radius:12px; }
-.card .cover img{ width:100%; height:100%; object-fit:cover; }
-.card .body img{ max-width:100%; height:auto } /* inline-изображения в тексте не тянем */
-
-/* === Wine list (Описание вин) === */
-.wines{ display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0 }
+/* Wines block */
+.section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
+.section-sub{color:var(--muted); margin:0}
+.wines{display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0}
 .wine{
   display:grid; grid-template-columns:1.1fr .9fr; gap:14px; align-items:start;
-  padding:16px; border-radius:16px; background:var(--paper,#fff);
-  border:1px solid #eee; box-shadow:var(--shadow,0 10px 30px rgba(0,0,0,.08))
+  padding:16px; border-radius:16px; background:var(--paper);
+  border:1px solid #eee; box-shadow:var(--shadow)
 }
-.wine h4{ margin:0 0 6px; font-size:18px; line-height:1.2 }
-.wine .meta{ display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted,#6c6c6c) }
+.wine h4{margin:0 0 6px; font-size:18px; line-height:1.2}
+.wine .meta{display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
 .pill{
   display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
   border:1px solid #e8e8e8; border-radius:999px; background:#fff; font-weight:600; font-size:12px
 }
-.wine ul{ margin:8px 0 0 18px; padding:0 }
-.wine li{ margin:4px 0 }
-.wine .notes{ margin-top:8px; color:var(--ink,#1b1b1b) }
-.badge-oak,.badge-vip{
-  display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800; letter-spacing:.2px;
-  border:1px solid #e8e8e8; background:#fff
+.wine .notes{margin-top:8px}
+.badge-oak{
+  display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800;
+  border:1px solid #e4d7b6; background:#E9DFC5
 }
-.badge-oak{ border-color:#e4d7b6; background:var(--accent-2,#E9DFC5) }
-.badge-vip{ border-color:#cfd8d3 }
-@media (max-width:1000px){ .wine{ grid-template-columns:1fr } }
+@media (max-width:1000px){ .wine{grid-template-columns:1fr} }
 
-/* === Мини-фото в карточках вин — маленькие и по центру === */
+/* Bottle thumbs: square center (no crop) */
 .wine .thumb{
-  --size:88px;
+  --size:96px;
   width:var(--size); height:var(--size);
-  margin:6px auto 10px; object-fit:cover;
-  border-radius:12px; border:1px solid #e8e8e8; background:#fff;
-  box-shadow:0 6px 16px rgba(0,0,0,.06);
-}
-.wine .thumb.round{ border-radius:50% }
-
-/* === Форма справа в герое (если используется) === */
-.hero .inner{
-  display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; min-height:76vh;
-}
-.hero .inner > .card{ grid-column:2; justify-self:end; max-width:520px; width:100% }
-@media (max-width:1000px){
-  .hero .inner{ grid-template-columns:1fr }
-  .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px }
+  display:block; margin:8px auto 10px;
+  object-fit:contain; background:#fff; padding:8px;
+  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
 }
 
-/* === FINAL OVERRIDES === */
-.page-hero::before,.page-hero::after{pointer-events:none}
-.page-hero .container{position:relative;z-index:1}
+/* Footer */
+footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 
-/* Галерея: плитки заполняем блок, но не искажаем */
-.gallery img{height:100% !important; max-height:none !important; object-fit:cover !important;}
-
-/* В карточках только обложка тянется; контентные img остаются естественными */
-.card .cover img{width:100% !important; height:100% !important; object-fit:cover !important;}
-.card .body img:not(.thumb){max-width:100% !important; height:auto !important;}
-
-/* Мини-фото в описаниях вин — маленькие и по центру */
-.wine img.thumb{
-  --size:88px;
-  width:var(--size) !important; height:var(--size) !important;
-  margin:6px auto 10px !important; display:block !important;
-  object-fit:cover !important; border-radius:12px; border:1px solid #e8e8e8; box-shadow:0 6px 16px rgba(0,0,0,.06);
-}
