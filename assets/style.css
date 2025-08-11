@@ -1,3 +1,22 @@
+/* ==== Стили для фото в карточках и галерее ==== */
+.card img,
+.gallery img {
+  width: 100%;
+  height: auto;
+  max-height: 280px;      /* ограничиваем высоту */
+  object-fit: cover;      /* кадрируем, если пропорции разные */
+  border-radius: 10px;    /* слегка скругляем */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* лёгкая тень */
+}
+
+/* Галерея в 4 колонки на десктопе, 2 на планшете, 1 на телефоне */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+
 /* Форма справа в герое */
 .hero .inner{
   display:grid;
