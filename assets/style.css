@@ -54,9 +54,6 @@ nav a.cta:hover{background:var(--brand-2)}
 @media (max-width:640px){ nav ul{display:none} }
 
 /* Hero with vineyard background */
-.page-hero{
-  position:relative; min-height:44vh; display:grid; align-items:center; isolation:isolate; background:#0d2b1e
-}
 .page-hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
   background:var(--hero-img) center/cover no-repeat;
@@ -172,24 +169,6 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 .page-hero.plain .lead,
 .page-hero.plain .actions{ display:none; }
 
-/* Мини-фото в описании домена (по центру) */
-.mini-photos{
-  display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
-  margin:10px 0 6px;
-}
-.mini-photos img{
-  width:90px; height:90px; object-fit:cover;
-  border-radius:10px; border:1px solid #e8e8e8; background:#fff;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
-
-/* Квадратные мини-фото бутылок */
-.wine .thumb{
-  --size:96px; width:var(--size); height:var(--size);
-  display:block; margin:8px auto 10px;
-  object-fit:contain; background:#fff; padding:8px;
-  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
-}
 
 /* === Вина: фото слева, описание справа === */
 .wines .wine{
