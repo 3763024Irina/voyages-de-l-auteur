@@ -8,43 +8,124 @@
 </head>
 <body>
 
-<header class="container" style="padding-top:24px">
-  <a class="btn" href="index.html">← Все дегустации</a>
-  <h3 class="section-title" style="margin-top:16px">Domaine Bois Bories (Coteaux du Salagou)</h3>
-  <p class="section-sub">
-    Семейное хозяйство в Клермон-л’Эро (рядом с озером Салагу), ведущее историю четыре поколения.
-    Виноградники (~25&nbsp;га) обрабатываются в духе «agriculture raisonnée»; терруар сочетает
-    вулканические почвы у Les Bories и глино-известняковые участки для шардоне.
-    Хозяйство ведут Винсент и Дельфин Реймон.
-  </p>
-  <p class="section-sub">
-    <strong>Domaine Bois Bories</strong> • Упоминается в&nbsp;<a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>
-  </p>
+<!-- Topbar + header (как на главной) -->
+<div class="topbar">
+  <div class="inner">
+    <div class="note">Авторские туры по Югу Франции</div>
+    <div class="lang" role="navigation" aria-label="Language switcher">
+      <a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a>
+    </div>
+  </div>
+</div>
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo" aria-hidden>Î</div>
+      <div><h1>Tours Languedoc by Irène</h1></div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html#why">Почему с нами</a></li>
+        <li><a href="../index.html#tours">Программы</a></li>
+        <li><a href="../index.html#format">Формат</a></li>
+        <li><a href="../index.html#contact">Контакты</a></li>
+        <li><a class="cta" href="../index.html#contact">Забронировать</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
+<!-- Герой с фоном-виноградником (фото меняется в CSS через --hero-img) -->
+<section class="page-hero">
+  <div class="container" style="padding:38px 20px">
+    <h2 class="title">Domaine Bois Bories (Coteaux du Salagou)</h2>
+    <p class="lead">
+      Семейное хозяйство в Клермон-л’Эро (рядом с озером Салагу), ведущее историю четыре поколения.
+      Виноградники (~25&nbsp;га) обрабатываются в духе «agriculture raisonnée»; терруар сочетает
+      вулканические почвы у Les Bories и глино-известняковые участки для шардоне.
+      Хозяйство ведут Винсент и Дельфин Реймон.
+      <br>
+      <strong>Domaine Bois Bories</strong> • Упоминается в&nbsp;<a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+      <a class="btn" href="index.html">← Все дегустации</a>
+      <a class="btn primary" href="../index.html#contact">Забронировать</a>
+      <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn" href="mailto:hello@example.com">E-mail</a>
+    </div>
+  </div>
+</section>
+
 <main class="container">
-  <!-- Галерея (положи файлы в assets/img/) -->
-  <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:12px">
-    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-1.jpg" alt="Виноградники Bois Bories"></div></div>
-    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-2.jpg" alt="Погреб Bois Bories"></div></div>
-    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-3.jpg" alt="Озеро Салагу"></div></div>
-    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-4.jpg" alt="Дегустация"></div></div>
+  <!-- Галерея -->
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:12px; margin-top:24px">
+    <div class="card"><div class="cover"><img loading="lazy" decoding="async" src="../assets/img/bois-bories-1.jpg" alt="Виноградники Bois Bories"></div></div>
+    <div class="card"><div class="cover"><img loading="lazy" decoding="async" src="../assets/img/bois-bories-2.jpg" alt="Погреб Bois Bories"></div></div>
+    <div class="card"><div class="cover"><img loading="lazy" decoding="async" src="../assets/img/bois-bories-3.jpg" alt="Озеро Салагу"></div></div>
+    <div class="card"><div class="cover"><img loading="lazy" decoding="async" src="../assets/img/bois-bories-4.jpg" alt="Дегустация"></div></div>
   </div>
 
+  <!-- Что делают — в новом аккуратном виде -->
   <section style="margin-top:28px">
     <h3 class="section-title">Что делают</h3>
-    <div class="card" style="padding:18px">
-      <ul>
-        <li><strong>Viognier</strong> (IGP Oc).</li>
-        <li><strong>Les Peyrades Rouge</strong> (AOP Languedoc) — Syrah/Grenache, выдержка 12&nbsp;мес. в бочке.</li>
-        <li><strong>Les Peyrades Chardonnay</strong> (IGP Oc) — винификация в дубе.</li>
-        <li><strong>Les Peyrades Rosé</strong> (AOP Languedoc) — из Syrah.</li>
-        <li><strong>Sortie du Temps</strong> (AOP Languedoc) — Mourvèdre с Grenache, 18&nbsp;мес. в бочке.</li>
-      </ul>
-      <p style="margin-top:8px">Также есть Bag-in-Box (IGP Hérault).</p>
+    <div class="wines">
+
+      <article class="wine">
+        <div>
+          <h4>Viognier <span class="pill">IGP Oc</span></h4>
+          <div class="meta">
+            <span class="pill">ароматы: абрикос, персик</span>
+            <span class="pill">стиль: свежий</span>
+          </div>
+          <p class="notes">Гастрономичный аперитив, отлично к морепродуктам.</p>
+        </div>
+        <div>
+          <h4>Les Peyrades Chardonnay <span class="pill">IGP Oc</span> <span class="badge-oak">oak</span></h4>
+          <div class="meta">
+            <span class="pill">винификация в дубе</span>
+          </div>
+          <p class="notes">Кремовая текстура, ваниль/миндаль.</p>
+        </div>
+      </article>
+
+      <article class="wine">
+        <div>
+          <h4>Les Peyrades Rosé <span class="pill">AOP Languedoc</span></h4>
+          <div class="meta">
+            <span class="pill">Syrah</span>
+            <span class="pill">сухой стиль</span>
+          </div>
+          <p class="notes">Ягодный профиль, лёгкие специи.</p>
+        </div>
+        <div>
+          <h4>Les Peyrades Rouge <span class="pill">AOP Languedoc</span></h4>
+          <div class="meta">
+            <span class="pill">Syrah/Grenache</span>
+            <span class="pill">12 мес. в бочке</span>
+          </div>
+          <p class="notes">Чёрные ягоды, пряность, округлые танины.</p>
+        </div>
+      </article>
+
+      <article class="wine">
+        <div>
+          <h4>Sortie du Temps <span class="pill">AOP Languedoc</span> <span class="badge-oak">oak</span></h4>
+          <div class="meta">
+            <span class="pill">Mourvèdre + Grenache</span>
+            <span class="pill">18 мес. в бочке</span>
+          </div>
+          <p class="notes">Мощь и структура; хорошо ложится на выдержку.</p>
+        </div>
+        <div>
+          <h4>Bag-in-Box <span class="pill">IGP Hérault</span></h4>
+          <p class="notes">Удобный формат для пикников и вечеринок.</p>
+        </div>
+      </article>
+
     </div>
   </section>
 
+  <!-- Маршрут дегустации (оставил как было) -->
   <section style="margin-top:22px">
     <h3 class="section-title">Маршрут дегустации</h3>
     <div class="card" style="padding:18px">
