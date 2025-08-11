@@ -16,3 +16,15 @@
   .hero .inner{ grid-template-columns:1fr; }
   .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px; }
 }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
