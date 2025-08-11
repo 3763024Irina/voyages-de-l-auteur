@@ -2,27 +2,54 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Винодегустации Лангедок</title>
+  <title>Вино и Домены — дегустации</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../assets/style.css"><!-- если у тебя стили в assets -->
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .cards{display:grid;gap:16px}
+    @media(min-width:720px){.cards{grid-template-columns:repeat(3,1fr)}}
+    .card{border-radius:16px;box-shadow:0 6px 20px rgba(0,0,0,.08);overflow:hidden}
+    .card img{width:100%;display:block}
+    .card .p{padding:14px}
+    .btn{display:inline-block;margin-top:8px;padding:10px 14px;border-radius:10px;border:1px solid #ddd;text-decoration:none}
+  </style>
 </head>
 <body>
-  <header class="container">
-    <a href="../index.html">← На главную</a>
-    <h1>Вино и Домены — дегустации</h1>
-    <p>Выберите домен для подробностей и бронирования.</p>
-  </header>
+<header class="container">
+  <a href="../index.html">← На главную</a>
+  <h1>Винодегустации Лангедока</h1>
+  <p>Выберите домен — перейдите на страницу с подробностями и бронированием.</p>
+</header>
 
-  <main class="container">
-    <ul>
-      <li><a href="bois-bories.html">Domaine Bois Bories</a></li>
-      <li><a href="les-yeuses.html">Domaine Les Yeuses</a></li>
-      <li><a href="belle-mare.html">Domaine de Belle Mare</a></li>
-    </ul>
-  </main>
+<main class="container cards">
+  <article class="card">
+    <img src="../assets/bois-bories-rose.jpg" alt="Domaine Bois Bories">
+    <div class="p">
+      <h2>Domaine Bois Bories</h2>
+      <p>Озеро Салагу: Viognier, Rosé «Premier Été», Les Peyrades, Sortie du Temps.</p>
+      <a class="btn" href="bois-bories.html">Подробнее</a>
+    </div>
+  </article>
 
-  <footer class="container">
-    <small>© Voyages de l’Auteur</small>
-  </footer>
+  <article class="card">
+    <img src="../assets/les-yeuses.jpg" alt="Domaine Les Yeuses">
+    <div class="p">
+      <h2>Domaine Les Yeuses</h2>
+      <p>Мèзе, традиции с XIII века, Picpoul de Pinet и ароматные красные.</p>
+      <a class="btn" href="les-yeuses.html">Подробнее</a>
+    </div>
+  </article>
+
+  <article class="card">
+    <img src="../assets/belle-mare.jpg" alt="Domaine de Belle Mare">
+    <div class="p">
+      <h2>Domaine de Belle Mare</h2>
+      <p>На берегу Étang de Thau, белые вина и пикпуль с морской свежестью.</p>
+      <a class="btn" href="belle-mare.html">Подробнее</a>
+    </div>
+  </article>
+</main>
+
+<footer class="container"><small>© Voyages de l’Auteur</small></footer>
 </body>
 </html>
