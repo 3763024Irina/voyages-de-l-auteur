@@ -119,3 +119,42 @@ nav a.cta:hover{background:var(--brand-2,#174936)}
 @media (max-width: 1000px){
   .wine{grid-template-columns:1fr}
 }
+/* === Page hero with vineyard background === */
+.page-hero{
+  position: relative;
+  min-height: 52vh;
+  display: grid;
+  align-items: center;
+  isolation: isolate;           /* чтобы оверлей был поверх bg */
+  background: #0d2b1e;          /* фолбэк цвет */
+  /* 👉 тут меняешь фото: */
+  --hero-img: url('https://unsplash.com/photos/ukpPeOxFChU/download?force=true&w=1600'); /* Pic Saint-Loup vineyard */
+}
+.page-hero::before{
+  content:"";
+  position:absolute; inset:0; z-index:-2;
+  background-image: var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.72);
+}
+.page-hero::after{
+  content:"";
+  position:absolute; inset:0; z-index:-1;
+  /* мягкий бленд в фирменных тонах */
+  background:
+    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
+    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
+}
+
+/* опционально: стиль заголовка внутри .page-hero */
+.page-hero .title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px;
+}
+.page-hero .lead{ color:#f7f7f7; max-width:680px; }
+@media (max-width:640px){
+  .page-hero{ min-height: 44vh; }
+  .page-hero .title{ font-size:34px; }
+}
+
