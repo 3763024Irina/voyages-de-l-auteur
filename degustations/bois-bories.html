@@ -7,39 +7,60 @@
   <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-<header class="container">
-  <a href="index.html">← Все дегустации</a>
-  <h1>Domaine Bois Bories (Coteaux du Salagou)</h1>
-  <p>Viognier, Premier Été Rosé, Les Peyrades Rouge, Sortie du Temps.</p>
+
+<header class="container" style="padding-top:24px">
+  <a class="btn" href="index.html">← Все дегустации</a>
+  <h3 class="section-title" style="margin-top:16px">Domaine Bois Bories (Coteaux du Salagou)</h3>
+  <p class="section-sub">
+    Семейное хозяйство в Клермон-л’Эро (рядом с озером Салагу), ведущее историю четыре поколения.
+    Виноградники (~25&nbsp;га) обрабатываются в духе «agriculture raisonnée»; терруар сочетает
+    вулканические почвы у Les Bories и глино-известняковые участки для шардоне.
+    Хозяйство ведут Винсент и Дельфин Реймон.
+  </p>
+  <p class="section-sub">
+    <strong>Domaine Bois Bories</strong> • Упоминается в&nbsp;<a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>
+  </p>
 </header>
 
 <main class="container">
-
-  <!-- Блок с фото -->
-  <div style="display:grid;gap:12px;margin-bottom:20px">
-    <img src="../IMG_8802.JPG" alt="Bois Bories фото 1" style="width:100%;border-radius:12px">
-    <img src="../IMG_8806.JPG" alt="Bois Bories фото 2" style="width:100%;border-radius:12px">
-    <img src="../IMG_8805.JPG" alt="Bois Bories фото 3" style="width:100%;border-radius:12px">
-    <img src="../IMG_8807.JPG" alt="Bois Bories фото 4" style="width:100%;border-radius:12px">
+  <!-- Галерея (положи файлы в assets/img/) -->
+  <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-1.jpg" alt="Виноградники Bois Bories"></div></div>
+    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-2.jpg" alt="Погреб Bois Bories"></div></div>
+    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-3.jpg" alt="Озеро Салагу"></div></div>
+    <div class="card"><div class="cover"><img src="../assets/img/bois-bories-4.jpg" alt="Дегустация"></div></div>
   </div>
-  <!-- Конец блока с фото -->
 
-  <h2>Маршрут дегустации</h2>
-  <ol>
-    <li><b>Viognier</b> — абрикос, груша, белые цветы. 10–12 °C. Пара: устрицы, гребешки, козий сыр.</li>
-    <li><b>Premier Été Rosé (Syrah+Grenache)</b> — клубника, малина, роза. 8–10 °C. Пара: тапенада, салаты.</li>
-    <li><b>Les Peyrades Rouge (Syrah+Grenache)</b> — вишня, слива, перец, шоколад. 16–18 °C. Пара: ягнёнок, паста, сыр том.</li>
-    <li><b>Sortie du Temps (Mourvèdre+Grenache)</b> — лавр, специи, кожа. 18 °C, декант 15 мин. Пара: утка, дичь, комте/рокфор.</li>
-  </ol>
+  <section style="margin-top:28px">
+    <h3 class="section-title">Что делают</h3>
+    <div class="card" style="padding:18px">
+      <ul>
+        <li><strong>Viognier</strong> (IGP Oc).</li>
+        <li><strong>Les Peyrades Rouge</strong> (AOP Languedoc) — Syrah/Grenache, выдержка 12&nbsp;мес. в бочке.</li>
+        <li><strong>Les Peyrades Chardonnay</strong> (IGP Oc) — винификация в дубе.</li>
+        <li><strong>Les Peyrades Rosé</strong> (AOP Languedoc) — из Syrah.</li>
+        <li><strong>Sortie du Temps</strong> (AOP Languedoc) — Mourvèdre с Grenache, 18&nbsp;мес. в бочке.</li>
+      </ul>
+      <p style="margin-top:8px">Также есть Bag-in-Box (IGP Hérault).</p>
+    </div>
+  </section>
 
-  <p>
-    <a class="btn" href="https://wa.me/33XXXXXXXXX">Написать в WhatsApp</a>
-    <a class="btn" href="mailto:hello@example.com?subject=Дегустация Bois Bories">Забронировать по e-mail</a>
-  </p>
+  <section style="margin-top:22px">
+    <h3 class="section-title">Маршрут дегустации</h3>
+    <div class="card" style="padding:18px">
+      <p class="section-sub" style="margin:0 0 10px">Viognier, Premier Été Rosé, Les Peyrades Rouge/Chardonnay, Sortie du Temps.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        <a class="btn primary" href="../index.html#contact">Забронировать</a>
+        <a class="btn" href="mailto:hello@example.com">E-mail</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="container">
+<footer class="container" style="padding-top:24px">
   <small>© Voyages de l’Auteur</small>
 </footer>
+
 </body>
 </html>
