@@ -1,32 +1,18 @@
-/* --- Hero: две колонки + форма справа --- */
+/* Форма справа в герое */
 .hero .inner{
   display:grid;
-  grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+  grid-template-columns: 1.1fr 0.9fr;
   gap:40px;
   align-items:center;
   min-height:76vh;
 }
-
-.hero .inner > div:first-child{
-  grid-column: 1; /* текстовый блок слева */
-}
-
 .hero .inner > .card{
-  grid-column: 2;          /* форма в правой колонке */
-  justify-self: end;       /* прижать к правому краю */
-  max-width: 520px;
-  width: 100%;
-  position: relative;
+  grid-column:2;
+  justify-self:end;
+  max-width:520px;
+  width:100%;
 }
-
-/* чтобы на узких экранах форма уходила под текст красиво */
-@media (max-width: 1000px){
-  .hero .inner{
-    grid-template-columns: 1fr;
-  }
-  .hero .inner > .card{
-    grid-column: auto;
-    justify-self: stretch;
-    margin-top: 16px;
-  }
+@media (max-width:1000px){
+  .hero .inner{ grid-template-columns:1fr; }
+  .hero .inner > .card{ grid-column:auto; justify-self:stretch; margin-top:16px; }
 }
