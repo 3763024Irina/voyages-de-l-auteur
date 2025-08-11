@@ -146,4 +146,8 @@ nav a.cta:hover{background:var(--brand-2)}
 
 /* Footer */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
+/* Фон по умолчанию для hero — виноградник */
+.page-hero{
+  --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg');
+}
 
