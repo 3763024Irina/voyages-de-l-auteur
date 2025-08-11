@@ -191,3 +191,31 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
   border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
 }
 
+/* === Вина: фото слева, описание справа === */
+.wines .wine{
+  display:grid;
+  grid-template-columns:1fr 1fr; /* два вина в ряд на десктопе */
+  gap:18px;
+}
+
+.wines .wine > div{
+  display:grid;
+  grid-template-columns:96px 1fr; /* слева мини-бутылка, справа текст */
+  gap:12px;
+  align-items:start;
+}
+
+.wines .wine > div .thumb{
+  margin:0;              /* убираем центрирование сверху */
+  justify-self:center;   /* бутылка по центру своей колонки */
+}
+
+.wines .wine > div h4,
+.wines .wine > div .meta,
+.wines .wine > div .notes{
+  grid-column:2;         /* весь текст строго справа от фото */
+}
+
+@media (max-width: 900px){
+  .wines .wine{ grid-template-columns:1fr; } /* по одному в ряд на мобиле */
+}
