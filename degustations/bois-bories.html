@@ -4,10 +4,14 @@
   <meta charset="utf-8">
   <title>Domaine Bois Bories — дегустация</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- общий стиль -->
-  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=13">
+  <!-- общий стиль (поднята версия для сброса кеша) -->
+  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=14">
 
   <style>
+    /* Ссылка внутри описания — подчеркнутая */
+    .section-sub a{ color: var(--brand); text-decoration: underline; }
+    .section-sub a:hover{ text-decoration: none; }
+
     /* Герой: бутылка слева, описание справа */
     .page-hero.plain{ padding:22px 0; }
     .hero-wrap{ display:grid; grid-template-columns: 320px minmax(0,1fr); gap:16px; align-items:start; }
@@ -22,7 +26,22 @@
     }
     @media (max-width:860px){ .hero-wrap{ grid-template-columns:1fr; } .bottle-card{ order:-1; } }
 
-    /* Таблица вин */
+    /* Фон героя — гарантированно сработает */
+    .page-hero{ position:relative; isolation:isolate; }
+    .page-hero::before{
+      content:""; position:absolute; inset:0; z-index:-2;
+      background-image: var(--hero-img) !important;
+      background-size:cover; background-position:center; background-repeat:no-repeat;
+    }
+    .page-hero::after{
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+      /* полупрозрачный зелёный слой поверх фото */
+      background:
+        radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.18), transparent),
+        linear-gradient(to bottom, rgba(13,43,30,.45), rgba(13,43,30,.22));
+    }
+
+    /* Таблица вин: название — описание (с сортами в тексте) */
     .wine-table{
       width:100%; border-collapse:separate; border-spacing:0; background:#fff;
       border:1px solid #eee; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
@@ -46,20 +65,6 @@
       .wine-table tbody tr{ border-bottom:1px solid #f0f0f0; }
       .wine-table tbody td{ padding:10px 16px; }
       .wine-table tbody td.name{ padding-bottom:6px; }
-    }
-
-    /* Фон героя — гарантированно сработает */
-    .page-hero{ position:relative; isolation:isolate; }
-    .page-hero::before{
-      content:""; position:absolute; inset:0; z-index:-2;
-      background-image: var(--hero-img) !important;
-      background-size:cover; background-position:center; background-repeat:no-repeat;
-    }
-    .page-hero::after{
-      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-      background:
-        radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.18), transparent),
-        linear-gradient(to bottom, rgba(13,43,30,.45), rgba(13,43,30,.22));
     }
   </style>
 </head>
@@ -89,7 +94,7 @@
   </div>
 </header>
 
-<!-- Фон винодельни -->
+<!-- Фон винодельни (ваше фото) -->
 <section class="page-hero plain"
   style="--hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg')">
   <div class="container">
@@ -103,33 +108,8 @@
       <!-- Описание домена справа -->
       <div class="glass">
         <h3 class="section-title" data-i18n="domain.title" style="margin-bottom:8px">О домене</h3>
-        <p class="section-sub" data-i18n-html=ru: {
-  // ...
-  "domain.desc": `Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
-    Терруар сочетает вулканические руфы у Les Bories и глино-известняковые участки для шардоне.
-    Домен ведут Винсент и Дельфин Реймон. Упоминается в
-    <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
-  // ...
-},
-fr: {
-  // ...
-  "domain.desc": `Exploitation familiale à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Démarche <em>agriculture raisonnée</em>.
-    Terroirs mêlant roches volcaniques autour de Les Bories et parcelles argilo-calcaires pour le chardonnay.
-    Domaine dirigé par Vincent et Delphine Reymond. Mentionné dans
-    <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
-  // ...
-}
-          <style>
-  .section-sub a{ color: var(--brand); text-decoration: underline; }
-  .section-sub a:hover{ text-decoration: none; }
-</style>
-
- style="margin:0">
-          Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
-          Терруар сочетает вулканические руфы у Les Bories и глино-известняк для шардоне.
-          Домен ведут Винсент и Дельфин Реймон. Упоминается в
-          <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.
-        </p>
+        <!-- ВНИМАНИЕ: тут только ключ! Текст берётся из словаря ниже -->
+        <p class="section-sub" data-i18n-html="domain.desc" style="margin:0"></p>
       </div>
     </div>
   </div>
@@ -189,7 +169,7 @@ fr: {
       "domain.desc": `Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
         Терруар сочетает вулканические руфы у Les Bories и глино-известняковые участки для шардоне.
         Домен ведут Винсент и Дельфин Реймон. Упоминается в
-        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.`,
+        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
       "wines.title":"Линейка вин",
       "table.head.wine":"Вино",
       "table.head.desc":"Описание",
@@ -208,7 +188,7 @@ fr: {
       "domain.desc": `Exploitation familiale à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Démarche <em>agriculture raisonnée</em>.
         Terroirs mêlant roches volcaniques autour de Les Bories et parcelles argilo-calcaires pour le chardonnay.
         Domaine dirigé par Vincent et Delphine Reymond. Mentionné dans
-        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.`,
+        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
       "wines.title":"Gamme des vins",
       "table.head.wine":"Vin",
       "table.head.desc":"Description",
@@ -240,7 +220,7 @@ fr: {
     localStorage.setItem("site:lang", l);
   }
 
-  // обработка кликов по переключателю
+  // обработка кликов по переключателю RU/FR
   document.addEventListener("click", (e)=>{
     const a = e.target.closest(".lang a[data-lang]");
     if(!a) return;
