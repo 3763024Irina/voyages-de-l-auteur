@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <title>Domaine Bois Bories — дегустация</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=11">
+  <!-- общий стиль (поднял версию для сброса кеша) -->
+  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=12">
 
   <style>
     /* Герой: бутылка слева, описание справа */
@@ -21,7 +22,7 @@
     }
     @media (max-width:860px){ .hero-wrap{ grid-template-columns:1fr; } .bottle-card{ order:-1; } }
 
-    /* Таблица вин: название — описание */
+    /* Таблица вин: название — описание (с сортами в тексте) */
     .wine-table{
       width:100%; border-collapse:separate; border-spacing:0; background:#fff;
       border:1px solid #eee; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
@@ -45,6 +46,20 @@
       .wine-table tbody tr{ border-bottom:1px solid #f0f0f0; }
       .wine-table tbody td{ padding:10px 16px; }
       .wine-table tbody td.name{ padding-bottom:6px; }
+    }
+
+    /* Жёсткий фикс: фон героя точно подтянется */
+    .page-hero{ position:relative; isolation:isolate; }
+    .page-hero::before{
+      content:""; position:absolute; inset:0; z-index:-2;
+      background-image: var(--hero-img) !important;
+      background-size:cover; background-position:center; background-repeat:no-repeat;
+    }
+    .page-hero::after{
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+      background:
+        radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.18), transparent),
+        linear-gradient(to bottom, rgba(13,43,30,.45), rgba(13,43,30,.22));
     }
   </style>
 </head>
@@ -87,7 +102,7 @@
           Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
           Терруар сочетает вулканические руфы у Les Bories и глино-известняк для шардоне.
           Домен ведут Винсент и Дельфин Реймон. Упоминается в
-          <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.
+          <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Вins</a>.
         </p>
       </div>
     </div>
@@ -108,27 +123,27 @@
       <tbody>
         <tr>
           <td class="name">Viognier <span class="pill">IGP Oc</span></td>
-          <td>Ароматы абрикоса и персика, свежий стиль; отличный аперитив и к морепродуктам.</td>
+          <td><strong>Сорт:</strong> Viognier. Ароматы абрикоса и персика; свежий, гастрономичный — отлично к морепродуктам и как аперитив.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Chardonnay <span class="pill">IGP Oc</span></td>
-          <td>Винификация/частичная выдержка в дубе: кремовая текстура, ноты ванили и миндаля.</td>
+          <td><strong>Сорт:</strong> Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ноты ванили и миндаля, хорошая свежесть.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Rosé <span class="pill">AOP Languedoc</span></td>
-          <td>Сухое розе из Syrah: красные ягоды, лёгкие специи; прекрасно как аперитив и к салатам.</td>
+          <td><strong>Сорт:</strong> Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Rouge <span class="pill">AOP Languedoc</span></td>
-          <td>Syrah/Grenache, ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
+          <td><strong>Сорта:</strong> Syrah, Grenache. Выдержка ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
         </tr>
         <tr>
           <td class="name">Sortie du Temps <span class="pill">AOP Languedoc</span></td>
-          <td>Mourvèdre с Grenache, ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
+          <td><strong>Сорта:</strong> Mourvèdre, Grenache. Выдержка ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
         </tr>
         <tr>
           <td class="name">Bag-in-Box <span class="pill">IGP Hérault</span></td>
-          <td>Практичный формат для пикников/вечеринок; доступно в белом/розовом/красном в зависимости от года.</td>
+          <td><strong>Сорта:</strong> зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок.</td>
         </tr>
       </tbody>
     </table>
@@ -138,5 +153,4 @@
 <footer class="container"><small>© Voyages de l’Auteur</small></footer>
 </body>
 </html>
-l>
 
