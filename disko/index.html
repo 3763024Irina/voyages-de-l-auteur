@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cap d’Agde Village Naturiste — День полного погружения</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<header>
+    <h1>Cap d’Agde Village Naturiste</h1>
+    <p class="subtitle">День полного погружения</p>
+</header>
+
+<main>
+    <section class="program">
+        <h2>Программа дня</h2>
+        <ul>
+            <li><strong>09:00–10:30</strong> — Завтрак и прогулка по пляжу Naturiste или кафе у воды.</li>
+            <li><strong>10:30–12:30</strong> — Кварталы Héliopolis и Port Ambonne.</li>
+            <li><strong>12:30–14:00</strong> — Обед в <em>Le Jardin Secret</em> или <em>Le Bohemia</em>.</li>
+            <li><strong>14:00–16:00</strong> — Релакс на пляже или прогулка по набережной.</li>
+            <li><strong>16:00–18:00</strong> — Кофе или аперитив в <em>Bistrot</em> или <em>René’s Pub</em>.</li>
+            <li><strong>18:00–20:00</strong> — Ужин в <em>The Sun Beach</em> или <em>Comptoir du Port</em>.</li>
+            <li><strong>20:00–22:00</strong> — Вечеринка в <em>Melrose Café</em>, <em>Eros Café</em> или <em>O’Lounge</em>.</li>
+            <li><strong>22:00–...</strong> — Продолжение ночи в <em>Le Look</em> или <em>Gipetto</em>.</li>
+        </ul>
+    </section>
+
+    <section class="map-section">
+        <h2>Карта Village Naturiste</h2>
+        <div id="map"></div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Cap d’Agde Tours — Авторские программы</p>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+// Координаты центра Village Naturiste
+var map = L.map('map').setView([43.2815, 3.5203], 16);
+
+// Слой карты
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+// Маркеры ресторанов
+var places = [
+    {name: "Le Bohemia", coords: [43.2833, 3.5218]},
+    {name: "Le Jardin Secret", coords: [43.2836, 3.5224]},
+    {name: "The Sun Beach", coords: [43.2820, 3.5230]},
+    {name: "Comptoir du Port", coords: [43.2838, 3.5236]},
+    {name: "Melrose Café", coords: [43.2845, 3.5228]},
+    {name: "Eros Café", coords: [43.2840, 3.5232]},
+    {name: "Le Look", coords: [43.2839, 3.5215]},
+    {name: "Gipetto", coords: [43.2842, 3.5219]}
+];
+
+places.forEach(function(place) {
+    L.marker(place.coords)
+        .addTo(map)
+        .bindPopup('<b>' + place.name + '</b>');
+});
+</script>
+
+</body>
+</html>
