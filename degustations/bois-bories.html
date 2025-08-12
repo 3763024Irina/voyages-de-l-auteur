@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>Domaine Bois Bories — дегустация</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- общий стиль (поднял версию для сброса кеша) -->
-  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=12">
+  <!-- общий стиль -->
+  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=13">
 
   <style>
     /* Герой: бутылка слева, описание справа */
@@ -22,7 +22,7 @@
     }
     @media (max-width:860px){ .hero-wrap{ grid-template-columns:1fr; } .bottle-card{ order:-1; } }
 
-    /* Таблица вин: название — описание (с сортами в тексте) */
+    /* Таблица вин */
     .wine-table{
       width:100%; border-collapse:separate; border-spacing:0; background:#fff;
       border:1px solid #eee; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
@@ -48,7 +48,7 @@
       .wine-table tbody td.name{ padding-bottom:6px; }
     }
 
-    /* Жёсткий фикс: фон героя точно подтянется */
+    /* Фон героя — гарантированно сработает */
     .page-hero{ position:relative; isolation:isolate; }
     .page-hero::before{
       content:""; position:absolute; inset:0; z-index:-2;
@@ -68,8 +68,11 @@
 <!-- Topbar -->
 <div class="topbar">
   <div class="inner">
-    <div class="note">Авторские туры по Югу Франции</div>
-    <div class="lang"><a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a></div>
+    <div class="note" data-i18n="top.note">Авторские туры по Югу Франции</div>
+    <div class="lang">
+      <a href="#" data-lang="ru" class="active">RU</a><span aria-hidden>•</span>
+      <a href="#" data-lang="fr">FR</a>
+    </div>
   </div>
 </div>
 
@@ -77,10 +80,12 @@
 <header>
   <div class="container nav">
     <div class="brand"><div class="logo" aria-hidden>Î</div><div><h1>Tours Languedoc by Irène</h1></div></div>
-    <nav><ul>
-      <li><a href="index.html">Дегустации</a></li>
-      <li><a class="cta" href="../index.html#contact">Забронировать</a></li>
-    </ul></nav>
+    <nav>
+      <ul>
+        <li><a href="index.html" data-i18n="nav.tastings">Дегустации</a></li>
+        <li><a class="cta" href="../index.html#contact" data-i18n="nav.book">Забронировать</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -97,13 +102,33 @@
 
       <!-- Описание домена справа -->
       <div class="glass">
-        <h3 class="section-title" style="margin-bottom:8px">О домене</h3>
-        <p class="section-sub" style="margin:0">
-          Domaine Bois Bories
+        <h3 class="section-title" data-i18n="domain.title" style="margin-bottom:8px">О домене</h3>
+        <p class="section-sub" data-i18n-html=ru: {
+  // ...
+  "domain.desc": `Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
+    Терруар сочетает вулканические руфы у Les Bories и глино-известняковые участки для шардоне.
+    Домен ведут Винсент и Дельфин Реймон. Упоминается в
+    <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
+  // ...
+},
+fr: {
+  // ...
+  "domain.desc": `Exploitation familiale à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Démarche <em>agriculture raisonnée</em>.
+    Terroirs mêlant roches volcaniques autour de Les Bories et parcelles argilo-calcaires pour le chardonnay.
+    Domaine dirigé par Vincent et Delphine Reymond. Mentionné dans
+    <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
+  // ...
+}
+          <style>
+  .section-sub a{ color: var(--brand); text-decoration: underline; }
+  .section-sub a:hover{ text-decoration: none; }
+</style>
+
+ style="margin:0">
           Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
           Терруар сочетает вулканические руфы у Les Bories и глино-известняк для шардоне.
           Домен ведут Винсент и Дельфин Реймон. Упоминается в
-          <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Вins</a>.
+          <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.
         </p>
       </div>
     </div>
@@ -113,38 +138,38 @@
 <main class="container">
   <!-- Таблица вин -->
   <section class="mt">
-    <h3 class="section-title">Линейка вин</h3>
+    <h3 class="section-title" data-i18n="wines.title">Линейка вин</h3>
     <table class="wine-table" aria-label="Перечень вин и описания">
       <thead>
         <tr>
-          <th style="width:280px">Вино</th>
-          <th>Описание</th>
+          <th style="width:280px" data-i18n="table.head.wine">Вино</th>
+          <th data-i18n="table.head.desc">Описание</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="name">Viognier <span class="pill">IGP Oc</span></td>
-          <td><strong>Сорт:</strong> Viognier. Ароматы абрикоса и персика; свежий, гастрономичный — отлично к морепродуктам и как аперитив.</td>
+          <td data-i18n="wine.viognier">Сорт: Viognier. Ароматы абрикоса и персика; свежий и гастрономичный — к морепродуктам и как аперитив.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Chardonnay <span class="pill">IGP Oc</span></td>
-          <td><strong>Сорт:</strong> Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ноты ванили и миндаля, хорошая свежесть.</td>
+          <td data-i18n="wine.chardonnay">Сорт: Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ваниль, миндаль, при этом хорошая свежесть.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Rosé <span class="pill">AOP Languedoc</span></td>
-          <td><strong>Сорт:</strong> Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.</td>
+          <td data-i18n="wine.rose">Сорт: Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.</td>
         </tr>
         <tr>
           <td class="name">Les Peyrades Rouge <span class="pill">AOP Languedoc</span></td>
-          <td><strong>Сорта:</strong> Syrah, Grenache. Выдержка ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
+          <td data-i18n="wine.rouge">Сорта: Syrah, Grenache. ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
         </tr>
         <tr>
           <td class="name">Sortie du Temps <span class="pill">AOP Languedoc</span></td>
-          <td><strong>Сорта:</strong> Mourvèdre, Grenache. Выдержка ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
+          <td data-i18n="wine.sortie">Сорта: Mourvèdre, Grenache. ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
         </tr>
         <tr>
           <td class="name">Bag-in-Box <span class="pill">IGP Hérault</span></td>
-          <td><strong>Сорта:</strong> зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок.</td>
+          <td data-i18n="wine.bib">Сорта: зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок.</td>
         </tr>
       </tbody>
     </table>
@@ -152,6 +177,79 @@
 </main>
 
 <footer class="container"><small>© Voyages de l’Auteur</small></footer>
+
+<!-- i18n мини-скрипт -->
+<script>
+  const dict = {
+    ru: {
+      "top.note":"Авторские туры по Югу Франции",
+      "nav.tastings":"Дегустации",
+      "nav.book":"Забронировать",
+      "domain.title":"О домене",
+      "domain.desc": `Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
+        Терруар сочетает вулканические руфы у Les Bories и глино-известняковые участки для шардоне.
+        Домен ведут Винсент и Дельфин Реймон. Упоминается в
+        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.`,
+      "wines.title":"Линейка вин",
+      "table.head.wine":"Вино",
+      "table.head.desc":"Описание",
+      "wine.viognier":"Сорт: Viognier. Ароматы абрикоса и персика; свежий и гастрономичный — к морепродуктам и как аперитив.",
+      "wine.chardonnay":"Сорт: Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ваниль, миндаль, при этом хорошая свежесть.",
+      "wine.rose":"Сорт: Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.",
+      "wine.rouge":"Сорта: Syrah, Grenache. ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.",
+      "wine.sortie":"Сорта: Mourvèdre, Grenache. ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.",
+      "wine.bib":"Сорта: зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок."
+    },
+    fr: {
+      "top.note":"Voyages sur mesure dans le Sud de la France",
+      "nav.tastings":"Dégustations",
+      "nav.book":"Réserver",
+      "domain.title":"À propos du domaine",
+      "domain.desc": `Exploitation familiale à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Démarche <em>agriculture raisonnée</em>.
+        Terroirs mêlant roches volcaniques autour de Les Bories et parcelles argilo-calcaires pour le chardonnay.
+        Domaine dirigé par Vincent et Delphine Reymond. Mentionné dans
+        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.`,
+      "wines.title":"Gamme des vins",
+      "table.head.wine":"Vin",
+      "table.head.desc":"Description",
+      "wine.viognier":"Cépage : Viognier. Arômes d’abricot et de pêche ; style frais et gastronomique — parfait à l’apéritif et avec les fruits de mer.",
+      "wine.chardonnay":"Cépage : Chardonnay. Vinification/partie élevage en fût : texture crémeuse, notes de vanille et d’amande, belle fraîcheur.",
+      "wine.rose":"Cépage : Syrah (rosé). Sec : fruits rouges, légère épice ; idéal en apéritif, salades/poisson.",
+      "wine.rouge":"Cépages : Syrah, Grenache. ~12&nbsp;mois de fût : fruits noirs, épices, tanins ronds.",
+      "wine.sortie":"Cépages : Mourvèdre, Grenache. ~18&nbsp;mois de fût : puissant, structuré, bon potentiel de garde.",
+      "wine.bib":"Cépages : selon la cuvée (blanc/rosé/rouge). Format pratique pour pique-niques et fêtes."
+    }
+  };
+
+  function applyLang(l){
+    document.documentElement.lang = l;
+    // текстовые узлы
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const k = el.getAttribute("data-i18n");
+      if(dict[l] && dict[l][k]) el.textContent = dict[l][k];
+    });
+    // узлы с html
+    document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+      const k = el.getAttribute("data-i18n-html");
+      if(dict[l] && dict[l][k]) el.innerHTML = dict[l][k];
+    });
+    // подсветка переключателя
+    document.querySelectorAll(".lang a[data-lang]").forEach(a=>{
+      a.classList.toggle("active", a.dataset.lang===l);
+    });
+    localStorage.setItem("site:lang", l);
+  }
+
+  // обработка кликов по переключателю
+  document.addEventListener("click", (e)=>{
+    const a = e.target.closest(".lang a[data-lang]");
+    if(!a) return;
+    e.preventDefault();
+    applyLang(a.dataset.lang);
+  });
+
+  // стартовый язык: сохранённый или ru
+  applyLang(localStorage.getItem("site:lang") || "ru");
+</script>
 </body>
 </html>
-
