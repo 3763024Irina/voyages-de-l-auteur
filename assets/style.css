@@ -163,3 +163,7 @@ nav a.cta:hover{background:var(--brand-2)}
 
 /* ===================== FOOTER ===================== */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
+
+/* ---------- ЖЁСТКИЙ ФИКС ПОДЛОЖКИ ГЕРОЯ (на случай перезаписи где-то ещё) ---------- */
+.page-hero::before{ background-image: var(--hero-img) !important; }
+
