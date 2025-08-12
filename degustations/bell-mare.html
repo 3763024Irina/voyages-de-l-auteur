@@ -1,0 +1,173 @@
+<!-- Domaine de Belle Mare — embed block -->
+<section id="domaine-belle-mare" class="wine-domain">
+  <style>
+    #domaine-belle-mare{
+      --bg:#fff; --ink:#1a1a1a; --muted:#5b5b5b; --card:#f7f7f8; --line:#e9e9ec; --accent:#2c7be5;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:20px; max-width:1000px; margin:24px auto;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    }
+    #domaine-belle-mare .header { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:10px;}
+    #domaine-belle-mare .title { font-size:clamp(20px,2.6vw,32px); font-weight:750; letter-spacing:.2px;}
+    #domaine-belle-mare .subtitle { color:var(--muted); font-size:14px; }
+    #domaine-belle-mare .lang-switch { display:flex; gap:6px; }
+    #domaine-belle-mare .lang-btn{
+      border:1px solid var(--line); background:#fff; padding:6px 10px; border-radius:10px; cursor:pointer; font-weight:600; font-size:13px;
+    }
+    #domaine-belle-mare .lang-btn.active{ border-color:var(--accent); color:#fff; background:var(--accent); }
+    #domaine-belle-mare .grid{
+      display:grid; grid-template-columns:1fr; gap:14px; margin-top:14px;
+    }
+    @media (min-width:900px){
+      #domaine-belle-mare .grid{ grid-template-columns:1.15fr .85fr;}
+    }
+    #domaine-belle-mare .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px;}
+    #domaine-belle-mare h3{ margin:.2rem 0 .7rem; font-size:18px;}
+    #domaine-belle-mare p{ margin:.4rem 0; line-height:1.55;}
+    #domaine-belle-mare ul{ margin:.4rem 0 .8rem 1.2rem; line-height:1.55;}
+    #domaine-belle-mare .chips{ display:flex; flex-wrap:wrap; gap:6px; margin:.4rem 0 .8rem;}
+    #domaine-belle-mare .chip{
+      background:#fff; border:1px solid var(--line); padding:4px 8px; border-radius:999px; font-size:12px; font-weight:600;
+    }
+    #domaine-belle-mare .ft-block{ margin-top:10px;}
+    #domaine-belle-mare .ft-title{ font-weight:750; font-size:16px; margin-bottom:6px;}
+    #domaine-belle-mare .note{ font-size:13px; color:var(--muted);}
+    #domaine-belle-mare .muted{ color:var(--muted);}
+    #domaine-belle-mare .divider{ height:1px; background:var(--line); margin:10px 0;}
+    #domaine-belle-mare .badge{ display:inline-block; background:#eef6ff; color:#1d4ed8; border:1px solid #d6e6ff; font-weight:700; font-size:12px; padding:2px 8px; border-radius:999px; }
+    #domaine-belle-mare [data-lang]{ display:none; }
+    #domaine-belle-mare [data-lang].visible{ display:block; }
+  </style>
+
+  <div class="header">
+    <div>
+      <div class="title">Domaine de Belle Mare</div>
+      <div class="subtitle">Mèze • Étang de Thau • Languedoc</div>
+    </div>
+    <div class="lang-switch" aria-label="Language switch">
+      <button class="lang-btn active" data-choose-lang="ru">🇷🇺 RU</button>
+      <button class="lang-btn" data-choose-lang="fr">🇫🇷 FR</button>
+    </div>
+  </div>
+
+  <!-- RU -->
+  <div data-lang="ru" class="visible">
+    <div class="grid">
+      <article class="card">
+        <span class="badge">О домене</span>
+        <h3>История</h3>
+        <p>
+          Семейное винодельческое хозяйство у лагуны Étang de Thau, рядом с Мезом. 
+          Домен специализируется на свежих белых винах средиземноморского стиля, 
+          прежде всего на <strong>AOP Picpoul de Pinet</strong>, и принимает гостей для дегустаций круглый год.
+        </p>
+
+        <h3>Терруар</h3>
+        <ul>
+          <li>Береговые террасы с глино-известняковыми почвами и галькой; хороший дренаж.</li>
+          <li>Морские бризы лагуны и перепад «день/ночь» дают винам свежесть и минеральность.</li>
+          <li>Стиль: цитрус, белые цветы, йодисто-солёные нюансы, чёткая кислотность.</li>
+        </ul>
+
+        <h3>Сорта и вина</h3>
+        <div class="chips">
+          <span class="chip">Piquepoul blanc</span><span class="chip">Vermentino</span><span class="chip">Viognier</span>
+          <span class="chip">Sauvignon</span><span class="chip">Chardonnay</span><span class="chip">Muscat</span>
+          <span class="chip">Syrah</span><span class="chip">Grenache</span><span class="chip">Mourvèdre</span>
+        </div>
+        <p class="muted">Линейки: AOP Picpoul de Pinet, IGP моносортовые (Chardonnay, Viognier, Vermentino), купажи (Syrah–Grenache), розе прямого прессования.</p>
+
+        <h3>Дегустации</h3>
+        <ul>
+          <li><strong>Классическая дегустация</strong> (3 вина) — 15–30 мин; возможна без записи.</li>
+          <li><strong>Визит в домен + дегустация</strong> — 60–90 мин; по предварительной записи.</li>
+          <li><strong>Ателье</strong> (ассамбляж / фуд-пэйринг) для групп — по запросу.</li>
+        </ul>
+        <p class="note">Советуем уточнить актуальное расписание и условия перед визитом.</p>
+      </article>
+
+      <aside class="card">
+        <span class="badge">Fiche technique</span>
+        <div class="ft-block">
+          <div class="ft-title">AOP Picpoul de Pinet — 100% Piquepoul</div>
+          <p><strong>Сбор:</strong> ночной, чтобы сохранить свежесть плодов.</p>
+          <p><strong>Винификация:</strong> прямое прессование без перебивки шапки, холодное осветление; контролируемая ферментация при <strong>18 °C</strong>; выдержка в нержавеющей стали.</p>
+          <p><strong>Дегустация:</strong> бледно-соломенная с серебристым оттенком; свежий минеральный нос с цветочно-цитрусовыми нотами (лимон, грейпфрут). Атака живая и цитрусная; финал минеральный, почти солоноватый.</p>
+          <p><strong>Гастропары:</strong> устрицы и морепродукты Étang de Thau, рыба на гриле, тартар.</p>
+        </div>
+        <div class="divider"></div>
+        <p class="muted">*Информация предоставлена производителем. Возможны изменения в зависимости от урожая.</p>
+      </aside>
+    </div>
+  </div>
+
+  <!-- FR -->
+  <div data-lang="fr">
+    <div class="grid">
+      <article class="card">
+        <span class="badge">À propos du domaine</span>
+        <h3>Histoire</h3>
+        <p>
+          Propriété familiale située au bord de l’<em>Étang de Thau</em>, à proximité de Mèze.
+          Le domaine se distingue par des blancs méditerranéens nets et salins, 
+          avec un focus sur <strong>l’AOP Picpoul de Pinet</strong>. Accueil des visiteurs toute l’année.
+        </p>
+
+        <h3>Terroir</h3>
+        <ul>
+          <li>Terrasses littorales à sols argilo-calcaires caillouteux, très drainants.</li>
+          <li>Brises marines de la lagune et amplitudes thermiques jour/nuit qui préservent la fraîcheur.</li>
+          <li>Style : agrumes, fleurs blanches, trame iodée et minérale, acidité vive.</li>
+        </ul>
+
+        <h3>Cépages & vins</h3>
+        <div class="chips">
+          <span class="chip">Piquepoul blanc</span><span class="chip">Vermentino</span><span class="chip">Viognier</span>
+          <span class="chip">Sauvignon</span><span class="chip">Chardonnay</span><span class="chip">Muscat</span>
+          <span class="chip">Syrah</span><span class="chip">Grenache</span><span class="chip">Mourvèdre</span>
+        </div>
+        <p class="muted">Gammes : AOP Picpoul de Pinet, IGP mono-cépages (Chardonnay, Viognier, Vermentino), assemblages (Syrah–Grenache), rosés de pressurage direct.</p>
+
+        <h3>Œnotourisme</h3>
+        <ul>
+          <li><strong>Dégustation classique</strong> (3 vins) — 15–30 min; possible sans rendez-vous.</li>
+          <li><strong>Visite du domaine + dégustation</strong> — 60–90 min; sur réservation.</li>
+          <li><strong>Ateliers</strong> (assemblage / accords mets-vins) pour groupes — sur demande.</li>
+        </ul>
+        <p class="note">Merci de vérifier les horaires et conditions avant votre venue.</p>
+      </article>
+
+      <aside class="card">
+        <span class="badge">Fiche technique</span>
+        <div class="ft-block">
+          <div class="ft-title">AOP Picpoul de Pinet — 100% Piquepoul</div>
+          <p><strong>Vendange :</strong> vendangé de nuit pour préserver la fraîcheur du fruit.</p>
+          <p><strong>Vinification :</strong> pressurage direct sans rebêchage, débourbage à froid; fermentation contrôlée à basse température (<strong>18 °C</strong>); élevage en cuve inox.</p>
+          <p><strong>Notes de dégustation :</strong> robe jaune pâle aux reflets argentés; nez frais et minéral, quelques notes florales et d’agrumes (citron, pamplemousse). Attaque vive sur des notes citronnées, finale minérale presque saline.</p>
+          <p><strong>Cépage :</strong> 100% Piquepoul.</p>
+        </div>
+        <div class="divider"></div>
+        <p class="muted">*Données communiquées par le producteur. Variations possibles selon le millésime.</p>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.getElementById('domaine-belle-mare');
+      const btns = root.querySelectorAll('.lang-btn');
+      const blocks = root.querySelectorAll('[data-lang]');
+      btns.forEach(b=>{
+        b.addEventListener('click', ()=>{
+          btns.forEach(x=>x.classList.remove('active'));
+          b.classList.add('active');
+          const lang = b.getAttribute('data-choose-lang');
+          blocks.forEach(el=>{
+            el.classList.toggle('visible', el.getAttribute('data-lang')===lang);
+          });
+        });
+      });
+    })();
+  </script>
+</section>
+<!-- /Domaine de Belle Mare — embed block -->
