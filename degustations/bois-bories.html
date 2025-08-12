@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <title>Domaine Bois Bories — дегустация</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=10">
+  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=11">
+
   <style>
     /* Герой: бутылка слева, описание справа */
     .page-hero.plain{ padding:22px 0; }
@@ -18,12 +19,33 @@
       width:240px; max-width:100%; max-height:460px; object-fit:contain; background:#fff;
       border-radius:14px; border:1px solid #e8e8e8; padding:10px; box-shadow:0 12px 28px rgba(0,0,0,.10);
     }
-    .mini-photos{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 6px}
-    .mini-photos img{
-      width:84px; height:84px; object-fit:cover; border-radius:10px; border:1px solid #e8e8e8; background:#fff;
-      box-shadow:0 4px 12px rgba(0,0,0,.06);
-    }
     @media (max-width:860px){ .hero-wrap{ grid-template-columns:1fr; } .bottle-card{ order:-1; } }
+
+    /* Таблица вин: название — описание */
+    .wine-table{
+      width:100%; border-collapse:separate; border-spacing:0; background:#fff;
+      border:1px solid #eee; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
+      margin:24px 0;
+    }
+    .wine-table thead th{
+      background:linear-gradient(180deg, #f9faf9, #f2f5f3);
+      color:#0D2B1E; font-weight:800; text-align:left; padding:14px 16px; font-size:14px;
+      border-bottom:1px solid #e9ecea;
+    }
+    .wine-table tbody td{ padding:14px 16px; vertical-align:top; border-bottom:1px solid #f0f0f0; }
+    .wine-table tbody tr:last-child td{ border-bottom:none; }
+    .wine-table .name{ font-weight:700; white-space:nowrap; }
+    .pill{
+      display:inline-flex; align-items:center; gap:6px; padding:4px 10px; margin-left:8px;
+      border:1px solid #e6e6e6; border-radius:999px; background:#fff; font-weight:600; font-size:12px; color:var(--muted);
+    }
+    @media (max-width:720px){
+      .wine-table thead{ display:none; }
+      .wine-table, .wine-table tbody, .wine-table tr, .wine-table td{ display:block; width:100%; }
+      .wine-table tbody tr{ border-bottom:1px solid #f0f0f0; }
+      .wine-table tbody td{ padding:10px 16px; }
+      .wine-table tbody td.name{ padding-bottom:6px; }
+    }
   </style>
 </head>
 <body>
@@ -47,133 +69,74 @@
   </div>
 </header>
 
-<!-- Фон виноградника (интернет) -->
+<!-- Фон винодельни -->
 <section class="page-hero plain"
   style="--hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg')">
-
   <div class="container">
     <div class="hero-wrap">
-      <!-- Бутылка слева (интернет) -->
-    <div class="bottle-card glass">
-  <img src="/voyages-de-l-auteur/assets/wines/viognier.jpg"
-       alt="Domaine Bois Bories — Viognier" width="240" height="460">
-</div>
+      <!-- Бутылка слева -->
+      <div class="bottle-card glass">
+        <img src="/voyages-de-l-auteur/assets/wines/viognier.jpg"
+             alt="Domaine Bois Bories — Viognier" width="240" height="460">
+      </div>
 
-
-      <!-- Описание справа -->
+      <!-- Описание домена справа -->
       <div class="glass">
         <h3 class="section-title" style="margin-bottom:8px">О домене</h3>
-        <p class="section-sub" style="margin:0 0 10px">
+        <p class="section-sub" style="margin:0">
           Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
           Терруар сочетает вулканические руфы у Les Bories и глино-известняк для шардоне.
           Домен ведут Винсент и Дельфин Реймон. Упоминается в
           <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener">Le Guide Hachette des Vins</a>.
         </p>
-
-        <!-- Мини-фото (интернет) -->
-        <div class="mini-photos" aria-label="Фотографии домена">
-          <img src="https://images.unsplash.com/photo-1514820720301-4c4790309f46?auto=format&fit=crop&w=180&h=180&q=80" alt="Погреб Bois Bories">
-          <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=180&h=180&q=80" alt="Озеро Салагу">
-          <img src="https://images.unsplash.com/photo-1509057199576-632a47484ece?auto=format&fit=crop&w=180&h=180&q=80" alt="Дегустация в домене">
-        </div>
-
-        <div class="meta" style="flex-wrap:wrap; gap:10px">
-          <span class="pill">Клермон-л’Эро</span>
-          <span class="pill">Coteaux du Salagou</span>
-          <span class="pill">≈25 га</span>
-          <span class="pill">agriculture raisonnée</span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
 <main class="container">
-
-  <!-- Галерея 1+3 (интернет) -->
-  <div class="gallery-mosaic">
-    <div class="card"><div class="cover">
-      <img src="https://images.unsplash.com/photo-1501554728187-ce583db33af7?auto=format&fit=crop&w=1400&q=80" alt="Виноградники Bois Bories">
-    </div></div>
-    <div class="card"><div class="cover">
-      <img src="https://images.unsplash.com/photo-1528821154947-1aa3d1bbf6dc?auto=format&fit=crop&w=800&q=80" alt="Погреб">
-    </div></div>
-    <div class="card"><div class="cover">
-      <img src="https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=800&q=80" alt="Озеро Салагу">
-    </div></div>
-    <div class="card"><div class="cover">
-      <img src="https://images.unsplash.com/photo-1509057199576-632a47484ece?auto=format&fit=crop&w=800&q=80" alt="Дегустация">
-    </div></div>
-  </div>
-
-  <!-- Что делают (мини-«бутылки» из интернета) -->
+  <!-- Таблица вин -->
   <section class="mt">
-    <h3 class="section-title">Что делают</h3>
-    <div class="wines">
-
-      <article class="wine">
-        <div>
-          <h4>Viognier <span class="pill">IGP Oc</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,bottle,white" alt="Бутылка Viognier">
-          <div class="meta"><span class="pill">абрикос/персик</span><span class="pill">свежий</span></div>
-          <p class="notes">Аперитив, морепродукты.</p>
-        </div>
-        <div>
-          <h4>Les Peyrades Chardonnay <span class="pill">IGP Oc</span> <span class="badge-oak">oak</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,bottle,chardonnay" alt="Бутылка Les Peyrades Chardonnay">
-          <div class="meta"><span class="pill">в дубе</span></div>
-          <p class="notes">Кремовая текстура, ваниль/миндаль.</p>
-        </div>
-      </article>
-
-      <article class="wine">
-        <div>
-          <h4>Les Peyrades Rosé <span class="pill">AOP Languedoc</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,bottle,rose" alt="Бутылка Rosé">
-          <div class="meta"><span class="pill">Syrah</span><span class="pill">сухой</span></div>
-          <p class="notes">Ягоды, лёгкие специи.</p>
-        </div>
-        <div>
-          <h4>Les Peyrades Rouge <span class="pill">AOP Languedoc</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,bottle,red" alt="Бутылка Rouge">
-          <div class="meta"><span class="pill">Syrah/Grenache</span><span class="pill">12 мес. бочка</span></div>
-          <p class="notes">Чёрные ягоды, пряность, округлые танины.</p>
-        </div>
-      </article>
-
-      <article class="wine">
-        <div>
-          <h4>Sortie du Temps <span class="pill">AOP Languedoc</span> <span class="badge-oak">oak</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,bottle,premium" alt="Бутылка Sortie du Temps">
-          <div class="meta"><span class="pill">Mourvèdre + Grenache</span><span class="pill">18 мес. бочка</span></div>
-          <p class="notes">Мощь и структура; потенциал к выдержке.</p>
-        </div>
-        <div>
-          <h4>Bag-in-Box <span class="pill">IGP Hérault</span></h4>
-          <img class="thumb" src="https://source.unsplash.com/160x160/?wine,box" alt="Bag-in-Box">
-          <p class="notes">Удобный формат для пикников и вечеринок.</p>
-        </div>
-      </article>
-
-    </div>
+    <h3 class="section-title">Линейка вин</h3>
+    <table class="wine-table" aria-label="Перечень вин и описания">
+      <thead>
+        <tr>
+          <th style="width:280px">Вино</th>
+          <th>Описание</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Viognier <span class="pill">IGP Oc</span></td>
+          <td>Ароматы абрикоса и персика, свежий стиль; отличный аперитив и к морепродуктам.</td>
+        </tr>
+        <tr>
+          <td class="name">Les Peyrades Chardonnay <span class="pill">IGP Oc</span></td>
+          <td>Винификация/частичная выдержка в дубе: кремовая текстура, ноты ванили и миндаля.</td>
+        </tr>
+        <tr>
+          <td class="name">Les Peyrades Rosé <span class="pill">AOP Languedoc</span></td>
+          <td>Сухое розе из Syrah: красные ягоды, лёгкие специи; прекрасно как аперитив и к салатам.</td>
+        </tr>
+        <tr>
+          <td class="name">Les Peyrades Rouge <span class="pill">AOP Languedoc</span></td>
+          <td>Syrah/Grenache, ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
+        </tr>
+        <tr>
+          <td class="name">Sortie du Temps <span class="pill">AOP Languedoc</span></td>
+          <td>Mourvèdre с Grenache, ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
+        </tr>
+        <tr>
+          <td class="name">Bag-in-Box <span class="pill">IGP Hérault</span></td>
+          <td>Практичный формат для пикников/вечеринок; доступно в белом/розовом/красном в зависимости от года.</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
-
-  <!-- Маршрут -->
-  <section class="mt">
-    <h3 class="section-title">Маршрут дегустации</h3>
-    <div class="card" style="padding:18px">
-      <p class="section-sub">Viognier, Premier Été Rosé, Les Peyrades Rouge/Chardonnay, Sortie du Temps.</p>
-      <div class="actions">
-        <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn primary" href="../index.html#contact">Забронировать</a>
-        <a class="btn" href="mailto:hello@example.com">E-mail</a>
-      </div>
-    </div>
-  </section>
-
 </main>
 
 <footer class="container"><small>© Voyages de l’Auteur</small></footer>
 </body>
 </html>
+l>
 
