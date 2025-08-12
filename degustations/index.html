@@ -4,10 +4,47 @@
   <meta charset="utf-8">
   <title>Дегустации — Вино и Домены</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- можно оставить как есть, если у тебя style.css по абсолютному пути работает -->
   <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=7">
+
+  <!-- FULLSCREEN TRANSPARENT BG -->
+  <style>
+    /* Включаем фоновое фото на весь экран для body.bg-vineyard */
+    html, body { height: 100%; }
+    body.bg-vineyard { background: transparent; }
+
+    /* Фото на весь экран */
+    body.bg-vineyard::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url('../assets/wines/vinograd.jpg'); /* ← поменяй на нужную из трёх */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* лёгкий параллакс */
+      filter: brightness(.65);       /* затемнение для контраста текста */
+    }
+
+    /* Мягкий градиент-оверлей (можно удалить, если не нужен) */
+    body.bg-vineyard::after{
+      content:"";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(80% 60% at 85% 10%, rgba(255,255,255,.06), transparent),
+        linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.15));
+    }
+
+    /* Немного «стекла» для шапки/карточек, чтобы всё смотрелось на фоне */
+    .topbar, header { background: rgba(255,255,255,.76); backdrop-filter: saturate(140%) blur(6px); }
+    .card { background: rgba(255,255,255,.92); }
+    .page-hero .container .title, .page-hero .container .lead { color:#fff; }
+  </style>
 </head>
-<body>
+<body class="bg-vineyard">
 
 <div class="topbar">
   <div class="inner">
@@ -97,6 +134,8 @@
   <p class="section-sub" style="margin-top:14px; color:var(--muted)">* ориентир; условия на месте могут отличаться.</p>
 </main>
 
-<footer class="container" style="padding-top:24px; margin-bottom:28px; color:var(--muted)"><small>© Voyages de l’Auteur</small></footer>
+<footer class="container" style="padding-top:24px; margin-bottom:28px; color:var(--muted)">
+  <small>© Voyages de l’Auteur</small>
+</footer>
 </body>
 </html>
