@@ -177,21 +177,28 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 }
 
 /* WhatsApp */
-.btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
-.btn.wa:hover{ filter:brightness(.95); }
+<style>
+  /* Локальный фон героя (как у Belle Mare, но со своим фото) */
+  .page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
 
-nav a.wa{
-  background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
-}
-nav a.wa:hover{ background:#21be5a; }
+  /* WhatsApp */
+  .btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
+  .btn.wa:hover{ filter:brightness(.95); }
 
-/* Плавающая кнопка WhatsApp (опционально) */
-.wa-fab{
-  position:fixed; right:22px; bottom:22px; z-index:60;
-  width:56px; height:56px; border-radius:50%;
-  display:grid; place-items:center; background:#25D366; color:#fff;
-  box-shadow:0 12px 28px rgba(0,0,0,.22);
-}
-.wa-fab:hover{ filter:brightness(.95); }
-.wa-fab svg{ width:28px; height:28px; display:block; }
+  nav a.wa{
+    background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
+  }
+  nav a.wa:hover{ background:#21be5a; }
+
+  /* Плавающая круглая кнопка в углу (опционально) */
+  .wa-fab{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:56px; height:56px; border-radius:50%;
+    display:grid; place-items:center; background:#25D366; color:#fff;
+    box-shadow:0 12px 28px rgba(0,0,0,.22);
+  }
+  .wa-fab:hover{ filter:brightness(.95); }
+  .wa-fab svg{ width:28px; height:28px; display:block; }
+</style>
+
 
