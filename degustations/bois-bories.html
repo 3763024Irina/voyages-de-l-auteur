@@ -2,230 +2,252 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <title>Domaine Bois Bories — дегустация</title>
+  <title>Domaine Bois Bories — дегустации и терруар</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- общий стиль (поднята версия для сброса кеша) -->
+
+  <!-- общий сайт-стиль -->
   <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=14">
+  <!-- дефолты для папки degustations -->
+  <link rel="stylesheet" href="./_folder.css?v=1">
 
   <style>
-    /* Ссылка внутри описания — подчеркнутая */
-    .section-sub a{ color: var(--brand); text-decoration: underline; }
-    .section-sub a:hover{ text-decoration: none; }
-
-    /* Герой: бутылка слева, описание справа */
-    .page-hero.plain{ padding:22px 0; }
-    .hero-wrap{ display:grid; grid-template-columns: 320px minmax(0,1fr); gap:16px; align-items:start; }
-    .glass{
-      background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:18px;
-      box-shadow:0 10px 30px rgba(0,0,0,.08); backdrop-filter:saturate(140%) blur(2px); padding:16px 18px;
-    }
-    .bottle-card{ display:flex; align-items:center; justify-content:center; }
-    .bottle-card img{
-      width:240px; max-width:100%; max-height:460px; object-fit:contain; background:#fff;
-      border-radius:14px; border:1px solid #e8e8e8; padding:10px; box-shadow:0 12px 28px rgba(0,0,0,.10);
-    }
-    @media (max-width:860px){ .hero-wrap{ grid-template-columns:1fr; } .bottle-card{ order:-1; } }
-
-    /* Фон героя — гарантированно сработает */
-    .page-hero{ position:relative; isolation:isolate; }
-    .page-hero::before{
-      content:""; position:absolute; inset:0; z-index:-2;
-      background-image: var(--hero-img) !important;
-      background-size:cover; background-position:center; background-repeat:no-repeat;
-    }
-    .page-hero::after{
-      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-      /* полупрозрачный зелёный слой поверх фото */
-      background:
-        radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.18), transparent),
-        linear-gradient(to bottom, rgba(13,43,30,.45), rgba(13,43,30,.22));
-    }
-
-    /* Таблица вин: название — описание (с сортами в тексте) */
-    .wine-table{
-      width:100%; border-collapse:separate; border-spacing:0; background:#fff;
-      border:1px solid #eee; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);
-      margin:24px 0;
-    }
-    .wine-table thead th{
-      background:linear-gradient(180deg, #f9faf9, #f2f5f3);
-      color:#0D2B1E; font-weight:800; text-align:left; padding:14px 16px; font-size:14px;
-      border-bottom:1px solid #e9ecea;
-    }
-    .wine-table tbody td{ padding:14px 16px; vertical-align:top; border-bottom:1px solid #f0f0f0; }
-    .wine-table tbody tr:last-child td{ border-bottom:none; }
-    .wine-table .name{ font-weight:700; white-space:nowrap; }
-    .pill{
-      display:inline-flex; align-items:center; gap:6px; padding:4px 10px; margin-left:8px;
-      border:1px solid #e6e6e6; border-radius:999px; background:#fff; font-weight:600; font-size:12px; color:var(--muted);
-    }
-    @media (max-width:720px){
-      .wine-table thead{ display:none; }
-      .wine-table, .wine-table tbody, .wine-table tr, .wine-table td{ display:block; width:100%; }
-      .wine-table tbody tr{ border-bottom:1px solid #f0f0f0; }
-      .wine-table tbody td{ padding:10px 16px; }
-      .wine-table tbody td.name{ padding-bottom:6px; }
-    }
+    /* Локальный фон героя (как у Belle Mare, но со своим фото) */
+    .page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
   </style>
 </head>
 <body>
 
-<!-- Topbar -->
 <div class="topbar">
   <div class="inner">
-    <div class="note" data-i18n="top.note">Авторские туры по Югу Франции</div>
-    <div class="lang">
-      <a href="#" data-lang="ru" class="active">RU</a><span aria-hidden>•</span>
-      <a href="#" data-lang="fr">FR</a>
-    </div>
+    <div class="note">Авторские туры по Югу Франции</div>
+    <div class="lang"><a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a></div>
   </div>
 </div>
 
-<!-- Header -->
 <header>
   <div class="container nav">
-    <div class="brand"><div class="logo" aria-hidden>Î</div><div><h1>Tours Languedoc by Irène</h1></div></div>
+    <div class="brand">
+      <div class="logo" aria-hidden>Î</div>
+      <div><h1>Tours Languedoc by Irène</h1></div>
+    </div>
     <nav>
       <ul>
-        <li><a href="index.html" data-i18n="nav.tastings">Дегустации</a></li>
-        <li><a class="cta" href="../index.html#contact" data-i18n="nav.book">Забронировать</a></li>
+        <li><a href="../index.html#why">Почему с нами</a></li>
+        <li><a href="../index.html#tours">Программы</a></li>
+        <li><a href="../index.html#format">Формат</a></li>
+        <li><a href="../index.html#contact">Контакты</a></li>
+        <li><a class="cta" href="../index.html#contact">Забронировать</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- Фон винодельни (ваше фото) -->
-<section class="page-hero plain"
-  style="--hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg')">
+<section class="page-hero">
   <div class="container">
-    <div class="hero-wrap">
-      <div class="bottle-card glass">
-        <img src="/voyages-de-l-auteur/assets/wines/viognier.jpg"
-             alt="Domaine Bois Bories — Viognier" width="240" height="460">
-      </div>
-      <div class="glass">
-        <h3 class="section-title" data-i18n="domain.title" style="margin-bottom:8px">О домене</h3>
-        <p class="section-sub" data-i18n-html="domain.desc" style="margin:0"></p>
-      </div>
+    <h2 class="title">Domaine Bois Bories</h2>
+    <p class="lead">Clermont-l’Hérault • Coteaux du Salagou • семейное хозяйство, 4 поколения.</p>
+    <div class="actions">
+      <a class="btn" href="./index.html">← Назад к списку</a>
+      <a class="btn primary" href="../index.html#contact">Запросить даты визита</a>
     </div>
   </div>
 </section>
 
-<main class="container">
-  <!-- Таблица вин -->
-  <section class="mt">
-    <h3 class="section-title" data-i18n="wines.title">Линейка вин</h3>
-    <table class="wine-table" aria-label="Перечень вин и описания">
-      <thead>
-        <tr>
-          <th style="width:280px" data-i18n="table.head.wine">Вино</th>
-          <th data-i18n="table.head.desc">Описание</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="name">Viognier <span class="pill">IGP Oc</span></td>
-          <td data-i18n="wine.viognier">Сорт: Viognier. Ароматы абрикоса и персика; свежий и гастрономичный — к морепродуктам и как аперитив.</td>
-        </tr>
-        <tr>
-          <td class="name">Les Peyrades Chardonnay <span class="pill">IGP Oc</span></td>
-          <td data-i18n="wine.chardonnay">Сорт: Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ваниль, миндаль, при этом хорошая свежесть.</td>
-        </tr>
-        <tr>
-          <td class="name">Les Peyrades Rosé <span class="pill">AOP Languedoc</span></td>
-          <td data-i18n="wine.rose">Сорт: Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.</td>
-        </tr>
-        <tr>
-          <td class="name">Les Peyrades Rouge <span class="pill">AOP Languedoc</span></td>
-          <td data-i18n="wine.rouge">Сорта: Syrah, Grenache. ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.</td>
-        </tr>
-        <tr>
-          <td class="name">Sortie du Temps <span class="pill">AOP Languedoc</span></td>
-          <td data-i18n="wine.sortie">Сорта: Mourvèdre, Grenache. ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.</td>
-        </tr>
-        <tr>
-          <td class="name">Bag-in-Box <span class="pill">IGP Hérault</span></td>
-          <td data-i18n="wine.bib">Сорта: зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок.</td>
-        </tr>
-      </tbody>
-    </table>
+<main class="container" style="padding:28px 0 56px">
+  <!-- ВСТРОЕННЫЙ БЛОК ДОМЕНА RU/FR (идентичен Belle Mare) -->
+  <section id="domaine-bois-bories" class="wine-domain">
+    <style>
+      #domaine-bois-bories{
+        --bg:#fff; --ink:#1a1a1a; --muted:#5b5b5b; --card:#f7f7f8; --line:#e9e9ec; --accent:#2c7be5;
+        font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",Arial,"Apple Color Emoji","Segoe UI Emoji";
+        color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:20px; max-width:1000px; margin:0 auto;
+        box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+      }
+      #domaine-bois-bories .header { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between; margin-bottom:10px;}
+      #domaine-bois-bories .title { font-size:clamp(20px,2.6vw,32px); font-weight:750; letter-spacing:.2px;}
+      #domaine-bois-bories .subtitle { color:var(--muted); font-size:14px; }
+      #domaine-bois-bories .lang-switch { display:flex; gap:6px; }
+      #domaine-bois-bories .lang-btn{
+        border:1px solid var(--line); background:#fff; padding:6px 10px; border-radius:10px; cursor:pointer; font-weight:600; font-size:13px;
+      }
+      #domaine-bois-bories .lang-btn.active{ border-color:var(--accent); color:#fff; background:var(--accent); }
+      #domaine-bois-bories .grid{ display:grid; grid-template-columns:1fr; gap:14px; margin-top:14px; }
+      @media (min-width:900px){ #domaine-bois-bories .grid{ grid-template-columns:1.15fr .85fr;} }
+      #domaine-bois-bories .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px;}
+      #domaine-bois-bories h3{ margin:.2rem 0 .7rem; font-size:18px;}
+      #domaine-bois-bories p{ margin:.4rem 0; line-height:1.55;}
+      #domaine-bois-bories ul{ margin:.4rem 0 .8rem 1.2rem; line-height:1.55;}
+      #domaine-bois-bories .chips{ display:flex; flex-wrap:wrap; gap:6px; margin:.4rem 0 .8rem;}
+      #domaine-bois-bories .chip{ background:#fff; border:1px solid var(--line); padding:4px 8px; border-radius:999px; font-size:12px; font-weight:600;}
+      #domaine-bois-bories .ft-block{ margin-top:10px;}
+      #domaine-bois-bories .ft-title{ font-weight:750; font-size:16px; margin-bottom:6px;}
+      #domaine-bois-bories .note{ font-size:13px; color:var(--muted);}
+      #domaine-bois-bories .muted{ color:var(--muted);}
+      #domaine-bois-bories .divider{ height:1px; background:var(--line); margin:10px 0;}
+      #domaine-bois-bories .badge{ display:inline-block; background:#eef6ff; color:#1d4ed8; border:1px solid #d6e6ff; font-weight:700; font-size:12px; padding:2px 8px; border-radius:999px; }
+      #domaine-bois-bories [data-lang]{ display:none; }
+      #domaine-bois-bories [data-lang].visible{ display:block; }
+
+      /* фото в aside, как на Belle Mare */
+      #domaine-bois-bories .domain-photo { margin-top:10px; }
+      #domaine-bois-bories .domain-photo img { width:100%; height:auto; display:block; border-radius:12px; box-shadow: var(--shadow); }
+      #domaine-bois-bories .domain-photo figcaption { font-size:12px; margin-top:6px; text-align:center; color:var(--muted); }
+    </style>
+
+    <div class="header">
+      <div>
+        <div class="title">Domaine Bois Bories</div>
+        <div class="subtitle">Clermont-l’Hérault • Coteaux du Salagou • Languedoc</div>
+      </div>
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-btn active" data-choose-lang="ru">🇷🇺 RU</button>
+        <button class="lang-btn" data-choose-lang="fr">🇫🇷 FR</button>
+      </div>
+    </div>
+
+    <!-- RU -->
+    <div data-lang="ru" class="visible">
+      <div class="grid">
+        <article class="card">
+          <span class="badge">О домене</span>
+          <h3>История</h3>
+          <p>Семейное хозяйство в Клермон-л’Эро, рядом с озером Салагу (≈25&nbsp;га). Четыре поколения; работа в духе
+            <em>agriculture raisonnée</em>. Домен ведут Винсент и Дельфин Реймон. Упоминался в
+            <strong>Le Guide Hachette des Vins</strong>.</p>
+
+          <h3>Терруар</h3>
+          <ul>
+            <li>Вулканические руфы у Les Bories — пряность и чёрные ягоды в красных.</li>
+            <li>Глино-известняковые участки — база для Chardonnay с хорошей кислотностью.</li>
+            <li>Средиземноморский климат; бризы озера Салагу смягчают летнюю жару.</li>
+          </ul>
+
+          <h3>Сорта и вина</h3>
+          <div class="chips">
+            <span class="chip">Syrah</span><span class="chip">Grenache</span><span class="chip">Mourvèdre</span>
+            <span class="chip">Viognier</span><span class="chip">Chardonnay</span>
+          </div>
+          <p class="muted">Линейки: <strong>Viognier</strong> (IGP Oc), <strong>Les Peyrades</strong> (Chardonnay — IGP Oc; Rosé/ Rouge — AOP Languedoc),
+            <strong>Sortie du Temps</strong> (AOP Languedoc, выдержка ~18 мес. в бочке).</p>
+
+          <h3>Дегустации</h3>
+          <ul>
+            <li><strong>Классическая дегустация</strong> (3–4 позиции) — 15–30 мин; возможна без записи.</li>
+            <li><strong>Визит погреба + дегустация</strong> — 60–90 мин; по предварительной записи.</li>
+          </ul>
+          <p class="note">Уточняйте актуальные условия и состав сетов перед визитом.</p>
+        </article>
+
+        <aside class="card">
+          <span class="badge">Fiche technique</span>
+          <div class="ft-block">
+            <div class="ft-title">Les Peyrades Rouge — Syrah/Grenache (AOP Languedoc)</div>
+            <p><strong>Сбор:</strong> выборочный, по зрелости участков.</p>
+            <p><strong>Винификация:</strong> ферментации по сортам в нержавейке; ассамбляж; часть партии ~12&nbsp;мес. в бочке.</p>
+            <p><strong>Дегустация:</strong> чёрные ягоды, фиалка, специи; танины округлые, финал свежий.</p>
+            <p><strong>Пары:</strong> ягнёнок, гриль, выдержанные сыры.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="ft-block">
+            <div class="ft-title">Viognier — IGP Oc</div>
+            <p><strong>Стиль:</strong> абрикос, персик, белые цветы; мягкая текстура, сухой финиш.</p>
+            <p><strong>Пары:</strong> аперитив, морепродукты, азиатская кухня.</p>
+          </div>
+
+          <div class="divider"></div>
+          <p class="muted">*Информация от производителя. Возможны вариации по урожаям.</p>
+
+          <figure class="domain-photo">
+            <img src="/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg" loading="lazy"
+                 alt="Domaine Bois Bories — виноградники у озера Салагу">
+            <figcaption>Виноградники у озера Салагу</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </div>
+
+    <!-- FR -->
+    <div data-lang="fr">
+      <div class="grid">
+        <article class="card">
+          <span class="badge">À propos du domaine</span>
+          <h3>Histoire</h3>
+          <p>Domaine familial à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Quatre générations; démarche
+            <em>agriculture raisonnée</em>. Conduit par Vincent et Delphine Reymond. Mentionné dans
+            <strong>Le Guide Hachette des Vins</strong>.</p>
+
+          <h3>Terroir</h3>
+          <ul>
+            <li>Roches volcaniques autour de Les Bories — épices et fruits noirs pour les rouges.</li>
+            <li>Parcelles argilo-calcaires — base du Chardonnay avec belle acidité.</li>
+            <li>Climat méditerranéen tempéré par les brises du Salagou.</li>
+          </ul>
+
+          <h3>Cépages & vins</h3>
+          <div class="chips">
+            <span class="chip">Syrah</span><span class="chip">Grenache</span><span class="chip">Mourvèdre</span>
+            <span class="chip">Viognier</span><span class="chip">Chardonnay</span>
+          </div>
+          <p class="muted">Gammes : <strong>Viognier</strong> (IGP Oc), <strong>Les Peyrades</strong> (Chardonnay — IGP Oc; Rosé/Rouge — AOP Languedoc),
+            <strong>Sortie du Temps</strong> (AOP Languedoc, élevage ~18 mois en fût).</p>
+
+          <h3>Œnotourisme</h3>
+          <ul>
+            <li><strong>Dégustation classique</strong> (3–4 vins) — 15–30 min; possible sans RDV.</li>
+            <li><strong>Visite du chai + dégustation</strong> — 60–90 min; sur réservation.</li>
+          </ul>
+          <p class="note">Merci de vérifier les horaires et les sets avant votre venue.</p>
+        </article>
+
+        <aside class="card">
+          <span class="badge">Fiche technique</span>
+          <div class="ft-block">
+            <div class="ft-title">Les Peyrades Rouge — Syrah/Grenache (AOP Languedoc)</div>
+            <p><strong>Vendange :</strong> parcellaire, selon maturité.</p>
+            <p><strong>Vinification :</strong> fermentations par cépage en cuve inox; assemblage; partie ~12&nbsp;mois en fût.</p>
+            <p><strong>Dégustation :</strong> fruits noirs, violette, épices; tanins ronds, finale fraîche.</p>
+            <p><strong>Accords :</strong> agneau, grillades, fromages affinés.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="ft-block">
+            <div class="ft-title">Viognier — IGP Oc</div>
+            <p><strong>Profil :</strong> abricot, pêche, fleurs blanches; texture souple, finale sèche.</p>
+            <p><strong>Accords :</strong> apéritif, fruits de mer, cuisine asiatique.</p>
+          </div>
+
+          <div class="divider"></div>
+          <p class="muted">*Données communiquées par le producteur. Variations selon millésime possibles.</p>
+        </aside>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        const root = document.getElementById('domaine-bois-bories');
+        const btns = root.querySelectorAll('.lang-btn');
+        const blocks = root.querySelectorAll('[data-lang]');
+        btns.forEach(b=>{
+          b.addEventListener('click', ()=>{
+            btns.forEach(x=>x.classList.remove('active'));
+            b.classList.add('active');
+            const lang = b.getAttribute('data-choose-lang');
+            blocks.forEach(el=>{
+              el.classList.toggle('visible', el.getAttribute('data-lang')===lang);
+            });
+          });
+        });
+      })();
+    </script>
   </section>
 </main>
 
-<footer class="container"><small>© Voyages de l’Auteur</small></footer>
-
-<!-- i18n мини-скрипт -->
-<script>
-  const dict = {
-    ru: {
-      "top.note":"Авторские туры по Югу Франции",
-      "nav.tastings":"Дегустации",
-      "nav.book":"Забронировать",
-      "domain.title":"О домене",
-      "domain.desc": `Семейное хозяйство в Клермон-л’Эро у озера Салагу (≈25&nbsp;га). Работа в духе <em>agriculture raisonnée</em>.
-        Терруар сочетает вулканические руфы у Les Bories и глино-известняковые участки для шардоне.
-        Домен ведут Винсент и Дельфин Реймон. Упоминается в
-        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
-      "wines.title":"Линейка вин",
-      "table.head.wine":"Вино",
-      "table.head.desc":"Описание",
-      "wine.viognier":"Сорт: Viognier. Ароматы абрикоса и персика; свежий и гастрономичный — к морепродуктам и как аперитив.",
-      "wine.chardonnay":"Сорт: Chardonnay. Винификация/частичная выдержка в дубе: кремовая текстура, ваниль, миндаль, при этом хорошая свежесть.",
-      "wine.rose":"Сорт: Syrah (розе). Сухой стиль: красные ягоды, лёгкие специи; идеален как аперитив и к салатам/рыбе.",
-      "wine.rouge":"Сорта: Syrah, Grenache. ~12&nbsp;мес. в бочке: чёрные ягоды, пряность, округлые танины.",
-      "wine.sortie":"Сорта: Mourvèdre, Grenache. ~18&nbsp;мес. в бочке: мощное, структурное, с потенциалом выдержки.",
-      "wine.bib":"Сорта: зависят от партии (белое/розовое/красное). Практичный формат для пикников и вечеринок."
-    },
-    fr: {
-      "top.note":"Voyages sur mesure dans le Sud de la France",
-      "nav.tastings":"Dégustations",
-      "nav.book":"Réserver",
-      "domain.title":"À propos du domaine",
-      "domain.desc": `Exploitation familiale à Clermont-l’Hérault, près du lac du Salagou (~25&nbsp;ha). Démarche <em>agriculture raisonnée</em>.
-        Terroirs mêlant roches volcaniques autour de Les Bories et parcelles argilo-calcaires pour le chardonnay.
-        Domaine dirigé par Vincent et Delphine Reymond. Mentionné dans
-        <a href="https://www.hachette-vins.com/" target="_blank" rel="noopener noreferrer">Le Guide Hachette des Vins</a>.`,
-      "wines.title":"Gamme des vins",
-      "table.head.wine":"Vin",
-      "table.head.desc":"Description",
-      "wine.viognier":"Cépage : Viognier. Arômes d’abricot et de pêche ; style frais et gastronomique — parfait à l’apéritif et avec les fruits de mer.",
-      "wine.chardonnay":"Cépage : Chardonnay. Vinification/partie élevage en fût : texture crémeuse, notes de vanille et d’amande, belle fraîcheur.",
-      "wine.rose":"Cépage : Syrah (rosé). Sec : fruits rouges, légère épice ; idéal en apéritif, salades/poisson.",
-      "wine.rouge":"Cépages : Syrah, Grenache. ~12&nbsp;mois de fût : fruits noirs, épices, tanins ronds.",
-      "wine.sortie":"Cépages : Mourvèdre, Grenache. ~18&nbsp;mois de fût : puissant, structuré, bon potentiel de garde.",
-      "wine.bib":"Cépages : selon la cuvée (blanc/rosé/rouge). Format pratique pour pique-niques et fêtes."
-    }
-  };
-
-  function applyLang(l){
-    document.documentElement.lang = l;
-    // текстовые узлы
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-      const k = el.getAttribute("data-i18n");
-      if(dict[l] && dict[l][k]) el.textContent = dict[l][k];
-    });
-    // узлы с html
-    document.querySelectorAll("[data-i18n-html]").forEach(el=>{
-      const k = el.getAttribute("data-i18n-html");
-      if(dict[l] && dict[l][k]) el.innerHTML = dict[l][k];
-    });
-    // подсветка переключателя
-    document.querySelectorAll(".lang a[data-lang]").forEach(a=>{
-      a.classList.toggle("active", a.dataset.lang===l);
-    });
-    localStorage.setItem("site:lang", l);
-  }
-
-  // обработка кликов по переключателю RU/FR
-  document.addEventListener("click", (e)=>{
-    const a = e.target.closest(".lang a[data-lang]");
-    if(!a) return;
-    e.preventDefault();
-    applyLang(a.dataset.lang);
-  });
-
-  // стартовый язык: сохранённый или ru
-  applyLang(localStorage.getItem("site:lang") || "ru");
-</script>
+<footer class="container" style="padding-top:24px; margin-bottom:28px; color:var(--muted)">
+  <small>© Voyages de l’Auteur</small>
+</footer>
 </body>
 </html>
+
