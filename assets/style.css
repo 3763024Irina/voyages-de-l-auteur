@@ -176,4 +176,22 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
   font-size:12px; margin-top:6px; text-align:center; color:var(--muted);
 }
 
+/* WhatsApp */
+.btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
+.btn.wa:hover{ filter:brightness(.95); }
+
+nav a.wa{
+  background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
+}
+nav a.wa:hover{ background:#21be5a; }
+
+/* Плавающая кнопка WhatsApp (опционально) */
+.wa-fab{
+  position:fixed; right:22px; bottom:22px; z-index:60;
+  width:56px; height:56px; border-radius:50%;
+  display:grid; place-items:center; background:#25D366; color:#fff;
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+.wa-fab:hover{ filter:brightness(.95); }
+.wa-fab svg{ width:28px; height:28px; display:block; }
 
