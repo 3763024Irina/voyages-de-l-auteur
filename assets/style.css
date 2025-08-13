@@ -166,4 +166,14 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 
 /* ---------- ЖЁСТКИЙ ФИКС ПОДЛОЖКИ ГЕРОЯ (на случай перезаписи где-то ещё) ---------- */
 .page-hero::before{ background-image: var(--hero-img) !important; }
+/* ===== Domaine de Belle Mare: фото внутри aside ===== */
+#domaine-belle-mare .domain-photo { margin-top:10px; }
+#domaine-belle-mare .domain-photo img {
+  width:100%; height:auto; display:block; border-radius:12px;
+  box-shadow: var(--shadow);
+}
+#domaine-belle-mare .domain-photo figcaption {
+  font-size:12px; margin-top:6px; text-align:center; color:var(--muted);
+}
+
 
