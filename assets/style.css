@@ -103,6 +103,14 @@ nav a.cta:hover{background:var(--brand-2)}
 .card h3{margin:0 0 8px; font-size:20px}
 .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
 .card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
+/* клик по всей карточке, если у неё есть href */
+.card.link { position: relative; }
+.card.link > a.stretched {
+  position: absolute; inset: 0; z-index: 5;
+  border-radius: inherit; /* повторяем скругление */
+  text-indent: -9999px; /* невидимая ссылка */
+}
+
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:640px){ .grid{grid-template-columns:1fr} }
 
