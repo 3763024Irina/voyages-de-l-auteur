@@ -1,1 +1,196 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Вокруг лагуны Тау — вино и устрицы | Oysters • Wine • Sea</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Однодневный гастрономический тур вокруг лагуны Тау: Picpoul de Pinet, устрицы Bouzigues, Muscat de Frontignan, вермут Noilly Prat." />
+  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=7" />
+
+  <style>
+    :root{
+      --max: 1040px;
+      --muted: rgba(0,0,0,.6);
+      --pill-bg: rgba(0,0,0,.06);
+      --accent: #2a6;
+    }
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px;}
+    .hero{
+      position:relative; border-radius:16px; overflow:hidden; min-height:44vh; display:grid; place-items:end start; padding:24px;
+      color:#fff; background:#111;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:-1;
+      background:url('/voyages-de-l-auteur/assets/etang/etang-hero.jpg') center/cover no-repeat;
+      filter:brightness(.6);
+    }
+    .hero h1{font-size:clamp(28px,4vw,44px); line-height:1.1; margin:4px 0 10px}
+    .hero .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.16); backdrop-filter: blur(6px); font-weight:600}
+    .grid{display:grid; gap:16px}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:880px){.grid-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
+    .card{
+      background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:16px; box-shadow:0 2px 16px rgba(0,0,0,.04);
+    }
+    .media{border-radius:12px; overflow:hidden; aspect-ratio:16/10; background:#eee}
+    .media img{width:100%; height:100%; object-fit:cover}
+    .pillset{display:flex; gap:8px; flex-wrap:wrap}
+    .pilltag{background:var(--pill-bg); padding:6px 10px; border-radius:999px; font-size:14px}
+    .section h2{font-size:24px; margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 18px; border-radius:10px; border:1px solid rgba(0,0,0,.1); background:#111; color:#fff; text-decoration:none; cursor:pointer;
+    }
+    .btn.secondary{background:#fff; color:#111}
+    .timeline{position:relative; padding-left:22px}
+    .timeline .row{position:relative; padding:10px 0 14px}
+    .timeline .row::before{
+      content:""; position:absolute; left:-12px; top:14px; width:8px; height:8px; border-radius:50%; background:var(--accent);
+      box-shadow:0 0 0 3px rgba(42,166,102,.18);
+    }
+    .timeline::before{
+      content:""; position:absolute; left:-8px; top:0; bottom:0; width:2px; background:rgba(0,0,0,.08)
+    }
+    .price{
+      display:flex; gap:10px; align-items:baseline; flex-wrap:wrap;
+      font-size:28px; font-weight:700;
+    }
+    .checklist{display:grid; gap:8px; grid-template-columns:1fr 1fr}
+    @media (max-width:640px){.checklist{grid-template-columns:1fr}}
+    .check{display:flex; gap:10px; align-items:flex-start}
+    .mapbox{border-radius:12px; overflow:hidden; background:#f4f4f4; aspect-ratio:16/10; display:grid; place-items:center; color:var(--muted); border:1px dashed rgba(0,0,0,.15)}
+    form label{display:block; margin:10px 0 6px; font-weight:600}
+    form input, form select, form textarea{
+      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.12); background:#fff;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="wrap" style="padding-bottom:8px">
+  <nav style="display:flex; align-items:center; justify-content:space-between; gap:16px">
+    <a href="/" class="pilltag" style="text-decoration:none">← На главную</a>
+    <div class="pillset">
+      <span class="pilltag">Лангедок</span>
+      <span class="pilltag">Лагуна Тау</span>
+      <span class="pilltag">Вино и устрицы</span>
+    </div>
+  </nav>
+</header>
+
+<section class="wrap hero">
+  <div>
+    <span class="pill">🦪 Wine & Oysters • Étang de Thau</span>
+    <h1>Вокруг лагуны Тау — вино и устрицы</h1>
+    <p class="muted" style="max-width:60ch">Picpoul de Pinet, устрицы Bouzigues, Muscat de Frontignan, вермут Noilly Prat, порт Марсельян.</p>
+    <div style="display:flex; gap:10px; margin-top:10px">
+      <a href="#book" class="btn">Бронировать</a>
+      <a href="#plan" class="btn secondary">Программа дня</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+<!-- Программа дня -->
+<section id="plan" class="section" style="margin-top:8px">
+  <h2>Программа дня</h2>
+  <div class="card timeline">
+    <div class="row"><strong>10:00 — Выезд</strong><p class="muted">Трансфер из вашего города (Сет, Мез, Монпелье, Бэзье).</p></div>
+    <div class="row"><strong>10:30 — Picpoul de Pinet</strong><p class="muted">Дегустация белых вин прямо у виноградников с видом на лагуну.</p></div>
+    <div class="row"><strong>12:00 — Bouzigues</strong><p class="muted">Ферма устриц, дегустация свежих устриц и мидий у воды.</p></div>
+    <div class="row"><strong>13:30 — Обед (включено)</strong><p class="muted">Меню из устриц, мидий, гребешков и белого вина Picpoul.</p></div>
+    <div class="row"><strong>15:00 — Château de Villeroy</strong><p class="muted">Дегустация Muscat de Frontignan — сладкое вино региона.</p></div>
+    <div class="row"><strong>16:30 — Marseillan & Maison Noilly Prat</strong><p class="muted">Экскурсия и дегустация легендарного вермута, прогулка по порту.</p></div>
+    <div class="row"><strong>18:00 — Возвращение</strong><p class="muted">Трансфер обратно.</p></div>
+  </div>
+</section>
+
+<!-- Стоимость -->
+<section class="section">
+  <div class="grid grid-2">
+    <div class="card">
+      <h2>Стоимость</h2>
+      <div class="price">
+        <span id="price">150–180 €</span><span class="muted">/ на человека</span>
+      </div>
+      <p class="muted" style="margin-top:6px">
+        Индивидуально: 150–180 € • Группы 6–8 чел.: 100–120 €  
+        <br><strong>Включает дегустации, обед, транспорт и гида.</strong>
+      </p>
+    </div>
+
+    <!-- Что включено -->
+    <div class="card">
+      <h2>Что включено</h2>
+      <div class="checklist">
+        <div class="check">✅ Дегустация Picpoul de Pinet</div>
+        <div class="check">✅ Дегустация устриц и мидий</div>
+        <div class="check">✅ Обед с морепродуктами</div>
+        <div class="check">✅ Дегустация Muscat de Frontignan</div>
+        <div class="check">✅ Экскурсия Noilly Prat</div>
+        <div class="check">✅ Транспорт и гид</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Карта -->
+<section class="section">
+  <h2>Маршрут</h2>
+  <div class="mapbox">Карта маршрута</div>
+</section>
+
+<!-- Бронирование -->
+<section id="book" class="section">
+  <div class="grid grid-2">
+    <div class="card">
+      <strong>Быстрый запрос</strong>
+      <form onsubmit="openMail(event)">
+        <label>Имя</label><input required name="name" placeholder="Ваше имя" />
+        <label>Контакт</label><input required name="contact" placeholder="+33… или email" />
+        <label>Город старта</label>
+        <select name="start">
+          <option>Montpellier</option>
+          <option>Beziers</option>
+          <option>Sete</option>
+          <option>Meze</option>
+        </select>
+        <label>Дата</label><input name="date" type="date" />
+        <label>Комментарий</label><textarea name="msg"></textarea>
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+    <div class="card">
+      <div class="media"><img src="/voyages-de-l-auteur/assets/etang/oysters.jpg" alt="Bouzigues" loading="lazy"></div>
+      <p class="muted" style="margin-top:10px">Bouzigues — столица устриц лагуны Тау.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap" style="padding-top:8px; padding-bottom:34px">
+  <div class="muted">© Авторские туры по Югу Франции</div>
+</footer>
+
+<script>
+function openMail(e){
+  e.preventDefault();
+  const f = e.target;
+  const name = encodeURIComponent(f.name.value);
+  const contact = encodeURIComponent(f.contact.value);
+  const start = encodeURIComponent(f.start.value);
+  const date = encodeURIComponent(f.date.value);
+  const msg = encodeURIComponent(f.msg.value);
+  location.href = `mailto:hello@your-domain.fr?subject=Запрос: Тур вокруг лагуны Тау&body=Имя:${name}%0AКонтакт:${contact}%0AСтарт:${start}%0AДата:${date}%0A${msg}`;
+}
+</script>
+
+</body>
+</html>
 
