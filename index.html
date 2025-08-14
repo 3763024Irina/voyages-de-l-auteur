@@ -505,6 +505,30 @@
         'programations/vins_languedoc.html',
         'programations/Vins-Languedoc.html',
         '/voyages-de-l-auteur/programations/Vins_Languedoc.html',
-        'programations/Vins_Languedoc/in
+        'programations/Vins_Languedoc/index.html',
+        'Vins_Languedoc.html'
+      ]
+    };
+    async function tryHead(url){
+      try{ const res = await fetch(url, { method:'HEAD' }); return res.ok; }catch(e){ return false; }
+    }
+    async function goProgram(key){
+      const list = programCandidates[key]||[];
+      for(const u of list){ if(await tryHead(u)){ location.href = u; return; } }
+      alert('Страница программы временно недоступна. Возвращаю на главную.');
+      location.href = 'index.html';
+    }
+    // Intercept clicks to any Vins_Languedoc links and resolve to an existing blob
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a');
+      if(!a) return;
+      const href = a.getAttribute('href')||'';
+      if(/Vins[_-]Languedoc/i.test(href)){
+        e.preventDefault();
+        goProgram('Vins_Languedoc');
+      }
+    });
+  </script>
+</body>
 </html>
 
