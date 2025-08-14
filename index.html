@@ -516,8 +516,6 @@
     async function goProgram(key){
       const list = programCandidates[key]||[];
       for(const u of list){ if(await tryHead(u)){ location.href = u; return; } }
-      alert('Страница программы временно недоступна. Возвращаю на главную.');
-      location.href = 'index.html';
     }
     // Intercept clicks to any Vins_Languedoc links and resolve to an existing blob
     document.addEventListener('click', (e)=>{
