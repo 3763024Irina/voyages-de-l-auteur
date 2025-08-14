@@ -277,3 +277,34 @@ nav a.wa:hover{ background:#21be5a; }
     height: 180px !important;
   }
 }
+/* --- Компактные равные карточки программ --- */
+#tours .card .cover{
+  height: 200px;         /* было aspect-ratio, теперь фиксированная высота */
+  aspect-ratio: auto;    /* на всякий случай сброс */
+}
+
+#tours .card .body{ 
+  padding: 12px 14px;    /* чуть меньше внутренние отступы */
+}
+
+#tours .card h3{
+  font-size: 18px; 
+  margin: 0 0 6px;
+}
+
+#tours .meta span{
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* максимум 2 строки описания */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#tours .card .foot{
+  padding: 12px 14px;
+}
+
+/* На мобильных делаем ещё компактнее */
+@media (max-width: 640px){
+  #tours .card .cover{ height: 160px; }
+}
+
