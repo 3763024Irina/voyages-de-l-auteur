@@ -107,8 +107,9 @@ nav a.cta:hover{background:var(--brand-2)}
 .card.link { position: relative; }
 .card.link > a.stretched {
   position: absolute; inset: 0; z-index: 5;
-  border-radius: inherit; /* повторяем скругление */
-  text-indent: -9999px; /* невидимая ссылка */
+  border-radius: inherit;
+  text-indent: -9999px;
+
 }
 
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
