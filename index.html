@@ -174,8 +174,8 @@
         <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
         <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP‑программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен‑Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
         <div class="tags">
-  <a class="tag" href="oysters.html">Устрицы & Étang de Thau</a>
-  <a class="tag" href="degustations/index.html">Вино и Домены</a>
+<a class="tag" href="/voyages-de-l-auteur/tours/etang-thau.html">Устрицы & Étang de Thau</a>
+<a class="tag" href="/voyages-de-l-auteur/tours/wine-day.html">Вино и Домены</a>
   <a class="tag" href="castles.html">Замки & История</a>
   <a class="tag" href="mountains.html">Горы & Трекинг</a>
   <a class="tag" href="sea.html">Море & SUP/Каяк</a>
@@ -184,7 +184,7 @@
 </div>
 
      <div class="icons">
-  <a class="icon" href="oysters.html"><div>🦪</div><span>устрицы</span></a>
+       <a class="icon" href="/voyages-de-l-auteur/tours/etang-thau.html"><div>🦪</div><span>устрицы</span></a>
   <a class="icon" href="degustations/index.html"><div>🍷</div><span>винодегустации</span></a>
   <a class="icon" href="castles.html"><div>🏰</div><span>замки</span></a>
   <a class="icon" href="mountains.html"><div>⛰️</div><span>горы</span></a>
@@ -439,20 +439,30 @@
     window.openMail = openMail;
 
     // Simple tours data (10 programs)
-    const tours = [
-      {t:'Устрицы на лагуне Thau', c:'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop', d:'3–4 часа • дегустация устриц и вина прямо у производителей.', p:'от 180€ / чел', b:'hit'},
-      {t:'Винные домены Пик Сен‑Лу', c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop', d:'День • 2–3 домена, терруары и панорамы.', p:'от 220€ / чел'},
-      {t:'Каркасон и аббатства', c:'https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=1200&auto=format&fit=crop', d:'День • крепость + аббатство Фонтфруад.', p:'от 230€ / чел'},
-      {t:'Горы и ущелья Эро', c:'https://images.unsplash.com/photo-1526481280698-8fcc13fd283f?q=80&w=1200&auto=format&fit=crop', d:'День • лёгкий трекинг, купание, пикник.', p:'от 210€ / чел'},
-      {t:'Средиземное море: SUP/Каяк', c:'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=1200&auto=format&fit=crop', d:'3 часа • рассветный сап или каякинг.', p:'от 150€ / чел'},
-      {t:'Монтпелье и гастро‑рынки', c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop', d:'Полдня • исторический центр + дегустации.', p:'от 160€ / чел'},
-      {t:'Канал дю Миди и вино', c:'https://images.unsplash.com/photo-1592078615290-033f0a23a1eb?q=80&w=1200&auto=format&fit=crop', d:'День • прогулка по каналу, домены.', p:'от 210€ / чел'},
-      {t:'Соляные розовые поля', c:'https://images.unsplash.com/photo-1536868313473-748eb07f3510?q=80&w=1200&auto=format&fit=crop', d:'Полдня • фотопрогулка и дегустации.', p:'от 170€ / чел'},
-      {t:'Нарбон и Лагедок Руссильон', c:'https://images.unsplash.com/photo-1599661040040-0a38c809bdb1?q=80&w=1200&auto=format&fit=crop', d:'День • рынок, винные бары, история.', p:'от 210€ / чел'},
-      {t:'VIP по вашим интересам', c:'https://images.unsplash.com/photo-1514890547327-8843c0ff1c6e?q=80&w=1200&auto=format&fit=crop', d:'Индивидуально • кастомный маршрут.', p:'индивидуально', b:'vip'}
-      {t: "Cap d’Agde Lifestyle",c: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop",d: "Полдня • пляжи и марина Кап-д’Агд",p: "от 180€ / чел",b: 'hit'},
+   const tours = [
+  {t:'Устрицы на лагуне Thau',
+   c:'https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop',
+   d:'3–4 часа • дегустация устриц и вина прямо у производителей.',
+   p:'от 180€ / чел', b:'hit',
+   href:'/voyages-de-l-auteur/tours/etang-thau.html'},
 
-    ];
+  {t:'Винные домены Пик Сен-Лу',
+   c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop',
+   d:'День • 2–3 домена, терруары и панорамы.',
+   p:'от 220€ / чел',
+   href:'/voyages-de-l-auteur/tours/wine-day.html'},
+
+  {t:'Каркасон и аббатства', c:'https://images.unsplash.com/photo-1543349689-9a4d426bee8e?q=80&w=1200&auto=format&fit=crop', d:'День • крепость + аббатство Фонтфруад.', p:'от 230€ / чел'},
+  {t:'Горы и ущелья Эро', c:'https://images.unsplash.com/photo-1526481280698-8fcc13fd283f?q=80&w=1200&auto=format&fit=crop', d:'День • лёгкий трекинг, купание, пикник.', p:'от 210€ / чел'},
+  {t:'Средиземное море: SUP/Каяк', c:'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=1200&auto=format&fit=crop', d:'3 часа • рассветный сап или каякинг.', p:'от 150€ / чел'},
+  {t:'Монтпелье и гастро-рынки', c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop', d:'Полдня • исторический центр + дегустации.', p:'от 160€ / чел'},
+  {t:'Канал дю Миди и вино', c:'https://images.unsplash.com/photo-1592078615290-033f0a23a1eb?q=80&w=1200&auto=format&fit=crop', d:'День • прогулка по каналу, домены.', p:'от 210€ / чел'},
+  {t:'Соляные розовые поля', c:'https://images.unsplash.com/photo-1536868313473-748eb07f3510?q=80&w=1200&auto=format&fit=crop', d:'Полдня • фотопрогулка и дегустации.', p:'от 170€ / чел'},
+  {t:'Нарбон и Лагедок Руссильон', c:'https://images.unsplash.com/photo-1599661040040-0a38c809bdb1?q=80&w=1200&auto=format&fit=crop', d:'День • рынок, винные бары, история.', p:'от 210€ / чел'},
+  {t:'VIP по вашим интересам', c:'https://images.unsplash.com/photo-1514890547327-8843c0ff1c6e?q=80&w=1200&auto=format&fit=crop', d:'Индивидуально • кастомный маршрут.', p:'индивидуально', b:'vip'},
+  {t:"Cap d’Agde Lifestyle", c:"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?q=80&w=1200&auto=format&fit=crop", d:"Полдня • пляжи и марина Кап-д’Агд", p:"от 180€ / чел", b:'hit'}
+];
+
 
     const grid = document.querySelector('#grid');
     const filters = document.querySelector('#filters');
@@ -463,20 +473,28 @@
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); b.classList.add('active');
     }); filters.appendChild(b)});
 
-    function cardHTML(item){
-      return `
-        <article class="card">
-          <div class="cover">${item.b?`<span class="badge">${badges[item.b]}</span>`:''}<img src="${item.c}" alt="${item.t}"></div>
-          <div class="body">
-            <h3>${item.t}</h3>
-            <div class="meta"><span>${item.d}</span></div>
-          </div>
-          <div class="foot">
-            <div class="price">${item.p}</div>
-            <button class="btn" onclick='openTour(${JSON.stringify(item).replace(/'/g,"&#39;")})'>Подробнее</button>
-          </div>
-        </article>`;
-    }
+function cardHTML(item){
+  const badge = item.b ? `<span class="badge">${badges[item.b]}</span>` : '';
+  const linkOverlay = item.href ? `<a class="stretched" href="${item.href}" aria-label="Открыть: ${item.t}"></a>` : '';
+  const openBtn = item.href
+    ? `<a class="btn" href="${item.href}">Открыть программу</a>`
+    : `<button class="btn" onclick='openTour(${JSON.stringify(item).replace(/'/g,"&#39;")})'>Подробнее</button>`;
+
+  return `
+    <article class="card ${item.href ? 'link' : ''}">
+      ${linkOverlay}
+      <div class="cover">${badge}<img src="${item.c}" alt="${item.t}"></div>
+      <div class="body">
+        <h3>${item.t}</h3>
+        <div class="meta"><span>${item.d}</span></div>
+      </div>
+      <div class="foot">
+        <div class="price">${item.p}</div>
+        ${openBtn}
+      </div>
+    </article>`;
+}
+
 
     function render(){ grid.innerHTML = tours.map(cardHTML).join(''); }
     render();
