@@ -212,4 +212,15 @@ nav a.wa:hover{ background:#21be5a; }
 }
 .wa-fab:hover{ filter:brightness(.95); }
 .wa-fab svg{ width:28px; height:28px; display:block; }
+/* Ссылка-оверлей не перекрывает футер и кнопки */
+.card .foot { position: relative; z-index: 10; }
+.card.link > a.stretched {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  bottom: 64px;                  /* высота зоны футера */
+  z-index: 5;
+  border-radius: inherit;
+  text-indent: -9999px;
+}
+
 
