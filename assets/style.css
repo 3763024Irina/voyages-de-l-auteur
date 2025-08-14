@@ -54,6 +54,7 @@ nav a.cta:hover{background:var(--brand-2)}
 @media (max-width:640px){ nav ul{display:none} }
 
 /* ===================== HERO ===================== */
+/* фон по умолчанию (если локально не переопределён) */
 .page-hero{ --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg'); }
 .page-hero{
   position:relative; min-height:44vh;
@@ -101,7 +102,7 @@ nav a.cta:hover{background:var(--brand-2)}
 
 /* Одинаковый размер обложек для всех карточек */
 .cover {
-  height: 220px; /* фиксированная высота, можно менять */
+  height: 220px; /* фиксированная высота */
   background:#ddd;
   position:relative;
   overflow:hidden;
@@ -137,32 +138,42 @@ nav a.cta:hover{background:var(--brand-2)}
   padding:14px 16px; border-top:1px solid #f0f0f0;
   position:relative; z-index:10;
 }
+
+/* Кликаяем первая карточка в блоке "Почему с нами" — оверлей не перекрывает футер */
 .card.link{ position:relative; }
 .card.link > a.stretched{
   position:absolute;
   top:0; left:0; right:0;
-  bottom:64px;
+  bottom:64px;                  /* не заходим на футер карточки */
   z-index:5;
   border-radius:inherit;
   text-indent:-9999px;
 }
+
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:640px){
   .grid{grid-template-columns:1fr}
-  .cover { height: 180px; } /* чуть выше на мобильных */
+  .cover { height: 180px; } /* компактнее на телефонах */
 }
-
 
 /* ===================== GALLERY MOSAIC ===================== */
 .gallery-mosaic{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:12px; grid-auto-rows:180px; margin-top:24px
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  grid-auto-rows:220px; /* единая высота строк */
+  margin-top:24px
 }
-.gallery-mosaic .card:first-child{ grid-column:1 / span 2; grid-row:1 / span 2 }
-.gallery-mosaic .cover{ height:100% }
-.gallery-mosaic .cover img{ width:100%; height:100%; object-fit:cover; display:block }
+/* Убираем увеличение первой карточки */
+.gallery-mosaic .card:first-child{
+  grid-column:auto !important;
+  grid-row:auto !important;
+}
+.gallery-mosaic .cover{ height:100% !important }
+.gallery-mosaic .cover img{ width:100%; height:100% !important; object-fit:cover; display:block }
+
 @media (max-width:900px){
-  .gallery-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px }
-  .gallery-mosaic .card:first-child{ grid-column:1 / -1; grid-row:auto }
+  .gallery-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:200px }
 }
 
 /* ===================== WINES ===================== */
@@ -203,6 +214,8 @@ nav a.cta:hover{background:var(--brand-2)}
 
 /* ===================== FOOTER ===================== */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
+
+/* Жёстко фиксируем фон героя (если где-то переопределят) */
 .page-hero::before{ background-image: var(--hero-img) !important; }
 
 /* ===== Domaine de Belle Mare: фото внутри aside ===== */
@@ -215,12 +228,18 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
   font-size:12px; margin-top:6px; text-align:center; color:var(--muted);
 }
 
-/* WhatsApp */
+/* ===================== WhatsApp ===================== */
+/* Локальный фон героя (пример переопределения) */
 .page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
+
 .btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
 .btn.wa:hover{ filter:brightness(.95); }
-nav a.wa{ background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow); }
+
+nav a.wa{
+  background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
+}
 nav a.wa:hover{ background:#21be5a; }
+
 .wa-fab{
   position:fixed; right:22px; bottom:22px; z-index:60;
   width:56px; height:56px; border-radius:50%;
@@ -228,8 +247,9 @@ nav a.wa:hover{ background:#21be5a; }
   box-shadow:0 12px 28px rgba(0,0,0,.22);
 }
 .wa-fab:hover{ filter:brightness(.95); }
-.wa-fab svg{ width:28px; height:28px; display:block; }
-/* Ссылка-оверлей не перекрывает футер и кнопки */
+.wa-fab svg{ width:28px; height:28px; display:block }
+
+/* Ссылка-оверлей не перекрывает футер и кнопки в карточке */
 .card .foot { position: relative; z-index: 10; }
 .card.link > a.stretched {
   position: absolute;
@@ -240,4 +260,20 @@ nav a.wa:hover{ background:#21be5a; }
   text-indent: -9999px;
 }
 
-
+/* ===== ДОП. ПРИОРИТЕТ (если где-то осталось старое aspect-ratio) ===== */
+.grid .card .cover,
+#why .card .cover {
+  height: 220px !important;
+  aspect-ratio: auto !important;
+}
+.grid .card .cover img,
+#why .card .cover img {
+  height: 100% !important;
+  object-fit: cover;
+}
+@media (max-width: 640px){
+  .grid .card .cover,
+  #why .card .cover {
+    height: 180px !important;
+  }
+}
