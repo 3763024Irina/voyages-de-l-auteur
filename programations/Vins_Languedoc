@@ -3,340 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Винный день в AOP Pic Saint‑Loup — Авторские туры</title>
-  <meta name="description" content="Однодневный винный тур из Монпелье в апелласьон AOP Pic Saint‑Loup: 3 домена, прогулка к шато Монферран, обед в Auberge du Cèdre." />
+  <title>Винные домены Пик Сен-Лу — программа | Tours Languedoc by Irène</title>
+  <meta name="description" content="Однодневная программа по доменам AOP Pic Saint‑Loup: 2–3 хозяйства, дегустации, панорамы и пикник." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ======== Base & Theme (respect your site variables if present) ======== */
-    :root{
-      --bg: #0b0b0c;
-      --card: #121216;
-      --text: #e9eaee;
-      --muted: #a2a6b0;
-      --accent: #8bd3c7;  /* mint */
-      --accent-2: #b79df2; /* lavender */
-      --success: #5bd37e;
-      --warning: #ffcc66;
-      --radius: 18px;
-      --shadow: 0 10px 25px rgba(0,0,0,.25);
-    }
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:28px 20px}
-
-    /* ======== Hero ======== */
-    .hero{position:relative;border-radius:calc(var(--radius) + 6px);overflow:hidden;background:linear-gradient(120deg, #0b0b0c, #171823);box-shadow:var(--shadow)}
-    .hero::before{content:"";position:absolute;inset:0;opacity:.35;/* Replace with your local asset */
-      background:url('/assets/regions/pic-saint-loup.jpg') center/cover no-repeat;
-      filter:contrast(1.05) saturate(1.1);
-    }
-    .hero-inner{position:relative;padding:56px 26px 26px}
-    .breadcrumbs{color:var(--muted);font-size:.9rem;margin:0 0 10px}
-    h1{font-size:clamp(28px,4.2vw,44px);line-height:1.1;margin:6px 0 10px}
-    .subtitle{color:var(--muted);font-size:1.05rem;margin:0 0 18px}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 0}
-    .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);backdrop-filter: blur(4px);padding:8px 12px;border-radius:999px}
-
-    /* ======== Cards & Layout ======== */
-    .grid{display:grid;gap:18px}
-    @media(min-width:900px){.grid{grid-template-columns:1.2fr .8fr;align-items:start}}
-    .card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .card>.pad{padding:18px 18px}
-    .title{font-weight:700;font-size:1.1rem;margin:0 0 10px}
-    .muted{color:var(--muted)}
-
-    .timeline{display:grid;gap:12px;margin-top:10px}
-    .slot{display:grid;grid-template-columns:86px 1fr;gap:12px;background:#0f1118;border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden}
-    .slot-time{background:linear-gradient(135deg, rgba(139,211,199,.15), rgba(183,157,242,.15));padding:12px;font-weight:700;text-align:center}
-    .slot-body{padding:12px}
-    .slot h3{margin:2px 0 6px;font-size:1rem}
-    .slot p{margin:0;color:var(--muted)}
-    .slot .actions{margin-top:10px;display:flex;gap:10px;flex-wrap:wrap}
-
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--text);cursor:pointer}
-    .btn:hover{background:rgba(255,255,255,.06)}
-    .btn.primary{background:linear-gradient(135deg, var(--accent), var(--accent-2));color:#0b0b0c;border:none}
-
-    .list{display:grid;gap:6px;margin:10px 0 0;padding-left:18px}
-    .list li{margin:0 0 2px}
-
-    .info-grid{display:grid;gap:10px;grid-template-columns:repeat(2, minmax(0,1fr))}
-    @media(min-width:700px){.info-grid{grid-template-columns:repeat(3, minmax(0,1fr))}}
-    .info-item{background:#0f1118;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 12px}
-
-    /* ======== CTA form ======== */
-    .cta{display:grid;gap:14px}
-    .form{display:grid;gap:10px}
-    .form label{font-size:.95rem}
-    .form input,.form select,.form textarea{width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0f1118;color:var(--text)}
-    .form .row{display:grid;gap:10px}
-    @media(min-width:700px){.form .row{grid-template-columns:1fr 1fr}}
-
-    .notice{font-size:.92rem;color:var(--muted)}
-
-    /* ======== Small utilities ======== */
-    .spacer{height:12px}
-    .hidden{display:none}
+    :root{--bg:#f7f6f4;--paper:#fff;--ink:#1b1b1b;--muted:#6c6c6c;--brand:#0D2B1E;--brand-2:#174936;--shadow:0 10px 30px rgba(0,0,0,.08);--radius:18px;--container:980px}
+    *{box-sizing:border-box}
+    body{margin:0; background:var(--bg); color:var(--ink); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:42px;height:42px;border-radius:50%;background:linear-gradient(145deg,var(--brand),#123c2c);display:grid;place-items:center;color:#fff;font-weight:700;box-shadow:var(--shadow)}
+    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:20px; margin:0}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .hero{position:relative; overflow:hidden}
+    .hero .cover{height:42vh; min-height:300px; background:#ddd}
+    .hero img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
+    .hero .title{position:absolute; inset:auto 0 24px 0; color:#fff; text-align:center}
+    h2{font-family:"Cormorant Garamond",serif; font-size:42px; margin:0}
+    .grid{display:grid; grid-template-columns:1fr .9fr; gap:22px; margin-top:-36px}
+    .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .section{padding:40px 0}
+    ul{margin:10px 0 0 20px}
+    .meta{display:flex; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:14px; margin:8px 0 14px}
+    .price{font-weight:800}
+    footer{padding:36px 0; color:#9fb3a9; text-align:center}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <section id="tour-pic-saint-loup" class="container">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-inner">
-        <p class="breadcrumbs">Туры • Лангедок • AOP Pic Saint‑Loup</p>
-        <h1>Винный день в AOP Pic Saint‑Loup</h1>
-        <p class="subtitle">Однодневный тур из Монпелье: 3 винодельни, прогулка к руинам шато Монферран, обед среди виноградников.</p>
-        <div class="chips">
-          <span class="chip">⏱️ 1 день</span>
-          <span class="chip">🚗 25–30 мин от Монпелье</span>
-          <span class="chip">🍷 Красные / Розовые (Syrah‑Grenache‑Mourvèdre)</span>
-          <span class="chip">🗣️ RU / FR / EN</span>
-          <span class="chip">📅 Круглый год (лучше апрель–октябрь)</span>
-        </div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="На главную">
+        <div class="logo">Î</div>
+        <h1>Tours Languedoc by Irène</h1>
+      </a>
+      <div style="display:flex; gap:10px">
+        <a class="btn" href="../index.html">← На главную</a>
+        <a class="btn primary" href="#book">Забронировать</a>
       </div>
     </div>
+  </header>
 
-    <div class="spacer"></div>
-
-    <div class="grid">
-      <!-- LEFT: PROGRAM -->
-      <article class="card">
-        <div class="pad">
-          <h2 class="title">Программа дня</h2>
-          <div class="timeline">
-            <div class="slot">
-              <div class="slot-time">09:00</div>
-              <div class="slot-body">
-                <h3>Выезд из Монпелье</h3>
-                <p class="muted">Встреча по адресу вашего отеля/апартаментов. Короткий бриф по безопасности и маршруту.</p>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">09:45–11:00</div>
-              <div class="slot-body">
-                <h3>Domaine de l’Hortus (Valflaunès)</h3>
-                <p class="muted">Визит в хозяйство семьи Orliac у подножия пика: погреб, терруар, дегустация.</p>
-                <div class="actions">
-                  <a class="btn" href="https://maps.google.com/?q=Domaine+de+l%E2%80%99Hortus" target="_blank" rel="noopener">🗺️ Маршрут</a>
-                  <button class="btn" data-book="hortus">📩 Запросить визит</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">11:15–12:30</div>
-              <div class="slot-body">
-                <h3>Прогулка к шато Монферран</h3>
-                <p class="muted">Небольшой трек с панорамами на Pic Saint‑Loup и скалы Орту́с. Обувь с протектором, вода.</p>
-                <div class="actions">
-                  <a class="btn" href="https://maps.google.com/?q=Ch%C3%A2teau+de+Montferrand+Pic+Saint-Loup" target="_blank" rel="noopener">🗺️ Точка старта</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">13:00–14:30</div>
-              <div class="slot-body">
-                <h3>Обед — Auberge du Cèdre (Lauret)</h3>
-                <p class="muted">Сезонное меню, сильная винная карта Pic Saint‑Loup. Бронирование рекомендовано.</p>
-                <div class="actions">
-                  <a class="btn" href="https://maps.google.com/?q=Auberge+du+C%C3%A8dre+Lauret" target="_blank" rel="noopener">🗺️ Адрес</a>
-                  <button class="btn" data-book="cedre">📞 Бронь стола</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">15:00–16:00</div>
-              <div class="slot-body">
-                <h3>Mas Bruguière (Valflaunès)</h3>
-                <p class="muted">Визит «от лозы до бокала», акцент на свежесть и ароматику купажей Syrah‑Grenache.</p>
-                <div class="actions">
-                  <a class="btn" href="https://maps.google.com/?q=Mas+Brugui%C3%A8re+Valflaun%C3%A8s" target="_blank" rel="noopener">🗺️ Маршрут</a>
-                  <button class="btn" data-book="bruguiere">📩 Запросить визит</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">16:20–17:45</div>
-              <div class="slot-body">
-                <h3>Château de Lancyre (Valflaunès)</h3>
-                <p class="muted">Дегустация и «винная прогулка» по их маршруту (при наличии). Кавист‑зал обычно пн–сб.</p>
-                <div class="actions">
-                  <a class="btn" href="https://maps.google.com/?q=Ch%C3%A2teau+de+Lancyre" target="_blank" rel="noopener">🗺️ Маршрут</a>
-                  <button class="btn" data-book="lancyre">📩 Запросить визит</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="slot">
-              <div class="slot-time">18:45</div>
-              <div class="slot-body">
-                <h3>Возвращение в Монпелье</h3>
-                <p class="muted">Доставка к месту сбора или указанному адресу в центре.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- RIGHT: DETAILS -->
-      <aside class="card">
-        <div class="pad">
-          <h2 class="title">Что включено</h2>
-          <ul class="list">
-            <li>Личный гид/водитель на день</li>
-            <li>Планирование и бронирования доменов</li>
-            <li>3 дегустации (по записи, условия зависят от домена)</li>
-            <li>Прогулка к смотровой площадке Монферран</li>
-          </ul>
-
-          <h2 class="title" style="margin-top:14px">Не включено</h2>
-          <ul class="list">
-            <li>Обед (ориентировочно 25–45 € на человека)</li>
-            <li>Личные расходы, вино для покупки</li>
-          </ul>
-
-          <h2 class="title" style="margin-top:14px">Практическая информация</h2>
-          <div class="info-grid">
-            <div class="info-item">🕘 Время: 09:00–19:00</div>
-            <div class="info-item">🚗 Дистанция: ~120 км за день</div>
-            <div class="info-item">🥾 Обувь для трека (1–1.5 ч)</div>
-            <div class="info-item">🌡️ Сезон: апрель–октябрь</div>
-            <div class="info-item">📆 Домены: чаще закрыты вс/праздн.</div>
-            <div class="info-item">🗣️ RU / FR / EN</div>
-          </div>
-
-          <p class="notice" style="margin-top:10px">Примечание: часы работы и условия дегустаций могут меняться; подтвердим при бронировании.
-          </p>
-        </div>
-      </aside>
+  <section class="hero">
+    <div class="cover">
+      <img src="https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1600&auto=format&fit=crop" alt="Pic Saint-Loup — виноградники и домены" />
     </div>
-
-    <div class="spacer"></div>
-
-    <!-- CTA BOOKING FORM -->
-    <section class="card">
-      <div class="pad cta">
-        <h2 class="title">Быстрый запрос / бронирование</h2>
-        <form class="form" id="tourForm" onsubmit="return openMail(event)">
-          <div class="row">
-            <p>
-              <label>Имя</label>
-              <input name="name" required placeholder="Ваше имя" />
-            </p>
-            <p>
-              <label>Контакт (WhatsApp / Email)</label>
-              <input name="contact" required placeholder="+33… или email" />
-            </p>
-          </div>
-          <div class="row">
-            <p>
-              <label>Дата</label>
-              <input type="date" name="date" />
-            </p>
-            <p>
-              <label>Гостей</label>
-              <select name="guests">
-                <option>2</option>
-                <option>3</option>
-                <option selected>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>Группа 7–12</option>
-              </select>
-            </p>
-          </div>
-          <p>
-            <label>Комментарии / пожелания</label>
-            <textarea name="msg" rows="4" placeholder="Предпочтения по винам, ограничения по питанию и т.п."></textarea>
-          </p>
-          <div>
-            <button class="btn primary" type="submit">📩 Отправить запрос</button>
-            <a class="btn" href="https://maps.google.com/?q=Pic+Saint-Loup" target="_blank" rel="noopener">🗺️ Открыть регион на карте</a>
-          </div>
-          <p class="notice">Нажимая «Отправить запрос», вы сформируете письмо со всеми данными. Мы ответим в течение рабочего дня.</p>
-        </form>
-      </div>
-    </section>
-
+    <div class="title"><div class="container"><h2>Винные домены Пик Сен-Лу</h2></div></div>
   </section>
 
-  <!-- Simple mailto composer and quick vendor buttons -->
+  <main class="container section">
+    <div class="grid">
+      <div class="card">
+        <h3>О программе</h3>
+        <div class="meta"><span>Длительность: день</span>·<span>2–3 домена</span>·<span>частный транспорт</span></div>
+        <p>Камерный винный день в <strong>AOP Pic Saint‑Loup</strong>: визиты в 2–3 хозяйства (семейные и признанные), дегустации в шато и на террасах, прогулки по виноградникам с видами на одноимённый пик.</p>
+        <h4>Что включено</h4>
+        <ul>
+          <li>Маршрут и запись на визиты/дегустации</li>
+          <li>Частный трансфер и сопровождение</li>
+          <li>Фотостопы в лучших точках</li>
+          <li>Перевод FR/RU</li>
+        </ul>
+        <h4>По желанию</h4>
+        <ul>
+          <li>Пикник с локальными продуктами</li>
+          <li>Панорамная тропа у подножия пика</li>
+          <li>Подбор бутылок «под вкус» и отправка</li>
+        </ul>
+      </div>
+      <div class="card" id="book">
+        <h3>Бронирование и цена</h3>
+        <p class="price">от 220€ / человек · 1–6 гостей</p>
+        <p class="muted">Точная стоимость зависит от состава группы и выбранных доменов.</p>
+        <form onsubmit="openMail(event)">
+          <label>Имя</label>
+          <input required name="name" placeholder="Ваше имя" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e6e6e6" />
+          <label style="display:block;margin-top:10px">Контакт (WhatsApp/Email)</label>
+          <input required name="contact" placeholder="+33… или email" style="width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e6e6e6" />
+          <label style="display:block;margin-top:10px">Сообщение</label>
+          <textarea name="message" placeholder="Желаемые даты, предпочтения по стилю вин" style="width:100%;min-height:110px;padding:12px 14px;border-radius:12px;border:1px solid #e6e6e6"></textarea>
+          <div style="display:flex; gap:10px; margin-top:14px">
+            <button class="btn primary" type="submit">Отправить</button>
+            <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 — Languedoc, France</div>
+  </footer>
+
   <script>
     function openMail(e){
       e.preventDefault();
-      const f = e.target.closest('form') || document.getElementById('tourForm');
-      const name = encodeURIComponent(f.name.value.trim());
-      const contact = encodeURIComponent(f.contact.value.trim());
-      const date = encodeURIComponent(f.date.value);
-      const guests = encodeURIComponent(f.guests.value);
-      const msg = encodeURIComponent(f.msg.value.trim());
-      const subject = encodeURIComponent('Запрос тура: AOP Pic Saint‑Loup (1 день)');
-      const body = encodeURIComponent(
-        `Имя: ${name}\nКонтакт: ${contact}\nДата: ${date || '—'}\nГостей: ${guests}\n\nСообщение:\n${msg || '—'}\n\nМаршрут: Hortus → Монферран → Auberge du Cèdre → Mas Bruguière → Lancyre.`
-      );
-      // TODO: поменяйте email на ваш рабочий адрес
-      window.location.href = `mailto:booking@example.com?subject=${subject}&body=${body}`;
-      return false;
+      const fd = new FormData(e.target);
+      const subj = encodeURIComponent('Заявка: Винные домены Пик Сен-Лу');
+      const body = encodeURIComponent(`Имя: ${fd.get('name')||''}\nКонтакт: ${fd.get('contact')||''}\nСообщение: ${fd.get('message')||''}`);
+      window.location.href = `mailto:hello@example.com?subject=${subj}&body=${body}`;
     }
-
-    // Quick buttons under timeline
-    document.addEventListener('click', (ev)=>{
-      const btn = ev.target.closest('button[data-book]');
-      if(!btn) return;
-      const tag = btn.getAttribute('data-book');
-      const names = {
-        hortus: 'Domaine de l\u2019Hortus',
-        bruguiere: 'Mas Brugui\u00e8re',
-        lancyre: 'Ch\u00e2teau de Lancyre',
-        cedre: 'Auberge du C\u00e8dre'
-      };
-      const subject = encodeURIComponent(`Бронь/визит: ${names[tag]} — Pic Saint‑Loup`);
-      const body = encodeURIComponent('Здравствуйте! Хочу записаться на визит/стол в указанные даты. Подскажите доступные слоты и условия.');
-      window.location.href = `mailto:booking@example.com?subject=${subject}&body=${body}`;
-    });
-  </script>
-
-  <!-- JSON-LD for SEO (replace provider info and contacts) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    "name": "Винный день в AOP Pic Saint‑Loup",
-    "description": "Однодневный винный тур из Монпелье: три дегустации в доменах Pic Saint‑Loup, прогулка к шато Монферран, обед среди виноградников.",
-    "touristType": ["Wine lovers", "Gastronomy"],
-    "itinerary": {
-      "@type": "ItemList",
-      "itemListElement": [
-        {"@type":"ListItem","position":1,"item":{"@type":"Place","name":"Domaine de l’Hortus","address":{"@type":"PostalAddress","addressLocality":"Valflaunès"}}},
-        {"@type":"ListItem","position":2,"item":{"@type":"Place","name":"Château de Montferrand viewpoint","address":{"@type":"PostalAddress","addressLocality":"Saint-Mathieu-de-Tréviers"}}},
-        {"@type":"ListItem","position":3,"item":{"@type":"Place","name":"Auberge du Cèdre","address":{"@type":"PostalAddress","addressLocality":"Lauret"}}},
-        {"@type":"ListItem","position":4,"item":{"@type":"Place","name":"Mas Bruguière","address":{"@type":"PostalAddress","addressLocality":"Valflaunès"}}},
-        {"@type":"ListItem","position":5,"item":{"@type":"Place","name":"Château de Lancyre","address":{"@type":"PostalAddress","addressLocality":"Valflaunès"}}}
-      ]
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "По запросу",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock"
-    },
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Ваш бренд / Авторские туры",
-      "telephone": "+33 6 00 00 00 00",
-      "email": "booking@example.com",
-      "areaServed": "Pic Saint-Loup, Hérault, France"
-    },
-    "tripOrigin": {
-      "@type":"City",
-      "name": "Montpellier"
-    }
-  }
   </script>
 </body>
 </html>
