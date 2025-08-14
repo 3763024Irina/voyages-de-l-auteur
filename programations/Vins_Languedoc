@@ -171,6 +171,52 @@
   </div>
 </section>
 
+<!-- Маршруты и названия -->
+<section id="routes" class="section">
+  <h2>Маршруты (варианты) — выберите по вкусу</h2>
+  <div class="grid grid-3">
+    <div class="card">
+      <strong>Классика Pic Saint‑Loup</strong>
+      <p class="muted">Hortus → Монферран → Auberge du Cèdre → Mas Bruguière → Lancyre</p>
+      <ul class="muted" style="margin:8px 0 0; padding-left:18px">
+        <li>Старт/финиш: Montpellier</li>
+        <li>Время: ~09:00–19:00</li>
+        <li>Активность: лёгкая прогулка 45–60 мин</li>
+      </ul>
+      <div class="btns" style="margin-top:8px">
+        <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Ch%C3%A2teau%20de%20Lancyre%2C%20Valflaun%C3%A8s&waypoints=Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s%7CCh%C3%A2teau%20de%20Montferrand%2C%20Pic%20Saint-Loup%7CAuberge%20du%20C%C3%A8dre%2C%20Lauret%7CMas%20Brugui%C3%A8re%2C%20Valflaun%C3%A8s&travelmode=driving">🗺️ Открыть маршрут</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>Панорамы и трек</strong>
+      <p class="muted">Hortus → старт трека Монферран → Auberge du Cèdre → Château La Roque → возврат</p>
+      <ul class="muted" style="margin:8px 0 0; padding-left:18px">
+        <li>Старт/финиш: Montpellier</li>
+        <li>Время: ~09:00–19:00</li>
+        <li>Активность: трек к смотровой 60–90 мин</li>
+      </ul>
+      <div class="btns" style="margin-top:8px">
+        <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Montpellier&waypoints=Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s%7CCh%C3%A2teau%20de%20Montferrand%20parking%2C%20Saint-Mathieu-de-Tr%C3%A9viers%7CAuberge%20du%20C%C3%A8dre%2C%20Lauret%7CCh%C3%A2teau%20La%20Roque%2C%20Fontan%C3%A8s&travelmode=driving">🗺️ Открыть маршрут</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <strong>Премиум терруары</strong>
+      <p class="muted">Mas Bruguière → Château La Roque → Lancyre (или Clos Marie/по доступности)</p>
+      <ul class="muted" style="margin:8px 0 0; padding-left:18px">
+        <li>Старт/финиш: Montpellier</li>
+        <li>Время: ~10:00–18:30</li>
+        <li>Активность: без трека, глубокие дегустации</li>
+      </ul>
+      <div class="btns" style="margin-top:8px">
+        <a class="btn link" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Montpellier&waypoints=Mas%20Brugui%C3%A8re%2C%20Valflaun%C3%A8s%7CCh%C3%A2teau%20La%20Roque%2C%20Fontan%C3%A8s%7CCh%C3%A2teau%20de%20Lancyre%2C%20Valflaun%C3%A8s&travelmode=driving">🗺️ Открыть маршрут</a>
+      </div>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:10px">Визиты проводятся по записи; возможны замены доменов на эквивалентные (La Roque, Clos Marie и др.) в зависимости от расписания.</p>
+</section>
+
 <!-- Карта -->
 <section class="section">
   <h2>Маршрут</h2>
