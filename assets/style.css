@@ -54,17 +54,13 @@ nav a.cta:hover{background:var(--brand-2)}
 @media (max-width:640px){ nav ul{display:none} }
 
 /* ===================== HERO ===================== */
-/* фон по умолчанию (если на странице свою картинку не задали) */
 .page-hero{ --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg'); }
-
-/* каркас героя */
 .page-hero{
   position:relative; min-height:44vh;
   display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
 }
 .page-hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
-  /* важно: именно background-image с var(--hero-img) */
   background-image: var(--hero-img);
   background-size: cover; background-position: center; background-repeat: no-repeat;
   filter:brightness(.72); pointer-events:none;
@@ -80,18 +76,27 @@ nav a.cta:hover{background:var(--brand-2)}
 .lead{color:#f7f7f7; max-width:720px}
 .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
 @media (max-width:640px){ .title{font-size:34px} }
-
-/* вариант без стандартного заголовка (детальные страницы) */
 .page-hero.plain{ min-height:36vh }
 .page-hero.plain .title,
 .page-hero.plain .lead,
 .page-hero.plain .actions{ display:none }
 
 /* ===================== CARDS & GRID ===================== */
-.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  align-items:stretch;
+}
 .card{
-  background:var(--paper); border:1px solid #eee; border-radius:var(--radius);
-  overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column
+  background:var(--paper);
+  border:1px solid #eee;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  display:flex;
+  flex-direction:column;
+  height:100%;
 }
 .cover{aspect-ratio:16/10; background:#ddd; position:relative; overflow:hidden}
 .cover img{width:100%; height:100%; object-fit:cover; display:block}
@@ -99,24 +104,35 @@ nav a.cta:hover{background:var(--brand-2)}
   position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94);
   border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px
 }
-.card .body{padding:16px}
+.card .body{
+  padding:16px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
 .card h3{margin:0 0 8px; font-size:20px}
 .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
-.card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
-/* клик по всей карточке, если у неё есть href */
-.card.link { 
-  position: relative; 
+.card .body p{
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
 }
-
-.card.link > a.stretched {
-  position: absolute;
-  inset: 0;               /* растягиваем на весь блок */
-  z-index: 5;             /* поверх содержимого */
-  border-radius: inherit; /* повторяем скругления */
-  text-indent: -9999px;   /* текст скрыт */
+.card .foot{
+  margin-top:auto;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:14px 16px; border-top:1px solid #f0f0f0;
+  position:relative; z-index:10;
 }
-
-
+.card.link{ position:relative; }
+.card.link > a.stretched{
+  position:absolute;
+  top:0; left:0; right:0;
+  bottom:64px;
+  z-index:5;
+  border-radius:inherit;
+  text-indent:-9999px;
+}
 @media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:640px){ .grid{grid-template-columns:1fr} }
 
@@ -135,17 +151,12 @@ nav a.cta:hover{background:var(--brand-2)}
 /* ===================== WINES ===================== */
 .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
 .section-sub{color:var(--muted); margin:0}
-
 .wines{display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0}
-
-/* Контейнер одного ряда (2 вина на десктопе) */
 .wines .wine{
   display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;
   padding:16px; border-radius:16px; background:var(--paper);
   border:1px solid #eee; box-shadow:var(--shadow)
 }
-
-/* Каждое вино: слева бутылка (96px), справа текст */
 .wines .wine > div{
   display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px; align-items:start;
 }
@@ -158,7 +169,6 @@ nav a.cta:hover{background:var(--brand-2)}
 .wines .wine > div h4,
 .wines .wine > div .meta,
 .wines .wine > div .notes{ grid-column:2 }
-
 .wine h4{margin:0 0 6px; font-size:18px; line-height:1.2}
 .wine .meta{display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
 .pill{
@@ -170,16 +180,14 @@ nav a.cta:hover{background:var(--brand-2)}
   display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800;
   border:1px solid #e4d7b6; background:#E9DFC5
 }
-
 @media (max-width:1000px){
-  .wines .wine{ grid-template-columns:1fr; } /* по одному в ряд на узких */
+  .wines .wine{ grid-template-columns:1fr; }
 }
 
 /* ===================== FOOTER ===================== */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
-
-/* ---------- ЖЁСТКИЙ ФИКС ПОДЛОЖКИ ГЕРОЯ (на случай перезаписи где-то ещё) ---------- */
 .page-hero::before{ background-image: var(--hero-img) !important; }
+
 /* ===== Domaine de Belle Mare: фото внутри aside ===== */
 #domaine-belle-mare .domain-photo { margin-top:10px; }
 #domaine-belle-mare .domain-photo img {
@@ -191,28 +199,17 @@ footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 }
 
 /* WhatsApp */
-<style>
-  /* Локальный фон героя (как у Belle Mare, но со своим фото) */
-  .page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
-
-  /* WhatsApp */
-  .btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
-  .btn.wa:hover{ filter:brightness(.95); }
-
-  nav a.wa{
-    background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
-  }
-  nav a.wa:hover{ background:#21be5a; }
-
-  /* Плавающая круглая кнопка в углу (опционально) */
-  .wa-fab{
-    position:fixed; right:22px; bottom:22px; z-index:60;
-    width:56px; height:56px; border-radius:50%;
-    display:grid; place-items:center; background:#25D366; color:#fff;
-    box-shadow:0 12px 28px rgba(0,0,0,.22);
-  }
-  .wa-fab:hover{ filter:brightness(.95); }
-  .wa-fab svg{ width:28px; height:28px; display:block; }
-</style>
-
+.page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
+.btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
+.btn.wa:hover{ filter:brightness(.95); }
+nav a.wa{ background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow); }
+nav a.wa:hover{ background:#21be5a; }
+.wa-fab{
+  position:fixed; right:22px; bottom:22px; z-index:60;
+  width:56px; height:56px; border-radius:50%;
+  display:grid; place-items:center; background:#25D366; color:#fff;
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+}
+.wa-fab:hover{ filter:brightness(.95); }
+.wa-fab svg{ width:28px; height:28px; display:block; }
 
