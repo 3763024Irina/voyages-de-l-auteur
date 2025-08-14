@@ -307,4 +307,35 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #tours .card .cover{ height: 160px; }
 }
+/* --- Компактный размер карточек в секции «Почему с нами» --- */
+#why .card .cover{
+  height: 180px;      /* задай нужную высоту (можно 160–200px) */
+  aspect-ratio: auto; /* сбрасываем старое 16/10 */
+}
+
+#why .card .body{
+  padding: 12px 14px; /* чуть меньше отступы — карточка визуально легче */
+}
+
+#why .card h3{
+  font-size: 18px;
+  margin: 0 0 6px;
+}
+
+#why .card p{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;     /* максимум 2 строки описания */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Стретч-ссылка по карточке не перекрывает футер/кнопки, если они появятся */
+#why .card.link > a.stretched{
+  bottom: 64px; /* оставить место на «футер» карточки при необходимости */
+}
+
+/* На мобильных ещё компактнее */
+@media (max-width: 640px){
+  #why .card .cover{ height: 150px; }
+}
 
