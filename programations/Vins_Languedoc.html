@@ -4,10 +4,11 @@
   <meta charset="utf-8" />
   <title>Вокруг лагуны Тау — LUX визит на день | Oysters • Wine • Sea</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="LUX-программа на день вокруг лагуны Тау (Étang de Thau): частный катер к устричным столам, дегустации у фермеров, обед у воды, Picpoul de Pinet domaine, Noilly Prat Private, закат у Phare des Onglous." />
+  <meta name="description" content="LUX-программа на день вокруг лагуны Тау (Étang de Thau): катер к устричным столам, дегустации у фермеров, обед у воды, domaine Picpoul de Pinet, частная программа Noilly Prat, визит в Musée de l’étang de Thau (Bouzigues)." />
   <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=7" />
   <style>
     :root{ --max: 1040px; --muted: rgba(0,0,0,.6); --pill-bg: rgba(0,0,0,.06); --accent:#2a6 }
+    *{box-sizing:border-box}
     .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px}
     .hero{position:relative;border-radius:16px;overflow:hidden;min-height:44vh;display:grid;place-items:end start;padding:24px;color:#fff;background:#111}
     .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:url('/voyages-de-l-auteur/assets/etang/etang-hero.jpg') center/cover no-repeat;filter:brightness(.6)}
@@ -40,6 +41,8 @@
     .mapbox{border-radius:12px;overflow:hidden;background:#f4f4f4;aspect-ratio:16/10;display:grid;place-items:center;color:var(--muted);border:1px dashed rgba(0,0,0,.15)}
     form label{display:block;margin:10px 0 6px;font-weight:600}
     form input,form select,form textarea{width:100%;padding:12px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.12);background:#fff}
+    /* tiny tester */
+    .testpanel{font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#0a0;padding:8px;border:1px solid #dfe; background:#f6fff6;border-radius:10px;margin:10px 0;display:none}
   </style>
 </head>
 <body>
@@ -58,7 +61,7 @@
   <div>
     <span class="pill">🦪🍷 Étang de Thau • LUX Day</span>
     <h1>Вокруг лагуны Тау — LUX визит на день</h1>
-    <p class="muted" style="max-width:60ch">Катер к устричным столам, дегустации у фермеров, обед у воды, domaine Picpoul de Pinet, частная экскурсия Noilly Prat и закат у Phare des Onglous.</p>
+    <p class="muted" style="max-width:60ch">Катер к устричным столам, дегустации у фермеров, обед у воды, domaine Picpoul de Pinet, частная программа Noilly Prat и визит в Musée de l’étang de Thau.</p>
     <div style="display:flex;gap:10px;margin-top:10px">
       <a href="#book" class="btn">Бронировать</a>
       <a href="#plan" class="btn secondary">Программа дня</a>
@@ -83,7 +86,6 @@
           <a class="btn link" target="_blank" rel="noopener" href="https://maps.google.com/?q=Bouzigues+port">🗺️ Bouzigues</a>
           <a class="btn link" target="_blank" rel="noopener" href="https://maps.google.com/?q=M%C3%A8ze+port">🗺️ Mèze</a>
         </div>
-      </div>
       </div>
 
       <div class="row">
@@ -115,7 +117,6 @@
         <div class="btns">
           <a class="btn link" target="_blank" rel="noopener" href="https://maps.google.com/?q=Mus%C3%A9e+de+l%27%C3%89tang+de+Thau">🗺️ Musée de l’étang de Thau</a>
         </div>
-      </div>
       </div>
 
       <div class="row">
@@ -195,14 +196,65 @@
 
 <footer class="wrap" style="padding-top:8px;padding-bottom:34px"><div class="muted">© Tours Languedoc by Irène</div></footer>
 
+<div class="wrap testpanel" id="testpanel" aria-hidden="true"></div>
+
 <script>
+// ===== Guard against noisy Metamask errors in sandboxed viewers =====
+window.addEventListener('error', function(e){
+  if(/metamask|ethereum/i.test(String(e.message||''))){
+    console.warn('[silenced] ', e.message);
+    e.preventDefault();
+  }
+});
+window.addEventListener('unhandledrejection', function(e){
+  const msg = String(e.reason && (e.reason.message||e.reason) || '');
+  if(/metamask|ethereum/i.test(msg)){
+    console.warn('[silenced] unhandledrejection:', msg);
+    e.preventDefault();
+  }
+});
+
+// ===== Mail builder (pure) + handler =====
+function buildMailtoURL(data){
+  const esc = encodeURIComponent;
+  const subject = 'LUX Day [Etang de Thau]';
+  const body = `Имя:${data.name||''}\nКонтакт:${data.contact||''}\nСтарт:${data.start||''}\nДата:${data.date||''}\nГостей:${data.guests||''}\nПожелания:\n${data.msg||''}`;
+  return `mailto:hello@your-domain.fr?subject=${esc(subject)}&body=${esc(body)}`;
+}
 function openMail(e){
   e.preventDefault();
-  const f=e.target; const name=encodeURIComponent(f.name.value); const contact=encodeURIComponent(f.contact.value);
-  const start=encodeURIComponent(f.start.value); const date=encodeURIComponent(f.date.value); const guests=encodeURIComponent(f.guests.value||'');
-  const msg=encodeURIComponent(f.msg.value);
-  location.href=`mailto:hello@your-domain.fr?subject=LUX%20Day%20%5BEtang%20de%20Thau%5D&body=Имя:${name}%0AКонтакт:${contact}%0AСтарт:${start}%0AДата:${date}%0AГостей:${guests}%0AПожелания:%0A${msg}`;
+  const f=e.target;
+  const data={
+    name:f.name.value, contact:f.contact.value, start:f.start.value,
+    date:f.date.value, guests:(f.guests && f.guests.value)||'', msg:f.msg.value
+  };
+  window.location.href = buildMailtoURL(data);
 }
+window.openMail = openMail;
+
+// ===== Tiny tests (run in console-friendly way, no external deps) =====
+(function runTests(){
+  const out = [];
+  function ok(name, cond){ out.push(`${cond? '✅':'❌'} ${name}`); return !!cond; }
+  // Test 1: mailto builder contains all fields
+  const m = buildMailtoURL({name:'Ирэн',contact:'test@example.com',start:'Montpellier',date:'2025-08-20',guests:'4',msg:'Без устриц'});
+  const pass1 = /mailto:/.test(m) && /subject=/.test(m) && /Ирэн/.test(decodeURIComponent(m));
+  ok('buildMailtoURL — базовая сборка', pass1);
+  // Test 2: handler exists
+  ok('openMail — функция определена', typeof openMail === 'function');
+  // Test 3: страница не содержит кода MetaMask
+  const html = document.documentElement.outerHTML;
+  ok('Нет прямых обращений к MetaMask/window.ethereum', !/window\.ethereum|MetaMask/i.test(html));
+  // Test 4: есть кнопка «Открыть маршрут» с корректной ссылкой
+  const route = document.querySelector('a.btn[href*="google.com/maps/dir/"]');
+  ok('Ссылка маршрута присутствует', !!route);
+  if(route) ok('Ссылка маршрута — https', /^https:\/\//.test(route.href));
+
+  // Render hidden panel (dev only)
+  const panel = document.getElementById('testpanel');
+  if(panel){ panel.textContent = out.join('\n'); /*panel.style.display='block';*/ }
+  console.log('%cLUX page tests:\n' + out.join('\n'), 'color:#0a0');
+})();
 </script>
 
 <!-- JSON-LD -->
@@ -211,14 +263,14 @@ function openMail(e){
   "@context": "https://schema.org",
   "@type": "TouristTrip",
   "name": "Вокруг лагуны Тау — LUX визит на день",
-  "description": "Катер к устричным столам, дегустации у фермеров, обед у воды, domaine Picpoul de Pinet, частная экскурсия Noilly Prat и закат у Phare des Onglous.",
+  "description": "Катер к устричным столам, дегустации у фермеров, обед у воды, domaine Picpoul de Pinet, частная программа Noilly Prat и визит в Musée de l’étang de Thau (Bouzigues).",
   "touristType": ["Luxury", "Wine & Oysters"],
   "itinerary": {"@type": "ItemList","itemListElement": [
     {"@type":"ListItem","position":1,"item":{"@type":"Place","name":"Bouzigues port"}},
     {"@type":"ListItem","position":2,"item":{"@type":"Place","name":"Mèze port"}},
     {"@type":"ListItem","position":3,"item":{"@type":"Place","name":"Picpoul de Pinet domaine"}},
     {"@type":"ListItem","position":4,"item":{"@type":"Place","name":"Maison Noilly Prat"}},
-    {"@type":"ListItem","position":5,"item":{"@type":"Place","name":\"Musée de l’étang de Thau (Bouzigues)\"}}
+    {"@type":"ListItem","position":5,"item":{"@type":"Place","name":"Musée de l’étang de Thau (Bouzigues)"}}
   ]},
   "offers": {"@type":"Offer","price":"По запросу","priceCurrency":"EUR"},
   "provider": {"@type":"LocalBusiness","name":"Tours Languedoc by Irène","areaServed":"Hérault, France"}
