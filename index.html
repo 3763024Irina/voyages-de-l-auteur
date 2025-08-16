@@ -24,15 +24,12 @@
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}    
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
-
-    /* Topbar */
     .topbar{height:38px; display:flex; align-items:center; justify-content:center; padding:0 14px; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)}
     .topbar .inner{width:100%; max-width:var(--container); display:flex; align-items:center; justify-content:space-between}
     .lang{display:flex; gap:10px; font-weight:600}
     .lang a{color:#e9e9e9; text-decoration:none; opacity:.8}
     .lang a.active{opacity:1; text-decoration:underline}
     .topbar .note{font-size:13px; opacity:.9}
-
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
     .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:14px}
@@ -44,8 +41,6 @@
     nav a:hover{background:#f0f0f0}
     .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow)}
     .cta:hover{background:var(--brand-2)}
-
-    /* Hero */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
@@ -56,16 +51,10 @@
     .hero .card{background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
     .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .tag{font-size:13px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid #e8e8e8; background:#fff}
-
-    /* Filters */
     .filters{display:flex; flex-wrap:wrap; gap:10px; margin:34px 0}
     .chip{padding:10px 14px; border-radius:999px; border:1px solid #e6e6e6; background:#fff; font-weight:600; cursor:pointer}
     .chip.active{background:var(--brand); color:#fff; border-color:var(--brand)}
-
-    /* Tours grid (равные карточки) */
     .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch}
-
-    /* Unified card layout & sizing */
     .card{position:relative; background:var(--paper); border:1px solid #eee; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:grid; grid-template-rows:auto 1fr auto; height:100%}
     .card .cover{aspect-ratio:16/10; background:#ddd; position:relative}
     .badge{position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94); border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px}
@@ -78,16 +67,10 @@
     .price{font-weight:800}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-
-    /* Clickable card overlay when href exists */
     .card > a.stretched{position:absolute; inset:0; z-index:1; text-indent:-9999px}
-
-    /* Sections */
     section{padding:64px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:36px; margin:0 0 10px}
     .section-sub{color:var(--muted); margin:0 0 26px}
-
-    /* About, Reviews, Contact */
     .about{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center}
     .about .portrait{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)}
     .about p{line-height:1.6}
@@ -100,14 +83,10 @@
     label{display:block; font-size:13px; color:var(--muted); margin:12px 0 6px}
     input, select, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px}
-
-    /* Footer */
     footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3; text-decoration:none}
     .copy{margin-top:24px; font-size:13px; color:#9fb3a9}
-
-    /* Responsive */
     @media (max-width: 1000px){
       .grid{grid-template-columns:repeat(2,1fr)}
       .about,.contact,.hero .inner{grid-template-columns:1fr}
@@ -132,7 +111,6 @@
       </div>
     </div>
     <div class="container nav">
-      <!-- Бренд — теперь ссылка на главную -->
       <a class="brand" href="index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
         <div>
@@ -161,8 +139,6 @@
       <div>
         <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
         <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
-
-        <!-- Чипы (оставляем, и они ведут на нужные страницы) -->
         <div class="tags">
           <a class="tag" href="programations/Picpoul_%26_Hu%C3%AEtres.html">Устрицы & Étang de Thau</a>
           <a class="tag" href="programations/Vins_Languedoc.html">Вино и Домены</a>
@@ -200,11 +176,11 @@
     </div>
   </section>
 
+  <!-- WHY -->
   <section id="why" class="container">
     <h3 class="section-title" data-i18n="why.title">Почему с нами</h3>
     <p class="section-sub" data-i18n="why.sub">Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.</p>
     <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-      <!-- 1-я карточка: Устрицы -->
       <article class="card">
         <a class="stretched" href="programations/Picpoul_%26_Hu%C3%AEtres.html" aria-label="Программы дегустаций — лагуна Thau"></a>
         <div class="cover">
@@ -220,7 +196,6 @@
         </div>
       </article>
 
-      <!-- Карточка: Винные домены Пик Сен-Лу (поправлен href на .html) -->
       <article class="card">
         <a class="stretched" href="programations/Vins_Languedoc.html" aria-label="Винодегустации — Лангедок"></a>
         <div class="cover">
@@ -236,25 +211,24 @@
         </div>
       </article>
 
-     <!-- Замените ВЕСЬ блок 3-й карточки на этот -->
-<article class="card">
-  <!-- Кликабельная «подложка» как у остальных карточек -->
-  <a class="stretched" href="programations/bezier_sunset.html" aria-label="Программа — закат в Бэзье"></a>
+      <article class="card">
+        <a class="stretched" href="programations/bezier_sunset.html" aria-label="Программа — закат в Бэзье"></a>
+        <div class="cover">
+          <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1200&auto=format&fit=crop" alt="Канал дю Миди">
+        </div>
+        <div class="body">
+          <h3 data-i18n="why.3.title">История и стиль</h3>
+          <p data-i18n="why.3.text">Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.</p>
+        </div>
+        <div class="foot">
+          <span class="price">Подробнее</span>
+          <a class="btn" href="programations/bezier_sunset.html">Открыть программу</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-  <div class="cover">
-    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1200&auto=format&fit=crop" alt="Замки и история">
-  </div>
-  <div class="body">
-    <h3 data-i18n="why.3.title">История и стиль</h3>
-    <p data-i18n="why.3.text">«Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.</p>
-  </div>
-  <div class="foot">
-    <span class="price">Подробнее</span>
-    <!-- Вместо alert теперь ведём на страницу программы -->
-    <a class="btn" href="programations/bezier_sunset.html">Открыть программу</a>
-  </div>
-</article>
-
+  <!-- TOURS -->
   <section id="tours" class="container">
     <div style="display:flex; align-items:end; justify-content:space-between; gap:16px">
       <div>
@@ -266,6 +240,7 @@
     <div class="grid" id="grid"></div>
   </section>
 
+  <!-- FORMAT -->
   <section id="format" class="container">
     <h3 class="section-title" data-i18n="format.title">Формат путешествий</h3>
     <div class="grid" style="grid-template-columns:repeat(3,1fr)">
@@ -275,7 +250,7 @@
           <h3 data-i18n="format.1.title">Приватно и удобно</h3>
           <p data-i18n="format.1.text">Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.</p>
         </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
+        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
       </article>
       <article class="card">
         <div class="cover"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Локальные домены"></div>
@@ -283,7 +258,7 @@
           <h3 data-i18n="format.2.title">Без посредников</h3>
           <p data-i18n="format.2.text">Работаем напрямую с доменами и фермерами — честный продукт и цены.</p>
         </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
+        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
       </article>
       <article class="card">
         <div class="cover"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="Средиземное море"></div>
@@ -291,11 +266,12 @@
           <h3 data-i18n="format.3.title">Море и актив</h3>
           <p data-i18n="format.3.text">SUP, каяк, снорклинг — по погоде и желанию группы.</p>
         </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
+        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
       </article>
     </div>
   </section>
 
+  <!-- ABOUT -->
   <section id="about" class="container">
     <h3 class="section-title" data-i18n="about.title">О нас</h3>
     <div class="about">
@@ -311,6 +287,7 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact" class="container">
     <h3 class="section-title" data-i18n="contact.title">Контакты и бронь</h3>
     <div class="contact">
@@ -362,15 +339,7 @@
   </dialog>
 
   <script>
-    <script>
- RU
- dict.ru['card.more'] = 'Подробнее';
- dict.ru['card.open'] = 'Открыть программу';
- FR
- dict.fr['card.more'] = 'Détails';
- dict.fr['card.open'] = 'Ouvrir le programme';
-</script>
-    // Simple i18n RU/FR
+    // i18n RU/FR
     const dict = {
       ru: {
         'top.note': 'Авторские туры по Югу Франции',
@@ -381,8 +350,7 @@
         'form.name': 'Имя', 'form.contact': 'Контакт (WhatsApp/Email)', 'form.interest': 'Интересы', 'form.msg': 'Сообщение', 'form.send': 'Отправить', 'form.whatsapp':'Написать в WhatsApp',
         'why.title': 'Почему с нами', 'why.sub': 'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
         'why.1.title': 'Гастрономия у истоков', 'why.1.text': 'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
-        'why.2.title': 'Природа и актив', 'why.2.text': 'Пешеходные маршруты, каяк и SUP на Средиземном море, ущелья и панорамы.',
-        'why.3.title': 'История и стиль', 'why.3.text': 'Каркасон, аббатства, рыцарские легенды — со вкусом и без толп.',
+        'why.3.title': 'История и стиль', 'why.3.text': 'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
         'tours.title': '10 программ на выбор', 'tours.sub': 'Однодневные, полудневные и уик-энд туры. Индивидуально 1–6 гостей или мини-группа.',
         'format.title': 'Формат путешествий',
         'format.1.title':'Приватно и удобно', 'format.1.text':'Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.',
@@ -400,14 +368,13 @@
         'form.name': 'Nom', 'form.contact': 'Contact (WhatsApp/Email)', 'form.interest': 'Intérêts', 'form.msg': 'Message', 'form.send': 'Envoyer', 'form.whatsapp':'Écrire sur WhatsApp',
         'why.title': 'Pourquoi nous', 'why.sub': 'Expertise locale, transport privé, focus gastronomie et nature.',
         'why.1.title': 'Gastronomie à la source', 'why.1.text': 'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
-        'why.2.title': 'Nature & activités', 'why.2.text': 'Randonnées, kayak et paddle en Méditerranée, gorges et panoramas.',
-        'why.3.title': 'Histoire & style', 'why.3.text': 'Carcassonne, abbayes, légendes — sans foules.',
+        'why.3.title': 'Histoire & style', 'why.3.text': 'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
         'tours.title': '10 programmes au choix', 'tours.sub': 'Demi-journée, journée, week-end. 1–6 personnes ou mini-groupe.',
         'format.title': 'Format des voyages',
-        'format.1.title':'Privé & confortable', 'format.1.text':'Transport privé, rythme flexible, arrêts à la demande, meilleurs points de vue.',
+        'format.1.title':'Privé & confortable', 'format.1.text':'Transport privé, rythme flexible, meilleurs points de vue.',
         'format.2.title':'Sans intermédiaires', 'format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
         'format.3.title':'Mer & activités', 'format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
-        'about.title':'À propos', 'about.text':'Je suis Irène, basée en Languedoc, j’organise des voyages intimistes et raffinés. Je fais sentir la région par la gastronomie, la mer, les montagnes et l’histoire. FR/RU.',
+        'about.title':'À propos', 'about.text':'Je suis Irène, basée en Languedoc, j’organise des voyages intimistes et raffinés. FR/RU.',
         'contact.title':'Contacts & réservation', 'contact.area':'Région'
       }
     };
@@ -425,7 +392,7 @@
     langLinks.forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); applyLang(a.dataset.lang)}));
     applyLang(localStorage.getItem('site:lang')||'ru');
 
-    // Mail opener for forms
+    // Mail opener
     function openMail(e){
       e.preventDefault();
       const fd = new FormData(e.target);
@@ -493,7 +460,7 @@
       m.showModal();
     }
 
-    // ======= Equalize card heights across sections =======
+    // ======= Equalize card heights =======
     function equalize(selector){
       const els = [...document.querySelectorAll(selector)];
       if(!els.length) return;
@@ -509,9 +476,10 @@
     let eqTimer;
     window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
     window.addEventListener('load', equalizeAll);
-    </script>
+  </script>
+
   <script>
-    // ======= Smart resolver for possibly mismatched file names / paths (Azure Blob is case-sensitive) =======
+    // Smart resolver for possibly mismatched file names / paths
     const programCandidates = {
       Vins_Languedoc: [
         'programations/Vins_Languedoc.html',
@@ -529,7 +497,6 @@
       const list = programCandidates[key]||[];
       for(const u of list){ if(await tryHead(u)){ location.href = u; return; } }
     }
-    // Intercept clicks to any Vins_Languedoc links and resolve to an existing blob
     document.addEventListener('click', (e)=>{
       const a = e.target.closest('a');
       if(!a) return;
@@ -542,4 +509,3 @@
   </script>
 </body>
 </html>
-
