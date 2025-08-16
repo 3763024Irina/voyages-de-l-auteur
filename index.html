@@ -236,20 +236,24 @@
         </div>
       </article>
 
-      <!-- 3-я -->
-      <article class="card">
-        <div class="cover"><img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1200&auto=format&fit=crop" alt="Замки и история"></div>
-        <div class="body">
-          <h3 data-i18n="why.3.title">История и стиль</h3>
-          <p data-i18n="why.3.text">Каркасон, аббатства, рыцарские легенды — со вкусом и без толп.</p>
-        </div>
-        <div class="foot">
-          <span class="price">—</span>
-          <button class="btn" onclick="alert('Скоро будет отдельная программа')">Подробнее</button>
-        </div>
-      </article>
-    </div>
-  </section>
+     <!-- Замените ВЕСЬ блок 3-й карточки на этот -->
+<article class="card">
+  <!-- Кликабельная «подложка» как у остальных карточек -->
+  <a class="stretched" href="programations/bezier_sunset.html" aria-label="Программа — закат в Бэзье"></a>
+
+  <div class="cover">
+    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1200&auto=format&fit=crop" alt="Замки и история">
+  </div>
+  <div class="body">
+    <h3 data-i18n="why.3.title">История и стиль</h3>
+    <p data-i18n="why.3.text">Каркасон, аббатства, рыцарские легенды — со вкусом и без толп.</p>
+  </div>
+  <div class="foot">
+    <span class="price">Подробнее</span>
+    <!-- Вместо alert теперь ведём на страницу программы -->
+    <a class="btn" href="programations/bezier_sunset.html">Открыть программу</a>
+  </div>
+</article>
 
   <section id="tours" class="container">
     <div style="display:flex; align-items:end; justify-content:space-between; gap:16px">
