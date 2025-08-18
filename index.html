@@ -377,21 +377,32 @@
     }
   };
 
-  // ===== Переключение языка + перерисовка карточек =====
-  function getLang(){ return localStorage.getItem('site:lang') || 'ru'; }
-  const langLinks = document.querySelectorAll('.lang a');
-  function applyLang(l){
-    document.documentElement.lang = l;
-    for(const el of document.querySelectorAll('[data-i18n]')){
-      const k = el.getAttribute('data-i18n');
-      if(dict[l] && dict[l][k]) el.textContent = dict[l][k];
-    }
-    langLinks.forEach(a=>a.classList.toggle('active', a.dataset.lang===l));
-    localStorage.setItem('site:lang', l);
-    render(); // ⟵ ключевое: перерисовать карточки под текущий язык
+// ===== Переключение языка + перерисовка карточек =====
+function getLang(){ return localStorage.getItem('site:lang') || 'ru'; }
+
+const langLinks = document.querySelectorAll('.lang a');
+
+function applyLang(l){
+  document.documentElement.lang = l;
+
+  for (const el of document.querySelectorAll('[data-i18n]')) {
+    const k = el.getAttribute('data-i18n');
+    if (dict[l] && dict[l][k]) el.textContent = dict[l][k];
   }
-  langLinks.forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); applyLang(a.dataset.lang)}));
-  applyLang(getLang());
+
+  langLinks.forEach(a => a.classList.toggle('active', a.dataset.lang === l));
+  localStorage.setItem('site:lang', l);
+
+  // Перерисовать карточки под текущий язык, но только если render уже есть
+  if (typeof render === 'function') render();
+}
+
+langLinks.forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  applyLang(a.dataset.lang);
+}));
+
+// ⚠️ ВАЖНО: Не вызываем applyLang(getLang()) здесь!
 
   // Mail opener (без изменений)
   function openMail(e){
@@ -564,7 +575,9 @@
     grid.innerHTML = tours.map(cardHTML).join('');
     if(typeof equalizeAll==='function') equalizeAll();
   }
-  render();
+// ...объявлены tours, cardHTML, render() ...
+render();                 // первый рендер карточек
+applyLang(getLang());     // теперь безопасно применяем язык (перерисует при необходимости)
 
   function openTour(item){
     const m = document.getElementById('tourModal');
