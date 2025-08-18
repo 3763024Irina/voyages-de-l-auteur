@@ -452,26 +452,28 @@ const tours = [
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); b.classList.add('active');
     }); filters.appendChild(b)});
 
-    function cardHTML(item){
-      const badge = item.b ? `<span class="badge">${badges[item.b]}</span>` : '';
-      const overlayLink = item.href ? `<a class="stretched" href="${item.href}" aria-label="${item.t}"></a>` : '';
-      const openBtn = item.href
-        ? `<a class="btn" href="${item.href}">Открыть программу</a>`
-        : `<button class="btn" onclick='openTour(${JSON.stringify(item).replace(/'/g,"&#39;")})'>Подробнее</button>`;
+   function cardHTML(item){
+  const url = item.href ? resolveHref(item.href) : '';
+  const badge = item.b ? `<span class="badge">${badges[item.b]}</span>` : '';
+  const overlayLink = item.href ? `<a class="stretched" href="${url}" aria-label="${item.t}"></a>` : '';
+  const openBtn = item.href
+    ? `<a class="btn" href="${url}">Открыть программу</a>`
+    : `<button class="btn" onclick='openTour(${JSON.stringify(item).replace(/'/g,"&#39;")})'>Подробнее</button>`;
+  return `
+    <article class="card">
+      ${overlayLink}
+      <div class="cover">${badge}<img src="${item.c}" alt="${item.t}"></div>
+      <div class="body">
+        <h3>${item.t}</h3>
+        <div class="meta"><span>${item.d}</span></div>
+      </div>
+      <div class="foot">
+        <div class="price">${item.p}</div>
+        ${openBtn}
+      </div>
+    </article>`;
 
-      return `
-        <article class="card">
-          ${overlayLink}
-          <div class="cover">${badge}<img src="${item.c}" alt="${item.t}"></div>
-          <div class="body">
-            <h3>${item.t}</h3>
-            <div class="meta"><span>${item.d}</span></div>
-          </div>
-          <div class="foot">
-            <div class="price">${item.p}</div>
-            ${openBtn}
-          </div>
-        </article>`;
+
     }
 
     function render(){ grid.innerHTML = tours.map(cardHTML).join(''); equalizeAll(); }
