@@ -109,18 +109,16 @@
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène</h1></div>
       </a>
-<nav>
-  <ul>
-    <li><a href="../index.html" data-i18n="nav.home">На главную</a></li>
-    <li><a href="../index.html#tours" data-i18n="nav.all">← Все программы</a></li>
-    <li><a href="#program" data-i18n="nav.program">Программа</a></li>
-    <li><a href="#inc" data-i18n="nav.included">Что включено</a></li>
-    <li><a href="#price" data-i18n="nav.price">Цена</a></li>
-    <li><a class="cta" href="#contact" data-i18n="nav.book">Забронировать</a></li>
-  </ul>
-</nav>
-
-
+      <nav>
+        <ul>
+          <li><a href="../index.html" data-i18n="nav.home">На главную</a></li>
+          <li><a href="../index.html#tours" data-i18n="nav.all">← Все программы</a></li>
+          <li><a href="#program" data-i18n="nav.program">Программа</a></li>
+          <li><a href="#inc" data-i18n="nav.included">Что включено</a></li>
+          <li><a href="#price" data-i18n="nav.price">Цена</a></li>
+          <li><a class="cta" href="#contact" data-i18n="nav.book">Забронировать</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -148,7 +146,7 @@
         <form onsubmit="openMail(event)">
           <label data-i18n="form.name">Имя</label>
           <input required name="name" placeholder="Ваше имя" />
-          <label data-i18n="form.contact">Контакт (Telegram/Email)</label>
+          <label data-i18n="form.contact">Контакт (WhatsApp/Telegram/Email)</label>
           <input required name="contact" placeholder="+33… или email" />
           <label data-i18n="form.dates">Даты</label>
           <input name="message" placeholder="Желаемые даты / кол-во гостей" />
@@ -244,31 +242,39 @@
     const dict = {
       ru: {
         'top.note':'Авторские туры по Югу Франции',
+        'nav.home':'На главную',
+        'nav.all':'← Все программы',
         'nav.program':'Программа','nav.included':'Что включено','nav.price':'Цена','nav.book':'Забронировать',
         'hero.title':'LUX Étang de Thau — 1 день',
         'hero.text':'Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — формат «relax & taste».',
         'badge.oysters':'🦪 Устрицы','badge.onwater':'🌊 С воды','badge.tastings':'🍷 Дегустации','badge.nowalks':'🕊 Без пеших треков','badge.transfer':'🚐 Трансфер от/до отеля',
-        'form.fast':'Быстрый запрос','form.sub':'Напишите пожелания — предложим время старта и брони.','form.name':'Имя','form.contact':'Контакт (WhatsApp/Email)','form.dates':'Даты','form.send':'Отправить','form.whatsapp':'Написать в WhatsApp',
+        'form.fast':'Быстрый запрос','form.sub':'Напишите пожелания — предложим время старта и брони.',
+        'form.name':'Имя','form.contact':'Контакт (WhatsApp/Telegram/Email)','form.dates':'Даты','form.send':'Отправить','form.whatsapp':'Написать в WhatsApp',
         'program.title':'Программа дня','program.sub':'Тайминг гибкий и может меняться по погоде.',
         'inc.title':'Что включено','ex.title':'Не включено','opt.title':'Опции',
         'price.title':'Стоимость','price.main':'<strong>1 190 € за 1–2 гостей</strong>','price.extra':'+ <strong>160 €</strong> за каждого сверх 2 (макс. 6 гостей)','price.notes':'Уик-энд/пик сезона (марины): +90 €. Продление до заката: +220 €.',
         'pract.title':'Практика',
         'map.title':'Карта дня','map.sub':'Основные точки маршрута вокруг лагуны Thau.',
-        'contact.title':'Бронь и вопросы','contact.sub':'Ответим в течение дня и подтвердим доступность лодки/слотов.','contact.email':'Написать на Email','contact.back':'← Вернуться к программам'
+        'contact.title':'Бронь и вопросы','contact.sub':'Ответим в течение дня и подтвердим доступность лодки/слотов.','contact.email':'Написать на Email','contact.back':'← Вернуться к программам',
+        'ph.name':'Ваше имя','ph.contact':'+33… или email','ph.dates':'Желаемые даты / кол-во гостей'
       },
       fr: {
         'top.note':'Voyages sur mesure dans le Sud de la France',
+        'nav.home':'Accueil',
+        'nav.all':'← Toutes les offres',
         'nav.program':'Programme','nav.included':'Inclus','nav.price':'Tarifs','nav.book':'Réserver',
         'hero.title':'LUX Étang de Thau — 1 jour',
         'hero.text':'Bateau privé sur la lagune avec dégustation d’huîtres, déjeuner chez Tarbouriech, visite Noilly Prat et final vin. Transfert hôtel A/R. Sans marche — «relax & taste».',
         'badge.oysters':'🦪 Huîtres','badge.onwater':'🌊 Sur l’eau','badge.tastings':'🍷 Dégustations','badge.nowalks':'🕊 Sans marche','badge.transfer':'🚐 Transfert hôtel A/R',
-        'form.fast':'Demande rapide','form.sub':'Dites vos souhaits — on propose un horaire et la réservation.','form.name':'Nom','form.contact':'Contact (WhatsApp/Email)','form.dates':'Dates','form.send':'Envoyer','form.whatsapp':'Écrire sur WhatsApp',
+        'form.fast':'Demande rapide','form.sub':'Dites vos souhaits — on propose un horaire et la réservation.',
+        'form.name':'Nom','form.contact':'Contact (WhatsApp/Telegram/Email)','form.dates':'Dates','form.send':'Envoyer','form.whatsapp':'Écrire sur WhatsApp',
         'program.title':'Programme de la journée','program.sub':'Timing flexible selon la météo.',
         'inc.title':'Inclus','ex.title':'Non inclus','opt.title':'Options',
         'price.title':'Tarifs','price.main':'<strong>1 190 € pour 1–2 personnes</strong>','price.extra':'+ <strong>160 €</strong> par personne au-delà de 2 (max. 6)','price.notes':'Week-end/haute saison (marinas) : +90 €. Prolongation coucher du soleil : +220 €.',
         'pract.title':'Pratique',
         'map.title':'Carte du jour','map.sub':'Points clés autour de l’étang de Thau.',
-        'contact.title':'Réservation & questions','contact.sub':'Réponse sous 24h et confirmation des créneaux bateau.','contact.email':'Écrire un Email','contact.back':'← Retour aux programmes'
+        'contact.title':'Réservation & questions','contact.sub':'Réponse sous 24h et confirmation des créneaux bateau.','contact.email':'Écrire un Email','contact.back':'← Retour aux programmes',
+        'ph.name':'Votre prénom/nom','ph.contact':'+33… ou email','ph.dates':'Dates souhaitées / nb. de personnes'
       }
     };
 
@@ -295,7 +301,7 @@
         'Bateau privé 2,5–3 h sur la lagune avec dégustation d’huîtres et verre de blanc local.',
         'Noilly Prat — visite et dégustation (premium).',
         'Dégustation privée dans un domaine : La Croix Gratiot ou Mas du Novi.',
-       
+        'Accompagnement guide (FR/RU).'
       ]
     };
 
@@ -347,36 +353,48 @@
     function getLang(){ return localStorage.getItem('prog:lang') || 'ru'; }
     function applyLang(l){
       document.documentElement.lang = l;
-      // текстовые ноды по data-i18n
+
+      // текст по data-i18n
       document.querySelectorAll('[data-i18n]').forEach(el=>{
         const k = el.getAttribute('data-i18n');
         if(dict[l] && dict[l][k]){
           const html = dict[l][k];
-          if(html.includes('<strong>')) el.innerHTML = html;
+          if (/[<][a-z]/i.test(html)) el.innerHTML = html; // если есть теги — innerHTML
           else el.textContent = dict[l][k];
         }
       });
-      // активная метка языка
+
+      // плейсхолдеры формы
+      const fName    = document.querySelector('form [name="name"]');
+      const fContact = document.querySelector('form [name="contact"]');
+      const fDates   = document.querySelector('form [name="message"]');
+      if (fName    && dict[l]['ph.name'])    fName.placeholder    = dict[l]['ph.name'];
+      if (fContact && dict[l]['ph.contact']) fContact.placeholder = dict[l]['ph.contact'];
+      if (fDates   && dict[l]['ph.dates'])   fDates.placeholder   = dict[l]['ph.dates'];
+
+      // активный язык
       langLinks.forEach(a=>a.classList.toggle('active', a.dataset.lang===l));
       localStorage.setItem('prog:lang', l);
+
       // списки/расписание
       renderSchedule(l);
       renderList('inc-list', included[l]);
       renderList('ex-list', excluded[l]);
       renderList('opt-list', optionsList[l]);
       renderList('pract-list', practice[l]);
-      // кнопка email — меняем subject
+
+      // email subject
       const emailBtn = document.getElementById('emailBtn');
       const subj = l==='fr' ? 'LUX Thau — demande' : 'LUX Thau — запрос';
       if(emailBtn) emailBtn.href = `mailto:hello@example.com?subject=${encodeURIComponent(subj)}`;
-      // обновить подписи попапов на карте
+
+      // обновить подписи на карте
       updateMapLang(l);
     }
     langLinks.forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); applyLang(a.dataset.lang)}));
-    // стартовый язык
-    applyLang(getLang());
+    applyLang(getLang()); // стартовый язык
 
-    // почта (оставляем, но subject уже меняется выше)
+    // почта
     function openMail(e){
       e.preventDefault();
       const l = getLang();
@@ -403,7 +421,6 @@
         <li><span class="time">${s.time}</span>${l==='fr'?s.fr:s.ru}</li>
       `).join('');
     }
-
   </script>
 
   <!-- Leaflet JS -->
@@ -443,7 +460,7 @@
       [43.3498, 3.5286], // вдоль берега
       [43.3566, 3.5306]  // возврат
     ];
-    const poly = L.polyline(route, { color:brandColor, weight:3, opacity:0.9 }).addTo(map);
+    L.polyline(route, { color:brandColor, weight:3, opacity:0.9 }).addTo(map);
     route.forEach(latlng=>bounds.push(latlng));
     map.fitBounds(bounds, { padding:[30,30] });
 
