@@ -1,223 +1,247 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>Закат по Каналу дю Миди (Бéзье) — круиз‑ужин | Dîner au Clair de Lune</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Вечерняя программа: круиз‑ужин по Каналу дю Миди в Бéзье. Подъём через Фонсераны, закат на Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены." />
-  <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=7" />
+  <title>Бéзье: закатный круиз-ужин по Каналу дю Миди | Tours Languedoc by Irène</title>
+  <meta name="description" content="Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Ужин на борту, вино и кофе включены. Индивидуально 2–6 гостей." />
+  <meta property="og:title" content="Бéзье: закатный круиз-ужин по Каналу дю Миди" />
+  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+  <meta name="theme-color" content="#0D2B1E" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{ --max: 1040px; --muted: rgba(0,0,0,.6); --pill-bg: rgba(0,0,0,.06); --accent:#b35; }
+    :root{
+      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
+      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px; --radius-lg:26px; --container:1100px;
+    }
     *{box-sizing:border-box}
-    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px}
-    .hero{position:relative;border-radius:16px;overflow:hidden;min-height:44vh;display:grid;place-items:end start;padding:24px;color:#fff;background:#111}
-    .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:url('https://images.unsplash.com/photo-1625755990928-566aa889ee87?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;filter:brightness(.65)}
-    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:4px 0 10px}
-    .hero .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);font-weight:600}
-    .grid{display:grid;gap:16px}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media(max-width:880px){.grid-3{grid-template-columns:1fr 1fr}}
-    @media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}}
-    .card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;padding:16px;box-shadow:0 2px 16px rgba(0,0,0,.04)}
-    .media{border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:#eee}
-    .media img{width:100%;height:100%;object-fit:cover}
-    .pillset{display:flex;gap:8px;flex-wrap:wrap}
-    .pilltag{background:var(--pill-bg);padding:6px 10px;border-radius:999px;font-size:14px}
-    .section h2{font-size:24px;margin:0 0 10px}
-    .muted{color:var(--muted)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:#111;color:#fff;text-decoration:none;cursor:pointer}
-    .btn.secondary{background:#fff;color:#111}
-    .btn.link{background:transparent;color:#111}
-    .btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .timeline{position:relative;padding-left:22px}
-    .timeline .row{position:relative;padding:10px 0 14px}
-    .timeline .row::before{content:"";position:absolute;left:-12px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(179,53,85,.18)}
-    .timeline::before{content:"";position:absolute;left:-8px;top:0;bottom:0;width:2px;background:rgba(0,0,0,.08)}
-    .price{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:28px;font-weight:700}
-    .checklist{display:grid;gap:8px;grid-template-columns:1fr 1fr}
-    @media(max-width:640px){.checklist{grid-template-columns:1fr}}
-    .check{display:flex;gap:10px;align-items:flex-start}
-    .mapbox{border-radius:12px;overflow:hidden;background:#f4f4f4;aspect-ratio:16/10;display:grid;place-items:center;color:var(--muted);border:1px dashed rgba(0,0,0,.15)}
-    form label{display:block;margin:10px 0 6px;font-weight:600}
-    form input,form select,form textarea{width:100%;padding:12px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.12);background:#fff}
-    .testpanel{font:12px/1.4 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#0a0;padding:8px;border:1px solid #dfe; background:#f6fff6;border-radius:10px;margin:10px 0;display:none}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{font-weight:600; padding:10px 12px; border-radius:12px}
+    nav a:hover{background:#f0f0f0}
+    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:10px 16px; box-shadow:var(--shadow)}
+
+    .hero{position:relative; isolation:isolate;}
+    .hero .bg{position:absolute; inset:0; z-index:-1;}
+    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.68)}
+    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
+    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
+    h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
+    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
+    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
+    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
+
+    section{padding:52px 0}
+    .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
+    .section-sub{color:var(--muted); margin:0 0 22px}
+
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
+    .gallery img{width:100%; height:100%; object-fit:cover}
+
+    .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+    .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .list{margin:0; padding-left:18px}
+    .list li{margin:8px 0}
+
+    .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
+    .timeline li{margin:12px 0}
+    .time{font-weight:800; color:var(--brand);}
+
+    .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
+
+    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
+    .mapwrap iframe{width:100%; height:380px; border:0}
+
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
+    .price{font-weight:800; font-size:20px}
+
+    footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
+    .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
+    .footgrid a{color:#cfd8d3}
+
+    @media (max-width: 1000px){
+      .hero .inner{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width: 640px){
+      .gallery{grid-template-columns:1fr}
+      h2.title{font-size:36px}
+      nav ul{display:none}
+    }
   </style>
 </head>
 <body>
-<header class="wrap" style="padding-bottom:8px">
-  <nav style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-    <a href="../index.html" class="pilltag" style="text-decoration:none">← На главную</a>
-    <div class="pillset">
-      <span class="pilltag">Лангедок</span>
-      <span class="pilltag">Canal du Midi</span>
-      <span class="pilltag">Sunset</span>
-    </div>
-  </nav>
-</header>
-
-<section class="wrap hero">
-  <div>
-    <span class="pill">🌅 Canal du Midi • Sunset Dinner</span>
-    <h1>Бéзье: закатный круиз‑ужин по Каналу дю Миди</h1>
-    <p class="muted" style="max-width:60ch">Подъём через 9 шлюзов Фонсераны, закат на «Grand Bief», тоннель Малпас. Ужин на борту: закуска, горячее, десерт. <strong>Вино и кофе включены.</strong></p>
-    <div style="display:flex;gap:10px;margin-top:10px">
-      <a href="#book" class="btn">Бронировать</a>
-      <a href="#plan" class="btn secondary">Программа вечера</a>
-    </div>
-  </div>
-</section>
-
-<main class="wrap">
-  <!-- Программа вечера -->
-  <section id="plan" class="section" style="margin-top:8px">
-    <h2>Сценарий закатной программы</h2>
-    <div class="card timeline">
-      <div class="row">
-        <strong>17:30 — Сбор/посадка</strong>
-        <p class="muted">Точка встречи: <b>Quai Port Notre‑Dame, Béziers</b>. Рекомендуем прийти за 15–20 минут до выхода.</p>
-        <div class="btns">
-          <a class="btn link" target="_blank" rel="noopener" href="https://maps.google.com/?q=Quai+Port+Notre-Dame,+B%C3%A9ziers">🗺️ Открыть на карте</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="На главную">
+        <div class="logo" aria-hidden>Î</div>
+        <div>
+          <h1>Tours Languedoc by Irène <small>— Des voyages avec goût</small></h1>
         </div>
-      </div>
-
-      <div class="row">
-        <strong>18:00 — Выход и подъём через Фонсераны</strong>
-        <p class="muted">Плавно поднимаемся по каскаду <em>9 écluses de Fonseranes</em>, проходим понт-каналь над Орбом.</p>
-      </div>
-
-      <div class="row">
-        <strong>Закат — «Grand Bief» и тоннель Малпас</strong>
-        <p class="muted">Самый кинематографичный отрезок канала: зеркальная вода, виноградники и арочные мостики, затем исторический тоннель Малпас.</p>
-      </div>
-
-      <div class="row">
-        <strong>Ужин на борту</strong>
-        <p class="muted">Закуска, горячее блюдо и десерт подают на борту; <b>вино и кофе включены</b>. Возможны альтернативы по питанию при предварительном запросе.</p>
-      </div>
-
-      <div class="row">
-        <strong>22:30 — Возвращение</strong>
-        <p class="muted">Швартуемся у причала отправления, свободное время на набережной.</p>
-      </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="../index.html#tours">← Все программы</a></li>
+          <li><a href="../index.html#why">Почему с нами</a></li>
+          <li><a class="cta" href="#book">Забронировать</a></li>
+        </ul>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <!-- Стоимость и включено -->
-  <section class="section">
-    <div class="grid grid-2">
-      <div class="card">
-        <h2>Стоимость</h2>
-        <div class="price"><span>440 €</span><span class="muted">/ 2 гостя (уровень «Комфорт»)</span></div>
-        <p class="muted" style="margin-top:6px">Сезонность: <b>конец июня — конец августа</b>. Включено сопровождение и резерв лучших мест на борту (по возможности).</p>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg">
+      <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Фонсераны — ступенчатые шлюзы канала дю Миди, Бéзье"/>
+      <div class="overlay"></div>
+    </div>
+    <div class="container inner">
+      <div>
+        <span class="badge">HIT</span>
+        <h2 class="title">Бéзье: закатный круиз-ужин по Каналу дю Миди</h2>
+        <p class="subtitle">Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местное вино и кофе включены.</p>
       </div>
       <div class="card">
-        <h2>Что включено</h2>
-        <div class="checklist">
-          <div class="check">✅ Билеты на круиз‑ужин ×2</div>
-          <div class="check">✅ Вино и кофе на борту</div>
-          <div class="check">✅ Сопровождение и организация</div>
-          <div class="check">✅ Приоритет рассадки (по возможности)</div>
-          <div class="check">✅ Памятка с адресами и парковкой</div>
-          <div class="check">✅ Поддержка по WhatsApp в день тура</div>
+        <div class="price">440 € / 2 гостя</div>
+        <p style="margin:6px 0 0; color:var(--muted)">Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.</p>
+        <div class="specs">
+          <div class="spec">Длительность: 3.5–4 ч</div>
+          <div class="spec">Время: закат</div>
+          <div class="spec">Языки: RU/FR</div>
+          <div class="spec">Старт: Béziers — Fonseranes</div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:12px">
+          <a class="btn primary" href="#book">Забронировать</a>
+          <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
         </div>
       </div>
     </div>
-    <div class="card" style="margin-top:12px">
-      <h2>Опции</h2>
-      <div class="checklist">
-        <div class="check">➕ Приветственный аперитив до посадки</div>
-        <div class="check">➕ Фото‑сессия на набережной (1 час)</div>
-        <div class="check">➕ Трансфер от/до отеля в Бéзье</div>
-        <div class="check">➕ Спецменю (вегетарианское/безглютеновое)</div>
-      </div>
-      <p class="muted" style="margin-top:6px">Маршрут и время могут меняться из‑за погоды и навигационных условий.</p>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="container">
+    <h3 class="section-title">Как это выглядит</h3>
+    <p class="section-sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief) и ужин на борту.</p>
+    <div class="gallery">
+      <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Шлюзы Фонсераны на закате"></div>
+      <div class="ph"><img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=1400&auto=format&fit=crop" alt="Канал дю Миди, гранатовые платаны и вода"></div>
+      <div class="ph"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop" alt="Ужин на борту — закат, вино и сервировка"></div>
     </div>
   </section>
 
-  <!-- Карта и адреса -->
-  <section class="section">
-    <h2>Адрес посадки и ориентиры</h2>
-    <div class="card">
-      <div class="mapbox">Quai Port Notre‑Dame (Béziers) • 9 écluses de Fonseranes • Tunnel de Malpas</div>
-      <div class="btns" style="margin-top:10px">
-        <a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Quai+Port+Notre-Dame,+B%C3%A9ziers">🗺️ Точка посадки</a>
-        <a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=9+%C3%A9cluses+de+Fonseranes">🗺️ Фонсераны</a>
-        <a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Tunnel+de+Malpas">🗺️ Малпас</a>
+  <!-- DETAILS -->
+  <section class="container info-grid">
+    <article class="card">
+      <h3 class="section-title">Расписание вечера</h3>
+      <ul class="timeline">
+        <li><span class="time">18:30</span> — Встреча у комплекса Фонсераны (или трансфер по запросу), посадка на лодку.</li>
+        <li><span class="time">19:00</span> — Переход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.</li>
+        <li><span class="time">20:00</span> — Ужин на борту: закуски, горячее/сет-меню, десерт. Региональные вина под подачу, вода, кофе.</li>
+        <li><span class="time">21:15</span> — Прогулка к тоннелю Малпас (в зависимости от судоходного графика) и обратный путь при золотом свете.</li>
+        <li><span class="time">22:15</span> — Высадка у Фонсеранов. Прощальные фото.</li>
+      </ul>
+
+      <h3 class="section-title" style="margin-top:24px">Что включено</h3>
+      <div class="inc-grid">
+        <div class="pill">Бронированные места на борту</div>
+        <div class="pill">Ужин set-menu</div>
+        <div class="pill">Местное вино и вода</div>
+        <div class="pill">Кофе/чай</div>
+        <div class="pill">Сопровождение RU/FR</div>
+        <div class="pill">Фото-точки и истории канала</div>
       </div>
+
+      <h3 class="section-title" style="margin-top:24px">Не включено</h3>
+      <ul class="list">
+        <li>Индивидуальный трансфер до/с Фонсеранов (доступен по запросу).</li>
+        <li>Дополнительные напитки/специальные блюда вне сет-меню, чаевые.</li>
+      </ul>
+    </article>
+
+    <aside class="card">
+      <h3 class="section-title">Где это</h3>
+      <p class="section-sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
+      <div class="mapwrap">
+        <iframe
+          title="Карта: Écluses de Fonseranes"
+          src="https://www.google.com/maps?q=Écluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <h3 class="section-title" style="margin-top:20px">Полезно знать</h3>
+      <ul class="list">
+        <li>Крейсерская скорость мала — идеально для фото и отдыха.</li>
+        <li>Маршрут может меняться из-за судоходного графика/погоды.</li>
+        <li>Рекомендуем уютную одежду и лёгкую накидку на вечерний бриз.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="book" class="container">
+    <div class="card" style="padding:18px">
+      <h3 class="section-title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub">Ответим в течение дня и подтвердим ближайшие доступные даты.</p>
+      <form onsubmit="openMail(event)">
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px">Имя</label>
+        <input name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px">Контакт (WhatsApp/Email)</label>
+        <input name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px">Дата и состав</label>
+        <textarea name="message" placeholder="Желаемая дата/период, кол-во гостей, трансфер нужен?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+        <div style="display:flex; gap:10px; margin-top:14px">
+          <button class="btn primary" type="submit">Отправить</button>
+          <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
+      </form>
     </div>
   </section>
 
-  <!-- Бронирование -->
-  <section id="book" class="section">
-    <div class="grid grid-2">
-      <div class="card">
-        <strong>Быстрый запрос</strong>
-        <form onsubmit="openMail(event)">
-          <label>Имя</label><input required name="name" placeholder="Ваше имя" />
-          <label>Контакт</label><input required name="contact" placeholder="WhatsApp / email" />
-          <label>Дата</label><input name="date" type="date" />
-          <label>Гостей</label>
-          <select name="guests"><option selected>2</option><option>3</option><option>4</option></select>
-          <label>Пожелания</label><textarea name="msg" placeholder="Аллергии, предпочтения, поводы"></textarea>
-          <button class="btn" type="submit">Отправить</button>
-        </form>
+  <footer>
+    <div class="container">
+      <div class="footgrid">
+        <div><strong>Tours Languedoc by Irène</strong><p>Des voyages avec goût</p></div>
+        <div><p><a href="../index.html#why">Почему с нами</a></p><p><a href="../index.html#tours">Программы</a></p></div>
+        <div><p><a href="../index.html#format">Формат</a></p><p><a href="#book">Контакты</a></p></div>
       </div>
-      <div class="card">
-        <div class="media"><img src="https://images.unsplash.com/photo-1496395032154-9d95db1b82c3?q=80&w=1400&auto=format&fit=crop" alt="Béziers — Canal du Midi" loading="lazy"></div>
-        <p class="muted" style="margin-top:10px">Закат на канале — мягкий свет, панорамы и неспешный ужин. Идеально для годовщин и сюрпризов.</p>
-      </div>
+      <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="wrap" style="padding-top:8px;padding-bottom:34px"><div class="muted">© Tours Languedoc by Irène</div></footer>
-
-<div class="wrap testpanel" id="testpanel" aria-hidden="true"></div>
-
-<script>
-function buildMailtoURL(data){
-  const esc = encodeURIComponent;
-  const subject = 'Béziers Sunset — Canal du Midi';
-  const body = `Имя:${data.name||''}\nКонтакт:${data.contact||''}\nДата:${data.date||''}\nГостей:${data.guests||''}\nПожелания:\n${data.msg||''}`;
-  return `mailto:hello@your-domain.fr?subject=${esc(subject)}&body=${esc(body)}`;
-}
-function openMail(e){
-  e.preventDefault();
-  const f=e.target;
-  const data={name:f.name.value, contact:f.contact.value, date:f.date.value, guests:f.guests.value, msg:f.msg.value};
-  window.location.href = buildMailtoURL(data);
-}
-window.openMail = openMail;
-
-(function runTests(){
-  const out = [];
-  function ok(name, cond){ out.push(`${cond? '✅':'❌'} ${name}`); return !!cond; }
-  const m = buildMailtoURL({name:'Ирэн',contact:'test@example.com',date:'2025-08-29',guests:'2',msg:'окно у окна'});
-  ok('mailto builder', /mailto:/.test(m) && /subject=/.test(m) && /Ирэн/.test(decodeURIComponent(m)));
-  ok('openMail defined', typeof openMail === 'function');
-  const routeBtns = document.querySelectorAll('a.btn[target="_blank"]');
-  ok('map links present', routeBtns.length >= 3);
-  const panel = document.getElementById('testpanel'); if(panel){ panel.textContent = out.join('\n'); /*panel.style.display='block';*/ }
-  console.log('Page tests:\n' + out.join('\n'));
-})();
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TouristTrip",
-  "name": "Бéзье: закатный круиз‑ужин по Каналу дю Миди",
-  "description": "Подъём через Фонсераны, закат на Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены.",
-  "touristType": ["Evening", "Romantic", "Gastronomy"],
-  "itinerary": {"@type": "ItemList","itemListElement": [
-    {"@type":"ListItem","position":1,"item":{"@type":"Place","name":"Quai Port Notre-Dame, Béziers"}},
-    {"@type":"ListItem","position":2,"item":{"@type":"Place","name":"9 écluses de Fonseranes"}},
-    {"@type":"ListItem","position":3,"item":{"@type":"Place","name":"Tunnel de Malpas"}}
-  ]},
-  "offers": {"@type":"Offer","price":"440","priceCurrency":"EUR"},
-  "provider": {"@type":"LocalBusiness","name":"Tours Languedoc by Irène","areaServed":"Hérault, France"}
-}
-</script>
+  <script>
+    function openMail(e){
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const subj = encodeURIComponent('Запрос: Бéзье — закатный круиз-ужин (сайт)');
+      const body = encodeURIComponent(
+        `Имя: ${fd.get('name')||''}\nКонтакт: ${fd.get('contact')||''}\nСообщение: ${fd.get('message')||''}`
+      );
+      window.location.href = `mailto:hello@example.com?subject=${subj}&body=${body}`;
+    }
+  </script>
 </body>
 </html>
