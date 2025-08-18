@@ -427,14 +427,17 @@
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
       // Save
-      localStorage.setItem('lang', lang);
+    localStorage.setItem('site:lang', lang);
     }
 
     // Mailto builder with localized subject
     function openMail(e){
       e.preventDefault();
       const fd = new FormData(e.target);
-      const lang = localStorage.getItem('lang') || (navigator.language||'').startsWith('fr') ? 'fr' : 'ru';
+ const lang =
+  localStorage.getItem('lang')
+  || (((navigator.language || '').toLowerCase().startsWith('fr')) ? 'fr' : 'ru');
+
       const subj = encodeURIComponent(i18n[lang].mail_subject);
       const body = encodeURIComponent(
         `Имя / Nom: ${fd.get('name')||''}\nКонтакт / Contact: ${fd.get('contact')||''}\nСообщение / Message: ${fd.get('message')||''}`
@@ -444,7 +447,8 @@
 
     // Init language
     (function(){
-      const saved = localStorage.getItem('lang');
+    const saved = localStorage.getItem('site:lang');
+
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
