@@ -229,6 +229,18 @@
     </article>
   </div>
 </section>
+<script>
+  const SITE_BASE = location.pathname.includes('/voyages-de-l-auteur/')
+    ? '/voyages-de-l-auteur/'
+    : '/';
+
+  function resolveHref(href){
+    if (!href) return '#';
+    if (/^https?:/.test(href) || href.startsWith('#')) return href; // внешние/якоря
+    if (href.startsWith('/')) return href;                           // уже абсолютный
+    return SITE_BASE + href.replace(/^\//,'');                       // делаем абсолютным
+  }
+</script>
 
 
   <!-- TOURS -->
