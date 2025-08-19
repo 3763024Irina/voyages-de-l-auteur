@@ -424,14 +424,12 @@ langLinks.forEach(a => a.addEventListener('click', e => {
     if (href.startsWith('/')) return href;
     return SITE_BASE + href.replace(/^\//,'');
   }
-
-  // ======= Programs (двуязычные карточки) =======
 // ======= Programs (двуязычные карточки) =======
 const tours = [
   {
     tr:'Saint-Guilhem-le-Désert: аббатство и панорамы',
     tf:'Saint-Guilhem-le-Désert : abbaye et panoramas',
-    c:'assets/saint-guilhem/abbaye.jpg', // можно заменить на 'programations/assets/IMG_4003.JPG' если хочешь именно это фото
+    c:'assets/IMG_4003.JPG', // можно заменить на 'programations/assets/IMG_4003.JPG' если хочешь именно это фото
     dr:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
     df:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
     pr:'362 € за 2 гостя',
