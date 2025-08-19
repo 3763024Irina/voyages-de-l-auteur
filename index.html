@@ -426,118 +426,116 @@ langLinks.forEach(a => a.addEventListener('click', e => {
   }
 
   // ======= Programs (двуязычные карточки) =======
+// ======= Programs (двуязычные карточки) =======
 const tours = [
-  { 
-    t:'Saint-Guilhem-le-Désert: аббатство и панорамы',
-    c:'assets/saint-guilhem/abbaye.jpg',
-    d:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
-    p:'362 € за 2 гостя',
+  {
+    tr:'Saint-Guilhem-le-Désert: аббатство и панорамы',
+    tf:'Saint-Guilhem-le-Désert : abbaye et panoramas',
+    c:'assets/saint-guilhem/abbaye.jpg', // можно заменить на 'programations/assets/IMG_4003.JPG' если хочешь именно это фото
+    dr:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
+    df:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
+    pr:'362 € за 2 гостя',
+    pf:'362 € pour 2 personnes',
     href:'programations/Saint_Guilhem.html'
   },
-  { 
-    t:'Saint-Guilhem-le-Désert : abbaye et panoramas',
-    c:'assets/saint-guilhem/abbaye.jpg',
-    d:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
-    p:'362 € pour 2 personnes',
-    href:'programations/Saint_Guilhem_FR.html'
+
+  {
+    tr:'LUX Étang de Thau — 1 день',
+    tf:'LUX Étang de Thau — 1 jour',
+    c:'assets/Etang-de-Thau.jpg',
+    dr:'День • приватная лодка, Tarbouriech, Noilly Prat, винный финал. Трансфер от/до отеля. Без пеших прогулок.',
+    df:'Jour • bateau privé, Tarbouriech, Noilly Prat, final vin. Transfert hôtel A/R. Sans marche.',
+    pr:'1 190 € / 1–2 гостя',
+    pf:'1 190 € / 1–2 pers.',
+    href:'programations/Thau_LUX.html',
+    b:'vip'
   },
-    {
-      tr:'LUX Étang de Thau — 1 день',
-      tf:'LUX Étang de Thau — 1 jour',
-      c:'assets/Etang-de-Thau.jpg',
-      dr:'День • приватная лодка, Tarbouriech, Noilly Prat, винный финал. Трансфер от/до отеля. Без пеших прогулок.',
-      df:'Jour • bateau privé, Tarbouriech, Noilly Prat, final vin. Transfert hôtel A/R. Sans marche.',
-      pr:'1 190 € / 1–2 гостя',
-      pf:'1 190 € / 1–2 pers.',
-      href:'programations/Thau_LUX.html',
-      b:'vip'
-    },
-    {
-      tr:'Винные домены Пик Сен-Лу',
-      tf:'Domaines du Pic Saint-Loup',
-      c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop',
-      dr:'День • 2–3 домена, терруары и панорамы.',
-      df:'Jour • 2–3 domaines, terroirs et panoramas.',
-      pr:'от 220€ / чел',
-      pf:'dès 220€ / pers',
-      href:'programations/Vins_Languedoc.html'
-    },
-    {
-      tr:'Бéзье: закатный круиз-ужин по Каналу дю Миди',
-      tf:'Béziers : croisière-dîner — Canal du Midi',
-      c:'assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg',
-      dr:'Вечер • Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту. Трансфер от/до отеля включён.',
-      df:'Soirée • Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord. Transfert hôtel inclus.',
-      pr:'440 € / 2 гостя',
-      pf:'440 € / 2 pers',
-      href:'programations/bezier_sunset.html',
-      b:'hit'
-    },
-    {
-      tr:'Горы и ущелья Эро',
-      tf:'Montagnes & gorges de l’Hérault',
-      c:'https://images.unsplash.com/photo-1526481280698-8fcc13fd283f?q=80&w=1200&auto=format&fit=crop',
-      dr:'День • лёгкий трекинг, купание, пикник.',
-      df:'Jour • rando facile, baignade, pique-nique.',
-      pr:'от 210€ / чел',
-      pf:'dès 210€ / pers'
-    },
-    {
-      tr:'Средиземное море: SUP/Каяк',
-      tf:'Méditerranée : SUP / Kayak',
-      c:'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=1200&auto=format&fit=crop',
-      dr:'3 часа • рассветный сап или каякинг.',
-      df:'3 h • paddle à l’aube ou kayak.',
-      pr:'от 150€ / чел',
-      pf:'dès 150€ / pers'
-    },
-    {
-      tr:'Монтпелье и гастро-рынки',
-      tf:'Montpellier & halles gourmandes',
-      c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop',
-      dr:'Полдня • исторический центр + дегустации.',
-      df:'Demi-journée • centre historique + dégustations.',
-      pr:'от 160€ / чел',
-      pf:'dès 160€ / pers'
-    },
-    {
-      tr:'Канал дю Миди и вино',
-      tf:'Canal du Midi & vins',
-      c:'https://images.unsplash.com/photo-1592078615290-033f0a23a1eb?q=80&w=1200&auto=format&fit=crop',
-      dr:'День • прогулка по каналу, домены.',
-      df:'Jour • balade le long du canal, domaines.',
-      pr:'от 210€ / чел',
-      pf:'dès 210€ / pers'
-    },
-    {
-      tr:'Соляные розовые поля',
-      tf:'Salins roses',
-      c:'https://images.unsplash.com/photo-1536868313473-748eb07f3510?q=80&w=1200&auto=format&fit=crop',
-      dr:'Полдня • фотопрогулка и дегустации.',
-      df:'Demi-journée • photo-walk et dégustations.',
-      pr:'от 170€ / чел',
-      pf:'dès 170€ / pers'
-    },
-    {
-      tr:'Нарбон и Лангедок Руссильон',
-      tf:'Narbonne & Languedoc-Roussillon',
-      c:'https://images.unsplash.com/photo-1599661040040-0a38c809bdb1?q=80&w=1200&auto=format&fit=crop',
-      dr:'День • рынок, винные бары, история.',
-      df:'Jour • marché, bars à vin, histoire.',
-      pr:'от 210€ / чел',
-      pf:'dès 210€ / pers'
-    },
-    {
-      tr:'VIP по вашим интересам',
-      tf:'VIP selon vos envies',
-      c:'https://images.unsplash.com/photo-1514890547327-8843c0ff1c6e?q=80&w=1200&auto=format&fit=crop',
-      dr:'Индивидуально • кастомный маршрут.',
-      df:'Sur-mesure • itinéraire personnalisé.',
-      pr:'индивидуально',
-      pf:'sur devis',
-      b:'vip'
-    }
-  ];
+  {
+    tr:'Винные домены Пик Сен-Лу',
+    tf:'Domaines du Pic Saint-Loup',
+    c:'https://images.unsplash.com/photo-1515549832467-8783363e19b6?q=80&w=1200&auto=format&fit=crop',
+    dr:'День • 2–3 домена, терруары и панорамы.',
+    df:'Jour • 2–3 domaines, terroirs et panoramas.',
+    pr:'от 220€ / чел',
+    pf:'dès 220€ / pers',
+    href:'programations/Vins_Languedoc.html'
+  },
+  {
+    tr:'Бéзье: закатный круиз-ужин по Каналу дю Миди',
+    tf:'Béziers : croisière-dîner — Canal du Midi',
+    c:'assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg',
+    dr:'Вечер • Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту. Трансфер от/до отеля включён.',
+    df:'Soirée • Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord. Transfert hôtel inclus.',
+    pr:'440 € / 2 гостя',
+    pf:'440 € / 2 pers',
+    href:'programations/bezier_sunset.html',
+    b:'hit'
+  },
+  {
+    tr:'Горы и ущелья Эро',
+    tf:'Montagnes & gorges de l’Hérault',
+    c:'https://images.unsplash.com/photo-1526481280698-8fcc13fd283f?q=80&w=1200&auto=format&fit=crop',
+    dr:'День • лёгкий трекинг, купание, пикник.',
+    df:'Jour • rando facile, baignade, pique-nique.',
+    pr:'от 210€ / чел',
+    pf:'dès 210€ / pers'
+  },
+  {
+    tr:'Средиземное море: SUP/Каяк',
+    tf:'Méditerranée : SUP / Kayak',
+    c:'https://images.unsplash.com/photo-1458668383970-8ddd3927deed?q=80&w=1200&auto=format&fit=crop',
+    dr:'3 часа • рассветный сап или каякинг.',
+    df:'3 h • paddle à l’aube ou kayak.',
+    pr:'от 150€ / чел',
+    pf:'dès 150€ / pers'
+  },
+  {
+    tr:'Монтпелье и гастро-рынки',
+    tf:'Montpellier & halles gourmandes',
+    c:'https://images.unsplash.com/photo-1582552938357-32f4f2f5d87b?q=80&w=1200&auto=format&fit=crop',
+    dr:'Полдня • исторический центр + дегустации.',
+    df:'Demi-journée • centre historique + dégustations.',
+    pr:'от 160€ / чел',
+    pf:'dès 160€ / pers'
+  },
+  {
+    tr:'Канал дю Миди и вино',
+    tf:'Canal du Midi & vins',
+    c:'https://images.unsplash.com/photo-1592078615290-033f0a23a1eb?q=80&w=1200&auto=format&fit=crop',
+    dr:'День • прогулка по каналу, домены.',
+    df:'Jour • balade le long du canal, domaines.',
+    pr:'от 210€ / чел',
+    pf:'dès 210€ / pers'
+  },
+  {
+    tr:'Соляные розовые поля',
+    tf:'Salins roses',
+    c:'https://images.unsplash.com/photo-1536868313473-748eb07f3510?q=80&w=1200&auto=format&fit=crop',
+    dr:'Полдня • фотопрогулка и дегустации.',
+    df:'Demi-journée • photo-walk et dégustations.',
+    pr:'от 170€ / чел',
+    pf:'dès 170€ / pers'
+  },
+  {
+    tr:'Нарбон и Лангедок Руссильон',
+    tf:'Narbonne & Languedoc-Roussillon',
+    c:'https://images.unsplash.com/photo-1599661040040-0a38c809bdb1?q=80&w=1200&auto=format&fit=crop',
+    dr:'День • рынок, винные бары, история.',
+    df:'Jour • marché, bars à vin, histoire.',
+    pr:'от 210€ / чел',
+    pf:'dès 210€ / pers'
+  },
+  {
+    tr:'VIP по вашим интересам',
+    tf:'VIP selon vos envies',
+    c:'https://images.unsplash.com/photo-1514890547327-8843c0ff1c6e?q=80&w=1200&auto=format&fit=crop',
+    dr:'Индивидуально • кастомный маршрут.',
+    df:'Sur-mesure • itinéraire personnalisé.',
+    pr:'индивидуально',
+    pf:'sur devis',
+    b:'vip'
+  }
+];
 
   const grid = document.querySelector('#grid');
   const filters = document.querySelector('#filters');
