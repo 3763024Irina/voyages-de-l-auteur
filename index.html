@@ -376,6 +376,38 @@
       'contact.title':'Contacts & réservation', 'contact.area':'Région'
     }
   };
+<script>
+  (function(){
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
+    const prevBtn = document.querySelector('.hero-nav.prev');
+    const nextBtn = document.querySelector('.hero-nav.next');
+    if(!slides.length) return;
+
+    let i = 0, timer = null;
+    const show = (idx)=>{
+      slides[i].classList.remove('is-active');
+      i = (idx + slides.length) % slides.length;
+      slides[i].classList.add('is-active');
+    };
+    const next = ()=> show(i+1);
+    const prev = ()=> show(i-1);
+
+    const start = ()=> { stop(); timer = setInterval(next, 6000); };
+    const stop  = ()=> { if(timer) clearInterval(timer); };
+
+    nextBtn.addEventListener('click', ()=>{ next(); start(); });
+    prevBtn.addEventListener('click', ()=>{ prev(); start(); });
+
+    // пауза на ховере
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('mouseenter', stop);
+    hero.addEventListener('mouseleave', start);
+
+    // старт
+    slides[0].classList.add('is-active');
+    start();
+  })();
+</script>
 
 // ===== Переключение языка + перерисовка карточек =====
 function getLang(){ return localStorage.getItem('site:lang') || 'ru'; }
