@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Saint-Guilhem-le-Désert — аббатство, музей и панорамы</title>
-  <meta name="description" content="Аббатство Жилон (UNESCO), музей, обед на площади (выбор ресторана) и подъём на обзорную площадку. Цена за 2 гостя, каждый следующий +70 €." />
+  <meta name="description" content="Аббатство Жилон (UNESCO), музей, обед на площади (выбор ресторана) и подъём к панораме. Цена за 2 гостя, каждый следующий +70 €." />
   <meta property="og:title" content="Saint-Guilhem-le-Désert — 1 день" />
   <meta property="og:description" content="Аббатство, музей, обед на площади, панорама. Опции: курс керамики; каяки (июль–август). 362 € за 2, каждый следующий +70 €." />
   <meta property="og:type" content="website" />
@@ -13,17 +13,12 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
   <style>
-    :root{
-      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
-      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:18px; --radius-lg:26px; --container:1000px;
-    }
+    :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c;
+      --brand:#0D2B1E; --accent:#C9B886; --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px; --radius-lg:26px; --container:1000px; }
     *{box-sizing:border-box}
     body{margin:0; color:var(--ink); background:var(--bg);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
@@ -33,7 +28,7 @@
     .topbar{height:38px; display:flex; align-items:center; justify-content:center; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)}
     .topbar .inner{width:100%; max-width:var(--container); display:flex; align-items:center; justify-content:space-between; padding:0 20px}
     .lang{display:flex; gap:10px; font-weight:700}
-    .lang a{color:#e9e9e9; text-decoration:none; opacity:.8}
+    .lang a{color:#e9e9e9; opacity:.8}
     .lang a.active{opacity:1; text-decoration:underline}
 
     .nav{display:flex; align-items:center; justify-content:space-between; height:70px}
@@ -72,14 +67,7 @@
     .gallery img{width:100%; height:220px; object-fit:cover; border-radius:14px}
     footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
     .copy{margin-top:16px; font-size:13px; color:#9fb3a9}
-
-    #mapSGD{
-      height:360px;
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      border:1px solid #eee;
-    }
+    #mapSGD{ height:360px; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee; }
 
     @media (max-width: 960px){
       .hero .inner, .blocks{grid-template-columns:1fr}
@@ -90,8 +78,6 @@
       .hero h2{font-size:36px}
       nav ul{display:none}
     }
-
-    /* инпуты формы как в шаблоне */
     form input{width:100%; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; margin:6px 0 10px}
   </style>
 </head>
@@ -145,7 +131,7 @@
       </div>
       <div class="card">
         <strong data-i18n="form.fast">Быстрый запрос</strong>
-        <p style="margin:6px 0 12px; color:#6c6c6c" data-i18n="form.sub">Напишите даты и人数 — подтвердим ресторан и маршрут.</p>
+        <p style="margin:6px 0 12px; color:#6c6c6c" data-i18n="form.sub">Напишите даты и гостей — подтвердим ресторан и маршрут.</p>
         <form onsubmit="openMail(event)">
           <label data-i18n="form.name">Имя</label>
           <input required name="name" placeholder="Ваше имя" />
@@ -165,257 +151,5 @@
   <!-- PROGRAM -->
   <section id="program" class="container">
     <h3 class="section-title" data-i18n="program.title">Программа дня</h3>
-    <p class="section-sub" data-i18n="program.sub">Тайминг гибкий; подстраиваем под сезон и концерты в аббатстве.</p>
-    <div class="blocks">
-      <div class="card">
-        <ul class="list" id="schedule"></ul>
-      </div>
-      <div class="card">
-        <div class="gallery" aria-label="Галерея локаций">
-          <img src="../assets/saint-guilhem/abbaye.jpg" alt="Аббатство Жилон">
-          <img src="../assets/saint-guilhem/ruelle.jpg" alt="Средневековые улочки">
-          <img src="../assets/saint-guilhem/pont-du-diable.jpg" alt="Pont du Diable">
-        </div>
-      </div>
-    </div>
-  </section>
+    <p class="section-sub" data-i18n="program.
 
-  <!-- INCLUDED / OPTIONS -->
-  <section id="inc" class="container">
-    <div class="blocks">
-      <div class="card">
-        <h3 class="section-title" style="margin-top:0" data-i18n="inc.title">Что включено</h3>
-        <ul class="list" id="inc-list"></ul>
-      </div>
-      <div class="card">
-        <h3 class="section-title" style="margin-top:0" data-i18n="ex.title">Не включено</h3>
-        <ul class="list" id="ex-list"></ul>
-        <h3 class="section-title" style="margin:16px 0 8px" data-i18n="opt.title">Опции</h3>
-        <ul class="list" id="opt-list"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICE -->
-  <section id="price" class="container">
-    <div class="blocks">
-      <div class="card">
-        <h3 class="section-title" style="margin-top:0" data-i18n="price.title">Стоимость</h3>
-        <p style="font-size:18px; margin:0 0 10px" data-i18n="price.main"><strong>362 € за 2 гостей</strong></p>
-        <p class="section-sub" style="margin:0 0 8px" data-i18n="price.extra">+ <strong>70 €</strong> за каждого сверх 2</p>
-        <p class="section-sub" style="margin:0" data-i18n="price.examples">Примеры: 3 гостя — 432 €; 4 гостя — 502 €.</p>
-      </div>
-      <div class="card">
-        <h3 class="section-title" style="margin-top:0" data-i18n="pract.title">Практика</h3>
-        <ul class="list" id="pract-list"></ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section id="map" class="container">
-    <h3 class="section-title" data-i18n="map.title">Карта дня</h3>
-    <p class="section-sub" data-i18n="map.sub">Основные точки маршрута: деревня, аббатство, музей, belvédère и Pont du Diable.</p>
-    <div class="card" style="padding:0">
-      <div id="mapSGD" aria-label="Карта маршрута"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="container">
-    <div class="card">
-      <h3 class="section-title" style="margin-top:0" data-i18n="contact.title">Бронь и вопросы</h3>
-      <p class="section-sub" data-i18n="contact.sub">Ответим быстро и подтвердим ресторан/слоты музея.</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn primary" id="emailBtn" href="mailto:hello@example.com?subject=Saint-Guilhem%20—%20запрос" data-i18n="contact.email">Написать на Email</a>
-        <a class="btn" id="waBtn2" href="https://wa.me/33600000000" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn" href="../index.html#tours" data-i18n="contact.back">← Вернуться к программам</a>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div><strong>Tours Languedoc by Irène</strong><div class="copy">© 2025 — Languedoc, France</div></div>
-    </div>
-  </footer>
-
-  <script>
-    // ===== i18n словарь =====
-    const dict = {
-      ru: {
-        'top.note':'Авторские туры по Югу Франции',
-        'nav.home':'На главную',
-        'nav.all':'← Все программы',
-        'nav.program':'Программа','nav.included':'Что включено','nav.price':'Цена','nav.book':'Забронировать',
-        'hero.title':'Saint-Guilhem-le-Désert — 1 день',
-        'hero.text':'Аббатство Жилон (UNESCO), музей романики, обед на площади (выбор ресторана) и лёгкий подъём к обзорной площадке над ущельем Verdus. Парковка в деревне.',
-        'badge.abbey':'🏛 Аббатство','badge.museum':'🖼 Музей','badge.lunch':'🍷 Обед на площади','badge.view':'🌄 Панорама','badge.lightwalk':'🚶 Лёгкий подъём',
-        'form.fast':'Быстрый запрос','form.sub':'Напишите даты и人数 — подтвердим ресторан и маршрут.',
-        'form.name':'Имя','form.contact':'Контакт (WhatsApp/Telegram/Email)','form.dates':'Даты','form.send':'Отправить','form.whatsapp':'Написать в WhatsApp',
-        'program.title':'Программа дня','program.sub':'Тайминг гибкий; подстраиваем под сезон и концерты в аббатстве.',
-        'inc.title':'Что включено','ex.title':'Не включено','opt.title':'Опции',
-        'price.title':'Стоимость','price.main':'<strong>362 € за 2 гостей</strong>','price.extra':'+ <strong>70 €</strong> за каждого сверх 2','price.examples':'Примеры: 3 гостя — 432 €; 4 гостя — 502 €.',
-        'pract.title':'Практика',
-        'map.title':'Карта дня','map.sub':'Основные точки маршрута: деревня, аббатство, музей, belvédère и Pont du Diable.',
-        'contact.title':'Бронь и вопросы','contact.sub':'Ответим быстро и подтвердим ресторан/слоты музея.','contact.email':'Написать на Email','contact.back':'← Вернуться к программам',
-        'ph.name':'Ваше имя','ph.contact':'+33… или email','ph.dates':'Желаемые даты / кол-во гостей'
-      },
-      fr: {
-        'top.note':'Voyages sur mesure dans le Sud de la France',
-        'nav.home':'Accueil',
-        'nav.all':'← Toutes les offres',
-        'nav.program':'Programme','nav.included':'Inclus','nav.price':'Tarifs','nav.book':'Réserver',
-        'hero.title':'Saint-Guilhem-le-Désert — 1 jour',
-        'hero.text':'Abbaye de Gellone (UNESCO), musée d’art roman, déjeuner sur la place (choix du restaurant) et courte montée au belvédère dominant les gorges du Verdus. Parking au village.',
-        'badge.abbey':'🏛 Abbaye','badge.museum':'🖼 Musée','badge.lunch':'🍷 Déjeuner sur la place','badge.view':'🌄 Panorama','badge.lightwalk':'🚶 Montée légère',
-        'form.fast':'Demande rapide','form.sub':'Indiquez dates et personnes — on confirme resto et parcours.',
-        'form.name':'Nom','form.contact':'Contact (WhatsApp/Telegram/Email)','form.dates':'Dates','form.send':'Envoyer','form.whatsapp':'Écrire sur WhatsApp',
-        'program.title':'Programme de la journée','program.sub':'Timing flexible selon saison et concerts à l’abbaye.',
-        'inc.title':'Inclus','ex.title':'Non inclus','opt.title':'Options',
-        'price.title':'Tarifs','price.main':'<strong>362 € pour 2 personnes</strong>','price.extra':'+ <strong>70 €</strong> par personne au-delà de 2','price.examples':'Exemples : 3 pers. — 432 € ; 4 pers. — 502 €.',
-        'pract.title':'Pratique',
-        'map.title':'Carte du jour','map.sub':'Points clés : village, abbaye, musée, belvédère et Pont du Diable.',
-        'contact.title':'Réservation & questions','contact.sub':'Réponse rapide et confirmation du resto/musée.','contact.email':'Écrire un Email','contact.back':'← Retour aux programmes',
-        'ph.name':'Votre prénom/nom','ph.contact':'+33… ou email','ph.dates':'Dates souhaitées / nb. de personnes'
-      }
-    };
-
-    // Данные секций (двуязычные)
-    const schedule = [
-      { time:'09:00', ru:'Выезд (Мез / Сет / Монпелье / Бéзье).', fr:'Départ (Mèze / Sète / Montpellier / Béziers).' },
-      { time:'10:00', ru:'Прибытие, парковка в деревне.', fr:'Arrivée, parking au village.' },
-      { time:'10:15–11:45', ru:'Аббатство Жилон (вход свободный).', fr:'Abbaye de Gellone (entrée libre).' },
-      { time:'11:45–12:30', ru:'Музей аббатства (романика, реликварии).', fr:'Musée de l’abbaye (art roman, reliquaires).' },
-      { time:'12:45–15:00', ru:'Обед на площади (выбор ресторана; сет с вином ≈ 70 €/чел).', fr:'Déjeuner sur la place (choix du resto ; menu avec vins ≈ 70 €/pers.).' },
-      { time:'15:15–16:15', ru:'Прогулка по улочкам и вдоль Verdus.', fr:'Promenade dans les ruelles et le long du Verdus.' },
-      { time:'16:15–16:45', ru:'Подъём на обзорную площадку Belvédère.', fr:'Montée au belvédère panoramique.' },
-      { time:'17:00', ru:'Отъезд.', fr:'Retour.' },
-      { time:'18:00', ru:'Прибытие.', fr:'Arrivée.' }
-    ];
-
-    const included = {
-      ru: [
-        'Сопровождение частного гида на весь день.',
-        'Парковка в деревне Saint-Guilhem-le-Désert.',
-        'Обед (сет) в выбранном ресторане + вино (70 €/чел).',
-        'Маршрут: аббатство, музей, прогулка, обзорная площадка.'
-      ],
-      fr: [
-        'Accompagnement par un guide privé toute la journée.',
-        'Parking au village de Saint-Guilhem-le-Désert.',
-        'Déjeuner (menu) au resto choisi + vins (70 €/pers.).',
-        'Parcours : abbaye, musée, promenade, belvédère.'
-      ]
-    };
-
-    const excluded = {
-      ru: [
-        'Личные расходы, напитки сверх меню.',
-        'Страхование путешествующих.',
-        'Опции (керамика, каяки — см. ниже).'
-      ],
-      fr: [
-        'Dépenses personnelles, boissons hors menu.',
-        'Assurance voyage.',
-        'Options (céramique, kayak — voir ci-dessous).'
-      ]
-    };
-
-    const optionsList = {
-      ru: [
-        'Курс по керамике (Saint-Jean-de-Fos) ~1,5 ч — +45 €/чел.',
-        'Каяки по Эрo (только июль–август) 1,5–2 ч — +25 €/чел.'
-      ],
-      fr: [
-        'Cours de céramique (Saint-Jean-de-Fos) ~1h30 — +45 €/pers.',
-        'Kayak sur l’Hérault (juillet–août uniquement) 1h30–2h — +25 €/pers.'
-      ]
-    };
-
-    const practice = {
-      ru: [
-        'Лёгкий подъём к belvédère (15–20 мин в одну сторону).',
-        'Удобная обувь, вода, защита от солнца.',
-        'Часы работы музея/аббатства зависят от сезона.',
-        'Парковка в деревне: дневной тариф.'
-      ],
-      fr: [
-        'Montée légère vers le belvédère (15–20 min aller).',
-        'Chaussures confortables, eau, protection solaire.',
-        'Horaires abbaye/musée selon la saison.',
-        'Parking au village : forfait journée.'
-      ]
-    };
-
-    // ===== язык =====
-    const langLinks = document.querySelectorAll('.lang a');
-    function getLang(){ return localStorage.getItem('prog:lang') || 'ru'; }
-    function applyLang(l){
-      document.documentElement.lang = l;
-
-      // текст по data-i18n
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const k = el.getAttribute('data-i18n');
-        if(dict[l] && dict[l][k]){
-          const html = dict[l][k];
-          if (/[<][a-z]/i.test(html)) el.innerHTML = html;
-          else el.textContent = dict[l][k];
-        }
-      });
-
-      // плейсхолдеры формы
-      const fName    = document.querySelector('form [name="name"]');
-      const fContact = document.querySelector('form [name="contact"]');
-      const fDates   = document.querySelector('form [name="message"]');
-      if (fName    && dict[l]['ph.name'])    fName.placeholder    = dict[l]['ph.name'];
-      if (fContact && dict[l]['ph.contact']) fContact.placeholder = dict[l]['ph.contact'];
-      if (fDates   && dict[l]['ph.dates'])   fDates.placeholder   = dict[l]['ph.dates'];
-
-      // активный язык
-      langLinks.forEach(a=>a.classList.toggle('active', a.dataset.lang===l));
-      localStorage.setItem('prog:lang', l);
-
-      // списки/расписание
-      renderSchedule(l);
-      renderList('inc-list', included[l]);
-      renderList('ex-list', excluded[l]);
-      renderList('opt-list', optionsList[l]);
-      renderList('pract-list', practice[l]);
-
-      // email subject
-      const emailBtn = document.getElementById('emailBtn');
-      const subj = l==='fr' ? 'Saint-Guilhem — demande' : 'Saint-Guilhem — запрос';
-      if(emailBtn) emailBtn.href = `mailto:hello@example.com?subject=${encodeURIComponent(subj)}`;
-
-      // обновить подписи на карте
-      updateMapLang(l);
-    }
-    langLinks.forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); applyLang(a.dataset.lang)}));
-    applyLang(getLang()); // стартовый язык
-
-    // почта
-    function openMail(e){
-      e.preventDefault();
-      const l = getLang();
-      const fd = new FormData(e.target);
-      const subj = l==='fr' ? 'Saint-Guilhem — demande (site)' : 'Saint-Guilhem — запрос (сайт)';
-      const body = (l==='fr'
-        ? `Nom: ${fd.get('name')||''}\nContact: ${fd.get('contact')||''}\nDates/personnes: ${fd.get('message')||''}`
-        : `Имя: ${fd.get('name')||''}\nКонтакт: ${fd.get('contact')||''}\nДаты/гости: ${fd.get('message')||''}`);
-      location.href = `mailto:hello@example.com?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
-    }
-
-    // рендер списков
-    function renderList(id, arr){
-      const ul = document.getElementById(id);
-      if(!ul) return;
-      ul.innerHTML = arr.map(x=>`<li>${x}</li>`).join('');
-    }
-
-    // расписание
-    function renderSchedule(l){
-      const ul = document.getElementById('schedule');
-      if(!ul) return;
-      ul.innerHTML = schedule.map(s=>`
-        <li><span class="time">${s.time}</span>${l==='fr'?s.fr:s
