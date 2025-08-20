@@ -381,3 +381,27 @@ nav a.wa:hover{ background:#21be5a; }
 
 /* компактные кнопки */
 #contactCard .btn{ padding:10px 12px !important; font-size:14px !important; border-radius:10px !important; }
+/* ниже герой */
+.hero .inner{ min-height:50vh !important; }           /* сделала ещё ниже */
+
+/* карточка формы */
+#contactCard{
+  background:#fff !important;
+  border:1px solid #eee !important;
+  border-radius:16px !important;
+  padding:14px 16px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
+}
+
+/* весь текст внутри формы — тёмный */
+#contactCard, #contactCard *{ color:#1b1b1b !important; }
+
+/* поля */
+#contactCard input, #contactCard textarea, #contactCard select{
+  color:#1b1b1b !important;
+  background:#fff !important;
+  border:1px solid #e6e6e6 !important;
+}
+#contactCard input::placeholder,
+#contactCard textarea::placeholder{ color:#878e8a !important; }
+
