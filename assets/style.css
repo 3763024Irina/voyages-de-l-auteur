@@ -338,4 +338,63 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #why .card .cover{ height: 150px; }
 }
+/* === FIX: компактная форма в hero + нормальные цвета текста === */
+
+/* чуть ниже секция-герой */
+.hero .inner{
+  min-height: 62vh !important;
+  grid-template-columns: 1.35fr auto !important;
+  gap: 28px !important;
+}
+@media (max-width:1000px){
+  .hero .inner{ min-height: auto !important; padding: 28px 0 30px !important; grid-template-columns: 1fr !important; }
+}
+
+/* сама карточка */
+.hero .card.contact-card{
+  max-width: 380px !important;
+  margin-left: auto !important;
+  padding: 14px 16px !important;
+  border-radius: 16px !important;
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid #eee !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08) !important;
+}
+
+/* ПЕРЕБИВАЕМ белый текст из .hero p */
+.hero .card.contact-card strong,
+.hero .card.contact-card p,
+.hero .card.contact-card label{
+  color: var(--ink) !important;      /* #1b1b1b */
+}
+
+/* поля формы — чёткий тёмный текст */
+.hero .card.contact-card input,
+.hero .card.contact-card select,
+.hero .card.contact-card textarea{
+  color: var(--ink) !important;
+  height: 40px !important;
+  padding: 8px 10px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+  margin: 6px 0 10px !important;
+  border: 1px solid #e6e6e6 !important;
+  background: #fff !important;
+}
+.hero .card.contact-card textarea{ min-height: 88px !important; height: auto !important; resize: vertical !important; }
+
+/* плейсхолдеры не белые */
+.hero .card.contact-card input::placeholder,
+.hero .card.contact-card textarea::placeholder{
+  color: #8a8f8c !important;
+}
+
+/* кнопки компактные; на primary текст — белый */
+.hero .card.contact-card .btn{
+  padding: 10px 12px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+}
+.hero .card.contact-card .btn.primary{ color:#fff !important; }
+
 
