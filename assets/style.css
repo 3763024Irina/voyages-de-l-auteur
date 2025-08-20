@@ -338,3 +338,26 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #why .card .cover{ height: 150px; }
 }
+/* сбрасываем "всё белым" внутри карточки формы */
+.hero .card.contact-card,
+.hero .card.contact-card p,
+.hero .card.contact-card label,
+.hero .card.contact-card input,
+.hero .card.contact-card textarea{
+  color:#1b1b1b !important;
+}
+.hero .card.contact-card input::placeholder,
+.hero .card.contact-card textarea::placeholder{
+  color:#8a8f8c !important;
+}
+.hero .card.contact-card,
+.hero .card.contact-card p,
+.hero .card.contact-card label,
+.hero .card.contact-card input,
+.hero .card.contact-card textarea{
+  color:#1b1b1b !important;   /* делаем текст тёмным в форме */
+}
+.hero .card.contact-card input::placeholder,
+.hero .card.contact-card textarea::placeholder{
+  color:#8a8f8c !important;   /* цвет плейсхолдеров */
+}
