@@ -338,40 +338,4 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #why .card .cover{ height: 150px; }
 }
-/* ——— Узкая карточка «Быстрый запрос» в HERO ——— */
-.hero .inner{ grid-template-columns: 1.1fr auto; gap: 28px; }
 
-.hero .contact-card{
-  width: 340px;                  /* сделай 360–380, если хочется чуть шире */
-  max-width: 100%;
-  justify-self: end;             /* не растягивать на всю колонку */
-  align-self: end;
-  padding: 14px 16px;
-  border-radius: 16px;
-  background: rgba(255,255,255,.92);
-  border: 1px solid #eee;
-  box-shadow: var(--shadow);
-}
-
-/* поля формы внутри карточки */
-.hero .contact-card input,
-.hero .contact-card select,
-.hero .contact-card textarea{
-  width: 100%;
-  height: 38px;
-  padding: 8px 10px;
-  font: inherit;
-  border-radius: 10px;
-  border: 1px solid #e6e6e6;
-  background: #fff;
-  margin: 6px 0 10px;
-}
-.hero .contact-card textarea{ min-height: 82px; height: auto; resize: vertical; }
-
-.hero .contact-card .btn{ padding: 10px 12px; border-radius: 10px; }
-
-/* Мобилка — на всю ширину, карточка переедет под заголовок */
-@media (max-width: 1000px){
-  .hero .inner{ grid-template-columns: 1fr; }
-  .hero .contact-card{ width: 100%; justify-self: stretch; align-self: start; }
-}
