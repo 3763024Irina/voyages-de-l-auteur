@@ -404,4 +404,19 @@ nav a.wa:hover{ background:#21be5a; }
 }
 #contactCard input::placeholder,
 #contactCard textarea::placeholder{ color:#878e8a !important; }
+/* ——— Кнопки в форме ——— */
+#contactCard .btn{
+  color:#1b1b1b !important;             /* обычные светлые кнопки (WhatsApp) — тёмный текст */
+  background:#fff !important;
+  border:1px solid #e6e6e6 !important;
+}
+
+#contactCard .btn.primary{
+  background:var(--brand) !important;    /* тёмно-зелёная */
+  border-color:var(--brand) !important;
+  color:#fff !important;                 /* ВИДИМЫЙ белый текст */
+}
+#contactCard .btn.primary:hover{
+  background:var(--brand-2) !important;
+}
 
