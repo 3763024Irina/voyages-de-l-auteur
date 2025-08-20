@@ -338,3 +338,37 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #why .card .cover{ height: 150px; }
 }
+/* ——— Компактная карточка формы в HERO ——— */
+.hero .contact-card{
+  max-width: 380px;          /* была слишком широкой */
+  margin-left: auto;         /* прижать к правому краю */
+  padding: 14px 16px;        /* меньше отступы */
+  border-radius: 16px;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+.hero .contact-card strong{ font-size:16px; }
+.hero .contact-card p{ font-size:14px; margin:6px 0 10px; color:var(--muted); }
+
+/* компактные поля и кнопки только внутри hero-формы */
+.hero .contact-card input,
+.hero .contact-card select,
+.hero .contact-card textarea{
+  height: 40px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  margin: 6px 0 10px;
+}
+.hero .contact-card textarea{ min-height: 80px; height: auto; }
+.hero .contact-card .btn{ padding:10px 12px; font-size:14px; border-radius:10px; }
+
+/* немного уже правая колонка на десктопе */
+@media (min-width: 1001px){
+  .hero .inner{ grid-template-columns: 1.35fr auto; gap: 28px; }
+}
+
+/* на мобилке — на всю ширину */
+@media (max-width: 1000px){
+  .hero .contact-card{ max-width: 100%; }
+}
+
