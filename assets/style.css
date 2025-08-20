@@ -420,3 +420,4 @@ nav a.wa:hover{ background:#21be5a; }
   background:var(--brand-2) !important;
 }
 
+.hero .inner{ min-height:48vh !important; }
