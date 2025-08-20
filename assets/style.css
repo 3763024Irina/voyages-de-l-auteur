@@ -346,29 +346,55 @@ nav a.wa:hover{ background:#21be5a; }
   border-radius: 16px;
   box-shadow: 0 8px 22px rgba(0,0,0,.08);
 }
-.hero .contact-card strong{ font-size:16px; }
-.hero .contact-card p{ font-size:14px; margin:6px 0 10px; color:var(--muted); }
+/* Узкая карточка формы в герое — работает и для .hero, и для .page-hero */
+.hero .contact-card,
+.page-hero .contact-card{
+  width: 340px !important;       /* можешь 360–380, если хочется шире */
+  max-width: 100% !important;
+  margin-left: auto !important;  /* прижать вправо в контейнере */
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,.08) !important;
+}
 
-/* компактные поля и кнопки только внутри hero-формы */
+/* убираем «вторую коробку» у формы внутри карточки */
+.hero .contact-card form,
+.page-hero .contact-card form{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* компактная типографика и поля только внутри карточки */
+.hero .contact-card strong,
+.page-hero .contact-card strong{ font-size:16px !important; }
+
+.hero .contact-card p,
+.page-hero .contact-card p{ font-size:14px !important; margin:4px 0 8px !important; color:var(--muted) !important; }
+
+.hero .contact-card label,
+.page-hero .contact-card label{ font-size:12px !important; margin:8px 0 4px !important; color:var(--muted) !important; }
+
 .hero .contact-card input,
 .hero .contact-card select,
-.hero .contact-card textarea{
-  height: 40px;
-  padding: 8px 10px;
-  font-size: 14px;
-  border-radius: 10px;
-  margin: 6px 0 10px;
+.hero .contact-card textarea,
+.page-hero .contact-card input,
+.page-hero .contact-card select,
+.page-hero .contact-card textarea{
+  height: 36px !important;
+  padding: 6px 10px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+  margin: 6px 0 10px !important;
 }
-.hero .contact-card textarea{ min-height: 80px; height: auto; }
-.hero .contact-card .btn{ padding:10px 12px; font-size:14px; border-radius:10px; }
+.hero .contact-card textarea,
+.page-hero .contact-card textarea{ min-height: 76px !important; height: auto !important; }
 
-/* немного уже правая колонка на десктопе */
+.hero .contact-card .btn,
+.page-hero .contact-card .btn{ padding:8px 12px !important; font-size:14px !important; border-radius:10px !important; }
+
+/* если есть двухколоночный герой — немного ужмём правую колонку */
 @media (min-width: 1001px){
-  .hero .inner{ grid-template-columns: 1.35fr auto; gap: 28px; }
+  .hero .inner{ grid-template-columns: 1.35fr auto !important; gap: 28px !important; }
 }
-
-/* на мобилке — на всю ширину */
-@media (max-width: 1000px){
-  .hero .contact-card{ max-width: 100%; }
-}
-
