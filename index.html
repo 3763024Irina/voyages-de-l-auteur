@@ -160,29 +160,27 @@
         </div>
       </div>
 
-     <div class="card contact-card">
-        <strong data-i18n="form.fast">Быстрый запрос</strong>
-        <p style="margin:6px 0 14px; color:var(--muted)" data-i18n="form.sub">Отправьте пожелания — подберу маршрут и даты в течение дня.</p>
-        <form onsubmit="openMail(event)" id="quickForm">
-          <label data-i18n="form.name">Имя</label>
-          <input required name="name" placeholder="Ваше имя" />
-          <label data-i18n="form.contact">Контакт (WhatsApp/Email)</label>
-          <input required name="contact" placeholder="+33… или email" />
-          <label data-i18n="form.interest">Интересы</label>
-          <select name="interest">
-            <option value="oysters">Устрицы и лагуна Thau</option>
-            <option value="wine">Вино и домены</option>
-            <option value="castles">Замки и история</option>
-            <option value="mountains">Горы и трекинг</option>
-            <option value="sea">Море и пляжи</option>
-            <option value="watersports">Каяк / SUP / кайт</option>
-          </select>
-          <div style="display:flex; gap:10px; margin-top:14px">
-            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
-            <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-i18n="form.whatsapp">Написать в WhatsApp</a>
-          </div>
-        </form>
-      </div>
+    <div class="card contact-card">
+  <strong data-i18n="form_title">Быстрый запрос / бронирование</strong>
+  <p class="muted" data-i18n="form_sub" style="margin:6px 0 10px">Ответим в течение дня и предложим время старта и брони.</p>
+
+  <form onsubmit="openMail(event)" id="quickForm">
+    <label data-i18n="label_name" style="display:block; font-size:13px; color:var(--muted); margin:8px 0 4px">Имя</label>
+    <input name="name" required placeholder="Ваше имя" />
+
+    <label data-i18n="label_contact" style="display:block; font-size:13px; color:var(--muted); margin:8px 0 4px">Контакт (WhatsApp/Email)</label>
+    <input name="contact" required placeholder="+33… или email" />
+
+    <label data-i18n="label_message" style="display:block; font-size:13px; color:var(--muted); margin:8px 0 4px">Дата и состав</label>
+    <textarea name="message" placeholder="Желаемые даты, кол-во гостей, опции (керамика/каяк)?" ></textarea>
+
+    <div style="display:flex; gap:10px; margin-top:12px">
+      <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
+      <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+    </div>
+  </form>
+</div>
+
     </div>
   </section>
 
