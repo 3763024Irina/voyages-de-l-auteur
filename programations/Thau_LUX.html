@@ -14,6 +14,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicons (обновлено) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 
@@ -68,6 +75,8 @@
     .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid #e8e8e8; font-weight:700; font-size:12px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn.toggle{user-select:none}
+    .btn.toggle.active{background:var(--brand); color:#fff; border-color:var(--brand)}
     .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
     .gallery img{width:100%; height:220px; object-fit:cover; border-radius:14px}
     footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
@@ -193,15 +202,28 @@
     </div>
   </section>
 
-  <!-- PRICE -->
+  <!-- PRICE (обновлено) -->
   <section id="price" class="container">
     <div class="blocks">
       <div class="card">
         <h3 class="section-title" style="margin-top:0" data-i18n="price.title">Стоимость</h3>
-        <p style="font-size:18px; margin:0 0 10px" data-i18n="price.main"><strong>1 190 € за 1–2 гостей</strong></p>
-        <p class="section-sub" style="margin:0 0 8px" data-i18n="price.extra">+ <strong>160 €</strong> за каждого сверх 2 (макс. 6 гостей)</p>
-        <p class="section-sub" style="margin:0" data-i18n="price.notes">Уик-энд/пик сезона (марины): +90 €. Продление до заката: +220 €.</p>
+
+        <!-- Переключатель сезона -->
+        <div style="display:flex; gap:8px; margin:4px 0 10px">
+          <button class="btn toggle active" data-season="LS" id="btnLS" data-i18n="price.low">Низкий сезон</button>
+          <button class="btn toggle" data-season="HS" id="btnHS" data-i18n="price.high">Высокий сезон</button>
+        </div>
+
+        <!-- Блок динамической цены -->
+        <div id="priceDynamic">
+          <!-- JS отрисует базу (1–2) и доплату за гостя, а ниже — сетку для 2–6 -->
+        </div>
+
+        <p class="section-sub" style="margin:10px 0 0" data-i18n="price.notes">
+          Обед не включён — гости оплачивают на месте. Возможна доплата в пиковые даты по доступности марины.
+        </p>
       </div>
+
       <div class="card">
         <h3 class="section-title" style="margin-top:0" data-i18n="pract.title">Практика</h3>
         <ul class="list" id="pract-list"></ul>
@@ -238,7 +260,7 @@
   </footer>
 
   <script>
-    // ===== i18n словарь =====
+    // ===== i18n словарь (добавлены ключи цен) =====
     const dict = {
       ru: {
         'top.note':'Авторские туры по Югу Франции',
@@ -252,7 +274,13 @@
         'form.name':'Имя','form.contact':'Контакт (WhatsApp/Telegram/Email)','form.dates':'Даты','form.send':'Отправить','form.whatsapp':'Написать в WhatsApp',
         'program.title':'Программа дня','program.sub':'Тайминг гибкий и может меняться по погоде.',
         'inc.title':'Что включено','ex.title':'Не включено','opt.title':'Опции',
-        'price.title':'Стоимость','price.main':'<strong>1 190 € за 1–2 гостей</strong>','price.extra':'+ <strong>160 €</strong> за каждого сверх 2 (макс. 6 гостей)','price.notes':'Уик-энд/пик сезона (марины): +90 €. Продление до заката: +220 €.',
+        'price.title':'Стоимость',
+        'price.low':'Низкий сезон',
+        'price.high':'Высокий сезон',
+        'price.base':'База за 1–2 гостей',
+        'price.pp':'За каждого сверх 2',
+        'price.gridTitle':'Примеры (цена за группу)',
+        'price.notes':'Обед не включён — гости оплачивают на месте. Возможна доплата в пиковые даты по доступности марины.',
         'pract.title':'Практика',
         'map.title':'Карта дня','map.sub':'Основные точки маршрута вокруг лагуны Thau.',
         'contact.title':'Бронь и вопросы','contact.sub':'Ответим в течение дня и подтвердим доступность лодки/слотов.','contact.email':'Написать на Email','contact.back':'← Вернуться к программам',
@@ -270,7 +298,13 @@
         'form.name':'Nom','form.contact':'Contact (WhatsApp/Telegram/Email)','form.dates':'Dates','form.send':'Envoyer','form.whatsapp':'Écrire sur WhatsApp',
         'program.title':'Programme de la journée','program.sub':'Timing flexible selon la météo.',
         'inc.title':'Inclus','ex.title':'Non inclus','opt.title':'Options',
-        'price.title':'Tarifs','price.main':'<strong>1 190 € pour 1–2 personnes</strong>','price.extra':'+ <strong>160 €</strong> par personne au-delà de 2 (max. 6)','price.notes':'Week-end/haute saison (marinas) : +90 €. Prolongation coucher du soleil : +220 €.',
+        'price.title':'Tarifs',
+        'price.low':'Basse saison',
+        'price.high':'Haute saison',
+        'price.base':'Base pour 1–2 pers.',
+        'price.pp':'Par pers. au-delà de 2',
+        'price.gridTitle':'Exemples (prix par groupe)',
+        'price.notes':'Déjeuner non inclus — paiement sur place. Supplément possible aux dates de pointe selon disponibilité de la marina.',
         'pract.title':'Pratique',
         'map.title':'Carte du jour','map.sub':'Points clés autour de l’étang de Thau.',
         'contact.title':'Réservation & questions','contact.sub':'Réponse sous 24h et confirmation des créneaux bateau.','contact.email':'Écrire un Email','contact.back':'← Retour aux programmes',
@@ -348,6 +382,13 @@
       ]
     };
 
+    // ===== Цены (обновлено): без обеда, LS/HS =====
+    const PRICE = {
+      LS: { base2: 1270, perExtra: 75 },  // низкий сезон
+      HS: { base2: 1460, perExtra: 86 },  // высокий сезон
+      minGuests: 2, maxGuests: 6
+    };
+
     // ===== язык =====
     const langLinks = document.querySelectorAll('.lang a');
     function getLang(){ return localStorage.getItem('prog:lang') || 'ru'; }
@@ -359,7 +400,7 @@
         const k = el.getAttribute('data-i18n');
         if(dict[l] && dict[l][k]){
           const html = dict[l][k];
-          if (/[<][a-z]/i.test(html)) el.innerHTML = html; // если есть теги — innerHTML
+          if (/[<][a-z]/i.test(html)) el.innerHTML = html;
           else el.textContent = dict[l][k];
         }
       });
@@ -390,6 +431,9 @@
 
       // обновить подписи на карте
       updateMapLang(l);
+
+      // перерендерить цены с переводами
+      renderPrice(currentSeason, l);
     }
     langLinks.forEach(a=>a.addEventListener('click', e=>{e.preventDefault(); applyLang(a.dataset.lang)}));
     applyLang(getLang()); // стартовый язык
@@ -421,6 +465,72 @@
         <li><span class="time">${s.time}</span>${l==='fr'?s.fr:s.ru}</li>
       `).join('');
     }
+
+    // ====== Рендер цен (динамика) ======
+    let currentSeason = localStorage.getItem('prog:season') || 'LS';
+
+    function renderPrice(season, l){
+      const t = dict[l] || dict.ru;
+      const conf = PRICE[season];
+      if(!conf) return;
+
+      // База и доплата
+      const baseText = `${conf.base2.toLocaleString('fr-FR')} €`;
+      const ppText   = `${conf.perExtra.toLocaleString('fr-FR')} €`;
+
+      // Сетка 2–6 гостей
+      const rows = [];
+      for(let n=2; n<=PRICE.maxGuests; n++){
+        const total = conf.base2 + Math.max(0, n-2)*conf.perExtra;
+        rows.push(`
+          <tr>
+            <td>${n}</td>
+            <td><strong>${total.toLocaleString('fr-FR')} €</strong></td>
+            <td>≈ ${(Math.round((total/n)/5)*5).toLocaleString('fr-FR')} €/чел</td>
+          </tr>
+        `);
+      }
+
+      const el = document.getElementById('priceDynamic');
+      if(!el) return;
+      el.innerHTML = `
+        <p style="font-size:18px; margin:0 0 8px">
+          <span>${t['price.base']||'База за 1–2 гостей'}:</span>
+          <strong>${baseText}</strong>
+        </p>
+        <p class="section-sub" style="margin:0 0 10px">
+          + <strong>${ppText}</strong> <span>${t['price.pp']||'за каждого сверх 2'}</span> (макс. ${PRICE.maxGuests})
+        </p>
+        <div class="card" style="padding:12px; border:1px solid #eee; border-radius:12px; margin-top:10px">
+          <div style="font-weight:700; margin:0 0 8px">${t['price.gridTitle']||'Примеры (цена за группу)'}</div>
+          <div style="overflow:auto">
+            <table style="width:100%; border-collapse:collapse">
+              <thead>
+                <tr>
+                  <th style="text-align:left; padding:8px 0; border-bottom:1px solid #f0f0f0">Гостей</th>
+                  <th style="text-align:left; padding:8px 0; border-bottom:1px solid #f0f0f0">Сумма</th>
+                  <th style="text-align:left; padding:8px 0; border-bottom:1px solid #f0f0f0">≈ €/чел</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows.join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      // активное состояние кнопок
+      document.getElementById('btnLS')?.classList.toggle('active', season==='LS');
+      document.getElementById('btnHS')?.classList.toggle('active', season==='HS');
+      localStorage.setItem('prog:season', season);
+    }
+
+    document.getElementById('btnLS')?.addEventListener('click', ()=>{ currentSeason='LS'; renderPrice('LS', getLang()); });
+    document.getElementById('btnHS')?.addEventListener('click', ()=>{ currentSeason='HS'; renderPrice('HS', getLang()); });
+
+    // первичный рендер цен
+    renderPrice(currentSeason, getLang());
   </script>
 
   <!-- Leaflet JS -->
@@ -453,12 +563,12 @@
 
     // Маршрут лодки (примерный)
     const route = [
-      [43.3566, 3.5306], // Port Marseillan
-      [43.3525, 3.5395], // устричные столы
-      [43.3473, 3.5390], // вдоль плантаций
-      [43.3439, 3.5320], // маяк Les Onglous
-      [43.3498, 3.5286], // вдоль берега
-      [43.3566, 3.5306]  // возврат
+      [43.3566, 3.5306],
+      [43.3525, 3.5395],
+      [43.3473, 3.5390],
+      [43.3439, 3.5320],
+      [43.3498, 3.5286],
+      [43.3566, 3.5306]
     ];
     L.polyline(route, { color:brandColor, weight:3, opacity:0.9 }).addTo(map);
     route.forEach(latlng=>bounds.push(latlng));
@@ -474,3 +584,4 @@
   </script>
 </body>
 </html>
+
