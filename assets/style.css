@@ -421,3 +421,45 @@ nav a.wa:hover{ background:#21be5a; }
 }
 
 .hero .inner{ min-height:48vh !important; }
+/* ——— ниже герой, делаем короче ——— */
+.hero .inner{ min-height:48vh !important; }
+
+/* ——— форма в hero — общие цвета ——— */
+#contactCard,
+#contactCard *{
+  color:#1b1b1b !important;                 /* весь текст в форме тёмный */
+}
+
+/* ——— Кнопки в форме — точное перебивание ——— */
+#contactCard#contactCard .btn,
+#contactCard#contactCard .btn *{
+  color:#1b1b1b !important;                 /* обычные светлые кнопки */
+  background:#fff !important;
+  border:1px solid #e6e6e6 !important;
+}
+
+/* ПРАЙМАРИ — зелёная с белым текстом */
+#contactCard#contactCard .btn.primary,
+#contactCard#contactCard .btn.primary *{
+  background:var(--brand) !important;
+  border-color:var(--brand) !important;
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;  /* на случай Safari */
+}
+#contactCard#contactCard .btn.primary:hover{
+  background:var(--brand-2) !important;
+}
+
+/* поля и плейсхолдеры на всякий */
+#contactCard input,
+#contactCard textarea,
+#contactCard select{
+  color:#1b1b1b !important;
+  background:#ffffff !important;
+  border:1px solid #e6e6e6 !important;
+}
+#contactCard input::placeholder,
+#contactCard textarea::placeholder{
+  color:#878e8a !important;
+}
+
