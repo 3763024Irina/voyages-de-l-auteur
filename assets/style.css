@@ -338,32 +338,46 @@ nav a.wa:hover{ background:#21be5a; }
 @media (max-width: 640px){
   #why .card .cover{ height: 150px; }
 }
-/* сбрасываем "всё белым" внутри карточки формы */
-.hero .card.contact-card,
-.hero .card.contact-card p,
-.hero .card.contact-card label,
-.hero .card.contact-card input,
-.hero .card.contact-card textarea{
+/* ===== HERO: гарантийный фикс высоты и цветов формы ===== */
+
+/* ниже герой */
+.hero .inner{ min-height:56vh !important; }
+@media (max-width:1000px){
+  .hero .inner{ min-height:auto !important; padding:28px 0 30px !important; }
+}
+
+/* только карточка формы в герое */
+#contactCard{
+  background:#ffffff !important;
+  border:1px solid #eee !important;
+  border-radius:16px !important;
+  padding:14px 16px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
+}
+
+/* ПЕРЕБИВАЕМ белый текст внутри формы раз и навсегда */
+#contactCard, 
+#contactCard *, 
+#contactCard p, 
+#contactCard label, 
+#contactCard strong{
   color:#1b1b1b !important;
 }
-.hero .card.contact-card input::placeholder,
-.hero .card.contact-card textarea::placeholder{
-  color:#8a8f8c !important;
+
+/* поля формы: тёмный текст, белый фон */
+#contactCard input,
+#contactCard textarea,
+#contactCard select{
+  color:#1b1b1b !important;
+  background:#ffffff !important;
+  border:1px solid #e6e6e6 !important;
 }
-.hero .card.contact-card,
-.hero .card.contact-card p,
-.hero .card.contact-card label,
-.hero .card.contact-card input,
-.hero .card.contact-card textarea{
-  color:#1b1b1b !important;   /* делаем текст тёмным в форме */
+
+/* плейсхолдеры */
+#contactCard input::placeholder,
+#contactCard textarea::placeholder{
+  color:#878e8a !important;
 }
-.hero .card.contact-card input::placeholder,
-.hero .card.contact-card textarea::placeholder{
-  color:#8a8f8c !important;   /* цвет плейсхолдеров */
-}
-.hero .card.contact-card p,
-.hero .card.contact-card label { color:#1b1b1b; }     /* тёмный текст */
-.hero .card.contact-card input,
-.hero .card.contact-card textarea { color:#1b1b1b; }
-.hero .card.contact-card input::placeholder,
-.hero .card.contact-card textarea::placeholder { color:#8a8f8c; }
+
+/* компактные кнопки */
+#contactCard .btn{ padding:10px 12px !important; font-size:14px !important; border-radius:10px !important; }
