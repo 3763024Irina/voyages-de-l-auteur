@@ -483,26 +483,54 @@ function resolveHref(href){
   // внешние ссылки и якоря — как есть
   if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
 
+ // ===== Надёжная база сайта (учитывает <base> и GitHub Project Pages) =====
+const SITE_BASE = (() => {
+  // 1) Если есть <base href> — используем его как путь
+  const baseAttr = document.querySelector('base')?.getAttribute('href');
+  if (baseAttr) {
+    try {
+      const p = new URL(baseAttr, location.href).pathname;
+      return p.endsWith('/') ? p : p + '/';
+    } catch {}
+  }
+
+  // 2) Если это проектные страницы GitHub (username.github.io/repo/…),
+  //    берём первый сегмент пути как префикс репозитория: /repo/
+  const segs = location.pathname.split('/').filter(Boolean);
+  if (/\.github\.io$/i.test(location.hostname) && segs.length) {
+    return `/${segs[0]}/`;
+  }
+
+  // 3) Иначе — корень сайта
+  return '/';
+})();
+
+// ===== Резолвер ссылок (правильно подставляет SITE_BASE и убирает двойные слэши) =====
+function resolveHref(href){
+  if (!href) return '#';
+
+  // внешние схемы и якоря — оставляем как есть
+  if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) {
+    return href;
+  }
+
   const base = SITE_BASE.endsWith('/') ? SITE_BASE : SITE_BASE + '/';
 
-  // уже нормализовано (повторно не префиксуем)
+  // если уже начинается с базы — ничего не делаем
   if (href.startsWith(base)) return href;
 
   let out;
   if (href.startsWith('/')) {
-    // абсолютный путь от корня → префиксуем базой, если сайт в подпапке
+    // абсолют от корня → переписываем к базе репозитория
     out = base === '/' ? href : base + href.slice(1);
   } else {
-    // относительный путь → к базе
+    // относительный путь → просто клеим к базе
     out = base + href.replace(/^\//,'');
   }
 
-  // убираем случайные двойные слэши (кроме после протокола)
+  // убрать случайные // (кроме после протокола)
   return out.replace(/([^:])\/{2,}/g, '$1/');
 }
-
-// Нормализуем пути программ один раз перед рендером
-tours.forEach(t => { if (t.href) t.href = resolveHref(t.href); });
 
   // ===== Программы (карточки) =====
   const tours = [
