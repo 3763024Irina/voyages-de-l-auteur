@@ -45,20 +45,44 @@
 <main>
 
   <!-- Кратко и цены -->
-  <section class="container" style="padding-top:2rem">
-    <h3 class="section-title" data-i18n="spa.brief.title">Кратко о туре</h3>
-    <p class="section-sub" data-i18n="spa.brief.sub">7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя</p>
+  <!-- Кратко и цены -->
+<section class="container" style="padding-top:2rem">
+  <h3 class="section-title">Кратко о туре</h3>
+  <p class="section-sub">7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя</p>
 
-    <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:1rem">
-      <article class="card">
-        <h4 data-i18n="spa.fact.duration.title">Длительность</h4>
-        <p data-i18n="spa.fact.duration.text">7 дней / 6 ночей</p>
-      </article>
+  <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:1rem">
+    <article class="card">
+      <h4>Длительность</h4>
+      <p>7 дней / 6 ночей</p>
+    </article>
 
-      <article class="card">
-        <h4 data-i18n="spa.fact.format.title">Формат</h4>
-        <p data-i18n="spa.fact.format.text">Приват • 2–6 гостей • русско-/франкоязычное сопровождение</p>
-      </article>
+    <article class="card">
+      <h4>Формат</h4>
+      <p>Приват • 2–6 гостей • русско-/франкоязычное сопровождение</p>
+    </article>
+
+    <article class="card">
+      <h4>SPA-программа</h4>
+      <p>5 посещений O’balia (Pause Plénitude ×3, Escale Thermale ×1, Relax ×1)</p>
+    </article>
+
+    <article class="card">
+      <h4>Экскурсии</h4>
+      <p>Сет, Пезенас, Каркасон, винные домены, лагуна Thau</p>
+    </article>
+
+    <article class="card">
+      <h4>Проживание</h4>
+      <p>Отель 3* (6 ночей, завтраки) — <strong>240 € / чел</strong></p>
+    </article>
+
+    <article class="card highlight">
+      <h4>Итоговая цена</h4>
+      <p><strong>от 1 610 € / чел</strong></p>
+    </article>
+  </div>
+</section>
+
 
       <article class="card">
         <h4 data-i18n="spa.fact.spa.title">SPA-программа</h4>
