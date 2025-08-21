@@ -26,7 +26,7 @@
     <h1 class="hero-title" data-i18n="spa.hero.title">Balaruc-les-Bains — SPA & Languedoc</h1>
     <p class="hero-sub" data-i18n="spa.hero.sub">Тёплая зима у моря: термы O’balia, устрицы Thau и винные домены.</p>
     <div class="hero-tags">
-      <span class="tag" data-i18n="spa.tag.1">термы O’balia</span>
+      <span class="tag" data-i18n="spa.tag.1">лечебные термы Balaruc-les-Bains</span>
       <span class="tag" data-i18n="spa.tag.2">устрицы & Picpoul</span>
       <span class="tag" data-i18n="spa.tag.3">Пезенас • Каркасон</span>
       <span class="tag" data-i18n="spa.tag.4">лодка по лагуне</span>
@@ -45,7 +45,6 @@
 <main>
 
   <!-- Кратко и цены -->
-  <!-- Кратко и цены -->
 <section class="container" style="padding-top:2rem">
   <h3 class="section-title">Кратко о туре</h3>
   <p class="section-sub">7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя</p>
@@ -58,12 +57,12 @@
 
     <article class="card">
       <h4>Формат</h4>
-      <p>Приват • 2–6 гостей • русско-/франкоязычное сопровождение</p>
+      <p>Приват • 2–4 гостей • русско-/франкоязычное сопровождение</p>
     </article>
 
     <article class="card">
       <h4>SPA-программа</h4>
-      <p>5 посещений O’balia (Pause Plénitude ×3, Escale Thermale ×1, Relax ×1)</p>
+      <p>5 посещений Терм(Pause Plénitude ×3, Escale Thermale ×1, Relax ×1)</p>
     </article>
 
     <article class="card">
@@ -73,7 +72,7 @@
 
     <article class="card">
       <h4>Проживание</h4>
-      <p>Отель 3* (6 ночей, завтраки) — <strong>240 € / чел</strong></p>
+      <p>Отель 3* (6 ночей, завтраки) — <strong>250 € / чел</strong></p>
     </article>
 
     <article class="card highlight">
@@ -86,7 +85,7 @@
 
       <article class="card">
         <h4 data-i18n="spa.fact.spa.title">SPA-программа</h4>
-        <p data-i18n="spa.fact.spa.text">5 посещений O’balia: Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1</p>
+        <p data-i18n="spa.fact.spa.text">5 посещений Терм: Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1</p>
       </article>
 
       <article class="card">
@@ -193,7 +192,7 @@
       </article>
 
       <article class="card">
-        <h4 data-i18n="pricing.spa.t">SPA O’balia</h4>
+        <h4 data-i18n="pricing.spa.t">Balaruc-les-Bains — SPA</h4>
         <ul>
           <li data-i18n="pricing.spa.l1">Pause Plénitude ×3 (полдня) • Escale Thermale ×1 (день) • Instant Relax ×1 (полдня)</li>
           <li data-i18n="pricing.spa.total"><strong>Итого по SPA: ~472 € / чел</strong></li>
@@ -218,7 +217,7 @@
 
       <article class="card highlight" style="grid-column:1/-1">
         <h4 data-i18n="pricing.total.t">Итого (себестоимость → рекоменд. цена)</h4>
-        <p data-i18n="pricing.total.v"><strong>~1 240 € / чел</strong> → <strong>от 1 610 € / чел</strong></p>
+        <p data-i18n="pricing.total.v"><strong>~1 240 € / чел</strong> → <strong>от 1 620 € / чел</strong></p>
       </article>
     </div>
   </section>
@@ -226,7 +225,7 @@
   <!-- Карта и адреса -->
   <section id="map" class="container">
     <h3 class="section-title" data-i18n="map.title">Локации тура</h3>
-    <p class="section-sub" data-i18n="map.sub">База — Balaruc-les-Bains. Термы O’balia, лагуна Thau, Сет, Пезенас, Каркасон, винные домены.</p>
+    <p class="section-sub" data-i18n="map.sub">База — Balaruc-les-Bains. Balaruc-les-Bains — SPA, лагуна Thau, Сет, Пезенас, Каркасон, винные домены.</p>
 
     <div class="grid" style="grid-template-columns:2fr 1fr; gap:1rem">
       <article class="card" style="padding:0; overflow:hidden">
@@ -255,7 +254,7 @@
   <section class="container">
     <h3 class="section-title" data-i18n="gallery.title">Галерея</h3>
     <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:1rem">
-      <figure class="card"><img src="../assets/spa/Obalia-pool.jpg" alt="O’balia бассейны" loading="lazy" decoding="async"></figure>
+      <figure class="card"><img src="../assets/spa/Obalia-pool.jpg" alt="Терм бассейны" loading="lazy" decoding="async"></figure>
       <figure class="card"><img src="../assets/spa/Thau-oysters.jpg" alt="Устрицы на лагуне Thau" loading="lazy" decoding="async"></figure>
       <figure class="card"><img src="../assets/spa/Pezenas.jpg" alt="Пезенас и ремёсла" loading="lazy" decoding="async"></figure>
     </div>
@@ -321,7 +320,7 @@
     'program.d2.t': 'День 2 — Escale Thermale & Сет',
     'program.d2.d': 'Утро: Escale Thermale (полный день: бассейны, гидромассаж, глина). После обеда: Сет — каналы, рыбный рынок, дегустация.',
     'program.d3.t': 'День 3 — Pause Plénitude (1/3) & Пезенас',
-    'program.d3.d': 'Утро: SPA полдня (процедуры + массаж). После обеда: Пезенас — мастерские, антиквариат, нуга.',
+    'program.d3.d': 'Утро: SPA полдня (процедуры + массаж). После обеда: Пезенас — мастерские, антиквариат.',
     'program.d4.t': 'День 4 — Винный день',
     'program.d4.d': 'Два домена (Pic Saint-Loup/поблизости), дегустации, пикник среди виноградников. Вечером свободно.',
     'program.d5.t': 'День 5 — Pause Plénitude (2/3) & Каркасон',
@@ -332,7 +331,7 @@
     'program.d7.d': 'Завтрак, чек-аут, трансфер в аэропорт.',
 
     'pricing.title': 'Разбивка стоимости',
-    'pricing.sub': 'Ориентиры по сезону. Итог «от 1 610 € / чел» — при 2 гостях и марже 30%.',
+    'pricing.sub': 'Ориентиры по сезону. Итог «от 1 620 € / чел» — при 2 гостях и марже 30%.',
     'pricing.hotel.t': 'Проживание',
     'pricing.hotel.l1': 'Отель 3* (двухместное размещение, 6 ночей, завтраки) — <strong>240 € / чел</strong>',
     'pricing.spa.t': 'SPA O’balia',
