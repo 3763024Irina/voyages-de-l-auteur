@@ -13,7 +13,8 @@
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="../assets/site.css" />
+  <!-- твой файл стилей -->
+  <link rel="stylesheet" href="../assets/style.css" />
 </head>
 <body>
 
@@ -22,23 +23,22 @@
   <div class="container">
     <p class="top-note" data-i18n="top.note">Авторские туры по Югу Франции</p>
 
-    <!-- фирменные тексты -->
-    <h1 class="hero-title">Balaruc-les-Bains — SPA & Languedoc</h1>
-    <p class="hero-sub">Тёплая зима у моря: термы O’balia, устрицы Thau и винные домены.</p>
+    <h1 class="hero-title" data-i18n="spa.hero.title">Balaruc-les-Bains — SPA & Languedoc</h1>
+    <p class="hero-sub" data-i18n="spa.hero.sub">Тёплая зима у моря: термы O’balia, устрицы Thau и винные домены.</p>
     <div class="hero-tags">
-      <span class="tag">термы O’balia</span>
-      <span class="tag">устрицы & Picpoul</span>
-      <span class="tag">Пезенас • Каркасон</span>
-      <span class="tag">лодка по лагуне</span>
+      <span class="tag" data-i18n="spa.tag.1">термы O’balia</span>
+      <span class="tag" data-i18n="spa.tag.2">устрицы & Picpoul</span>
+      <span class="tag" data-i18n="spa.tag.3">Пезенас • Каркасон</span>
+      <span class="tag" data-i18n="spa.tag.4">лодка по лагуне</span>
     </div>
 
     <div class="hero-usps">
-      <span class="pill">Приватный формат, 2–6 гостей</span>
-      <span class="pill">Без суеты: slow-travel</span>
-      <span class="pill">Локальная гастрономия</span>
+      <span class="pill" data-i18n="spa.usp.1">Приватный формат, 2–6 гостей</span>
+      <span class="pill" data-i18n="spa.usp.2">Без суеты: slow-travel</span>
+      <span class="pill" data-i18n="spa.usp.3">Локальная гастрономия</span>
     </div>
 
-    <a class="btn" href="#book">Забронировать</a>
+    <a class="btn" href="#book" data-i18n="spa.cta.book">Забронировать</a>
   </div>
 </header>
 
@@ -46,167 +46,166 @@
 
   <!-- Кратко и цены -->
   <section class="container" style="padding-top:2rem">
-    <h3 class="section-title">Кратко о туре</h3>
-    <p class="section-sub">7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя</p>
+    <h3 class="section-title" data-i18n="spa.brief.title">Кратко о туре</h3>
+    <p class="section-sub" data-i18n="spa.brief.sub">7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя</p>
 
     <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:1rem">
       <article class="card">
-        <h4>Длительность</h4>
-        <p>7 дней / 6 ночей</p>
+        <h4 data-i18n="spa.fact.duration.title">Длительность</h4>
+        <p data-i18n="spa.fact.duration.text">7 дней / 6 ночей</p>
       </article>
 
       <article class="card">
-        <h4>Формат</h4>
-        <p>Приват • 2–6 гостей • русско-/франкоязычное сопровождение</p>
+        <h4 data-i18n="spa.fact.format.title">Формат</h4>
+        <p data-i18n="spa.fact.format.text">Приват • 2–6 гостей • русско-/франкоязычное сопровождение</p>
       </article>
 
       <article class="card">
-        <h4>SPA-программа</h4>
-        <p>5 посещений O’balia: Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1</p>
+        <h4 data-i18n="spa.fact.spa.title">SPA-программа</h4>
+        <p data-i18n="spa.fact.spa.text">5 посещений O’balia: Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1</p>
       </article>
 
       <article class="card">
-        <h4>Экскурсии</h4>
-        <p>Сет, Пезенас, Каркасон, винные домены, лагуна Thau (лодка + устрицы)</p>
+        <h4 data-i18n="spa.fact.tours.title">Экскурсии</h4>
+        <p data-i18n="spa.fact.tours.text">Сет, Пезенас, Каркасон, винные домены, лагуна Thau (лодка + устрицы)</p>
       </article>
 
-      <!-- отель вынесен отдельной строкой -->
+      <!-- отель отдельной строкой -->
       <article class="card">
-        <h4>Проживание</h4>
-        <p>Отель 3* (6 ночей, завтраки) — <strong>240 € / чел</strong></p>
+        <h4 data-i18n="spa.fact.hotel.title">Проживание</h4>
+        <p data-i18n="spa.fact.hotel.text">Отель 3* (6 ночей, завтраки) — <strong>240 € / чел</strong></p>
       </article>
 
-      <article class="card">
-        <h4>Итоговая цена</h4>
-        <p><strong>от 1 610 € / чел</strong> (при 2 гостях)</p>
+      <article class="card highlight">
+        <h4 data-i18n="spa.fact.total.title">Итоговая цена</h4>
+        <p data-i18n="spa.fact.total.text"><strong>от 1 610 € / чел</strong> (при 2 гостях)</p>
       </article>
     </div>
   </section>
 
-  <!-- Фирменный блок «Почему с нами» -->
+  <!-- Почему с нами -->
   <section id="why" class="container">
-    <h3 class="section-title">Почему с нами</h3>
-    <p class="section-sub">Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.</p>
+    <h3 class="section-title" data-i18n="why.title">Почему с нами</h3>
+    <p class="section-sub" data-i18n="why.sub">Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.</p>
 
     <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:1rem">
       <article class="card">
         <div class="cover">
           <img src="../assets/spa/why-local.jpg" alt="Локальный гид и приватный формат" loading="lazy" decoding="async">
         </div>
-        <h4>Приват & локальный</h4>
-        <p>Маршруты под сезон и погоду, без толп и спешки. Вы — гости, а не «группа по списку».</p>
+        <h4 data-i18n="spa.why.1.title">Приват & локальный</h4>
+        <p data-i18n="spa.why.1.text">Маршруты под сезон и погоду, без толп и спешки. Вы — гости, а не «группа по списку».</p>
       </article>
       <article class="card">
         <div class="cover">
           <img src="../assets/spa/why-gastro.jpg" alt="Гастрономия: устрицы и вино" loading="lazy" decoding="async">
         </div>
-        <h4>Гастро-винный акцент</h4>
-        <p>Устрицы на воде, Picpoul de Pinet, домены Пик Сен-Лу. Честные вкусы Лангедока.</p>
+        <h4 data-i18n="spa.why.2.title">Гастро-винный акцент</h4>
+        <p data-i18n="spa.why.2.text">Устрицы на воде, Picpoul de Pinet, домены Пик Сен-Лу. Честные вкусы Лангедока.</p>
       </article>
       <article class="card">
         <div class="cover">
           <img src="../assets/spa/why-comfort.jpg" alt="Комфорт и термы" loading="lazy" decoding="async">
         </div>
-        <h4>Комфорт и баланс</h4>
-        <p>SPA утром — открытия днём. Правильный ритм недели «тепло + море + культура».</p>
+        <h4 data-i18n="spa.why.3.title">Комфорт и баланс</h4>
+        <p data-i18n="spa.why.3.text">SPA утром — открытия днём. Правильный ритм недели «тепло + море + культура».</p>
       </article>
     </div>
   </section>
 
   <!-- Программа по дням -->
   <section class="container">
-    <h3 class="section-title">Программа по дням</h3>
+    <h3 class="section-title" data-i18n="program.title">Программа по дням</h3>
     <div class="grid" style="grid-template-columns:1fr; gap:1rem">
 
       <article class="card">
-        <h4>День 1 — Прибытие</h4>
-        <p>Встреча (MPL/Бéзье), трансфер, заселение. Вечерняя прогулка по набережной лагуны Thau. Ужин: устрицы + Picpoul.</p>
+        <h4 data-i18n="program.d1.t">День 1 — Прибытие</h4>
+        <p data-i18n="program.d1.d">Встреча (MPL/Бéзье), трансфер, заселение. Вечерняя прогулка по набережной лагуны Thau. Ужин: устрицы + Picpoul.</p>
       </article>
 
       <article class="card">
-        <h4>День 2 — Escale Thermale & Сет</h4>
-        <p>Утро: Escale Thermale (полный день: бассейны, гидромассаж, глина). После обеда: Сет — каналы, рыбный рынок, дегустация.</p>
+        <h4 data-i18n="program.d2.t">День 2 — Escale Thermale & Сет</h4>
+        <p data-i18n="program.d2.d">Утро: Escale Thermale (полный день: бассейны, гидромассаж, глина). После обеда: Сет — каналы, рыбный рынок, дегустация.</p>
       </article>
 
       <article class="card">
-        <h4>День 3 — Pause Plénitude (1/3) & Пезенас</h4>
-        <p>Утро: SPA полдня (процедуры + массаж). После обеда: Пезенас — мастерские, антиквариат, нуга.</p>
+        <h4 data-i18n="program.d3.t">День 3 — Pause Plénitude (1/3) & Пезенас</h4>
+        <p data-i18n="program.d3.d">Утро: SPA полдня (процедуры + массаж). После обеда: Пезенас — мастерские, антиквариат, нуга.</p>
       </article>
 
       <article class="card">
-        <h4>День 4 — Винный день</h4>
-        <p>Два домена (Pic Saint-Loup/поблизости), дегустации, пикник среди виноградников. Вечером свободно.</p>
+        <h4 data-i18n="program.d4.t">День 4 — Винный день</h4>
+        <p data-i18n="program.d4.d">Два домена (Pic Saint-Loup/поблизости), дегустации, пикник среди виноградников. Вечером свободно.</p>
       </article>
 
       <article class="card">
-        <h4>День 5 — Pause Plénitude (2/3) & Каркасон</h4>
-        <p>Утро: SPA полдня. После обеда: Каркасон (UNESCO), средневековая цитадель и смотровые.</p>
+        <h4 data-i18n="program.d5.t">День 5 — Pause Plénitude (2/3) & Каркасон</h4>
+        <p data-i18n="program.d5.d">Утро: SPA полдня. После обеда: Каркасон (UNESCO), средневековая цитадель и смотровые.</p>
       </article>
 
       <article class="card">
-        <h4>День 6 — Pause Plénitude (3/3) & лагуна Thau</h4>
-        <p>Утро: SPA полдня. После обеда: лодка по лагуне, визит к устричным садкам, дегустация на воде. Прощальный ужин.</p>
+        <h4 data-i18n="program.d6.t">День 6 — Pause Plénitude (3/3) & лагуна Thau</h4>
+        <p data-i18n="program.d6.d">Утро: SPA полдня. После обеда: лодка по лагуне, визит к устричным садкам, дегустация на воде. Прощальный ужин.</p>
       </article>
 
       <article class="card">
-        <h4>День 7 — Отъезд</h4>
-        <p>Завтрак, чек-аут, трансфер в аэропорт.</p>
+        <h4 data-i18n="program.d7.t">День 7 — Отъезд</h4>
+        <p data-i18n="program.d7.d">Завтрак, чек-аут, трансфер в аэропорт.</p>
       </article>
     </div>
   </section>
 
   <!-- Разбивка стоимости -->
   <section class="container">
-    <h3 class="section-title">Разбивка стоимости</h3>
-    <p class="section-sub">Ориентиры по сезону. Итог «от 1 610 € / чел» — при 2 гостях и марже 30%.</p>
+    <h3 class="section-title" data-i18n="pricing.title">Разбивка стоимости</h3>
+    <p class="section-sub" data-i18n="pricing.sub">Ориентиры по сезону. Итог «от 1 610 € / чел» — при 2 гостях и марже 30%.</p>
 
     <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:1rem">
       <article class="card">
-        <h4>Проживание</h4>
+        <h4 data-i18n="pricing.hotel.t">Проживание</h4>
         <ul>
-          <li>Отель 3* (двухместное размещение, 6 ночей, завтраки) — <strong>240 € / чел</strong></li>
+          <li data-i18n="pricing.hotel.l1">Отель 3* (двухместное размещение, 6 ночей, завтраки) — <strong>240 € / чел</strong></li>
         </ul>
       </article>
 
       <article class="card">
-        <h4>SPA O’balia</h4>
+        <h4 data-i18n="pricing.spa.t">SPA O’balia</h4>
         <ul>
-          <li>Pause Plénitude ×3 (полдня) • Escale Thermale ×1 (день) • Instant Relax ×1 (полдня)</li>
-          <li><strong>Итого по SPA: ~472 € / чел</strong></li>
+          <li data-i18n="pricing.spa.l1">Pause Plénitude ×3 (полдня) • Escale Thermale ×1 (день) • Instant Relax ×1 (полдня)</li>
+          <li data-i18n="pricing.spa.total"><strong>Итого по SPA: ~472 € / чел</strong></li>
         </ul>
       </article>
 
       <article class="card">
-        <h4>Питание</h4>
+        <h4 data-i18n="pricing.food.t">Питание</h4>
         <ul>
-          <li>Завтраки (если не включены) • ужины • дегустации</li>
-          <li><strong>Итого питание: ~230 € / чел</strong></li>
+          <li data-i18n="pricing.food.l1">Завтраки (если не включены) • ужины • дегустации</li>
+          <li data-i18n="pricing.food.total"><strong>Итого питание: ~230 € / чел</strong></li>
         </ul>
       </article>
 
       <article class="card">
-        <h4>Экскурсии и транспорт</h4>
+        <h4 data-i18n="pricing.tours.t">Экскурсии и транспорт</h4>
         <ul>
-          <li>Сет, Пезенас, Каркасон, винные домены, лодка по Thau</li>
-          <li><strong>Ориентир: ~300 € / чел</strong></li>
+          <li data-i18n="pricing.tours.l1">Сет, Пезенас, Каркасон, винные домены, лодка по Thau</li>
+          <li data-i18n="pricing.tours.total"><strong>Ориентир: ~300 € / чел</strong></li>
         </ul>
       </article>
 
-      <article class="card" style="grid-column:1/-1">
-        <h4>Итого (себестоимость → рекоменд. цена)</h4>
-        <p><strong>~1 240 € / чел</strong> → <strong>от 1 610 € / чел</strong></p>
+      <article class="card highlight" style="grid-column:1/-1">
+        <h4 data-i18n="pricing.total.t">Итого (себестоимость → рекоменд. цена)</h4>
+        <p data-i18n="pricing.total.v"><strong>~1 240 € / чел</strong> → <strong>от 1 610 € / чел</strong></p>
       </article>
     </div>
   </section>
 
   <!-- Карта и адреса -->
   <section id="map" class="container">
-    <h3 class="section-title">Локации тура</h3>
-    <p class="section-sub">База — Balaruc-les-Bains. Термы O’balia, лагуна Thau, Сет, Пезенас, Каркасон, винные домены.</p>
+    <h3 class="section-title" data-i18n="map.title">Локации тура</h3>
+    <p class="section-sub" data-i18n="map.sub">База — Balaruc-les-Bains. Термы O’balia, лагуна Thau, Сет, Пезенас, Каркасон, винные домены.</p>
 
     <div class="grid" style="grid-template-columns:2fr 1fr; gap:1rem">
       <article class="card" style="padding:0; overflow:hidden">
-        <!-- Встраиваемая карта Balaruc + окрестности -->
         <iframe
           title="Карта Balaruc-les-Bains"
           src="https://www.google.com/maps?q=Balaruc-les-Bains&hl=ru&z=11&output=embed"
@@ -214,23 +213,23 @@
       </article>
 
       <article class="card">
-        <h4>Ключевые точки</h4>
+        <h4 data-i18n="map.points.t">Ключевые точки</h4>
         <ul>
           <li><strong>Thermes O’balia</strong> — Rue du Mont Saint-Clair, 34540 Balaruc-les-Bains</li>
-          <li><strong>Étang de Thau</strong> — устрицы & лодка (Balaruc/Sète/Marseillan)</li>
-          <li><strong>Sète</strong> — каналы и рыбный рынок (15–20 мин)</li>
-          <li><strong>Pézenas</strong> — ремёсла и гастро-улицы (35–40 мин)</li>
-          <li><strong>Pic Saint-Loup</strong> — винные домены (≈1 ч)</li>
-          <li><strong>Carcassonne</strong> — цитадель (≈1 ч 45 мин)</li>
+          <li><strong>Étang de Thau</strong> — Balaruc/Sète/Marseillan</li>
+          <li><strong>Sète</strong> — 15–20 мин</li>
+          <li><strong>Pézenas</strong> — 35–40 мин</li>
+          <li><strong>Pic Saint-Loup</strong> — ≈1 ч</li>
+          <li><strong>Carcassonne</strong> — ≈1 ч 45 мин</li>
         </ul>
-        <p style="margin-top:.5rem">По запросу добавим: Нарбонн, Бéзье, Аббатство Валмагн, Сен-Жильем-ле-Дезер.</p>
+        <p style="margin-top:.5rem">По запросу добавим: Нарбонн, Бéзье, Валмагн, Сен-Жильем-ле-Дезер.</p>
       </article>
     </div>
   </section>
 
   <!-- Галерея -->
   <section class="container">
-    <h3 class="section-title">Галерея</h3>
+    <h3 class="section-title" data-i18n="gallery.title">Галерея</h3>
     <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:1rem">
       <figure class="card"><img src="../assets/spa/Obalia-pool.jpg" alt="O’balia бассейны" loading="lazy" decoding="async"></figure>
       <figure class="card"><img src="../assets/spa/Thau-oysters.jpg" alt="Устрицы на лагуне Thau" loading="lazy" decoding="async"></figure>
@@ -240,18 +239,18 @@
 
   <!-- Бронирование -->
   <section id="book" class="container">
-    <h3 class="section-title">Забронировать</h3>
-    <p class="section-sub">Оставьте быстрый запрос — подтвердим даты и доступность терм.</p>
+    <h3 class="section-title" data-i18n="book.title">Забронировать</h3>
+    <p class="section-sub" data-i18n="book.sub">Оставьте быстрый запрос — подтвердим даты и доступность терм.</p>
 
-    <form class="card" action="https://formspree.io/f/your-id" method="POST">
+    <form class="card" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST">
       <div class="grid" style="grid-template-columns:repeat(2,1fr); gap:1rem">
-        <label>Имя<input type="text" name="name" required></label>
+        <label data-i18n="book.name">Имя<input type="text" name="name" required></label>
         <label>Email<input type="email" name="email" required></label>
-        <label>Даты<input type="text" name="dates" placeholder="напр. 10–16 января"></label>
-        <label>Гостей<input type="number" name="guests" min="2" value="2"></label>
+        <label data-i18n="book.dates">Даты<input type="text" name="dates" placeholder="напр. 10–16 января"></label>
+        <label data-i18n="book.guests">Гостей<input type="number" name="guests" min="2" value="2"></label>
       </div>
-      <label>Комментарий<textarea name="message" rows="5" placeholder="Пожелания по SPA/экскурсиям"></textarea></label>
-      <button class="btn" type="submit">Отправить запрос</button>
+      <label data-i18n="book.msg">Комментарий<textarea name="message" rows="5" placeholder="Пожелания по SPA/экскурсиям"></textarea></label>
+      <button class="btn" type="submit" data-i18n="book.btn">Отправить запрос</button>
     </form>
   </section>
 
@@ -261,5 +260,173 @@
   <p>&copy; Tours Languedoc by Irène</p>
 </footer>
 
+<!-- ===== i18n RU/FR (добавь/слей с твоим словарём) ===== -->
+<script>
+  window.dict = window.dict || { ru: {}, fr: {} };
+
+  const spaDictRU = {
+    'spa.hero.title': 'Balaruc-les-Bains — SPA & Languedoc',
+    'spa.hero.sub': 'Тёплая зима у моря: термы O’balia, устрицы Thau и винные домены.',
+    'spa.tag.1': 'термы O’balia',
+    'spa.tag.2': 'устрицы & Picpoul',
+    'spa.tag.3': 'Пезенас • Каркасон',
+    'spa.tag.4': 'лодка по лагуне',
+    'spa.usp.1': 'Приватный формат, 2–6 гостей',
+    'spa.usp.2': 'Без суеты: slow-travel',
+    'spa.usp.3': 'Локальная гастрономия',
+    'spa.cta.book': 'Забронировать',
+
+    'spa.brief.title': 'Кратко о туре',
+    'spa.brief.sub': '7 дней / 6 ночей • сезон: ноябрь–апрель • минимум 2 гостя',
+    'spa.fact.duration.title': 'Длительность',
+    'spa.fact.duration.text': '7 дней / 6 ночей',
+    'spa.fact.format.title': 'Формат',
+    'spa.fact.format.text': 'Приват • 2–6 гостей • русско-/франкоязычное сопровождение',
+    'spa.fact.spa.title': 'SPA-программа',
+    'spa.fact.spa.text': '5 посещений O’balia: Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1',
+    'spa.fact.tours.title': 'Экскурсии',
+    'spa.fact.tours.text': 'Сет, Пезенас, Каркасон, винные домены, лагуна Thau (лодка + устрицы)',
+    'spa.fact.hotel.title': 'Проживание',
+    'spa.fact.hotel.text': 'Отель 3* (6 ночей, завтраки) — <strong>240 € / чел</strong>',
+    'spa.fact.total.title': 'Итоговая цена',
+    'spa.fact.total.text': '<strong>от 1 610 € / чел</strong> (при 2 гостях)',
+
+    'program.title': 'Программа по дням',
+    'program.d1.t': 'День 1 — Прибытие',
+    'program.d1.d': 'Встреча (MPL/Бéзье), трансфер, заселение. Вечерняя прогулка по набережной лагуны Thau. Ужин: устрицы + Picpoul.',
+    'program.d2.t': 'День 2 — Escale Thermale & Сет',
+    'program.d2.d': 'Утро: Escale Thermale (полный день: бассейны, гидромассаж, глина). После обеда: Сет — каналы, рыбный рынок, дегустация.',
+    'program.d3.t': 'День 3 — Pause Plénitude (1/3) & Пезенас',
+    'program.d3.d': 'Утро: SPA полдня (процедуры + массаж). После обеда: Пезенас — мастерские, антиквариат, нуга.',
+    'program.d4.t': 'День 4 — Винный день',
+    'program.d4.d': 'Два домена (Pic Saint-Loup/поблизости), дегустации, пикник среди виноградников. Вечером свободно.',
+    'program.d5.t': 'День 5 — Pause Plénitude (2/3) & Каркасон',
+    'program.d5.d': 'Утро: SPA полдня. После обеда: Каркасон (UNESCO), средневековая цитадель и смотровые.',
+    'program.d6.t': 'День 6 — Pause Plénitude (3/3) & лагуна Thau',
+    'program.d6.d': 'Утро: SPA полдня. После обеда: лодка по лагуне, визит к устричным садкам, дегустация на воде. Прощальный ужин.',
+    'program.d7.t': 'День 7 — Отъезд',
+    'program.d7.d': 'Завтрак, чек-аут, трансфер в аэропорт.',
+
+    'pricing.title': 'Разбивка стоимости',
+    'pricing.sub': 'Ориентиры по сезону. Итог «от 1 610 € / чел» — при 2 гостях и марже 30%.',
+    'pricing.hotel.t': 'Проживание',
+    'pricing.hotel.l1': 'Отель 3* (двухместное размещение, 6 ночей, завтраки) — <strong>240 € / чел</strong>',
+    'pricing.spa.t': 'SPA O’balia',
+    'pricing.spa.l1': 'Pause Plénitude ×3 (полдня) • Escale Thermale ×1 (день) • Instant Relax ×1 (полдня)',
+    'pricing.spa.total': '<strong>Итого по SPA: ~472 € / чел</strong>',
+    'pricing.food.t': 'Питание',
+    'pricing.food.l1': 'Завтраки (если не включены) • ужины • дегустации',
+    'pricing.food.total': '<strong>Итого питание: ~230 € / чел</strong>',
+    'pricing.tours.t': 'Экскурсии и транспорт',
+    'pricing.tours.l1': 'Сет, Пезенас, Каркасон, винные домены, лодка по Thau',
+    'pricing.tours.total': '<strong>Ориентир: ~300 € / чел</strong>',
+    'pricing.total.t': 'Итого (себестоимость → рекоменд. цена)',
+    'pricing.total.v': '<strong>~1 240 € / чел</strong> → <strong>от 1 610 € / чел</strong>',
+
+    'map.title': 'Локации тура',
+    'map.sub': 'База — Balaruc-les-Bains. Термы O’balia, лагуна Thau, Сет, Пезенас, Каркасон, винные домены.',
+    'map.points.t': 'Ключевые точки',
+
+    'gallery.title': 'Галерея',
+
+    'book.title': 'Забронировать',
+    'book.sub': 'Оставьте быстрый запрос — подтвердим даты и доступность терм.',
+    'book.name': 'Имя',
+    'book.dates': 'Даты',
+    'book.guests': 'Гостей',
+    'book.msg': 'Комментарий',
+    'book.btn': 'Отправить запрос'
+  };
+
+  const spaDictFR = {
+    'spa.hero.title': 'Balaruc-les-Bains — SPA & Languedoc',
+    'spa.hero.sub': 'Hiver doux au bord de la lagune : thermes O’balia, huîtres de Thau et domaines viticoles.',
+    'spa.tag.1': 'Thermes O’balia',
+    'spa.tag.2': 'Huîtres & Picpoul',
+    'spa.tag.3': 'Pézenas • Carcassonne',
+    'spa.tag.4': 'Balade en bateau',
+    'spa.usp.1': 'Format privé, 2–6 pers.',
+    'spa.usp.2': 'Sans stress : slow-travel',
+    'spa.usp.3': 'Gastronomie locale',
+    'spa.cta.book': 'Réserver',
+
+    'spa.brief.title': 'En bref',
+    'spa.brief.sub': '7 jours / 6 nuits • saison : nov–avr • minimum 2 pers.',
+    'spa.fact.duration.title': 'Durée',
+    'spa.fact.duration.text': '7 jours / 6 nuits',
+    'spa.fact.format.title': 'Format',
+    'spa.fact.format.text': 'Privé • 2–6 pers. • accompagnement FR/RU',
+    'spa.fact.spa.title': 'Programme SPA',
+    'spa.fact.spa.text': '5 accès O’balia : Pause Plénitude ×3, Escale Thermale ×1, Instant Relax ×1',
+    'spa.fact.tours.title': 'Visites',
+    'spa.fact.tours.text': 'Sète, Pézenas, Carcassonne, domaines, lagune de Thau (bateau + huîtres)',
+    'spa.fact.hotel.title': 'Hébergement',
+    'spa.fact.hotel.text': 'Hôtel 3* (6 nuits, petits-déj.) — <strong>240 € / pers.</strong>',
+    'spa.fact.total.title': 'Tarif indicatif',
+    'spa.fact.total.text': '<strong>à partir de 1 610 € / pers.</strong> (base 2 pers.)',
+
+    'program.title': 'Programme jour par jour',
+    'program.d1.t': 'Jour 1 — Arrivée',
+    'program.d1.d': 'Accueil (MPL/Béziers), transfert, installation. Promenade au bord de l’Étang de Thau. Dîner : huîtres + Picpoul.',
+    'program.d2.t': 'Jour 2 — Escale Thermale & Sète',
+    'program.d2.d': 'Matin : Escale Thermale (journée : bassins, hydro, argile). Après-midi : Sète — canaux, marché aux poissons, dégustation.',
+    'program.d3.t': 'Jour 3 — Pause Plénitude (1/3) & Pézenas',
+    'program.d3.d': 'Matin : SPA demi-journée (soins + modelage). Après-midi : Pézenas — ateliers, antiquaires, nougat.',
+    'program.d4.t': 'Jour 4 — Journée vin',
+    'program.d4.d': 'Deux domaines (Pic Saint-Loup/proximité), dégustations, pique-nique dans les vignes. Soirée libre.',
+    'program.d5.t': 'Jour 5 — Pause Plénitude (2/3) & Carcassonne',
+    'program.d5.d': 'Matin : SPA demi-journée. Après-midi : Carcassonne (UNESCO), cité médiévale et panoramas.',
+    'program.d6.t': 'Jour 6 — Pause Plénitude (3/3) & lagune de Thau',
+    'program.d6.d': 'Matin : SPA demi-journée. Après-midi : bateau sur la lagune, tables ostréicoles, dégustation sur l’eau. Dîner d’au revoir.',
+    'program.d7.t': 'Jour 7 — Départ',
+    'program.d7.d': 'Petit-déjeuner, check-out, transfert aéroport.',
+
+    'pricing.title': 'Détail du tarif',
+    'pricing.sub': 'Indications saisonnières. « à partir de 1 610 € / pers. » sur base 2 pers. (marge 30%).',
+    'pricing.hotel.t': 'Hébergement',
+    'pricing.hotel.l1': 'Hôtel 3* (chambre double, 6 nuits, petits-déj.) — <strong>240 € / pers.</strong>',
+    'pricing.spa.t': 'SPA O’balia',
+    'pricing.spa.l1': 'Pause Plénitude ×3 (½ journée) • Escale Thermale ×1 (journée) • Instant Relax ×1 (½ journée)',
+    'pricing.spa.total': '<strong>Total SPA : ~472 € / pers.</strong>',
+    'pricing.food.t': 'Restauration',
+    'pricing.food.l1': 'Petits-déj. (si non inclus) • dîners • dégustations',
+    'pricing.food.total': '<strong>Total repas : ~230 € / pers.</strong>',
+    'pricing.tours.t': 'Visites & transferts',
+    'pricing.tours.l1': 'Sète, Pézenas, Carcassonne, domaines, bateau sur Thau',
+    'pricing.tours.total': '<strong>Repère : ~300 € / pers.</strong>',
+    'pricing.total.t': 'Total (coût → prix conseillé)',
+    'pricing.total.v': '<strong>~1 240 € / pers.</strong> → <strong>à partir de 1 610 € / pers.</strong>',
+
+    'map.title': 'Lieux du séjour',
+    'map.sub': 'Base — Balaruc-les-Bains. Thermes O’balia, Étang de Thau, Sète, Pézenas, Carcassonne, domaines.',
+    'map.points.t': 'Points clés',
+
+    'gallery.title': 'Galerie',
+
+    'book.title': 'Réserver',
+    'book.sub': 'Envoyez une demande — nous confirmons les dates et les disponibilités.',
+    'book.name': 'Nom',
+    'book.dates': 'Dates',
+    'book.guests': 'Personnes',
+    'book.msg': 'Message',
+    'book.btn': 'Envoyer'
+  };
+
+  // слить со старым словарём сайта (если есть)
+  Object.assign(window.dict.ru, spaDictRU);
+  Object.assign(window.dict.fr, spaDictFR);
+
+  // простое применение i18n
+  (function applyI18n() {
+    const lang = document.documentElement.lang || 'ru';
+    const d = window.dict[lang] || {};
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (d[key]) el.innerHTML = d[key];
+    });
+  })();
+</script>
+
 </body>
 </html>
+/html>
