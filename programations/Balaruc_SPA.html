@@ -243,24 +243,62 @@
   </section>
 
   <!-- BOOKING -->
-  <section id="book" class="container">
-    <div class="card" style="padding:18px">
-      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты в O’balia.</p>
-      <form onsubmit="openMail(event)">
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-        <input id="f-name" name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-        <input id="f-contact" name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Даты и состав</label>
-        <textarea id="f-message" name="message" placeholder="Желаемые даты, кол-во гостей, предпочтения по SPA/экскурсиям" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
-        </div>
-      </form>
-    </div>
-  </section>
+<!-- === АКТИВНОСТИ (обновлено) === -->
+<section id="activities" class="container" style="margin:3rem 0">
+  <h3 class="section-title">Активности и визиты</h3>
+  <ul class="list-dash">
+    <li><strong>O’balia SPA (Balaruc-les-Bains)</strong> — 2–3 сессии по выбору (ритуалы/массажи/сауны).</li>
+    <li><strong>Бузиг (Bouzigues): визит столов + дегустация у производителя</strong><br>
+      Формат: рассказ о выращивании, выход к столам и <em>дегустация 6 устриц + бокал белого</em> у маса.<br>
+      <span class="badge">Ориентир цены</span> от <strong>8,5 € / чел</strong> (визит-дегустация у маса, 1,5–2 ч) • 
+      <span class="badge">Альтернатива</span> <strong>1-часовая прогулка на катере Bleu Marin</strong> с высадкой на столах — 
+      <strong>14 € / взрослый</strong>, <strong>10 € / ребёнок</strong>.
+    </li>
+    <li><strong>Sète</strong> — Мон-Сен-Клер, рынок, морепродукты.</li>
+    <li><strong>День вина Languedoc</strong> — 2–3 домена (Picpoul / Pic Saint-Loup).</li>
+    <li><strong>Pézenas</strong> и <strong>Jardin Antique Méditerranéen</strong>.</li>
+    <li><strong>Carcassonne</strong> — цитадель, замок и валы (по сезону).</li>
+    <li><strong>Noilly Prat (Marseillan)</strong> — визит и дегустация вермутов.</li>
+  </ul>
+  <p class="note">* Конкретные производители/времена визитов подтверждаем при бронировании. Лодка Tarbouriech (260 €) — удалена из программы.</p>
+</section>
+
+<!-- === ТАРИФЫ (добавлены строки по отелям) === -->
+<section id="pricing" class="container" style="margin:3rem 0">
+  <h3 class="section-title">Цены</h3>
+  <ul class="price-list">
+    <li><span>Пакет <strong>без отеля</strong> (7 дней, база 2 гостя)</span> <strong>— по запросу</strong></li>
+    <li><span>Отель <strong>3★</strong> (двухместный, ориентир)</span> <strong>~100 € / ночь</strong>  <em>(6 ночей ≈ 600 € / номер)</em></li>
+    <li><span>Отель <strong>4★</strong> (двухместный, ориентир)</span> <strong>~155 € / ночь</strong> <em>(6 ночей ≈ 930 € / номер)</em></li>
+  </ul>
+  <p class="section-sub">Цены по отелям указаны ориентировочно и зависят от дат, политики отелей и наличия. Итоговый расчёт сделаем под ваши даты.</p>
+</section>
+
+<!-- === ЧТО ВКЛЮЧЕНО / НЕ ВКЛЮЧЕНО === -->
+<section id="included" class="container" style="margin:3rem 0">
+  <div class="grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+    <article class="card">
+      <h4>Включено</h4>
+      <ul>
+        <li>Дизайн-маршрут на 7 дней и бронирования активностей</li>
+        <li>SPA O’balia (кол-во и тип процедур по выбору)</li>
+        <li>Bouzigues: визит столов + дегустация у производителя <em>или</em> катер Bleu Marin</li>
+        <li>Noilly Prat, музей/сад, Carcassonne (по сезону)</li>
+        <li>Сопровождение / координация</li>
+      </ul>
+    </article>
+    <article class="card">
+      <h4>Не включено</h4>
+      <ul>
+        <li>Проживание (3★/4★ по строкам выше)</li>
+        <li>Питание, городские налоги, страховка</li>
+        <li>Трансферы/аренда авто, топливо, платные дороги</li>
+        <li>Доп. процедуры в SPA, премиальные напитки</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
