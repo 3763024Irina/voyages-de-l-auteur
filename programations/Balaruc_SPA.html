@@ -226,11 +226,22 @@
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_hotel_t">🏨 Отель</h4>
       <p data-i18n="brief_hotel_d">Курортный отель 3★ (двухместный номер с завтраком) рядом с O’balia.</p>
+      <!-- ДОБАВЛЕНО: цены по отелю -->
+      <ul class="list">
+        <li><strong>3★:</strong> ориентир <strong>~100 € / ночь</strong> (6 ночей ≈ 600 € / номер)</li>
+        <li><strong>4★:</strong> ориентир <strong>~155 € / ночь</strong> (6 ночей ≈ 930 € / номер)</li>
+      </ul>
     </div>
 
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_spa_t">💧 O’balia — термальный комплекс</h4>
       <p data-i18n="brief_spa_d">Pause Plénitude/Instant Relax (½ дня) и Escale Thermale (день): бассейны, гидромассаж, хаммам, расслабление.</p>
+      <!-- ДОБАВЛЕНО: ориентиры цен O’balia -->
+      <ul class="list">
+        <li>Процедуры от <strong>~29 €</strong></li>
+        <li>Ритуалы/массажи ≈ <strong>~65 €</strong></li>
+        <li>Фирменный ритуал 1h10 ≈ <strong>~99 €</strong></li>
+      </ul>
     </div>
 
     <div class="card highlight">
@@ -474,30 +485,19 @@
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
         if(t[key]!==undefined){
-          // Если строка содержит HTML-тэги — вставляем как HTML, иначе текстом
           if (/<[a-z][\s\S]*>/i.test(t[key])) { node.innerHTML = t[key]; }
           else { node.textContent = t[key]; }
         }
       });
 
-      // placeholders
-      const fName = document.getElementById('f-name');
-      const fContact = document.getElementById('f-contact');
-      const fMessage = document.getElementById('f-message');
-      if (fName) fName.placeholder = lang==='fr' ? 'Votre prénom/nom' : 'Ваше имя';
-      if (fContact) fContact.placeholder = lang==='fr' ? '+33… ou email' : '+33… или email';
-      if (fMessage) fMessage.placeholder = lang==='fr'
-        ? 'Dates, nb pers., préférences SPA/visites'
-        : 'Желаемые даты, кол-во гостей, предпочтения по SPA/экскурсиям';
-
-      // alt texts
+      // alt
       setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
 
       // header aria
       const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
 
-      // toggle buttons
+      // toggle
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
