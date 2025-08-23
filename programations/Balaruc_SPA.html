@@ -9,7 +9,8 @@
   <meta property="og:title" content="Balaruc-les-Bains — SPA & Languedoc (7 дней)" />
   <meta property="og:description" content="Тёплая зима у моря: термы O’balia, устрицы Thau и вина Лангедока, города без толп. Минимум 2 гостя. От 1 610 € / чел." />
   <!-- Замените путь на превью для соцсетей при необходимости -->
-  <meta property="og:image" content="assets/Balaruc-Obalia.jpg" />
+<meta property="og:image" content="/assets/Balaruc-Obalia.jpg" />
+
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,34 +124,38 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="bg">
-      <!-- СМЕНИТЕ ФОТО ЗДЕСЬ: положите свой файл и измените путь ниже -->
-      <img src="..assets/Balaruc-Obalia.jpg" alt="" id="alt-hero" />
-      <div class="overlay"></div>
+<section class="hero">
+  <div class="bg">
+    <img
+      src="../assets/Balaruc-Obalia.jpg"
+      alt=""
+      id="alt-hero"
+    />
+    <div class="overlay"></div>
+  </div>
+  <div class="container inner">
+    <div>
+      <span class="badge">SPA • Étang de Thau</span>
+      <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — SPA & Languedoc (7 дней)</h2>
+      <p class="subtitle" data-i18n="hero_sub">Тёплая зима у моря: термы Баларук, устрицы Лагуны Тау, винные домены, Сет, Пезенас и Каркасон — без толп и спешки.</p>
     </div>
-    <div class="container inner">
-      <div>
-        <span class="badge">SPA • Étang de Thau</span>
-        <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — SPA & Languedoc (7 дней)</h2>
-        <p class="subtitle" data-i18n="hero_sub">Тёплая зима у моря: термы Баларук, устрицы Лагуны Тау, винные домены, Сет, Пезенас и Каркасон — без толп и спешки.</p>
+    <div class="card">
+      <div class="price" data-i18n="price">от 1 610 € / чел</div>
+      <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Базовый пакет при 2 гостях. Минимум: 2 гостя.</p>
+      <div class="specs">
+        <div class="spec" data-i18n="spec_duration">Длительность: 7 дней / 6 ночей</div>
+        <div class="spec" data-i18n="spec_walk">Ритм: slow-travel, короткие прогулки</div>
+        <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
+        <div class="spec" data-i18n="spec_start">База: Balaruc-les-Bains (Étang de Thau)</div>
       </div>
-      <div class="card">
-        <div class="price" data-i18n="price">от 1 610 € / чел</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Базовый пакет при 2 гостях. Минимум: 2 гостя.</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: 7 дней / 6 ночей</div>
-          <div class="spec" data-i18n="spec_walk">Ритм: slow-travel, короткие прогулки</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_start">База: Balaruc-les-Bains (Étang de Thau)</div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-        </div>
+      <div style="display:flex; gap:10px; margin-top:12px">
+        <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
+        <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- GALLERY -->
   <section class="container">
