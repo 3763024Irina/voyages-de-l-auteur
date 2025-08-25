@@ -201,14 +201,30 @@
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Château Puech-Haut • Clos Marie • Domaine de l’Hortus • Pic Saint-Loup • Valflaunès.</p>
-      <div class="mapwrap">
-        <!-- Быстрый embed: маршрутная карта Пик Сен-Лу -->
-       <iframe
-  title="Карта: Pic Saint-Loup — винодельни"
-  src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sru!2sfr!4v1!6m8!1m7!1sChIJv6jYlQ5mthIRPUEchPuech!2m2!1d43.6948!2d3.9754!3f0!4f0!5f0.7820865974627469"
-  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     <div class="mapwrap">
+  <!-- Центр на районе Pic Saint-Loup -->
+  <iframe
+    title="Карта: Pic Saint-Loup — винодельни"
+    src="https://www.google.com/maps?q=Pic%20Saint-Loup%2C%20Valflaun%C3%A8s%2C%20France&z=11&output=embed"
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      </div>
+  <!-- Быстрые ссылки под картой (открываются в Google Maps) -->
+  <div style="display:flex; gap:8px; flex-wrap:wrap; padding:10px 8px 0">
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://www.google.com/maps?q=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&um=1&ie=UTF-8&sa=X&ved=2ahUKEwjQ5aCq"
+    >Puech-Haut</a>
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://www.google.com/maps?q=Clos%20Marie%2C%20Lauret&um=1&ie=UTF-8&sa=X&ved=2ahUKEwi9"
+    >Clos Marie</a>
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://www.google.com/maps?q=Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s&um=1&ie=UTF-8&sa=X&ved=2ahUKEwjz"
+    >Domaine de l’Hortus</a>
+    <a class="btn" target="_blank" rel="noopener"
+       href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&waypoints=Clos%20Marie%2C%20Lauret|Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s"
+    >Маршрут: MPL → Puech-Haut → Clos Marie → Hortus</a>
+  </div>
+</div>
+
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
       <ul class="list">
