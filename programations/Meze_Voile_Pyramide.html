@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс в Yacht Club de Mèze (5×~3 ч). БАЗА с формулой, кайт/винг и трансфер — как опции. Приватно: 2–6 гостей." />
+  <meta name="description" content="Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс/аренда (5× сессий). БАЗА считается автоматически: сезон, тип отеля, Pass’Loc. Приватно: 2–6 гостей." />
   <meta property="og:title" content="Mèze Voile — Hôtel de la Pyramide (7 ночей)" />
-  <meta property="og:description" content="Катамаран HC15/16 (5×~3 ч), проживание в Hôtel de la Pyramide, опции кайт/винг/трансфер. БАЗА по формуле: (7×цена_за_ночь + 518)×1,15." />
-  <!-- Замените на реальный превьюшот тура -->
+  <meta property="og:description" content="3 предложения: Катамаран, Hansa 303, Кайтинг. Тумблер сезон Низкий/Высокий и выбор отеля (3★ бюджет, Pyramide 3★, 4★). Автоподсчёт цены." />
   <meta property="og:image" content="../assets/meze-voile-hero.jpg" />
-
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,6 +63,10 @@
     .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
     .gallery img{width:100%; height:100%; object-fit:cover}
 
+    .controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:10px}
+    .select, .switch, .check{display:flex; gap:10px; align-items:center; padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
+    select{border:0; background:transparent; font-weight:700}
+
     .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .list{margin:0; padding-left:18px}
@@ -74,12 +76,8 @@
     .timeline li{margin:12px 0}
     .time{font-weight:800; color:var(--brand);}
 
-    .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
-
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
-
+    .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .footrow{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-top:1px solid #f0f0f0}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .btn:hover{filter:brightness(.98)}
@@ -93,6 +91,7 @@
       .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
+      .grid3{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -134,11 +133,29 @@
       <div>
         <span class="badge">Voile • Étang de Thau</span>
         <h2 class="title" data-i18n="hero_title">Mèze Voile — Hôtel de la Pyramide (7 ночей)</h2>
-        <p class="subtitle" data-i18n="hero_sub">Катамаран HC15/16 (5×~3 ч), лагуна Thau, ужины с устрицами в Bouzigues. БАЗА по формуле; кайт/винг и трансфер — как опции.</p>
+        <p class="subtitle" data-i18n="hero_sub">3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и (для паруса) Pass’Loc — цена пересчитается автоматически.</p>
+        <div class="controls">
+          <div class="switch" id="seasonWrap">
+            <span data-i18n="lbl_season">Сезон:</span>
+            <label><input type="radio" name="season" value="low" checked> <span data-i18n="low">Низкий</span></label>
+            <label><input type="radio" name="season" value="high"> <span data-i18n="high">Высокий</span></label>
+          </div>
+          <div class="select">
+            <span data-i18n="lbl_hotel">Отель:</span>
+            <select id="hotelSel">
+              <option value="budget" data-i18n="h_budget">Бюджет 2–3★</option>
+              <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
+              <option value="four" data-i18n="h_four">4★</option>
+            </select>
+          </div>
+          <div class="check" id="passlocWrap">
+            <label><input type="checkbox" id="passloc" checked> <span data-i18n="use_passloc">Использовать Pass’Loc для паруса</span></label>
+          </div>
+        </div>
       </div>
       <div class="card">
-        <div class="price" data-i18n="price">пример: 1 562 € / 2 гостя</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">При цене номера 120 €/ночь. Итог — по формуле БАЗЫ.</p>
+        <div class="price" id="heroPrice">—</div>
+        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, активность (5 сессий), для паруса — лицензии; +15% сопровождение.</p>
         <div class="specs">
           <div class="spec" data-i18n="spec_duration">Длительность: 8 дней / 7 ночей</div>
           <div class="spec" data-i18n="spec_walk">Ритм: активный, ветер по погоде</div>
@@ -170,38 +187,65 @@
       <h3 class="section-title" data-i18n="plan_title">Программа по дням</h3>
       <ul class="timeline">
         <li><span class="time" data-i18n="d1">День 1</span> — <span data-i18n="t_d1">Заезд в Hôtel de la Pyramide (после 15:00). Закат у лагуны Thau. Ужин с устрицами.</span></li>
-        <li><span class="time" data-i18n="d2">День 2</span> — <span data-i18n="t_d2">Катамаран HC15/16 — ~3 часа (09:00–12:00 или 14:00–17:00). Свободное время.</span></li>
-        <li><span class="time" data-i18n="d3">День 3</span> — <span data-i18n="t_d3">Катамаран — ~3 часа. Вечером — набережная Мезе / Bouzigues.</span></li>
-        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">Катамаран — ~3 часа. По желанию: приват 2 ч или SUP (опции).</span></li>
-        <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Катамаран — ~3 часа. По желанию: кайт/винг (опции).</span></li>
-        <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6">Катамаран — ~3 часа. Вечером — Sète/Marseillan (по желанию).</span></li>
-        <li><span class="time" data-i18n="d7">День 7</span> — <span data-i18n="t_d7">Свободный день: рынок, устрицы, пляж. Доп. активности по опциям.</span></li>
+        <li><span class="time" data-i18n="d2">День 2</span> — <span data-i18n="t_d2">Сессия ~2–3 часа (утро или день). Свободное время.</span></li>
+        <li><span class="time" data-i18n="d3">День 3</span> — <span data-i18n="t_d3">Сессия ~2–3 часа. Вечером — набережная Мезе / Bouzigues.</span></li>
+        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">Сессия ~2–3 часа. По желанию: SUP/каяк (опции).</span></li>
+        <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Сессия ~2–3 часа. По желанию: кайт/винг (опции).</span></li>
+        <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6">Сессия ~2–3 часа. Вечером — Sète/Marseillan.</span></li>
+        <li><span class="time" data-i18n="d7">День 7</span> — <span data-i18n="t_d7">Свободный день: рынок, устрицы, пляж.</span></li>
         <li><span class="time" data-i18n="d8">День 8</span> — <span data-i18n="t_d8">Завтрак, чек-аут до 11:00.</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что входит (БАЗА)</h3>
-      <div class="inc-grid" role="list">
-        <div class="pill" role="listitem" data-i18n="inc_hotel">Hôtel de la Pyramide — 7 ночей, Double (можно заменить на более бюджетный 2–3★)</div>
-        <div class="pill" role="listitem" data-i18n="inc_course">Yacht Club de Mèze — 5×~3 ч (пн–пт), катамаран HC15/16 (14+)</div>
-        <div class="pill" role="listitem" data-i18n="inc_license">Лицензия FFVoile: 14 € × 2 гостя</div>
-        <div class="pill" role="listitem" data-i18n="inc_service">Организационное сопровождение: 15%</div>
+      <div class="listwrap">
+        <ul class="list">
+          <li data-i18n="inc_hotel">Проживание 7 ночей (выбранный тип отеля)</li>
+          <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда; кайт — курс 5×4 ч)</li>
+          <li data-i18n="inc_license">Для паруса: лицензия FFVoile 14 € × 2</li>
+          <li data-i18n="inc_service">Организационное сопровождение: 15%</li>
+        </ul>
       </div>
 
-      <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
-      <ul class="list">
-        <li data-i18n="exc_meals">Питание, туристический налог, страховка.</li>
-        <li data-i18n="exc_transfer">Трансфер из/в аэропорт — опция.</li>
-        <li data-i18n="exc_private">Частные уроки, SUP/Big-SUP, кайт/винг — опции.</li>
-      </ul>
+      <h3 class="section-title" style="margin-top:28px" data-i18n="choose_title">Выберите вид спорта</h3>
+      <p class="section-sub" data-i18n="choose_sub">Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.</p>
 
-      <h3 class="section-title" style="margin-top:24px" data-i18n="opt_title">Опции (с твоими 15%)</h3>
-      <ul class="list">
-        <li data-i18n="opt_transfer">Трансфер MRS↔Mèze r/t: Sedan **644 €**, Van **793,50 €**</li>
-        <li data-i18n="opt_private">Приват 2 ч (на двоих): **276 €** · J24 3 ч: 1/2/3 чел — **345/322/310,5 €**</li>
-        <li data-i18n="opt_wing">Wingfoil (приват): 1ч **103,5 €** / 2ч **161 €** (1 гость) · Дуо 1ч **161 €** / 2ч **276 €**</li>
-        <li data-i18n="opt_kite">Kitesurf (ID KITE): групповой **172,5 €**, приват **218,5 €**, 5-дн. стаж **805 €**</li>
-        <li data-i18n="opt_sup">SUP 1ч (две доски): **34,5 €** · Big-SUP 1ч: **69 €**</li>
-      </ul>
+      <div class="grid3">
+        <!-- CATAMARAN -->
+        <article class="card" id="card-cat">
+          <div class="body">
+            <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
+            <p data-i18n="choose_cat_d">5× аренда по 2 часа (2 перс.), можно с Pass’Loc.</p>
+          </div>
+          <div class="footrow">
+            <div class="price" id="price-cat">—</div>
+            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+          </div>
+        </article>
+
+        <!-- HANSA 303 -->
+        <article class="card" id="card-hansa">
+          <div class="body">
+            <h3>Hansa 303</h3>
+            <p data-i18n="choose_hansa_d">5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.</p>
+          </div>
+          <div class="footrow">
+            <div class="price" id="price-hansa">—</div>
+            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+          </div>
+        </article>
+
+        <!-- KITESURF -->
+        <article class="card" id="card-kite">
+          <div class="body">
+            <h3>Kitesurf</h3>
+            <p data-i18n="choose_kite_d">Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.</p>
+          </div>
+          <div class="footrow">
+            <div class="price" id="price-kite">—</div>
+            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+          </div>
+        </article>
+      </div>
     </article>
 
     <aside class="card">
@@ -219,53 +263,25 @@
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
       <ul class="list">
         <li data-i18n="tip_gear">Нужны ветровка, закрытая обувь, кепка, SPF, вода.</li>
-        <li data-i18n="tip_slots">Слот для взрослых — ~3 часа. Время подтверждает клуб (по ветру).</li>
+        <li data-i18n="tip_slots">Слот для взрослых — ~2–3 часа. Время подтверждает клуб (по ветру).</li>
         <li data-i18n="tip_level">Для проката — уровень FFVoile 3. Несовершеннолетние — с взрослым.</li>
       </ul>
     </aside>
   </section>
 
-  <!-- PUBLIC INFO -->
+  <!-- BRIEF -->
   <section class="container">
     <h3 class="section-title" data-i18n="brief_title">Кратко о туре</h3>
     <p class="section-sub" data-i18n="brief_sub">8 дней / 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.</p>
 
     <div class="card" style="margin-bottom:14px">
-      <h4 data-i18n="brief_hotel_t">🏨 Отель</h4>
-      <p data-i18n="brief_hotel_d">Hôtel de la Pyramide 3★ (Double). По запросу — замена на бюджетный 2–3★ в Мезе/округе.</p>
+      <h4 data-i18n="brief_hotel_t">🏨 Отели</h4>
       <ul class="list">
-        <li><strong>Пример:</strong> при 120 €/ночь — 7 ночей ≈ <strong>840 € / номер</strong></li>
-        <li><strong>Бюджетно:</strong> при 90 €/ночь — 7 ночей ≈ <strong>630 € / номер</strong></li>
+        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — 90 €/ночь → 630 € / номер</li>
+        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — 120 €/ночь → 840 € / номер</li>
+        <li><strong data-i18n="h_four">4★</strong> — 155 €/ночь → 1 085 € / номер</li>
       </ul>
     </div>
-
-    <div class="card" style="margin-bottom:14px">
-      <h4 data-i18n="brief_course_t">⛵ Курс в Yacht Club de Mèze</h4>
-      <p data-i18n="brief_course_d">HC15/16 (14+) — 5×~3 ч, пн–пт. Лицензия FFVoile обязательна.</p>
-      <ul class="list">
-        <li>Тариф клуба: **245 € / чел / неделя** + лицензия **14 € / чел**</li>
-        <li>Для 2 гостей: **(245×2 + 14×2) = 518 €**</li>
-      </ul>
-    </div>
-
-    <div class="card highlight">
-      <h4 data-i18n="brief_price_t">Цена БАЗЫ (за двоих)</h4>
-      <p><strong data-i18n="brief_price_v">(7 × цена_за_ночь + 518) × 1,15</strong></p>
-      <p class="muted" data-i18n="brief_price_note">Примеры: 120 €/ночь → <strong>1 561,70 €</strong>; 100 €/ночь → <strong>1 400,70 €</strong>; 90 €/ночь → <strong>1 320,20 €</strong>.</p>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing" class="container" style="margin:3rem 0">
-    <h3 class="section-title" data-i18n="pricing_title">Опции и доплаты</h3>
-    <ul class="price-list">
-      <li data-i18n="pricing_transfer"><span>Трансфер MRS↔Mèze (туда-обратно):</span> Sedan <strong>644 €</strong> · Van <strong>793,50 €</strong></li>
-      <li data-i18n="pricing_private"><span>Приват 2 ч (на двоих):</span> <strong>276 €</strong> · J24 3 ч: 1/2/3 чел — <strong>345/322/310,5 €</strong></li>
-      <li data-i18n="pricing_wing"><span>Wingfoil (приват):</span> 1ч <strong>103,5 €</strong> / 2ч <strong>161 €</strong> (1 гость) · Дуо 1ч <strong>161 €</strong> / 2ч <strong>276 €</strong></li>
-      <li data-i18n="pricing_kite"><span>Kitesurf (ID KITE):</span> групповой <strong>172,5 €</strong> · приват <strong>218,5 €</strong> · 5-дн. стаж <strong>805 €</strong></li>
-      <li data-i18n="pricing_sup"><span>SUP 1 ч (две доски):</span> <strong>34,5 €</strong> · Big-SUP 1 ч: <strong>69 €</strong></li>
-    </ul>
-    <p class="section-sub" data-i18n="pricing_note">Опции считаются просто: выбранная опция × 1,15 и прибавляется к цене БАЗЫ.</p>
   </section>
 
   <footer>
@@ -280,13 +296,80 @@
   </footer>
 
   <script>
+    // ---------- pricing core ----------
+    const roundTo5 = n => Math.round(n/5)*5;
+
+    const hotels = {
+      budget: 630,       // 90 €/ночь ×7
+      pyramide: 840,     // 120 €/ночь ×7
+      four: 1085         // 155 €/ночь ×7
+    };
+
+    // аренды/курсы на 5 сессий (2 часа для паруса), суммы на двоих
+    const rent = {
+      cat:  { noPass: 300, pass: 222, license: 28 },      // Cata 2h: 60€ ×5; PassLoc ~3.7€/ticket → ~222€; + лицензии
+      hansa:{ noPass: 225, pass: 166.5, license: 28 },    // Hansa 2h: 45€ ×5; PassLoc ≈ 9×5 билетов
+    };
+
+    const kite = { low2p: 1490, high2p: 1590 }; // курс 5 дней за двоих
+
+    function priceCat(hotelKey, pass){
+      const base = hotels[hotelKey] + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
+      return roundTo5(base * 1.15);
+    }
+    function priceHansa(hotelKey, pass){
+      const base = hotels[hotelKey] + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
+      return roundTo5(base * 1.15);
+    }
+    function priceKite(hotelKey, season){
+      const act = (season==='low') ? kite.low2p : kite.high2p;
+      const base = hotels[hotelKey] + act;
+      return roundTo5(base * 1.15);
+    }
+
+    // ---------- UI bindings ----------
+    const hotelSel = document.getElementById('hotelSel');
+    const passloc = document.getElementById('passloc');
+    const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
+
+    const outHero  = document.getElementById('heroPrice');
+    const outCat   = document.getElementById('price-cat');
+    const outHansa = document.getElementById('price-hansa');
+    const outKite  = document.getElementById('price-kite');
+
+    function recalc(){
+      const hotel = hotelSel.value;
+      const season = seasonInputs.find(r=>r.checked).value;
+      const usePass = passloc.checked;
+
+      const pCat   = priceCat(hotel, usePass);
+      const pHansa = priceHansa(hotel, usePass);
+      const pKite  = priceKite(hotel, season);
+
+      outCat.textContent   = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pCat) + ' / 2';
+      outHansa.textContent = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pHansa) + ' / 2';
+      outKite.textContent  = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) + ' / 2';
+
+      // пример для HERO: показываем цену кайтинг как самый «сезонный»
+      outHero.textContent  = (season==='low' ? 'от ' : 'à partir de ') +
+        new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) +
+        (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+    }
+
+    ['change','input'].forEach(evt=>{
+      hotelSel.addEventListener(evt,recalc);
+      passloc.addEventListener(evt,recalc);
+      seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
+    });
+
+    // ---------- i18n ----------
     const i18n = {
       ru: {
         htmlLang:'ru',
         title:'Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène',
-        metaDesc:'Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс в Yacht Club de Mèze (5×~3 ч). БАЗА с формулой, кайт/винг и трансфер — как опции.',
+        metaDesc:'Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс/аренда (5× сессий). БАЗА считается автоматически: сезон, тип отеля, Pass’Loc.',
         ogTitle:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
-        ogDesc:'Катамаран HC15/16 (5×~3 ч), проживание в Hôtel de la Pyramide, опции кайт/винг/трансфер. БАЗА по формуле.',
+        ogDesc:'3 предложения: Катамаран, Hansa 303, Кайтинг. Тумблер сезон + выбор отеля. Автоподсчёт.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
@@ -297,9 +380,8 @@
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
 
         hero_title:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
-        hero_sub:'Катамаран HC15/16 (5×~3 ч), лагуна Thau, ужины с устрицами в Bouzigues. БАЗА по формуле; кайт/винг и трансфер — как опции.',
-        price:'пример: 1 562 € / 2 гостя',
-        price_note:'При цене номера 120 €/ночь. Итог — по формуле БАЗЫ.',
+        hero_sub:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и Pass’Loc — цена пересчитается автоматически.',
+        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, активность (5 сессий), для паруса — лицензии; +15% сопровождение.',
         spec_duration:'Длительность: 8 дней / 7 ночей',
         spec_walk:'Ритм: активный, ветер по погоде',
         spec_langs:'Языки: RU/FR',
@@ -308,66 +390,53 @@
         plan_title:'Программа по дням',
         d1:'День 1', d2:'День 2', d3:'День 3', d4:'День 4', d5:'День 5', d6:'День 6', d7:'День 7', d8:'День 8',
         t_d1:'Заезд в Hôtel de la Pyramide (после 15:00). Закат у лагуны Thau. Ужин с устрицами.',
-        t_d2:'Катамаран HC15/16 — ~3 часа (09:00–12:00 или 14:00–17:00). Свободное время.',
-        t_d3:'Катамаран — ~3 часа. Вечером — набережная Мезе / Bouzigues.',
-        t_d4:'Катамаран — ~3 часа. По желанию: приват 2 ч или SUP (опции).',
-        t_d5:'Катамаран — ~3 часа. По желанию: кайт/винг (опции).',
-        t_d6:'Катамаран — ~3 часа. Вечером — Sète/Marseillan (по желанию).',
-        t_d7:'Свободный день: рынок, устрицы, пляж. Доп. активности по опциям.',
+        t_d2:'Сессия ~2–3 часа (утро или день). Свободное время.',
+        t_d3:'Сессия ~2–3 часа. Вечером — набережная Мезе / Bouzigues.',
+        t_d4:'Сессия ~2–3 часа. По желанию: SUP/каяк (опции).',
+        t_d5:'Сессия ~2–3 часа. По желанию: кайт/винг (опции).',
+        t_d6:'Сессия ~2–3 часа. Вечером — Sète/Marseillan (по желанию).',
+        t_d7:'Свободный день: рынок, устрицы, пляж.',
         t_d8:'Завтрак, чек-аут до 11:00.',
 
         inc_title:'Что входит (БАЗА)',
-        inc_hotel:'Hôtel de la Pyramide — 7 ночей, Double (можно заменить на более бюджетный 2–3★)',
-        inc_course:'Yacht Club de Mèze — 5×~3 ч (пн–пт), катамаран HC15/16 (14+)',
-        inc_license:'Лицензия FFVoile: 14 € × 2 гостя',
+        inc_hotel:'Проживание 7 ночей (выбранный тип отеля)',
+        inc_course:'Активность 5 дней (катамаран/Hansa — аренда; кайт — курс 5×4 ч)',
+        inc_license:'Для паруса: лицензия FFVoile 14 € × 2',
         inc_service:'Организационное сопровождение: 15%',
 
-        exc_title:'Не включено',
-        exc_meals:'Питание, туристический налог, страховка.',
-        exc_transfer:'Трансфер из/в аэропорт — опция.',
-        exc_private:'Частные уроки, SUP/Big-SUP, кайт/винг — опции.',
-
-        opt_title:'Опции (с 15%)',
-        opt_transfer:'Трансфер MRS↔Mèze r/t: Sedan 644 €, Van 793,50 €',
-        opt_private:'Приват 2 ч (на двоих): 276 € · J24 3 ч: 1/2/3 чел — 345/322/310,5 €',
-        opt_wing:'Wingfoil (приват): 1ч 103,5 € / 2ч 161 € (1 гость) · Дуо 1ч 161 € / 2ч 276 €',
-        opt_kite:'Kitesurf (ID KITE): групповой 172,5 € · приват 218,5 € · 5-дн. стаж 805 €',
-        opt_sup:'SUP 1 ч (две доски): 34,5 € · Big-SUP 1 ч: 69 €',
+        choose_title:'Выберите вид спорта',
+        choose_sub:'Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.',
+        choose_cat_t:'Катамаран HC15/16',
+        choose_cat_d:'5× аренда по 2 часа (2 перс.), можно с Pass’Loc.',
+        choose_hansa_d:'5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.',
+        choose_kite_d:'Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.',
 
         where_title:'Где это',
         where_sub:'Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.',
         tips_title:'Полезно знать',
         tip_gear:'Нужны ветровка, закрытая обувь, кепка, SPF, вода.',
-        tip_slots:'Слот для взрослых — ~3 часа. Время подтверждает клуб (по ветру).',
+        tip_slots:'Слот для взрослых — ~2–3 часа. Время подтверждает клуб (по ветру).',
         tip_level:'Для проката — уровень FFVoile 3. Несовершеннолетние — с взрослым.',
 
         brief_title:'Кратко о туре',
         brief_sub:'8 дней / 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.',
-        brief_hotel_t:'🏨 Отель',
-        brief_hotel_d:'Hôtel de la Pyramide 3★ (Double). По запросу — бюджетный 2–3★.',
-        brief_course_t:'⛵ Курс в Yacht Club de Mèze',
-        brief_course_d:'HC15/16 (14+) — 5×~3 ч, пн–пт. Лицензия FFVoile обязательна.',
-        brief_price_t:'Цена БАЗЫ (за двоих)',
-        brief_price_v:'(7 × цена_за_ночь + 518) × 1,15',
-        brief_price_note:'Примеры: 120 €/ночь → 1 561,70 €; 100 €/ночь → 1 400,70 €; 90 €/ночь → 1 320,20 €.',
+        brief_hotel_t:'🏨 Отели',
+        h_budget:'Бюджет 2–3★',
+        h_pyramide:'Hôtel de la Pyramide 3★',
+        h_four:'4★',
 
-        pricing_title:'Опции и доплаты',
-        pricing_transfer:'<span>Трансфер MRS↔Mèze (туда-обратно):</span> Sedan <strong>644 €</strong> · Van <strong>793,50 €</strong>',
-        pricing_private:'<span>Приват 2 ч (на двоих):</span> <strong>276 €</strong> · J24 3 ч: 1/2/3 чел — <strong>345/322/310,5 €</strong>',
-        pricing_wing:'<span>Wingfoil (приват):</span> 1ч <strong>103,5 €</strong> / 2ч <strong>161 €</strong> (1 гость) · Дуо 1ч <strong>161 €</strong> / 2ч <strong>276 €</strong>',
-        pricing_kite:'<span>Kitesurf (ID KITE):</span> групповой <strong>172,5 €</strong> · приват <strong>218,5 €</strong> · 5-дн. стаж <strong>805 €</strong>',
-        pricing_sup:'<span>SUP 1 ч (две доски):</span> <strong>34,5 €</strong> · Big-SUP 1 ч: <strong>69 €</strong>',
-        pricing_note:'Опции считаются просто: выбранная опция × 1,15 и прибавляется к цене БАЗЫ.',
+        lbl_season:'Сезон:', low:'Низкий', high:'Высокий',
+        lbl_hotel:'Отель:',
+        use_passloc:'Использовать Pass’Loc для паруса',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: Mèze Voile — Pyramide (сайт)'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
         htmlLang:'fr',
         title:"Mèze Voile — Hôtel de la Pyramide (7 nuits) | Tours Languedoc by Irène",
-        metaDesc:"Semaine voile sur l’Étang de Thau : Hôtel de la Pyramide + cours (5×~3 h) au Yacht Club de Mèze. BASE avec formule; kite/wing & transfert — en options.",
+        metaDesc:"Semaine voile sur l’Étang de Thau : Hôtel de la Pyramide + cours/location (5× séances). Calcul automatique selon saison, hôtel et Pass’Loc.",
         ogTitle:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
-        ogDesc:"Catamaran HC15/16 (5×~3 h), hébergement à l’Hôtel de la Pyramide, options kite/wing/transfert. BASE via la formule.",
+        ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Bascule saison + choix d’hôtel. Prix recalculés.",
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
@@ -378,9 +447,8 @@
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
 
         hero_title:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
-        hero_sub:"HC15/16 (5×~3 h), lagune de Thau, dîners d’huîtres à Bouzigues. BASE via la formule; kite/wing & transfert — en options.",
-        price:"exemple : 1 562 € / 2 pers.",
-        price_note:"Avec chambre à 120 €/nuit. Total via la formule BASE.",
+        hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison, hôtel et Pass’Loc — le prix se met à jour.",
+        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, activité (5 séances), pour la voile — licences; +15% accompagnement.",
         spec_duration:"Durée : 8 jours / 7 nuits",
         spec_walk:"Rythme : actif, vent selon météo",
         spec_langs:"Langues : RU/FR",
@@ -388,60 +456,47 @@
 
         plan_title:"Programme jour par jour",
         d1:'Jour 1', d2:'Jour 2', d3:'Jour 3', d4:'Jour 4', d5:'Jour 5', d6:'Jour 6', d7:'Jour 7', d8:'Jour 8',
-        t_d1:"Arrivée à l’Hôtel de la Pyramide (après 15h). Coucher de soleil sur la lagune. Dîner aux huîtres.",
-        t_d2:"Catamaran HC15/16 — ~3 h (09:00–12:00 ou 14:00–17:00). Temps libre.",
-        t_d3:"Catamaran — ~3 h. Soirée promenade à Mèze / Bouzigues.",
-        t_d4:"Catamaran — ~3 h. En option : privé 2 h ou SUP.",
-        t_d5:"Catamaran — ~3 h. En option : kite/wing.",
-        t_d6:"Catamaran — ~3 h. Soirée à Sète/Marseillan (option).",
-        t_d7:"Journée libre : marché, huîtres, plage. Options possibles.",
+        t_d1:"Arrivée à l’Hôtel de la Pyramide (après 15h). Coucher de soleil. Dîner aux huîtres.",
+        t_d2:"Séance ~2–3 h (matin/jour). Temps libre.",
+        t_d3:"Séance ~2–3 h. Soirée promenade à Mèze / Bouzigues.",
+        t_d4:"Séance ~2–3 h. En option : SUP/kayak.",
+        t_d5:"Séance ~2–3 h. En option : kite/wing.",
+        t_d6:"Séance ~2–3 h. Soirée à Sète/Marseillan.",
+        t_d7:"Journée libre : marché, huîtres, plage.",
         t_d8:"Petit-déj., check-out avant 11h.",
 
         inc_title:'Inclus (BASE)',
-        inc_hotel:'Hôtel de la Pyramide — 7 nuits, Double (remplaçable par 2–3★ économique)',
-        inc_course:'Yacht Club de Mèze — 5×~3 h (lun–ven), catamaran HC15/16 (14+)',
-        inc_license:'Licence FFVoile : 14 € × 2 pers.',
+        inc_hotel:'Hébergement 7 nuits (hôtel choisi)',
+        inc_course:'Activité 5 jours (catamaran/Hansa — location; kite — stage 5×4 h)',
+        inc_license:'Pour la voile : licence FFVoile 14 € × 2',
         inc_service:'Accompagnement & organisation : 15%',
 
-        exc_title:'Non inclus',
-        exc_meals:'Repas, taxe de séjour, assurance.',
-        exc_transfer:'Transfert aéroport — option.',
-        exc_private:'Leçons privées, SUP/Big-SUP, kite/wing — options.',
-
-        opt_title:'Options (avec 15%)',
-        opt_transfer:'Transfert MRS↔Mèze r/t : Sedan 644 €, Van 793,50 €',
-        opt_private:'Privé 2 h (pour 2) : 276 € · J24 3 h : 1/2/3 pers — 345/322/310,5 €',
-        opt_wing:'Wingfoil (privé) : 1h 103,5 € / 2h 161 € (1 pers) · Duo 1h 161 € / 2h 276 €',
-        opt_kite:'Kitesurf (ID KITE) : collectif 172,5 € · privé 218,5 € · stage 5 j 805 €',
-        opt_sup:'SUP 1 h (deux planches) : 34,5 € · Big-SUP 1 h : 69 €',
+        choose_title:'Choisissez votre sport',
+        choose_sub:'Les prix ci-dessous suivent vos réglages (en haut). Montants pour 2 personnes.',
+        choose_cat_t:'Catamaran HC15/16',
+        choose_cat_d:'Location 5× 2 h (2 pers.), Pass’Loc possible.',
+        choose_hansa_d:'Location 5× 2 h (1–2 pers.), Pass’Loc possible.',
+        choose_kite_d:"Stage 5 jours (4 h/jour) à l'école Fil d’Air. Tarif selon saison.",
 
         where_title:'Où ça se passe',
         where_sub:'Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.',
         tips_title:'À savoir',
         tip_gear:'Veste coupe-vent, chaussures fermées, casquette, SPF, eau.',
-        tip_slots:'Créneau adulte ~3 h. Horaire confirmé par le club (météo).',
+        tip_slots:'Créneau adulte ~2–3 h. Horaire confirmé par le club (météo).',
         tip_level:'Pour la location : niveau FFVoile 3; mineurs accompagnés.',
 
         brief_title:'En bref',
         brief_sub:'8 jours / 7 nuits • 2–6 pers. • base : Mèze, Étang de Thau.',
-        brief_hotel_t:'🏨 Hébergement',
-        brief_hotel_d:'Hôtel de la Pyramide 3★ (Double). Économique 2–3★ sur demande.',
-        brief_course_t:'⛵ Cours au Yacht Club de Mèze',
-        brief_course_d:'HC15/16 (14+) — 5×~3 h, lun–ven. Licence FFVoile obligatoire.',
-        brief_price_t:'Prix BASE (pour 2)',
-        brief_price_v:'(7 × prix_par_nuit + 518) × 1,15',
-        brief_price_note:'Exemples : 120 €/nuit → 1 561,70 € ; 100 €/nuit → 1 400,70 € ; 90 €/nuit → 1 320,20 €.',
+        brief_hotel_t:'🏨 Hôtels',
+        h_budget:'Économique 2–3★',
+        h_pyramide:'Hôtel de la Pyramide 3★',
+        h_four:'4★',
 
-        pricing_title:'Options & suppléments',
-        pricing_transfer:'<span>Transfert MRS↔Mèze (A/R) :</span> Sedan <strong>644 €</strong> · Van <strong>793,50 €</strong>',
-        pricing_private:'<span>Privé 2 h (pour 2) :</span> <strong>276 €</strong> · J24 3 h : 1/2/3 pers — <strong>345/322/310,5 €</strong>',
-        pricing_wing:'<span>Wingfoil (privé) :</span> 1h <strong>103,5 €</strong> / 2h <strong>161 €</strong> (1 pers) · Duo 1h <strong>161 €</strong> / 2h <strong>276 €</strong>',
-        pricing_kite:'<span>Kitesurf (ID KITE) :</span> collectif <strong>172,5 €</strong> · privé <strong>218,5 €</strong> · stage 5 j <strong>805 €</strong>',
-        pricing_sup:'<span>SUP 1 h (deux planches) :</span> <strong>34,5 €</strong> · Big-SUP 1 h : <strong>69 €</strong>',
-        pricing_note:'Les options se calculent simplement : option × 1,15 et on additionne au prix BASE.',
+        lbl_season:'Saison :', low:'Basse', high:'Haute',
+        lbl_hotel:'Hôtel :',
+        use_passloc:'Utiliser Pass’Loc pour la voile',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : Mèze Voile — Pyramide (site)'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
@@ -462,19 +517,16 @@
           else { node.textContent = t[key]; }
         }
       });
-
-      // alt texts
       setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
 
-      // header aria
       const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
 
-      // toggle buttons
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
       localStorage.setItem('site:lang', lang);
+      recalc(); // обновить подписи/формат цены
     }
 
     (function(){
@@ -483,6 +535,7 @@
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+      recalc();
     })();
   </script>
 </body>
