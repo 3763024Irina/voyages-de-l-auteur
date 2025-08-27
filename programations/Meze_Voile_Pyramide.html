@@ -83,10 +83,6 @@
     .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
-    /* превью фото в каталоге */
-    .thumb{aspect-ratio:16/10; border-radius:14px; overflow:hidden; margin-bottom:12px; background:#ddd}
-    .thumb img{width:100%; height:100%; object-fit:cover; display:block}
-
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
@@ -159,7 +155,7 @@
       </div>
       <div class="card">
         <div class="price" id="heroPrice">—</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии.</p>
+        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; +15% сопровождение.</p>
         <div class="specs">
           <div class="spec" data-i18n="spec_duration">Длительность: 8 дней / 7 ночей</div>
           <div class="spec" data-i18n="spec_walk">Ритм: активный, ветер по погоде</div>
@@ -200,67 +196,74 @@
         <li><span class="time" data-i18n="d8">День 8</span> — <span data-i18n="t_d8">Завтрак, чек-аут до 11:00.</span></li>
       </ul>
 
+      <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что входит (БАЗА)</h3>
+      <div class="listwrap">
+        <ul class="list">
+          <li data-i18n="inc_hotel">Проживание 7 ночей (выбранный тип отеля)</li>
+          <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)</li>
+          <li data-i18n="inc_license">Для паруса: лицензия FFVoile 14 € × 2</li>
+        
+        </ul>
+      </div>
+
       <h3 class="section-title" style="margin-top:28px" data-i18n="choose_title">Выберите вид спорта</h3>
       <p class="section-sub" data-i18n="choose_sub">Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.</p>
 
       <div class="grid3">
-        <!-- CATAMARAN -->
-        <article class="card selectable selected" id="card-cat" data-sport="cat">
-          <div class="thumb">
-            <img src="../assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
-          </div>
-          <div class="body">
-            <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
-            <p id="desc-cat" data-i18n="choose_cat_d">5× аренда по 2 часа (2 перс.), можно с Pass’Loc.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-cat">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
+      <!-- CATAMARAN -->
+<article class="card selectable selected" id="card-cat" data-sport="cat">
+  <div class="thumb">
+    <img src="assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
+  </div>
+  <div class="body">
+    <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
+    <p id="desc-cat">Аренда <strong>5×2 ч</strong> (2 перс.), Pass’Loc по желанию.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-cat">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
-        <!-- HANSA 303 -->
-        <article class="card selectable" id="card-hansa" data-sport="hansa">
-          <div class="thumb">
-            <img src="../assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
-          </div>
-          <div class="body">
-            <h3>Hansa 303</h3>
-            <p id="desc-hansa" data-i18n="choose_hansa_d">5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-hansa">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
+<!-- HANSA 303 -->
+<article class="card selectable" id="card-hansa" data-sport="hansa">
+  <div class="thumb">
+    <img src="assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
+  </div>
+  <div class="body">
+    <h3>Hansa 303</h3>
+    <p id="desc-hansa">Аренда <strong>5×2 ч</strong> (1–2 перс.), Pass’Loc по желанию.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-hansa">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
-        <!-- KITESURF -->
-        <article class="card selectable" id="card-kite" data-sport="kite">
-          <div class="thumb">
-            <img src="../assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
-          </div>
-          <div class="body">
-            <h3>Kitesurf</h3>
-            <p id="desc-kite" data-i18n="choose_kite_d">Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-kite">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
-      </div>
-    </article>
+<!-- KITESURF -->
+<article class="card selectable" id="card-kite" data-sport="kite">
+  <div class="thumb">
+    <img src="assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
+  </div>
+  <div class="body">
+    <h3>Kitesurf</h3>
+    <p id="desc-kite">Курс <strong>5×4 ч</strong> (групповой, Fil d’Air). Цена зависит от сезона.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-kite">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.</p>
-      <div class="mapwrap" style="border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee">
+      <div class="mapwrap">
         <iframe
           title="Карта: Mèze"
           src="https://www.google.com/maps?q=M%C3%A8ze%2C%20France&output=embed"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          style="width:100%; height:380px; border:0">
+          referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
 
@@ -304,23 +307,22 @@
     const roundTo5 = n => Math.round(n/5)*5;
 
     const hotels = {
-      budget: 630,   // 90 €/ночь ×7
-      pyramide: 840, // 120 €/ночь ×7
-      four: 1085     // 155 €/ночь ×7
+      budget: 630,       // 90 €/ночь ×7
+      pyramide: 840,     // 120 €/ночь ×7
+      four: 1085         // 155 €/ночь ×7
     };
 
     // аренды/курсы на 5 сессий (2 часа для паруса), суммы на двоих
     const rent = {
-      cat:   { noPass: 300,   pass: 222,   license: 28 },   // Cata 2h ×5
-      hansa: { noPass: 225,   pass: 166.5, license: 28 },   // Hansa 2h ×5
+      cat:  { noPass: 300, pass: 222, license: 28 },      // Cata 2h: 60€ ×5; PassLoc ~3.7€/ticket → ~222€; + лицензии
+      hansa:{ noPass: 225, pass: 166.5, license: 28 },    // Hansa 2h: 45€ ×5; PassLoc ≈ 9×5 билетов
     };
 
-    // кайт: 5-дневный курс за двоих
-    const kite = { low2p: 1490, high2p: 1590 };
+    const kite = { low2p: 1490, high2p: 1590 }; // курс 5 дней за двоих
 
     function priceCat(hotelKey, pass){
       const base = hotels[hotelKey] + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
-      return roundTo5(base * 1.15); // формула остаётся как была
+      return roundTo5(base * 1.15);
     }
     function priceHansa(hotelKey, pass){
       const base = hotels[hotelKey] + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
@@ -334,7 +336,7 @@
 
     // ---------- UI bindings ----------
     const hotelSel = document.getElementById('hotelSel');
-    const passloc  = document.getElementById('passloc');
+    const passloc = document.getElementById('passloc');
     const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
     const outHero  = document.getElementById('heroPrice');
@@ -343,7 +345,7 @@
     const outKite  = document.getElementById('price-kite');
 
     function recalc(){
-      const hotel  = hotelSel.value;
+      const hotel = hotelSel.value;
       const season = seasonInputs.find(r=>r.checked).value;
       const usePass = passloc.checked;
 
@@ -351,14 +353,14 @@
       const pHansa = priceHansa(hotel, usePass);
       const pKite  = priceKite(hotel, season);
 
-      const fmt = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+      outCat.textContent   = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pCat) + ' / 2';
+      outHansa.textContent = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pHansa) + ' / 2';
+      outKite.textContent  = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) + ' / 2';
 
-      outCat.textContent   = fmt(pCat)  + ' / 2';
-      outHansa.textContent = fmt(pHansa)+ ' / 2';
-      outKite.textContent  = fmt(pKite) + ' / 2';
-
+      // пример для HERO: показываем цену кайтинг как самый «сезонный»
       outHero.textContent  = (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ') +
-        fmt(pKite) + (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+        new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) +
+        (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
     }
 
     ['change','input'].forEach(evt=>{
@@ -383,13 +385,10 @@
         gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, катамаран HC15/16, набережная и устрицы.',
         altHero:'Mèze Voile — HERO',
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
-        altCat:'Катамаран HC15/16 — Étang de Thau',
-        altHansa:'Hansa 303 — Étang de Thau',
-        altKite:'Кайтсерфинг — Fil d’Air, Étang de Thau',
 
         hero_title:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
         hero_sub:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и Pass’Loc — цена пересчитается автоматически.',
-        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии.',
+        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.',
         spec_duration:'Длительность: 8 дней / 7 ночей',
         spec_walk:'Ритм: активный, ветер по погоде',
         spec_langs:'Языки: RU/FR',
@@ -405,6 +404,12 @@
         t_d6:'Сессия ~2–3 часа. Вечером — Sète/Marseillan.',
         t_d7:'Свободный день: рынок, устрицы, пляж.',
         t_d8:'Завтрак, чек-аут до 11:00.',
+
+        inc_title:'Что входит (БАЗА)',
+        inc_hotel:'Проживание 7 ночей (выбранный тип отеля)',
+        inc_course:'Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)',
+        inc_license:'Для паруса: лицензия FFVoile 14 € × 2',
+  
 
         choose_title:'Выберите вид спорта',
         choose_sub:'Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.',
@@ -447,13 +452,10 @@
         gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, catamaran HC15/16, promenade et huîtres.',
         altHero:'Mèze Voile — HERO',
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
-        altCat:'Catamaran HC15/16 — Étang de Thau',
-        altHansa:'Hansa 303 — Étang de Thau',
-        altKite:'Kitesurf — Fil d’Air, Étang de Thau',
 
         hero_title:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
         hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison, hôtel et Pass’Loc — le prix se met à jour.",
-        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, 5 séances de l’activité choisie; pour la voile — licences.",
+        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, 5 séances de l’activité choisie; pour la voile — licences; accompagnement.",
         spec_duration:"Durée : 8 jours / 7 nuits",
         spec_walk:"Rythme : actif, vent selon météo",
         spec_langs:"Langues : RU/FR",
@@ -469,6 +471,12 @@
         t_d6:"Séance ~2–3 h. Soirée à Sète/Marseillan.",
         t_d7:"Journée libre : marché, huîtres, plage.",
         t_d8:"Petit-déj., check-out avant 11h.",
+
+        inc_title:'Inclus (BASE)',
+        inc_hotel:'Hébergement 7 nuits (hôtel choisi)',
+        inc_course:'Activité 5 jours (catamaran/Hansa — location 2 h/jour; kite — stage 4 h/jour)',
+        inc_license:'Pour la voile : licence FFVoile 14 € × 2',
+      
 
         choose_title:'Choisissez votre sport',
         choose_sub:'Les prix ci-dessous suivent vos réglages (en haut). Montants pour 2 personnes.',
@@ -500,53 +508,67 @@
     };
 
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
-    function updateTimelineHours(){ /* noop */ }
 
-    // ---------- i18n apply ----------
-    function applyLang(lang){
-      const t = i18n[lang];
-      document.documentElement.lang = t.htmlLang;
-      document.title = t.title;
+   <script>
+  function applyLang(lang){
+    const t = i18n[lang];
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.title;
 
-      const md  = document.querySelector('meta[name="description"]');
-      const ogt = document.querySelector('meta[property="og:title"]');
-      const ogd = document.querySelector('meta[property="og:description"]');
-      if(md)  md.setAttribute('content', t.metaDesc);
-      if(ogt) ogt.setAttribute('content', t.ogTitle);
-      if(ogd) ogd.setAttribute('content', t.ogDesc);
+    const md  = document.querySelector('meta[name="description"]');
+    const ogt = document.querySelector('meta[property="og:title"]');
+    const ogd = document.querySelector('meta[property="og:description"]');
+    if(md)  md.setAttribute('content', t.metaDesc);
+    if(ogt) ogt.setAttribute('content', t.ogTitle);
+    if(ogd) ogd.setAttribute('content', t.ogDesc);
 
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key = node.getAttribute('data-i18n');
-        if(t[key]!==undefined){
-          if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
-          else node.textContent = t[key];
-        }
-      });
+    // Перевод всех [data-i18n]
+    document.querySelectorAll('[data-i18n]').forEach(node=>{
+      const key = node.getAttribute('data-i18n');
+      if(t[key] !== undefined){
+        if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
+        else node.textContent = t[key];
+      }
+    });
 
-      // alts
-      setAlt('alt-hero', t.altHero);
-      setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
-      setAlt('img-cat', t.altCat); setAlt('img-hansa', t.altHansa); setAlt('img-kite', t.altKite);
+    // alt для HERO/галереи
+    setAlt('alt-hero', t.altHero);
+    setAlt('alt-g1',   t.altG1);
+    setAlt('alt-g2',   t.altG2);
+    setAlt('alt-g3',   t.altG3);
 
-      const brandHome = document.getElementById('brandHome');
-      if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
+    // alt для каталога (новые картинки)
+    setAlt('img-cat',   t.altCat);
+    setAlt('img-hansa', t.altHansa);
+    setAlt('img-kite',  t.altKite);
 
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+    // ARIA у логотипа/домой
+    const brandHome = document.getElementById('brandHome');
+    if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
 
-      localStorage.setItem('site:lang', lang);
-      updateTimelineHours();
-      recalc();
-    }
+    // Подсветка переключателей языка
+    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
 
-    (function init(){
-      const saved = localStorage.getItem('site:lang');
-      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      applyLang(initial);
-      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
-      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-      recalc();
-    })();
-  </script>
-</body>
-</html>
+    // Сохраняем язык и обновляем тексты/цены/таймлайн
+    localStorage.setItem('site:lang', lang);
+    updateTimelineHours();
+    recalc();
+  }
+
+  (function init(){
+    const saved   = localStorage.getItem('site:lang');
+    const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+    applyLang(initial);
+
+    // Назначаем слушатели один раз
+    const btnRu = document.getElementById('btn-ru');
+    const btnFr = document.getElementById('btn-fr');
+    if(btnRu) btnRu.onclick = ()=>applyLang('ru');
+    if(btnFr) btnFr.onclick = ()=>applyLang('fr');
+
+    // Стартовые вычисления
+    updateTimelineHours();
+    recalc();
+  })();
+</script>
