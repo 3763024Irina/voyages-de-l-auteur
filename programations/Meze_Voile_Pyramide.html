@@ -210,43 +210,50 @@
       <p class="section-sub" data-i18n="choose_sub">Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.</p>
 
       <div class="grid3">
-        <!-- CATAMARAN -->
-        <article class="card" id="card-cat">
-          <div class="body">
-            <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
-            <p data-i18n="choose_cat_d">5× аренда по 2 часа (2 перс.), можно с Pass’Loc.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-cat">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
+      <!-- CATAMARAN -->
+<article class="card selectable selected" id="card-cat" data-sport="cat">
+  <div class="thumb">
+    <img src="assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
+  </div>
+  <div class="body">
+    <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
+    <p id="desc-cat">Аренда <strong>5×2 ч</strong> (2 перс.), Pass’Loc по желанию.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-cat">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
-        <!-- HANSA 303 -->
-        <article class="card" id="card-hansa">
-          <div class="body">
-            <h3>Hansa 303</h3>
-            <p data-i18n="choose_hansa_d">5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-hansa">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
+<!-- HANSA 303 -->
+<article class="card selectable" id="card-hansa" data-sport="hansa">
+  <div class="thumb">
+    <img src="assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
+  </div>
+  <div class="body">
+    <h3>Hansa 303</h3>
+    <p id="desc-hansa">Аренда <strong>5×2 ч</strong> (1–2 перс.), Pass’Loc по желанию.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-hansa">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
-        <!-- KITESURF -->
-        <article class="card" id="card-kite">
-          <div class="body">
-            <h3>Kitesurf</h3>
-            <p data-i18n="choose_kite_d">Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.</p>
-          </div>
-          <div class="footrow">
-            <div class="price" id="price-kite">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
-          </div>
-        </article>
-      </div>
-    </article>
+<!-- KITESURF -->
+<article class="card selectable" id="card-kite" data-sport="kite">
+  <div class="thumb">
+    <img src="assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
+  </div>
+  <div class="body">
+    <h3>Kitesurf</h3>
+    <p id="desc-kite">Курс <strong>5×4 ч</strong> (групповой, Fil d’Air). Цена зависит от сезона.</p>
+  </div>
+  <div class="footrow">
+    <div class="price" id="price-kite">—</div>
+    <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+  </div>
+</article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
