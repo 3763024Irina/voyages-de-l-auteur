@@ -509,41 +509,66 @@
 
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
 
-    function applyLang(lang){
-      const t = i18n[lang];
-      document.documentElement.lang = t.htmlLang;
-      document.title = t.title;
-      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+   <script>
+  function applyLang(lang){
+    const t = i18n[lang];
+    document.documentElement.lang = t.htmlLang;
+    document.title = t.title;
 
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key = node.getAttribute('data-i18n');
-        if(t[key]!==undefined){
-          if (/<[a-z][\s\S]*>/i.test(t[key])) { node.innerHTML = t[key]; }
-          else { node.textContent = t[key]; }
-        }
-      });
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+    const md  = document.querySelector('meta[name="description"]');
+    const ogt = document.querySelector('meta[property="og:title"]');
+    const ogd = document.querySelector('meta[property="og:description"]');
+    if(md)  md.setAttribute('content', t.metaDesc);
+    if(ogt) ogt.setAttribute('content', t.ogTitle);
+    if(ogd) ogd.setAttribute('content', t.ogDesc);
 
-      const brandHome = document.getElementById('brandHome');
-      if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
+    // Перевод всех [data-i18n]
+    document.querySelectorAll('[data-i18n]').forEach(node=>{
+      const key = node.getAttribute('data-i18n');
+      if(t[key] !== undefined){
+        if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
+        else node.textContent = t[key];
+      }
+    });
 
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+    // alt для HERO/галереи
+    setAlt('alt-hero', t.altHero);
+    setAlt('alt-g1',   t.altG1);
+    setAlt('alt-g2',   t.altG2);
+    setAlt('alt-g3',   t.altG3);
 
-      localStorage.setItem('site:lang', lang);
-      recalc(); // обновить цены под язык/формат
-    }
+    // alt для каталога (новые картинки)
+    setAlt('img-cat',   t.altCat);
+    setAlt('img-hansa', t.altHansa);
+    setAlt('img-kite',  t.altKite);
 
-    (function(){
-      const saved = localStorage.getItem('site:lang');
-      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      applyLang(initial);
-      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
-      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-      recalc();
-    })();
-  </script>
-</body>
-</html>
+    // ARIA у логотипа/домой
+    const brandHome = document.getElementById('brandHome');
+    if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
+
+    // Подсветка переключателей языка
+    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+
+    // Сохраняем язык и обновляем тексты/цены/таймлайн
+    localStorage.setItem('site:lang', lang);
+    updateTimelineHours();
+    recalc();
+  }
+
+  (function init(){
+    const saved   = localStorage.getItem('site:lang');
+    const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+    applyLang(initial);
+
+    // Назначаем слушатели один раз
+    const btnRu = document.getElementById('btn-ru');
+    const btnFr = document.getElementById('btn-fr');
+    if(btnRu) btnRu.onclick = ()=>applyLang('ru');
+    if(btnFr) btnFr.onclick = ()=>applyLang('fr');
+
+    // Стартовые вычисления
+    updateTimelineHours();
+    recalc();
+  })();
+</script>
