@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс/аренда (5× сессий). БАЗА считается автоматически: сезон, тип отеля, Pass’Loc. Приватно: 2–6 гостей." />
+  <meta name="description" content="Неделя на лагуне Thau: проживание в Мезе (7 ночей) и 5 сессий активности на выбор — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и типу отеля." />
   <meta property="og:title" content="Mèze Voile — Hôtel de la Pyramide (7 ночей)" />
-  <meta property="og:description" content="3 предложения: Катамаран, Hansa 303, Кайтинг. Тумблер сезон Низкий/Высокий и выбор отеля (3★ бюджет, Pyramide 3★, 4★). Автоподсчёт цены." />
+  <meta property="og:description" content="3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически." />
   <meta property="og:image" content="../assets/meze-voile-hero.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -155,7 +155,7 @@
       </div>
       <div class="card">
         <div class="price" id="heroPrice">—</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, активность (5 сессий), для паруса — лицензии; +15% сопровождение.</p>
+        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; +15% сопровождение.</p>
         <div class="specs">
           <div class="spec" data-i18n="spec_duration">Длительность: 8 дней / 7 ночей</div>
           <div class="spec" data-i18n="spec_walk">Ритм: активный, ветер по погоде</div>
@@ -189,8 +189,8 @@
         <li><span class="time" data-i18n="d1">День 1</span> — <span data-i18n="t_d1">Заезд в Hôtel de la Pyramide (после 15:00). Закат у лагуны Thau. Ужин с устрицами.</span></li>
         <li><span class="time" data-i18n="d2">День 2</span> — <span data-i18n="t_d2">Сессия ~2–3 часа (утро или день). Свободное время.</span></li>
         <li><span class="time" data-i18n="d3">День 3</span> — <span data-i18n="t_d3">Сессия ~2–3 часа. Вечером — набережная Мезе / Bouzigues.</span></li>
-        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">Сессия ~2–3 часа. По желанию: SUP/каяк (опции).</span></li>
-        <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Сессия ~2–3 часа. По желанию: кайт/винг (опции).</span></li>
+        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">Сессия ~2–3 часа. По желанию: SUP/каяк.</span></li>
+        <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Сессия ~2–3 часа. По желанию: кайт/винг.</span></li>
         <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6">Сессия ~2–3 часа. Вечером — Sète/Marseillan.</span></li>
         <li><span class="time" data-i18n="d7">День 7</span> — <span data-i18n="t_d7">Свободный день: рынок, устрицы, пляж.</span></li>
         <li><span class="time" data-i18n="d8">День 8</span> — <span data-i18n="t_d8">Завтрак, чек-аут до 11:00.</span></li>
@@ -200,7 +200,7 @@
       <div class="listwrap">
         <ul class="list">
           <li data-i18n="inc_hotel">Проживание 7 ночей (выбранный тип отеля)</li>
-          <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда; кайт — курс 5×4 ч)</li>
+          <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)</li>
           <li data-i18n="inc_license">Для паруса: лицензия FFVoile 14 € × 2</li>
           <li data-i18n="inc_service">Организационное сопровождение: 15%</li>
         </ul>
@@ -351,7 +351,7 @@
       outKite.textContent  = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) + ' / 2';
 
       // пример для HERO: показываем цену кайтинг как самый «сезонный»
-      outHero.textContent  = (season==='low' ? 'от ' : 'à partir de ') +
+      outHero.textContent  = (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ') +
         new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) +
         (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
     }
@@ -367,9 +367,9 @@
       ru: {
         htmlLang:'ru',
         title:'Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène',
-        metaDesc:'Неделя паруса на лагуне Thau: Hôtel de la Pyramide (Мезе) + курс/аренда (5× сессий). БАЗА считается автоматически: сезон, тип отеля, Pass’Loc.',
+        metaDesc:'Неделя на лагуне Thau: проживание в Мезе (7 ночей) и 5 сессий активности на выбор — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и типу отеля.',
         ogTitle:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
-        ogDesc:'3 предложения: Катамаран, Hansa 303, Кайтинг. Тумблер сезон + выбор отеля. Автоподсчёт.',
+        ogDesc:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
@@ -381,7 +381,7 @@
 
         hero_title:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
         hero_sub:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и Pass’Loc — цена пересчитается автоматически.',
-        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, активность (5 сессий), для паруса — лицензии; +15% сопровождение.',
+        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; +15% сопровождение.',
         spec_duration:'Длительность: 8 дней / 7 ночей',
         spec_walk:'Ритм: активный, ветер по погоде',
         spec_langs:'Языки: RU/FR',
@@ -392,15 +392,15 @@
         t_d1:'Заезд в Hôtel de la Pyramide (после 15:00). Закат у лагуны Thau. Ужин с устрицами.',
         t_d2:'Сессия ~2–3 часа (утро или день). Свободное время.',
         t_d3:'Сессия ~2–3 часа. Вечером — набережная Мезе / Bouzigues.',
-        t_d4:'Сессия ~2–3 часа. По желанию: SUP/каяк (опции).',
-        t_d5:'Сессия ~2–3 часа. По желанию: кайт/винг (опции).',
-        t_d6:'Сессия ~2–3 часа. Вечером — Sète/Marseillan (по желанию).',
+        t_d4:'Сессия ~2–3 часа. По желанию: SUP/каяк.',
+        t_d5:'Сессия ~2–3 часа. По желанию: кайт/винг.',
+        t_d6:'Сессия ~2–3 часа. Вечером — Sète/Marseillan.',
         t_d7:'Свободный день: рынок, устрицы, пляж.',
         t_d8:'Завтрак, чек-аут до 11:00.',
 
         inc_title:'Что входит (БАЗА)',
         inc_hotel:'Проживание 7 ночей (выбранный тип отеля)',
-        inc_course:'Активность 5 дней (катамаран/Hansa — аренда; кайт — курс 5×4 ч)',
+        inc_course:'Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)',
         inc_license:'Для паруса: лицензия FFVoile 14 € × 2',
         inc_service:'Организационное сопровождение: 15%',
 
@@ -434,9 +434,9 @@
       fr: {
         htmlLang:'fr',
         title:"Mèze Voile — Hôtel de la Pyramide (7 nuits) | Tours Languedoc by Irène",
-        metaDesc:"Semaine voile sur l’Étang de Thau : Hôtel de la Pyramide + cours/location (5× séances). Calcul automatique selon saison, hôtel et Pass’Loc.",
+        metaDesc:"Semaine sur l’Étang de Thau : hébergement à Mèze (7 nuits) et 5 séances au choix — catamaran HC15/16, Hansa 303 ou kitesurf. Prix mis à jour selon saison et hôtel.",
         ogTitle:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
-        ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Bascule saison + choix d’hôtel. Prix recalculés.",
+        ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix s’actualise.",
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
@@ -448,7 +448,7 @@
 
         hero_title:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
         hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison, hôtel et Pass’Loc — le prix se met à jour.",
-        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, activité (5 séances), pour la voile — licences; +15% accompagnement.",
+        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, 5 séances de l’activité choisie; pour la voile — licences; +15% accompagnement.",
         spec_duration:"Durée : 8 jours / 7 nuits",
         spec_walk:"Rythme : actif, vent selon météo",
         spec_langs:"Langues : RU/FR",
@@ -467,7 +467,7 @@
 
         inc_title:'Inclus (BASE)',
         inc_hotel:'Hébergement 7 nuits (hôtel choisi)',
-        inc_course:'Activité 5 jours (catamaran/Hansa — location; kite — stage 5×4 h)',
+        inc_course:'Activité 5 jours (catamaran/Hansa — location 2 h/jour; kite — stage 4 h/jour)',
         inc_license:'Pour la voile : licence FFVoile 14 € × 2',
         inc_service:'Accompagnement & organisation : 15%',
 
@@ -526,7 +526,7 @@
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
       localStorage.setItem('site:lang', lang);
-      recalc(); // обновить подписи/формат цены
+      recalc(); // обновить цены под язык/формат
     }
 
     (function(){
