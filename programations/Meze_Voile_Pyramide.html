@@ -213,7 +213,7 @@
       <!-- CATAMARAN -->
 <article class="card selectable selected" id="card-cat" data-sport="cat">
   <div class="thumb">
-    <img src="assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
+    <img src="../assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
   </div>
   <div class="body">
     <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
@@ -228,7 +228,7 @@
 <!-- HANSA 303 -->
 <article class="card selectable" id="card-hansa" data-sport="hansa">
   <div class="thumb">
-    <img src="assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
+    <img src="../assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
   </div>
   <div class="body">
     <h3>Hansa 303</h3>
@@ -243,7 +243,7 @@
 <!-- KITESURF -->
 <article class="card selectable" id="card-kite" data-sport="kite">
   <div class="thumb">
-    <img src="assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
+    <img src="../assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
   </div>
   <div class="body">
     <h3>Kitesurf</h3>
@@ -507,9 +507,64 @@
       }
     };
 
-    const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
+ <script>
+  const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
 
-   <script>
+  // заглушка: чтобы applyLang() не падал, если динамический таймлайн не используется
+  function updateTimelineHours(){ /* noop */ }
+
+  // ---- pricing core (как у тебя было) ----
+  const roundTo5 = n => Math.round(n/5)*5;
+  const hotels = { budget:630, pyramide:840, four:1085 };
+  const rent = {
+    cat:{ noPass:300, pass:222, license:28 },
+    hansa:{ noPass:225, pass:166.5, license:28 },
+  };
+  const kite = { low2p:1490, high2p:1590 };
+
+  function priceCat(hotelKey, pass){
+    const base = hotels[hotelKey] + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
+    return roundTo5(base * 1.15);
+  }
+  function priceHansa(hotelKey, pass){
+    const base = hotels[hotelKey] + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
+    return roundTo5(base * 1.15);
+  }
+  function priceKite(hotelKey, season){
+    const act = (season==='low') ? kite.low2p : kite.high2p;
+    const base = hotels[hotelKey] + act;
+    return roundTo5(base * 1.15);
+  }
+
+  const hotelSel = document.getElementById('hotelSel');
+  const passloc = document.getElementById('passloc');
+  const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
+
+  const outHero  = document.getElementById('heroPrice');
+  const outCat   = document.getElementById('price-cat');
+  const outHansa = document.getElementById('price-hansa');
+  const outKite  = document.getElementById('price-kite');
+
+  function recalc(){
+    const hotel = hotelSel.value;
+    const season = seasonInputs.find(r=>r.checked).value;
+    const usePass = passloc.checked;
+
+    const pCat   = priceCat(hotel, usePass);
+    const pHansa = priceHansa(hotel, usePass);
+    const pKite  = priceKite(hotel, season);
+
+    outCat.textContent   = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pCat) + ' / 2';
+    outHansa.textContent = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pHansa) + ' / 2';
+    outKite.textContent  = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) + ' / 2';
+
+    outHero.textContent  =
+      (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ') +
+      new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) +
+      (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+  }
+
+  // --- applyLang & init (с alt для каталога) ---
   function applyLang(lang){
     const t = i18n[lang];
     document.documentElement.lang = t.htmlLang;
@@ -522,7 +577,6 @@
     if(ogt) ogt.setAttribute('content', t.ogTitle);
     if(ogd) ogd.setAttribute('content', t.ogDesc);
 
-    // Перевод всех [data-i18n]
     document.querySelectorAll('[data-i18n]').forEach(node=>{
       const key = node.getAttribute('data-i18n');
       if(t[key] !== undefined){
@@ -531,26 +585,21 @@
       }
     });
 
-    // alt для HERO/галереи
     setAlt('alt-hero', t.altHero);
     setAlt('alt-g1',   t.altG1);
     setAlt('alt-g2',   t.altG2);
     setAlt('alt-g3',   t.altG3);
 
-    // alt для каталога (новые картинки)
     setAlt('img-cat',   t.altCat);
     setAlt('img-hansa', t.altHansa);
     setAlt('img-kite',  t.altKite);
 
-    // ARIA у логотипа/домой
     const brandHome = document.getElementById('brandHome');
     if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
 
-    // Подсветка переключателей языка
     document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
     document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
 
-    // Сохраняем язык и обновляем тексты/цены/таймлайн
     localStorage.setItem('site:lang', lang);
     updateTimelineHours();
     recalc();
@@ -561,14 +610,11 @@
     const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
     applyLang(initial);
 
-    // Назначаем слушатели один раз
     const btnRu = document.getElementById('btn-ru');
     const btnFr = document.getElementById('btn-fr');
     if(btnRu) btnRu.onclick = ()=>applyLang('ru');
     if(btnFr) btnFr.onclick = ()=>applyLang('fr');
 
-    // Стартовые вычисления
-    updateTimelineHours();
     recalc();
   })();
 </script>
