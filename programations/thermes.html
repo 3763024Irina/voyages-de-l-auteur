@@ -10,29 +10,19 @@
   :root{--brand:#0D2B1E;--accent:#C9B886;--ink:#0b1b14;--muted:#6b7b73;--bg:#f8f7f3}
   *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
   header {
-  background:var(--brand);
-  color:#fff;
-  padding:18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-header h1 {
-  margin:0;
-  font-weight:600;
-  font-size:18px;
-}
-header .back-btn {
-  color:#fff;
-  text-decoration:none;
-  background:var(--accent);
-  padding:6px 12px;
-  border-radius:8px;
-  font-size:14px;
-}
-header .back-btn:hover {
-  background:#b5a475;
-}
+    background:var(--brand);
+    color:#fff;
+    padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  header h1 { margin:0; font-weight:600; font-size:18px; }
+  header .back-btn {
+    color:#fff; text-decoration:none; background:var(--accent);
+    padding:6px 12px; border-radius:8px; font-size:14px;
+  }
+  header .back-btn:hover { background:#b5a475; }
 
   .wrap{max-width:1100px;margin:0 auto;padding:16px}
   .panel{background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:14px;margin-bottom:12px}
@@ -43,7 +33,6 @@ header .back-btn:hover {
   select{padding:10px 12px;border-radius:10px;border:1px solid #e5e1d8;background:#fff;width:100%}
   .h2{font-weight:700;margin:6px 0 4px;color:var(--brand);font-size:18px}
   .muted{color:var(--muted)}
-  .pill{display:inline-block;padding:6px 10px;border:1px dashed #d9d3c6;border-radius:999px;font-size:12px;color:var(--muted);margin-right:6px}
   img.thumb{width:100%;height:260px;object-fit:cover;border-radius:12px;border:1px solid #eee}
   #map{height:380px;border-radius:12px}
   .desc-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
@@ -131,8 +120,8 @@ const THERMES = [
   {id:'balaruc', name:'Balaruc-les-Bains — Thermes', city:'Balaruc-les-Bains', dept:'Hérault (34)', cat:'medical', lat:43.44060, lon:3.67812,
    desc:'Крупнейший курорт Средиземноморья на лагуне Thau. Сильная база реабилитации ОДА и ЛОР. Рядом термальный spa O’balia.',
    tags:['rééducation','ORL','lagune Thau'],
-   indications:['Опорно‑двигательный аппарат, после травм','ЛОР и дыхательные','Мягкая климатотерапия у моря'],
-   water:['Сульфатно‑кальциевая, гипертермальная','Современные установки для душей и бассейнов'],
+   indications:['Опорно-двигательный аппарат, после травм','ЛОР и дыхательные','Мягкая климатотерапия у моря'],
+   water:['Сульфатно-кальциевая, гипертермальная','Современные установки для душей и бассейнов'],
    season:['Круглый год','Пик загрузки: весна/осень'],
    stay:['3★ и 4★ у лагуны; апарт-отели в Balaruc/Frontignan','Доступ к морю и набережным'],
    ideal:['Тем, кому важна инфраструктура и море рядом','Комфорт без горных дорог'],
@@ -141,38 +130,38 @@ const THERMES = [
    img:'../assets/thermes/balaruc.jpg'},
 
   {id:'avene', name:'Avène — Centre Thermal', city:'Avène', dept:'Hérault (34)', cat:'medical', lat:43.756, lon:3.11,
-   desc:'Мировой центр дерматологии (экземы, ожоги, псориаз). Спокойная горная долина Haut‑Languedoc.',
+   desc:'Мировой центр дерматологии (экземы, ожоги, псориаз). Спокойная горная долина Haut-Languedoc.',
    tags:['dermatologie','Haut-Languedoc'],
    indications:['Кожные заболевания, постожоговые состояния','Длительные курсы с наблюдением'],
    water:['Слабоминерализованная вода с противовоспалит. эффектом','Персональные протоколы аппликаций'],
    season:['Сезон с весны по осень','Спокойные периоды вне пиков'],
    stay:['Резиденции Avène/окрестности','Авто желательно для мобильности'],
    ideal:['Тем, кому важна тишина и природа','Целенаправленная дерматология'],
-   combo:['Gorges d’Hérault, Saint‑Guilhem‑le‑Désert','Винодельни Terrasses du Larzac'],
+   combo:['Gorges d’Hérault, Saint-Guilhem-le-Désert','Винодельни Terrasses du Larzac'],
    service:['Организация записи и перевод','Маршруты по каньонам/аббатствам'],
    img:'../assets/thermes/avene.jpg'},
 
   {id:'lamalou', name:'Lamalou-les-Bains — Thermes', city:'Lamalou-les-Bains', dept:'Hérault (34)', cat:'medical', lat:43.600, lon:3.080,
-   desc:'Неврология и реабилитация в зелёной долине Орба. Рядом природный парк Haut‑Languedoc.',
+   desc:'Неврология и реабилитация в зелёной долине Орба. Рядом природный парк Haut-Languedoc.',
    tags:['neurologie','rééducation'],
    indications:['Неврологические и постинсультные состояния','Реабилитационные программы'],
-   water:['Термальная вода умеренной минерализации','Классические бальнео‑процедуры'],
+   water:['Термальная вода умеренной минерализации','Классические бальнео-процедуры'],
    season:['Круглый год','Пик — межсезонье'],
-   stay:['Спа‑отели 2★–3★, апартаменты','Тихие улочки, плоскогорья рядом'],
+   stay:['Спа-отели 2★–3★, апартаменты','Тихие улочки, плоскогорья рядом'],
    ideal:['Кому нужна методичная реабилитация','Размеренный ритм без суеты'],
-   combo:['Минервоа, винодельни Сен‑Шиньян','Прогулки по озёрам и пешеходные тропы'],
+   combo:['Минервоа, винодельни Сен-Шиньян','Прогулки по озёрам и пешеходные тропы'],
    service:['Расписание процедур и трансферы','Помощь с мед. документами'],
    img:'../assets/thermes/lamalou.jpg'},
 
   {id:'molitg', name:'Molitg-les-Bains — Thermes', city:'Molitg-les-Bains', dept:'Pyrénées-Orientales (66)', cat:'medical', lat:42.653333, lon:2.389167,
    desc:'Живописное ущелье и исторические купальни у замка Riell. Спокойный камерный курорт.',
    tags:['gorge','thermal'],
-   indications:['Ревматология, реабилитация','Анти‑стресс пребывания'],
+   indications:['Ревматология, реабилитация','Анти-стресс пребывания'],
    water:['Сероводородная, тёплая','Купальные галереи и ванны'],
    season:['Весна–осень','Летом мягкий горный климат'],
-   stay:['Замок‑отель/резиденции курорта','Гостевые дома в округе Prades'],
+   stay:['Замок-отель/резиденции курорта','Гостевые дома в округе Prades'],
    ideal:['Пары, релакс в тишине','Комбо с крепостями долины'],
-   combo:['Villefranche‑de‑Conflent, Train Jaune','Аббатства и форты долины Têt'],
+   combo:['Villefranche-de-Conflent, Train Jaune','Аббатства и форты долины Têt'],
    service:['Брони, логистика и рестораны'],
    img:'../assets/thermes/molitg.jpg'},
 
@@ -180,22 +169,22 @@ const THERMES = [
    desc:'У подножия священной горы Канигу; парк Belle Époque, пальмы и мягкий климат.',
    tags:['Canigou','Belle Époque'],
    indications:['Ревматология, дыхательные','Мягкая климатотерапия'],
-   water:['Термальные ванны и бальнео‑зоны'],
+   water:['Термальные ванны и бальнео-зоны'],
    season:['Весна–осень','Тише, чем морское побережье'],
    stay:['Виллы Belle Époque, резиденции','Отели 2★–3★'],
    ideal:['Любители исторической архитектуры','Комбо с горными тропами'],
-   combo:['Аббатство Saint‑Martin‑du‑Canigou','Пешеходные маршруты Canigou'],
+   combo:['Аббатство Saint-Martin-du-Canigou','Пешеходные маршруты Canigou'],
    service:['Маршруты и трансферы'],
    img:'../assets/thermes/vernet.jpg'},
 
   {id:'fumades', name:'Les Fumades — Thermes', city:'Allègre-les-Fumades', dept:'Gard (30)', cat:'medical', lat:44.198408, lon:4.2329,
    desc:'Серные воды, дерматология и ЛОР. Комплекс после недавней реновации, зелёный парк.',
    tags:['soufre','dermato','ORL'],
-   indications:['Кожные и ЛОР‑показания','Лёгкие дыхательные'],
+   indications:['Кожные и ЛОР-показания','Лёгкие дыхательные'],
    water:['Сероводородная, сернистая','Души, ингаляции, ванны'],
    season:['Весна–осень','Спокойные периоды межсезонья'],
-   stay:['Гостевые дома/апарт‑отели поблизости'],
-   ideal:['Семьи и люди с ЛОР‑запросами','Комбо с ремесленными городками'],
+   stay:['Гостевые дома/апарт-отели поблизости'],
+   ideal:['Семьи и люди с ЛОР-запросами','Комбо с ремесленными городками'],
    combo:['Uzès, Anduze, бамбуковая роща','Pont du Gard'],
    service:['Бронирование и маршрутинг'],
    img:'../assets/thermes/fumades.jpg'},
@@ -218,8 +207,8 @@ const THERMES = [
    indications:['Респираторные/ЛОР, ревматология'],
    water:['Термальные ванны и ингаляции'],
    season:['Лето/осень — пик','Зима — спокойнее'],
-   stay:['Гранд‑отели и апарты'],
-   ideal:['Любители ретро‑атмосферы и природы'],
+   stay:['Гранд-отели и апарты'],
+   ideal:['Любители ретро-атмосферы и природы'],
    combo:['Col de Peyresourde, озёра О', 'Испания близко'],
    service:['Маршруты и брони'],
    img:'../assets/thermes/luchon.jpg'},
@@ -245,25 +234,25 @@ const THERMES = [
    water:['Тёплые чаши, хаммам, гидромассажные зоны'],
    season:['Круглый год','Выходные — выше поток'],
    stay:['Отели и резиденции Balaruc/Sète/Frontignan'],
-   ideal:['Spa‑дни, пары, друзья','Комбо «море + устрицы»'],
+   ideal:['Spa-дни, пары, друзья','Комбо «море + устрицы»'],
    combo:['Лодка & устрицы, Noilly Prat','Сэта, пляжи, винные домены'],
-   service:['Бронь сессий и ресторана','Маршруты 1‑2 дня вокруг лагуны'],
+   service:['Бронь сессий и ресторана','Маршруты 1-2 дня вокруг лагуны'],
    img:'../assets/thermes/obalia.jpg'},
 
   {id:'greoux', name:'Gréoux-les-Bains — spa & thermes', city:'Gréoux-les-Bains', dept:'Alpes-de-Haute-Provence (04)', cat:'spa', lat:43.760, lon:5.880,
-   desc:'Провансальский спа‑курорт рядом с Вердонским каньоном. Wellness‑пакеты, прогулки по лавандовым плато.',
+   desc:'Провансальский спа-курорт рядом с Вердонским каньоном. Wellness-пакеты, прогулки по лавандовым плато.',
    tags:['wellness','Verdon'],
-   indications:['Релакс/anti‑stress программы','Короткие и недельные пакеты'],
-   water:['Термальные бассейны, spa‑зоны, уходы'],
+   indications:['Релакс/anti-stress программы','Короткие и недельные пакеты'],
+   water:['Термальные бассейны, spa-зоны, уходы'],
    season:['Весна–осень','Пик — июнь/сентябрь'],
    stay:['3★–4★ в Gréoux, агритуризмы вокруг'],
-   ideal:['Пары/эстет‑релакс','Комбо с Вердоном/лавандой'],
-   combo:['Горные озёра Вердона','Марсель/Экс‑ан‑Прованс (по пути)'],
-   service:['Маршруты и брони wellness‑пакетов'],
+   ideal:['Пары/эстет-релакс','Комбо с Вердоном/лавандой'],
+   combo:['Горные озёра Вердона','Марсель/Экс-ан-Прованс (по пути)'],
+   service:['Маршруты и брони wellness-пакетов'],
    img:'../assets/thermes/greoux.jpg'},
 
   // Природные источники
-  {id:'stthomas', name:'Les Bains de Saint‑Thomas', city:'Fontpédrouse', dept:'Pyrénées-Orientales (66)', cat:'wild', lat:42.499851, lon:2.167310,
+  {id:'stthomas', name:'Les Bains de Saint-Thomas', city:'Fontpédrouse', dept:'Pyrénées-Orientales (66)', cat:'wild', lat:42.499851, lon:2.167310,
    desc:'Открытые горячие чаши 36–38°C в горном ущелье. Атмосфера «дикого спа» круглый год.',
    tags:['plein air','montagne'],
    indications:['Релакс на природе, лёгкие тропы','Семьи/компании без мед. назначения'],
@@ -271,17 +260,17 @@ const THERMES = [
    season:['Круглый год','Зимой — особенно красиво (снег)'],
    stay:['Шале/гостевые дома в Cerdagne/Capcir'],
    ideal:['Любители гор и пейзажей','Комбо с хайкингом/лыжами'],
-   combo:['Villefranche‑de‑Conflent, ж/д Train Jaune','Озёра Пиренеев'],
-   service:['Маршруты «one‑day nature spa»','Пикники/винодельни по запросу'],
+   combo:['Villefranche-de-Conflent, ж/д Train Jaune','Озёра Пиренеев'],
+   service:['Маршруты «one-day nature spa»','Пикники/винодельни по запросу'],
    img:'../assets/thermes/stthomas.jpg'},
 
   {id:'llo', name:'Bains de Llo', city:'Llo', dept:'Pyrénées-Orientales (66)', cat:'wild', lat:42.454, lon:2.065,
-   desc:'Серно‑минеральные источники в каньоне реки Сегр. Indoor/outdoor зоны.',
+   desc:'Серно-минеральные источники в каньоне реки Сегр. Indoor/outdoor зоны.',
    tags:['sulfureux','canyon'],
    indications:['Расслабление, прогулки по каньону','Комбо с термальной зоной внутри'],
    water:['Сернистые воды, бассейны под открытым небом'],
    season:['Круглый год','Осень/весна — мягко'],
-   stay:['Гостевые дома Cerdagne','Апарт‑отели в Saillagouse/Bourg‑Madame'],
+   stay:['Гостевые дома Cerdagne','Апарт-отели в Saillagouse/Bourg-Madame'],
    ideal:['Непродолжительные визиты 1–2 часа','Семьи с детьми'],
    combo:['Dorres, Эгат, озёра Карлит','Исп. граница 10–15 мин'],
    service:['Маршруты на 1–2 дня, рестораны'],
@@ -290,7 +279,7 @@ const THERMES = [
   {id:'dorres', name:'Bains Romains de Dorres', city:'Dorres', dept:'Pyrénées-Orientales (66)', cat:'wild', lat:42.4851, lon:1.94693,
    desc:'Каменные «римские» купели с панорамами Сардании. Аутентичный опыт.',
    tags:['romain','panorama'],
-   indications:['Релакс на высоте, минимальная инфраструктура','Эстетика/фото‑точки'],
+   indications:['Релакс на высоте, минимальная инфраструктура','Эстетика/фото-точки'],
    water:['Горячие чаши на ветру, минимализм'],
    season:['Круглый год (зимний шарм)','Низкая вместимость — приезжать рано'],
    stay:['Гостевые дома и горные шале'],
@@ -299,7 +288,7 @@ const THERMES = [
    service:['Навигация/парковки/тайминг по погоде'],
    img:'../assets/thermes/dorres.jpg'},
 
-  {id:'rennes', name:'Rennes‑les‑Bains — sources', city:'Rennes‑les‑Bains', dept:'Aude (11)', cat:'wild', lat:42.918066, lon:2.319748,
+  {id:'rennes', name:'Rennes-les-Bains — sources', city:'Rennes-les-Bains', dept:'Aude (11)', cat:'wild', lat:42.918066, lon:2.319748,
    desc:'Природные тёплые ванны у реки; небольшие купальни и дикие «лужи». Атмосферная долина Керла.',
    tags:['rivière','naturel'],
    indications:['Лёгкий релакс на природе','Комбо с археологическими местоимами долины'],
@@ -307,7 +296,7 @@ const THERMES = [
    season:['Весна–осень','Летом — приезжать рано'],
    stay:['Гостевые дома и B&B в долине'],
    ideal:['Искатели «тихих мест»','Фотопрогулки у реки'],
-   combo:['Rennes‑le‑Château, ущелья Aude','Пейзажи Корбьер'],
+   combo:['Rennes-le-Château, ущелья Aude','Пейзажи Корбьер'],
    service:['Навигация к природным чашам, тайминг'],
    img:'../assets/thermes/rennes.jpg'}
 ];
@@ -362,12 +351,22 @@ function fillList(sel, arr){
   const el = $(sel); el.innerHTML = (arr||[]).map(x=>`<li>${x}</li>`).join('');
 }
 
-// ====== КАРТА ======
+// ====== КАРТА (Leaflet + CartoDB Positron) ======
 function initMap(){
   map = L.map('map');
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18, attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+
+  // Бесплатный стильный слой CartoDB Positron
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    subdomains: 'abcd',
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
+      '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+  }).addTo(map);
+
   markersGroup = L.featureGroup().addTo(map);
 }
+
 function refreshMarkers(){
   markersGroup.clearLayers();
   const list = THERMES.filter(t=>t.cat===state.cat && (!state.tag || t.tags.includes(state.tag)));
@@ -379,10 +378,8 @@ function refreshMarkers(){
   if(list.length){ map.fitBounds(markersGroup.getBounds().pad(0.2)); }
 }
 
-// ====== ИНИЦИАЦИЯ И СОБЫТИЯ ======
-function refreshAll(){
-  fillThermes(); updateDesc(); refreshMarkers();
-}
+// ====== ИНИЦИАЦИЯ ======
+function refreshAll(){ fillThermes(); updateDesc(); refreshMarkers(); }
 
 function init(){
   $$('#cat .chip').forEach(ch=>ch.addEventListener('click',()=>{
@@ -391,6 +388,7 @@ function init(){
     state.cat = ch.dataset.v; state.tag=null; fillTags(); refreshAll();
   }));
   $('#therme').addEventListener('change', e=>{ state.therme=e.target.value; updateDesc(); });
+
   initMap(); fillTags(); refreshAll();
 }
 
