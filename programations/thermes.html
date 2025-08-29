@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Thermes & SPA — 7/14/21 дней | Tours Languedoc by Irène</title>
+<style>
+  :root{--brand:#0D2B1E;--accent:#C9B886;--ink:#0b1b14;--muted:#6b7b73;--bg:#f8f7f3}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{background:var(--brand);color:#fff;padding:18px} header h1{margin:0;font-weight:600;font-size:18px}
+  .wrap{max-width:1000px;margin:0 auto;padding:16px}
+  .panel{background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:14px;margin-bottom:12px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid #e5e1d8;border-radius:12px;padding:8px 10px;cursor:pointer;background:#fff}
+  .chip.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  select,button{padding:10px 12px;border-radius:10px;border:1px solid #e5e1d8;background:#fff}
+  button.primary{background:var(--brand);color:#fff;border:none}
+  .pill{display:inline-block;padding:6px 10px;border:1px dashed #d9d3c6;border-radius:999px;font-size:12px;color:var(--muted);margin-right:6px}
+  .day{padding:8px 10px;border-left:3px solid var(--accent);background:#fff;border-radius:10px;margin:8px 0}
+  .h2{font-weight:700;margin:6px 0 4px;color:var(--brand);font-size:18px}
+  .muted{color:var(--muted)}
+  img.thumb{width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid #eee}
+  @media(max-width:720px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>Tours Languedoc by Irène — Thermes & SPA</h1></header>
+<main class="wrap">
+
+  <!-- Управление -->
+  <section class="panel">
+    <div class="chips" id="cat">
+      <span class="chip active" data-v="medical">Medical</span>
+      <span class="chip" data-v="spa">Spa / loisirs</span>
+      <span class="chip" data-v="wild">Природные источники</span>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <div>
+        <label class="muted">Выберите термы</label>
+        <select id="therme"></select>
+      </div>
+      <div>
+        <label class="muted">Длительность</label>
+        <div class="chips" id="dur" style="margin-top:6px">
+          <span class="chip active" data-v="7">7 дней</span>
+          <span class="chip" data-v="14">14 дней</span>
+          <span class="chip" data-v="21">21 день</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+      <button class="primary" id="build">Собрать программу</button>
+      <button id="copy">Скопировать</button>
+    </div>
+  </section>
+
+  <!-- Описание -->
+  <section class="panel">
+    <div class="h2" id="title">—</div>
+    <div class="muted" id="meta"></div>
+    <p id="desc" style="margin:8px 0 10px">Выберите термы…</p>
+    <div id="tags" style="margin-bottom:10px"></div>
+    <img id="img" class="thumb" alt="Thermes" src="" style="display:none">
+    <p class="muted" style="margin-top:10px">Примечание: классическая <b>cure thermale conventionnée</b> во Франции длится 18 дней. Здесь — авторские 7/14/21 дней с гибким графиком.</p>
+  </section>
+
+  <!-- Программа -->
+  <section class="panel">
+    <div class="h2">Примерная программа</div>
+    <div id="prog"></div>
+    <div style="margin-top:8px">
+      <span class="pill">Индивидуальная настройка</span>
+      <span class="pill">Экскурсии и дегустации</span>
+      <span class="pill">Локальная поддержка</span>
+    </div>
+  </section>
+</main>
+
+<script>
+const THERMES = [
+  // Medical
+  {id:'balaruc',name:'Balaruc-les-Bains — Thermes',city:'Balaruc-les-Bains',dept:'Hérault (34)',cat:'medical',
+   desc:'Крупнейший курорт Средиземноморья: реабилитация, опорно-двигательный аппарат, ЛОР; рядом spa O’balia.',
+   tags:['rééducation','ORL','lagune Thau']},
+  {id:'avene',name:'Avène — Centre Thermal',city:'Avène',dept:'Hérault (34)',cat:'medical',
+   desc:'Дерматология мирового уровня: экземы, псориаз, ожоги; природный парк Haut-Languedoc.',
+   tags:['dermatologie','Haut-Languedoc']},
+  {id:'lamalou',name:'Lamalou-les-Bains — Thermes',city:'Lamalou-les-Bains',dept:'Hérault (34)',cat:'medical',
+   desc:'Неврология и реабилитация; зелёная долина Орба.', tags:['neurologie','rééducation']},
+
+  // Spa / loisirs
+  {id:'obalia',name:'O’balia — spa thermal',city:'Balaruc',dept:'Hérault (34)',cat:'spa',
+   desc:'Термальные бассейны, паровые зоны и гидромассаж; удобно комбинировать с морем и дегустациями.',
+   tags:['spa','balnéo']},
+  {id:'greoux',name:'Gréoux-les-Bains — spa & thermes',city:'Gréoux-les-Bains',dept:'Alpes-de-Haute-Provence (04)',cat:'spa',
+   desc:'Wellness-пакеты и лечебные программы рядом с Вердонским каньоном.', tags:['wellness','Verdon']},
+
+  // Wild
+  {id:'stthomas',name:'Les Bains de Saint-Thomas',city:'Fontpédrouse',dept:'Pyrénées-Orientales (66)',cat:'wild',
+   desc:'Открытые горячие чаши 36–38°C круглый год; горное ущелье.', tags:['plein air','montagne']},
+  {id:'llo',name:'Bains de Llo',city:'Llo',dept:'Pyrénées-Orientales (66)',cat:'wild',
+   desc:'Серно-минеральные источники в каньоне Сегр; indoor/outdoor зоны.', tags:['sulfureux','canyon']},
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const state = {cat:'medical', duration:7, therme:null};
+
+function fillThermes(){
+  const list = THERMES.filter(t=>t.cat===state.cat);
+  const sel = $('#therme'); sel.innerHTML='';
+  list.forEach(t=>{
+    const o=document.createElement('option');
+    o.value=t.id; o.textContent = `${t.name} — ${t.dept}`;
+    sel.appendChild(o);
+  });
+  state.therme = list[0]?.id || null;
+}
+function updateDesc(){
+  const t = THERMES.find(x=>x.id===state.therme); if(!t) return;
+  $('#title').textContent = t.name;
+  $('#meta').textContent = `${t.city} • ${t.dept}`;
+  $('#desc').textContent = t.desc;
+  $('#tags').innerHTML = (t.tags||[]).map(s=>`<span class="pill">${s}</span>`).join(' ');
+  const img = $('#img'); if(t.img){img.src=t.img; img.style.display='block';} else {img.removeAttribute('src'); img.style.display='none';}
+}
+function programMedical(days){
+  const arr=[]; for(let d=1; d<=days; d++){
+    if(d===1){arr.push({d,txt:'Заезд. Регистрация в термах. При необходимости — первичная консультация врача.'});continue;}
+    if(d%7===0){arr.push({d,txt:'День отдыха без процедур. Экскурсия или свободное время.'});}
+    else {arr.push({d,txt:'Утро: лечебные процедуры (3–4 акта). День: отдых/прогулка. Вечер: по самочувствию.'});}
+  } return arr;
+}
+function programSpa(days){
+  const arr=[]; for(let d=1; d<=days; d++){
+    if(d===1){arr.push({d,txt:'Заезд. Знакомство со spa. Лёгкая сессия по самочувствию.'});continue;}
+    if(d%3===0){arr.push({d,txt:'Дневная экскурсия + вечерний релакс.'});}
+    else {arr.push({d,txt:'Spa 2–3 часа + прогулка/дегустация.'});}
+  } return arr;
+}
+function programWild(days){
+  const arr=[]; for(let d=1; d<=days; d++){
+    if(d===1){arr.push({d,txt:'Заезд. Разведка подходов к источникам. Безопасный вечерний релакс.'});continue;}
+    if(d%4===0){arr.push({d,txt:'Маршрут на день: источники + пикник/винодельня.'});}
+    else if(d%2===0){arr.push({d,txt:'Утро: купание. День: хайкинг/панорамы. Вечер: ресторан.'});}
+    else {arr.push({d,txt:'Позднее купание + прогулки по окрестным деревням.'});}
+  } return arr;
+}
+function buildProgram(){
+  const t = THERMES.find(x=>x.id===state.therme); if(!t) return;
+  let list=[]; if(t.cat==='medical') list=programMedical(state.duration);
+  if(t.cat==='spa') list=programSpa(state.duration);
+  if(t.cat==='wild') list=programWild(state.duration);
+  $('#prog').innerHTML = list.map(i=>`<div class="day"><strong>День ${i.d}.</strong> ${i.txt}</div>`).join('');
+}
+
+function init(){
+  // категории
+  $$('#cat .chip').forEach(ch=>ch.addEventListener('click',()=>{
+    $$('#cat .chip').forEach(c=>c.classList.remove('active'));
+    ch.classList.add('active');
+    state.cat = ch.dataset.v;
+    fillThermes(); updateDesc(); buildProgram();
+  }));
+  // длительность
+  $$('#dur .chip').forEach(ch=>ch.addEventListener('click',()=>{
+    $$('#dur .chip').forEach(c=>c.classList.remove('active'));
+    ch.classList.add('active');
+    state.duration = parseInt(ch.dataset.v,10);
+    buildProgram();
+  }));
+  // выбор терм
+  $('#therme').addEventListener('change', e=>{
+    state.therme = e.target.value; updateDesc(); buildProgram();
+  });
+  // кнопки
+  $('#build').addEventListener('click', buildProgram);
+  $('#copy').addEventListener('click',()=>{
+    const title=$('#title').textContent.trim();
+    const meta=$('#meta').textContent.trim();
+    const desc=$('#desc').textContent.trim();
+    const days=$$('#prog .day').map(d=>d.textContent.trim()).join('\n');
+    const text = `${title}\n${meta}\n\n${desc}\n\nПрограмма ${state.duration} дней:\n${days}`;
+    navigator.clipboard.writeText(text);
+  });
+
+  // старт
+  fillThermes(); updateDesc(); buildProgram();
+}
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
