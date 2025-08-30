@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Saint-Guilhem-le-Désert — аббатство, Castrum, грот Clamouse и Château Capion | Tours Languedoc by Irène</title>
-  <meta name="description" content="Однодневная программа: Saint-Guilhem-le-Désert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя." />
+  <meta name="description" content="Однодневная программа: Saint-Guilhem-le-Дésert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя." />
   <meta property="og:title" content="Saint-Guilhem — аббатство, Castrum, Clamouse и Château Capion" />
   <meta property="og:description" content="Деревня UNESCO + Castrum, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Индивидуально, старт из Mèze." />
   <meta property="og:type" content="website" />
@@ -148,7 +148,7 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" href="https://wa.me/33759644813" data-whatsapp target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
         </div>
       </div>
     </div>
@@ -171,7 +171,6 @@
       <h3 class="section-title" data-i18n="hist_title">История города и аббатства</h3>
       <p class="section-sub muted" data-i18n="hist_sub">Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)</p>
 
-      <!-- one HTML blob switched by i18n -->
       <div id="hist-list" data-i18n="hist_list">
         <ul class="list">
           <li><strong>804</strong> — Гийом де Желлон основывает бенедиктинское аббатство Геллон.</li>
@@ -288,11 +287,18 @@
         <input id="f-name" name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
         <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
         <input id="f-contact" name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+
+        <!-- NEW: Дата и Гостей -->
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
+        <input type="date" id="f-date" name="date" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
+        <input type="number" id="f-guests" name="guests" min="1" value="2" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+
         <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Дата и состав</label>
         <textarea id="f-message" name="message" placeholder="Желаемые даты, кол-во гостей, нужен ли второй домен / обед?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
         <div style="display:flex; gap:10px; margin-top:14px">
           <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+          <a class="btn" href="https://wa.me/33759644813" data-whatsapp target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
         </div>
       </form>
     </div>
@@ -308,21 +314,38 @@
       <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
   </footer>
-<!-- ПЕРЕД твоим большим <script> со всей логикой -->
-<script src="./config.js"></script>
+
+  <!-- ВАЖНО: config.js должен быть до основного скрипта -->
+  <script src="./config.js"></script>
 
   <script>
     // === Program constants for booking ===
     const PROGRAM_ID = 'SG-CLAM-CAP-1D';
     const PROGRAM_TITLE_RU = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
     const PROGRAM_TITLE_FR = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)';
-    const BOOKING_EMAIL = '3763024@gmail.com';
+    const BOOKING_EMAIL = '3763024@gmail.com'; // fallback, если в APP_CONFIG не задан email
+
+    // ---- Config helpers (читает window.APP_CONFIG и подставляет контакты)
+    const DEFAULTS = { email: BOOKING_EMAIL, whatsapp: '33759644813' };
+
+    function getConfig(){
+      const cfg = (window.APP_CONFIG || {});
+      const phone = String(cfg.whatsapp || DEFAULTS.whatsapp).replace(/\D/g,'');
+      return { email: (cfg.email || DEFAULTS.email), whatsapp: phone };
+    }
+
+    function patchContacts(){
+      const { whatsapp } = getConfig();
+      document.querySelectorAll('[data-whatsapp]').forEach(a=>{
+        a.setAttribute('href', `https://wa.me/${whatsapp}`);
+      });
+    }
 
     const i18n = {
       ru: {
         htmlLang:'ru',
         title:'Saint-Guilhem-le-Désert — аббатство, Castrum, грот Clamouse и Château Capion | Tours Languedoc by Irène',
-        metaDesc:'Однодневная программа: Saint-Guilhem-le-Désert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя.',
+        metaDesc:'Однодневная программа: Saint-Guilhem-le-Дésert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя.',
         ogTitle:'Saint-Guilhem — аббатство, Castrum, Clamouse и Château Capion',
         ogDesc:'Деревня UNESCO + Castrum, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Индивидуально, старт из Mèze.',
         brand_sub:'— Путешествия со вкусом',
@@ -400,7 +423,8 @@
         gal_title:'Как это выглядит',
         btn_send:'Отправить', btn_whatsapp2:'Написать в WhatsApp',
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: Saint-Guilhem + Clamouse + Capion (сайт)'
+        mail_subject:'Запрос: Saint-Guilhem + Clamouse + Capion (сайт)',
+        label_date:'Дата', label_guests:'Гостей'
       },
 
       fr: {
@@ -483,7 +507,8 @@
 
         btn_send:'Envoyer', btn_whatsapp2:'Écrire sur WhatsApp',
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : Saint-Guilhem + Clamouse + Capion (site)'
+        mail_subject:'Demande : Saint-Guilhem + Clamouse + Capion (site)',
+        label_date:'Date', label_guests:'Personnes'
       }
     };
 
@@ -505,27 +530,15 @@
         }
       });
 
-      // placeholders
-      const fName = document.getElementById('f-name');
-      const fContact = document.getElementById('f-contact');
-      const fMessage = document.getElementById('f-message');
-      if (fName) fName.placeholder = (lang==='fr') ? 'Votre prénom/nom' : 'Ваше имя';
-      if (fContact) fContact.placeholder = (lang==='fr') ? '+33… ou email' : '+33… или email';
-      if (fMessage) fMessage.placeholder = (lang==='fr')
-        ? 'Dates souhaitées, nb de personnes, deuxième domaine / déjeuner ?'
-        : 'Желаемые даты, кол-во гостей, нужен ли второй домен / обед?';
-
       // alt texts
       setAlt('alt-hero', (lang==='fr') ? 'Saint-Guilhem-le-Désert — panorama du village' : 'Saint-Guilhem-le-Désert — панорама деревни');
       setAlt('alt-g1', (lang==='fr') ? 'Place de l’abbaye de Gellone' : 'Площадь у аббатства Жилон');
       setAlt('alt-g2', (lang==='fr') ? 'Ruelles médiévales' : 'Средневековые улочки');
       setAlt('alt-g3', (lang==='fr') ? 'Vue sur les gorges du Verdus' : 'Вид на ущелье Verdus');
 
-      // header aria
+      // header aria + toggles
       const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
-
-      // toggle buttons
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
@@ -539,21 +552,37 @@
       const subjBase = i18n[lang].mail_subject;
       const programTitle = (lang==='fr') ? PROGRAM_TITLE_FR : PROGRAM_TITLE_RU;
       const subject = encodeURIComponent(`${subjBase} | ${programTitle} | Код/Code: ${PROGRAM_ID}`);
+
+      const when = fd.get('date') || '';
+      const guests = fd.get('guests') || '';
+      const cfg = getConfig();
+
       const body = encodeURIComponent(
 `Программа / Programme: ${programTitle} (${PROGRAM_ID})
 Имя / Nom: ${fd.get('name')||''}
 Контакт / Contact: ${fd.get('contact')||''}
-Сообщение / Message: ${fd.get('message')||''}`);
-      window.location.href = `mailto:${BOOKING_EMAIL}?subject=${subject}&body=${body}`;
+Дата / Date: ${when}
+Гостей / Personnes: ${guests}
+Сообщение / Message: ${fd.get('message')||''}
+
+— Автоподпись / Signature —
+Тур: ${programTitle} (${PROGRAM_ID})
+WhatsApp: https://wa.me/${cfg.whatsapp}`
+      );
+
+      window.location.href = `mailto:${cfg.email}?subject=${subject}&body=${body}`;
     }
 
     (function(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
-      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
-      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+      patchContacts();
+      window.addEventListener('load', patchContacts);
+      document.getElementById('btn-ru').addEventListener('click',()=>{ applyLang('ru'); patchContacts(); });
+      document.getElementById('btn-fr').addEventListener('click',()=>{ applyLang('fr'); patchContacts(); });
     })();
   </script>
 </body>
 </html>
+
