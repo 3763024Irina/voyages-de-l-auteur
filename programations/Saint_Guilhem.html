@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Saint-Guilhem-le-Désert & Mas de Daumas Gassac — деревня и дегустация | Tours Languedoc by Irène</title>
-  <meta name="description" content="Индивидуальный день: Saint-Guilhem-le-Désert (аббатство, улочки, панорама) + экскурсия и дегустация в Mas de Daumas Gassac. Старт из Mèze. 300 € / 2 гостя." />
-  <meta property="og:title" content="Saint-Guilhem-le-Désert & Mas de Daumas Gassac — деревня и дегустация" />
-  <meta property="og:description" content="Saint-Guilhem (UNESCO), прогулка по деревне, панорама + винодельня Mas de Daumas Gassac с дегустацией. Индивидуально, старт из Mèze." />
+  <title>Saint-Guilhem-le-Désert — аббатство, Castrum, грот Clamouse и Château Capion | Tours Languedoc by Irène</title>
+  <meta name="description" content="Однодневная программа: Saint-Guilhem-le-Désert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя." />
+  <meta property="og:title" content="Saint-Guilhem — аббатство, Castrum, Clamouse и Château Capion" />
+  <meta property="og:description" content="Деревня UNESCO + Castrum, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Индивидуально, старт из Mèze." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="../assets/IMG_4003.JPG" />
   <meta name="theme-color" content="#0D2B1E" />
@@ -81,6 +81,11 @@
     .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
+    /* small helpers for steps/cards */
+    .steps{list-style:none; margin:0; padding:0}
+    .steps li{background:#fff; border:1px solid #eee; border-radius:12px; padding:10px 12px; margin:10px 0}
+    .muted{color:var(--muted); font-size:14px}
+
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
@@ -129,14 +134,14 @@
     <div class="container inner">
       <div>
         <span class="badge">UNESCO</span>
-        <h2 class="title" data-i18n="hero_title">Saint-Guilhem-le-Désert — деревня и дегустация в Mas de Daumas Gassac</h2>
-        <p class="subtitle" data-i18n="hero_sub">Аббатство Жилон (UNESCO), средневековые улочки, панорама + экскурсия и дегустация на легендарной винодельне Mas de Daumas Gassac. Старт из Mèze.</p>
+        <h2 class="title" data-i18n="hero_title">Saint-Guilhem-le-Désert — Castrum, грот Clamouse и дегустация в Château Capion</h2>
+        <p class="subtitle" data-i18n="hero_sub">Аббатство Жилон (UNESCO), средневековые улочки и панорама, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze.</p>
       </div>
       <div class="card">
         <div class="price" data-i18n="price">300 € / 2 гостя</div>
         <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Доп. гость: +70 € (макс. 6). Обед 25–35 € / чел (на месте).</p>
         <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: ~7 ч</div>
+          <div class="spec" data-i18n="spec_duration">Длительность: ~7–8 ч</div>
           <div class="spec" data-i18n="spec_walk">Маршрут: лёгкие подъёмы</div>
           <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
           <div class="spec" data-i18n="spec_start">Старт: Mèze / окрестности</div>
@@ -152,7 +157,7 @@
   <!-- GALLERY -->
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
-    <p class="section-sub" data-i18n="gal_sub">Saint-Guilhem-le-Désert и долина Gassac: деревня, аббатство и винодельня.</p>
+    <p class="section-sub" data-i18n="gal_sub">Saint-Guilhem-le-Désert, Castrum de Verdun, грот Clamouse и Château Capion.</p>
     <div class="gallery" aria-label="Галерея">
       <div class="ph"><img src="../assets/IMG_4003.JPG" alt="" id="alt-g1" loading="lazy"></div>
       <div class="ph"><img src="../assets/IMG_6643.JPG" alt="" id="alt-g2" loading="lazy"></div>
@@ -160,45 +165,81 @@
     </div>
   </section>
 
-  <!-- DETAILS -->
+  <!-- HISTORY (Abbaye & Castrum) -->
+  <section class="container info-grid">
+    <article class="card">
+      <h3 class="section-title" data-i18n="hist_title">История города и аббатства</h3>
+      <p class="section-sub muted" data-i18n="hist_sub">Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)</p>
+
+      <!-- one HTML blob switched by i18n -->
+      <div id="hist-list" data-i18n="hist_list">
+        <ul class="list">
+          <li><strong>804</strong> — Гийом де Желлон основывает бенедиктинское аббатство Геллон.</li>
+          <li><strong>807</strong> — дарование <em>castrum de Verdun</em> — крепости над долиной.</li>
+          <li><strong>XI–XII вв.</strong> — перестройки; к этому времени относятся видимые руины.</li>
+          <li><strong>Администрация</strong> — жил кастелян/баиль аббатства и стража, контролируя вход в ущелье.</li>
+        </ul>
+        <details class="muted" style="margin-top:8px">
+          <summary><strong>Легенда о «Замке Великана»</strong></summary>
+          По преданию, здесь обитал сарацин-великан; Гийом одолел его мечом «Joyeuse». Фольклор, не документ.
+        </details>
+      </div>
+    </article>
+
+    <aside class="card">
+      <h3 class="section-title" data-i18n="castrum_title">Хронология Castrum</h3>
+      <div id="castrum-timeline" data-i18n="castrum_timeline">
+        <ul class="timeline">
+          <li><span class="time">804</span> — Основание аббатства Геллон.</li>
+          <li><span class="time">807</span> — Дарование крепости <em>castrum de Verdun</em>.</li>
+          <li><span class="time">XI–XII вв.</span> — Перестройка укреплений; формируются видимые руины.</li>
+          <li><span class="time">1124</span> — Упоминание кастеляна/гарнизона аббатства.</li>
+          <li><span class="time">Позднее Средневековье</span> — Утрата военного значения, запустение.</li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <!-- DETAILS + TIMELINE OF THE DAY -->
   <section class="container info-grid">
     <article class="card">
       <h3 class="section-title" data-i18n="plan_title">Программа дня</h3>
       <ul class="timeline">
         <li><span class="time">09:00</span> — <span data-i18n="t_0900">Выезд из Mèze / трансфер к деревне.</span></li>
-        <li><span class="time">10:00</span> — <span data-i18n="t_1000">Saint-Guilhem-le-Désert: аббатство Жилон, улочки, кофе на площади.</span></li>
-        <li><span class="time">12:30</span> — <span data-i18n="t_1230">Переезд в Mas de Daumas Gassac (Aniane).</span></li>
-        <li><span class="time">12:45</span> — <span data-i18n="t_1245">Экскурсия по винодельне и дегустация (по записи).</span></li>
-        <li><span class="time">13:45</span> — <span data-i18n="t_1345">Обед в Aniane / Gignac (по желанию).</span></li>
-        <li><span class="time">15:00</span> — <span data-i18n="t_1500">Возвращение в Mèze.</span></li>
-        <li><span class="time">16:00</span> — <span data-i18n="t_1600">Завершение тура.</span></li>
+        <li><span class="time">10:00</span> — <span data-i18n="t_1000">Saint-Guilhem: аббатство, улочки, подъём к Castrum (видовые точки).</span></li>
+        <li><span class="time">12:30</span> — <span data-i18n="t_1230">Переезд к Grotte de Clamouse.</span></li>
+        <li><span class="time">12:45</span> — <span data-i18n="t_1245">Экскурсия по гроту (~1 ч 30, внутри ≈ +15 °C).</span></li>
+        <li><span class="time">14:30</span> — <span data-i18n="t_1430">Обед — La Table du Pont du Diable (сезонно).</span></li>
+        <li><span class="time">15:30</span> — <span data-i18n="t_1530">Дегустация — Château Capion (по записи).</span></li>
+        <li><span class="time">17:00</span> — <span data-i18n="t_1700">Возвращение в Mèze.</span></li>
+        <li><span class="time">18:00</span> — <span data-i18n="t_1800">Завершение тура.</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid" role="list">
         <div class="pill" role="listitem" data-i18n="inc_transport">Частный транспорт (кроссовер/SUV), водитель-сопровождающий</div>
         <div class="pill" role="listitem" data-i18n="inc_parking">Парковки и топливо</div>
-        <div class="pill" role="listitem" data-i18n="inc_booking">Бронирование визита и дегустации Mas de Daumas Gassac</div>
-        <div class="pill" role="listitem" data-i18n="inc_guiding">Прогулка по деревне: ключевые точки и фотостопы</div>
+        <div class="pill" role="listitem" data-i18n="inc_booking">Резервации: Grotte de Clamouse и дегустация в Château Capion</div>
+        <div class="pill" role="listitem" data-i18n="inc_guiding">Прогулка по деревне и Castrum: ключевые точки и фотостопы</div>
       </div>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
       <ul class="list">
         <li data-i18n="exc_lunch">Обед (≈ 25–35 € / чел, оплачивается на месте).</li>
-        <li data-i18n="exc_entries">Билеты в музей аббатства (по желанию).</li>
+        <li data-i18n="exc_entries">Билеты в грот и/или музей аббатства (по желанию).</li>
         <li data-i18n="exc_extra">Личные расходы.</li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="opt_title">Опции</h3>
       <ul class="list">
-        <li data-i18n="opt_second">Второй домен (Château Capion / Domaine des Conquêtes) — +10–15 € / чел дегустация.</li>
-        <li data-i18n="opt_view">Подъём на belvédère с панорамой ущелья (если позволяет время).</li>
+        <li data-i18n="opt_second">Второй домен (например, Mas de Daumas Gassac) — +10–20 € / чел дегустация.</li>
+        <li data-i18n="opt_view">Дополнительные смотровые площадки (по времени).</li>
       </ul>
     </article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
-      <p class="section-sub" data-i18n="where_sub">Saint-Guilhem-le-Désert • Mas de Daumas Gassac (Aniane) • Pont du Diable.</p>
+      <p class="section-sub" data-i18n="where_sub">Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).</p>
       <div class="mapwrap">
         <iframe
           title="Карта: Saint-Guilhem-le-Désert"
@@ -208,13 +249,33 @@
         </iframe>
       </div>
 
-      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
+      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Практика визита</h3>
       <ul class="list">
-        <li data-i18n="tip_shoes">Удобная обувь для каменной мостовой и короткого подъёма.</li>
+        <li data-i18n="tip_shoes">Кроссовки/треккинг; подъём к Castrum 25–40 мин в одну сторону.</li>
         <li data-i18n="tip_heat">Летом — шляпа, вода, SPF; зимой — ветровка.</li>
-        <li data-i18n="tip_hours">Визит в винодельню — по предварительной записи; часы музея зависят от сезона.</li>
+        <li data-i18n="tip_hours">Clamouse: внутри ≈ +15 °C; бронирование в высокий сезон рекомендовано.</li>
+        <li>Парковка у Maison du Grand Site (Pont du Diable); в сезон ходит шаттл до деревни.</li>
       </ul>
     </aside>
+  </section>
+
+  <!-- DAY PLAN with CTAs -->
+  <section class="container">
+    <div class="card">
+      <h3 class="section-title" data-i18n="dayplan_title">🗺️ Маршрут дня</h3>
+      <ul class="steps">
+        <li><strong>Saint-Guilhem-le-Désert:</strong> деревня, аббатство, подъём к Castrum <span class="pill">~2 ч</span></li>
+        <li><strong>Grotte de Clamouse:</strong> экскурсия <span class="pill">~1 ч 30</span> <span class="pill">≈ +15 °C</span></li>
+        <li><strong>Обед — La Table du Pont du Diable:</strong> сезонная локальная кухня <span class="pill">апр–ноя</span></li>
+        <li><strong>Château Capion:</strong> дегустация и прогулка по парку <span class="pill">по записи</span></li>
+      </ul>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px">
+        <a class="btn" href="https://www.clamouse.com/" target="_blank" rel="noopener" data-i18n="cta_grotte">Билеты в грот</a>
+        <a class="btn" href="https://www.saintguilhem-valleeherault.fr/la-table-du-pont-du-diable" target="_blank" rel="noopener" data-i18n="cta_restaurant">Ресторан у моста</a>
+        <a class="btn" href="https://chateaucapion.com/oenotourisme" target="_blank" rel="noopener" data-i18n="cta_capion">Запись в Château Capion</a>
+      </div>
+      <p class="muted" style="margin-top:10px" data-i18n="plan_note">Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»); Capion можно перенести на более ранний слот.</p>
+    </div>
   </section>
 
   <!-- BOOKING -->
@@ -249,116 +310,178 @@
   </footer>
 
   <script>
+    // === Program constants for booking ===
+    const PROGRAM_ID = 'SG-CLAM-CAP-1D';
+    const PROGRAM_TITLE_RU = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
+    const PROGRAM_TITLE_FR = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)';
+    const BOOKING_EMAIL = '3763024@gmail.com';
+
     const i18n = {
       ru: {
         htmlLang:'ru',
-        title:'Saint-Guilhem-le-Désert & Mas de Daumas Gassac — деревня и дегустация | Tours Languedoc by Irène',
-        metaDesc:'Индивидуальный день: Saint-Guilhem-le-Désert (аббатство, улочки, панорама) + экскурсия и дегустация в Mas de Daumas Gassac. Старт из Mèze. 300 € / 2 гостя.',
-        ogTitle:'Saint-Guilhem-le-Désert & Mas de Daumas Gassac — деревня и дегустация',
-        ogDesc:'Saint-Guilhem (UNESCO), прогулка по деревне, панорама + винодельня Mas de Daumas Gassac с дегустацией. Индивидуально, старт из Mèze.',
+        title:'Saint-Guilhem-le-Désert — аббатство, Castrum, грот Clamouse и Château Capion | Tours Languedoc by Irène',
+        metaDesc:'Однодневная программа: Saint-Guilhem-le-Désert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя.',
+        ogTitle:'Saint-Guilhem — аббатство, Castrum, Clamouse и Château Capion',
+        ogDesc:'Деревня UNESCO + Castrum, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Индивидуально, старт из Mèze.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
         btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
-        gal_title:'Как это выглядит', gal_sub:'Saint-Guilhem-le-Désert и долина Gassac: деревня, аббатство и винодельня.',
+        gal_title:'Как это выглядит', gal_sub:'Saint-Guilhem-le-Désert, Castrum, грот Clamouse и Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — панорама деревни',
         altG1:'Площадь у аббатства Жилон', altG2:'Средневековые улочки', altG3:'Вид на ущелье Verdus',
-        hero_title:'Saint-Guilhem-le-Désert — деревня и дегустация в Mas de Daumas Gassac',
-        hero_sub:'Аббатство Жилон (UNESCO), средневековые улочки, панорама + экскурсия и дегустация на легендарной винодельне Mas de Daumas Gassac. Старт из Mèze.',
+        hero_title:'Saint-Guilhem-le-Désert — Castrum, грот Clamouse и дегустация в Château Capion',
+        hero_sub:'Аббатство Жилон (UNESCO), улочки и панорама, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze.',
         price:'300 € / 2 гостя',
         price_note:'Доп. гость: +70 € (макс. 6). Обед 25–35 € / чел (на месте).',
-        spec_duration:'Длительность: ~7 ч',
+        spec_duration:'Длительность: ~7–8 ч',
         spec_walk:'Маршрут: лёгкие подъёмы',
         spec_langs:'Языки: RU/FR',
         spec_start:'Старт: Mèze / окрестности',
+
+        hist_title:'История города и аббатства',
+        hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
+        hist_list:`<ul class="list">
+          <li><strong>804</strong> — Гийом де Желлон основывает бенедиктинское аббатство Геллон.</li>
+          <li><strong>807</strong> — дарование <em>castrum de Verdun</em> — крепости над долиной.</li>
+          <li><strong>XI–XII вв.</strong> — перестройки; к этому времени относятся видимые руины.</li>
+          <li><strong>Администрация</strong> — жил кастелян/баиль аббатства и стража, контролируя вход в ущелье.</li>
+        </ul>
+        <details class="muted" style="margin-top:8px">
+          <summary><strong>Легенда о «Замке Великана»</strong></summary>
+          По преданию, здесь обитал сарацин-великан; Гийом одолел его мечом «Joyeuse». Фольклор, не документ.
+        </details>`,
+
+        castrum_title:'Хронология Castrum',
+        castrum_timeline:`<ul class="timeline">
+          <li><span class="time">804</span> — Основание аббатства Геллон.</li>
+          <li><span class="time">807</span> — Дарование крепости <em>castrum de Verdun</em>.</li>
+          <li><span class="time">XI–XII вв.</span> — Перестройка укреплений; формируются видимые руины.</li>
+          <li><span class="time">1124</span> — Упоминание кастеляна/гарнизона аббатства.</li>
+          <li><span class="time">Позднее Средневековье</span> — Утрата военного значения, запустение.</li>
+        </ul>`,
+
         plan_title:'Программа дня',
         t_0900:'Выезд из Mèze / трансфер к деревне.',
-        t_1000:'Saint-Guilhem-le-Désert: аббатство Жилон, улочки, кофе на площади.',
-        t_1230:'Переезд в Mas de Daumas Gassac (Aniane).',
-        t_1245:'Экскурсия по винодельне и дегустация (по записи).',
-        t_1345:'Обед в Aniane / Gignac (по желанию).',
-        t_1500:'Возвращение в Mèze.',
-        t_1600:'Завершение тура.',
+        t_1000:'Saint-Guilhem: аббатство, улочки, подъём к Castrum (видовые точки).',
+        t_1230:'Переезд к Grotte de Clamouse.',
+        t_1245:'Экскурсия по гроту (~1 ч 30, внутри ≈ +15 °C).',
+        t_1430:'Обед — La Table du Pont du Diable (сезонно).',
+        t_1530:'Дегустация — Château Capion (по записи).',
+        t_1700:'Возвращение в Mèze.',
+        t_1800:'Завершение тура.',
+
+        where_title:'Где это',
+        where_sub:'Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).',
+        tips_title:'Практика визита',
+        tip_shoes:'Кроссовки/треккинг; подъём к Castrum 25–40 мин в одну сторону.',
+        tip_heat:'Летом — шляпа, вода, SPF; зимой — ветровка.',
+        tip_hours:'Clamouse: внутри ≈ +15 °C; бронирование в высокий сезон рекомендовано.',
+
+        dayplan_title:'🗺️ Маршрут дня',
+        cta_grotte:'Билеты в грот', cta_restaurant:'Ресторан у моста', cta_capion:'Запись в Château Capion',
+        plan_note:'Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»); Capion можно перенести на более ранний слот.',
+
         inc_title:'Что включено',
         inc_transport:'Частный транспорт (кроссовер/SUV), водитель-сопровождающий',
         inc_parking:'Парковки и топливо',
-        inc_booking:'Бронирование визита и дегустации Mas de Daumas Gassac',
-        inc_guiding:'Прогулка по деревне: ключевые точки и фотостопы',
+        inc_booking:'Резервации: Grotte de Clamouse и дегустация в Château Capion',
+        inc_guiding:'Прогулка по деревне и Castrum: ключевые точки и фотостопы',
         exc_title:'Не включено',
         exc_lunch:'Обед (≈ 25–35 € / чел, оплачивается на месте).',
-        exc_entries:'Билеты в музей аббатства (по желанию).',
+        exc_entries:'Билеты в грот и/или музей аббатства (по желанию).',
         exc_extra:'Личные расходы.',
         opt_title:'Опции',
-        opt_second:'Второй домен (Château Capion / Domaine des Conquêtes) — +10–15 € / чел дегустация.',
-        opt_view:'Подъём на belvédère с панорамой ущелья (если позволяет время).',
-        where_title:'Где это',
-        where_sub:'Saint-Guilhem-le-Désert • Mas de Daumas Gassac (Aniane) • Pont du Diable.',
-        tips_title:'Полезно знать',
-        tip_shoes:'Удобная обувь для каменной мостовой и короткого подъёма.',
-        tip_heat:'Летом — шляпа, вода, SPF; зимой — ветровка.',
-        tip_hours:'Визит в винодельню — по записи; часы музея зависят от сезона.',
-        form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и предложим время старта и брони.',
-        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Дата и состав',
-        ph_name:'Ваше имя', ph_contact:'+33… или email', ph_message:'Желаемые даты, кол-во гостей, нужен ли второй домен / обед?',
+        opt_second:'Второй домен (например, Mas de Daumas Gassac) — +10–20 € / чел дегустация.',
+        opt_view:'Дополнительные смотровые площадки (по времени).',
+
+        gal_title:'Как это выглядит',
         btn_send:'Отправить', btn_whatsapp2:'Написать в WhatsApp',
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: Saint-Guilhem + Daumas Gassac (сайт)'
+        mail_subject:'Запрос: Saint-Guilhem + Clamouse + Capion (сайт)'
       },
+
       fr: {
         htmlLang:'fr',
-        title:'Saint-Guilhem-le-Désert & Mas de Daumas Gassac — village et dégustation | Tours Languedoc by Irène',
-        metaDesc:'Journée privée : Saint-Guilhem-le-Désert (abbaye, ruelles, belvédère) + visite et dégustation à Mas de Daumas Gassac. Départ de Mèze. 300 € / 2 pers.',
-        ogTitle:'Saint-Guilhem-le-Désert & Mas de Daumas Gassac — village et dégustation',
-        ogDesc:'Saint-Guilhem (UNESCO), balade au village, belvédère + domaine Mas de Daumas Gassac avec dégustation. Privé, départ de Mèze.',
+        title:'Saint-Guilhem — abbaye, Castrum, grotte de Clamouse & Château Capion | Tours Languedoc by Irène',
+        metaDesc:'Journée privée : village de Saint-Guilhem (abbaye, ruelles, belvédère), montée au Castrum, grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Départ de Mèze. 300 € / 2 pers.',
+        ogTitle:'Saint-Guilhem — abbaye, Castrum, Clamouse & Château Capion',
+        ogDesc:'Village UNESCO + Castrum, puis grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Départ de Mèze.',
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
         btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
-        gal_title:'À quoi ça ressemble', gal_sub:'Saint-Guilhem-le-Désert et vallée du Gassac : village, abbaye, domaine.',
+        gal_title:'À quoi ça ressemble', gal_sub:'Saint-Guilhem, Castrum, grotte de Clamouse et Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — panorama du village',
         altG1:'Place de l’abbaye de Gellone', altG2:'Ruelles médiévales', altG3:'Vue sur les gorges du Verdus',
-        hero_title:'Saint-Guilhem-le-Désert — village & dégustation à Mas de Daumas Gassac',
-        hero_sub:'Abbaye de Gellone (UNESCO), ruelles, belvédère + visite & dégustation au domaine Mas de Daumas Gassac. Départ de Mèze.',
+        hero_title:'Saint-Guilhem — Castrum, grotte de Clamouse & dégustation au Château Capion',
+        hero_sub:'Abbaye de Gellone (UNESCO), ruelles et belvédère, puis grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Départ de Mèze.',
         price:'300 € / 2 pers.',
         price_note:'Pers. sup. : +70 € (max. 6). Déjeuner 25–35 € / pers. (sur place).',
-        spec_duration:'Durée : ~7 h',
+        spec_duration:'Durée : ~7–8 h',
         spec_walk:'Parcours : petites montées',
         spec_langs:'Langues : RU/FR',
         spec_start:'Départ : Mèze / environs',
+
+        hist_title:'Histoire du village et de l’abbaye',
+        hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
+        hist_list:`<ul class="list">
+          <li><strong>804</strong> — Guillaume de Gellone fonde l’abbaye bénédictine de Gellone.</li>
+          <li><strong>807</strong> — donation du <em>castrum de Verdun</em> surplombant la vallée.</li>
+          <li><strong>XI–XIIe</strong> — remaniements; ruines visibles aujourd’hui.</li>
+          <li><strong>Administration</strong> — châtelain/bailli de l’abbaye et garnison contrôlent l’entrée des gorges.</li>
+        </ul>
+        <details class="muted" style="margin-top:8px">
+          <summary><strong>Légende du « Château du Géant »</strong></summary>
+          La tradition raconte un géant sarrasin terrassé par Guillaume avec « Joyeuse ». Folklore non documenté.
+        </details>`,
+
+        castrum_title:'Chronologie du Castrum',
+        castrum_timeline:`<ul class="timeline">
+          <li><span class="time">804</span> — Fondation de l’abbaye de Gellone.</li>
+          <li><span class="time">807</span> — Donation du <em>castrum de Verdun</em>.</li>
+          <li><span class="time">XI–XIIe</span> — Remaniements des fortifications; ruines actuelles.</li>
+          <li><span class="time">1124</span> — Mention du châtelain/de la garnison de l’abbaye.</li>
+          <li><span class="time">Bas Moyen Âge</span> — Perte d’importance militaire, abandon progressif.</li>
+        </ul>`,
+
         plan_title:'Programme de la journée',
         t_0900:'Départ de Mèze / transfert vers le village.',
-        t_1000:'Saint-Guilhem-le-Désert : abbaye de Gellone, ruelles, café sur la place.',
-        t_1230:'Transfert vers Mas de Daumas Gassac (Aniane).',
-        t_1245:'Visite du domaine et dégustation (sur réservation).',
-        t_1345:'Déjeuner à Aniane / Gignac (optionnel).',
-        t_1500:'Retour vers Mèze.',
-        t_1600:'Fin de la journée.',
+        t_1000:'Saint-Guilhem : abbaye, ruelles, montée au Castrum (belvédères).',
+        t_1230:'Transfert vers la grotte de Clamouse.',
+        t_1245:'Visite de la grotte (~1 h 30, intérieur ≈ +15 °C).',
+        t_1430:'Déjeuner — La Table du Pont du Diable (saisonnier).',
+        t_1530:'Dégustation — Château Capion (sur réservation).',
+        t_1700:'Retour vers Mèze.',
+        t_1800:'Fin de journée.',
+
+        where_title:'Où ça se passe',
+        where_sub:'Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).',
+        tips_title:'À savoir',
+        tip_shoes:'Chaussures de marche; montée au Castrum 25–40 min (aller).',
+        tip_heat:'Été : chapeau, eau, SPF ; hiver : coupe-vent.',
+        tip_hours:'Clamouse : ≈ +15 °C ; réservation conseillée en haute saison.',
+
+        dayplan_title:'🗺️ Parcours de la journée',
+        cta_grotte:'Billets grotte', cta_restaurant:'Restaurant du Pont du Diable', cta_capion:'Réservation Château Capion',
+        plan_note:'Si La Table est fermée hors saison — déjeuner au village (p.ex. « Les Terrasses de Saint-Guilhem ») ; Capion peut être avancé.',
+
         inc_title:'Inclus',
         inc_transport:'Transport privé (crossover/SUV) avec chauffeur-accompagnateur',
         inc_parking:'Parkings et carburant',
-        inc_booking:'Réservation de la visite & dégustation à Mas de Daumas Gassac',
-        inc_guiding:'Balade guidée au village : points clés et arrêts photo',
+        inc_booking:'Réservations : Grotte de Clamouse et dégustation au Château Capion',
+        inc_guiding:'Balade au village & Castrum : points clés et arrêts photo',
         exc_title:'Non inclus',
-        exc_lunch:'Déjeuner (≈ 25–35 € / pers., à régler sur place).',
-        exc_entries:'Billets du musée de l’abbaye (optionnels).',
+        exc_lunch:'Déjeuner (≈ 25–35 € / pers., sur place).',
+        exc_entries:'Billets grotte et/ou musée de l’abbaye (optionnels).',
         exc_extra:'Dépenses personnelles.',
         opt_title:'Options',
-        opt_second:'Deuxième domaine (Château Capion / Domaine des Conquêtes) — +10–15 € / pers. dégustation.',
-        opt_view:'Montée au belvédère (selon timing).',
-        where_title:'Où ça se passe',
-        where_sub:'Saint-Guilhem-le-Désert • Mas de Daumas Gassac (Aniane) • Pont du Diable.',
-        tips_title:'À savoir',
-        tip_shoes:'Chaussures confortables pour le pavé et la courte montée.',
-        tip_heat:'Été : chapeau, eau, SPF ; hiver : coupe-vent.',
-        tip_hours:'Visite du domaine sur réservation ; horaires du musée selon saison.',
-        form_title:'Demande rapide / réservation',
-        form_sub:'Réponse sous 24h avec proposition d’horaire et de réservation.',
-        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Date & groupe',
-        ph_name:'Votre prénom/nom', ph_contact:'+33… ou email', ph_message:'Dates souhaitées, nb de personnes, deuxième domaine / déjeuner ?',
+        opt_second:'Deuxième domaine (p. ex., Mas de Daumas Gassac) — +10–20 € / pers. dégustation.',
+        opt_view:'Belvédères additionnels (selon timing).',
+
         btn_send:'Envoyer', btn_whatsapp2:'Écrire sur WhatsApp',
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : Saint-Guilhem + Daumas Gassac (site)'
+        mail_subject:'Demande : Saint-Guilhem + Clamouse + Capion (site)'
       }
     };
 
@@ -375,7 +498,7 @@
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
         if(t[key]!==undefined){
-          const allowHTML = ['where_sub'];
+          const allowHTML = ['where_sub','hist_list','castrum_timeline'];
           if(allowHTML.includes(key)) node.innerHTML = t[key]; else node.textContent = t[key];
         }
       });
@@ -384,12 +507,17 @@
       const fName = document.getElementById('f-name');
       const fContact = document.getElementById('f-contact');
       const fMessage = document.getElementById('f-message');
-      if (fName) fName.placeholder = t.ph_name;
-      if (fContact) fContact.placeholder = t.ph_contact;
-      if (fMessage) fMessage.placeholder = t.ph_message;
+      if (fName) fName.placeholder = (lang==='fr') ? 'Votre prénom/nom' : 'Ваше имя';
+      if (fContact) fContact.placeholder = (lang==='fr') ? '+33… ou email' : '+33… или email';
+      if (fMessage) fMessage.placeholder = (lang==='fr')
+        ? 'Dates souhaitées, nb de personnes, deuxième domaine / déjeuner ?'
+        : 'Желаемые даты, кол-во гостей, нужен ли второй домен / обед?';
 
       // alt texts
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+      setAlt('alt-hero', (lang==='fr') ? 'Saint-Guilhem-le-Désert — panorama du village' : 'Saint-Guilhem-le-Désert — панорама деревни');
+      setAlt('alt-g1', (lang==='fr') ? 'Place de l’abbaye de Gellone' : 'Площадь у аббатства Жилон');
+      setAlt('alt-g2', (lang==='fr') ? 'Ruelles médiévales' : 'Средневековые улочки');
+      setAlt('alt-g3', (lang==='fr') ? 'Vue sur les gorges du Verdus' : 'Вид на ущелье Verdus');
 
       // header aria
       const brandHome = document.getElementById('brandHome');
@@ -406,12 +534,15 @@
       e.preventDefault();
       const fd = new FormData(e.target);
       const lang = localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      const subj = encodeURIComponent(i18n[lang].mail_subject);
+      const subjBase = i18n[lang].mail_subject;
+      const programTitle = (lang==='fr') ? PROGRAM_TITLE_FR : PROGRAM_TITLE_RU;
+      const subject = encodeURIComponent(`${subjBase} | ${programTitle} | Код/Code: ${PROGRAM_ID}`);
       const body = encodeURIComponent(
-`Имя / Nom: ${fd.get('name')||''}
+`Программа / Programme: ${programTitle} (${PROGRAM_ID})
+Имя / Nom: ${fd.get('name')||''}
 Контакт / Contact: ${fd.get('contact')||''}
 Сообщение / Message: ${fd.get('message')||''}`);
-      window.location.href = `mailto:hello@example.com?subject=${subj}&body=${body}`;
+      window.location.href = `mailto:${BOOKING_EMAIL}?subject=${subject}&body=${body}`;
     }
 
     (function(){
