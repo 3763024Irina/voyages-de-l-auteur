@@ -8,7 +8,7 @@ window.APP_CONFIG = {
 
   // ДВА варианта входа админа:
   // 1) Укажи adminPass (простой пароль, работает ВЕЗДЕ, в т.ч. file://).
-  adminPass: 'замени-на-свой-пароль',
+  adminPass: 'gas',
 
   // 2) ЛИБО используй adminHash (SHA-256 hex). Работает на HTTPS/localhost.
   // Чтобы получить хеш: открой страницу на https, в консоли:  await makeAdminHash('мой_пароль')
