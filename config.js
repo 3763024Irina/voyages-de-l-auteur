@@ -121,3 +121,4 @@ window.APP_CONFIG = {
     if (isAdmin()) setAdmin(true);
   });
 })();
+
