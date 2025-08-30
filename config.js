@@ -1,73 +1,103 @@
 // Global runtime configuration + admin-only link gating
-// Place this file next to your HTML and ensure it's included BEFORE the main script:
-// <script src="./config.js"></script>
+// Подключи этот файл ПЕРЕД основным скриптом страницы.
 
 window.APP_CONFIG = {
-  email: '3763024@gmail.com',            // получатель заявок (mailto)
-  whatsapp: '33759644813',               // без "+", только цифры → wa.me/<номер>
-  needguide: 'https://needguide.ru/view_guide.php?user_id=22306', // ссылка на профиль (необязательно)
-  // SHA-256 от вашего секретного пароля для входа в режим администратора
-  // Сгенерируйте хеш так: откройте страницу, потом в консоли выполните
-  //   await makeAdminHash('ваш_пароль')
-  // и подставьте полученную HEX-строку сюда:
-  adminHash: ''
+  email: '3763024@gmail.com',                  // получатель заявок (mailto)
+  whatsapp: '33759644813',                     // без "+", только цифры → wa.me/<номер>
+  needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
+
+  // ДВА варианта входа админа:
+  // 1) Укажи adminPass (простой пароль, работает ВЕЗДЕ, в т.ч. file://).
+  adminPass: 'замени-на-свой-пароль',
+
+  // 2) ЛИБО используй adminHash (SHA-256 hex). Работает на HTTPS/localhost.
+  // Чтобы получить хеш: открой страницу на https, в консоли:  await makeAdminHash('мой_пароль')
+  adminHash: '',
+
+  // Включи при отладке
+  debug: false
 };
 
 (function(){
-  const CFG = window.APP_CONFIG || (window.APP_CONFIG = {});
+  const CFG = window.APP_CONFIG || {};
   const PRIVATE_SELECTORS = [
     '[data-i18n="cta_grotte"]',
     '[data-i18n="cta_restaurant"]',
     '[data-i18n="cta_capion"]',
+    '[data-needguide"]', // на всякий случай
     '[data-needguide]'
   ];
+  const HIDE_ATTR = 'data-private';
 
-  function $all(sel){ return Array.from(document.querySelectorAll(sel)); }
-  function setPrivateVisible(isAdmin){
-    const style = isAdmin ? '' : 'none';
-    PRIVATE_SELECTORS.forEach(sel => $all(sel).forEach(el => { el.style.display = style; }));
+  function injectCSS(){
+    if (document.getElementById('admin-gate-style')) return;
+    const s = document.createElement('style');
+    s.id = 'admin-gate-style';
+    // всё, что помечено data-private — скрыто, пока нет класса body.admin
+    s.textContent = `
+      [${HIDE_ATTR}]{display:none!important}
+      body.admin [${HIDE_ATTR}]{display:inline-flex!important}
+      body.admin a[${HIDE_ATTR}]{display:inline-flex!important}
+      body.admin li[${HIDE_ATTR}]{display:list-item!important}
+      body.admin p[${HIDE_ATTR}]{display:block!important}
+    `;
+    document.head.appendChild(s);
   }
 
-  function hasHash(){ return (CFG.adminHash||'').length > 0; }
-  function isAdmin(){ return hasHash() && localStorage.getItem('admin:token') === CFG.adminHash; }
+  function markPrivate(){
+    const nodes = PRIVATE_SELECTORS.flatMap(sel => Array.from(document.querySelectorAll(sel)));
+    nodes.forEach(el => el.setAttribute(HIDE_ATTR,''));
+    if (CFG.debug) console.log('[config] private nodes marked:', nodes);
+  }
+
+  function isSecure(){ return location.protocol === 'https:' || location.hostname === 'localhost'; }
 
   async function sha256hex(str){
-    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-    return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+    if (window.crypto && crypto.subtle && isSecure()){
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+    }
+    return null; // на file:// или http не получится
+  }
+
+  async function checkPass(pass){
+    if (CFG.adminHash){
+      const h = await sha256hex(pass);
+      if (!h){
+        if (CFG.debug) console.warn('[config] crypto.subtle недоступен; перехожу на adminPass');
+        return !!CFG.adminPass && pass === CFG.adminPass;
+      }
+      return h === CFG.adminHash.toLowerCase();
+    }
+    if (CFG.adminPass) return pass === CFG.adminPass;
+    return false;
+  }
+
+  function setAdmin(on){
+    document.body.classList.toggle('admin', !!on);
+    if (on) localStorage.setItem('admin:on','1'); else localStorage.removeItem('admin:on');
   }
 
   async function login(){
-    const lang = (localStorage.getItem('site:lang')||((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'ru'));
-    if(!hasHash()){
-      alert(lang==='fr' ? "adminHash n'est pas défini dans config.js" : 'adminHash не задан в config.js');
-      return;
-    }
-    const pass = prompt(lang==='fr' ? 'Mot de passe admin' : 'Пароль администратора');
-    if(!pass) return;
-    const hex = await sha256hex(pass);
-    if(hex === CFG.adminHash){
-      localStorage.setItem('admin:token', hex);
-      document.body.classList.add('admin');
-      setPrivateVisible(true);
-      alert(lang==='fr' ? 'Mode admin activé' : 'Админ-режим включён');
-    } else {
-      alert(lang==='fr' ? 'Mot de passe incorrect' : 'Пароль неверный');
-    }
+    const langFR = (localStorage.getItem('site:lang')||'').startsWith('fr') || (navigator.language||'').toLowerCase().startsWith('fr');
+    const pass = prompt(langFR ? 'Mot de passe admin' : 'Пароль администратора');
+    if (!pass) return;
+    const ok = await checkPass(pass);
+    alert(ok ? (langFR ? 'Mode admin activé' : 'Админ-режим включён')
+             : (langFR ? 'Mot de passe incorrect' : 'Пароль неверный'));
+    setAdmin(ok);
   }
-
-  function logout(){
-    localStorage.removeItem('admin:token');
-    document.body.classList.remove('admin');
-    setPrivateVisible(false);
-  }
+  function logout(){ setAdmin(false); }
 
   function init(){
+    injectCSS();
     const ready = () => {
-      // скрыть приватные ссылки по умолчанию
-      setPrivateVisible(isAdmin());
-      if(isAdmin()) document.body.classList.add('admin');
+      // помечаем приватные элементы, даже если они уже отрисованы
+      markPrivate();
+      // восстанавливаем режим из localStorage
+      if (localStorage.getItem('admin:on')==='1') setAdmin(true);
     };
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready); else ready();
 
     // хоткеи: Ctrl+Alt+A — login, Ctrl+Alt+L — logout
     window.addEventListener('keydown', (e)=>{
@@ -78,14 +108,19 @@ window.APP_CONFIG = {
       }
     });
 
-    // быстрый вход через URL (?admin=1 или #admin)
+    // быстрый вход: ?admin=1 или #admin → сразу спросит пароль
     const qs = new URLSearchParams(location.search);
-    if(qs.get('admin')==='1' || location.hash==="#admin"){ setTimeout(login, 100); }
+    if (qs.get('admin')==='1' || location.hash==='#admin') setTimeout(login, 50);
   }
 
-  // экспорт утилит (и хелпер генерации хеша) в window
-  window.AdminLinks = { login, logout, isAdmin };
-  window.makeAdminHash = async (s)=>sha256hex(s);
+  // экспорт утилит для консоли
+  window.AdminLinks = { login, logout };
+  window.makeAdminHash = async (s)=>{
+    const h = await sha256hex(s);
+    if (!h) { alert('crypto.subtle недоступен здесь — создай хеш на https или используй adminPass'); return ''; }
+    console.log('[adminHash]', h);
+    return h;
+  };
 
   init();
 })();
