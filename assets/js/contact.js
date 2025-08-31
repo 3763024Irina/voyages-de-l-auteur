@@ -1,87 +1,69 @@
 /* contact.js — единый обработчик форм заявки (WhatsApp + Telegram + Email)
-   Подключайте ПОСЛЕ config.js. Работает с формами <form data-contact-form ...>
+   Подключайте на страницах, где есть <form data-contact-form ...>
 */
 (function () {
   "use strict";
 
-  const APP = (window.APP_CONFIG || {});
-  const DEFAULTS = { whatsapp: "", telegram: "" };
+  // ==== Конфиг ====
+  const CFG = (window.APP_CONFIG || {});
+  const cfg = {
+    whatsapp: String(CFG.whatsapp || '33759644813').replace(/\D/g,''),
+    telegram: (CFG.telegram || 'ToursLanguedocbyIrene').replace(/^@/,''),
+    email: (CFG.email || '3763024@gmail.com'),
+    siteUrl: location.origin + location.pathname
+  };
 
-  function normalizedConfig(over = {}) {
-    const wa = String(over.whatsapp || APP.whatsapp || DEFAULTS.whatsapp || "").replace(/\D/g, "");
-    const tg = String(over.telegram || APP.telegram || DEFAULTS.telegram || "").replace(/^@/, "").trim();
-    const email = String(over.email || APP.email || "").trim();
-    return { whatsapp: wa, telegram: tg, email, siteUrl: location.origin + location.pathname };
-  }
-
+  // ===== Вспомогалки =====
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const esc = encodeURIComponent;
+  const nl = "\n";
 
-  function toast(msg, timeout = 3000) {
-    const el = document.createElement("div");
-    el.setAttribute("style", `
-      position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
-      background:#0D2B1E;color:#fff;padding:12px 16px;border-radius:12px;
-      font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-      box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:99999;max-width:90vw;text-align:center;
-    `);
+  function buildBody({ programTitle, programId, name, contact, when, guests, message }) {
+    return [
+      `Программа / Programme: ${programTitle} (${programId})`,
+      `Имя / Nom: ${name||''}`,
+      `Контакт / Contact: ${contact||''}`,
+      `Дата / Date: ${when||''}`,
+      `Гостей / Personnes: ${guests||''}`,
+      `Сообщение / Message: ${message||''}`,
+      ``,
+      `— Автоподпись / Signature —`,
+      `Тур: ${programTitle} (${programId})`,
+      `WhatsApp: https://wa.me/${cfg.whatsapp}`,
+      `Telegram: https://t.me/${cfg.telegram}`
+    ].join(nl);
+  }
+
+  function openWhatsApp(body) {
+    const url = `https://wa.me/${cfg.whatsapp}?text=${esc(body)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+  function openTelegramShare(body) {
+    const url = `https://t.me/share/url?text=${esc(body)}&url=${esc(cfg.siteUrl)}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+  function openEmail(subject, body) {
+    const url = `mailto:${esc(cfg.email)}?subject=${esc(subject)}&body=${esc(body)}`;
+    window.location.href = url;
+  }
+
+  function toast(msg, timeout = 3200) {
+    let el = document.createElement("div");
+    el.setAttribute("style",
+      "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0D2B1E;color:#fff;padding:10px 14px;border-radius:12px;font:14px/1.35 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.18);z-index:99999;max-width:92vw;text-align:center;"
+    );
     el.textContent = msg;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), timeout);
   }
 
-  function buildBody({ programTitle, programId, name, contact, when, guests, message, cfg }) {
-    const lines = [
-      `Программа / Programme: ${programTitle} (${programId})`,
-      `Имя / Nom: ${name || ""}`,
-      `Контакт / Contact: ${contact || ""}`,
-      `Дата / Date: ${when || ""}`,
-      `Гостей / Personnes: ${guests || ""}`,
-      `Сообщение / Message: ${message || ""}`,
-      "",
-      "— Автоподпись / Signature —",
-      `Тур: ${programTitle} (${programId})`,
-      (cfg.whatsapp ? `WhatsApp: https://wa.me/${cfg.whatsapp}` : ""),
-      (cfg.telegram ? `Telegram: https://t.me/${cfg.telegram}` : "")
-    ].filter(Boolean);
-    return lines.join("\n");
-  }
-
-  function openWhatsApp(cfg, body) {
-    if (!cfg.whatsapp) return false;
-    window.open(`https://wa.me/${cfg.whatsapp}?text=${esc(body)}`, "_blank", "noopener,noreferrer");
-    return true;
-  }
-
-  function openTelegram(cfg, body) {
-    // откроет окно шаринга Telegram с уже подставленным текстом
-    if (!cfg.telegram) return false;
-    window.open(`https://t.me/share/url?text=${esc(body)}&url=${esc(cfg.siteUrl)}`, "_blank", "noopener,noreferrer");
-    return true;
-  }
-
-  function openEmail(cfg, subject, body) {
-    if (!cfg.email) return false;
-    // mailto с темой и телом: в большинстве клиентов подставится автоматически
-    const href = `mailto:${esc(cfg.email)}?subject=${esc(subject)}&body=${esc(body)}`;
-    window.location.href = href;
-    return true;
-  }
-
   function handleSubmit(form) {
-    const perFormCfg = normalizedConfig({
-      whatsapp: form.dataset.whatsapp,
-      telegram: form.dataset.telegram,
-      email: form.dataset.email
-    });
-
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
       const fd = new FormData(form);
-
       const programTitle = form.dataset.programTitle || fd.get("programTitle") || document.title || "Programme";
-      const programId    = form.dataset.programId    || fd.get("PROGRAM_ID")   || fd.get("programId") || "PROGRAM";
+      const programId    = form.dataset.programId || fd.get("PROGRAM_ID")   || "PROGRAM";
 
       const name    = fd.get("name")    || "";
       const contact = fd.get("contact") || "";
@@ -89,45 +71,40 @@
       const guests  = fd.get("guests")  || "";
       const message = fd.get("message") || "";
 
-      const body = buildBody({ programTitle, programId, name, contact, when, guests, message, cfg: perFormCfg });
-      const subject = `Заявка: ${programTitle} (${programId})`;
+      const channel = (fd.get("channel") || form.dataset.channel || "both").toLowerCase();
 
-      // Канал: whatsapp | telegram | email | both
-      const channel = (fd.get("channel") || form.dataset.channel || "whatsapp").toLowerCase();
+      const body = buildBody({ programTitle, programId, name, contact, when, guests, message });
+      const subject = `Заявка с сайта | ${programTitle} | Код: ${programId}`;
 
-      let opened = false;
+      // отправка по каналам
       if (channel === "whatsapp") {
-        opened = openWhatsApp(perFormCfg, body);
-        if (!opened) toast("Не задан номер WhatsApp в config.js");
+        openWhatsApp(body);
       } else if (channel === "telegram") {
-        opened = openTelegram(perFormCfg, body);
-        if (!opened) toast("Не задан Telegram username в config.js");
+        openTelegramShare(body);
       } else if (channel === "email") {
-        opened = openEmail(perFormCfg, subject, body);
-        if (!opened) toast("Не задан email в config.js");
+        openEmail(subject, body);
       } else {
-        // both
-        const okWA = openWhatsApp(perFormCfg, body);
-        setTimeout(() => openTelegram(perFormCfg, body), 200);
-        opened = okWA;
+        // both: сначала WA, затем TG (небольшая задержка)
+        openWhatsApp(body);
+        setTimeout(() => openTelegramShare(body), 350);
       }
 
-      if (opened) toast("Черновик открыт с подставленным текстом.");
+      toast("Спасибо! Заявка формируется в выбранном мессенджере / почте.");
       form.reset();
     });
   }
 
   function initContactForms() {
-    const forms = $$("form[data-contact-form]");
-    forms.forEach(handleSubmit);
-    if (!forms.length) console.info("[contact.js] нет форм с data-contact-form");
+    $$("form[data-contact-form]").forEach(handleSubmit);
   }
 
+  // Автоинициализация
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initContactForms);
   } else {
     initContactForms();
   }
 
+  // Экспорт
   window.ContactInit = initContactForms;
 })();
