@@ -1,9 +1,11 @@
-/* config.js — конфиг + админ + WhatsApp/Telegram авто-отправка (телеграм = тот же номер) */
+/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email)
+   — Telegram использует тот же номер, что и WhatsApp
+   — Здесь НЕТ логики формирования текста; это делает /assets/js/contact.js
+*/
 window.APP_CONFIG = window.APP_CONFIG || {
-  // Достаточно указать только whatsapp — его же используем для Telegram
   // whatsapp: '33759644813',
-  // needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
-  // ADMIN_SECRET: 'capion2025'
+  // ADMIN_SECRET: 'capion2025',
+  // needguide: 'https://needguide.ru/view_guide.php?user_id=22306'
 };
 
 (function () {
@@ -14,9 +16,8 @@ window.APP_CONFIG = window.APP_CONFIG || {
   const qs = (sel, root=document) => root.querySelector(sel);
   const qa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const digits = (s='') => String(s).replace(/\D/g,'');
-  const lang = () => localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
 
-  /* ================== ADMIN ================== */
+  /* ========== ADMIN ========== */
   const ADMIN_KEY = 'site:admin';
   const isAdmin = () => localStorage.getItem(ADMIN_KEY) === 'on';
   const setAdmin = (on) => {
@@ -47,7 +48,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
       document.getElementById('admin-logout')?.addEventListener('click', () => {
         setAdmin(false);
         alert('Admin OFF');
-      }, { once: true });
+      }, { once:true });
     }
   }
 
@@ -76,135 +77,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }
   });
 
-  /* ====== Патч видимых ссылок WhatsApp (без текста) ====== */
-  function patchWhatsAppHrefOnly() {
-    const wa = digits(CFG.whatsapp || '');
-    if (!wa) return;
-    qa('[data-whatsapp]').forEach(a => {
-      // просто номер, без текста (текст добавляем на клик)
-      a.setAttribute('href', `https://wa.me/${wa}`);
-    });
-  }
-
-  /* ================== МЕССЕНДЖЕРЫ (WA/TG) ================== */
-
-  // Заголовок/ID программы — берём из ближайшей разметки или из страницы
-  function getProgramInfo(fromEl){
-    const root = fromEl?.closest('[data-program-title],[data-program-id],[data-program]') || document.body;
-    const metaTitle = qs('meta[property="og:title"]')?.getAttribute('content') || '';
-    // document.title без хвостов после | — если надо
-    const docTitle = document.title.replace(/\s*[|—-].*$/, '').trim();
-    const title = root?.dataset?.programTitle || metaTitle || docTitle || 'Программа';
-    // id: data-program-id, иначе имя файла URL
-    const id = root?.dataset?.programId ||
-               (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') ||
-               'N/A';
-    return { title, id };
-  }
-
-  function ctxFrom(el){
-    const form = el?.closest('form') || qs('[data-contact-form]') || null;
-    const fd = form ? new FormData(form) : new FormData();
-    return {
-      name   : (fd.get('name')   || '').toString().trim(),
-      contact: (fd.get('contact')|| '').toString().trim(),
-      date   : (fd.get('date')   || fd.get('when') || '').toString().trim(),
-      guests : (fd.get('guests') || fd.get('persons') || '').toString().trim(),
-      message: (fd.get('message')|| '').toString().trim()
-    };
-  }
-
-  function buildText(ctx, prog){
-    const hello = (lang()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
-    const lines = [
-      hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''),
-      ctx.message ? ctx.message : '',
-      ctx.date   ? `\nДата: ${ctx.date}` : '',
-      ctx.guests ? `\nГостей: ${ctx.guests}` : '',
-      `\nПрограмма: ${prog.title} (${prog.id})`,
-      ctx.contact? `\nКонтакт: ${ctx.contact}` : ''
-    ];
-    return lines.join('').trim();
-  }
-
-  function openWhatsApp(text){
-    const wa = digits(CFG.whatsapp || '');
-    if (!wa) { alert('В config.js не указан номер WhatsApp'); return; }
-    const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank', 'noopener');
-  }
-
-  // В Telegram пробуем открыть чат по телефону (tg://resolve?phone=), если не сработает — веб-шэр с текстом
-  function openTelegram(text){
-    const phone = digits(CFG.whatsapp || ''); // Тот же номер, что и для WhatsApp
-    const appUrl = phone ? `tg://resolve?phone=${phone}` : '';
-    const webShare = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
-
-    if (appUrl){
-      // Попытка открыть приложение; если фокуса не потеряли — откроем веб-шер
-      const hadFocus = document.hasFocus();
-      // попытка навигации в приложение
-      window.location.href = appUrl;
-      setTimeout(()=>{
-        // Если остаёмся на странице (фокус не ушёл), открываем веб-шер
-        if (document.hasFocus() === hadFocus) window.open(webShare, '_blank', 'noopener');
-      }, 700);
-    } else {
-      window.open(webShare, '_blank', 'noopener');
-    }
-  }
-
-  function initMessenger() {
-    // Делегированный submit всех форм брони
-    document.addEventListener('submit', async (e) => {
-      const form = e.target;
-      if (!form.matches('[data-contact-form]')) return;
-      e.preventDefault();
-
-      const prog = getProgramInfo(form);
-      const ctx  = ctxFrom(form);
-      const text = buildText(ctx, prog);
-      try { await navigator.clipboard.writeText(text); } catch(_) {}
-
-      const channel = (form.elements['channel']?.value || form.dataset.channel || 'telegram').toLowerCase();
-      if (channel === 'whatsapp')      openWhatsApp(text);
-      else if (channel === 'telegram') openTelegram(text);
-      else if (channel === 'both')    { openWhatsApp(text); setTimeout(()=>openTelegram(text), 120); }
-    }, true);
-
-    // Делегированные клики по кнопкам WA/TG (подставляем текст на лету)
-    document.addEventListener('click', async (e) => {
-      const a = e.target.closest('a[data-whatsapp], a[data-telegram]');
-      if (!a) return;
-
-      const prog = getProgramInfo(a);
-      const ctx  = ctxFrom(a);
-      const text = buildText(ctx, prog);
-      try { await navigator.clipboard.writeText(text); } catch(_) {}
-
-      if (a.matches('[data-whatsapp]')) {
-        e.preventDefault();
-        openWhatsApp(text);
-        return;
-      }
-      if (a.matches('[data-telegram]')) {
-        e.preventDefault();
-        openTelegram(text);
-        return;
-      }
-    }, true);
-
-    // Изначально проставим «голые» ссылки (без текста) по номеру
-    patchWhatsAppHrefOnly();
-    const phone = digits(CFG.whatsapp || '');
-    qa('[data-telegram]').forEach(a=>{
-      // пробуем указать app-схему; текст всё равно добавим по клику
-      if (phone) a.setAttribute('href', `tg://resolve?phone=${phone}`);
-      else a.setAttribute('href', 'https://t.me/share/url');
-    });
-  }
-
-  /* ================== Admin Link UX (как было) ================== */
+  /* ========== Admin Link UX (копирование ссылок для админа) ========== */
   function initAdminLinkUX() {
     if (!document.getElementById('admin-link-style')) {
       const st = document.createElement('style');
@@ -256,17 +129,35 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }, true);
   }
 
-  /* ================== INIT ================== */
+  /* ========== Базовые ссылки для WA/TG (без текста) ========== */
+  function patchBaseLinks() {
+    const wa = digits(CFG.whatsapp || '');
+    if (wa) {
+      qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
+      qa('[data-telegram]').forEach(a => a.setAttribute('href', `tg://resolve?phone=${wa}`));
+    } else {
+      // нет номера — хотя бы t.me для кнопок TG
+      qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
+    }
+  }
+
+  /* ========== INIT ========== */
   window.__CONFIG_LOADED__ = true;
   window.__setAdmin = setAdmin;
   window.__isAdmin  = isAdmin;
 
-  window.addEventListener('DOMContentLoaded', () => {
+  function init(){
     if (isAdmin()) document.documentElement.classList.add('is-admin');
     tryAdminLoginFromURL();
     drawAdminBadge();
     initAdminLinkUX();
-    initMessenger(); // <<=== ВКЛЮЧАЕМ АВТО-ОТПРАВКУ WA/TG ПО ВСЕЙ СТРАНИЦЕ
+    patchBaseLinks();
     console.log('[config.js] ready, admin=', isAdmin());
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, {once:true});
+  } else {
+    init();
+  }
 })();
