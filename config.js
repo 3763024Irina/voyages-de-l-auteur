@@ -1,14 +1,15 @@
-// config.js
-window.APP_CONFIG = {
-  email: '3763024@gmail.com',                 // почта для брони
-  whatsapp: '33759644813',                    // номер без "+"
-  needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
-  ADMIN_SECRET: 'capion2025',                 // секрет входа в админ
-  // (необязательно) если есть свой username в TG:
-  telegram: 'ToursLanguedocbyIrene'
-};
+<script>
+/* config.js */
+window.APP_CONFIG = window.APP_CONFIG || {};
 
 (function () {
+  // ---- ГЛОБАЛЬНЫЙ ГАРД: не инициализировать повторно ----
+  if (window.__CONFIG_INIT__) {
+    console.warn('[config.js] already initialized, skip.');
+    return;
+  }
+  window.__CONFIG_INIT__ = true;
+
   const CFG = window.APP_CONFIG || {};
   const qsAll = (sel) => Array.from(document.querySelectorAll(sel));
 
@@ -44,7 +45,7 @@ window.APP_CONFIG = {
       document.getElementById('admin-logout')?.addEventListener('click', () => {
         setAdmin(false);
         alert('Admin OFF');
-      });
+      }, { once: true });
     }
   }
 
@@ -59,7 +60,6 @@ window.APP_CONFIG = {
     const s = getParam('admin');
     if (s && s === String(CFG.ADMIN_SECRET || '')) {
       setAdmin(true);
-      // чистим URL
       const url = new URL(window.location.href);
       url.searchParams.delete('admin');
       if (url.hash.includes('admin=')) url.hash = '';
@@ -75,25 +75,94 @@ window.APP_CONFIG = {
     }
   });
 
-  // Подстановка WhatsApp из конфига на все ссылки с data-whatsapp
+  // Подстановка WhatsApp на все ссылки с data-whatsapp
   function patchWhatsApp() {
     const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
     if (!phone) return;
     qsAll('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${phone}`));
   }
 
-  // Глобальный флажок для быстрой диагностики
+  // ====== ФИКС «копипаста» на кнопке ЗАБРОНИРОВАТЬ ======
+  // Навешиваем обработчик один раз и всегда формируем mailto с нуля.
+  const _bookingBound = new WeakSet();
+  function wireBookingMailto() {
+    const SELECTOR = [
+      '[data-book]', '[data-booking]', '.js-book', 'a[href^="#book"]'
+    ].join(',');
+
+    const targets = qsAll(SELECTOR);
+    if (!targets.length) return;
+
+    targets.forEach(el => {
+      if (_bookingBound.has(el)) return; // уже привязан
+      _bookingBound.add(el);
+
+      el.addEventListener('click', (ev) => {
+        // Собираем данные: из data-*, ближайшей формы и т.д.
+        const root = el.closest('[data-program], [data-program-title], [data-program-id]') || document.body;
+        const programTitle =
+          el.dataset.programTitle ||
+          root?.dataset?.programTitle ||
+          document.title.replace(/\s*[|—-].*$/, '').trim() ||
+          'Программа';
+
+        const programId =
+          el.dataset.programId ||
+          root?.dataset?.programId ||
+          'N/A';
+
+        // Ищем ближайшую форму (если есть) — берём значения
+        const form = el.closest('form');
+        const fd = form ? new FormData(form) : new FormData();
+        const when   = fd.get('when')   || fd.get('date')    || '';
+        const guests = fd.get('guests') || fd.get('persons') || '';
+        const name   = fd.get('name')   || '';
+        const contact= fd.get('contact')|| '';
+        const msg    = fd.get('message')|| '';
+
+        const body = encodeURIComponent(
+`Программа / Programme: ${programTitle} (${programId})
+Имя / Nom: ${name}
+Контакт / Contact: ${contact}
+Дата / Date: ${when}
+Гостей / Personnes: ${guests}
+Сообщение / Message: ${msg}
+
+— Автоподпись / Signature —
+Тур: ${programTitle} (${programId})
+WhatsApp: https://wa.me/${String(CFG.whatsapp || '').replace(/\D/g,'')}
+Telegram: https://t.me/${CFG.telegram || ''}`
+        );
+        const subject = encodeURIComponent(`Бронирование: ${programTitle}`);
+        const mail = String(CFG.email || '').trim() || 'info@example.com';
+        const mailto = `mailto:${mail}?subject=${subject}&body=${body}`;
+
+        // Важно: НЕ добавляем к существующему href, а ПЕРЕЗАПИСЫВАЕМ
+        if (el.tagName === 'A') {
+          el.setAttribute('href', mailto);
+          // Для надёжности даём браузеру следовать по ссылке
+        } else {
+          ev.preventDefault();
+          window.location.href = mailto;
+        }
+      }, { capture: true }); // capture — чтобы перехватить до других слушателей
+    });
+  }
+
+  // Глобальный флажок для диагностики
   window.__CONFIG_LOADED__ = true;
+  // Экспорт хелперов (по желанию)
+  window.__wireBookingMailto = wireBookingMailto;
+  window.__patchWhatsApp = patchWhatsApp;
 
   window.addEventListener('DOMContentLoaded', () => {
     if (isAdmin()) document.documentElement.classList.add('is-admin');
     tryAdminLoginFromURL();
     patchWhatsApp();
     drawAdminBadge();
+    wireBookingMailto();
     console.log('[config.js] loaded, admin=', isAdmin());
   });
-
-  // экспорт
-  window.__patchWhatsApp = patchWhatsApp;
 })();
+</script>
 
