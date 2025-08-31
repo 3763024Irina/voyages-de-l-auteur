@@ -1,58 +1,30 @@
 // config.js
-// 1) Контакты и ссылки
+// Твои контакты и секрет
 window.APP_CONFIG = {
-  email: '3763024@gmail.com',            // почта для брони
-  whatsapp: '33759644813',               // без "+" — подставится в wa.me
+  email: '3763024@gmail.com',          // почта для брони
+  whatsapp: '33759644813',             // без "+"
   needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
-
-  // 2) Секрет для режима админа (замени на свой!)
-  ADMIN_SECRET: 'capion2025'
+  ADMIN_SECRET: 'capion2025'           // поменяй при желании
 };
 
 (function () {
   const CFG = window.APP_CONFIG || {};
+  const qsAll = (sel) => Array.from(document.querySelectorAll(sel));
 
-  // --- helpers
-  const qs = (sel) => Array.from(document.querySelectorAll(sel));
-  const getParam = (name) => {
-    const u = new URL(window.location.href);
-    return (
-      u.searchParams.get(name) ||
-      new URLSearchParams((u.hash || '').replace(/^#/, '?')).get(name)
-    );
-  };
-
-  // --- ADMIN MODE
+  // --- Admin helpers
   const ADMIN_KEY = 'site:admin';
-
-  function isAdmin() {
-    return localStorage.getItem(ADMIN_KEY) === 'on';
-  }
-  function setAdmin(on) {
+  const isAdmin = () => localStorage.getItem(ADMIN_KEY) === 'on';
+  const setAdmin = (on) => {
     localStorage.setItem(ADMIN_KEY, on ? 'on' : 'off');
     document.documentElement.classList.toggle('is-admin', !!on);
-    toggleAdminVisibility();
     drawAdminBadge();
-  }
+  };
 
-  // Скрываем админ-ссылки от гостей (по умолчанию — скрыты)
- const ADMIN_ONLY_SELECTORS = ['[data-admin-only]'];
-
-  function toggleAdminVisibility() {
-    const on = isAdmin();
-    qs(ADMIN_ONLY_SELECTORS.join(',')).forEach((el) => {
-      el.style.display = on ? '' : 'none';
-    });
-  }
-
-  // Значок/панель админа (виден только в режиме админа)
+  // Бейдж администратора (виден только при is-admin)
   function drawAdminBadge() {
     const id = 'admin-badge';
     let badge = document.getElementById(id);
-    if (!isAdmin()) {
-      if (badge) badge.remove();
-      return;
-    }
+    if (!isAdmin()) { if (badge) badge.remove(); return; }
     if (!badge) {
       badge = document.createElement('div');
       badge.id = id;
@@ -76,45 +48,47 @@ window.APP_CONFIG = {
     }
   }
 
-  // Вход админа: ?admin=SECRET или #admin=SECRET или хоткей Ctrl+Shift+A
-  function trySecretFromURL() {
+  // Вход по ?admin=SECRET или Ctrl+Shift+A
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    const fromSearch = url.searchParams.get(name);
+    const fromHash = new URLSearchParams(url.hash.replace(/^#/, '?')).get(name);
+    return fromSearch || fromHash;
+  }
+  function tryAdminLoginFromURL() {
     const s = getParam('admin');
     if (s && s === String(CFG.ADMIN_SECRET || '')) {
       setAdmin(true);
-      // чистим URL
+      // очистим URL
       const url = new URL(window.location.href);
       url.searchParams.delete('admin');
-      if ((url.hash || '').includes('admin=')) url.hash = '';
+      if (url.hash.includes('admin=')) url.hash = '';
       history.replaceState({}, document.title, url.toString());
+      alert('Admin ON');
     }
   }
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
       const code = prompt('Admin code');
-      if (code === String(CFG.ADMIN_SECRET || '')) {
-        setAdmin(true);
-        alert('Admin ON');
-      } else {
-        alert('Wrong code');
-      }
+      if (code === String(CFG.ADMIN_SECRET || '')) { setAdmin(true); alert('Admin ON'); }
+      else { alert('Wrong code'); }
     }
   });
 
-  // --- Подстановка WhatsApp из конфигурации (на всякий случай и тут)
+  // Подстановка WhatsApp из конфига
   function patchWhatsApp() {
     const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
     if (!phone) return;
-    qs('[data-whatsapp]').forEach((a) => a.setAttribute('href', `https://wa.me/${phone}`));
+    qsAll('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${phone}`));
   }
 
   // Инициализация
   window.addEventListener('DOMContentLoaded', () => {
-    trySecretFromURL();
-    toggleAdminVisibility();
-    drawAdminBadge();
+    // если уже был вход
+    if (isAdmin()) document.documentElement.classList.add('is-admin');
+    tryAdminLoginFromURL();
     patchWhatsApp();
-    // если уже входили раньше
-    if (isAdmin()) setAdmin(true);
+    drawAdminBadge();
   });
 })();
 
