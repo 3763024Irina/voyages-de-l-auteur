@@ -1,6 +1,5 @@
-/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email и без NeedGuide)
-   — Telegram использует тот же номер, что и WhatsApp
-   — Логика отправки сообщений в /assets/js/contact.js
+/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email/NeedGuide)
+   Telegram: используем окно шаринга, чтобы гарантировать текст.
 */
 window.APP_CONFIG = window.APP_CONFIG || {
   // whatsapp: '33759644813',
@@ -12,7 +11,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
   window.__CONFIG_INIT__ = true;
 
   const CFG = window.APP_CONFIG || {};
-  const qs = (sel, root=document) => root.querySelector(sel);
   const qa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
   const digits = (s='') => String(s).replace(/\D/g,'');
 
@@ -74,7 +72,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }
   });
 
-  /* ========== Admin Link UX (копирование ссылок для админа) ========== */
+  /* ========== Admin Link UX ========== */
   function initAdminLinkUX() {
     if (!document.getElementById('admin-link-style')) {
       const st = document.createElement('style');
@@ -85,7 +83,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
       `;
       document.head.appendChild(st);
     }
-
     const toast = (msg) => {
       const el = document.createElement('div');
       el.textContent = msg;
@@ -97,24 +94,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
       document.body.appendChild(el);
       setTimeout(()=> el.remove(), 1800);
     };
-
     document.addEventListener('click', (e) => {
-      const loginBtn = e.target.closest('[data-admin-login]');
-      if (loginBtn) {
-        e.preventDefault();
-        const code = prompt('Admin code');
-        if (code === String(CFG.ADMIN_SECRET || '')) { setAdmin(true); alert('Admin ON'); }
-        else { alert('Wrong code'); }
-        return;
-      }
-      const logoutBtn = e.target.closest('[data-admin-logout]');
-      if (logoutBtn) {
-        e.preventDefault();
-        setAdmin(false);
-        alert('Admin OFF');
-        return;
-      }
-
       if (!isAdmin()) return;
       const a = e.target.closest('a[data-admin-link]');
       if (!a) return;
@@ -126,15 +106,14 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }, true);
   }
 
-  /* ========== Базовые ссылки для WA/TG (без текста) ========== */
+  /* ========== Базовые href для WA/TG (без текста) ========== */
   function patchBaseLinks() {
     const wa = digits(CFG.whatsapp || '');
     if (wa) {
       qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
-      qa('[data-telegram]').forEach(a => a.setAttribute('href', `tg://resolve?phone=${wa}`));
-    } else {
-      qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
     }
+    // Telegram — всегда окно шаринга, чтобы текст точно подставлялся
+    qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
   }
 
   /* ========== INIT ========== */
@@ -157,3 +136,4 @@ window.APP_CONFIG = window.APP_CONFIG || {
     init();
   }
 })();
+
