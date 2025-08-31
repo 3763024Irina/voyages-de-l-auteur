@@ -1,11 +1,10 @@
-/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email)
+/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email и без NeedGuide)
    — Telegram использует тот же номер, что и WhatsApp
-   — Здесь НЕТ логики формирования текста; это делает /assets/js/contact.js
+   — Логика отправки сообщений в /assets/js/contact.js
 */
 window.APP_CONFIG = window.APP_CONFIG || {
   // whatsapp: '33759644813',
-  // ADMIN_SECRET: 'capion2025',
-  // needguide: 'https://needguide.ru/view_guide.php?user_id=22306'
+  // ADMIN_SECRET: 'capion2025'
 };
 
 (function () {
@@ -39,8 +38,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
                     padding:10px 12px; box-shadow:0 10px 22px rgba(0,0,0,.18);
                     font:600 13px/1.2 Inter, system-ui; display:flex; gap:8px; align-items:center;">
           <span>Admin</span>
-          <a href="${CFG.needguide||'#'}" target="_blank" rel="noopener"
-             style="background:#C9B886; color:#1b1b1b; padding:6px 10px; border-radius:10px; font-weight:800; text-decoration:none;">NeedGuide</a>
           <button id="admin-logout" style="background:transparent; color:#fff; border:1px solid rgba(255,255,255,.4);
                  padding:6px 10px; border-radius:10px; cursor:pointer;">Выйти</button>
         </div>`;
@@ -136,7 +133,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
       qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
       qa('[data-telegram]').forEach(a => a.setAttribute('href', `tg://resolve?phone=${wa}`));
     } else {
-      // нет номера — хотя бы t.me для кнопок TG
       qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
     }
   }
