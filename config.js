@@ -1,8 +1,9 @@
-/* config.js — Admin + базовые ссылки WhatsApp/Telegram (без email/NeedGuide)
-   Telegram: используем окно шаринга, чтобы гарантировать текст.
+/* config.js — Admin + базовые ссылки для WA/TG (без email)
+   Telegram: если указан bot_username — кнопки TG ведут на диплинк бота.
 */
 window.APP_CONFIG = window.APP_CONFIG || {
   // whatsapp: '33759644813',
+  // bot_username: 'ToursLanguedocBot', // <- юзернейм вашего бота
   // ADMIN_SECRET: 'capion2025'
 };
 
@@ -22,7 +23,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
     document.documentElement.classList.toggle('is-admin', !!on);
     drawAdminBadge();
   };
-
   function drawAdminBadge() {
     const id = 'admin-badge';
     let el = document.getElementById(id);
@@ -46,7 +46,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
       }, { once:true });
     }
   }
-
   function getParam(name) {
     const url = new URL(window.location.href);
     const s1 = url.searchParams.get(name);
@@ -72,48 +71,18 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }
   });
 
-  /* ========== Admin Link UX ========== */
-  function initAdminLinkUX() {
-    if (!document.getElementById('admin-link-style')) {
-      const st = document.createElement('style');
-      st.id = 'admin-link-style';
-      st.textContent = `
-        html:not(.is-admin) [data-admin-only] { display: none !important; }
-        html.is-admin a[data-admin-link] { outline: 1px dashed #C9B886; outline-offset: 2px; }
-      `;
-      document.head.appendChild(st);
-    }
-    const toast = (msg) => {
-      const el = document.createElement('div');
-      el.textContent = msg;
-      Object.assign(el.style, {
-        position:'fixed', left:'50%', bottom:'20px', transform:'translateX(-50%)',
-        background:'#0D2B1E', color:'#fff', padding:'10px 14px', borderRadius:'10px',
-        boxShadow:'0 10px 22px rgba(0,0,0,.18)', font:'600 13px/1 Inter,system-ui', zIndex: 99999,
-      });
-      document.body.appendChild(el);
-      setTimeout(()=> el.remove(), 1800);
-    };
-    document.addEventListener('click', (e) => {
-      if (!isAdmin()) return;
-      const a = e.target.closest('a[data-admin-link]');
-      if (!a) return;
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      e.preventDefault();
-      const href = a.getAttribute('href') || '';
-      navigator.clipboard?.writeText(href).catch(()=>{});
-      toast('Скопировано: ' + href);
-    }, true);
-  }
-
   /* ========== Базовые href для WA/TG (без текста) ========== */
   function patchBaseLinks() {
     const wa = digits(CFG.whatsapp || '');
-    if (wa) {
-      qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
+    if (wa) qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
+
+    // Если есть bot_username — ведём на бота (текст подставит contact.js через payload)
+    if (CFG.bot_username) {
+      qa('[data-telegram]').forEach(a => a.setAttribute('href', `https://t.me/${CFG.bot_username}`));
+    } else {
+      // иначе: окно шаринга (с текстом), это безопасный фолбэк
+      qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
     }
-    // Telegram — всегда окно шаринга, чтобы текст точно подставлялся
-    qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
   }
 
   /* ========== INIT ========== */
@@ -125,15 +94,10 @@ window.APP_CONFIG = window.APP_CONFIG || {
     if (isAdmin()) document.documentElement.classList.add('is-admin');
     tryAdminLoginFromURL();
     drawAdminBadge();
-    initAdminLinkUX();
     patchBaseLinks();
     console.log('[config.js] ready, admin=', isAdmin());
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, {once:true});
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
+  else init();
 })();
 
