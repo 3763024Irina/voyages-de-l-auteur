@@ -212,59 +212,79 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="bg">
-      <img src="assets/wines/vinograd.jpg" alt="Юг Франции — море и виноградники"/>
-      <div class="overlay"></div>
-    </div>
-    <div class="container inner">
-      <div>
-        <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
-        <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
-        <div class="tags">
-          <a class="tag" href="#tours">Устрицы & Étang de Thau</a>
-          <a class="tag" href="#tours">Вино и Домены</a>
-          <a class="tag" href="#tours">Замки & История</a>
-          <a class="tag" href="#tours">Горы & Трекинг</a>
-          <a class="tag" href="#tours">Море & SUP/Каяк</a>
-          <a class="tag" href="#tours">Фото-локи</a>
-          <a class="tag" href="#tours">Disco Party</a>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="bg">
+    <img src="assets/wines/vinograd.jpg" alt="Юг Франции — море и виноградники"/>
+    <div class="overlay"></div>
+  </div>
+
+  <div class="container inner">
+    <!-- левый столбец -->
+    <div>
+      <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
+      <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
+      <div class="tags">
+        <a class="tag" href="#tours">Устрицы & Étang de Thau</a>
+        <a class="tag" href="#tours">Вино и Домены</a>
+        <a class="tag" href="#tours">Замки & История</a>
+        <a class="tag" href="#tours">Горы & Трекинг</a>
+        <a class="tag" href="#tours">Море & SUP/Каяк</a>
+        <a class="tag" href="#tours">Фото-локи</a>
+        <a class="tag" href="#tours">Disco Party</a>
       </div>
+    </div> <!-- ← это закрывает левый столбец -->
 
-      <!-- Узкая форма в hero -->
-      <div class="card contact-card" id="contactCard">
-        <strong data-i18n="form.fast">Быстрый запрос</strong>
-        <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">Отправьте пожелания — подберу маршрут и даты в течение дня.</p>
+    <!-- правый столбец: узкая форма -->
+    <div class="card contact-card" id="contactCard">
+      <strong data-i18n="form.fast">Быстрый запрос</strong>
+      <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
+        Отправьте пожелания — подберу маршрут и даты в течение дня.
+      </p>
 
-        <form
-          data-contact-form
-          data-program-title="Запрос с главной (быстрый)"
-          data-program-id="HOME-FAST"
-          data-channel="whatsapp"
-          id="quickForm">
-          <label for="f-name" data-i18n="form.name">Имя</label>
-          <input id="f-name" name="name" required placeholder="Ваше имя" autocomplete="name" />
+      <form
+        id="quickForm"
+        data-contact-form
+        data-program-title="Запрос с главной (быстрый)"
+        data-program-id="HOME-FAST"
+        data-channel="whatsapp"
+      >
+        <label for="f-name" data-i18n="form.name">Имя</label>
+        <input id="f-name" name="name" required placeholder="Ваше имя" autocomplete="name" />
 
-         <label for="f-contact" data-i18n="form.contact">Телефон (WhatsApp)</label>
-<input id="f-contact" name="contact" required
-       placeholder="+33… (WhatsApp)"
-       autocomplete="tel" inputmode="tel"
-       pattern="\+?\d[\d\s()-]{5,19}"
-       title="Только номер WhatsApp, например +33 7 59 64 48 13" />
+        <label for="f-contact">Телефон (WhatsApp/Telegram)</label>
+        <input
+          id="f-contact" name="contact" required
+          placeholder="+33…"
+          autocomplete="tel" inputmode="tel"
+          pattern="\+?\d[\d\s()-]{5,19}"
+          title="Номер телефона, например +33 7 59 64 48 13"
+        />
 
-          <label for="f-message" data-i18n="form.msg">Сообщение</label>
-          <textarea id="f-message" name="message" placeholder="Какие даты и интересы?"></textarea>
-
-          <div style="display:flex; gap:10px; margin-top:12px">
-            <button class="btn primary" type="submit">Отправить</button>
-            <a class="btn" id="waHero" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="form.whatsapp">Написать в WhatsApp</a>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <div style="flex:1">
+            <label for="f-date">Дата</label>
+            <input type="date" id="f-date" name="date" />
           </div>
-        </form>
-      </div>
+          <div style="width:140px">
+            <label for="f-guests">Гостей</label>
+            <input type="number" id="f-guests" name="guests" min="1" value="2" />
+          </div>
+        </div>
+
+        <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
+        <textarea id="f-message" name="message" placeholder="Какие даты и интересы?"></textarea>
+
+        <div style="display:flex; gap:10px; margin-top:12px">
+          <button class="btn primary" type="submit">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </form>
     </div>
-  </section>
+  </div> <!-- ← это закрывает .container.inner -->
+</section>
+
 
   <!-- WHY -->
   <section id="why" class="container why">
@@ -704,16 +724,10 @@
 
   <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
 <script>
-  window.APP_CONFIG = {
-    whatsapp: '33759644813',            // тот же номер для Telegram
-    ADMIN_SECRET: 'capion2025',
-  };
+  window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' };
 </script>
 <script src="/config.js" defer></script>
 <script src="/assets/js/contact.js" defer></script>
-
-
-
   
 </body>
 </html>
