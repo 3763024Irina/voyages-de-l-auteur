@@ -244,7 +244,7 @@
       <p class="section-sub" data-i18n="where_sub">Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).</p>
       <div class="mapwrap">
         <iframe
-          title="Карта: Saint-Guilhem-le-Дésert"
+          title="Карта: Saint-Guilhem-le-Désert"
           src="https://www.google.com/maps?q=Saint-Guilhem-le-Desert%2C%20France&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
@@ -321,7 +321,7 @@
     </div>
   </footer>
 
-  <!-- ВАЖНО: config.js должен быть до основного скрипта -->
+  <!-- ВАЖНО: config.js должен быть до скрипта страницы -->
   <script src="./config.js"></script>
 
   <script>
@@ -334,7 +334,7 @@
       ru: {
         htmlLang:'ru',
         title:'Saint-Guilhem-le-Désert — аббатство, Castrum, грот Clamouse и Château Capion | Tours Languedoc by Irène',
-        metaDesc:'Однодневная программа: Saint-Guilhem-le-Дésert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя.',
+        metaDesc:'Однодневная программа: Saint-Guilhem-le-Désert (аббатство, улочки, панорама), подъём к Castrum, экскурсия в гроте Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze. 300 € / 2 гостя.',
         ogTitle:'Saint-Guilhem — аббатство, Castrum, Clamouse и Château Capion',
         ogDesc:'Деревня UNESCO + Castrum, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Индивидуально, старт из Mèze.',
         brand_sub:'— Путешествия со вкусом',
@@ -344,7 +344,7 @@
         gal_title:'Как это выглядит', gal_sub:'Saint-Guilhem-le-Désert, Castrum, грот Clamouse и Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — панорама деревни',
         altG1:'Площадь у аббатства Жилон', altG2:'Средневековые улочки', altG3:'Вид на ущелье Verdus',
-        hero_title:'Saint-Guilhem-le-Désert — Castrum, грот Clamouse и дегустация в Château Capion',
+        hero_title:'Saint-Guilhem-le-Дésert — Castrum, грот Clamouse и дегустация в Château Capion',
         hero_sub:'Аббатство Жилон (UNESCO), улочки и панорама, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze.',
         price:'300 € / 2 гостя',
         price_note:'Доп. гость: +70 € (макс. 6). Обед 25–35 € / чел (на месте).',
@@ -501,9 +501,8 @@
       }
     };
 
+    // alt helper
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
-
-   unction setAlt(id, text){ const el = document.getElementById(id); if(el) el.setAttribute('alt', text); }
 
     function applyLang(lang){
       const t = i18n[lang];
@@ -534,7 +533,7 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    // Получение контактных данных из config.js
+    // Контакты из config.js
     function getConfig(){
       const CFG = window.APP_CONFIG || {};
       return {
@@ -543,7 +542,7 @@
       };
     }
 
-    // Формирование и открытие письма
+    // Submit -> mailto
     function openMail(e){
       e.preventDefault();
       const fd = new FormData(e.target);
@@ -570,11 +569,9 @@
       ].join('\n');
 
       const mailto = `mailto:${encodeURIComponent(cfg.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      // пробуем открыть mailto
       window.location.href = mailto;
 
-      // фоллбек: копируем текст, если почтовик не перехватил
+      // fallback: скопировать текст, если клиент почты не открылся
       setTimeout(()=>{
         if (document.hasFocus()) {
           navigator.clipboard?.writeText(`${subject}\n\n${body}`);
@@ -583,13 +580,11 @@
       }, 800);
     }
 
-    // Инициализация
+    // Init
     (function(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
-
-      // Кнопки смены языка
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
     })();
