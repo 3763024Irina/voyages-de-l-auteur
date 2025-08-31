@@ -62,29 +62,24 @@
     .gallery img{width:100%; height:100%; object-fit:cover}
 
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .list{margin:0; padding-left:18px}
+    .list li{margin:8px 0}
+
+    .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
+    .timeline li{margin:12px 0}
+    .time{font-weight:800; color:var(--brand);}
+
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fafafa; font-weight:500}
+    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
-    .muted{color:var(--muted); font-size:14px}
 
-    /* Аккуратный маршрут */
-    .timeline2{list-style:none;margin:0;padding:0}
-    .timeline2 li{
-      display:grid; grid-template-columns:72px 1fr auto;
-      gap:12px; align-items:start; padding:12px 0; border-top:1px solid #eee;
-    }
-    .timeline2 li:first-child{border-top:0}
-    .time{font-weight:800; color:var(--brand);}
-    .meta{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end}
-    .chip{
-      display:inline-flex; align-items:center; padding:4px 8px;
-      border-radius:999px; background:#fafafa; border:1px solid #e9e9e9;
-      font-size:12px; font-weight:600; color:#555;
-    }
+    footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
+    .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
+    .footgrid a{color:#cfd8d3}
 
     @media (max-width: 1000px){
       .hero .inner{grid-template-columns:1fr}
@@ -96,7 +91,7 @@
       nav ul{display:none}
     }
 
-    /* admin-only: скрыто для гостей, видно при .is-admin на <html> */
+    /* admin-only */
     html:not(.is-admin) [data-admin-only]{ display:none !important; }
     html.is-admin [data-admin-only]{ display:inline-flex !important; }
   </style>
@@ -154,7 +149,7 @@
     </div>
   </section>
 
-  <!-- GALLERY 1 -->
+  <!-- MAIN GALLERY -->
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Saint-Guilhem-le-Désert, Castrum de Verdun, грот Clamouse и Château Capion.</p>
@@ -165,24 +160,36 @@
     </div>
   </section>
 
-  <!-- GALLERY 2 (вместо истории/карты/хронологии) -->
+  <!-- EXTRA GALLERY (вместо истории/кастума/карты) -->
   <section class="container">
     <h3 class="section-title">Ещё фото</h3>
-    <p class="section-sub muted">Панорамы деревни, подъём к Castrum, грот и дегустация.</p>
-    <div class="gallery">
+    <p class="section-sub">Панорамы, улочки и видовые точки Saint-Guilhem-le-Désert.</p>
+    <div class="gallery" aria-label="Дополнительная галерея">
       <div class="ph"><img src="../assets/IMG_6643.JPG" alt="Улочки Saint-Guilhem" loading="lazy"></div>
-      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Виды на ущелье" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Вид на ущелье Verdus" loading="lazy"></div>
       <div class="ph"><img src="../assets/IMG_4003.JPG" alt="Площадь у аббатства" loading="lazy"></div>
-      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Подъём к Castrum" loading="lazy"></div>
-      <div class="ph"><img src="../assets/IMG_6643.JPG" alt="Средневековые фасады" loading="lazy"></div>
-      <div class="ph"><img src="../assets/IMG_4003.JPG" alt="Парк у Château Capion" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Смотровая площадка" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_4003.JPG" alt="Abbaye de Gellone" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6643.JPG" alt="Каменные домики" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- DETAILS (без дубликата «Программа дня») -->
+  <!-- DETAILS (без карты) -->
   <section class="container">
-    <div class="card">
-      <h3 class="section-title" data-i18n="inc_title">Что включено</h3>
+    <article class="card">
+      <h3 class="section-title" data-i18n="plan_title">Программа дня</h3>
+      <ul class="timeline">
+        <li><span class="time">09:00</span> — <span data-i18n="t_0900">Выезд из Mèze / трансфер к деревне.</span></li>
+        <li><span class="time">10:00</span> — <span data-i18n="t_1000">Saint-Guilhem: аббатство, улочки, подъём к Castrum (видовые точки).</span></li>
+        <li><span class="time">12:30</span> — <span data-i18n="t_1230">Переезд к Grotte de Clamouse.</span></li>
+        <li><span class="time">12:45</span> — <span data-i18n="t_1245">Экскурсия по гроту (~1 ч 30, внутри ≈ +15 °C).</span></li>
+        <li><span class="time">14:30</span> — <span data-i18n="t_1430">Обед — La Table du Pont du Diable (сезонно).</span></li>
+        <li><span class="time">15:30</span> — <span data-i18n="t_1530">Дегустация — Château Capion (по записи).</span></li>
+        <li><span class="time">17:00</span> — <span data-i18n="t_1700">Возвращение в Mèze.</span></li>
+        <li><span class="time">18:00</span> — <span data-i18n="t_1800">Завершение тура.</span></li>
+      </ul>
+
+      <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid" role="list">
         <div class="pill" role="listitem" data-i18n="inc_transport">Частный транспорт (кроссовер/SUV), водитель-сопровождающий</div>
         <div class="pill" role="listitem" data-i18n="inc_parking">Парковки и топливо</div>
@@ -202,57 +209,25 @@
         <li data-i18n="opt_second">Второй домен (например, Mas de Daumas Gassac) — +10–20 € / чел дегустация.</li>
         <li data-i18n="opt_view">Дополнительные смотровые площадки (по времени).</li>
       </ul>
-    </div>
+    </article>
   </section>
 
-  <!-- DAY PLAN (аккуратные метки) -->
+  <!-- DAY PLAN with CTAs (только для админа) -->
   <section class="container">
     <div class="card">
-      <h3 class="section-title" data-i18n="dayplan_title">Маршрут дня</h3>
-      <ul class="timeline2">
-        <li>
-          <span class="time">09:00</span>
-          <div><strong>Saint-Guilhem-le-Désert</strong> — деревня, аббатство, подъём к Castrum</div>
-          <div class="meta"><span class="chip">~2 ч</span></div>
-        </li>
-        <li>
-          <span class="time">12:30</span>
-          <div><strong>Переезд к Grotte de Clamouse</strong></div>
-          <div class="meta"><span class="chip">~15 мин</span></div>
-        </li>
-        <li>
-          <span class="time">12:45</span>
-          <div><strong>Грот Clamouse</strong> — экскурсия</div>
-          <div class="meta"><span class="chip">~1 ч 30</span><span class="chip">≈ +15 °C</span></div>
-        </li>
-        <li>
-          <span class="time">14:30</span>
-          <div><strong>Обед — La Table du Pont du Diable</strong></div>
-          <div class="meta"><span class="chip">апр–ноя</span></div>
-        </li>
-        <li>
-          <span class="time">15:30</span>
-          <div><strong>Château Capion</strong> — дегустация и парк</div>
-          <div class="meta"><span class="chip">по записи</span></div>
-        </li>
-        <li>
-          <span class="time">18:00</span>
-          <div><strong>Завершение тура</strong></div>
-          <div class="meta"></div>
-        </li>
+      <h3 class="section-title" data-i18n="dayplan_title">🗺️ Маршрут дня</h3>
+      <ul class="steps">
+        <li><strong>Saint-Guilhem-le-Désert:</strong> деревня, аббатство, подъём к Castrum <span class="pill">~2 ч</span></li>
+        <li><strong>Grotte de Clamouse:</strong> экскурсия <span class="pill">~1 ч 30</span> <span class="pill">≈ +15 °C</span></li>
+        <li><strong>Обед — La Table du Pont du Diable:</strong> сезонная локальная кухня <span class="pill">апр–ноя</span></li>
+        <li><strong>Château Capion:</strong> дегустация и прогулка по парку <span class="pill">по записи</span></li>
       </ul>
-
-      <p class="muted" style="margin-top:10px" data-i18n="plan_note">
-        Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»);
-        Capion можно перенести на более ранний слот.
-      </p>
-
-      <!-- Служебные ссылки для админа (гостям скрыты) -->
       <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px">
-        <a class="btn" href="https://www.clamouse.com/" target="_blank" rel="noopener" data-admin-only>Билеты в грот</a>
-        <a class="btn" href="https://www.saintguilhem-valleeherault.fr/la-table-du-pont-du-diable" target="_blank" rel="noopener" data-admin-only>Ресторан у моста</a>
-        <a class="btn" href="https://chateaucapion.com/oenotourisme" target="_blank" rel="noopener" data-admin-only>Запись в Château Capion</a>
+        <a class="btn" href="https://www.clamouse.com/" target="_blank" rel="noopener" data-i18n="cta_grotte" data-admin-only>Билеты в грот</a>
+        <a class="btn" href="https://www.saintguilhem-valleeherault.fr/la-table-du-pont-du-diable" target="_blank" rel="noopener" data-i18n="cta_restaurant" data-admin-only>Ресторан у моста</a>
+        <a class="btn" href="https://chateaucapion.com/oenotourisme" target="_blank" rel="noopener" data-i18n="cta_capion" data-admin-only>Запись в Château Capion</a>
       </div>
+      <p class="muted" style="margin-top:10px" data-i18n="plan_note">Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»); Capion можно перенести на более ранний слот.</p>
     </div>
   </section>
 
@@ -265,7 +240,7 @@
       <form
         data-contact-form
         data-program-title="Быстрый запрос / бронирование"
-        data-program-id="SG-CLAM-CAP-1D"
+        data-program-id="HOME-BOOK"
         data-channel="telegram">
 
         <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
@@ -279,18 +254,13 @@
                title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
                style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-        <div style="display:flex; gap:10px; margin-top:8px">
-          <div style="flex:1">
-            <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
-            <input type="date" id="f-date" name="date" required
-                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-          </div>
-          <div style="width:160px">
-            <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
-            <input type="number" id="f-guests" name="guests" min="1" value="2" required
-                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-          </div>
-        </div>
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
+        <input type="date" id="f-date" name="date" required
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
+        <input type="number" id="f-guests" name="guests" min="1" value="2" required
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
         <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
         <textarea id="f-message" name="message"
@@ -299,10 +269,9 @@
 
         <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
           <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
-          <select name="channel" style="padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; background:#fff; font:inherit">
+          <select name="channel">
             <option value="whatsapp">WhatsApp</option>
             <option value="telegram" selected>Telegram</option>
-            <option value="both">WhatsApp + Telegram</option>
           </select>
         </div>
 
@@ -317,7 +286,7 @@
 
   <footer>
     <div class="container">
-      <div class="footgrid" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
+      <div class="footgrid">
         <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
         <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
         <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" data-i18n="nav_contacts_f">Контакты</a></p></div>
@@ -326,16 +295,23 @@
     </div>
   </footer>
 
-  <!-- Конфиг с номером -->
-  <script src="../config.js" defer></script>
-
+  <!-- === CONFIG сначала (задаём номер/юзернейм), потом скрипты === -->
   <script>
-    // === Program constants for booking ===
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene', // укажите ваш @username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+
+  <!-- I18N и тексты страницы -->
+  <script>
     const PROGRAM_ID = 'SG-CLAM-CAP-1D';
     const PROGRAM_TITLE_RU = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
     const PROGRAM_TITLE_FR = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)';
 
-    // i18n (без истории/карты/хронологии)
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -349,6 +325,9 @@
         btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         gal_title:'Как это выглядит', gal_sub:'Saint-Guilhem-le-Désert, Castrum, грот Clamouse и Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — панорама деревни',
+        altG1:'Площадь у аббатства Жилон', altG2:'Средневековые улочки', altG3:'Вид на ущелье Verdus',
+        hero_title:'Saint-Guilhem — Castrum, грот Clamouse и дегустация в Château Capion',
+        hero_sub:'Аббатство Жилон (UNESCO), улочки и панорама, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze.',
         price:'300 € / 2 гостя',
         price_note:'Доп. гость: +70 € (макс. 6). Обед 25–35 € / чел (на месте).',
         spec_duration:'Длительность: ~7–8 ч',
@@ -356,7 +335,18 @@
         spec_langs:'Языки: RU/FR',
         spec_start:'Старт: Mèze / окрестности',
 
-        dayplan_title:'Маршрут дня',
+        plan_title:'Программа дня',
+        t_0900:'Выезд из Mèze / трансфер к деревне.',
+        t_1000:'Saint-Guilhem: аббатство, улочки, подъём к Castrum (видовые точки).',
+        t_1230:'Переезд к Grotte de Clamouse.',
+        t_1245:'Экскурсия по гроту (~1 ч 30, внутри ≈ +15 °C).',
+        t_1430:'Обед — La Table du Pont du Diable (сезонно).',
+        t_1530:'Дегустация — Château Capion (по записи).',
+        t_1700:'Возвращение в Mèze.',
+        t_1800:'Завершение тура.',
+
+        dayplan_title:'🗺️ Маршрут дня',
+        cta_grotte:'Билеты в грот', cta_restaurant:'Ресторан у моста', cta_capion:'Запись в Château Capion',
         plan_note:'Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»); Capion можно перенести на более ранний слот.',
 
         inc_title:'Что включено',
@@ -372,11 +362,10 @@
         opt_second:'Второй домен (например, Mas de Daumas Gassac) — +10–20 € / чел дегустация.',
         opt_view:'Дополнительные смотровые площадки (по времени).',
 
-        form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и предложим время старта и брони.',
-        label_name:'Имя', label_contact:'Контакт (WhatsApp/Telegram)', label_date:'Дата', label_guests:'Гостей', label_message:'Сообщение',
-        btn_send:'Отправить', btn_whatsapp2:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
+        btn_send:'Отправить',
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+        label_date:'Дата', label_guests:'Гостей',
+        label_contact:'Контакт (WhatsApp/Telegram)'
       },
       fr: {
         htmlLang:'fr',
@@ -390,6 +379,9 @@
         btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         gal_title:'À quoi ça ressemble', gal_sub:'Saint-Guilhem, Castrum, grotte de Clamouse et Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — panorama du village',
+        altG1:'Place de l’abbaye de Gellone', altG2:'Ruelles médiévales', altG3:'Vue sur les gorges du Verdus',
+        hero_title:'Saint-Guilhem — Castrum, grotte de Clamouse & dégustation au Château Capion',
+        hero_sub:'Abbaye de Gellone (UNESCO), ruelles et belvédère, puis grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Départ de Mèze.',
         price:'300 € / 2 pers.',
         price_note:'Pers. sup. : +70 € (max. 6). Déjeuner 25–35 € / pers. (sur place).',
         spec_duration:'Durée : ~7–8 h',
@@ -397,7 +389,18 @@
         spec_langs:'Langues : RU/FR',
         spec_start:'Départ : Mèze / environs',
 
-        dayplan_title:'Parcours de la journée',
+        plan_title:'Programme de la journée',
+        t_0900:'Départ de Mèze / transfert vers le village.',
+        t_1000:'Saint-Guilhem : abbaye, ruelles, montée au Castrum (belvédères).',
+        t_1230:'Transfert vers la grotte de Clamouse.',
+        t_1245:'Visite de la grotte (~1 h 30, intérieur ≈ +15 °C).',
+        t_1430:'Déjeuner — La Table du Pont du Diable (saisonnier).',
+        t_1530:'Dégustation — Château Capion (sur réservation).',
+        t_1700:'Retour vers Mèze.',
+        t_1800:'Fin de journée.',
+
+        dayplan_title:'🗺️ Parcours de la journée',
+        cta_grotte:'Billets grotte', cta_restaurant:'Restaurant du Pont du Diable', cta_capion:'Réservation Château Capion',
         plan_note:'Si La Table est fermée hors saison — déjeuner au village (p.ex. « Les Terrasses de Saint-Guilhem ») ; Capion peut être avancé.',
 
         inc_title:'Inclus',
@@ -413,15 +416,13 @@
         opt_second:'Deuxième domaine (p. ex., Mas de Daumas Gassac) — +10–20 € / pers. dégustation.',
         opt_view:'Belvédères additionnels (selon timing).',
 
-        form_title:'Demande rapide / réservation',
-        form_sub:'Réponse dans la journée avec propositions d’horaires et de réservations.',
-        label_name:'Nom', label_contact:'Contact (WhatsApp/Telegram)', label_date:'Date', label_guests:'Personnes', label_message:'Message',
-        btn_send:'Envoyer', btn_whatsapp2:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
+        btn_send:'Envoyer',
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+        label_date:'Date', label_guests:'Personnes',
+        label_contact:'Contact (WhatsApp/Telegram)'
       }
     };
 
-    // alt helper
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
 
     function applyLang(lang){
@@ -434,10 +435,15 @@
 
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
-        if(t[key] !== undefined){ node.textContent = t[key]; }
+        if(t[key] !== undefined){
+          node.textContent = t[key];
+        }
       });
 
       setAlt('alt-hero', (lang==='fr') ? 'Saint-Guilhem-le-Désert — panorama du village' : 'Saint-Guilhem-le-Désert — панорама деревни');
+      setAlt('alt-g1', (lang==='fr') ? 'Place de l’abbaye de Gellone' : 'Площадь у аббатства Жилон');
+      setAlt('alt-g2', (lang==='fr') ? 'Ruelles médiévales' : 'Средневековые улочки');
+      setAlt('alt-g3', (lang==='fr') ? 'Vue sur les gorges du Verdus' : 'Вид на ущелье Verdus');
 
       const brandHome = document.getElementById('brandHome');
       if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
@@ -447,105 +453,15 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    // === Мессенджеры: WhatsApp / Telegram ===
-    const DIGITS = s => String(s||'').replace(/\D/g,'');
-    const CFG = () => (window.APP_CONFIG||{});
-    const curLang = () => localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-
-    function programTitleByLang(){
-      return (curLang()==='fr') ? 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)'
-                                : 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
-    }
-    function buildMessage(ctx){
-      const hello = (curLang()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
-      const lines = [
-        hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''),
-        ctx.message ? ctx.message : '',
-        ctx.date ? `\nДата: ${ctx.date}` : '',
-        ctx.guests ? `\nГостей: ${ctx.guests}` : '',
-        `\nПрограмма: ${programTitleByLang()} (${PROGRAM_ID})`,
-        ctx.contact ? `\nКонтакт: ${ctx.contact}` : ''
-      ];
-      return lines.join('').trim();
-    }
-    function formCtx(form){
-      const fd = new FormData(form);
-      return {
-        name: (fd.get('name')||'').toString().trim(),
-        contact: (fd.get('contact')||'').toString().trim(),
-        date: (fd.get('date')||'').toString().trim(),
-        guests: (fd.get('guests')||'').toString().trim(),
-        message: (fd.get('message')||'').toString().trim()
-      };
-    }
-    function openWhatsApp(text){
-      const wa = DIGITS(CFG().whatsapp);
-      if (!wa) { alert('В config.js не указан номер WhatsApp'); return; }
-      window.open(`https://wa.me/${wa}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-    }
-    function openTelegram(text){
-      const phone = DIGITS(CFG().whatsapp); // тот же номер
-      const appUrl = phone ? `tg://resolve?phone=${phone}` : '';
-      const webShare = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
-      if (appUrl){
-        const hadFocus = document.hasFocus();
-        window.location.href = appUrl;
-        setTimeout(()=>{ if (document.hasFocus() === hadFocus) window.open(webShare, '_blank', 'noopener'); }, 700);
-      } else {
-        window.open(webShare, '_blank', 'noopener');
-      }
-    }
-    function patchStaticLinks(){
-      const wa = DIGITS(CFG().whatsapp);
-      document.querySelectorAll('[data-whatsapp]').forEach(a=>{ if (wa) a.setAttribute('href', `https://wa.me/${wa}`); });
-      const phone = DIGITS(CFG().whatsapp);
-      document.querySelectorAll('[data-telegram]').forEach(a=>{
-        if (phone) a.setAttribute('href', `tg://resolve?phone=${phone}`); else a.setAttribute('href','https://t.me/share/url');
-      });
-    }
-
-    // Listeners
-    document.addEventListener('submit', async (e) => {
-      const form = e.target;
-      if (!form.matches('[data-contact-form]')) return;
-      e.preventDefault();
-      const ctx = formCtx(form);
-      const text = buildMessage(ctx);
-      try{ await navigator.clipboard.writeText(text); }catch(_){}
-      const channel = (form.elements['channel']?.value || form.dataset.channel || 'telegram').toLowerCase();
-      if (channel==='whatsapp') openWhatsApp(text);
-      else if (channel==='telegram') openTelegram(text);
-      else { openWhatsApp(text); setTimeout(()=>openTelegram(text),120); }
-    }, true);
-
-    document.addEventListener('click', async (e)=>{
-      const a = e.target.closest('a[data-whatsapp], a[data-telegram]');
-      if (!a) return;
-      const form = document.querySelector('[data-contact-form]');
-      const ctx = form ? formCtx(form) : {name:'',contact:'',date:'',guests:'',message:''};
-      const text = buildMessage(ctx);
-      try{ await navigator.clipboard.writeText(text); }catch(_){}
-      if (a.matches('[data-whatsapp]')) { e.preventDefault(); openWhatsApp(text); }
-      if (a.matches('[data-telegram]')) { e.preventDefault(); openTelegram(text); }
-    }, true);
-
-    // Init
     (function(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-
-      if (document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', patchStaticLinks, {once:true});
-      } else {
-        patchStaticLinks();
-      }
     })();
-
   </script>
-  <script src="/config.js" defer></script> <script src="/assets/js/contact.js" defer></script> <script> window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' }; </script>
 </body>
 </html>
+
 
