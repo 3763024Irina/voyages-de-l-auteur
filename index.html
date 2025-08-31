@@ -703,6 +703,17 @@
   </script>
 
   <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
-  <script src="assets/js/contact.js" defer></script>
+<script>
+  window.APP_CONFIG = {
+    whatsapp: '33759644813',            // тот же номер для Telegram
+    ADMIN_SECRET: 'capion2025',
+  };
+</script>
+<script src="/config.js" defer></script>
+<script src="/assets/js/contact.js" defer></script>
+
+
+
+  
 </body>
 </html>
