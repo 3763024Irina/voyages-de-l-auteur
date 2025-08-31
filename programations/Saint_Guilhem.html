@@ -281,34 +281,59 @@
   </section>
 
   <!-- BOOKING -->
-  <section id="book" class="container">
-    <div class="card" style="padding:18px">
-      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
+ <section id="book" class="container">
+  <div class="card" style="padding:18px">
+    <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+    <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
 
-      <form onsubmit="openMail(event)">
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-        <input id="f-name" name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+    <form
+      data-contact-form
+      data-program-title="Быстрый запрос / бронирование"
+      data-program-id="HOME-BOOK"
+      data-channel="telegram">
 
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-        <input id="f-contact" name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
+      <input id="f-name" name="name" required placeholder="Ваше имя"
+             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
-        <input type="date" id="f-date" name="date" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
+      <input id="f-contact" name="contact" required placeholder="+33… или @username"
+             autocomplete="tel" inputmode="text"
+             pattern="(\+?\d[\d\s()-]{5,19}|@?[A-Za-z0-9_]{5,32})"
+             title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
+             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
-        <input type="number" id="f-guests" name="guests" min="1" value="2" required style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
+      <input type="date" id="f-date" name="date" required
+             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
-        <textarea id="f-message" name="message" placeholder="Желаемые даты, кол-во гостей, нужен ли второй домен / обед?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
+      <input type="number" id="f-guests" name="guests" min="1" value="2" required
+             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-          <a class="btn" href="https://wa.me/33759644813" data-whatsapp target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
-        </div>
-      </form>
-    </div>
-  </section>
+      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
+      <textarea id="f-message" name="message"
+                placeholder="Желаемые даты, кол-во гостей, нужен ли второй домен / обед?"
+                style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+
+      <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
+        <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
+        <select name="channel" style="padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; background:#fff; font:inherit">
+          <option value="whatsapp">WhatsApp</option>
+          <option value="telegram" selected>Telegram</option>
+          <option value="both">WhatsApp + Telegram</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:6px">
+        <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
+        <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+      </div>
+    </form>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
