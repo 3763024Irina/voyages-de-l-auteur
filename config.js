@@ -36,11 +36,7 @@ window.APP_CONFIG = {
   }
 
   // Скрываем админ-ссылки от гостей (по умолчанию — скрыты)
-  const ADMIN_ONLY_SELECTORS = [
-    '[data-i18n="cta_grotte"]',
-    '[data-i18n="cta_restaurant"]',
-    '[data-i18n="cta_capion"]'
-  ];
+ const ADMIN_ONLY_SELECTORS = ['[data-admin-only]'];
 
   function toggleAdminVisibility() {
     const on = isAdmin();
