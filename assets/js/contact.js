@@ -1,6 +1,5 @@
-/* assets/js/contact.js — авто-отправка в WhatsApp/Telegram (без email)
-   — Собирает: Программа (название + ID), Дата, Гостей, Имя, Контакт, Сообщение
-   — Работает для форм [data-contact-form] и ссылок/кнопок [data-whatsapp] / [data-telegram]
+/* contact.js — авто-отправка в WhatsApp/Telegram (без email)
+   Telegram открывается через https://t.me/share/url?text=..., чтобы ГАРАНТИРОВАННО был текст.
 */
 (function(){
   if (window.__CONTACT_INIT__) { console.warn('[contact.js] already initialized'); return; }
@@ -12,7 +11,6 @@
   const digits = (s='') => String(s).replace(/\D/g,'');
   const LANG = () => (localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'));
 
-  /* -------- helpers -------- */
   function programInfo(fromEl){
     const root = fromEl?.closest('[data-program-title],[data-program-id],[data-program]') || document.body;
     const heroTitle = qs('.hero .title')?.textContent?.trim() || '';
@@ -24,10 +22,7 @@
                   'N/A';
     return { title, id };
   }
-  function getVal(fd, keys){
-    for (const k of keys){ const v = fd.get(k); if (v) return String(v).trim(); }
-    return '';
-  }
+  function getVal(fd, keys){ for (const k of keys){ const v = fd.get(k); if (v) return String(v).trim(); } return ''; }
   function formCtx(el){
     const form = el?.closest('form') || qs('[data-contact-form]') || null;
     const fd = form ? new FormData(form) : new FormData();
@@ -51,47 +46,28 @@
     return parts.join('').trim();
   }
 
-  /* -------- openers -------- */
   function openWhatsApp(text){
     const wa = digits(CFG.whatsapp || '');
     if (!wa) { alert('В config.js не указан номер WhatsApp'); return; }
     const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener');
   }
+  // ✅ всегда share-url, чтобы был ТЕКСТ
   function openTelegram(text){
-    const phone = digits(CFG.whatsapp || ''); // тот же номер
-    const appUrl   = phone ? `tg://resolve?phone=${phone}` : '';
-    const webShare = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
-    if (appUrl){
-      const hadFocus = document.hasFocus();
-      window.location.href = appUrl;
-      setTimeout(()=>{ if (document.hasFocus() === hadFocus) window.open(webShare, '_blank', 'noopener'); }, 700);
-    } else {
-      window.open(webShare, '_blank', 'noopener');
-    }
+    const share = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+    window.open(share, '_blank', 'noopener');
   }
 
-  /* -------- idempotent base patch -------- */
   function patchBaseLinks(){
     const wa = digits(CFG.whatsapp || '');
-    if (wa) {
-      qa('[data-whatsapp]').forEach(a => {
-        const href = a.getAttribute('href') || '';
-        if (!href || href === '#' || href.startsWith('https://wa.me/')) a.setAttribute('href', `https://wa.me/${wa}`);
-      });
-      qa('[data-telegram]').forEach(a => {
-        const href = a.getAttribute('href') || '';
-        if (!href || href === '#' || href.startsWith('tg://resolve?phone=')) a.setAttribute('href', `tg://resolve?phone=${wa}`);
-      });
-    } else {
-      qa('[data-telegram]').forEach(a => {
-        const href = a.getAttribute('href') || '';
-        if (!href || href === '#') a.setAttribute('href', 'https://t.me/share/url');
-      });
-    }
+    if (wa) qa('[data-whatsapp]').forEach(a => {
+      const href = a.getAttribute('href')||'';
+      if (!href || href==='#' || href.startsWith('https://wa.me/')) a.setAttribute('href', `https://wa.me/${wa}`);
+    });
+    qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
   }
 
-  /* -------- listeners -------- */
+  // Submit всех форм
   document.addEventListener('submit', async (e) => {
     const form = e.target;
     if (!form.matches('[data-contact-form]')) return;
@@ -100,7 +76,6 @@
     const prog = programInfo(form);
     const ctx  = formCtx(form);
     const text = buildText(ctx, prog);
-
     try { await navigator.clipboard.writeText(text); } catch(_) {}
 
     const sel = (form.elements['channel']?.value || form.dataset.channel || '').toLowerCase();
@@ -111,8 +86,9 @@
     else if (channel === 'both')    { openWhatsApp(text); setTimeout(()=>openTelegram(text), 120); }
   }, true);
 
+  // Клики по ссылкам/кнопкам
   document.addEventListener('click', async (e) => {
-    const a = e.target.closest('a[data-whatsapp], a[data-telegram], [data-book], [data-booking], .js-book, a[href^=\"#book\"]');
+    const a = e.target.closest('a[data-whatsapp], a[data-telegram], [data-book], [data-booking], .js-book, a[href^="#book"]');
     if (!a) return;
 
     const prog = programInfo(a);
@@ -120,18 +96,16 @@
     const text = buildText(ctx, prog);
     try { await navigator.clipboard.writeText(text); } catch(_) {}
 
-    if (a.matches('[data-book], [data-booking], .js-book, a[href^=\"#book\"]')){
+    if (a.matches('[data-book], [data-booking], .js-book, a[href^="#book"]')){
       e.preventDefault();
       const form = a.closest('form');
       const sel  = (form?.elements?.channel?.value || a.dataset.channel || a.closest('[data-channel]')?.dataset.channel || '').toLowerCase();
       const channel = sel || (digits(CFG.whatsapp||'') ? 'whatsapp' : 'telegram');
-
       if (channel === 'whatsapp')      openWhatsApp(text);
       else if (channel === 'telegram') openTelegram(text);
       else if (channel === 'both')    { openWhatsApp(text); setTimeout(()=>openTelegram(text), 120); }
       return;
     }
-
     if (a.matches('[data-whatsapp]')) { e.preventDefault(); openWhatsApp(text); return; }
     if (a.matches('[data-telegram]')) { e.preventDefault(); openTelegram(text); return; }
   }, true);
