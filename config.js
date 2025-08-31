@@ -1,9 +1,9 @@
-/* config.js — Admin + базовые ссылки для WA/TG (без email)
-   Telegram: если указан bot_username — кнопки TG ведут на диплинк бота.
+/* config.js — admin + базовые ссылки WA/TG (без email/needguide, без бота)
+   Телеграм всегда через окно шаринга (text подставится на лету в contact.js)
 */
 window.APP_CONFIG = window.APP_CONFIG || {
+  // Укажи свой номер (тот же для WA/TG): только цифры/знаки — мы очистим
   // whatsapp: '33759644813',
-  // bot_username: 'ToursLanguedocBot', // <- юзернейм вашего бота
   // ADMIN_SECRET: 'capion2025'
 };
 
@@ -12,10 +12,10 @@ window.APP_CONFIG = window.APP_CONFIG || {
   window.__CONFIG_INIT__ = true;
 
   const CFG = window.APP_CONFIG || {};
-  const qa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+  const qa = (s, r=document) => Array.from(r.querySelectorAll(s));
   const digits = (s='') => String(s).replace(/\D/g,'');
 
-  /* ========== ADMIN ========== */
+  /* ===== Admin ===== */
   const ADMIN_KEY = 'site:admin';
   const isAdmin = () => localStorage.getItem(ADMIN_KEY) === 'on';
   const setAdmin = (on) => {
@@ -23,11 +23,11 @@ window.APP_CONFIG = window.APP_CONFIG || {
     document.documentElement.classList.toggle('is-admin', !!on);
     drawAdminBadge();
   };
-  function drawAdminBadge() {
+  function drawAdminBadge(){
     const id = 'admin-badge';
     let el = document.getElementById(id);
     if (!isAdmin()) { if (el) el.remove(); return; }
-    if (!el) {
+    if (!el){
       el = document.createElement('div');
       el.id = id;
       el.innerHTML = `
@@ -46,58 +46,50 @@ window.APP_CONFIG = window.APP_CONFIG || {
       }, { once:true });
     }
   }
-  function getParam(name) {
-    const url = new URL(window.location.href);
+  function getParam(name){
+    const url = new URL(location.href);
     const s1 = url.searchParams.get(name);
     const s2 = new URLSearchParams(url.hash.replace(/^#/, '?')).get(name);
     return s1 || s2;
   }
-  function tryAdminLoginFromURL() {
+  function tryAdminLoginFromURL(){
     const s = getParam('admin');
-    if (s && s === String(CFG.ADMIN_SECRET || '')) {
+    if (s && s === String(CFG.ADMIN_SECRET||'')) {
       setAdmin(true);
-      const url = new URL(window.location.href);
+      const url = new URL(location.href);
       url.searchParams.delete('admin');
       if (url.hash.includes('admin=')) url.hash = '';
       history.replaceState({}, document.title, url.toString());
       alert('Admin ON');
     }
   }
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+  document.addEventListener('keydown', (e)=>{
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase()==='a'){
       const code = prompt('Admin code');
-      if (code === String(CFG.ADMIN_SECRET || '')) { setAdmin(true); alert('Admin ON'); }
+      if (code === String(CFG.ADMIN_SECRET||'')) { setAdmin(true); alert('Admin ON'); }
       else { alert('Wrong code'); }
     }
   });
 
-  /* ========== Базовые href для WA/TG (без текста) ========== */
-  function patchBaseLinks() {
-    const wa = digits(CFG.whatsapp || '');
+  /* ===== Базовые href (без текста) ===== */
+  function patchBaseLinks(){
+    const wa = digits(CFG.whatsapp||'');
     if (wa) qa('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${wa}`));
-
-    // Если есть bot_username — ведём на бота (текст подставит contact.js через payload)
-    if (CFG.bot_username) {
-      qa('[data-telegram]').forEach(a => a.setAttribute('href', `https://t.me/${CFG.bot_username}`));
-    } else {
-      // иначе: окно шаринга (с текстом), это безопасный фолбэк
-      qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
-    }
+    // TG — всегда окно шаринга; текст добавим в contact.js при клике
+    qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
   }
-
-  /* ========== INIT ========== */
-  window.__CONFIG_LOADED__ = true;
-  window.__setAdmin = setAdmin;
-  window.__isAdmin  = isAdmin;
 
   function init(){
     if (isAdmin()) document.documentElement.classList.add('is-admin');
     tryAdminLoginFromURL();
     drawAdminBadge();
     patchBaseLinks();
-    console.log('[config.js] ready, admin=', isAdmin());
+    console.log('[config.js] ready');
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', init, {once:true});
   else init();
-})();
 
+  // экспорт по желанию
+  window.__setAdmin = setAdmin;
+  window.__isAdmin  = isAdmin;
+})();
