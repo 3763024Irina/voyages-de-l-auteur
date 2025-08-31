@@ -663,15 +663,90 @@
       });
     })();
 
-    // динамический email в правом блоке
-    (function(){
-      const el = document.getElementById('emailLink');
-      if (!el) return;
-      const em = (window.APP_CONFIG && APP_CONFIG.email) || 'hello@example.com';
-      el.href = `mailto:${em}`;
-      el.textContent = em;
-    })();
-  </script>
+   <script>
+/* ===== PATH resolver (GH Pages / Netlify safe) ===== */
+(function(){
+  if (window.__PATH_PATCHED__) return; // гард от двойной инициализации
+  window.__PATH_PATCHED__ = true;
+
+  // 1) База сайта: берём <base href>, иначе первый сегмент пути (/repo/)
+  const SITE_BASE = (() => {
+    const base = document.querySelector('base')?.getAttribute('href');
+    if (base) return base.endsWith('/') ? base : base + '/';
+    const parts = location.pathname.split('/').filter(Boolean);
+    // если проектная страница GitHub (username.github.io/repo/...), базой будет "/repo/"
+    if (parts.length) return `/${parts[0]}/`;
+    return '/';
+  })();
+
+  // 2) Универсальный резолвер
+  function resolveHref(href){
+    if (!href) return '#';
+    if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
+    const base = SITE_BASE.endsWith('/') ? SITE_BASE : SITE_BASE + '/';
+    if (href.startsWith(base)) return href; // уже ок
+    let out;
+    if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
+    else out = base + href.replace(/^\//,'');
+    return out.replace(/([^:])\/{2,}/g, '$1/'); // убрать двойные слэши
+  }
+
+  // 3) Помощник для srcset
+  function resolveSrcSet(ss){
+    if (!ss) return ss;
+    return ss.split(',').map(part => {
+      const trimmed = part.trim();
+      const m = trimmed.match(/^(\S+)(\s+.+)?$/); // URL + дескриптор (1x, 2x, 400w)
+      if (!m) return part;
+      const url = m[1];
+      const desc = m[2] || '';
+      return `${resolveHref(url)}${desc}`;
+    }).join(', ');
+  }
+
+  // 4) Патч всего DOM
+  function patchPaths(){
+    // <a>
+    document.querySelectorAll('a[href]').forEach(a => a.setAttribute('href', resolveHref(a.getAttribute('href'))));
+    // <link> (стили, иконки, манифест)
+    document.querySelectorAll('link[href]').forEach(l => l.setAttribute('href', resolveHref(l.getAttribute('href'))));
+    // <script>
+    document.querySelectorAll('script[src]').forEach(s => s.setAttribute('src', resolveHref(s.getAttribute('src'))));
+    // изображения и медиа
+    document.querySelectorAll('img[src]').forEach(i => i.setAttribute('src', resolveHref(i.getAttribute('src'))));
+    document.querySelectorAll('img[srcset]').forEach(i => i.setAttribute('srcset', resolveSrcSet(i.getAttribute('srcset'))));
+    document.querySelectorAll('source[src]').forEach(s => s.setAttribute('src', resolveHref(s.getAttribute('src'))));
+    document.querySelectorAll('source[srcset]').forEach(s => s.setAttribute('srcset', resolveSrcSet(s.getAttribute('srcset'))));
+    document.querySelectorAll('video[src], audio[src], track[src], iframe[src]').forEach(el => {
+      el.setAttribute('src', resolveHref(el.getAttribute('src')));
+    });
+    // Open Graph / Twitter изображения
+    document.querySelectorAll('meta[property="og:image"], meta[name="twitter:image"]').forEach(m => {
+      const val = m.getAttribute('content');
+      if (val) m.setAttribute('content', resolveHref(val));
+    });
+    // Canonical (если используешь)
+    document.querySelectorAll('link[rel="canonical"]').forEach(l => {
+      const url = new URL(l.getAttribute('href'), location.origin);
+      // только путь резолвим; origin оставляем
+      url.pathname = resolveHref(url.pathname);
+      l.setAttribute('href', url.href);
+    });
+  }
+
+  // экспорт при желании
+  window.__SITE_BASE__ = SITE_BASE;
+  window.resolveHref = resolveHref;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', patchPaths, { once:true });
+  } else {
+    patchPaths();
+  }
+})();
+</script>
+
+ 
 
   <!-- ВАЖНО: подключаем contact.js один раз в самом конце -->
   <script src="/assets/js/contact.js"></script>
