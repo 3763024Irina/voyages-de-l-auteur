@@ -1,11 +1,9 @@
-/* config.js — конфиг + админ + WhatsApp (без логики бронирования) */
+/* config.js — конфиг + админ + WhatsApp/Telegram авто-отправка (телеграм = тот же номер) */
 window.APP_CONFIG = window.APP_CONFIG || {
-  // Пример (можно переопределить раньше этим же объектом):
-  // email: '3763024@gmail.com',
+  // Достаточно указать только whatsapp — его же используем для Telegram
   // whatsapp: '33759644813',
   // needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
-  // ADMIN_SECRET: 'capion2025',
-  // telegram: 'ToursLanguedocbyIrene'
+  // ADMIN_SECRET: 'capion2025'
 };
 
 (function () {
@@ -13,9 +11,12 @@ window.APP_CONFIG = window.APP_CONFIG || {
   window.__CONFIG_INIT__ = true;
 
   const CFG = window.APP_CONFIG || {};
-  const qsAll = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+  const qs = (sel, root=document) => root.querySelector(sel);
+  const qa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+  const digits = (s='') => String(s).replace(/\D/g,'');
+  const lang = () => localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
 
-  // === Admin state ===
+  /* ================== ADMIN ================== */
   const ADMIN_KEY = 'site:admin';
   const isAdmin = () => localStorage.getItem(ADMIN_KEY) === 'on';
   const setAdmin = (on) => {
@@ -24,7 +25,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
     drawAdminBadge();
   };
 
-  // Бейдж админа
   function drawAdminBadge() {
     const id = 'admin-badge';
     let el = document.getElementById(id);
@@ -51,7 +51,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }
   }
 
-  // Вход по ?admin=SECRET или #admin=SECRET
   function getParam(name) {
     const url = new URL(window.location.href);
     const s1 = url.searchParams.get(name);
@@ -62,7 +61,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
     const s = getParam('admin');
     if (s && s === String(CFG.ADMIN_SECRET || '')) {
       setAdmin(true);
-      // чистим URL
       const url = new URL(window.location.href);
       url.searchParams.delete('admin');
       if (url.hash.includes('admin=')) url.hash = '';
@@ -70,8 +68,6 @@ window.APP_CONFIG = window.APP_CONFIG || {
       alert('Admin ON');
     }
   }
-
-  // Горячая клавиша — Ctrl+Shift+A
   document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
       const code = prompt('Admin code');
@@ -80,23 +76,141 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }
   });
 
-  // Подстановка WhatsApp на все ссылки с data-whatsapp
-  function patchWhatsApp() {
-    const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
-    if (!phone) return;
-    qsAll('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${phone}`));
+  /* ====== Патч видимых ссылок WhatsApp (без текста) ====== */
+  function patchWhatsAppHrefOnly() {
+    const wa = digits(CFG.whatsapp || '');
+    if (!wa) return;
+    qa('[data-whatsapp]').forEach(a => {
+      // просто номер, без текста (текст добавляем на клик)
+      a.setAttribute('href', `https://wa.me/${wa}`);
+    });
   }
 
-  // === Admin Link UX ===
+  /* ================== МЕССЕНДЖЕРЫ (WA/TG) ================== */
+
+  // Заголовок/ID программы — берём из ближайшей разметки или из страницы
+  function getProgramInfo(fromEl){
+    const root = fromEl?.closest('[data-program-title],[data-program-id],[data-program]') || document.body;
+    const metaTitle = qs('meta[property="og:title"]')?.getAttribute('content') || '';
+    // document.title без хвостов после | — если надо
+    const docTitle = document.title.replace(/\s*[|—-].*$/, '').trim();
+    const title = root?.dataset?.programTitle || metaTitle || docTitle || 'Программа';
+    // id: data-program-id, иначе имя файла URL
+    const id = root?.dataset?.programId ||
+               (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') ||
+               'N/A';
+    return { title, id };
+  }
+
+  function ctxFrom(el){
+    const form = el?.closest('form') || qs('[data-contact-form]') || null;
+    const fd = form ? new FormData(form) : new FormData();
+    return {
+      name   : (fd.get('name')   || '').toString().trim(),
+      contact: (fd.get('contact')|| '').toString().trim(),
+      date   : (fd.get('date')   || fd.get('when') || '').toString().trim(),
+      guests : (fd.get('guests') || fd.get('persons') || '').toString().trim(),
+      message: (fd.get('message')|| '').toString().trim()
+    };
+  }
+
+  function buildText(ctx, prog){
+    const hello = (lang()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
+    const lines = [
+      hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''),
+      ctx.message ? ctx.message : '',
+      ctx.date   ? `\nДата: ${ctx.date}` : '',
+      ctx.guests ? `\nГостей: ${ctx.guests}` : '',
+      `\nПрограмма: ${prog.title} (${prog.id})`,
+      ctx.contact? `\nКонтакт: ${ctx.contact}` : ''
+    ];
+    return lines.join('').trim();
+  }
+
+  function openWhatsApp(text){
+    const wa = digits(CFG.whatsapp || '');
+    if (!wa) { alert('В config.js не указан номер WhatsApp'); return; }
+    const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener');
+  }
+
+  // В Telegram пробуем открыть чат по телефону (tg://resolve?phone=), если не сработает — веб-шэр с текстом
+  function openTelegram(text){
+    const phone = digits(CFG.whatsapp || ''); // Тот же номер, что и для WhatsApp
+    const appUrl = phone ? `tg://resolve?phone=${phone}` : '';
+    const webShare = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
+
+    if (appUrl){
+      // Попытка открыть приложение; если фокуса не потеряли — откроем веб-шер
+      const hadFocus = document.hasFocus();
+      // попытка навигации в приложение
+      window.location.href = appUrl;
+      setTimeout(()=>{
+        // Если остаёмся на странице (фокус не ушёл), открываем веб-шер
+        if (document.hasFocus() === hadFocus) window.open(webShare, '_blank', 'noopener');
+      }, 700);
+    } else {
+      window.open(webShare, '_blank', 'noopener');
+    }
+  }
+
+  function initMessenger() {
+    // Делегированный submit всех форм брони
+    document.addEventListener('submit', async (e) => {
+      const form = e.target;
+      if (!form.matches('[data-contact-form]')) return;
+      e.preventDefault();
+
+      const prog = getProgramInfo(form);
+      const ctx  = ctxFrom(form);
+      const text = buildText(ctx, prog);
+      try { await navigator.clipboard.writeText(text); } catch(_) {}
+
+      const channel = (form.elements['channel']?.value || form.dataset.channel || 'telegram').toLowerCase();
+      if (channel === 'whatsapp')      openWhatsApp(text);
+      else if (channel === 'telegram') openTelegram(text);
+      else if (channel === 'both')    { openWhatsApp(text); setTimeout(()=>openTelegram(text), 120); }
+    }, true);
+
+    // Делегированные клики по кнопкам WA/TG (подставляем текст на лету)
+    document.addEventListener('click', async (e) => {
+      const a = e.target.closest('a[data-whatsapp], a[data-telegram]');
+      if (!a) return;
+
+      const prog = getProgramInfo(a);
+      const ctx  = ctxFrom(a);
+      const text = buildText(ctx, prog);
+      try { await navigator.clipboard.writeText(text); } catch(_) {}
+
+      if (a.matches('[data-whatsapp]')) {
+        e.preventDefault();
+        openWhatsApp(text);
+        return;
+      }
+      if (a.matches('[data-telegram]')) {
+        e.preventDefault();
+        openTelegram(text);
+        return;
+      }
+    }, true);
+
+    // Изначально проставим «голые» ссылки (без текста) по номеру
+    patchWhatsAppHrefOnly();
+    const phone = digits(CFG.whatsapp || '');
+    qa('[data-telegram]').forEach(a=>{
+      // пробуем указать app-схему; текст всё равно добавим по клику
+      if (phone) a.setAttribute('href', `tg://resolve?phone=${phone}`);
+      else a.setAttribute('href', 'https://t.me/share/url');
+    });
+  }
+
+  /* ================== Admin Link UX (как было) ================== */
   function initAdminLinkUX() {
-    // Стили — один раз
     if (!document.getElementById('admin-link-style')) {
       const st = document.createElement('style');
       st.id = 'admin-link-style';
       st.textContent = `
-        /* показывать только админу */
         html:not(.is-admin) [data-admin-only] { display: none !important; }
-        /* визуальная метка ссылок, которые копируются */
         html.is-admin a[data-admin-link] { outline: 1px dashed #C9B886; outline-offset: 2px; }
       `;
       document.head.appendChild(st);
@@ -114,9 +228,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
       setTimeout(()=> el.remove(), 1800);
     };
 
-    // Делегированный клик — копирование admin-link
     document.addEventListener('click', (e) => {
-      // Тогглеры админа (удобные кнопки в UI)
       const loginBtn = e.target.closest('[data-admin-login]');
       if (loginBtn) {
         e.preventDefault();
@@ -136,11 +248,7 @@ window.APP_CONFIG = window.APP_CONFIG || {
       if (!isAdmin()) return;
       const a = e.target.closest('a[data-admin-link]');
       if (!a) return;
-
-      // модификаторы — открыть как обычно
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-      // иначе копируем href и не переходим
       e.preventDefault();
       const href = a.getAttribute('href') || '';
       navigator.clipboard?.writeText(href).catch(()=>{});
@@ -148,18 +256,17 @@ window.APP_CONFIG = window.APP_CONFIG || {
     }, true);
   }
 
-  // Экспорт в глобал (по желанию)
+  /* ================== INIT ================== */
   window.__CONFIG_LOADED__ = true;
-  window.__patchWhatsApp = patchWhatsApp;
   window.__setAdmin = setAdmin;
-  window.__isAdmin = isAdmin;
+  window.__isAdmin  = isAdmin;
 
   window.addEventListener('DOMContentLoaded', () => {
     if (isAdmin()) document.documentElement.classList.add('is-admin');
     tryAdminLoginFromURL();
-    patchWhatsApp();
     drawAdminBadge();
     initAdminLinkUX();
+    initMessenger(); // <<=== ВКЛЮЧАЕМ АВТО-ОТПРАВКУ WA/TG ПО ВСЕЙ СТРАНИЦЕ
     console.log('[config.js] ready, admin=', isAdmin());
   });
 })();
