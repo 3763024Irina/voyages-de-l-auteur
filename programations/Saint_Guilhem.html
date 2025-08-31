@@ -61,7 +61,6 @@
     .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
     .gallery img{width:100%; height:100%; object-fit:cover}
 
-    .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .list{margin:0; padding-left:18px}
     .list li{margin:8px 0}
@@ -73,17 +72,10 @@
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
-
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
-
-    .steps{list-style:none; margin:0; padding:0}
-    .steps li{background:#fff; border:1px solid #eee; border-radius:12px; padding:10px 12px; margin:10px 0}
-    .muted{color:var(--muted); font-size:14px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
@@ -91,7 +83,6 @@
 
     @media (max-width: 1000px){
       .hero .inner{grid-template-columns:1fr}
-      .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width: 640px){
@@ -100,7 +91,7 @@
       nav ul{display:none}
     }
 
-    /* admin-only: скрыто для гостей, видно при .is-admin на <html> */
+    /* admin-only */
     html:not(.is-admin) [data-admin-only]{ display:none !important; }
     html.is-admin [data-admin-only]{ display:inline-flex !important; }
   </style>
@@ -158,7 +149,7 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- MAIN GALLERY -->
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Saint-Guilhem-le-Désert, Castrum de Verdun, грот Clamouse и Château Capion.</p>
@@ -169,42 +160,22 @@
     </div>
   </section>
 
-  <!-- HISTORY -->
-  <section class="container info-grid">
-    <article class="card">
-      <h3 class="section-title" data-i18n="hist_title">История города и аббатства</h3>
-      <p class="section-sub muted" data-i18n="hist_sub">Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)</p>
-
-      <div id="hist-list" data-i18n="hist_list">
-        <ul class="list">
-          <li><strong>804</strong> — Гийом де Желлон основывает бенедиктинское аббатство Геллон.</li>
-          <li><strong>807</strong> — дарование <em>castrum de Verdun</em> — крепости над долиной.</li>
-          <li><strong>XI–XII вв.</strong> — перестройки; к этому времени относятся видимые руины.</li>
-          <li><strong>Администрация</strong> — жил кастелян/баиль аббатства и стража, контролируя вход в ущелье.</li>
-        </ul>
-        <details class="muted" style="margin-top:8px">
-          <summary><strong>Легенда о «Замке Великана»</strong></summary>
-          По преданию, здесь обитал сарацин-великан; Гийом одолел его мечом «Joyeuse». Фольклор, не документ.
-        </details>
-      </div>
-    </article>
-
-    <aside class="card">
-      <h3 class="section-title" data-i18n="castrum_title">Хронология Castrum</h3>
-      <div id="castrum-timeline" data-i18n="castrum_timeline">
-        <ul class="timeline">
-          <li><span class="time">804</span> — Основание аббатства Геллон.</li>
-          <li><span class="time">807</span> — Дарование крепости <em>castrum de Verdun</em>.</li>
-          <li><span class="time">XI–XII вв.</span> — Перестройка укреплений; формируются видимые руины.</li>
-          <li><span class="time">1124</span> — Упоминание кастеляна/гарнизона аббатства.</li>
-          <li><span class="time">Позднее Средневековье</span> — Утрата военного значения, запустение.</li>
-        </ul>
-      </div>
-    </aside>
+  <!-- EXTRA GALLERY (вместо истории/кастума/карты) -->
+  <section class="container">
+    <h3 class="section-title">Ещё фото</h3>
+    <p class="section-sub">Панорамы, улочки и видовые точки Saint-Guilhem-le-Désert.</p>
+    <div class="gallery" aria-label="Дополнительная галерея">
+      <div class="ph"><img src="../assets/IMG_6643.JPG" alt="Улочки Saint-Guilhem" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Вид на ущелье Verdus" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_4003.JPG" alt="Площадь у аббатства" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6705.JPG" alt="Смотровая площадка" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_4003.JPG" alt="Abbaye de Gellone" loading="lazy"></div>
+      <div class="ph"><img src="../assets/IMG_6643.JPG" alt="Каменные домики" loading="lazy"></div>
+    </div>
   </section>
 
-  <!-- DETAILS -->
-  <section class="container info-grid">
+  <!-- DETAILS (без карты) -->
+  <section class="container">
     <article class="card">
       <h3 class="section-title" data-i18n="plan_title">Программа дня</h3>
       <ul class="timeline">
@@ -239,27 +210,6 @@
         <li data-i18n="opt_view">Дополнительные смотровые площадки (по времени).</li>
       </ul>
     </article>
-
-    <aside class="card">
-      <h3 class="section-title" data-i18n="where_title">Где это</h3>
-      <p class="section-sub" data-i18n="where_sub">Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).</p>
-      <div class="mapwrap">
-        <iframe
-          title="Карта: Saint-Guilhem-le-Désert"
-          src="https://www.google.com/maps?q=Saint-Guilhem-le-Desert%2C%20France&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Практика визита</h3>
-      <ul class="list">
-        <li data-i18n="tip_shoes">Кроссовки/треккинг; подъём к Castrum 25–40 мин в одну сторону.</li>
-        <li data-i18n="tip_heat">Летом — шляпа, вода, SPF; зимой — ветровка.</li>
-        <li data-i18n="tip_hours">Clamouse: внутри ≈ +15 °C; бронирование в высокий сезон рекомендовано.</li>
-        <li>Парковка у Maison du Grand Site (Pont du Diable); в сезон ходит шаттл до деревни.</li>
-      </ul>
-    </aside>
   </section>
 
   <!-- DAY PLAN with CTAs (только для админа) -->
@@ -319,12 +269,9 @@
 
         <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
           <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
-      
           <select name="channel">
-  <option value="whatsapp">WhatsApp</option>
-  <option value="telegram" selected>Telegram</option>
-
-
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
           </select>
         </div>
 
@@ -348,16 +295,23 @@
     </div>
   </footer>
 
-  <!-- Конфиг с номерами/username -->
-  <script src="../config.js" defer></script>
-
+  <!-- === CONFIG сначала (задаём номер/юзернейм), потом скрипты === -->
   <script>
-    // === Program constants for booking ===
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene', // укажите ваш @username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+
+  <!-- I18N и тексты страницы -->
+  <script>
     const PROGRAM_ID = 'SG-CLAM-CAP-1D';
     const PROGRAM_TITLE_RU = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
     const PROGRAM_TITLE_FR = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)';
 
-    // i18n (обновлено: контакты = WhatsApp/Telegram, добавлена кнопка Telegram)
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -381,11 +335,6 @@
         spec_langs:'Языки: RU/FR',
         spec_start:'Старт: Mèze / окрестности',
 
-        hist_title:'История города и аббатства',
-        hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
-
-        castrum_title:'Хронология Castrum',
-
         plan_title:'Программа дня',
         t_0900:'Выезд из Mèze / трансфер к деревне.',
         t_1000:'Saint-Guilhem: аббатство, улочки, подъём к Castrum (видовые точки).',
@@ -395,13 +344,6 @@
         t_1530:'Дегустация — Château Capion (по записи).',
         t_1700:'Возвращение в Mèze.',
         t_1800:'Завершение тура.',
-
-        where_title:'Где это',
-        where_sub:'Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).',
-        tips_title:'Практика визита',
-        tip_shoes:'Кроссовки/треккинг; подъём к Castrum 25–40 мин в одну сторону.',
-        tip_heat:'Летом — шляпа, вода, SPF; зимой — ветровка.',
-        tip_hours:'Clamouse: внутри ≈ +15 °C; бронирование в высокий сезон рекомендовано.',
 
         dayplan_title:'🗺️ Маршрут дня',
         cta_grotte:'Билеты в грот', cta_restaurant:'Ресторан у моста', cta_capion:'Запись в Château Capion',
@@ -420,13 +362,11 @@
         opt_second:'Второй домен (например, Mas de Daumas Gassac) — +10–20 € / чел дегустация.',
         opt_view:'Дополнительные смотровые площадки (по времени).',
 
-        gal_title:'Как это выглядит',
         btn_send:'Отправить',
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
         label_date:'Дата', label_guests:'Гостей',
         label_contact:'Контакт (WhatsApp/Telegram)'
       },
-
       fr: {
         htmlLang:'fr',
         title:'Saint-Guilhem — abbaye, Castrum, grotte de Clamouse & Château Capion | Tours Languedoc by Irène',
@@ -449,11 +389,6 @@
         spec_langs:'Langues : RU/FR',
         spec_start:'Départ : Mèze / environs',
 
-        hist_title:'Histoire du village et de l’abbaye',
-        hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
-
-        castrum_title:'Chronologie du Castrum',
-
         plan_title:'Programme de la journée',
         t_0900:'Départ de Mèze / transfert vers le village.',
         t_1000:'Saint-Guilhem : abbaye, ruelles, montée au Castrum (belvédères).',
@@ -463,13 +398,6 @@
         t_1530:'Dégustation — Château Capion (sur réservation).',
         t_1700:'Retour vers Mèze.',
         t_1800:'Fin de journée.',
-
-        where_title:'Où ça se passe',
-        where_sub:'Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion (Aniane).',
-        tips_title:'À savoir',
-        tip_shoes:'Chaussures de marche; montée au Castrum 25–40 min (aller).',
-        tip_heat:'Été : chapeau, eau, SPF ; hiver : coupe-vent.',
-        tip_hours:'Clamouse : ≈ +15 °C ; réservation conseillée en haute saison.',
 
         dayplan_title:'🗺️ Parcours de la journée',
         cta_grotte:'Billets grotte', cta_restaurant:'Restaurant du Pont du Diable', cta_capion:'Réservation Château Capion',
@@ -495,7 +423,6 @@
       }
     };
 
-    // alt helper
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
 
     function applyLang(lang){
@@ -509,8 +436,7 @@
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
         if(t[key] !== undefined){
-          const allowHTML = ['where_sub','hist_list','castrum_timeline'];
-          if(allowHTML.includes(key)) node.innerHTML = t[key]; else node.textContent = t[key];
+          node.textContent = t[key];
         }
       });
 
@@ -527,136 +453,15 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    // === Мессенджеры: WhatsApp / Telegram ===
-    const DIGITS = s => String(s||'').replace(/\D/g,'');
-    const CFG = () => (window.APP_CONFIG||{});
-    const lang = () => localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-
-    function programTitleByLang(){
-      return (lang()==='fr') ? PROGRAM_TITLE_FR : PROGRAM_TITLE_RU;
-    }
-
-    function buildMessage(ctx){
-      const hello = (lang()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
-      const lines = [
-        hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''),
-        ctx.message ? ctx.message : '',
-        ctx.date ? `\nДата: ${ctx.date}` : '',
-        ctx.guests ? `\nГостей: ${ctx.guests}` : '',
-        `\nПрограмма: ${programTitleByLang()} (${PROGRAM_ID})`,
-        ctx.contact ? `\nКонтакт: ${ctx.contact}` : ''
-      ];
-      return lines.join('').trim();
-    }
-
-    function makeWA(ctx){
-      const wa = DIGITS(CFG().whatsapp);
-      if (!wa) return '';
-      return `https://wa.me/${wa}?text=${encodeURIComponent(buildMessage(ctx))}`;
-    }
-
-    function makeTG(ctx){
-      const u = (CFG().telegram||'').trim();
-      const text = buildMessage(ctx);
-      return { text, url: u ? `https://t.me/${u}` : `https://t.me/share/url?text=${encodeURIComponent(text)}` };
-    }
-
-    function formCtx(form){
-      const fd = new FormData(form);
-      return {
-        name: (fd.get('name')||'').toString().trim(),
-        contact: (fd.get('contact')||'').toString().trim(),
-        date: (fd.get('date')||'').toString().trim(),
-        guests: (fd.get('guests')||'').toString().trim(),
-        message: (fd.get('message')||'').toString().trim()
-      };
-    }
-
-    function patchStaticLinks(){
-      const wa = DIGITS(CFG().whatsapp);
-      document.querySelectorAll('[data-whatsapp]').forEach(a=>{
-        if (wa) a.setAttribute('href', `https://wa.me/${wa}`);
-      });
-      const u = (CFG().telegram||'').trim();
-      document.querySelectorAll('[data-telegram]').forEach(a=>{
-        if (u) a.setAttribute('href', `https://t.me/${u}`);
-      });
-    }
-
-    // Submit формы → WA/TG
-    document.addEventListener('submit', async (e) => {
-      const form = e.target;
-      if (!form.matches('[data-contact-form]')) return;
-      e.preventDefault();
-      const ctx = formCtx(form);
-      const channel = (form.elements['channel']?.value || form.dataset.channel || 'telegram').toLowerCase();
-
-      try{
-        if (channel === 'whatsapp'){
-          const url = makeWA(ctx);
-          if (!url) throw new Error('whatsapp not configured');
-          window.open(url, '_blank', 'noopener');
-        } else if (channel === 'telegram'){
-          const {text, url} = makeTG(ctx);
-          try { await navigator.clipboard.writeText(text); } catch(_){}
-          window.open(url, '_blank', 'noopener');
-        } else if (channel === 'both'){
-          const url1 = makeWA(ctx);
-          const {text, url:url2} = makeTG(ctx);
-          try { await navigator.clipboard.writeText(text); } catch(_){}
-          if (url1) window.open(url1, '_blank', 'noopener');
-          setTimeout(()=>window.open(url2, '_blank', 'noopener'), 120);
-        }
-      } catch(err){
-        console.error('[booking] error', err);
-        alert('Не удалось подготовить отправку. Проверьте config.js (whatsapp/telegram).');
-      }
-    }, true);
-
-    // Клики по кнопкам WA/TG → дописываем текст на лету
-    document.addEventListener('click', async (e)=>{
-      const a = e.target.closest('a[data-whatsapp], a[data-telegram]');
-      if (!a) return;
-
-      const form = document.querySelector('[data-contact-form]');
-      const ctx = form ? formCtx(form) : {name:'',contact:'',date:'',guests:'',message:''};
-
-      if (a.matches('[data-whatsapp]')){
-        const url = makeWA(ctx);
-        if (!url){ e.preventDefault(); alert('В config.js не указан WhatsApp'); return; }
-        a.setAttribute('href', url);
-        return;
-      }
-      if (a.matches('[data-telegram]')){
-        e.preventDefault();
-        const {text,url} = makeTG(ctx);
-        try { await navigator.clipboard.writeText(text); } catch(_){}
-        window.open(url, '_blank', 'noopener');
-        return;
-      }
-    }, true);
-
-    // Init
     (function(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-
-      // подставить номера/юзернейм в кнопки
-      if (document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', patchStaticLinks, {once:true});
-      } else {
-        patchStaticLinks();
-      }
     })();
-  <script src="/config.js" defer></script>
-<script src="/assets/js/contact.js" defer></script>
-  <script>
-  window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' };
-</script>
-
+  </script>
+  <script src="/config.js" defer></script> <script src="/assets/js/contact.js" defer></script> <script> window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' }; </script>
 </body>
 </html>
 
