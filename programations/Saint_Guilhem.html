@@ -100,7 +100,12 @@
       h2.title{font-size:36px}
       nav ul{display:none}
     }
+    /* admin-only: скрыто для гостей, видно когда на <html> есть класс .is-admin */
+html:not(.is-admin) [data-admin-only]{ display:none !important; }
+html.is-admin [data-admin-only]{ display:inline-flex !important; }
+
   </style>
+  
 </head>
 <body>
   <header>
@@ -269,7 +274,7 @@
         <li><strong>Château Capion:</strong> дегустация и прогулка по парку <span class="pill">по записи</span></li>
       </ul>
       <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px">
-       <a class="btn" href="https://www.clamouse.com/" target="_blank" rel="noopener"
+      <a class="btn" href="https://www.clamouse.com/" target="_blank" rel="noopener"
    data-i18n="cta_grotte" data-admin-only>Билеты в грот</a>
 
 <a class="btn" href="https://www.saintguilhem-valleeherault.fr/la-table-du-pont-du-diable"
@@ -277,6 +282,7 @@
 
 <a class="btn" href="https://chateaucapion.com/oenotourisme" target="_blank" rel="noopener"
    data-i18n="cta_capion" data-admin-only>Запись в Château Capion</a>
+
 
       </div>
       <p class="muted" style="margin-top:10px" data-i18n="plan_note">Если La Table закрыта вне сезона — обедаем в деревне (например, «Les Terrasses de Saint-Guilhem»); Capion можно перенести на более ранний слот.</p>
