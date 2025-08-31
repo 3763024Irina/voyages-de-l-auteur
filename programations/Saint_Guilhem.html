@@ -568,6 +568,7 @@
         `WhatsApp: https://wa.me/${cfg.whatsapp}`
       ].join('\n');
 
+      
       const mailto = `mailto:${encodeURIComponent(cfg.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailto;
 
