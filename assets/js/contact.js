@@ -64,7 +64,6 @@
     const webShare = `https://t.me/share/url?text=${encodeURIComponent(text)}`;
     if (appUrl){
       const hadFocus = document.hasFocus();
-      // пробуем открыть приложение
       window.location.href = appUrl;
       setTimeout(()=>{ if (document.hasFocus() === hadFocus) window.open(webShare, '_blank', 'noopener'); }, 700);
     } else {
@@ -72,7 +71,7 @@
     }
   }
 
-  /* -------- idempotent base patch (вдруг DOM динамический) -------- */
+  /* -------- idempotent base patch -------- */
   function patchBaseLinks(){
     const wa = digits(CFG.whatsapp || '');
     if (wa) {
@@ -93,7 +92,6 @@
   }
 
   /* -------- listeners -------- */
-  // Submit всех форм с data-contact-form
   document.addEventListener('submit', async (e) => {
     const form = e.target;
     if (!form.matches('[data-contact-form]')) return;
@@ -113,19 +111,16 @@
     else if (channel === 'both')    { openWhatsApp(text); setTimeout(()=>openTelegram(text), 120); }
   }, true);
 
-  // Клики по ссылкам data-whatsapp / data-telegram
   document.addEventListener('click', async (e) => {
-    const a = e.target.closest('a[data-whatsapp], a[data-telegram], [data-book], [data-booking], .js-book, a[href^="#book"]');
+    const a = e.target.closest('a[data-whatsapp], a[data-telegram], [data-book], [data-booking], .js-book, a[href^=\"#book\"]');
     if (!a) return;
 
-    // общий контекст + текст
     const prog = programInfo(a);
     const ctx  = formCtx(a);
     const text = buildText(ctx, prog);
     try { await navigator.clipboard.writeText(text); } catch(_) {}
 
-    // если это классические кнопки брони — определим канал
-    if (a.matches('[data-book], [data-booking], .js-book, a[href^="#book"]')){
+    if (a.matches('[data-book], [data-booking], .js-book, a[href^=\"#book\"]')){
       e.preventDefault();
       const form = a.closest('form');
       const sel  = (form?.elements?.channel?.value || a.dataset.channel || a.closest('[data-channel]')?.dataset.channel || '').toLowerCase();
@@ -141,7 +136,6 @@
     if (a.matches('[data-telegram]')) { e.preventDefault(); openTelegram(text); return; }
   }, true);
 
-  // Патчим базовые href при загрузке и на динамических изменениях
   function init(){
     patchBaseLinks();
     const mo = new MutationObserver(()=>patchBaseLinks());
