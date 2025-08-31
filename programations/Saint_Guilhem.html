@@ -319,10 +319,12 @@
 
         <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
           <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
-          <select name="channel" style="padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; background:#fff; font:inherit">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-            <option value="both">WhatsApp + Telegram</option>
+      
+          <select name="channel">
+  <option value="whatsapp">WhatsApp</option>
+  <option value="telegram" selected>Telegram</option>
+
+
           </select>
         </div>
 
@@ -649,11 +651,12 @@
         patchStaticLinks();
       }
     })();
-  </script>
   <script src="/config.js" defer></script>
+<script src="/assets/js/contact.js" defer></script>
   <script>
-  window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET:'capion2025', needguide:'https://needguide.ru/view_guide.php?user_id=22306' };
+  window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' };
 </script>
+
 </body>
 </html>
 
