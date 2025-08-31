@@ -8,19 +8,46 @@
   <meta property="og:title" content="Авторские туры по Югу Франции — Лангедок" />
   <meta property="og:description" content="Устрицы, вино, горы, замки, море и морские виды спорта. 10 готовых программ + VIP." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://your-domain.com/assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" />
+  <meta property="og:image" content="assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- === РАННИЙ BASE-инжектор (до любых относительных ресурсов) === -->
+  <script>
+  (function(){
+    // если <base> уже есть — используем его
+    var baseEl = document.querySelector('base');
+    if (!baseEl) {
+      var parts = location.pathname.split('/').filter(Boolean);
+      // для GitHub Pages (username.github.io/repo/...) базой будет "/repo/"
+      var base = (parts.length && parts[0] !== 'index.html') ? ('/' + parts[0] + '/') : '/';
+      baseEl = document.createElement('base');
+      baseEl.setAttribute('href', base);
+      document.head.prepend(baseEl);
+    }
+    // экспорт
+    window.__SITE_BASE__ = baseEl.getAttribute('href');
+    window.resolveHref = function(href){
+      if (!href) return '#';
+      if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
+      var base = window.__SITE_BASE__ || '/';
+      if (href.startsWith(base)) return href;
+      var out;
+      if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
+      else out = (base.endsWith('/') ? base : base + '/') + href.replace(/^\//,'');
+      return out.replace(/([^:])\/{2,}/g, '$1/');
+    };
+  })();
+  </script>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Favicon / PWA -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#0D2B1E">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="alternate icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <style>
     :root{
@@ -149,9 +176,9 @@
     #contactCard input::placeholder, #contactCard textarea::placeholder{ color:#878e8a !important; }
   </style>
 
-  <!-- config должен грузиться один раз и может быть defer -->
-  <script src="/config.js" defer></script>
-  <script src="/needguide-link.js" defer></script>
+  <!-- внешние скрипты: подключаем ОДИН раз и относительно, чтобы работало в /repo/ -->
+  <script src="config.js" defer></script>
+  <script src="needguide-link.js" defer></script>
 </head>
 <body>
   <header>
@@ -206,7 +233,7 @@
         </div>
       </div>
 
-      <!-- Узкая форма в hero (data-contact-form) -->
+      <!-- Узкая форма в hero -->
       <div class="card contact-card" id="contactCard">
         <strong data-i18n="form.fast">Быстрый запрос</strong>
         <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">Отправьте пожелания — подберу маршрут и даты в течение дня.</p>
@@ -399,7 +426,7 @@
     </div>
   </dialog>
 
-  <!-- ===== Основной скрипт страницы (i18n + карточки + утилиты) ===== -->
+  <!-- ===== Основной скрипт страницы ===== -->
   <script>
     // ===== i18n RU/FR =====
     const dict = {
@@ -456,25 +483,6 @@
     }
     langLinks.forEach(a=>a.addEventListener('click', e=>{ e.preventDefault(); applyLang(a.dataset.lang); }));
 
-    // ===== PATH resolver (корень / подпапка, GH Pages / Netlify safe) =====
-    const SITE_BASE = (() => {
-      const base = document.querySelector('base')?.getAttribute('href');
-      if (base) return base.endsWith('/') ? base : base + '/';
-      const parts = location.pathname.split('/').filter(Boolean);
-      if (parts.length && parts[0] !== 'index.html') return `/${parts[0]}/`;
-      return '/';
-    })();
-    function resolveHref(href){
-      if (!href) return '#';
-      if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
-      const base = SITE_BASE.endsWith('/') ? SITE_BASE : SITE_BASE + '/';
-      if (href.startsWith(base)) return href;
-      let out;
-      if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
-      else out = base + href.replace(/^\//,'');
-      return out.replace(/([^:])\/{2,}/g, '$1/');
-    }
-
     // ===== Программы (карточки) =====
     const tours = [
       { tr:'Saint-Guilhem-le-Désert: аббатство и панорамы - 1 день',
@@ -483,35 +491,35 @@
         dr:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
         df:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
         pr:'360 € за 2 гостя', pf:'360 € pour 2 personnes',
-        href:'/programations/Saint_Guilhem.html'
+        href:'programations/Saint_Guilhem.html'
       },
       { tr:'LUX Étang de Thau — 1 день', tf:'LUX Étang de Thau — 1 jour',
         c:'assets/Etang-de-Thau.jpg',
         dr:'День • приватная лодка, Tarbouriech, Noilly Prat, винный финал. Трансфер от/до отеля. Без пеших прогулок.',
         df:'Jour • bateau privé, Tarbouriech, Noilly Prat, final vin. Transfert hôtel A/R. Sans marche.',
         pr:'по запросу € / 1–6 гостей', pf:'по запросу € / 1–6 pers.',
-        href:'/programations/Thau_LUX.html', b:'vip'
+        href:'programations/Thau_LUX.html', b:'vip'
       },
       { tr:'Grand Vin du Pic Saint-Loup — 1 день', tf:'Grand Vin du Pic Saint-Loup — 1 jour',
         c:'assets/wines/43759c1c37f30c1596868d12e888a94c.jpg',
         dr:'День • VIP-дегустации: Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 км.',
         df:'Journée • dégustations VIP : Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 km.',
         pr:'430 € за двоих • +100 €/доп. гость', pf:'430 € pour 2 • +100 €/pers',
-        href:'/programations/Pic_Saint_Loup.html', b:'hit'
+        href:'programations/Pic_Saint_Loup.html', b:'hit'
       },
       { tr:'Бéзье: круиз  по Каналу дю Миди - пол дня', tf:'Béziers : croisière — Canal du Midi',
         c:'assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg',
         dr:'Вечер • Фонсераны, Grand Bief, тоннель Малпас. Возможен ужин на борту. Трансфер от/до отеля включён.',
         df:'Soirée • Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord. Transfert hôtel inclus.',
         pr:'по договоренности', pf:'по договоренности',
-        href:'/programations/bezier_sunset.html', b:'hit'
+        href:'programations/bezier_sunset.html', b:'hit'
       },
       { tr:'Mèze Voile — Hôtel de la Pyramide (7 ночей)', tf:'Mèze Voile — Hôtel de la Pyramide (7 nuits)',
         c:'assets/voiles/catamaran.jpg',
         dr:'Неделя на Étang de Thau: курс HC15/16 (5×~3 ч), устрицы Bouzigues, Sète.',
         df:'Semaine sur l’étang de Thau : stage HC15/16 (5×~3 h), huîtres à Bouzigues, Sète.',
         pr:'пример: 1 562 € / 2 гостя', pf:'exemple : 1 562 € / 2 pers.',
-        href:'/programations/Meze_Voile_Pyramide.html', b:'new'
+        href:'programations/Meze_Voile_Pyramide.html', b:'new'
       },
       { tr:'Balaruc-les-Bains — SPA & Languedoc (7 дней)', tf:'Balaruc-les-Bains — SPA & Languedoc (7 jours)',
         c:'assets/Balaruc-Obalia.jpg',
@@ -663,93 +671,19 @@
       });
     })();
 
-   <script>
-/* ===== PATH resolver (GH Pages / Netlify safe) ===== */
-(function(){
-  if (window.__PATH_PATCHED__) return; // гард от двойной инициализации
-  window.__PATH_PATCHED__ = true;
+    // Проставить mailto в правой колонке контактов из APP_CONFIG.email
+    (function(){
+      const el = document.getElementById('emailLink');
+      const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
+      if (el && mail) {
+        const sub = encodeURIComponent('Запрос с сайта');
+        el.href = `mailto:${mail}?subject=${sub}`;
+        el.textContent = mail;
+      }
+    })();
+  </script>
 
-  // 1) База сайта: берём <base href>, иначе первый сегмент пути (/repo/)
-  const SITE_BASE = (() => {
-    const base = document.querySelector('base')?.getAttribute('href');
-    if (base) return base.endsWith('/') ? base : base + '/';
-    const parts = location.pathname.split('/').filter(Boolean);
-    // если проектная страница GitHub (username.github.io/repo/...), базой будет "/repo/"
-    if (parts.length) return `/${parts[0]}/`;
-    return '/';
-  })();
-
-  // 2) Универсальный резолвер
-  function resolveHref(href){
-    if (!href) return '#';
-    if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
-    const base = SITE_BASE.endsWith('/') ? SITE_BASE : SITE_BASE + '/';
-    if (href.startsWith(base)) return href; // уже ок
-    let out;
-    if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
-    else out = base + href.replace(/^\//,'');
-    return out.replace(/([^:])\/{2,}/g, '$1/'); // убрать двойные слэши
-  }
-
-  // 3) Помощник для srcset
-  function resolveSrcSet(ss){
-    if (!ss) return ss;
-    return ss.split(',').map(part => {
-      const trimmed = part.trim();
-      const m = trimmed.match(/^(\S+)(\s+.+)?$/); // URL + дескриптор (1x, 2x, 400w)
-      if (!m) return part;
-      const url = m[1];
-      const desc = m[2] || '';
-      return `${resolveHref(url)}${desc}`;
-    }).join(', ');
-  }
-
-  // 4) Патч всего DOM
-  function patchPaths(){
-    // <a>
-    document.querySelectorAll('a[href]').forEach(a => a.setAttribute('href', resolveHref(a.getAttribute('href'))));
-    // <link> (стили, иконки, манифест)
-    document.querySelectorAll('link[href]').forEach(l => l.setAttribute('href', resolveHref(l.getAttribute('href'))));
-    // <script>
-    document.querySelectorAll('script[src]').forEach(s => s.setAttribute('src', resolveHref(s.getAttribute('src'))));
-    // изображения и медиа
-    document.querySelectorAll('img[src]').forEach(i => i.setAttribute('src', resolveHref(i.getAttribute('src'))));
-    document.querySelectorAll('img[srcset]').forEach(i => i.setAttribute('srcset', resolveSrcSet(i.getAttribute('srcset'))));
-    document.querySelectorAll('source[src]').forEach(s => s.setAttribute('src', resolveHref(s.getAttribute('src'))));
-    document.querySelectorAll('source[srcset]').forEach(s => s.setAttribute('srcset', resolveSrcSet(s.getAttribute('srcset'))));
-    document.querySelectorAll('video[src], audio[src], track[src], iframe[src]').forEach(el => {
-      el.setAttribute('src', resolveHref(el.getAttribute('src')));
-    });
-    // Open Graph / Twitter изображения
-    document.querySelectorAll('meta[property="og:image"], meta[name="twitter:image"]').forEach(m => {
-      const val = m.getAttribute('content');
-      if (val) m.setAttribute('content', resolveHref(val));
-    });
-    // Canonical (если используешь)
-    document.querySelectorAll('link[rel="canonical"]').forEach(l => {
-      const url = new URL(l.getAttribute('href'), location.origin);
-      // только путь резолвим; origin оставляем
-      url.pathname = resolveHref(url.pathname);
-      l.setAttribute('href', url.href);
-    });
-  }
-
-  // экспорт при желании
-  window.__SITE_BASE__ = SITE_BASE;
-  window.resolveHref = resolveHref;
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', patchPaths, { once:true });
-  } else {
-    patchPaths();
-  }
-})();
-</script>
-
- 
-
-  <!-- ВАЖНО: подключаем contact.js один раз в самом конце -->
-  <script src="/assets/js/contact.js"></script>
+  <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
+  <script src="assets/js/contact.js" defer></script>
 </body>
 </html>
-
