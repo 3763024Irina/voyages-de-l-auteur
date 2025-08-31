@@ -151,7 +151,8 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" data-whatsapp target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -281,59 +282,58 @@
   </section>
 
   <!-- BOOKING -->
- <section id="book" class="container">
-  <div class="card" style="padding:18px">
-    <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-    <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
+  <section id="book" class="container">
+    <div class="card" style="padding:18px">
+      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
 
-    <form
-      data-contact-form
-      data-program-title="Быстрый запрос / бронирование"
-      data-program-id="HOME-BOOK"
-      data-channel="telegram">
+      <form
+        data-contact-form
+        data-program-title="Быстрый запрос / бронирование"
+        data-program-id="HOME-BOOK"
+        data-channel="telegram">
 
-      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-      <input id="f-name" name="name" required placeholder="Ваше имя"
-             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
+        <input id="f-name" name="name" required placeholder="Ваше имя"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
-      <input id="f-contact" name="contact" required placeholder="+33… или @username"
-             autocomplete="tel" inputmode="text"
-             pattern="(\+?\d[\d\s()-]{5,19}|@?[A-Za-z0-9_]{5,32})"
-             title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
-             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
+        <input id="f-contact" name="contact" required placeholder="+33… или @username"
+               autocomplete="tel" inputmode="text"
+               pattern="(\+?\d[\d\s()-]{5,19}|@?[A-Za-z0-9_]{5,32})"
+               title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
-      <input type="date" id="f-date" name="date" required
-             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_date">Дата</label>
+        <input type="date" id="f-date" name="date" required
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
-      <input type="number" id="f-guests" name="guests" min="1" value="2" required
-             style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_guests">Гостей</label>
+        <input type="number" id="f-guests" name="guests" min="1" value="2" required
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
 
-      <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
-      <textarea id="f-message" name="message"
-                placeholder="Желаемые даты, кол-во гостей, нужен ли второй домен / обед?"
-                style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
+        <textarea id="f-message" name="message"
+                  placeholder="Желаемые даты, кол-во гостей, нужен ли второй домен / обед?"
+                  style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
 
-      <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
-        <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
-        <select name="channel" style="padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; background:#fff; font:inherit">
-          <option value="whatsapp">WhatsApp</option>
-          <option value="telegram" selected>Telegram</option>
-          <option value="both">WhatsApp + Telegram</option>
-        </select>
-      </div>
+        <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
+          <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
+          <select name="channel" style="padding:10px 12px; border-radius:10px; border:1px solid #e6e6e6; background:#fff; font:inherit">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="both">WhatsApp + Telegram</option>
+          </select>
+        </div>
 
-      <div style="display:flex; gap:10px; margin-top:6px">
-        <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-        <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
-        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-      </div>
-    </form>
-  </div>
-</section>
-
+        <div style="display:flex; gap:10px; margin-top:6px">
+          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -346,8 +346,8 @@
     </div>
   </footer>
 
-  <!-- ВАЖНО: config.js должен быть до скрипта страницы -->
-  <script src="./config.js"></script>
+  <!-- Конфиг с номерами/username -->
+  <script src="../config.js" defer></script>
 
   <script>
     // === Program constants for booking ===
@@ -355,6 +355,7 @@
     const PROGRAM_TITLE_RU = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 день)';
     const PROGRAM_TITLE_FR = 'Saint-Guilhem + Castrum + Clamouse + Capion (1 journée)';
 
+    // i18n (обновлено: контакты = WhatsApp/Telegram, добавлена кнопка Telegram)
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -365,11 +366,11 @@
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         gal_title:'Как это выглядит', gal_sub:'Saint-Guilhem-le-Désert, Castrum, грот Clamouse и Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — панорама деревни',
         altG1:'Площадь у аббатства Жилон', altG2:'Средневековые улочки', altG3:'Вид на ущелье Verdus',
-        hero_title:'Saint-Guilhem-le-Дésert — Castrum, грот Clamouse и дегустация в Château Capion',
+        hero_title:'Saint-Guilhem — Castrum, грот Clamouse и дегустация в Château Capion',
         hero_sub:'Аббатство Жилон (UNESCO), улочки и панорама, затем грот Clamouse, обед у Pont du Diable и дегустация в Château Capion. Старт из Mèze.',
         price:'300 € / 2 гостя',
         price_note:'Доп. гость: +70 € (макс. 6). Обед 25–35 € / чел (на месте).',
@@ -380,25 +381,8 @@
 
         hist_title:'История города и аббатства',
         hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
-        hist_list:`<ul class="list">
-          <li><strong>804</strong> — Гийом де Желлон основывает бенедиктинское аббатство Геллон.</li>
-          <li><strong>807</strong> — дарование <em>castrum de Verdun</em> — крепости над долиной.</li>
-          <li><strong>XI–XII вв.</strong> — перестройки; к этому времени относятся видимые руины.</li>
-          <li><strong>Администрация</strong> — жил кастелян/баиль аббатства и стража, контролируя вход в ущелье.</li>
-        </ul>
-        <details class="muted" style="margin-top:8px">
-          <summary><strong>Легенда о «Замке Великана»</strong></summary>
-          По преданию, здесь обитал сарацин-великан; Гийом одолел его мечом «Joyeuse». Фольклор, не документ.
-        </details>`,
 
         castrum_title:'Хронология Castrum',
-        castrum_timeline:`<ul class="timeline">
-          <li><span class="time">804</span> — Основание аббатства Геллон.</li>
-          <li><span class="time">807</span> — Дарование крепости <em>castrum de Verdun</em>.</li>
-          <li><span class="time">XI–XII вв.</span> — Перестройка укреплений; формируются видимые руины.</li>
-          <li><span class="time">1124</span> — Упоминание кастеляна/гарнизона аббатства.</li>
-          <li><span class="time">Позднее Средневековье</span> — Утрата военного значения, запустение.</li>
-        </ul>`,
 
         plan_title:'Программа дня',
         t_0900:'Выезд из Mèze / трансфер к деревне.',
@@ -435,10 +419,10 @@
         opt_view:'Дополнительные смотровые площадки (по времени).',
 
         gal_title:'Как это выглядит',
-        btn_send:'Отправить', btn_whatsapp2:'Написать в WhatsApp',
+        btn_send:'Отправить',
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: Saint-Guilhem + Clamouse + Capion (сайт)',
-        label_date:'Дата', label_guests:'Гостей'
+        label_date:'Дата', label_guests:'Гостей',
+        label_contact:'Контакт (WhatsApp/Telegram)'
       },
 
       fr: {
@@ -450,7 +434,7 @@
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         gal_title:'À quoi ça ressemble', gal_sub:'Saint-Guilhem, Castrum, grotte de Clamouse et Château Capion.',
         altHero:'Saint-Guilhem-le-Désert — panorama du village',
         altG1:'Place de l’abbaye de Gellone', altG2:'Ruelles médiévales', altG3:'Vue sur les gorges du Verdus',
@@ -465,25 +449,8 @@
 
         hist_title:'Histoire du village et de l’abbaye',
         hist_sub:'Saint-Guilhem-le-Désert • Abbaye de Gellone • Castrum de Verdun («Château du Géant»)',
-        hist_list:`<ul class="list">
-          <li><strong>804</strong> — Guillaume de Gellone fonde l’abbaye bénédictine de Gellone.</li>
-          <li><strong>807</strong> — donation du <em>castrum de Verdun</em> surplombant la vallée.</li>
-          <li><strong>XI–XIIe</strong> — remaniements; ruines visibles aujourd’hui.</li>
-          <li><strong>Administration</strong> — châtelain/bailli de l’abbaye et garnison contrôlent l’entrée des gorges.</li>
-        </ul>
-        <details class="muted" style="margin-top:8px">
-          <summary><strong>Légende du « Château du Géant »</strong></summary>
-          La tradition raconte un géant sarrasin terrassé par Guillaume avec « Joyeuse ». Folklore non documenté.
-        </details>`,
 
         castrum_title:'Chronologie du Castrum',
-        castrum_timeline:`<ul class="timeline">
-          <li><span class="time">804</span> — Fondation de l’abbaye de Gellone.</li>
-          <li><span class="time">807</span> — Donation du <em>castrum de Verdun</em>.</li>
-          <li><span class="time">XI–XIIe</span> — Remaniements des fortifications; ruines actuelles.</li>
-          <li><span class="time">1124</span> — Mention du châtelain/de la garnison de l’abbaye.</li>
-          <li><span class="time">Bas Moyen Âge</span> — Perte d’importance militaire, abandon progressif.</li>
-        </ul>`,
 
         plan_title:'Programme de la journée',
         t_0900:'Départ de Mèze / transfert vers le village.',
@@ -519,10 +486,10 @@
         opt_second:'Deuxième domaine (p. ex., Mas de Daumas Gassac) — +10–20 € / pers. dégustation.',
         opt_view:'Belvédères additionnels (selon timing).',
 
-        btn_send:'Envoyer', btn_whatsapp2:'Écrire sur WhatsApp',
+        btn_send:'Envoyer',
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : Saint-Guilhem + Clamouse + Capion (site)',
-        label_date:'Date', label_guests:'Personnes'
+        label_date:'Date', label_guests:'Personnes',
+        label_contact:'Contact (WhatsApp/Telegram)'
       }
     };
 
@@ -558,53 +525,114 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    // Контакты из config.js
-    function getConfig(){
-      const CFG = window.APP_CONFIG || {};
+    // === Мессенджеры: WhatsApp / Telegram ===
+    const DIGITS = s => String(s||'').replace(/\D/g,'');
+    const CFG = () => (window.APP_CONFIG||{});
+    const lang = () => localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+
+    function programTitleByLang(){
+      return (lang()==='fr') ? PROGRAM_TITLE_FR : PROGRAM_TITLE_RU;
+    }
+
+    function buildMessage(ctx){
+      const hello = (lang()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
+      const lines = [
+        hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''),
+        ctx.message ? ctx.message : '',
+        ctx.date ? `\nДата: ${ctx.date}` : '',
+        ctx.guests ? `\nГостей: ${ctx.guests}` : '',
+        `\nПрограмма: ${programTitleByLang()} (${PROGRAM_ID})`,
+        ctx.contact ? `\nКонтакт: ${ctx.contact}` : ''
+      ];
+      return lines.join('').trim();
+    }
+
+    function makeWA(ctx){
+      const wa = DIGITS(CFG().whatsapp);
+      if (!wa) return '';
+      return `https://wa.me/${wa}?text=${encodeURIComponent(buildMessage(ctx))}`;
+    }
+
+    function makeTG(ctx){
+      const u = (CFG().telegram||'').trim();
+      const text = buildMessage(ctx);
+      return { text, url: u ? `https://t.me/${u}` : `https://t.me/share/url?text=${encodeURIComponent(text)}` };
+    }
+
+    function formCtx(form){
+      const fd = new FormData(form);
       return {
-        email: CFG.email || '3763024@gmail.com',
-        whatsapp: String(CFG.whatsapp || '33759644813').replace(/\D/g,'')
+        name: (fd.get('name')||'').toString().trim(),
+        contact: (fd.get('contact')||'').toString().trim(),
+        date: (fd.get('date')||'').toString().trim(),
+        guests: (fd.get('guests')||'').toString().trim(),
+        message: (fd.get('message')||'').toString().trim()
       };
     }
 
-    // Submit -> mailto
-    function openMail(e){
-      e.preventDefault();
-      const fd = new FormData(e.target);
-      const lang = localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      const t = i18n[lang];
-
-      const programTitle = (lang==='fr') ? PROGRAM_TITLE_FR : PROGRAM_TITLE_RU;
-      const subject = `${t.mail_subject} | ${programTitle} | Код/Code: ${PROGRAM_ID}`;
-
-      const cfg = getConfig();
-      const when = fd.get('date') || '';
-      const guests = fd.get('guests') || '';
-      const body = [
-        `Программа / Programme: ${programTitle} (${PROGRAM_ID})`,
-        `Имя / Nom: ${fd.get('name')||''}`,
-        `Контакт / Contact: ${fd.get('contact')||''}`,
-        `Дата / Date: ${when}`,
-        `Гостей / Personnes: ${guests}`,
-        `Сообщение / Message: ${fd.get('message')||''}`,
-        ``,
-        `— Автоподпись / Signature —`,
-        `Тур: ${programTitle} (${PROGRAM_ID})`,
-        `WhatsApp: https://wa.me/${cfg.whatsapp}`
-      ].join('\n');
-
-      
-      const mailto = `mailto:${encodeURIComponent(cfg.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
-
-      // fallback: скопировать текст, если клиент почты не открылся
-      setTimeout(()=>{
-        if (document.hasFocus()) {
-          navigator.clipboard?.writeText(`${subject}\n\n${body}`);
-          alert('Текст заявки скопирован. Вставьте его в почтовое письмо или в мессенджер.');
-        }
-      }, 800);
+    function patchStaticLinks(){
+      const wa = DIGITS(CFG().whatsapp);
+      document.querySelectorAll('[data-whatsapp]').forEach(a=>{
+        if (wa) a.setAttribute('href', `https://wa.me/${wa}`);
+      });
+      const u = (CFG().telegram||'').trim();
+      document.querySelectorAll('[data-telegram]').forEach(a=>{
+        if (u) a.setAttribute('href', `https://t.me/${u}`);
+      });
     }
+
+    // Submit формы → WA/TG
+    document.addEventListener('submit', async (e) => {
+      const form = e.target;
+      if (!form.matches('[data-contact-form]')) return;
+      e.preventDefault();
+      const ctx = formCtx(form);
+      const channel = (form.elements['channel']?.value || form.dataset.channel || 'telegram').toLowerCase();
+
+      try{
+        if (channel === 'whatsapp'){
+          const url = makeWA(ctx);
+          if (!url) throw new Error('whatsapp not configured');
+          window.open(url, '_blank', 'noopener');
+        } else if (channel === 'telegram'){
+          const {text, url} = makeTG(ctx);
+          try { await navigator.clipboard.writeText(text); } catch(_){}
+          window.open(url, '_blank', 'noopener');
+        } else if (channel === 'both'){
+          const url1 = makeWA(ctx);
+          const {text, url:url2} = makeTG(ctx);
+          try { await navigator.clipboard.writeText(text); } catch(_){}
+          if (url1) window.open(url1, '_blank', 'noopener');
+          setTimeout(()=>window.open(url2, '_blank', 'noopener'), 120);
+        }
+      } catch(err){
+        console.error('[booking] error', err);
+        alert('Не удалось подготовить отправку. Проверьте config.js (whatsapp/telegram).');
+      }
+    }, true);
+
+    // Клики по кнопкам WA/TG → дописываем текст на лету
+    document.addEventListener('click', async (e)=>{
+      const a = e.target.closest('a[data-whatsapp], a[data-telegram]');
+      if (!a) return;
+
+      const form = document.querySelector('[data-contact-form]');
+      const ctx = form ? formCtx(form) : {name:'',contact:'',date:'',guests:'',message:''};
+
+      if (a.matches('[data-whatsapp]')){
+        const url = makeWA(ctx);
+        if (!url){ e.preventDefault(); alert('В config.js не указан WhatsApp'); return; }
+        a.setAttribute('href', url);
+        return;
+      }
+      if (a.matches('[data-telegram]')){
+        e.preventDefault();
+        const {text,url} = makeTG(ctx);
+        try { await navigator.clipboard.writeText(text); } catch(_){}
+        window.open(url, '_blank', 'noopener');
+        return;
+      }
+    }, true);
 
     // Init
     (function(){
@@ -613,7 +641,15 @@
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+
+      // подставить номера/юзернейм в кнопки
+      if (document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', patchStaticLinks, {once:true});
+      } else {
+        patchStaticLinks();
+      }
     })();
   </script>
 </body>
 </html>
+
