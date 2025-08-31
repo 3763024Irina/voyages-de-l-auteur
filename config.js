@@ -1,10 +1,11 @@
 // config.js
 window.APP_CONFIG = {
   email: '3763024@gmail.com',                 // почта для брони
-  whatsapp: '33759644813',                    // без "+"
-  // telegram: 'ToursLanguedocbyIrene',       // (необязательно) username без @
+  whatsapp: '33759644813',                    // номер без "+"
   needguide: 'https://needguide.ru/view_guide.php?user_id=22306',
-  ADMIN_SECRET: 'capion2025'                  // секрет входа в админ
+  ADMIN_SECRET: 'capion2025',                 // секрет входа в админ
+  // (необязательно) если есть свой username в TG:
+  telegram: 'ToursLanguedocbyIrene'
 };
 
 (function () {
@@ -58,6 +59,7 @@ window.APP_CONFIG = {
     const s = getParam('admin');
     if (s && s === String(CFG.ADMIN_SECRET || '')) {
       setAdmin(true);
+      // чистим URL
       const url = new URL(window.location.href);
       url.searchParams.delete('admin');
       if (url.hash.includes('admin=')) url.hash = '';
@@ -73,13 +75,14 @@ window.APP_CONFIG = {
     }
   });
 
-  // Подстановка WhatsApp из конфига
+  // Подстановка WhatsApp из конфига на все ссылки с data-whatsapp
   function patchWhatsApp() {
     const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
     if (!phone) return;
     qsAll('[data-whatsapp]').forEach(a => a.setAttribute('href', `https://wa.me/${phone}`));
   }
 
+  // Глобальный флажок для быстрой диагностики
   window.__CONFIG_LOADED__ = true;
 
   window.addEventListener('DOMContentLoaded', () => {
@@ -89,5 +92,8 @@ window.APP_CONFIG = {
     drawAdminBadge();
     console.log('[config.js] loaded, admin=', isAdmin());
   });
+
+  // экспорт
+  window.__patchWhatsApp = patchWhatsApp;
 })();
 
