@@ -759,6 +759,139 @@
 </script>
 <script src="assets/js/chat-widget.js" defer></script>
 
+<script>
+(function(){
+  if(window.__REVIEWS_INIT__) return; window.__REVIEWS_INIT__=true;
+
+  const $ = (s, r=document)=>r.querySelector(s);
+
+  // 1) найдём секцию "О нас"
+  const about = $('#about');
+  if(!about) return;
+  const container = about.querySelector('.about') || about;
+  const column = container.querySelector(':scope > div') || container;
+
+  // 2) создадим .reviews, если его нет
+  let reviewsRoot = column.querySelector('.reviews');
+  if(!reviewsRoot){
+    reviewsRoot = document.createElement('div');
+    reviewsRoot.className = 'reviews';
+    const p = column.querySelector('p');
+    (p && p.parentNode) ? p.parentNode.insertBefore(reviewsRoot, p.nextSibling) : column.appendChild(reviewsRoot);
+  }
+
+  // 3) создадим форму
+  const form = document.createElement('form');
+  form.id = 'review-form';
+  form.className = 'review-form';
+  form.noValidate = true;
+  form.autocomplete = 'on';
+  form.innerHTML = `
+    <h4 data-i18n="reviewForm.title">Добавить отзыв</h4>
+    <div class="rf-row">
+      <label for="rf-name" data-i18n="reviewForm.name">Имя</label>
+      <input id="rf-name" name="name" type="text" required maxlength="40" placeholder="Ваше имя" />
+    </div>
+    <div class="rf-row">
+      <label for="rf-text" data-i18n="reviewForm.text">Комментарий</label>
+      <textarea id="rf-text" name="text" required rows="3" maxlength="500" placeholder="Расскажите, что понравилось"></textarea>
+    </div>
+    <div class="rf-row">
+      <label data-i18n="reviewForm.photo">Фото (необязательно)</label>
+      <div id="rf-drop" class="file-drop" tabindex="0" aria-label="Перетащите фото или выберите файл">
+        <input id="rf-photo" name="photo" type="file" accept="image/*" hidden />
+        <div class="file-drop-ui">
+          <button type="button" id="rf-choose" class="btn" data-i18n="reviewForm.choose">Выбрать файл</button>
+          <span class="hint" data-i18n="reviewForm.hint">PNG/JPG, до 5 МБ. Мы уменьшим размер автоматически.</span>
+        </div>
+        <img id="rf-preview" alt="Предпросмотр фото" class="preview" hidden />
+      </div>
+    </div>
+    <div class="rf-row rf-actions">
+      <label class="rf-consent">
+        <input id="rf-consent" type="checkbox" required />
+        <span data-i18n="reviewForm.consent">Согласен(а) на публикацию отзыва и фото на сайте.</span>
+      </label>
+      <button type="submit" class="btn btn-primary" data-i18n="reviewForm.submit">Отправить отзыв</button>
+    </div>
+    <p id="rf-msg" class="rf-msg" role="status" aria-live="polite"></p>
+  `;
+  // вставим форму сразу после списка отзывов
+  reviewsRoot.insertAdjacentElement('afterend', form);
+
+  // 4) логика: превью, сжатие, рендер, сохранение
+  const REVIEWS_KEY = 'site:reviews';
+  const inputName = form.querySelector('#rf-name');
+  const inputText = form.querySelector('#rf-text');
+  const inputPhoto = form.querySelector('#rf-photo');
+  const drop = form.querySelector('#rf-drop');
+  const chooseBtn = form.querySelector('#rf-choose');
+  const preview = form.querySelector('#rf-preview');
+  const msg = form.querySelector('#rf-msg');
+  const consent = form.querySelector('#rf-consent');
+
+  function sanitize(s=''){return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function initials(name){return String(name).trim().split(/\s+/).slice(0,2).map(p=>p[0]?.toUpperCase()||'').join('');}
+  function toast(text){msg.textContent=text; setTimeout(()=>msg.textContent='', 4000);}
+  function store(arr){try{localStorage.setItem(REVIEWS_KEY, JSON.stringify(arr));}catch(e){}}
+  function load(){try{const raw=localStorage.getItem(REVIEWS_KEY); return raw?JSON.parse(raw):[];}catch(e){return[]}}
+
+  function addReviewToDOM({name,text,photo}){
+    const review = document.createElement('div'); review.className='review';
+    const who = document.createElement('div'); who.className='who';
+    const avatar = document.createElement('div'); avatar.className='avatar';
+    if(photo){ avatar.style.backgroundImage = `url(${photo})`; }
+    else {
+      avatar.textContent = initials(name);
+      avatar.style.background = 'var(--brand,#0D2B1E)';
+    }
+    const strong = document.createElement('strong'); strong.textContent = name;
+    who.append(avatar,strong);
+    const p = document.createElement('p'); p.textContent = text;
+    review.append(who,p);
+    reviewsRoot.prepend(review);
+  }
+
+  function dataURLFromFile(file){return new Promise((res,rej)=>{const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file);});}
+  function resizeImage(dataURL, maxSide=512){return new Promise((resolve)=>{const img=new Image(); img.onload=()=>{const r=Math.min(maxSide/img.width, maxSide/img.height, 1); const w=Math.round(img.width*r), h=Math.round(img.height*r); const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); resolve(c.toDataURL('image/jpeg',0.85));}; img.src=dataURL;});}
+
+  // загрузим сохранённые отзывы
+  load().forEach(addReviewToDOM);
+
+  // DnD + выбор файла
+  chooseBtn.addEventListener('click',()=>inputPhoto.click());
+  ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');}));
+  drop.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0]; if(f) handleFile(f);});
+  inputPhoto.addEventListener('change',()=>{const f=inputPhoto.files?.[0]; if(f) handleFile(f);});
+
+  async function handleFile(file){
+    if(!/^image\//.test(file.type)) return toast('Выберите изображение');
+    if(file.size>5*1024*1024) return toast('Файл больше 5 МБ — выберите поменьше');
+    const raw = await dataURLFromFile(file);
+    const small = await resizeImage(raw, 512);
+    preview.src = small; preview.hidden = false; preview.dataset.value = small;
+  }
+
+  // отправка формы
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = sanitize(inputName.value.trim());
+    const text = sanitize(inputText.value.trim());
+    const photo = preview.dataset.value || '';
+    if(!name){ inputName.focus(); return toast('Введите имя'); }
+    if(!text){ inputText.focus(); return toast('Напишите комментарий'); }
+    if(!consent.checked){ consent.focus(); return toast('Нужно согласие на публикацию'); }
+
+    const review = {name, text, photo, ts: Date.now()};
+    const arr = load(); arr.unshift(review); store(arr.slice(0,100));
+    addReviewToDOM(review);
+
+    form.reset(); preview.hidden = true; delete preview.dataset.value;
+    toast('Спасибо! Ваш отзыв опубликован локально.');
+  });
+})();
+</script>
 
   
 </body>
