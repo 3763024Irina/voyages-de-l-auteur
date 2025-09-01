@@ -420,22 +420,36 @@
     </form>
 
     <!-- Правая колонка: быстрые кнопки и справка -->
-    <aside>
-      <div class="card" style="padding:18px">
-        <h3>WhatsApp</h3>
-        <p><a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Открыть чат</a></p>
+  <!-- правая колонка -->
+<div class="sidebar">
 
-        <h3>Telegram</h3>
-        <p><a class="btn" data-telegram href="#" target="_blank" rel="noopener">Открыть чат</a></p>
+  <!-- СТАРЫЙ БЛОК КОНТАКТОВ: скрыт (нужен только для наследия/SEO) -->
+  <aside class="contact-panel" data-contact-panel hidden>
+    <div class="card" style="padding:18px">
+      <h3>WhatsApp</h3>
+      <p><a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Открыть чат</a></p>
 
-        <h3>Email</h3>
-        <p><a id="emailLink" href="#">—</a></p>
+      <h3>Telegram</h3>
+      <p><a class="btn" data-telegram href="#" target="_blank" rel="noopener">Открыть чат</a></p>
 
-        <h3 data-i18n="contact.area">Регион</h3>
-        <p>Hérault, Aude, Gard — Languedoc &amp; Roussillon</p>
-      </div>
-    </aside>
-  </div>
+      <h3>Email</h3>
+      <p><a id="emailLink" href="#">—</a></p>
+
+      <h3 data-i18n="contact.area">Регион</h3>
+      <p>Hérault, Aude, Gard — Languedoc &amp; Roussillon</p>
+    </div>
+  </aside>
+
+  <!-- НОВЫЙ ФОТО-БЛОК -->
+  <figure class="contact-photo">
+    <img src="assets/contact-side.jpg"
+         alt="Tours Languedoc by Irène — Languedoc &amp; Roussillon"
+         loading="lazy">
+    <figcaption>Hérault • Aude • Gard — Languedoc &amp; Roussillon</figcaption>
+  </figure>
+
+</div>
+
 </section>
 
 
