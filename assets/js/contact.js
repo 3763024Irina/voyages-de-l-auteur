@@ -1,7 +1,6 @@
-/* contact.js — только WhatsApp и Telegram (share-url).
+/* contact.js — только WhatsApp и Telegram.
    — WA: сразу в чат с номером + готовый текст
-   — TG: окно шаринга с готовым текстом (официальный способ передать текст без бота)
-   — Текст также копируется в буфер на всякий случай
+   — TG: если есть telegram_user → сразу ваш чат + текст в буфере; иначе share-url
 */
 (function(){
   if (window.__CONTACT_INIT__) { console.warn('[contact.js] already initialized'); return; }
@@ -56,10 +55,30 @@
     const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener');
   }
+
+  // ⬇️ ОБНОВЛЁННАЯ ФУНКЦИЯ
   function openTG(text){
-    // Официальный путь для передачи текста — окно шаринга
-    const url = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+    const user = String(CFG.telegram_user || CFG.telegram || '').replace(/^@/, '');
     try { navigator.clipboard?.writeText(text); } catch(_) {}
+
+    if (user) {
+      const deeplink = `tg://resolve?domain=${encodeURIComponent(user)}`;
+      const web = `https://t.me/${user}`;
+      let w;
+      try { w = window.open(deeplink, '_blank'); } catch(_) {}
+      setTimeout(() => {
+        if (!w || w.closed) window.open(web, '_blank', 'noopener');
+      }, 200);
+      setTimeout(() => {
+        alert((LANG()==='fr')
+          ? 'Texte copié. Ouvrez le chat Telegram et collez-le.'
+          : 'Текст заявки скопирован. Откройте чат в Telegram и вставьте его.');
+      }, 300);
+      return;
+    }
+
+    // fallback: окно шаринга
+    const url = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener');
   }
 
@@ -105,16 +124,26 @@
   }, true);
 
   /* ------- стартовые href без текста ------- */
+  // ⬇️ ОБНОВЛЁННАЯ ФУНКЦИЯ
   function patchBase(){
     const wa = digits(CFG.whatsapp||'');
     if (wa) qa('[data-whatsapp]').forEach(a => {
       const href = a.getAttribute('href')||'';
-      if (!href || href==='#' || href.startsWith('https://wa.me/')) a.setAttribute('href', `https://wa.me/${wa}`);
+      if (!href || href==='#' || href.startsWith('https://wa.me/')) {
+        a.setAttribute('href', `https://wa.me/${wa}`);
+      }
+      a.target = '_blank'; a.rel = 'noopener';
     });
-    qa('[data-telegram]').forEach(a => a.setAttribute('href', 'https://t.me/share/url'));
+
+    const user = String(CFG.telegram_user || CFG.telegram || '').replace(/^@/, '');
+    qa('[data-telegram]').forEach(a => {
+      if (user) a.setAttribute('href', `https://t.me/${user}`);
+      else a.setAttribute('href', 'https://t.me/share/url');
+      a.target = '_blank'; a.rel = 'noopener';
+    });
   }
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', patchBase, {once:true});
   else patchBase();
 
-  console.log('[contact.js] ready (share-url mode)');
+  console.log('[contact.js] ready (TG deeplink + share-url fallback)');
 })();
