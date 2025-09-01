@@ -14,17 +14,14 @@
   <!-- === РАННИЙ BASE-инжектор (до любых относительных ресурсов) === -->
   <script>
   (function(){
-    // если <base> уже есть — используем его
     var baseEl = document.querySelector('base');
     if (!baseEl) {
       var parts = location.pathname.split('/').filter(Boolean);
-      // для GitHub Pages (username.github.io/repo/...) базой будет "/repo/"
       var base = (parts.length && parts[0] !== 'index.html') ? ('/' + parts[0] + '/') : '/';
       baseEl = document.createElement('base');
       baseEl.setAttribute('href', base);
       document.head.prepend(baseEl);
     }
-    // экспорт
     window.__SITE_BASE__ = baseEl.getAttribute('href');
     window.resolveHref = function(href){
       if (!href) return '#';
@@ -85,7 +82,7 @@
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
-    .hero .inner{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; min-height:76vh}
+    .hero .inner{display:grid; grid-template-columns:1.2fr auto; gap:28px; align-items:center; min-height:50vh}
     .hero h2{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.06; color:#fff; margin:0 0 12px}
     .hero p{color:#f7f7f7; font-size:18px; max-width:640px}
     .hero .card{background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
@@ -123,7 +120,7 @@
     .review .who{display:flex; align-items:center; gap:12px}
     .avatar{width:40px; height:40px; border-radius:50%; background:#ddd}
 
-    .contact{display:grid; grid-template-columns:1.2fr .8fr; gap:24px}
+    .contact{display:grid; grid-template-columns:1fr; gap:24px} /* одна колонка */
     form{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     label{display:block; font-size:13px; color:var(--muted); margin:12px 0 6px}
     input, select, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
@@ -136,7 +133,7 @@
 
     @media (max-width: 1000px){
       .grid{grid-template-columns:repeat(2,1fr)}
-      .about,.contact,.hero .inner{grid-template-columns:1fr}
+      .about,.hero .inner{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .grid{grid-template-columns:1fr}
@@ -145,7 +142,6 @@
     }
 
     /* === HERO contact-card (узкая) === */
-    .hero .inner{ grid-template-columns: 1.2fr auto; gap: 28px; }
     .hero .contact-card{
       width: 360px; max-width: 100%;
       justify-self: end; align-self: end;
@@ -165,15 +161,28 @@
       outline:2px solid rgba(13,43,30,.28); border-color:var(--brand);
     }
     @media (max-width:1000px){
-      .hero .inner{ grid-template-columns:1fr; }
       .hero .contact-card{ width:100%; justify-self:stretch; align-self:start; }
     }
-    .hero .inner{ min-height:50vh !important; }
 
-    #contactCard{ background:#fff !important; border:1px solid #eee !important; border-radius:16px !important; padding:14px 16px !important; box-shadow:0 8px 22px rgba(0,0,0,.08) !important; }
-    #contactCard, #contactCard *{ color:#1b1b1b !important; }
-    #contactCard input, #contactCard textarea, #contactCard select{ color:#1b1b1b !important; background:#fff !important; border:1px solid #e6e6e6 !important; }
-    #contactCard input::placeholder, #contactCard textarea::placeholder{ color:#878e8a !important; }
+    /* ===== Точечные правки для ABOUT: одна колонка + без портрета ===== */
+    #about .portrait{ display:none !important; }
+    #about .about{ grid-template-columns: 1fr; max-width:920px; margin-inline:auto; }
+    #about .reviews{ grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+    @media (max-width:640px){ #about .reviews{ grid-template-columns:1fr; } }
+
+    /* ===== Форма отзывов (стили для вставляемого блока) ===== */
+    #about .review-form{margin-top:16px;padding:16px;border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff}
+    #about .rf-row{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+    #about .rf-row label{font-size:13px;color:var(--muted,#6b6b6b)}
+    #about .review-form input[type="text"],#about .review-form textarea{width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.15);border-radius:10px;background:#fff;font:inherit}
+    #about .file-drop{border:1.5px dashed rgba(0,0,0,.2);border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px;background:#f9f9f6}
+    #about .file-drop .preview{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid rgba(0,0,0,.1)}
+    #about .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.15);background:#fff;cursor:pointer}
+    #about .btn-primary{background:var(--brand);color:#fff;border-color:transparent}
+    #about .rf-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    #about .rf-share{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+    #about .rf-msg{margin:6px 0 0;font-size:13px;color:var(--muted,#6b7b73)}
+    #about .review .who .avatar{width:36px;height:36px;border-radius:50%;background:#eae9e3;background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-weight:600;font-size:12px}
   </style>
 </head>
 <body>
@@ -208,79 +217,78 @@
     </div>
   </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="bg">
-    <img src="assets/wines/vinograd.jpg" alt="Юг Франции — море и виноградники"/>
-    <div class="overlay"></div>
-  </div>
-
-  <div class="container inner">
-    <!-- левый столбец -->
-    <div>
-      <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
-      <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
-      <div class="tags">
-        <a class="tag" href="#tours">Устрицы & Étang de Thau</a>
-        <a class="tag" href="#tours">Вино и Домены</a>
-        <a class="tag" href="#tours">Замки & История</a>
-        <a class="tag" href="#tours">Горы & Трекинг</a>
-        <a class="tag" href="#tours">Море & SUP/Каяк</a>
-        <a class="tag" href="#tours">Фото-локи</a>
-        <a class="tag" href="#tours">Disco Party</a>
-      </div>
-    </div> <!-- ← это закрывает левый столбец -->
-
-    <!-- правый столбец: узкая форма -->
-    <div class="card contact-card" id="contactCard">
-      <strong data-i18n="form.fast">Быстрый запрос</strong>
-      <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
-        Отправьте пожелания — подберу маршрут и даты в течение дня.
-      </p>
-
-      <form
-        id="quickForm"
-        data-contact-form
-        data-program-title="Запрос с главной (быстрый)"
-        data-program-id="HOME-FAST"
-        data-channel="whatsapp"
-      >
-        <label for="f-name" data-i18n="form.name">Имя</label>
-        <input id="f-name" name="name" required placeholder="Ваше имя" autocomplete="name" />
-
-        <label for="f-contact">Телефон (WhatsApp/Telegram)</label>
-        <input
-          id="f-contact" name="contact" required
-          placeholder="+33…"
-          autocomplete="tel" inputmode="tel"
-          pattern="\+?\d[\d\s()-]{5,19}"
-          title="Номер телефона, например +33 7 59 64 48 13"
-        />
-
-        <div style="display:flex; gap:10px; margin-top:8px">
-          <div style="flex:1">
-            <label for="f-date">Дата</label>
-            <input type="date" id="f-date" name="date" />
-          </div>
-          <div style="width:140px">
-            <label for="f-guests">Гостей</label>
-            <input type="number" id="f-guests" name="guests" min="1" value="2" />
-          </div>
-        </div>
-
-        <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
-        <textarea id="f-message" name="message" placeholder="Какие даты и интересы?"></textarea>
-
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <button class="btn primary" type="submit">Отправить</button>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
-        </div>
-      </form>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg">
+      <img src="assets/wines/vinograd.jpg" alt="Юг Франции — море и виноградники"/>
+      <div class="overlay"></div>
     </div>
-  </div> <!-- ← это закрывает .container.inner -->
-</section>
 
+    <div class="container inner">
+      <div>
+        <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
+        <p data-i18n="hero.text">10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.</p>
+        <div class="tags">
+          <a class="tag" href="#tours">Устрицы & Étang de Thau</a>
+          <a class="tag" href="#tours">Вино и Домены</a>
+          <a class="tag" href="#tours">Замки & История</a>
+          <a class="tag" href="#tours">Горы & Трекинг</a>
+          <a class="tag" href="#tours">Море & SUP/Каяк</a>
+          <a class="tag" href="#tours">Фото-локи</a>
+          <a class="tag" href="#tours">Disco Party</a>
+        </div>
+      </div>
+
+      <!-- правая узкая форма -->
+      <div class="card contact-card" id="contactCard">
+        <strong data-i18n="form.fast">Быстрый запрос</strong>
+        <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
+          Отправьте пожелания — подберу маршрут и даты в течение дня.
+        </p>
+
+        <form
+          id="quickForm"
+          data-contact-form
+          data-program-title="Запрос с главной (быстрый)"
+          data-program-id="HOME-FAST"
+          data-channel="whatsapp"
+        >
+          <label for="f-name" data-i18n="form.name">Имя</label>
+          <input id="f-name" name="name" required
+                 placeholder="Ваше имя" data-i18n-placeholder="form.name.ph"
+                 autocomplete="name" />
+
+          <label for="f-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
+          <input id="f-contact" name="contact" required
+                 placeholder="+33…" data-i18n-placeholder="form.contact.ph"
+                 autocomplete="tel" inputmode="tel"
+                 pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
+
+          <div style="display:flex; gap:10px; margin-top:8px">
+            <div style="flex:1">
+              <label for="f-date" data-i18n="form.date">Дата</label>
+              <input type="date" id="f-date" name="date" />
+            </div>
+            <div style="width:140px">
+              <label for="f-guests" data-i18n="form.guests">Гостей</label>
+              <input type="number" id="f-guests" name="guests" min="1" value="2" />
+            </div>
+          </div>
+
+          <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
+          <textarea id="f-message" name="message"
+                    placeholder="Какие даты и интересы?"
+                    data-i18n-placeholder="form.msg.ph"></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
+            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <!-- WHY -->
   <section id="why" class="container why">
@@ -374,84 +382,47 @@
           <div class="review"><div class="who"><div class="avatar"></div><strong>Claire</strong></div><p>Carcassonne et domaines familiaux — chic et authentique.</p></div>
         </div>
       </div>
-      <div class="portrait"><img src="https://images.unsplash.com/photo-1517260739337-6799d2e0b1b2?q=80&w=1200&auto=format&fit=crop" alt="Гид в Лангедоке"></div>
+      <!-- портрет справа удалён -->
     </div>
   </section>
 
-<!-- CONTACT -->
-<section id="contact" class="container">
-  <h3 class="section-title" data-i18n="contact.title">Контакты и бронь</h3>
+  <!-- CONTACT -->
+  <section id="contact" class="container">
+    <h3 class="section-title" data-i18n="contact.title">Контакты и бронь</h3>
+    <div class="contact">
+      <form data-contact-form data-program-title="Запрос с главной (контакты)" data-program-id="HOME-CONTACT" data-channel="whatsapp">
+        <label for="c-name" data-i18n="form.name">Имя</label>
+        <input id="c-name" name="name" required
+               placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name" />
 
-  <div class="contact">
-    <!-- Левая колонка: ОДНА большая форма -->
-    <form
-      data-contact-form
-      data-program-title="Запрос с главной (контакты)"
-      data-program-id="HOME-CONTACT"
-      data-channel="whatsapp">
+        <label for="c-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
+        <input id="c-contact" name="contact" required
+               placeholder="+33…" data-i18n-placeholder="form.contact.ph"
+               autocomplete="tel" inputmode="tel"
+               pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
 
-      <label for="c-name" data-i18n="form.name">Имя</label>
-      <input id="c-name" name="name" required placeholder="Ваше имя" autocomplete="name" />
+        <label for="c-message" data-i18n="form.msg">Сообщение</label>
+        <textarea id="c-message" name="message"
+                  placeholder="Какие даты и интересы?"
+                  data-i18n-placeholder="form.msg.ph"></textarea>
 
-      <label for="c-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
-      <input
-        id="c-contact"
-        name="contact"
-        required
-        placeholder="+33…"
-        autocomplete="tel"
-        inputmode="tel"
-        pattern="\+?\d[\d\s()-]{5,19}"
-        title="Номер телефона, например +33 7 59 64 48 13" />
+        <div style="display:flex; gap:10px; align-items:center; margin:10px 0">
+          <label for="c-channel" style="font-size:13px; color:#6c6c6c" data-i18n="contact.sendto">Куда отправить:</label>
+          <select id="c-channel" name="channel">
+            <option value="whatsapp" selected>WhatsApp</option>
+            <option value="telegram">Telegram</option>
+            <option value="both">WhatsApp + Telegram</option>
+          </select>
+        </div>
 
-      <label for="c-message" data-i18n="form.msg">Сообщение</label>
-      <textarea id="c-message" name="message" placeholder="Какие даты и интересы?"></textarea>
-
-      <div style="display:flex; gap:10px; align-items:center; margin:10px 0">
-        <label for="c-channel" style="font-size:13px; color:#6c6c6c">Куда отправить:</label>
-        <select id="c-channel" name="channel">
-          <option value="whatsapp" selected>WhatsApp</option>
-          <option value="telegram">Telegram</option>
-          <option value="both">WhatsApp + Telegram</option>
-        </select>
-      </div>
-
-      <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
-    </form>
-
-    <!-- Правая колонка: быстрые кнопки и справка -->
-  <!-- правая колонка -->
-<div class="sidebar">
-
-  <!-- СТАРЫЙ БЛОК КОНТАКТОВ: скрыт (нужен только для наследия/SEO) -->
-  <aside class="contact-panel" data-contact-panel hidden>
-    <div class="card" style="padding:18px">
-      <h3>WhatsApp</h3>
-      <p><a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Открыть чат</a></p>
-
-      <h3>Telegram</h3>
-      <p><a class="btn" data-telegram href="#" target="_blank" rel="noopener">Открыть чат</a></p>
-
-      <h3>Email</h3>
-      <p><a id="emailLink" href="#">—</a></p>
-
-      <h3 data-i18n="contact.area">Регион</h3>
-      <p>Hérault, Aude, Gard — Languedoc &amp; Roussillon</p>
+        <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
+        <div style="display:flex; gap:10px; margin-top:12px">
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </form>
     </div>
-  </aside>
-
-  <!-- НОВЫЙ ФОТО-БЛОК -->
-  <figure class="contact-photo">
-    <img src="assets/contact-side.jpg"
-         alt="Tours Languedoc by Irène — Languedoc &amp; Roussillon"
-         loading="lazy">
-    <figcaption>Hérault • Aude • Gard — Languedoc &amp; Roussillon</figcaption>
-  </figure>
-</div> <!-- /.sidebar -->
-</div> <!-- /.contact -->
-</section>
-
-
+  </section>
 
   <footer>
     <div class="container">
@@ -478,7 +449,7 @@
     </div>
   </dialog>
 
-  <!-- ===== Основной скрипт страницы ===== -->
+  <!-- ===== Скрипты ===== -->
   <script>
     // ===== i18n RU/FR =====
     const dict = {
@@ -489,6 +460,8 @@
         'hero.text': '10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тo, походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.',
         'form.fast': 'Быстрый запрос', 'form.sub': 'Отправьте пожелания — подберу маршрут и даты в течение дня.',
         'form.name': 'Имя', 'form.contact': 'Контакт (WhatsApp/Telegram)', 'form.msg': 'Сообщение', 'form.send': 'Отправить', 'form.whatsapp':'Написать в WhatsApp',
+        'form.date':'Дата','form.guests':'Гостей',
+        'form.name.ph':'Ваше имя','form.contact.ph':'+33…','form.msg.ph':'Какие даты и интересы?',
         'why.title': 'Почему с нами', 'why.sub': 'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
         'why.1.title': 'Гастрономия у истоков', 'why.1.text': 'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
         'why.3.title': 'История и стиль', 'why.3.text': 'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
@@ -498,7 +471,19 @@
         'format.2.title':'Без посредников', 'format.2.text':'Работаем напрямую с доменами и фермерами — честный продукт и цены.',
         'format.3.title':'Море и актив', 'format.3.text':'SUP, каяк, снорклинг — по погоде и желанию группы.',
         'about.title':'О нас', 'about.text':'Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.',
-        'contact.title':'Контакты и бронь', 'contact.area':'Регион'
+        'contact.title':'Контакты и бронь', 'contact.area':'Регион',
+        'contact.sendto':'Куда отправить:',
+
+        'reviewForm.title':'Добавить отзыв',
+        'reviewForm.name':'Имя',
+        'reviewForm.name.ph':'Ваше имя',
+        'reviewForm.text':'Комментарий',
+        'reviewForm.text.ph':'Расскажите, что понравилось',
+        'reviewForm.photo':'Фото (необязательно)',
+        'reviewForm.choose':'Выбрать файл',
+        'reviewForm.hint':'PNG/JPG, до 5 МБ. Мы уменьшим размер автоматически.',
+        'reviewForm.consent':'Согласен(а) на публикацию отзыва и фото на сайте.',
+        'reviewForm.submit':'Отправить отзыв'
       },
       fr: {
         'top.note': 'Voyages sur mesure dans le Sud de la France',
@@ -507,6 +492,8 @@
         'hero.text': '10 itinéraires prêts + programmes VIP selon vos intérêts : dégustations sur l’étang de Thau, randos au Pic Saint-Loup, Carcassonne médiévale, gorges turquoise de l’Hérault et sports nautiques en Méditerranée.',
         'form.fast': 'Demande rapide', 'form.sub': 'Envoyez vos souhaits — je propose un itinéraire et des dates dans la journée.',
         'form.name': 'Nom', 'form.contact': 'Contact (WhatsApp/Telegram)', 'form.msg': 'Message', 'form.send': 'Envoyer', 'form.whatsapp':'Écrire sur WhatsApp',
+        'form.date':'Date','form.guests':'Personnes',
+        'form.name.ph':'Votre nom','form.contact.ph':'+33…','form.msg.ph':'Dates et centres d’intérêt ?',
         'why.title': 'Pourquoi nous', 'why.sub': 'Expertise locale, transport privé, focus gastronomie et nature.',
         'why.1.title': 'Gastronomie à la source', 'why.1.text': 'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
         'why.3.title': 'Histoire & style', 'why.3.text': 'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
@@ -516,19 +503,43 @@
         'format.2.title':'Sans intermédiaires', 'format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
         'format.3.title':'Mer & activités', 'format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
         'about.title':'À propos', 'about.text':'Je suis Irène, basée en Languedoc, j’organise des voyages intimistes et raffinés. FR/RU.',
-        'contact.title':'Contacts & réservation', 'contact.area':'Région'
+        'contact.title':'Contacts & réservation', 'contact.area':'Région',
+        'contact.sendto':'Envoyer vers :',
+
+        'reviewForm.title':"Ajouter un avis",
+        'reviewForm.name':"Nom",
+        'reviewForm.name.ph':"Votre nom",
+        'reviewForm.text':"Commentaire",
+        'reviewForm.text.ph':"Dites ce qui vous a plu",
+        'reviewForm.photo':"Photo (optionnel)",
+        'reviewForm.choose':"Choisir un fichier",
+        'reviewForm.hint':"PNG/JPG, jusqu’à 5 Mo. Nous réduirons la taille automatiquement.",
+        'reviewForm.consent':"J’autorise la publication de mon avis et de la photo sur le site.",
+        'reviewForm.submit':"Envoyer l’avis"
       }
     };
 
     function getLang(){ return localStorage.getItem('site:lang') || 'ru'; }
     const langLinks = document.querySelectorAll('.lang a');
 
+    // Применение переводов (включая placeholder/value/aria-label)
     function applyLang(l){
       document.documentElement.lang = l;
+      const d = dict[l] || {};
+
       document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const k = el.getAttribute('data-i18n');
-        if (dict[l] && dict[l][k]) el.textContent = dict[l][k];
+        const k = el.dataset.i18n; if (d[k] != null) el.textContent = d[k];
       });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const k = el.dataset.i18nPlaceholder; if (d[k] != null) el.setAttribute('placeholder', d[k]);
+      });
+      document.querySelectorAll('[data-i18n-value]').forEach(el=>{
+        const k = el.dataset.i18nValue; if (d[k] != null) el.value = d[k];
+      });
+      document.querySelectorAll('[data-i18n-aria-label]').forEach(el=>{
+        const k = el.dataset.i18nAriaLabel; if (d[k] != null) el.setAttribute('aria-label', d[k]);
+      });
+
       langLinks.forEach(a=>a.classList.toggle('active', a.dataset.lang===l));
       localStorage.setItem('site:lang', l);
       if (typeof render === 'function') render();
@@ -607,12 +618,10 @@
       }
     ];
 
-    // Глобальные элементы для рендера
     const grid = document.querySelector('#grid');
     const filters = document.querySelector('#filters');
     const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
 
-    // Фильтры (демо)
     const tags = ['🦪 Устрицы','🍷 Вино','🏰 Замки','⛰️ Горы','🌊 Море','🏄 Актив'];
     if(filters && !filters.children.length){
       tags.forEach(t=>{
@@ -627,7 +636,6 @@
       });
     }
 
-    // Рендер одной карточки
     function cardHTML(item){
       const l = getLang();
       const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
@@ -665,7 +673,6 @@
       if(typeof equalizeAll==='function') equalizeAll();
     }
 
-    // Модалка (fallback для карточек без href)
     function openTour(item){
       const m = document.getElementById('tourModal');
       if(!m) return;
@@ -683,7 +690,6 @@
     }
     window.openTour = openTour;
 
-    // Equalize высоты карточек
     function equalize(selector){
       const els = [...document.querySelectorAll(selector)];
       if(!els.length) return;
@@ -700,56 +706,244 @@
     window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
     window.addEventListener('load', equalizeAll);
 
-    // первый рендер + язык
     render();
     applyLang(getLang());
+  </script>
 
-    // WhatsApp кнопка в hero: собрать текст и подставить номер из config.js
-   <script>
-// Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram]
-(function(){
-  function getForm(rootId){ return document.getElementById(rootId) || document.querySelector('[data-contact-form]'); }
-  function buildText(f){
-    const name = f?.querySelector('[name="name"]')?.value.trim() || '';
-    const contact = f?.querySelector('[name="contact"]')?.value.trim() || '';
-    const message = f?.querySelector('[name="message"]')?.value.trim() || '';
-    const hello = (localStorage.getItem('site:lang')||'ru')==='fr' ? 'Bonjour! ' : 'Здравствуйте! ';
-    return `${hello}${name ? 'Меня зовут ' + name + '. ' : ''}${message}\nКонтакт: ${contact}`.trim();
-  }
+  <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] -->
+  <script>
+  (function(){
+    function getForm(rootId){ return document.getElementById(rootId) || document.querySelector('[data-contact-form]'); }
+    function buildText(f){
+      const name = f?.querySelector('[name="name"]')?.value.trim() || '';
+      const contact = f?.querySelector('[name="contact"]')?.value.trim() || '';
+      const message = f?.querySelector('[name="message"]')?.value.trim() || '';
+      const hello = (localStorage.getItem('site:lang')||'ru')==='fr' ? 'Bonjour! ' : 'Здравствуйте! ';
+      return `${hello}${name ? 'Меня зовут ' + name + '. ' : ''}${message}\nКонтакт: ${contact}`.trim();
+    }
 
-  // WhatsApp
-  document.querySelectorAll('a[data-whatsapp]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-      const wa = String((window.APP_CONFIG && APP_CONFIG.whatsapp) || '').replace(/\D/g,'');
-      if (!wa) { alert('В config.js не задан номер WhatsApp'); e.preventDefault(); return; }
-      const f = btn.closest('form') || getForm('quickForm');
-      const text = buildText(f);
-      btn.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+    document.querySelectorAll('a[data-whatsapp]').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const wa = String((window.APP_CONFIG && APP_CONFIG.whatsapp) || '').replace(/\D/g,'');
+        if (!wa) { e.preventDefault(); alert('В config.js не задан номер WhatsApp'); return; }
+        const f = btn.closest('form') || getForm('quickForm');
+        const text = buildText(f);
+        btn.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+      });
     });
-  });
 
-  // Telegram
-  document.querySelectorAll('a[data-telegram]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const f = btn.closest('form') || getForm('quickForm');
-      const text = buildText(f);
-      btn.href = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+    document.querySelectorAll('a[data-telegram]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const f = btn.closest('form') || getForm('quickForm');
+        const text = buildText(f);
+        btn.href = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+      });
     });
-  });
-})();
-</script>
+  })();
+  </script>
 
+  <!-- mailto (на будущее, если понадобится) -->
+  <script>
+  (function(){
+    const el   = document.getElementById('emailLink');
+    const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
+    if (el && mail) {
+      const sub = encodeURIComponent('Запрос с сайта');
+      el.href = `mailto:${mail}?subject=${sub}`;
+      el.textContent = mail;
+    }
+  })();
+  </script>
 
- 
+  <!-- Конфиг + чат-виджет -->
+  <script>
+    window.APP_CONFIG = window.APP_CONFIG || {};
+    window.APP_CONFIG.whatsapp = '+33 6 12 34 56 78'; /* твой номер */
+    // window.APP_CONFIG.email = 'you@example.com';
+  </script>
+  <script src="assets/js/chat-widget.js" defer></script>
 
-  <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
-<script>
-  window.APP_CONFIG = window.APP_CONFIG || {};
-  window.APP_CONFIG.whatsapp = '+33 6 12 34 56 78'; /* твой номер */
-</script>
-<script src="assets/js/chat-widget.js" defer></script>
+  <!-- Отзывы: форма + локальное хранение + WA/TG -->
+  <script>
+  (function(){
+    if(window.__REVIEWS_INIT__) return; window.__REVIEWS_INIT__=true;
 
+    const $ = (s, r=document)=>r.querySelector(s);
 
-  
+    const about = $('#about'); if(!about) return;
+    const container = about.querySelector('.about') || about;
+    const column = container.querySelector(':scope > div') || container;
+
+    let reviewsRoot = column.querySelector('.reviews');
+    if(!reviewsRoot){
+      reviewsRoot = document.createElement('div');
+      reviewsRoot.className = 'reviews';
+      const p = column.querySelector('p');
+      (p && p.parentNode) ? p.parentNode.insertBefore(reviewsRoot, p.nextSibling) : column.appendChild(reviewsRoot);
+    }
+
+    const form = document.createElement('form');
+    form.id = 'review-form';
+    form.className = 'review-form';
+    form.noValidate = true;
+    form.autocomplete = 'on';
+    form.innerHTML = `
+      <h4 data-i18n="reviewForm.title">Добавить отзыв</h4>
+
+      <div class="rf-row">
+        <label for="rf-name" data-i18n="reviewForm.name">Имя</label>
+        <input id="rf-name" name="name" type="text" required maxlength="40"
+               placeholder="Ваше имя" data-i18n-placeholder="reviewForm.name.ph"/>
+      </div>
+
+      <div class="rf-row">
+        <label for="rf-text" data-i18n="reviewForm.text">Комментарий</label>
+        <textarea id="rf-text" name="text" required rows="3" maxlength="500"
+                  placeholder="Расскажите, что понравилось"
+                  data-i18n-placeholder="reviewForm.text.ph"></textarea>
+      </div>
+
+      <div class="rf-row">
+        <label data-i18n="reviewForm.photo">Фото (необязательно)</label>
+        <div id="rf-drop" class="file-drop" tabindex="0"
+             data-i18n-aria-label="reviewForm.photo"
+             aria-label="Перетащите фото или выберите файл">
+          <input id="rf-photo" name="photo" type="file" accept="image/*" hidden />
+          <div class="file-drop-ui">
+            <button type="button" id="rf-choose" class="btn" data-i18n="reviewForm.choose">Выбрать файл</button>
+            <span class="hint" data-i18n="reviewForm.hint">PNG/JPG, до 5 МБ. Мы уменьшим размер автоматически.</span>
+          </div>
+          <img id="rf-preview" alt="Предпросмотр фото" class="preview" hidden />
+        </div>
+      </div>
+
+      <div class="rf-row rf-actions">
+        <label class="rf-consent">
+          <input id="rf-consent" type="checkbox" required />
+          <span data-i18n="reviewForm.consent">Согласен(а) на публикацию отзыва и фото на сайте.</span>
+        </label>
+        <button type="submit" class="btn btn-primary" data-i18n="reviewForm.submit">Отправить отзыв</button>
+      </div>
+
+      <div class="rf-row rf-share">
+        <button type="button" id="rf-wa" class="btn">WhatsApp</button>
+        <button type="button" id="rf-tg" class="btn">Telegram</button>
+      </div>
+
+      <p id="rf-msg" class="rf-msg" role="status" aria-live="polite"></p>
+    `;
+    reviewsRoot.insertAdjacentElement('afterend', form);
+
+    // Перевести только что вставленные элементы под текущий язык
+    if (typeof applyLang === 'function') applyLang(getLang());
+
+    const REVIEWS_KEY = 'site:reviews';
+    const inputName = form.querySelector('#rf-name');
+    const inputText = form.querySelector('#rf-text');
+    const inputPhoto = form.querySelector('#rf-photo');
+    const drop = form.querySelector('#rf-drop');
+    const chooseBtn = form.querySelector('#rf-choose');
+    const preview = form.querySelector('#rf-preview');
+    const msg = form.querySelector('#rf-msg');
+    const consent = form.querySelector('#rf-consent');
+    const waBtn = form.querySelector('#rf-wa');
+    const tgBtn = form.querySelector('#rf-tg');
+
+    function sanitize(s=''){return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+    function initials(name){return String(name).trim().split(/\s+/).slice(0,2).map(p=>p[0]?.toUpperCase()||'').join('');}
+    function toast(text){msg.textContent=text; setTimeout(()=>msg.textContent='', 4000);}
+    function store(arr){try{localStorage.setItem(REVIEWS_KEY, JSON.stringify(arr));}catch(e){}}
+    function load(){try{const raw=localStorage.getItem(REVIEWS_KEY); return raw?JSON.parse(raw):[];}catch(e){return[]}}
+
+    function addReviewToDOM({name,text,photo}){
+      const review = document.createElement('div'); review.className='review';
+      const who = document.createElement('div'); who.className='who';
+      const avatar = document.createElement('div'); avatar.className='avatar';
+      if(photo){ avatar.style.backgroundImage = `url(${photo})`; avatar.style.backgroundSize='cover'; avatar.style.backgroundPosition='center'; }
+      else { avatar.textContent = initials(name); avatar.style.background = 'var(--brand,#0D2B1E)'; }
+      const strong = document.createElement('strong'); strong.textContent = name;
+      who.append(avatar,strong);
+      const p = document.createElement('p'); p.textContent = text;
+      review.append(who,p);
+      reviewsRoot.prepend(review);
+    }
+
+    function dataURLFromFile(file){return new Promise((res,rej)=>{const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file);});}
+    function resizeImage(dataURL, maxSide=512){return new Promise((resolve)=>{const img=new Image(); img.onload=()=>{const r=Math.min(maxSide/img.width, maxSide/img.height, 1); const w=Math.round(img.width*r), h=Math.round(img.height*r); const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); resolve(c.toDataURL('image/jpeg',0.85));}; img.src=dataURL;});}
+
+    load().forEach(addReviewToDOM);
+
+    chooseBtn.addEventListener('click',()=>inputPhoto.click());
+    ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
+    ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');}));
+    drop.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0]; if(f) handleFile(f);});
+    inputPhoto.addEventListener('change',()=>{const f=inputPhoto.files?.[0]; if(f) handleFile(f);});
+
+    async function handleFile(file){
+      if(!/^image\//.test(file.type)) return toast('Выберите изображение');
+      if(file.size>5*1024*1024) return toast('Файл больше 5 МБ — выберите поменьше');
+      const raw = await dataURLFromFile(file);
+      const small = await resizeImage(raw, 512);
+      preview.src = small; preview.hidden = false; preview.dataset.value = small;
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = sanitize(inputName.value.trim());
+      const text = sanitize(inputText.value.trim());
+      const photo = preview.dataset.value || '';
+      if(!name){ inputName.focus(); return toast('Введите имя'); }
+      if(!text){ inputText.focus(); return toast('Напишите комментарий'); }
+      if(!consent.checked){ consent.focus(); return toast('Нужно согласие на публикацию'); }
+
+      const review = {name, text, photo, ts: Date.now()};
+      const arr = load(); arr.unshift(review); store(arr.slice(0,100));
+      addReviewToDOM(review);
+
+      form.reset(); preview.hidden = true; delete preview.dataset.value;
+      toast('Спасибо! Ваш отзыв опубликован локально.');
+    });
+
+    function currentOrLatestReview(){
+      const curName = inputName.value.trim();
+      const curText = inputText.value.trim();
+      const curPhoto = !!preview.dataset.value;
+      if(curName || curText){
+        return {name: sanitize(curName||'—'), text: sanitize(curText||'—'), photo: curPhoto, ts: Date.now()};
+        }
+      const arr = load();
+      return arr[0] || null;
+    }
+    function makeShareText(r){
+      const url = (window.APP_CONFIG?.siteUrl || window.location.origin + window.location.pathname) + '#about';
+      const lines = [
+        'Новый отзыв с сайта Tours Languedoc by Irène',
+        `Имя: ${r.name}`,
+        `Комментарий: ${r.text}`,
+        `Фото приложено: ${r.photo ? 'да' : 'нет'}`,
+        `Страница: ${url}`
+      ];
+      return { text: lines.join('\n'), url };
+    }
+    waBtn.addEventListener('click', ()=>{
+      const r = currentOrLatestReview();
+      if(!r) return toast('Пока нет ни одного отзыва');
+      const { text } = makeShareText(r);
+      const phone = String((window.APP_CONFIG && APP_CONFIG.whatsapp) || '').replace(/\D/g,'');
+      if(!phone) return toast('В config.js не задан номер WhatsApp');
+      const href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+      window.open(href, '_blank','noopener');
+    });
+    tgBtn.addEventListener('click', ()=>{
+      const r = currentOrLatestReview();
+      if(!r) return toast('Пока нет ни одного отзыва');
+      const { text, url } = makeShareText(r);
+      const href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+      window.open(href, '_blank','noopener');
+    });
+  })();
+  </script>
+
 </body>
 </html>
+
