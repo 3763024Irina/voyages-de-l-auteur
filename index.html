@@ -737,20 +737,18 @@
     });
   });
 })();
+<script>
+/* Проставить mailto в правой колонке контактов из APP_CONFIG.email */
+(function(){
+  const el   = document.getElementById('emailLink');        // <a id="emailLink">email</a>
+  const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
+  if (el && mail) {
+    const sub = encodeURIComponent('Запрос с сайта');
+    el.href = `mailto:${mail}?subject=${sub}`;
+    el.textContent = mail;
+  }
+})();
 </script>
-
-
-    // Проставить mailto в правой колонке контактов из APP_CONFIG.email
-    (function(){
-      const el = document.getElementById('emailLink');
-      const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
-      if (el && mail) {
-        const sub = encodeURIComponent('Запрос с сайта');
-        el.href = `mailto:${mail}?subject=${sub}`;
-        el.textContent = mail;
-      }
-    })();
-  </script>
 
   <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
 <script>
