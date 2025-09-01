@@ -723,10 +723,11 @@
 
   <!-- контактная логика (отправка форм) — подключаем ОДИН раз в самом конце -->
 <script>
-  window.APP_CONFIG = { whatsapp: '33759644813', ADMIN_SECRET: 'capion2025' };
+  window.APP_CONFIG = window.APP_CONFIG || {};
+  window.APP_CONFIG.whatsapp = '+33 6 12 34 56 78'; /* твой номер */
 </script>
-<script src="/config.js" defer></script>
-<script src="/assets/js/contact.js" defer></script>
+<script src="/assets/js/chat-widget.js" defer></script>
+
   
 </body>
 </html>
