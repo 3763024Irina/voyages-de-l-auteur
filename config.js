@@ -1,11 +1,11 @@
 /* config.js — admin + базовые ссылки WA/TG (без email/needguide, без бота)
    Телеграм всегда через окно шаринга (text подставится на лету в contact.js)
 */
-window.APP_CONFIG = window.APP_CONFIG || {
-  // Укажи свой номер (тот же для WA/TG): только цифры/знаки — мы очистим
-  // whatsapp: '33759644813',
-  // ADMIN_SECRET: 'capion2025'
+window.APP_CONFIG = {
+  whatsapp: '33759644813',
+  telegram_user: 'de_iren' // <-- ваш @юзер без @
 };
+
 
 (function () {
   if (window.__CONFIG_INIT__) { console.warn('[config.js] already initialized'); return; }
