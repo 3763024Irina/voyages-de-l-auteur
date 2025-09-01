@@ -764,14 +764,13 @@
   if(window.__REVIEWS_INIT__) return; window.__REVIEWS_INIT__=true;
 
   const $ = (s, r=document)=>r.querySelector(s);
+  const digits = (s='') => String(s).replace(/\D/g,'');
 
-  // 1) найдём секцию "О нас"
-  const about = $('#about');
-  if(!about) return;
+  // ===== 1) Найдём секцию About и подготовим контейнеры
+  const about = $('#about'); if(!about) return;
   const container = about.querySelector('.about') || about;
   const column = container.querySelector(':scope > div') || container;
 
-  // 2) создадим .reviews, если его нет
   let reviewsRoot = column.querySelector('.reviews');
   if(!reviewsRoot){
     reviewsRoot = document.createElement('div');
@@ -780,7 +779,7 @@
     (p && p.parentNode) ? p.parentNode.insertBefore(reviewsRoot, p.nextSibling) : column.appendChild(reviewsRoot);
   }
 
-  // 3) создадим форму
+  // ===== 2) Создадим форму + панель действий
   const form = document.createElement('form');
   form.id = 'review-form';
   form.className = 'review-form';
@@ -801,7 +800,7 @@
       <div id="rf-drop" class="file-drop" tabindex="0" aria-label="Перетащите фото или выберите файл">
         <input id="rf-photo" name="photo" type="file" accept="image/*" hidden />
         <div class="file-drop-ui">
-          <button type="button" id="rf-choose" class="btn" data-i18n="reviewForm.choose">Выбрать файл</button>
+          <button type="button" id="rf-choose" class="btn btn-outline" data-i18n="reviewForm.choose">Выбрать файл</button>
           <span class="hint" data-i18n="reviewForm.hint">PNG/JPG, до 5 МБ. Мы уменьшим размер автоматически.</span>
         </div>
         <img id="rf-preview" alt="Предпросмотр фото" class="preview" hidden />
@@ -814,12 +813,18 @@
       </label>
       <button type="submit" class="btn btn-primary" data-i18n="reviewForm.submit">Отправить отзыв</button>
     </div>
+    <div class="rf-row rf-share">
+      <button type="button" id="rf-wa" class="btn btn-outline btn-wa">Отправить в WhatsApp</button>
+      <button type="button" id="rf-tg" class="btn btn-outline btn-tg">Отправить в Telegram</button>
+      <span style="flex:1"></span>
+      <button type="button" id="rf-csv" class="btn btn-outline">Экспорт CSV</button>
+      <button type="button" id="rf-json" class="btn btn-outline">Экспорт JSON</button>
+    </div>
     <p id="rf-msg" class="rf-msg" role="status" aria-live="polite"></p>
   `;
-  // вставим форму сразу после списка отзывов
   reviewsRoot.insertAdjacentElement('afterend', form);
 
-  // 4) логика: превью, сжатие, рендер, сохранение
+  // ===== 3) Логика отзывов (превью, сжатие, рендер, localStorage)
   const REVIEWS_KEY = 'site:reviews';
   const inputName = form.querySelector('#rf-name');
   const inputText = form.querySelector('#rf-text');
@@ -841,10 +846,7 @@
     const who = document.createElement('div'); who.className='who';
     const avatar = document.createElement('div'); avatar.className='avatar';
     if(photo){ avatar.style.backgroundImage = `url(${photo})`; }
-    else {
-      avatar.textContent = initials(name);
-      avatar.style.background = 'var(--brand,#0D2B1E)';
-    }
+    else { avatar.textContent = initials(name); avatar.style.background = 'var(--brand,#0D2B1E)'; }
     const strong = document.createElement('strong'); strong.textContent = name;
     who.append(avatar,strong);
     const p = document.createElement('p'); p.textContent = text;
@@ -855,10 +857,9 @@
   function dataURLFromFile(file){return new Promise((res,rej)=>{const fr=new FileReader(); fr.onload=()=>res(fr.result); fr.onerror=rej; fr.readAsDataURL(file);});}
   function resizeImage(dataURL, maxSide=512){return new Promise((resolve)=>{const img=new Image(); img.onload=()=>{const r=Math.min(maxSide/img.width, maxSide/img.height, 1); const w=Math.round(img.width*r), h=Math.round(img.height*r); const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); resolve(c.toDataURL('image/jpeg',0.85));}; img.src=dataURL;});}
 
-  // загрузим сохранённые отзывы
+  // init
   load().forEach(addReviewToDOM);
 
-  // DnD + выбор файла
   chooseBtn.addEventListener('click',()=>inputPhoto.click());
   ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('drag');}));
   ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('drag');}));
@@ -873,7 +874,6 @@
     preview.src = small; preview.hidden = false; preview.dataset.value = small;
   }
 
-  // отправка формы
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
     const name = sanitize(inputName.value.trim());
@@ -890,9 +890,94 @@
     form.reset(); preview.hidden = true; delete preview.dataset.value;
     toast('Спасибо! Ваш отзыв опубликован локально.');
   });
+
+  // ===== 4) Шаринг в WhatsApp / Telegram (текст)
+  const waBtn = form.querySelector('#rf-wa');
+  const tgBtn = form.querySelector('#rf-tg');
+
+  function currentOrLatestReview(){
+    const curName = inputName.value.trim();
+    const curText = inputText.value.trim();
+    const curPhoto = !!preview.dataset.value;
+    if(curName || curText){
+      return {name: sanitize(curName||'—'), text: sanitize(curText||'—'), photo: curPhoto, ts: Date.now()};
+    }
+    const arr = load();
+    return arr[0] || null;
+  }
+
+  function makeShareText(r){
+    const url = (window.APP_CONFIG?.siteUrl || window.location.origin + window.location.pathname) + '#about';
+    const lines = [
+      'Новый отзыв с сайта Tours Languedoc by Irène',
+      `Имя: ${r.name}`,
+      `Комментарий: ${r.text}`,
+      `Фото приложено: ${r.photo ? 'да' : 'нет'}`,
+      `Страница: ${url}`
+    ];
+    return { text: lines.join('\n'), url };
+  }
+
+  waBtn.addEventListener('click', ()=>{
+    const r = currentOrLatestReview();
+    if(!r) return toast('Пока нет ни одного отзыва');
+    const { text } = makeShareText(r);
+    const phone = digits(window.APP_CONFIG?.whatsapp || '');
+    const href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}` 
+                       : `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(href, '_blank','noopener');
+  });
+
+  tgBtn.addEventListener('click', ()=>{
+    const r = currentOrLatestReview();
+    if(!r) return toast('Пока нет ни одного отзыва');
+    const { text, url } = makeShareText(r);
+    const href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    window.open(href, '_blank','noopener');
+  });
+
+  // ===== 5) Экспорт CSV / JSON
+  const csvBtn = form.querySelector('#rf-csv');
+  const jsonBtn = form.querySelector('#rf-json');
+
+  function toCSV(arr){
+    const q = s => `"${String(s??'').replace(/"/g,'""')}"`;
+    const rows = [['name','text','has_photo','timestamp_iso']];
+    arr.forEach(r=>{
+      rows.push([
+        q(r.name),
+        q(r.text),
+        r.photo ? '1' : '0',
+        new Date(r.ts||Date.now()).toISOString()
+      ]);
+    });
+    const csv = rows.map(row=>row.join(',')).join('\r\n');
+    return '\uFEFF' + csv; // BOM для Excel
+  }
+  function download(filename, content, type){
+    const blob = new Blob([content], {type});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 500);
+  }
+  function today(){ const d=new Date(); const p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`; }
+
+  csvBtn.addEventListener('click', ()=>{
+    const arr = load();
+    if(!arr.length) return toast('Нет данных для экспорта');
+    download(`reviews-${today()}.csv`, toCSV(arr), 'text/csv;charset=utf-8;');
+  });
+  jsonBtn.addEventListener('click', ()=>{
+    const arr = load();
+    if(!arr.length) return toast('Нет данных для экспорта');
+    // ВНИМАНИЕ: JSON включает фото (dataURL), файл может быть большим
+    download(`reviews-${today()}.json`, JSON.stringify(arr, null, 2), 'application/json;charset=utf-8;');
+  });
 })();
 </script>
-
   
 </body>
 </html>
