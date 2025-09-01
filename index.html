@@ -889,93 +889,9 @@
     toast('Спасибо! Ваш отзыв опубликован локально.');
   });
 
-  // ===== 4) Шаринг в WhatsApp / Telegram (текст)
-  const waBtn = form.querySelector('#rf-wa');
-  const tgBtn = form.querySelector('#rf-tg');
+  
 
-  function currentOrLatestReview(){
-    const curName = inputName.value.trim();
-    const curText = inputText.value.trim();
-    const curPhoto = !!preview.dataset.value;
-    if(curName || curText){
-      return {name: sanitize(curName||'—'), text: sanitize(curText||'—'), photo: curPhoto, ts: Date.now()};
-    }
-    const arr = load();
-    return arr[0] || null;
-  }
-
-  function makeShareText(r){
-    const url = (window.APP_CONFIG?.siteUrl || window.location.origin + window.location.pathname) + '#about';
-    const lines = [
-      'Новый отзыв с сайта Tours Languedoc by Irène',
-      `Имя: ${r.name}`,
-      `Комментарий: ${r.text}`,
-      `Фото приложено: ${r.photo ? 'да' : 'нет'}`,
-      `Страница: ${url}`
-    ];
-    return { text: lines.join('\n'), url };
-  }
-
-  waBtn.addEventListener('click', ()=>{
-    const r = currentOrLatestReview();
-    if(!r) return toast('Пока нет ни одного отзыва');
-    const { text } = makeShareText(r);
-    const phone = digits(window.APP_CONFIG?.whatsapp || '');
-    const href = phone ? `https://wa.me/${phone}?text=${encodeURIComponent(text)}` 
-                       : `https://wa.me/?text=${encodeURIComponent(text)}`;
-    window.open(href, '_blank','noopener');
-  });
-
-  tgBtn.addEventListener('click', ()=>{
-    const r = currentOrLatestReview();
-    if(!r) return toast('Пока нет ни одного отзыва');
-    const { text, url } = makeShareText(r);
-    const href = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
-    window.open(href, '_blank','noopener');
-  });
-
-  // ===== 5) Экспорт CSV / JSON
-  const csvBtn = form.querySelector('#rf-csv');
-  const jsonBtn = form.querySelector('#rf-json');
-
-  function toCSV(arr){
-    const q = s => `"${String(s??'').replace(/"/g,'""')}"`;
-    const rows = [['name','text','has_photo','timestamp_iso']];
-    arr.forEach(r=>{
-      rows.push([
-        q(r.name),
-        q(r.text),
-        r.photo ? '1' : '0',
-        new Date(r.ts||Date.now()).toISOString()
-      ]);
-    });
-    const csv = rows.map(row=>row.join(',')).join('\r\n');
-    return '\uFEFF' + csv; // BOM для Excel
-  }
-  function download(filename, content, type){
-    const blob = new Blob([content], {type});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();}, 500);
-  }
-  function today(){ const d=new Date(); const p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`; }
-
-  csvBtn.addEventListener('click', ()=>{
-    const arr = load();
-    if(!arr.length) return toast('Нет данных для экспорта');
-    download(`reviews-${today()}.csv`, toCSV(arr), 'text/csv;charset=utf-8;');
-  });
-  jsonBtn.addEventListener('click', ()=>{
-    const arr = load();
-    if(!arr.length) return toast('Нет данных для экспорта');
-    // ВНИМАНИЕ: JSON включает фото (dataURL), файл может быть большим
-    download(`reviews-${today()}.json`, JSON.stringify(arr, null, 2), 'application/json;charset=utf-8;');
-  });
-})();
-</script>
+ 
   
 </body>
 </html>
