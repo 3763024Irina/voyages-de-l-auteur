@@ -565,30 +565,41 @@ nav a.wa:hover{ background:#21be5a; }
 .btn-primary{background:var(--brand,#0D2B1E);color:#fff;border-color:transparent}
 .rf-msg{margin:6px 0 0;font-size:13px;color:var(--muted,#6b7b73)}
 
-/* ===== ABOUT: убрать правое фото и выровнять секцию ===== */
+/* ===== ABOUT: убрать правое фото и привести секцию ===== */
 #about .portrait{ display:none !important; }
 
 #about .about{
   display:grid;
-  grid-template-columns: 1fr;            /* была 2-колоночная — делаем 1 */
+  grid-template-columns: 1fr;   /* всегда одна колонка */
   gap: 18px;
-  max-width: 920px;                       /* аккуратная ширина блока */
+  max-width: 920px;
   margin-inline: auto;
 }
 
-/* заголовок секции по центру (по желанию) */
 #about .section-title{
   text-align:center;
-  margin-bottom: 10px;
+  margin: 0 0 12px;
 }
 
-/* ===== Отзывы — карточки, сетка, приятные отступы ===== */
+/* чуть воздуха вокруг абзаца “о нас” */
+#about p[data-i18n="about.text"]{
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink,#0b1b14);
+  margin: 4px 0 8px;
+}
+
+/* ===== Отзывы — карточки ===== */
 #about .reviews{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
   gap: 12px;
   margin-top: 12px;
 }
+@media (max-width: 640px){
+  #about .reviews{ grid-template-columns: 1fr; }
+}
+
 #about .review{
   background:#fff;
   border:1px solid rgba(0,0,0,.08);
@@ -602,10 +613,11 @@ nav a.wa:hover{ background:#21be5a; }
 #about .review .who .avatar{
   width:36px; height:36px; border-radius:50%;
   background:#eae9e3; background-size:cover; background-position:center;
-  display:grid; place-items:center; color:#fff; font-weight:600;
+  display:grid; place-items:center; color:#fff; font-weight:600; font-size:12px;
 }
+#about .review p{ margin:0; }
 
-/* ===== Форма отзыва — под стиль сайта ===== */
+/* ===== Форма отзыва ===== */
 #about .review-form{
   margin-top: 16px;
   padding: 16px;
@@ -616,14 +628,27 @@ nav a.wa:hover{ background:#21be5a; }
 #about .review-form h4{ margin:0 0 10px; font-size:18px; }
 #about .rf-row{ display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
 #about .rf-row label{ font-size:13px; color:var(--muted,#6b7b73); }
+
 #about .review-form input[type="text"],
-#about .review-form textarea{
-  width:100%; padding:10px 12px; border:1px solid rgba(0,0,0,.15);
+#about .review-form textarea,
+#about .review-form select{
+  width:100%; padding:10px 12px;
+  border:1px solid rgba(0,0,0,.15);
   border-radius:10px; background:#fff; font:inherit;
 }
-#about .review-form textarea{ resize:vertical; }
+#about .review-form textarea{ resize:vertical; min-height:96px; }
 
-/* загрузка фото (даже если не используешь — выглядит ровно) */
+/* фокус-стили для доступности */
+#about .review-form input:focus-visible,
+#about .review-form textarea:focus-visible,
+#about .review-form select:focus-visible,
+#about .btn:focus-visible,
+#about .file-drop:focus-visible{
+  outline:2px solid var(--accent,#C9B886);
+  outline-offset:2px;
+}
+
+/* Загрузка фото */
 #about .file-drop{
   border:1.5px dashed rgba(0,0,0,.2);
   border-radius:12px; padding:12px;
@@ -636,7 +661,7 @@ nav a.wa:hover{ background:#21be5a; }
   border:1px solid rgba(0,0,0,.1);
 }
 
-/* кнопки */
+/* Кнопки */
 #about .btn{ padding:8px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.15); background:#fff; cursor:pointer; }
 #about .btn:hover{ filter:brightness(0.98); }
 #about .btn-primary{ background:var(--brand,#0D2B1E); color:#fff; border-color:transparent; }
@@ -648,13 +673,4 @@ nav a.wa:hover{ background:#21be5a; }
 }
 #about .rf-consent{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted,#6b7b73); }
 #about .rf-share{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px; }
-
 #about .rf-msg{ margin:6px 0 0; font-size:13px; color:var(--muted,#6b7b73); }
-
-/* чуть воздуха вокруг абзаца “о нас” */
-#about p[data-i18n="about.text"]{
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink,#0b1b14);
-  margin: 4px 0 8px;
-}
