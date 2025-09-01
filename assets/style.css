@@ -541,3 +541,26 @@ nav a.wa:hover{ background:#21be5a; }
 }
 .contact-photo img{ width:100%; height:auto; display:block; }
 .contact-photo figcaption{ padding:10px 14px; font-size:14px; color:#51615A; background:#fff; }
+
+/* Reviews + Form (автономный) */
+.reviews{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.review{padding:10px 12px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:#fff}
+.review .who{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.review .who .avatar{width:36px;height:36px;border-radius:50%;background:#eae9e3;background-size:cover;background-position:center;display:grid;place-items:center;color:#fff;font-weight:600}
+.review-form{margin-top:16px;padding:16px;border:1px solid rgba(0,0,0,.08);border-radius:14px;background:#fff}
+.review-form h4{margin:0 0 12px;font-size:18px}
+.rf-row{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.rf-row label{font-size:13px;color:var(--muted,#6b7b73)}
+.review-form input[type="text"], .review-form textarea{
+  width:100%;padding:10px 12px;border:1px solid rgba(0,0,0,.15);border-radius:10px;background:#fff;font:inherit
+}
+.review-form textarea{resize:vertical}
+.file-drop{border:1.5px dashed rgba(0,0,0,.2);border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px;background:#f9f9f6}
+.file-drop .btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.15);background:#fff;cursor:pointer}
+.file-drop .hint{font-size:12px;color:var(--muted,#6b7b73);margin-left:8px}
+.file-drop .preview{width:64px;height:64px;border-radius:12px;object-fit:cover;border:1px solid rgba(0,0,0,.1)}
+.rf-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rf-consent{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted,#6b7b73)}
+.btn-primary{background:var(--brand,#0D2B1E);color:#fff;border-color:transparent}
+.rf-msg{margin:6px 0 0;font-size:13px;color:var(--muted,#6b7b73)}
+
