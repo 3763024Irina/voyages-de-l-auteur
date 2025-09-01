@@ -535,3 +535,9 @@ nav a.wa:hover{ background:#21be5a; }
   .card-title { font-size: 1rem; }
 }
 
+.contact-photo{
+  margin:0; border-radius:16px; overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.08); background:#fff;
+}
+.contact-photo img{ width:100%; height:auto; display:block; }
+.contact-photo figcaption{ padding:10px 14px; font-size:14px; color:#51615A; background:#fff; }
