@@ -12,7 +12,7 @@
   <meta property="og:image" content="../assets/Etang-de-Thau.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
-  <!-- Favicons (по желанию можно убрать) -->
+  <!-- Favicons (опционально) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -35,7 +35,6 @@
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
-    /* Header (как в эталонной странице) */
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
     .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:14px}
@@ -50,7 +49,6 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* HERO */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.68)}
@@ -99,6 +97,14 @@
     table.tarifs{width:100%; border-collapse:collapse}
     table.tarifs th, table.tarifs td{padding:8px 0; text-align:left; border-bottom:1px solid #f0f0f0}
 
+    /* Booking form (унифицировано) */
+    .fields{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .fields .full{grid-column:1/-1}
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+    .muted{color:var(--muted); font-size:12px}
+
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
@@ -107,6 +113,7 @@
       .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
+      .fields{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -115,7 +122,12 @@
     }
   </style>
 </head>
-<body>
+
+<body
+  data-program
+  data-program-title="LUX Étang de Thau — 1 день"
+  data-program-id="THAU-LUX-1D"
+>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -127,12 +139,11 @@
       <nav class="lang">
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
           <button id="btn-fr">FR</button>
+          <a class="cta" href="#book" id="goBook" data-i18n="nav_book" style="margin-left:10px">Забронировать</a>
         </div>
       </nav>
     </div>
@@ -167,7 +178,8 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -232,23 +244,69 @@
     </div>
   </section>
 
-  <!-- BOOKING -->
+  <!-- BOOKING (унифицировано под contact.js) -->
   <section id="book" class="container">
-    <div class="card" style="padding:18px">
+    <div class="card" data-program data-program-title="LUX Étang de Thau — 1 день" data-program-id="THAU-LUX-1D">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
-      <form onsubmit="openMail(event)">
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-        <input id="f-name" name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-        <input id="f-contact" name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Дата и состав</label>
-        <textarea id="f-message" name="message" placeholder="Желаемые даты, кол-во гостей, нужны ли опции (закат на воде/второй домен/мастер-класс)?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+
+      <form class="fields" data-contact-form data-channel="telegram">
+        <div>
+          <label for="date" data-i18n="label_date">Дата</label>
+          <input id="date" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+        </div>
+        <div>
+          <label for="start" data-i18n="label_start">Старт</label>
+          <select id="start" name="start">
+            <option value="Marseillan">Marseillan</option>
+            <option value="Sète">Sète</option>
+            <option value="Cap d’Agde">Cap d’Agde</option>
+          </select>
+        </div>
+        <div>
+          <label for="pickup" data-i18n="label_pickup">Пикап (отель/адрес)</label>
+          <input id="pickup" name="pickup" type="text" placeholder="Hotel, rue…">
+        </div>
+
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+        </div>
+        <div class="full">
+          <label for="message" data-i18n="label_message">Комментарий</label>
+          <textarea id="message" name="message" placeholder="Желаемые даты, состав, нужны ли опции (закат/2-й домен/мастер-класс)…"></textarea>
+        </div>
+
+        <div class="full">
+          <label data-i18n="label_total">Итог</label>
+          <div class="price" id="totalOut">—</div>
+          <p class="muted" data-i18n="total_note">База за 1–2 гостей + доплата за каждого сверх 2 (сезон LS/HS). Обед — на месте.</p>
+        </div>
+
+        <div class="full" style="display:flex; gap:10px; align-items:center; margin-top:6px">
+          <label style="margin:0; font-weight:600">Куда отправить:</label>
+          <select name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+
+        <div class="full" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
+      <p class="muted" style="margin-top:10px">ID: THAU-LUX-1D</p>
     </div>
   </section>
 
@@ -322,7 +380,7 @@
       ]
     };
 
-    /* ====== i18n (как в эталонной странице) ====== */
+    /* ====== i18n ====== */
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -332,8 +390,8 @@
         ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
-        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
+        nav_all:'← Все программы', nav_book:'Забронировать',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
         altHero:'Étang de Thau — лагуна, устрицы и лодка',
         altG1:'Лагуна Thau и устричные плантации', altG2:'Плато морепродуктов Tarbouriech', altG3:'Вид на лагуну Thau с причала',
@@ -362,12 +420,18 @@
         tar_base:'База за 1–2 гостей',
         tar_pp:'За каждого сверх 2',
         tar_grid:'Примеры (цена за группу)',
+        tar_max:'макс.',
+        tar_hdr_guests:'Гостей',
+        tar_hdr_sum:'Сумма',
+        tar_hdr_pp:'≈ €/чел',
 
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и предложим время старта и брони.',
-        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Дата и состав',
-        ph_name:'Ваше имя', ph_contact:'+33… или email', ph_message:'Желаемые даты, кол-во гостей, нужны ли опции (закат/второй домен/мастер-класс)?',
-        btn_send:'Отправить', btn_whatsapp2:'Написать в WhatsApp',
+        label_date:'Дата', label_guests:'Гостей', label_start:'Старт', label_pickup:'Пикап (отель/адрес)',
+        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+        label_total:'Итог', total_note:'База за 1–2 + доплата за каждого сверх 2 (LS/HS). Обед — на месте.',
+        btn_send_form:'Отправить',
+
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
         mail_subject:'Запрос: LUX Étang de Thau (сайт)'
       },
@@ -379,8 +443,8 @@
         ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vin. Sans marche.',
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
+        nav_all:'← Toutes les offres', nav_book:'Réserver',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, tables ostréicoles, Tarbouriech et quais de Marseillan.',
         altHero:'Étang de Thau — lagune, huîtres et bateau',
         altG1:'Lagune de Thau et parcs ostréicoles', altG2:'Plateau de fruits de mer Tarbouriech', altG3:'Vue sur la lagune depuis le quai',
@@ -409,21 +473,34 @@
         tar_base:'Base pour 1–2 pers.',
         tar_pp:'Par pers. au-delà de 2',
         tar_grid:'Exemples (prix par groupe)',
+        tar_max:'max.',
+        tar_hdr_guests:'Pers.',
+        tar_hdr_sum:'Total',
+        tar_hdr_pp:'≈ €/pers.',
 
         form_title:'Demande rapide / réservation',
         form_sub:'Réponse sous 24h avec proposition d’horaire et de réservation.',
-        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Date & groupe',
-        ph_name:'Votre prénom/nom', ph_contact:'+33… ou email', ph_message:'Dates souhaitées, nb de personnes, options (coucher de soleil/2e domaine/atelier) ?',
-        btn_send:'Envoyer', btn_whatsapp2:'Écrire sur WhatsApp',
+        label_date:'Date', label_guests:'Personnes', label_start:'Départ', label_pickup:'Pick-up (hôtel/adresse)',
+        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+        label_total:'Total', total_note:'Base 1–2 + supplément par pers. au-delà (BS/HS). Déjeuner — sur place.',
+        btn_send_form:'Envoyer',
+
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
         mail_subject:'Demande : LUX Étang de Thau (site)'
       }
     };
 
-    /* ====== Рендер ====== */
+    /* ====== Рендер и логика ====== */
     let currentSeason = localStorage.getItem('prog:season') || 'LS';
+    const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
     function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
+
+    function calcTotal(guests, season){
+      const g = Math.max(PRICE.minGuests, Math.min(PRICE.maxGuests, Number(guests||PRICE.minGuests)));
+      const conf = PRICE[season];
+      return conf.base2 + Math.max(0, g-2)*conf.perExtra;
+    }
 
     function applyLang(lang){
       const t=i18n[lang];
@@ -438,27 +515,23 @@
         if(t[key]!==undefined) node.textContent=t[key];
       });
 
-      // alt
       setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
 
-      // header aria
       const brandHome=document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
 
-      // toggles
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
-      // списки
       renderSchedule(lang);
       renderListPills('incGrid', included[lang], true);
       renderList('exList', excluded[lang]);
       renderList('optList', optionsList[lang]);
       renderList('tipsList', practice[lang]);
 
-      // цены
       renderTarifs(currentSeason, lang);
-      updateHeroPrice(currentSeason, lang);
+      updateHeroPrice(currentSeason);
+      refreshTotal();
 
       localStorage.setItem('site:lang', lang);
     }
@@ -481,12 +554,11 @@
       const baseText = `${conf.base2.toLocaleString('fr-FR')} €`;
       const ppText   = `${conf.perExtra.toLocaleString('fr-FR')} €`;
 
-      // rows 2..6
       const rows=[];
       for(let n=2; n<=PRICE.maxGuests; n++){
         const total = conf.base2 + Math.max(0,n-2)*conf.perExtra;
         const per   = Math.round((total/n)/5)*5;
-        rows.push(`<tr><td>${n}</td><td><strong>${total.toLocaleString('fr-FR')} €</strong></td><td>≈ ${per.toLocaleString('fr-FR')} €/чел</td></tr>`);
+        rows.push(`<tr><td>${n}</td><td><strong>${total.toLocaleString('fr-FR')} €</strong></td><td>≈ ${per.toLocaleString('fr-FR')} ${t.tar_hdr_pp.replace('≈ ','').split(' ')[0]}${t.tar_hdr_pp.includes('pers')?' /pers.':' /чел'}</td></tr>`);
       }
 
       document.getElementById('tarDynamic').innerHTML = `
@@ -494,57 +566,76 @@
           <span>${t.tar_base}</span>: <strong>${baseText}</strong>
         </p>
         <p class="section-sub" style="margin:0 0 10px">
-          + <strong>${ppText}</strong> ${t.tar_pp} (макс. ${PRICE.maxGuests})
+          + <strong>${ppText}</strong> ${t.tar_pp} (${t.tar_max} ${PRICE.maxGuests})
         </p>
         <div class="card" style="padding:12px; border:1px solid #eee; border-radius:12px; margin-top:10px">
           <div style="font-weight:700; margin:0 0 8px">${t.tar_grid}</div>
           <div class="tablewrap">
             <table class="tarifs">
-              <thead><tr><th>Гостей</th><th>Сумма</th><th>≈ €/чел</th></tr></thead>
+              <thead><tr><th>${t.tar_hdr_guests}</th><th>${t.tar_hdr_sum}</th><th>${t.tar_hdr_pp}</th></tr></thead>
               <tbody>${rows.join('')}</tbody>
             </table>
           </div>
         </div>
       `;
 
-      // кнопки сезона
       document.getElementById('btnLS').classList.toggle('active', season==='LS');
       document.getElementById('btnHS').classList.toggle('active', season==='HS');
       localStorage.setItem('prog:season', season);
     }
 
-    function updateHeroPrice(season, lang){
+    function updateHeroPrice(season){
       const conf=PRICE[season];
       const el=document.getElementById('heroPrice');
       if(el) el.textContent = `${conf.base2.toLocaleString('fr-FR')} €`;
     }
 
-    // события
-    document.getElementById('btnLS').addEventListener('click', ()=>{ currentSeason='LS'; renderTarifs('LS', getLang()); updateHeroPrice('LS', getLang()); });
-    document.getElementById('btnHS').addEventListener('click', ()=>{ currentSeason='HS'; renderTarifs('HS', getLang()); updateHeroPrice('HS', getLang()); });
+    function refreshTotal(){
+      const g = document.getElementById('guests')?.value || 2;
+      const t = calcTotal(g, currentSeason);
+      const out = document.getElementById('totalOut');
+      if(out) out.textContent = fmtEUR(t);
+    }
+
+    // События сезона
+    document.addEventListener('click', (e)=>{
+      if(e.target?.id==='btnLS'){ currentSeason='LS'; renderTarifs('LS', getLang()); updateHeroPrice('LS'); refreshTotal(); }
+      if(e.target?.id==='btnHS'){ currentSeason='HS'; renderTarifs('HS', getLang()); updateHeroPrice('HS'); refreshTotal(); }
+    });
 
     function getLang(){ return localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'); }
 
-    function openMail(e){
-      e.preventDefault();
-      const fd=new FormData(e.target);
-      const lang=getLang();
-      const subj=encodeURIComponent(i18n[lang].mail_subject);
-      const body=encodeURIComponent(
-`Имя / Nom: ${fd.get('name')||''}
-Контакт / Contact: ${fd.get('contact')||''}
-Сообщение / Message: ${fd.get('message')||''}`);
-      window.location.href=`mailto:hello@example.com?subject=${subj}&body=${body}`;
-    }
-
-    (function(){
+    (function init(){
       const saved=localStorage.getItem('site:lang');
       const initial=saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
+
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+
+      // бронирование — реакции на ввод для итога
+      document.getElementById('guests').addEventListener('input', refreshTotal);
+      document.getElementById('guests').addEventListener('change', refreshTotal);
+
+      // клик «Забронировать» — фокус на дату
+      document.getElementById('goBook')?.addEventListener('click', ()=>{
+        setTimeout(()=>document.getElementById('date')?.focus(), 60);
+      });
+
+      refreshTotal();
     })();
   </script>
+
+  <!-- CONFIG сначала, затем скрипты -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene', // username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
 </body>
 </html>
 
