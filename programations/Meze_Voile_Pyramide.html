@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-program-id="MEZE-VOILE-7N">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -118,7 +118,7 @@
     }
   </style>
 </head>
-<body>
+<body data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -185,7 +185,8 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -229,7 +230,7 @@
       <h3 class="section-title" style="margin-top:28px" data-i18n="choose_title">Выберите вид спорта</h3>
       <p class="section-sub" data-i18n="choose_sub">Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.</p>
 
-      <div class="grid3">
+      <div class="grid3" data-program data-program-id="MEZE-VOILE-7N">
         <!-- CATAMARAN -->
         <article class="card selectable selected" id="card-cat" data-sport="cat">
           <div class="thumb">
@@ -316,80 +317,86 @@
 
   <!-- BOOKING -->
   <section class="container" id="book">
-    <h3 class="section-title">Бронирование</h3>
+    <h3 class="section-title">Быстрый запрос / бронирование</h3>
     <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
-    <div class="card" data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
-      <div class="fields">
-        <div>
-          <label>Дата заезда</label>
-          <input type="date" id="in-when">
-        </div>
-        <div>
-          <label>Гостей</label>
-          <input type="number" id="in-guests" min="1" value="2">
-        </div>
+    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
+      <form data-contact-form data-channel="telegram">
+        <div class="fields">
+          <div>
+            <label>Дата заезда</label>
+            <input type="date" id="in-when" name="date" required>
+          </div>
+          <div>
+            <label>Гостей</label>
+            <input type="number" id="in-guests" name="guests" min="1" value="2" required>
+          </div>
 
-        <div>
-          <label>Имя</label>
-          <input type="text" id="in-name" placeholder="Имя и фамилия">
-        </div>
-        <div>
-          <label>Контакт (WhatsApp/Telegram/email)</label>
-          <input type="text" id="in-contact" placeholder="+33… / @user / email">
-        </div>
+          <div>
+            <label>Имя</label>
+            <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
+          </div>
+          <div>
+            <label>Контакт (WhatsApp/Telegram/email)</label>
+            <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
+          </div>
 
-        <div>
-          <label>Вид спорта</label>
-          <select id="in-sport">
-            <option value="cat">Катамаран HC15/16</option>
-            <option value="hansa">Hansa 303</option>
-            <option value="kite">Kitesurf</option>
-          </select>
-        </div>
-        <div>
-          <label>Отель</label>
-          <select id="in-hotel">
-            <option value="budget">Бюджет 2–3★</option>
-            <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
-            <option value="four">4★</option>
-          </select>
-        </div>
+          <div>
+            <label>Вид спорта</label>
+            <select id="in-sport">
+              <option value="cat">Катамаран HC15/16</option>
+              <option value="hansa">Hansa 303</option>
+              <option value="kite">Kitesurf</option>
+            </select>
+          </div>
+          <div>
+            <label>Отель</label>
+            <select id="in-hotel">
+              <option value="budget">Бюджет 2–3★</option>
+              <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
+              <option value="four">4★</option>
+            </select>
+          </div>
 
-        <div>
-          <label>Сезон</label>
-          <select id="in-season">
-            <option value="low">Низкий</option>
-            <option value="high">Высокий</option>
-          </select>
-        </div>
-        <div class="full">
-          <label><input type="checkbox" id="in-bb"> Завтраки (BB)</label>
-          <label style="margin-left:16px"><input type="checkbox" id="in-passloc" checked> Pass’Loc (для паруса)</label>
-        </div>
+          <div>
+            <label>Сезон</label>
+            <select id="in-season">
+              <option value="low">Низкий</option>
+              <option value="high">Высокий</option>
+            </select>
+          </div>
+          <div class="full">
+            <label><input type="checkbox" id="in-bb"> Завтраки (BB)</label>
+            <label style="margin-left:16px"><input type="checkbox" id="in-passloc" checked> Pass’Loc (для паруса)</label>
+          </div>
 
-        <div class="full">
-          <label>Комментарий</label>
-          <textarea id="in-msg" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
-        </div>
+          <div class="full">
+            <label>Комментарий</label>
+            <!-- именно name="message" читает contact.js -->
+            <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+          </div>
 
-        <div class="full">
-          <label>Итог</label>
-          <div class="price" id="bookTotal">—</div>
-          <p class="muted" id="bookNote">Цена за 2 гостей / 7 ночей. Состав смотрите выше.</p>
-        </div>
+          <div class="full">
+            <label>Итог</label>
+            <div class="price" id="bookTotal">—</div>
+            <p class="muted" id="bookNote">Цена за 2 гостей / 7 ночей. Состав смотрите выше.</p>
+          </div>
 
-        <div class="full">
-          <label>Текст заявки</label>
-          <textarea id="orderText" readonly></textarea>
-        </div>
+          <div class="full" style="display:flex; gap:10px; align-items:center">
+            <label style="font-weight:600; margin:0">Куда отправить:</label>
+            <select name="channel">
+              <option value="whatsapp">WhatsApp</option>
+              <option value="telegram" selected>Telegram</option>
+            </select>
+          </div>
 
-        <div class="full sharebar">
-          <button class="btn primary" id="sendWA">Отправить в WhatsApp</button>
-          <button class="btn" id="sendTG">Поделиться в Telegram</button>
-          <button class="btn" id="copyTxt">Скопировать текст</button>
+          <div class="full sharebar">
+            <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
+            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+            <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </section>
 
@@ -404,48 +411,39 @@
     </div>
   </footer>
 
+  <!-- === CONFIG (как на Saint-Guilhem): сначала APP_CONFIG, потом скрипты === -->
   <script>
-    // ---------- helpers ----------
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene',
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+
+  <script>
+    /* ---------- PRICING CORE ---------- */
     const roundTo5 = n => Math.round(n/5)*5;
     const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
-    // ---------- pricing core ----------
-    const hotels = {
-      budget: 630,       // 90 €/ночь ×7
-      pyramide: 840,     // 120 €/ночь ×7
-      four: 1085         // 155 €/ночь ×7
-    };
-
-    // Завтраки BB за номер/7 ночей (2 гостя)
-    const breakfast = { budget:140, pyramide:168, four:252 };
-
-    // аренды/курсы на 5 сессий (2 часа для паруса), суммы на двоих
+    const hotels = { budget:630, pyramide:840, four:1085 };
+    const breakfast = { budget:140, pyramide:168, four:252 }; // BB на 2 за 7 ночей
     const rent = {
-      cat:  { noPass: 300, pass: 222, license: 28 },      // Cata 2h: 60×5; PassLoc экономит; + лицензии
-      hansa:{ noPass: 225, pass: 166.5, license: 28 },    // Hansa 2h: 45×5; PassLoc; + лицензии
+      cat:{ noPass:300, pass:222, license:28 },
+      hansa:{ noPass:225, pass:166.5, license:28 },
     };
-    const kite = { low2p: 1490, high2p: 1590 }; // курс 5 дней за двоих
+    const kite = { low2p:1490, high2p:1590 };
 
-    const withBB = (hotelKey, bbChecked) => hotels[hotelKey] + (bbChecked ? breakfast[hotelKey] : 0);
+    const withBB = (h, bb) => hotels[h] + (bb ? breakfast[h] : 0);
+    const priceCat   = (h, pass, bb) => roundTo5((withBB(h,bb) + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license) * 1.15);
+    const priceHansa = (h, pass, bb) => roundTo5((withBB(h,bb) + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license) * 1.15);
+    const priceKite  = (h, season, bb) => roundTo5((withBB(h,bb) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
 
-    function priceCat(hotelKey, pass, bb){
-      const base = withBB(hotelKey, bb) + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
-      return roundTo5(base * 1.15);
-    }
-    function priceHansa(hotelKey, pass, bb){
-      const base = withBB(hotelKey, bb) + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
-      return roundTo5(base * 1.15);
-    }
-    function priceKite(hotelKey, season, bb){
-      const act = (season==='low') ? kite.low2p : kite.high2p;
-      const base = withBB(hotelKey, bb) + act;
-      return roundTo5(base * 1.15);
-    }
-
-    // ---------- UI bindings (top controls) ----------
+    /* ---------- UI BINDINGS (top controls) ---------- */
     const hotelSel = document.getElementById('hotelSel');
-    const passloc = document.getElementById('passloc');
-    const bb = document.getElementById('bb');
+    const passloc  = document.getElementById('passloc');
+    const bb       = document.getElementById('bb');
     const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
     const outHero  = document.getElementById('heroPrice');
@@ -453,35 +451,35 @@
     const outHansa = document.getElementById('price-hansa');
     const outKite  = document.getElementById('price-kite');
 
-    let selectedSport = 'cat'; // текущий выбор карточки
-
-    function currentSeason(){ return seasonInputs.find(r=>r.checked).value; }
+    let selectedSport = 'cat';
+    const currentSeason = () => seasonInputs.find(r=>r.checked).value;
 
     function pricesSnapshot(){
       const hotel = hotelSel.value;
       const season = currentSeason();
       const usePass = passloc.checked;
       const useBB = bb.checked;
-
-      const pCat   = priceCat(hotel, usePass, useBB);
-      const pHansa = priceHansa(hotel, usePass, useBB);
-      const pKite  = priceKite(hotel, season, useBB);
-      return {hotel, season, usePass, useBB, pCat, pHansa, pKite};
+      return {
+        hotel, season, usePass, useBB,
+        pCat:   priceCat(hotel, usePass, useBB),
+        pHansa: priceHansa(hotel, usePass, useBB),
+        pKite:  priceKite(hotel, season, useBB)
+      };
     }
 
     function recalc(){
       const s = pricesSnapshot();
-
       outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
       outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
       outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
 
       const minPrice = Math.min(s.pCat, s.pHansa, s.pKite);
-      outHero.textContent  = (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ') +
-        fmtEUR(minPrice) +
-        (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+      outHero.textContent  =
+        (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ')
+        + fmtEUR(minPrice)
+        + (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
 
-      syncBookingFromControls(); // держим в актуальном состоянии форму брони
+      syncBookingFromControls();
     }
 
     ['change','input'].forEach(evt=>{
@@ -491,7 +489,6 @@
       seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
     });
 
-    // выбор карточки (подсветка + влияние на форму)
     const sportCards = [...document.querySelectorAll('.card.selectable')];
     sportCards.forEach(card=>{
       card.addEventListener('click', ()=>{
@@ -502,19 +499,17 @@
       });
     });
 
-    // кнопки "забронировать" из карточек — проставляют спорт и скроллят
     document.querySelectorAll('.bookBtn').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
+      btn.addEventListener('click', ()=>{
         const sp = btn.getAttribute('data-sport');
-        if (sp){ selectedSport = sp; }
+        if (sp) selectedSport = sp;
         sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
         document.getElementById('in-sport').value = selectedSport;
-        // скрыть Pass’Loc в форме если кайт
         document.getElementById('in-passloc').closest('label').style.display = (selectedSport==='kite') ? 'none' : 'inline-block';
       });
     });
 
-    // ---------- BOOKING form wiring ----------
+    /* ---------- BOOKING FORM (для contact.js) ---------- */
     const inWhen    = document.getElementById('in-when');
     const inGuests  = document.getElementById('in-guests');
     const inName    = document.getElementById('in-name');
@@ -525,9 +520,7 @@
     const inBB      = document.getElementById('in-bb');
     const inPassloc = document.getElementById('in-passloc');
     const inMsg     = document.getElementById('in-msg');
-
     const bookTotal = document.getElementById('bookTotal');
-    const orderText = document.getElementById('orderText');
 
     function getHotelName(key){
       return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key;
@@ -535,9 +528,7 @@
     function getSportName(key){
       return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key;
     }
-    function getSeasonName(key){
-      return key==='low' ? 'Низкий' : 'Высокий';
-    }
+    function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
 
     function priceForSelection(hotelKey, season, pass, bbChecked, sport){
       if (sport==='cat')   return priceCat(hotelKey, pass, bbChecked);
@@ -545,93 +536,47 @@
       return priceKite(hotelKey, season, bbChecked);
     }
 
+    function buildAutoMessage(){
+      const hotel  = inHotel.value;
+      const season = inSeason.value;
+      const sport  = inSport.value;
+      const pass   = inPassloc.checked;
+      const bbUse  = inBB.checked;
+
+      const total  = priceForSelection(hotel, season, pass, bbUse, sport);
+      const lines = [
+        `Спорт: ${getSportName(sport)}`,
+        `Отель: ${getHotelName(hotel)} • Сезон: ${getSeasonName(season)}`,
+        `Завтраки (BB): ${bbUse?'Да':'Нет'}`,
+        `Pass’Loc (парус): ${sport==='kite' ? '—' : (pass?'Да':'Нет')}`,
+        `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (7 ночей)`
+      ];
+      return lines.join('\n');
+    }
+
     function syncBookingFromControls(){
-      // протягиваем верхние настройки в форму
       inHotel.value  = hotelSel.value;
       inSeason.value = currentSeason();
       inBB.checked   = bb.checked;
       inPassloc.checked = passloc.checked;
-      // спорт — из выбранной карточки
       inSport.value = selectedSport;
       inPassloc.closest('label').style.display = (selectedSport==='kite') ? 'none' : 'inline-block';
-
       updateBooking();
     }
 
-    function buildOrderText(){
-      const programTitle = document.querySelector('#book .card').dataset.programTitle;
-      const PROGRAM_ID   = document.querySelector('#book .card').dataset.programId;
-
-      const when   = inWhen.value || '—';
-      const guests = inGuests.value || '—';
-      const name   = inName.value || '—';
-      const contact= inContact.value || '—';
-      const sport  = getSportName(inSport.value);
-      const hotel  = getHotelName(inHotel.value);
-      const season = getSeasonName(inSeason.value);
-      const useBB  = inBB.checked ? 'Да (BB)' : 'Нет';
-      const usePL  = (inSport.value==='kite') ? '—' : (inPassloc.checked ? 'Да' : 'Нет');
-      const total  = bookTotal.textContent || '—';
-      const msg    = inMsg.value || '';
-
-      return `Заявка на тур: ${programTitle} (${PROGRAM_ID})
-Дата заезда: ${when}
-Гостей: ${guests}
-
-Спорт: ${sport}
-Сезон: ${season}
-Отель: ${hotel}
-Завтраки (BB): ${useBB}
-Pass’Loc (парус): ${usePL}
-
-Итого (за 2 гостя / 7 ночей): ${total}
-
-Контакт: ${contact}
-Имя: ${name}
-Комментарий: ${msg}
-
-— Автоподпись —
-Тур: ${programTitle} (${PROGRAM_ID})
-Сайт: Tours Languedoc by Irène`;
-    }
-
     function updateBooking(){
-      const hotel   = inHotel.value;
-      const season  = inSeason.value;
-      const pass    = inPassloc.checked;
-      const bbUse   = inBB.checked;
-      const sport   = inSport.value;
-
-      const total = priceForSelection(hotel, season, pass, bbUse, sport);
+      const total = priceForSelection(inHotel.value, inSeason.value, inPassloc.checked, inBB.checked, inSport.value);
       bookTotal.textContent = fmtEUR(total) + ' / 2';
-
-      orderText.value = buildOrderText();
+      // авто-заполняем message (contact.js его возьмёт)
+      const userText = ''; // при желании можно объединять с ручным вводом
+      inMsg.value = `${buildAutoMessage()}${userText?'\n\n'+userText:''}`;
     }
 
     ['change','input'].forEach(evt=>{
       [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inBB,inPassloc,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
     });
 
-    // share buttons
-    document.getElementById('sendWA').addEventListener('click', ()=>{
-      const txt = encodeURIComponent(orderText.value);
-      const phone = '33759644813'; // ваш номер WA
-      window.open(`https://wa.me/${phone}?text=${txt}`,'_blank');
-    });
-    document.getElementById('sendTG').addEventListener('click', ()=>{
-      const txt = encodeURIComponent(orderText.value);
-      window.open(`https://t.me/share/url?url=&text=${txt}`,'_blank');
-    });
-    document.getElementById('copyTxt').addEventListener('click', async ()=>{
-      try{
-        await navigator.clipboard.writeText(orderText.value);
-        alert('Текст заявки скопирован в буфер обмена.');
-      }catch(e){
-        console.warn(e);
-      }
-    });
-
-    // ---------- i18n ----------
+    /* ---------- I18N ---------- */
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -642,7 +587,7 @@ Pass’Loc (парус): ${usePL}
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
 
         gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, катамаран HC15/16, набережная и устрицы.',
         altHero:'Mèze Voile — HERO',
@@ -710,7 +655,7 @@ Pass’Loc (парус): ${usePL}
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
 
         gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, catamaran HC15/16, promenade et huîtres.',
         altHero:'Mèze Voile — HERO',
@@ -771,8 +716,8 @@ Pass’Loc (парус): ${usePL}
       }
     };
 
-    // helpers for i18n
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
+
     function applyLang(lang){
       const t = i18n[lang];
       document.documentElement.lang = t.htmlLang;
@@ -812,19 +757,17 @@ Pass’Loc (парус): ${usePL}
       const saved   = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
 
-      // клик по кнопкам языка
       document.getElementById('btn-ru').onclick = ()=>applyLang('ru');
       document.getElementById('btn-fr').onclick = ()=>applyLang('fr');
 
       applyLang(initial);
-      recalc();
-
-      // начальный вид PassLoc в блоке контролов
+      // начальный вид Pass’Loc
       document.getElementById('passlocWrap').style.display = (selectedSport==='kite') ? 'none' : 'flex';
+      recalc();
     })();
   </script>
 
-  <!-- Относительный путь важен для GitHub Pages -->
+  <!-- contact.js — должен быть после APP_CONFIG (см. выше) -->
   <script src="../assets/js/contact.js"></script>
 </body>
 </html>
