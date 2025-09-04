@@ -97,7 +97,12 @@
     }
   </style>
 </head>
-<body>
+
+<body
+  data-program
+  data-program-title="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)"
+  data-program-id="BALARUC-HYDRO-7D"
+>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -143,7 +148,8 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -228,17 +234,56 @@
     <p class="section-sub" data-i18n="pricing_note">Точные расценки зависят от дат, наличия и выбранных опций. Зафиксируем в счёте-подтверждении.</p>
   </section>
 
-  <!-- BOOK -->
+  <!-- BOOK (унифицировано под contact.js) -->
   <section id="book" class="container">
-    <div class="card" style="display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap">
-      <div>
-        <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-        <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
-      </div>
-      <div style="display:flex; gap:10px">
-        <a class="btn primary" href="mailto:hello@example.com?subject=%D0%97%D0%B0%D0%BF%D1%80%D0%BE%D1%81%3A%20Balaruc%20%E2%80%94%20Hydro%20relaxante%20%28%D1%81%D0%B0%D0%B9%D1%82%29" data-i18n="btn_send">Отправить e-mail</a>
-        <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
-      </div>
+    <div class="card" style="padding:18px" data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
+      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
+
+      <form data-contact-form data-channel="telegram">
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
+        <input name="name" required placeholder="Ваше имя"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
+        <input name="contact" required placeholder="+33… или @username"
+               autocomplete="tel" inputmode="text"
+               pattern="(\+?\d[\d\s()-]{5,19}|@?[A-Za-z0-9_]{5,32})"
+               title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
+               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px">
+          <div>
+            <label style="display:block; font-size:13px; color:var(--muted); margin:0 0 6px" data-i18n="label_date">Дата</label>
+            <input type="date" name="date" required
+                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+          </div>
+          <div>
+            <label style="display:block; font-size:13px; color:var(--muted); margin:0 0 6px" data-i18n="label_guests">Гостей</label>
+            <input type="number" name="guests" min="1" value="2" required
+                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
+          </div>
+        </div>
+
+        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
+        <textarea name="message"
+                  placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"
+                  style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+
+        <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
+          <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
+          <select name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+          </select>
+        </div>
+
+        <div style="display:flex; gap:10px; margin-top:6px">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -253,6 +298,7 @@
     </div>
   </footer>
 
+  <!-- I18N -->
   <script>
     const i18n = {
       ru: {
@@ -264,7 +310,8 @@
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_whatsapp2:'Написать в WhatsApp',
+        btn_telegram:'Написать в Telegram',
 
         gal_title:'Как это выглядит',
         gal_sub:'Thermes Balaruc, лагуна Thau и тёплая вода круглый год.',
@@ -323,9 +370,12 @@
 
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим слоты терм и дегустаций.',
-        btn_send:'Отправить e-mail', btn_whatsapp2:'Написать в WhatsApp',
+        btn_send_form:'Отправить',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+
+        /* подписи формы */
+        label_name:'Имя', label_contact:'Контакт (WhatsApp/Telegram)', label_date:'Дата', label_guests:'Гостей', label_message:'Сообщение'
       },
       fr: {
         htmlLang:'fr',
@@ -336,7 +386,8 @@
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_whatsapp2:'Écrire sur WhatsApp',
+        btn_telegram:'Écrire sur Telegram',
 
         gal_title:'À quoi ça ressemble',
         gal_sub:'Thermes de Balaruc, lagune de Thau, eaux chaudes toute l’année.',
@@ -395,9 +446,12 @@
 
         form_title:'Demande rapide / réservation',
         form_sub:'Réponse sous 24 h et confirmation des créneaux.',
-        btn_send:'Envoyer un e-mail', btn_whatsapp2:'Écrire sur WhatsApp',
+        btn_send_form:'Envoyer',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+
+        /* labels */
+        label_name:'Prénom/nom', label_contact:'Contact (WhatsApp/Telegram)', label_date:'Date', label_guests:'Personnes', label_message:'Message'
       }
     };
 
@@ -438,8 +492,17 @@
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
     })();
   </script>
-  <script src="/assets/js/contact.js"></script>
 
+  <!-- CONFIG сначала, потом скрипты -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene', // @username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
 </body>
 </html>
 
