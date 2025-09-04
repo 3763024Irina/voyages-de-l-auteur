@@ -85,15 +85,31 @@
     .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
+    .card.selectable{transition:.2s ease; cursor:pointer}
+    .card.selectable.selected{outline:2px solid var(--accent); box-shadow:0 0 0 4px rgba(201,184,134,.18)}
+
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
+
+    .mapwrap{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .mapwrap iframe{width:100%; aspect-ratio:16/11; border:0; display:block}
+
+    /* booking */
+    .fields{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .fields .full{grid-column:1/-1}
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+    .sharebar{display:flex; gap:10px; flex-wrap:wrap}
+    .muted{color:var(--muted); font-size:12px}
 
     @media (max-width: 1000px){
       .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
       .grid3{grid-template-columns:1fr}
+      .fields{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -150,6 +166,9 @@
               <option value="four" data-i18n="h_four">4★</option>
             </select>
           </div>
+          <div class="check" id="bbWrap">
+            <label><input type="checkbox" id="bb"> <span data-i18n="bb">Завтраки (BB)</span></label>
+          </div>
           <div class="check" id="passlocWrap">
             <label><input type="checkbox" id="passloc" checked> <span data-i18n="use_passloc">Использовать Pass’Loc для паруса</span></label>
           </div>
@@ -157,7 +176,7 @@
       </div>
       <div class="card">
         <div class="price" id="heroPrice">—</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; +15% сопровождение.</p>
+        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.</p>
         <div class="specs">
           <div class="spec" data-i18n="spec_duration">Длительность: 8 дней / 7 ночей</div>
           <div class="spec" data-i18n="spec_walk">Ритм: активный, ветер по погоде</div>
@@ -218,11 +237,11 @@
           </div>
           <div class="body">
             <h3 data-i18n="choose_cat_t">Катамаран HC15/16</h3>
-            <p id="desc-cat">Аренда <strong>5×2 ч</strong> (2 перс.), Pass’Loc по желанию.</p>
+            <p id="desc-cat" data-i18n="choose_cat_d">5× аренда по 2 часа (2 перс.), можно с Pass’Loc.</p>
           </div>
           <div class="footrow">
             <div class="price" id="price-cat">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+            <a class="btn bookBtn" href="#book" data-sport="cat" data-i18n="btn_book">Забронировать</a>
           </div>
         </article>
 
@@ -233,11 +252,11 @@
           </div>
           <div class="body">
             <h3>Hansa 303</h3>
-            <p id="desc-hansa">Аренда <strong>5×2 ч</strong> (1–2 перс.), Pass’Loc по желанию.</p>
+            <p id="desc-hansa" data-i18n="choose_hansa_d">5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.</p>
           </div>
           <div class="footrow">
             <div class="price" id="price-hansa">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+            <a class="btn bookBtn" href="#book" data-sport="hansa" data-i18n="btn_book">Забронировать</a>
           </div>
         </article>
 
@@ -248,11 +267,11 @@
           </div>
           <div class="body">
             <h3>Kitesurf</h3>
-            <p id="desc-kite">Курс <strong>5×4 ч</strong> (групповой, Fil d’Air). Цена зависит от сезона.</p>
+            <p id="desc-kite" data-i18n="choose_kite_d">Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.</p>
           </div>
           <div class="footrow">
             <div class="price" id="price-kite">—</div>
-            <a class="btn" href="#book" data-i18n="btn_book">Забронировать</a>
+            <a class="btn bookBtn" href="#book" data-sport="kite" data-i18n="btn_book">Забронировать</a>
           </div>
         </article>
       </div> <!-- /grid3 -->
@@ -287,10 +306,90 @@
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_hotel_t">🏨 Отели</h4>
       <ul class="list">
-        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — 90 €/ночь → 630 € / номер</li>
-        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — 120 €/ночь → 840 € / номер</li>
-        <li><strong data-i18n="h_four">4★</strong> — 155 €/ночь → 1 085 € / номер</li>
+        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — 90 €/ночь → 630 € / номер <em>(BB +140 € → 770 €)</em></li>
+        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — 120 €/ночь → 840 € / номер <em>(BB +168 € → 1 008 €)</em></li>
+        <li><strong data-i18n="h_four">4★</strong> — 155 €/ночь → 1 085 € / номер <em>(BB +252 € → 1 337 €)</em></li>
       </ul>
+      <p class="muted">BB — завтраки на 2 гостей за 7 ночей. Туристический налог ~1–2 €/чел/ночь — оплачивается на месте.</p>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="container" id="book">
+    <h3 class="section-title">Бронирование</h3>
+    <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
+
+    <div class="card" data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
+      <div class="fields">
+        <div>
+          <label>Дата заезда</label>
+          <input type="date" id="in-when">
+        </div>
+        <div>
+          <label>Гостей</label>
+          <input type="number" id="in-guests" min="1" value="2">
+        </div>
+
+        <div>
+          <label>Имя</label>
+          <input type="text" id="in-name" placeholder="Имя и фамилия">
+        </div>
+        <div>
+          <label>Контакт (WhatsApp/Telegram/email)</label>
+          <input type="text" id="in-contact" placeholder="+33… / @user / email">
+        </div>
+
+        <div>
+          <label>Вид спорта</label>
+          <select id="in-sport">
+            <option value="cat">Катамаран HC15/16</option>
+            <option value="hansa">Hansa 303</option>
+            <option value="kite">Kitesurf</option>
+          </select>
+        </div>
+        <div>
+          <label>Отель</label>
+          <select id="in-hotel">
+            <option value="budget">Бюджет 2–3★</option>
+            <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
+            <option value="four">4★</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Сезон</label>
+          <select id="in-season">
+            <option value="low">Низкий</option>
+            <option value="high">Высокий</option>
+          </select>
+        </div>
+        <div class="full">
+          <label><input type="checkbox" id="in-bb"> Завтраки (BB)</label>
+          <label style="margin-left:16px"><input type="checkbox" id="in-passloc" checked> Pass’Loc (для паруса)</label>
+        </div>
+
+        <div class="full">
+          <label>Комментарий</label>
+          <textarea id="in-msg" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+        </div>
+
+        <div class="full">
+          <label>Итог</label>
+          <div class="price" id="bookTotal">—</div>
+          <p class="muted" id="bookNote">Цена за 2 гостей / 7 ночей. Состав смотрите выше.</p>
+        </div>
+
+        <div class="full">
+          <label>Текст заявки</label>
+          <textarea id="orderText" readonly></textarea>
+        </div>
+
+        <div class="full sharebar">
+          <button class="btn primary" id="sendWA">Отправить в WhatsApp</button>
+          <button class="btn" id="sendTG">Поделиться в Telegram</button>
+          <button class="btn" id="copyTxt">Скопировать текст</button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -306,40 +405,47 @@
   </footer>
 
   <script>
-    // ---------- pricing core ----------
+    // ---------- helpers ----------
     const roundTo5 = n => Math.round(n/5)*5;
+    const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
+    // ---------- pricing core ----------
     const hotels = {
       budget: 630,       // 90 €/ночь ×7
       pyramide: 840,     // 120 €/ночь ×7
       four: 1085         // 155 €/ночь ×7
     };
 
+    // Завтраки BB за номер/7 ночей (2 гостя)
+    const breakfast = { budget:140, pyramide:168, four:252 };
+
     // аренды/курсы на 5 сессий (2 часа для паруса), суммы на двоих
     const rent = {
-      cat:  { noPass: 300, pass: 222, license: 28 },      // Cata 2h: 60€ ×5; PassLoc ~3.7€/ticket → ~222€; + лицензии
-      hansa:{ noPass: 225, pass: 166.5, license: 28 },    // Hansa 2h: 45€ ×5; PassLoc ≈ 9×5 билетов
+      cat:  { noPass: 300, pass: 222, license: 28 },      // Cata 2h: 60×5; PassLoc экономит; + лицензии
+      hansa:{ noPass: 225, pass: 166.5, license: 28 },    // Hansa 2h: 45×5; PassLoc; + лицензии
     };
-
     const kite = { low2p: 1490, high2p: 1590 }; // курс 5 дней за двоих
 
-    function priceCat(hotelKey, pass){
-      const base = hotels[hotelKey] + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
+    const withBB = (hotelKey, bbChecked) => hotels[hotelKey] + (bbChecked ? breakfast[hotelKey] : 0);
+
+    function priceCat(hotelKey, pass, bb){
+      const base = withBB(hotelKey, bb) + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license;
       return roundTo5(base * 1.15);
     }
-    function priceHansa(hotelKey, pass){
-      const base = hotels[hotelKey] + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
+    function priceHansa(hotelKey, pass, bb){
+      const base = withBB(hotelKey, bb) + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license;
       return roundTo5(base * 1.15);
     }
-    function priceKite(hotelKey, season){
+    function priceKite(hotelKey, season, bb){
       const act = (season==='low') ? kite.low2p : kite.high2p;
-      const base = hotels[hotelKey] + act;
+      const base = withBB(hotelKey, bb) + act;
       return roundTo5(base * 1.15);
     }
 
-    // ---------- UI bindings ----------
+    // ---------- UI bindings (top controls) ----------
     const hotelSel = document.getElementById('hotelSel');
     const passloc = document.getElementById('passloc');
+    const bb = document.getElementById('bb');
     const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
     const outHero  = document.getElementById('heroPrice');
@@ -347,28 +453,182 @@
     const outHansa = document.getElementById('price-hansa');
     const outKite  = document.getElementById('price-kite');
 
-    function recalc(){
+    let selectedSport = 'cat'; // текущий выбор карточки
+
+    function currentSeason(){ return seasonInputs.find(r=>r.checked).value; }
+
+    function pricesSnapshot(){
       const hotel = hotelSel.value;
-      const season = seasonInputs.find(r=>r.checked).value;
+      const season = currentSeason();
       const usePass = passloc.checked;
+      const useBB = bb.checked;
 
-      const pCat   = priceCat(hotel, usePass);
-      const pHansa = priceHansa(hotel, usePass);
-      const pKite  = priceKite(hotel, season);
+      const pCat   = priceCat(hotel, usePass, useBB);
+      const pHansa = priceHansa(hotel, usePass, useBB);
+      const pKite  = priceKite(hotel, season, useBB);
+      return {hotel, season, usePass, useBB, pCat, pHansa, pKite};
+    }
 
-      outCat.textContent   = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pCat) + ' / 2';
-      outHansa.textContent = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pHansa) + ' / 2';
-      outKite.textContent  = new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) + ' / 2';
+    function recalc(){
+      const s = pricesSnapshot();
 
+      outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
+      outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
+      outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
+
+      const minPrice = Math.min(s.pCat, s.pHansa, s.pKite);
       outHero.textContent  = (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ') +
-        new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(pKite) +
+        fmtEUR(minPrice) +
         (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+
+      syncBookingFromControls(); // держим в актуальном состоянии форму брони
     }
 
     ['change','input'].forEach(evt=>{
       hotelSel.addEventListener(evt,recalc);
       passloc.addEventListener(evt,recalc);
+      bb.addEventListener(evt,recalc);
       seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
+    });
+
+    // выбор карточки (подсветка + влияние на форму)
+    const sportCards = [...document.querySelectorAll('.card.selectable')];
+    sportCards.forEach(card=>{
+      card.addEventListener('click', ()=>{
+        selectedSport = card.dataset.sport;
+        sportCards.forEach(c=>c.classList.toggle('selected', c===card));
+        document.getElementById('passlocWrap').style.display = (selectedSport==='kite') ? 'none' : 'flex';
+        recalc();
+      });
+    });
+
+    // кнопки "забронировать" из карточек — проставляют спорт и скроллят
+    document.querySelectorAll('.bookBtn').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        const sp = btn.getAttribute('data-sport');
+        if (sp){ selectedSport = sp; }
+        sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
+        document.getElementById('in-sport').value = selectedSport;
+        // скрыть Pass’Loc в форме если кайт
+        document.getElementById('in-passloc').closest('label').style.display = (selectedSport==='kite') ? 'none' : 'inline-block';
+      });
+    });
+
+    // ---------- BOOKING form wiring ----------
+    const inWhen    = document.getElementById('in-when');
+    const inGuests  = document.getElementById('in-guests');
+    const inName    = document.getElementById('in-name');
+    const inContact = document.getElementById('in-contact');
+    const inSport   = document.getElementById('in-sport');
+    const inHotel   = document.getElementById('in-hotel');
+    const inSeason  = document.getElementById('in-season');
+    const inBB      = document.getElementById('in-bb');
+    const inPassloc = document.getElementById('in-passloc');
+    const inMsg     = document.getElementById('in-msg');
+
+    const bookTotal = document.getElementById('bookTotal');
+    const orderText = document.getElementById('orderText');
+
+    function getHotelName(key){
+      return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key;
+    }
+    function getSportName(key){
+      return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key;
+    }
+    function getSeasonName(key){
+      return key==='low' ? 'Низкий' : 'Высокий';
+    }
+
+    function priceForSelection(hotelKey, season, pass, bbChecked, sport){
+      if (sport==='cat')   return priceCat(hotelKey, pass, bbChecked);
+      if (sport==='hansa') return priceHansa(hotelKey, pass, bbChecked);
+      return priceKite(hotelKey, season, bbChecked);
+    }
+
+    function syncBookingFromControls(){
+      // протягиваем верхние настройки в форму
+      inHotel.value  = hotelSel.value;
+      inSeason.value = currentSeason();
+      inBB.checked   = bb.checked;
+      inPassloc.checked = passloc.checked;
+      // спорт — из выбранной карточки
+      inSport.value = selectedSport;
+      inPassloc.closest('label').style.display = (selectedSport==='kite') ? 'none' : 'inline-block';
+
+      updateBooking();
+    }
+
+    function buildOrderText(){
+      const programTitle = document.querySelector('#book .card').dataset.programTitle;
+      const PROGRAM_ID   = document.querySelector('#book .card').dataset.programId;
+
+      const when   = inWhen.value || '—';
+      const guests = inGuests.value || '—';
+      const name   = inName.value || '—';
+      const contact= inContact.value || '—';
+      const sport  = getSportName(inSport.value);
+      const hotel  = getHotelName(inHotel.value);
+      const season = getSeasonName(inSeason.value);
+      const useBB  = inBB.checked ? 'Да (BB)' : 'Нет';
+      const usePL  = (inSport.value==='kite') ? '—' : (inPassloc.checked ? 'Да' : 'Нет');
+      const total  = bookTotal.textContent || '—';
+      const msg    = inMsg.value || '';
+
+      return `Заявка на тур: ${programTitle} (${PROGRAM_ID})
+Дата заезда: ${when}
+Гостей: ${guests}
+
+Спорт: ${sport}
+Сезон: ${season}
+Отель: ${hotel}
+Завтраки (BB): ${useBB}
+Pass’Loc (парус): ${usePL}
+
+Итого (за 2 гостя / 7 ночей): ${total}
+
+Контакт: ${contact}
+Имя: ${name}
+Комментарий: ${msg}
+
+— Автоподпись —
+Тур: ${programTitle} (${PROGRAM_ID})
+Сайт: Tours Languedoc by Irène`;
+    }
+
+    function updateBooking(){
+      const hotel   = inHotel.value;
+      const season  = inSeason.value;
+      const pass    = inPassloc.checked;
+      const bbUse   = inBB.checked;
+      const sport   = inSport.value;
+
+      const total = priceForSelection(hotel, season, pass, bbUse, sport);
+      bookTotal.textContent = fmtEUR(total) + ' / 2';
+
+      orderText.value = buildOrderText();
+    }
+
+    ['change','input'].forEach(evt=>{
+      [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inBB,inPassloc,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
+    });
+
+    // share buttons
+    document.getElementById('sendWA').addEventListener('click', ()=>{
+      const txt = encodeURIComponent(orderText.value);
+      const phone = '33759644813'; // ваш номер WA
+      window.open(`https://wa.me/${phone}?text=${txt}`,'_blank');
+    });
+    document.getElementById('sendTG').addEventListener('click', ()=>{
+      const txt = encodeURIComponent(orderText.value);
+      window.open(`https://t.me/share/url?url=&text=${txt}`,'_blank');
+    });
+    document.getElementById('copyTxt').addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(orderText.value);
+        alert('Текст заявки скопирован в буфер обмена.');
+      }catch(e){
+        console.warn(e);
+      }
     });
 
     // ---------- i18n ----------
@@ -436,6 +696,7 @@
 
         lbl_season:'Сезон:', low:'Низкий', high:'Высокий',
         lbl_hotel:'Отель:',
+        bb:'Завтраки (BB)',
         use_passloc:'Использовать Pass’Loc для паруса',
 
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
@@ -503,16 +764,15 @@
 
         lbl_season:'Saison :', low:'Basse', high:'Haute',
         lbl_hotel:'Hôtel :',
+        bb:'Petits déj. (BB)',
         use_passloc:'Utiliser Pass’Loc pour la voile',
 
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
-    // helpers
+    // helpers for i18n
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
-    function updateTimelineHours(){ /* noop */ }
-
     function applyLang(lang){
       const t = i18n[lang];
       document.documentElement.lang = t.htmlLang;
@@ -537,36 +797,35 @@
       setAlt('alt-g1',   t.altG1);
       setAlt('alt-g2',   t.altG2);
       setAlt('alt-g3',   t.altG3);
-
       setAlt('img-cat',   t.altCat);
       setAlt('img-hansa', t.altHansa);
       setAlt('img-kite',  t.altKite);
-
-      const brandHome = document.getElementById('brandHome');
-      if(brandHome) brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
 
       document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
 
       localStorage.setItem('site:lang', lang);
-      updateTimelineHours();
       recalc();
     }
 
     (function init(){
       const saved   = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+
+      // клик по кнопкам языка
+      document.getElementById('btn-ru').onclick = ()=>applyLang('ru');
+      document.getElementById('btn-fr').onclick = ()=>applyLang('fr');
+
       applyLang(initial);
-
-      const btnRu = document.getElementById('btn-ru');
-      const btnFr = document.getElementById('btn-fr');
-      if(btnRu) btnRu.onclick = ()=>applyLang('ru');
-      if(btnFr) btnFr.onclick = ()=>applyLang('fr');
-
       recalc();
+
+      // начальный вид PassLoc в блоке контролов
+      document.getElementById('passlocWrap').style.display = (selectedSport==='kite') ? 'none' : 'flex';
     })();
   </script>
-  <script src="/assets/js/contact.js"></script>
 
+  <!-- Относительный путь важен для GitHub Pages -->
+  <script src="../assets/js/contact.js"></script>
 </body>
 </html>
+
