@@ -8,7 +8,6 @@
   <meta name="description" content="Индивидуальный тур: 3 топ-домена (Puech-Haut, Cazeneuve, Clos Marie) + 1 красивый доступный (Hortus), обед, кроссовер. ~7 часов, ~86 км. База: Монпелье. Цена: 430 € за двоих, +100 € за каждого дополнительного (до 4)." />
   <meta property="og:title" content="Grand Vin du Pic Saint-Loup — премиальный винный день" />
   <meta property="og:description" content="VIP-дегустации: Château Puech-Haut, Château de Cazeneuve или Clos Marie + Domaine de l’Hortus. Обед и панорамы Пик Сен-Лу. 430 € за двоих, +100 €/гость (до 4)." />
-  <!-- Лучше абсолютный URL, но оставим относительный в рамках сайта -->
   <meta property="og:image" content="../assets/wines/puech-haut.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -86,14 +85,12 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* booking */
+    /* form */
     .fields{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .fields .full{grid-column:1/-1}
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
-    .sharebar{display:flex; gap:10px; flex-wrap:wrap}
-    .muted{color:var(--muted); font-size:12px}
 
     @media (max-width: 1000px){
       .hero .inner{grid-template-columns:1fr}
@@ -108,7 +105,12 @@
     }
   </style>
 </head>
-<body>
+
+<body
+  data-program
+  data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день"
+  data-program-id="PSL-GRAND-VIN-1D"
+>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -147,14 +149,15 @@
         <div class="price" data-i18n="price">430 € за двоих</div>
         <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">+100 € за каждого следующего гостя (до 4).</p>
         <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: ~6 часов</div>
+          <div class="spec" data-i18n="spec_duration">Длительность: ~7 часов</div>
           <div class="spec" data-i18n="spec_km">Маршрут: ~86 км</div>
           <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
           <div class="spec" data-i18n="spec_pickup">Пикап: Монпелье (отель/центр)</div>
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33759644813" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -240,7 +243,7 @@
     </aside>
   </section>
 
-  <!-- PUBLIC INFO / PRICING -->
+  <!-- PRICING -->
   <section id="pricing" class="container" style="margin:3rem 0">
     <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
     <ul class="list">
@@ -251,56 +254,49 @@
     <p class="section-sub" data-i18n="pricing_note">Включено: частный транспорт, 4 дегустации (по записи), бронирования. Не включено: обед, личные покупки.</p>
   </section>
 
-  <!-- BOOK -->
+  <!-- BOOK (унифицировано под contact.js) -->
   <section id="book" class="container">
-    <div class="card" data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
+    <div class="card" data-program data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим визиты в хозяйства.</p>
 
-      <div class="fields">
+      <form class="fields" data-contact-form data-channel="telegram">
         <div>
           <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" type="date">
+          <input id="when" name="date" type="date" required>
         </div>
         <div>
           <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" type="number" min="2" max="4" value="2">
+          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
         </div>
         <div class="full">
-          <label for="pickup" data-i18n="label_pickup">Пикап (отель/адрес в Монпелье)</label>
-          <input id="pickup" type="text" placeholder="Hotel, rue…">
-        </div>
-        <div>
           <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" type="text" placeholder="Имя и фамилия">
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
-        <div>
+        <div class="full">
           <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-          <input id="contact" type="text" placeholder="+33… / email">
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
         </div>
         <div class="full">
           <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" placeholder="Пожелания по обеду/винам, время пикапа…"></textarea>
+          <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
         </div>
 
-        <div class="full">
-          <label data-i18n="label_total">Итог</label>
-          <div class="price" id="totalOut">—</div>
-          <p class="muted" data-i18n="total_note">430 € за 2; +100 € за каждого следующего гостя (до 4).</p>
+        <div class="full" style="display:flex; gap:10px; align-items:center; margin-top:6px">
+          <label style="margin:0; font-weight:600">Куда отправить:</label>
+          <select name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
+          </select>
         </div>
 
-        <div class="full">
-          <label data-i18n="label_order_text">Текст заявки</label>
-          <textarea id="orderText" readonly></textarea>
+        <div class="full" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
-
-        <div class="full sharebar">
-          <button class="btn primary" id="sendWA" data-i18n="btn_sendWA">Отправить в WhatsApp</button>
-          <button class="btn" id="sendTG" data-i18n="btn_sendTG">Поделиться в Telegram</button>
-          <button class="btn" id="copyTxt" data-i18n="btn_copy">Скопировать текст</button>
-          <button class="btn" id="sendMail" data-i18n="btn_mail">Отправить по email</button>
-        </div>
-      </div>
+      </form>
     </div>
   </section>
 
@@ -315,8 +311,8 @@
     </div>
   </footer>
 
+  <!-- I18N -->
   <script>
-    // ---------- i18n ----------
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -327,14 +323,14 @@
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
 
         hero_badge:'Wine • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — премиальный винный день',
         hero_sub:'3 топ-домена + 1 красивый доступный, обед, панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.',
         price:'430 € за двоих',
         price_note:'+100 € за каждого следующего гостя (до 4).',
-        spec_duration:'Длительность: ~6 часов',
+        spec_duration:'Длительность: ~7 часов',
         spec_km:'Маршрут: ~86 км',
         spec_langs:'Языки: RU/FR',
         spec_pickup:'Пикап: Монпелье (отель/центр)',
@@ -377,14 +373,11 @@
 
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим визиты в хозяйства.',
-        label_date:'Дата', label_guests:'Гостей', label_pickup:'Пикап (отель/адрес в Монпелье)',
+        label_date:'Дата', label_guests:'Гостей',
         label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
-        label_total:'Итог', total_note:'430 € за 2; +100 € за каждого следующего гостя (до 4).',
-        label_order_text:'Текст заявки',
-        btn_sendWA:'Отправить в WhatsApp', btn_sendTG:'Поделиться в Telegram', btn_copy:'Скопировать текст', btn_mail:'Отправить по email',
+        btn_send_form:'Отправить',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: Grand Vin du Pic Saint-Loup (сайт)'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
         htmlLang:'fr',
@@ -395,7 +388,7 @@
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
 
         hero_badge:'Vin • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — journée premium',
@@ -445,14 +438,11 @@
 
         form_title:'Demande rapide / réservation',
         form_sub:'Réponse sous 24 h et confirmation des visites.',
-        label_date:'Date', label_guests:'Personnes', label_pickup:'Pick-up (hôtel/adresse à Montpellier)',
+        label_date:'Date', label_guests:'Personnes',
         label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
-        label_total:'Total', total_note:'430 € pour 2; +100 € /pers. supplémentaire (jusqu’à 4).',
-        label_order_text:'Texte de la demande',
-        btn_sendWA:'Envoyer sur WhatsApp', btn_sendTG:'Partager sur Telegram', btn_copy:'Copier le texte', btn_mail:'Envoyer par email',
+        btn_send_form:'Envoyer',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : Grand Vin du Pic Saint-Loup (site)'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
@@ -485,93 +475,30 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    // ---------- Booking logic ----------
-    const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-    function calcTotal(guests){
-      const g = Math.max(2, Math.min(4, Number(guests||2)));
-      return 430 + Math.max(0, g - 2) * 100;
-    }
-    function buildOrderText(){
-      const wrap = document.querySelector('#book .card');
-      const programTitle = wrap.dataset.programTitle;
-      const PROGRAM_ID = wrap.dataset.programId;
-
-      const when = document.getElementById('when').value || '—';
-      const guests = document.getElementById('guests').value || '—';
-      const pickup = document.getElementById('pickup').value || '—';
-      const name = document.getElementById('name').value || '—';
-      const contact = document.getElementById('contact').value || '—';
-      const msg = document.getElementById('msg').value || '';
-      const total = fmtEUR(calcTotal(guests));
-
-      return `Заявка на тур: ${programTitle} (${PROGRAM_ID})
-Дата: ${when}
-Гостей: ${guests}
-Пикап: ${pickup}
-
-Итого: ${total}
-
-Контакт: ${contact}
-Имя: ${name}
-Комментарий: ${msg}
-
-— Автоподпись —
-Тур: ${programTitle} (${PROGRAM_ID})
-Сайт: Tours Languedoc by Irène`;
-    }
-    function refreshTotals(){
-      const guests = document.getElementById('guests').value;
-      document.getElementById('totalOut').textContent = fmtEUR(calcTotal(guests));
-      document.getElementById('orderText').value = buildOrderText();
-    }
-
-    function sendWA(){
-      const phone = '33759644813';
-      const txt = encodeURIComponent(document.getElementById('orderText').value);
-      window.open(`https://wa.me/${phone}?text=${txt}`,'_blank');
-    }
-    function sendTG(){
-      const txt = encodeURIComponent(document.getElementById('orderText').value);
-      window.open(`https://t.me/share/url?url=&text=${txt}`,'_blank');
-    }
-    function sendMail(){
-      const lang = localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      const subj = encodeURIComponent(i18n[lang].mail_subject);
-      const body = encodeURIComponent(document.getElementById('orderText').value);
-      window.location.href = `mailto:hello@example.com?subject=${subj}&body=${body}`;
-    }
-
     (function init(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
 
-      // язык переключатели
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
 
-      // бронирование — события
-      ['when','guests','pickup','name','contact','msg'].forEach(id=>{
-        document.getElementById(id).addEventListener('input', refreshTotals);
-        document.getElementById(id).addEventListener('change', refreshTotals);
-      });
-      document.getElementById('sendWA').addEventListener('click', sendWA);
-      document.getElementById('sendTG').addEventListener('click', sendTG);
-      document.getElementById('sendMail').addEventListener('click', sendMail);
-      document.getElementById('copyTxt').addEventListener('click', async ()=>{
-        try{ await navigator.clipboard.writeText(document.getElementById('orderText').value); alert('Текст заявки скопирован.'); }catch(e){ console.warn(e); }
-      });
-
-      // клик «Забронировать» в шапке — скролл и фокус
+      // фокус на дату при клике "Забронировать"
       document.getElementById('goBook')?.addEventListener('click', ()=>{
-        setTimeout(()=>document.getElementById('when')?.focus(), 50);
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
-
-      refreshTotals();
     })();
   </script>
 
-  <!-- ВАЖНО: относительный путь для GitHub Pages -->
-  <script src="../assets/js/contact.js"></script>
+  <!-- CONFIG сначала, затем скрипты -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'ToursLanguedocbyIrene', // username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
 </body>
 </html>
