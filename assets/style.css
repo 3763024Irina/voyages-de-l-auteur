@@ -4,6 +4,7 @@
   --radius:18px; --container:1100px;
 }
 
+/* ========== BASE ========== */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
@@ -12,15 +13,23 @@ img{max-width:100%; height:auto; display:block}
 .container{max-width:var(--container); margin:auto; padding:0 20px}
 .mt{margin-top:28px}
 
-/* Buttons */
+/* ========== BUTTONS ========== */
 .btn{
   display:inline-flex; align-items:center; gap:8px;
   padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6;
   background:#fff; font-weight:700; cursor:pointer
 }
 .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand) }
+.btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
+.btn.wa:hover{ filter:brightness(.95); }
+.btn.ghost{
+  align-self:flex-start; padding:.6rem .9rem; border-radius:12px;
+  border:1px solid rgba(0,0,0,.15); background:#fff;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn.ghost:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.08); }
 
-/* Topbar + Header */
+/* ========== TOPBAR + HEADER ========== */
 .topbar{
   height:38px; display:flex; align-items:center; justify-content:center;
   padding:0 14px; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)
@@ -43,34 +52,31 @@ header{
   background:linear-gradient(145deg,var(--brand),#123c2c);
   display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)
 }
-.brand h1{
-  font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0
-}
+.brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
 nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
 nav a{display:inline-flex; align-items:center; gap:8px; font-weight:600; padding:10px 12px; border-radius:12px}
 nav a:hover{background:#f0f0f0}
 nav a.cta{background:var(--brand); color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow)}
 nav a.cta:hover{background:var(--brand-2)}
+nav a.wa{background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow)}
+nav a.wa:hover{ background:#21be5a; }
 @media (max-width:640px){ nav ul{display:none} }
 
-/* ===================== HERO ===================== */
-/* фон по умолчанию (если локально не переопределён) */
-.page-hero{ --hero-img: url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg'); }
+/* ========== HERO ========== */
+/* фон по умолчанию; можно переопределять так: .page-hero[data-hero="whatsapp"]{ --hero-img:url('...'); } */
+.page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/img/bg-vineyard.jpg'); }
 .page-hero{
-  position:relative; min-height:44vh;
-  display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
+  position:relative; min-height:44vh; display:grid; align-items:center; isolation:isolate; background:#0d2b1e;
 }
 .page-hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
-  background-image: var(--hero-img);
-  background-size: cover; background-position: center; background-repeat: no-repeat;
+  background-image: var(--hero-img); background-size:cover; background-position:center; background-repeat:no-repeat;
   filter:brightness(.72); pointer-events:none;
 }
 .page-hero::after{
   content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:
-    radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
-    linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
+  background: radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.22), transparent),
+             linear-gradient(to bottom, rgba(13,43,30,.50), rgba(13,43,30,.25));
 }
 .page-hero .container{position:relative; z-index:1}
 .title{font-family:"Cormorant Garamond",serif; font-size:42px; line-height:1.06; color:#fff; margin:0 0 12px}
@@ -82,468 +88,116 @@ nav a.cta:hover{background:var(--brand-2)}
 .page-hero.plain .lead,
 .page-hero.plain .actions{ display:none }
 
-/* ===================== CARDS & GRID ===================== */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-  align-items:stretch;
+/* если используется разметка .hero .inner на отдельных страницах */
+.hero .inner{ min-height:48vh !important; }
+@media (max-width:1000px){
+  .hero .inner{ min-height:auto !important; padding:28px 0 30px !important; }
 }
+
+/* ========== GRID & CARDS ========== */
+.grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+@media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
 .card{
-  background:var(--paper);
-  border:1px solid #eee;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  display:flex;
-  flex-direction:column;
-  height:100%;
+  background:var(--paper); border:1px solid #eee; border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; height:100%;
 }
-
-/* Одинаковый размер обложек для всех карточек */
-.cover {
-  height: 220px; /* фиксированная высота */
-  background:#ddd;
-  position:relative;
-  overflow:hidden;
-}
-.cover img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
+.cover{ height:220px; background:#ddd; position:relative; overflow:hidden; }
+.cover img{ width:100%; height:100%; object-fit:cover; display:block; }
 .badge{
   position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94);
   border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px
 }
-.card .body{
-  padding:16px;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-}
+.card .body{ padding:16px; flex:1; display:flex; flex-direction:column; }
 .card h3{margin:0 0 8px; font-size:20px}
 .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
 .card .body p{
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
 }
 .card .foot{
-  margin-top:auto;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:14px 16px; border-top:1px solid #f0f0f0;
-  position:relative; z-index:10;
+  margin-top:auto; display:flex; justify-content:space-between; align-items:center;
+  padding:14px 16px; border-top:1px solid #f0f0f0; position:relative; z-index:10;
 }
-
-/* Кликаяем первая карточка в блоке "Почему с нами" — оверлей не перекрывает футер */
+/* Стретч-ссылка не перекрывает футер */
 .card.link{ position:relative; }
 .card.link > a.stretched{
-  position:absolute;
-  top:0; left:0; right:0;
-  bottom:64px;                  /* не заходим на футер карточки */
-  z-index:5;
-  border-radius:inherit;
-  text-indent:-9999px;
+  position:absolute; top:0; left:0; right:0; bottom:64px; z-index:5; border-radius:inherit; text-indent:-9999px;
 }
 
-@media (max-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:640px){
-  .grid{grid-template-columns:1fr}
-  .cover { height: 180px; } /* компактнее на телефонах */
-}
-
-/* ===================== GALLERY MOSAIC ===================== */
+/* ========== GALLERY MOSAIC ========== */
 .gallery-mosaic{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  grid-auto-rows:220px; /* единая высота строк */
-  margin-top:24px
+  display:grid; grid-template-columns:repeat(4,1fr); gap:12px; grid-auto-rows:220px; margin-top:24px;
 }
-/* Убираем увеличение первой карточки */
-.gallery-mosaic .card:first-child{
-  grid-column:auto !important;
-  grid-row:auto !important;
-}
+.gallery-mosaic .card:first-child{ grid-column:auto !important; grid-row:auto !important; }
 .gallery-mosaic .cover{ height:100% !important }
 .gallery-mosaic .cover img{ width:100%; height:100% !important; object-fit:cover; display:block }
-
 @media (max-width:900px){
   .gallery-mosaic{ grid-template-columns:repeat(2,1fr); grid-auto-rows:200px }
 }
 
-/* ===================== WINES ===================== */
+/* ========== WINES ========== */
 .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
 .section-sub{color:var(--muted); margin:0}
 .wines{display:grid; grid-template-columns:1fr; gap:12px; margin:24px 0}
 .wines .wine{
   display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;
-  padding:16px; border-radius:16px; background:var(--paper);
-  border:1px solid #eee; box-shadow:var(--shadow)
+  padding:16px; border-radius:16px; background:var(--paper); border:1px solid #eee; box-shadow:var(--shadow)
 }
-.wines .wine > div{
-  display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px; align-items:start;
-}
+.wines .wine > div{ display:grid; grid-template-columns:96px minmax(0,1fr); gap:12px; align-items:start; }
 .wines .wine > div .thumb{
-  --size:96px; width:var(--size); height:var(--size);
-  object-fit:contain; background:#fff; padding:8px;
-  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06);
-  margin:0; justify-self:center;
+  --size:96px; width:var(--size); height:var(--size); object-fit:contain; background:#fff; padding:8px;
+  border:1px solid #e8e8e8; border-radius:10px; box-shadow:0 6px 16px rgba(0,0,0,.06); margin:0; justify-self:center;
 }
-.wines .wine > div h4,
-.wines .wine > div .meta,
-.wines .wine > div .notes{ grid-column:2 }
+.wines .wine > div h4, .wines .wine > div .meta, .wines .wine > div .notes{ grid-column:2 }
 .wine h4{margin:0 0 6px; font-size:18px; line-height:1.2}
 .wine .meta{display:inline-flex; gap:10px; flex-wrap:wrap; font-size:13px; color:var(--muted)}
-.pill{
-  display:inline-flex; align-items:center; gap:6px; padding:6px 10px;
-  border:1px solid #e8e8e8; border-radius:999px; background:#fff; font-weight:600; font-size:12px
-}
+.pill{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid #e8e8e8; border-radius:999px; background:#fff; font-weight:600; font-size:12px }
 .wine .notes{margin-top:8px}
-.badge-oak{
-  display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800;
-  border:1px solid #e4d7b6; background:#E9DFC5
-}
-@media (max-width:1000px){
-  .wines .wine{ grid-template-columns:1fr; }
-}
+.badge-oak{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800; border:1px solid #e4d7b6; background:#E9DFC5 }
+@media (max-width:1000px){ .wines .wine{ grid-template-columns:1fr; } }
 
-/* ===================== FOOTER ===================== */
+/* ========== FOOTER ========== */
 footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 
-/* Жёстко фиксируем фон героя (если где-то переопределят) */
-.page-hero::before{ background-image: var(--hero-img) !important; }
+/* ========== SPECIALS ==========
+   Пример локального фона героя: добавь data-hero="whatsapp" на блок .page-hero */
+.page-hero[data-hero="whatsapp"]{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
 
-/* ===== Domaine de Belle Mare: фото внутри aside ===== */
-#domaine-belle-mare .domain-photo { margin-top:10px; }
-#domaine-belle-mare .domain-photo img {
-  width:100%; height:auto; display:block; border-radius:12px;
-  box-shadow: var(--shadow);
-}
-#domaine-belle-mare .domain-photo figcaption {
-  font-size:12px; margin-top:6px; text-align:center; color:var(--muted);
-}
-
-/* ===================== WhatsApp ===================== */
-/* Локальный фон героя (пример переопределения) */
-.page-hero{ --hero-img:url('/voyages-de-l-auteur/assets/wines/92ec5741551c5ee20e7804a7ff133dc4.jpg?v=1'); }
-
-.btn.wa{ background:#25D366; border-color:#25D366; color:#fff; }
-.btn.wa:hover{ filter:brightness(.95); }
-
-nav a.wa{
-  background:#25D366; color:#fff; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow);
-}
-nav a.wa:hover{ background:#21be5a; }
-
-.wa-fab{
-  position:fixed; right:22px; bottom:22px; z-index:60;
-  width:56px; height:56px; border-radius:50%;
-  display:grid; place-items:center; background:#25D366; color:#fff;
-  box-shadow:0 12px 28px rgba(0,0,0,.22);
-}
-.wa-fab:hover{ filter:brightness(.95); }
-.wa-fab svg{ width:28px; height:28px; display:block }
-
-/* Ссылка-оверлей не перекрывает футер и кнопки в карточке */
-.card .foot { position: relative; z-index: 10; }
-.card.link > a.stretched {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  bottom: 64px;                  /* высота зоны футера */
-  z-index: 5;
-  border-radius: inherit;
-  text-indent: -9999px;
-}
-
-/* ===== ДОП. ПРИОРИТЕТ (если где-то осталось старое aspect-ratio) ===== */
-.grid .card .cover,
-#why .card .cover {
-  height: 220px !important;
-  aspect-ratio: auto !important;
-}
-.grid .card .cover img,
-#why .card .cover img {
-  height: 100% !important;
-  object-fit: cover;
-}
-@media (max-width: 640px){
-  .grid .card .cover,
-  #why .card .cover {
-    height: 180px !important;
-  }
-}
-/* --- Компактные равные карточки программ --- */
-#tours .card .cover{
-  height: 200px;         /* было aspect-ratio, теперь фиксированная высота */
-  aspect-ratio: auto;    /* на всякий случай сброс */
-}
-
-#tours .card .body{ 
-  padding: 12px 14px;    /* чуть меньше внутренние отступы */
-}
-
-#tours .card h3{
-  font-size: 18px; 
-  margin: 0 0 6px;
-}
-
+/* ========== TOURS / WHY compact cards ========== */
+#tours .card .cover{ height:200px; aspect-ratio:auto; }
+#tours .card .body{ padding:12px 14px; }
+#tours .card h3{ font-size:18px; margin:0 0 6px; }
 #tours .meta span{
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* максимум 2 строки описания */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
 }
+#tours .card .foot{ padding:12px 14px; }
+@media (max-width:640px){ #tours .card .cover{ height:160px; } }
 
-#tours .card .foot{
-  padding: 12px 14px;
-}
-
-/* На мобильных делаем ещё компактнее */
-@media (max-width: 640px){
-  #tours .card .cover{ height: 160px; }
-}
-/* --- Компактный размер карточек в секции «Почему с нами» --- */
-#why .card .cover{
-  height: 180px;      /* задай нужную высоту (можно 160–200px) */
-  aspect-ratio: auto; /* сбрасываем старое 16/10 */
-}
-
-#why .card .body{
-  padding: 12px 14px; /* чуть меньше отступы — карточка визуально легче */
-}
-
-#why .card h3{
-  font-size: 18px;
-  margin: 0 0 6px;
-}
-
+#why .card .cover{ height:180px; aspect-ratio:auto; }
+#why .card .body{ padding:12px 14px; }
+#why .card h3{ font-size:18px; margin:0 0 6px; }
 #why .card p{
-  display: -webkit-box;
-  -webkit-line-clamp: 2;     /* максимум 2 строки описания */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
 }
+#why .card.link > a.stretched{ bottom:64px; }
+@media (max-width:640px){ #why .card .cover{ height:150px; } }
 
-/* Стретч-ссылка по карточке не перекрывает футер/кнопки, если они появятся */
-#why .card.link > a.stretched{
-  bottom: 64px; /* оставить место на «футер» карточки при необходимости */
-}
-
-/* На мобильных ещё компактнее */
-@media (max-width: 640px){
-  #why .card .cover{ height: 150px; }
-}
-/* ===== HERO: гарантийный фикс высоты и цветов формы ===== */
-
-/* ниже герой */
-.hero .inner{ min-height:56vh !important; }
-@media (max-width:1000px){
-  .hero .inner{ min-height:auto !important; padding:28px 0 30px !important; }
-}
-
-/* только карточка формы в герое */
+/* ========== CONTACT CARD IN HERO (единый блок) ========== */
 #contactCard{
-  background:#ffffff !important;
-  border:1px solid #eee !important;
-  border-radius:16px !important;
-  padding:14px 16px !important;
-  box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
+  background:#fff !important; border:1px solid #eee !important; border-radius:16px !important;
+  padding:14px 16px !important; box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
 }
-
-/* ПЕРЕБИВАЕМ белый текст внутри формы раз и навсегда */
-#contactCard, 
-#contactCard *, 
-#contactCard p, 
-#contactCard label, 
-#contactCard strong{
-  color:#1b1b1b !important;
-}
-
-/* поля формы: тёмный текст, белый фон */
-#contactCard input,
-#contactCard textarea,
-#contactCard select{
-  color:#1b1b1b !important;
-  background:#ffffff !important;
-  border:1px solid #e6e6e6 !important;
-}
-
-/* плейсхолдеры */
-#contactCard input::placeholder,
-#contactCard textarea::placeholder{
-  color:#878e8a !important;
-}
-
-/* компактные кнопки */
-#contactCard .btn{ padding:10px 12px !important; font-size:14px !important; border-radius:10px !important; }
-/* ниже герой */
-.hero .inner{ min-height:50vh !important; }           /* сделала ещё ниже */
-
-/* карточка формы */
-#contactCard{
-  background:#fff !important;
-  border:1px solid #eee !important;
-  border-radius:16px !important;
-  padding:14px 16px !important;
-  box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
-}
-
-/* весь текст внутри формы — тёмный */
-#contactCard, #contactCard *{ color:#1b1b1b !important; }
-
-/* поля */
+#contactCard, #contactCard *, #contactCard p, #contactCard label, #contactCard strong{ color:#1b1b1b !important; }
 #contactCard input, #contactCard textarea, #contactCard select{
-  color:#1b1b1b !important;
-  background:#fff !important;
-  border:1px solid #e6e6e6 !important;
+  color:#1b1b1b !important; background:#fff !important; border:1px solid #e6e6e6 !important;
 }
-#contactCard input::placeholder,
-#contactCard textarea::placeholder{ color:#878e8a !important; }
-/* ——— Кнопки в форме ——— */
-#contactCard .btn{
-  color:#1b1b1b !important;             /* обычные светлые кнопки (WhatsApp) — тёмный текст */
-  background:#fff !important;
-  border:1px solid #e6e6e6 !important;
-}
+#contactCard input::placeholder, #contactCard textarea::placeholder{ color:#878e8a !important; }
+#contactCard .btn{ padding:10px 12px !important; font-size:14px !important; border-radius:10px !important; }
+#contactCard .btn.primary{ background:var(--brand) !important; border-color:var(--brand) !important; color:#fff !important; }
+#contactCard .btn.primary:hover{ background:var(--brand-2) !important; }
 
-#contactCard .btn.primary{
-  background:var(--brand) !important;    /* тёмно-зелёная */
-  border-color:var(--brand) !important;
-  color:#fff !important;                 /* ВИДИМЫЙ белый текст */
-}
-#contactCard .btn.primary:hover{
-  background:var(--brand-2) !important;
-}
-
-.hero .inner{ min-height:48vh !important; }
-/* ——— ниже герой, делаем короче ——— */
-.hero .inner{ min-height:48vh !important; }
-
-/* ——— форма в hero — общие цвета ——— */
-#contactCard,
-#contactCard *{
-  color:#1b1b1b !important;                 /* весь текст в форме тёмный */
-}
-
-/* ——— Кнопки в форме — точное перебивание ——— */
-#contactCard#contactCard .btn,
-#contactCard#contactCard .btn *{
-  color:#1b1b1b !important;                 /* обычные светлые кнопки */
-  background:#fff !important;
-  border:1px solid #e6e6e6 !important;
-}
-
-/* ПРАЙМАРИ — зелёная с белым текстом */
-#contactCard#contactCard .btn.primary,
-#contactCard#contactCard .btn.primary *{
-  background:var(--brand) !important;
-  border-color:var(--brand) !important;
-  color:#ffffff !important;
-  -webkit-text-fill-color:#ffffff !important;  /* на случай Safari */
-}
-#contactCard#contactCard .btn.primary:hover{
-  background:var(--brand-2) !important;
-}
-
-/* поля и плейсхолдеры на всякий */
-#contactCard input,
-#contactCard textarea,
-#contactCard select{
-  color:#1b1b1b !important;
-  background:#ffffff !important;
-  border:1px solid #e6e6e6 !important;
-}
-#contactCard input::placeholder,
-#contactCard textarea::placeholder{
-  color:#878e8a !important;
-}
-/* Контейнер секции — чуть больше воздуха на мобильных */
-.why { padding-block: 2rem; }
-
-/* Универсальная адаптивная сетка */
-.grid.cards {
-  display: grid;
-  gap: 1rem;                 /* расстояние между карточками */
-  grid-template-columns: 1fr;/* по умолчанию одна колонка (мобайл) */
-}
-
-/*  ≥600px — по две в ряд */
-@media (min-width: 600px) {
-  .grid.cards { grid-template-columns: repeat(2, 1fr); }
-}
-
-/*  ≥1024px — по три в ряд (десктоп) */
-@media (min-width: 1024px) {
-  .grid.cards { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* Карточка */
-.card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border-radius: 16px;
-  padding: 1rem;
-  box-shadow: 0 2px 14px rgba(0,0,0,.06);
-  border: 1px solid rgba(0,0,0,.06);
-  height: 100%;
-}
-
-/* Картинка карточки — всегда целиком видна, без обрезания текста */
-.card .cover {
-  width: 100%;
-  aspect-ratio: 16/10;        /* стабильная высота на всех экранах */
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: .75rem;
-}
-.card .cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Текст */
-.card-title { margin: .25rem 0 .25rem; font-size: 1.05rem; line-height: 1.3; }
-.card-text  { margin: 0 0 .9rem; color: #333; }
-
-/* Кнопка “Смотреть программы” (поддержит твой стиль, если он уже есть) */
-.btn.ghost {
-  align-self: flex-start;     /* кнопка не растягивается на всю ширину */
-  padding: .6rem .9rem;
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,.15);
-  background: #fff;
-  text-decoration: none;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-.btn.ghost:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
-
-/* Небольшие улучшения типографики под мобильные */
-.section-title { margin-bottom: .25rem; }
-.section-sub   { margin-top: 0; opacity: .8; }
-
-/* На очень узких экранах уменьшаем размеры заголовков карточек,
-   чтобы избежать переносов на слишком много строк */
-@media (max-width: 360px) {
-  .card-title { font-size: 1rem; }
-}
-
-.contact-photo{
-  margin:0; border-radius:16px; overflow:hidden;
-  box-shadow:0 10px 30px rgba(0,0,0,.08); background:#fff;
-  
-}
-.contact-photo img{ width:100%; height:auto; display:block; }
-.contact-photo figcaption{ padding:10px 14px; font-size:14px; color:#51615A; background:#fff; }
-
-/* Reviews + Form (автономный) */
+/* ========== REVIEWS (общие) ========== */
 .reviews{display:flex;flex-direction:column;gap:10px;margin-top:12px}
 .review{padding:10px 12px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:#fff}
 .review .who{display:flex;align-items:center;gap:8px;margin-bottom:4px}
@@ -565,121 +219,54 @@ nav a.wa:hover{ background:#21be5a; }
 .btn-primary{background:var(--brand,#0D2B1E);color:#fff;border-color:transparent}
 .rf-msg{margin:6px 0 0;font-size:13px;color:var(--muted,#6b7b73)}
 
-/* ===== ABOUT: убрать правое фото и привести секцию ===== */
+/* ========== ABOUT (упрощённый) ========== */
 #about .portrait{ display:none !important; }
-
-#about .about{
-  display:grid;
-  grid-template-columns: 1fr;   /* всегда одна колонка */
-  gap: 18px;
-  max-width: 920px;
-  margin-inline: auto;
-}
-
-#about .section-title{
-  text-align:center;
-  margin: 0 0 12px;
-}
-
-/* чуть воздуха вокруг абзаца “о нас” */
-#about p[data-i18n="about.text"]{
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--ink,#0b1b14);
-  margin: 4px 0 8px;
-}
-
-/* ===== Отзывы — карточки ===== */
-#about .reviews{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 12px;
-  margin-top: 12px;
-}
-@media (max-width: 640px){
-  #about .reviews{ grid-template-columns: 1fr; }
-}
-
-#about .review{
-  background:#fff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  padding:12px 14px;
-  box-shadow: 0 1px 0 rgba(0,0,0,.02);
-}
-#about .review .who{
-  display:flex; align-items:center; gap:10px; margin-bottom:6px;
-}
-#about .review .who .avatar{
-  width:36px; height:36px; border-radius:50%;
-  background:#eae9e3; background-size:cover; background-position:center;
-  display:grid; place-items:center; color:#fff; font-weight:600; font-size:12px;
-}
+#about .about{ display:grid; grid-template-columns:1fr; gap:18px; max-width:920px; margin-inline:auto; }
+#about .section-title{ text-align:center; margin:0 0 12px; }
+#about p[data-i18n="about.text"]{ font-size:15px; line-height:1.6; color:var(--ink,#0b1b14); margin:4px 0 8px; }
+#about .reviews{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; margin-top:12px; }
+@media (max-width:640px){ #about .reviews{ grid-template-columns:1fr; } }
+#about .review{ background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:12px 14px; box-shadow:0 1px 0 rgba(0,0,0,.02); }
+#about .who{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+#about .who .avatar{ width:36px; height:36px; border-radius:50%; background:#eae9e3; background-size:cover; background-position:center; display:grid; place-items:center; color:#fff; font-weight:600; font-size:12px; }
 #about .review p{ margin:0; }
-
-/* ===== Форма отзыва ===== */
-#about .review-form{
-  margin-top: 16px;
-  padding: 16px;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  background:#fff;
-}
+#about .review-form{ margin-top:16px; padding:16px; border:1px solid rgba(0,0,0,.08); border-radius:14px; background:#fff; }
 #about .review-form h4{ margin:0 0 10px; font-size:18px; }
 #about .rf-row{ display:flex; flex-direction:column; gap:8px; margin-bottom:12px; }
 #about .rf-row label{ font-size:13px; color:var(--muted,#6b7b73); }
-
-#about .review-form input[type="text"],
-#about .review-form textarea,
-#about .review-form select{
-  width:100%; padding:10px 12px;
-  border:1px solid rgba(0,0,0,.15);
-  border-radius:10px; background:#fff; font:inherit;
+#about .review-form input[type="text"], #about .review-form textarea, #about .review-form select{
+  width:100%; padding:10px 12px; border:1px solid rgba(0,0,0,.15); border-radius:10px; background:#fff; font:inherit;
 }
 #about .review-form textarea{ resize:vertical; min-height:96px; }
-
-/* фокус-стили для доступности */
-#about .review-form input:focus-visible,
-#about .review-form textarea:focus-visible,
-#about .review-form select:focus-visible,
-#about .btn:focus-visible,
-#about .file-drop:focus-visible{
-  outline:2px solid var(--accent,#C9B886);
-  outline-offset:2px;
-}
-
-/* Загрузка фото */
-#about .file-drop{
-  border:1.5px dashed rgba(0,0,0,.2);
-  border-radius:12px; padding:12px;
-  display:flex; align-items:center; gap:12px; background:#f9f9f6;
-}
-#about .file-drop.drag{ border-color: var(--accent,#C9B886); background:#fff; }
+#about .review-form input:focus-visible, #about .review-form textarea:focus-visible, #about .review-form select:focus-visible,
+#about .btn:focus-visible, #about .file-drop:focus-visible{ outline:2px solid var(--accent,#C9B886); outline-offset:2px; }
+#about .file-drop{ border:1.5px dashed rgba(0,0,0,.2); border-radius:12px; padding:12px; display:flex; align-items:center; gap:12px; background:#f9f9f6; }
+#about .file-drop.drag{ border-color:var(--accent,#C9B886); background:#fff; }
 #about .file-drop .hint{ font-size:12px; color:var(--muted,#6b7b73); margin-left:8px; }
-#about .file-drop .preview{
-  width:64px; height:64px; border-radius:12px; object-fit:cover;
-  border:1px solid rgba(0,0,0,.1);
-}
-
-/* Кнопки */
-#about .btn{ padding:8px 12px; border-radius:10px; border:1px solid rgba(0,0,0,.15); background:#fff; cursor:pointer; }
-#about .btn:hover{ filter:brightness(0.98); }
+#about .file-drop .preview{ width:64px; height:64px; border-radius:12px; object-fit:cover; border:1px solid rgba(0,0,0,.1); }
+#about .btn{ padding:8px 12px; border:1px solid rgba(0,0,0,.15); border-radius:10px; background:#fff; cursor:pointer; }
+#about .btn:hover{ filter:brightness(.98); }
 #about .btn-primary{ background:var(--brand,#0D2B1E); color:#fff; border-color:transparent; }
 #about .btn-outline.btn-wa{ border-color:#25D36644; }
 #about .btn-outline.btn-tg{ border-color:#2AABEE44; }
-
-#about .rf-actions{
-  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
-}
+#about .rf-actions{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 #about .rf-consent{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted,#6b7b73); }
 #about .rf-share{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px; }
 #about .rf-msg{ margin:6px 0 0; font-size:13px; color:var(--muted,#6b7b73); }
 
-/* admin gating — по умолчанию прячем всё помеченное admin-only */
+/* ========== ADMIN GATING ========== */
 .admin-only{ display:none !important; }
-/* когда админ включён (html[data-admin="1"]), показываем и уважаем желаемый тип отображения */
 html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
 html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
 html[data-admin="1"] .admin-only[data-display="inline-block"]{ display:inline-block !important; }
-/* на всякий случай дефолт */
 html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
+/* ========== MISC ========== */
+footer.container{ color:var(--muted); }
+.why{ padding-block:2rem; }
+
+/* универсальная адаптивная сетка (если нужна отдельная) */
+.grid.cards{ display:grid; gap:1rem; grid-template-columns:1fr; }
+@media (min-width:600px){ .grid.cards{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px){ .grid.cards{ grid-template-columns:repeat(3,1fr); } }
+
