@@ -41,17 +41,19 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* HERO */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
-    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
-    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
-    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
 
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -73,21 +75,38 @@
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
-    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* form */
-    .fields{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    .fields .full{grid-column:1/-1}
+    /* FORM (глобальные базовые) */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
+
+    /* BOOK: компактная карточка формы */
+    #book{ padding:32px 0 56px; }
+    #book .card{
+      max-width:720px; margin:0 auto;
+      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    #book .section-title{ font-size:28px; margin:0 0 6px; }
+    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
+
+    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #book .fields .full{ grid-column:1 / -1; }
+
+    #book input, #book textarea, #book select{ height:44px; }
+    #book textarea{ min-height:110px; height:auto; }
+
+    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book .btn{ padding:10px 12px; border-radius:12px; }
+    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    #book .btn.primary:hover{ filter:brightness(.96); }
 
     /* admin gating: по умолчанию всё .admin-only скрыто */
     .admin-only{ display:none !important; }
@@ -97,15 +116,16 @@
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
 
     @media (max-width: 1000px){
-      .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
-      .fields{grid-template-columns:1fr}
+      #book .fields{grid-template-columns:1fr}
+      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
       h2.title{font-size:36px}
       nav ul{display:none}
+      .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
   </style>
 </head>
@@ -148,15 +168,10 @@
         <span class="badge" data-i18n="hero_badge">Wine • Pic Saint-Loup</span>
         <h2 class="title" data-i18n="hero_title">Grand Vin du Pic Saint-Loup — премиальный винный день</h2>
         <p class="subtitle" data-i18n="hero_sub">3–4 домена: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.</p>
-      </div>
-      <div class="card">
-        <div class="price" data-i18n="price">430 € за двоих</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">+100 € за каждого следующего гостя (до 4).</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: ~7 часов</div>
-          <div class="spec" data-i18n="spec_km">Маршрут: ~86 км</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_pickup">Пикап: Монпелье (отель/центр)</div>
+        <div class="actions">
+          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -255,57 +270,54 @@
     <p class="section-sub" data-i18n="pricing_note">Включено: частный транспорт, 3–4 дегустации (по записи), бронирования. Не включено: обед, личные покупки.</p>
   </section>
 
-  <!-- BOOK (унифицировано под contact.js) -->
-<section id="book" class="container">
-  <div class="card" data-program data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
-    <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-    <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим визиты в хозяйства.</p>
+  <!-- BOOK -->
+  <section id="book" class="container">
+    <div class="card" data-program data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
+      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим визиты в хозяйства.</p>
 
-    <form class="fields" data-contact-form data-channel="telegram">
-      <div>
-        <label for="when" data-i18n="label_date">Дата</label>
-        <input id="when" name="date" type="date" required>
-      </div>
-      <div>
-        <label for="guests" data-i18n="label_guests">Гостей</label>
-        <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
-      </div>
+      <form class="fields" data-contact-form data-channel="telegram">
+        <div>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
+        </div>
 
-      <div class="full">
-        <label for="name" data-i18n="label_name">Имя</label>
-        <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-      </div>
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
 
-      <div class="full">
-        <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-        <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-      </div>
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+        </div>
 
-      <div class="full">
-        <label for="msg" data-i18n="label_message">Комментарий</label>
-        <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
-      </div>
+        <div class="full">
+          <label for="msg" data-i18n="label_message">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
+        </div>
 
-      <!-- аккуратный ряд выбора канала -->
-      <div class="form-row full">
-        <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
-        <select id="sendto" name="channel">
-          <option value="whatsapp">WhatsApp</option>
-          <option value="telegram" selected>Telegram</option>
-          <option value="email">Email</option>
-        </select>
-      </div>
+        <div class="form-row full">
+          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+          <select id="sendto" name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
 
-      <!-- действия -->
-      <div class="form-actions full">
-        <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
-        <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-      </div>
-    </form>
-  </div>
-</section>
-
+        <div class="form-actions full">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -331,7 +343,6 @@
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
         btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-
         hero_badge:'Wine • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — премиальный винный день',
         hero_sub:'3–4 домена: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.',
@@ -341,50 +352,37 @@
         spec_km:'Маршрут: ~86 км',
         spec_langs:'Языки: RU/FR',
         spec_pickup:'Пикап: Монпелье (отель/центр)',
-
         gal_title:'Как это выглядит',
         gal_sub:'Château Puech-Haut, Château de Cazeneuve, Clos Marie, Mas Bruguière, Domaine de l’Hortus и панорамы Пик Сен-Лу.',
-        altHero:'Pic Saint-Loup — HERO',
-        altG1:'Château Puech-Haut — арт и бочки',
-        altG2:'Clos Marie — виноградники',
-        altG3:'Domaine de l’Hortus — панорама',
-        altG4:'Mas Bruguière — терруары Pic Saint-Loup',
-
+        altHero:'Pic Saint-Loup — HERO', altG1:'Château Puech-Haut — арт и бочки', altG2:'Clos Marie — виноградники', altG3:'Domaine de l’Hortus — панорама', altG4:'Mas Bruguière — терруары Pic Saint-Loup',
         plan_title:'Маршрут и тайминг',
-
         inc_title:'Что включено',
         inc_transport:'Частный транспорт (кроссовер), топливо, парковки',
         inc_guide:'Водитель-гид RU/FR на день',
         inc_tastings:'3–4 дегустации: Puech-Haut + 2 из (Cazeneuve/Clos Marie/Mas Bruguière) + опционально Hortus',
-
         exc_title:'Не включено',
         exc_shopping:'Покупки вина / личные расходы',
         exc_pickup:'Пикап вне зоны (возможен за доплату)',
-
         terms_title:'Условия и сезонность',
         term_roundyear:'Круглый год по предварительной записи (в vendanges возможны сдвиги времени)',
         term_cancel:'Бронирование: предоплата 30 %, бесплатная отмена за 7 дней',
         term_safety:'Водитель не дегустирует — безопасность в приоритете',
-
         where_title:'Где это',
         where_sub:'Château Puech-Haut • Château de Cazeneuve • Clos Marie • Mas Bruguière • Domaine de l’Hortus • Pic Saint-Loup • Valflaunès.',
         tips_title:'Полезно знать',
         tip_shoes:'Нужна удобная обувь (камень/гравий у виноградников)',
         tip_sun:'Лёгкая защита от солнца и воды — рекомендована',
         tip_time:'Лучшее окно: 10:00–16:30',
-
         pricing_title:'Стоимость',
         pricing_base:'430 € — за двоих (индивидуально)',
         pricing_extra:'+ 100 € за каждого следующего гостя (до 4)',
         pricing_examples:'Пример: 2 гостя — 430 €',
         pricing_note:'Включено: частный транспорт, 3–4 дегустации, бронирования. Не включено: обед, личные покупки.',
-
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим визиты в хозяйства.',
         label_date:'Дата', label_guests:'Гостей',
         label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
         btn_send_form:'Отправить',
-
         nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
@@ -397,7 +395,6 @@
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
         btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-
         hero_badge:'Vin • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — journée premium',
         hero_sub:'3–4 domaines : Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Déjeuner et panoramas. Privé, 2–4 pers., crossover.',
@@ -407,50 +404,37 @@
         spec_km:'Parcours : ~86 km',
         spec_langs:'Langues : FR/RU',
         spec_pickup:'Pick-up : Montpellier (hôtel/centre)',
-
         gal_title:'À quoi ça ressemble',
         gal_sub:'Château Puech-Haut, Château de Cazeneuve, Clos Marie, Mas Bruguière, Domaine de l’Hortus et panoramas.',
-        altHero:'Pic Saint-Loup — HERO',
-        altG1:'Château Puech-Haut — art & fûts',
-        altG2:'Clos Marie — vignes',
-        altG3:'Domaine de l’Hortus — panorama',
-        altG4:'Mas Bruguière — terroirs du Pic Saint-Loup',
-
+        altHero:'Pic Saint-Loup — HERO', altG1:'Château Puech-Haut — art & fûts', altG2:'Clos Marie — vignes', altG3:'Domaine de l’Hortus — panorama', altG4:'Mas Bruguière — terroirs du Pic Saint-Loup',
         plan_title:'Programme & timing',
-
         inc_title:'Inclus',
         inc_transport:'Transport privé (crossover), carburant, parkings',
         inc_guide:'Guide-chauffeur FR/RU à la journée',
         inc_tastings:'3–4 dégustations : Puech-Haut + 2 parmi (Cazeneuve/Clos Marie/Mas Bruguière) + Hortus en option',
-
         exc_title:'Non inclus',
         exc_shopping:'Achats de vin / dépenses personnelles',
         exc_pickup:'Pick-up hors Montpellier (en option)',
-
         terms_title:'Conditions & saison',
         term_roundyear:'Toute l’année sur réservation (horaires ajustés pendant les vendanges)',
         term_cancel:'Acompte 30 %, annulation gratuite jusqu’à J-7',
         term_safety:'Le chauffeur ne déguste pas — sécurité avant tout',
-
         where_title:'Où ça se passe',
         where_sub:'Château Puech-Haut • Château de Cazeneuve • Clos Marie • Mas Bruguière • Domaine de l’Hortus • Pic Saint-Loup • Valflaunès.',
         tips_title:'À savoir',
         tip_shoes:'Chaussures confortables (pierres/graviers)',
         tip_sun:'Protection soleil & eau conseillées',
         tip_time:'Meilleure plage horaire : 10:00–16:30',
-
         pricing_title:'Tarifs',
         pricing_base:'430 € — pour 2 (privé)',
         pricing_extra:'+ 100 € par personne supplémentaire (jusqu’à 4)',
         pricing_examples:'Exemple : 2 pers. — 430 €',
         pricing_note:'Inclus : transport privé, 3–4 dégustations, réservations. Non inclus : déjeuner, achats pers.',
-
         form_title:'Demande rapide / réservation',
         form_sub:'Réponse sous 24 h et confirmation des visites.',
         label_date:'Date', label_guests:'Personnes',
         label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
         btn_send_form:'Envoyer',
-
         nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
@@ -536,7 +520,7 @@
     })();
   </script>
 
-  <!-- Страховка: делаем admin-ссылки некликабельными, если админ не включён -->
+  <!-- (опционально) если у кого-то кэш: делаем админ-ссылки некликабельными, если админ не включён -->
   <script>
     (function adminLinkGuard(){
       const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
@@ -551,6 +535,5 @@
   <script src="../config.js" defer></script>
   <script src="../assets/js/contact.js" defer></script>
   <script src="../assets/js/chat-widget.js" defer></script>
-
 </body>
 </html>
