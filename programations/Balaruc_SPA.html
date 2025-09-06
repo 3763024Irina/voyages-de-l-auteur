@@ -41,17 +41,19 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* HERO (как на Pic Saint-Loup) */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
-    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
-    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
-    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
 
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -73,27 +75,60 @@
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
-
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
-    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
+    /* FORM (глобальные базовые) */
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+
+    /* BOOK: компактная карточка формы — как в эталоне */
+    #book{ padding:32px 0 56px; }
+    #book .card{
+      max-width:720px; margin:0 auto;
+      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    #book .section-title{ font-size:28px; margin:0 0 6px; }
+    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
+
+    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #book .fields .full{ grid-column:1 / -1; }
+
+    #book input, #book textarea, #book select{ height:44px; }
+    #book textarea{ min-height:110px; height:auto; }
+
+    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book .btn{ padding:10px 12px; border-radius:12px; }
+    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    #book .btn.primary:hover{ filter:brightness(.96); }
+
+    /* карта в сайдбаре */
+    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
+    .mapwrap iframe{width:100%; height:380px; border:0}
+
+    /* admin gating: по умолчанию скрыто */
+    .admin-only{ display:none !important; }
+    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
     @media (max-width: 1000px){
-      .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
+      #book .fields{grid-template-columns:1fr}
+      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
       h2.title{font-size:36px}
       nav ul{display:none}
+      .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
   </style>
 </head>
@@ -115,7 +150,7 @@
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
@@ -125,7 +160,7 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO (без карточки, как в эталоне) -->
   <section class="hero">
     <div class="bg">
       <img src="../assets/Balaruc-Obalia.jpg" alt="" id="alt-hero" />
@@ -133,20 +168,10 @@
     </div>
     <div class="container inner">
       <div>
-        <span class="badge">Thermes • Étang de Thau</span>
+        <span class="badge" data-i18n="hero_badge">Thermes • Étang de Thau</span>
         <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)</h2>
         <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
-      </div>
-      <div class="card">
-        <div class="price" data-i18n="price">1 490 € за 2 гостя</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">≈ 745 €/чел при 2 гостях. Минимум: 2 гостя.</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: 7 дней / 7 ночей</div>
-          <div class="spec" data-i18n="spec_walk">Ритм: slow-travel, короткие прогулки</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_start">База: Balaruc-les-Bains (Étang de Thau)</div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px">
+        <div class="actions">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
           <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
           <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
@@ -174,24 +199,24 @@
         <li><span class="time" data-i18n="d1">День 1</span> — <span data-i18n="t_d1">Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.</span></li>
         <li><span class="time" data-i18n="d2">День 2</span> — <span data-i18n="t_d2">Утро: Escale «Hydro relaxante» (блок процедур ≈1h30). После обеда — свободно.</span></li>
         <li><span class="time" data-i18n="d3">День 3</span> — <span data-i18n="t_d3">Утро: Escale «Hydro relaxante». После обеда — свободно.</span></li>
-        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">**Винный день**: Picpoul de Pinet (La Croix Gratiot) + grand domaine по записи (Mas du Novi или Daumas Gassac). Ланч по желанию.</span></li>
+        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4"><strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.</span></li>
         <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Утро: Escale «Hydro relaxante». Свободное время у лагуны.</span></li>
-        <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6">**Каркасон** (полный день): La Cité, Château Comtal, стены. По времени — кафе в Бастиде.</span></li>
+        <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6"><strong>Каркасон</strong> (полный день): La Cité, Château Comtal, стены. По времени — кафе в Бастиде.</span></li>
         <li><span class="time" data-i18n="d7">День 7</span> — <span data-i18n="t_d7">Утро: последний блок «Hydro relaxante». Чек-аут, выезд.</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid" role="list">
         <div class="pill" role="listitem" data-i18n="inc_guide">Организация и сопровождение RU/FR (2 дня экскурсий)</div>
-        <div class="pill" role="listitem" data-i18n="inc_spa">Термы: мини-курс **Escale «Hydro relaxante»** — 5 дней подряд (≈1h30/день) для 2 гостей</div>
-        <div class="pill" role="listitem" data-i18n="inc_tours">Экскурсии: **Винный день** и **Каркасон** (бронирования дегустаций и билеты в замок)</div>
+        <div class="pill" role="listitem" data-i18n="inc_spa">Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей</div>
+        <div class="pill" role="listitem" data-i18n="inc_tours">Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)</div>
         <div class="pill" role="listitem" data-i18n="inc_notes">Рекомендации по ресторанам/устрицам в Bouzigues</div>
       </div>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
       <ul class="list">
         <li data-i18n="exc_hotel">Проживание (см. пакеты ниже)</li>
-        <li data-i18n="exc_transport">Транспорт (аренда авто/водитель) — по выбору</li>
+        <li data-i18n="exc_transport">Транспорт (аренда авто/водитель)</li>
         <li data-i18n="exc_meals">Питание и личные расходы</li>
         <li data-i18n="exc_ins">Авиабилеты/страховка</li>
       </ul>
@@ -223,10 +248,10 @@
     </aside>
   </section>
 
-  <!-- PACKAGES & PRICING -->
+  <!-- PRICING -->
   <section id="pricing" class="container" style="margin:3rem 0">
     <h3 class="section-title" data-i18n="pricing_title">Пакеты и цены</h3>
-    <ul class="price-list">
+    <ul class="list">
       <li data-i18n="pricing_base_html"><span><strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя)</span> — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em></li>
       <li data-i18n="pricing_hotel3_html"><span><strong>COMFORT 3★</strong> (7 ночей, 2 гостя)</span> — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em></li>
       <li data-i18n="pricing_hotel4_html"><span><strong>PREMIUM 4★</strong> (7 ночей, 2 гостя)</span> — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em></li>
@@ -234,51 +259,47 @@
     <p class="section-sub" data-i18n="pricing_note">Точные расценки зависят от дат, наличия и выбранных опций. Зафиксируем в счёте-подтверждении.</p>
   </section>
 
-  <!-- BOOK (унифицировано под contact.js) -->
+  <!-- BOOK (как в эталоне) -->
   <section id="book" class="container">
-    <div class="card" style="padding:18px" data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
+    <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
 
-      <form data-contact-form data-channel="telegram">
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-        <input name="name" required placeholder="Ваше имя"
-               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
-        <input name="contact" required placeholder="+33… или @username"
-               autocomplete="tel" inputmode="text"
-               pattern="(\+?\d[\d\s()-]{5,19}|@?[A-Za-z0-9_]{5,32})"
-               title="Телефон WhatsApp (например +33 7 59 64 48 13) или Telegram @username"
-               style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px">
-          <div>
-            <label style="display:block; font-size:13px; color:var(--muted); margin:0 0 6px" data-i18n="label_date">Дата</label>
-            <input type="date" name="date" required
-                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-          </div>
-          <div>
-            <label style="display:block; font-size:13px; color:var(--muted); margin:0 0 6px" data-i18n="label_guests">Гостей</label>
-            <input type="number" name="guests" min="1" value="2" required
-                   style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-          </div>
+      <form class="fields" data-contact-form data-channel="telegram">
+        <div>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" value="2" required>
         </div>
 
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Сообщение</label>
-        <textarea name="message"
-                  placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"
-                  style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
 
-        <div style="display:flex; gap:10px; align-items:center; margin:14px 0">
-          <label style="font-size:13px; color:var(--muted)">Куда отправить:</label>
-          <select name="channel">
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Telegram)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
+        </div>
+
+        <div class="full">
+          <label for="msg" data-i18n="label_message">Сообщение</label>
+          <textarea id="msg" name="message" placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"></textarea>
+        </div>
+
+        <div class="form-row full">
+          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+          <select id="sendto" name="channel">
             <option value="whatsapp">WhatsApp</option>
             <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
           </select>
         </div>
 
-        <div style="display:flex; gap:10px; margin-top:6px">
+        <div class="form-actions full">
           <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
           <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
           <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
@@ -307,12 +328,18 @@
         metaDesc:'Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Пакеты: Базовый 1 490 €, Comfort 2 240 €, Premium 2 590 €.',
         ogTitle:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)',
         ogDesc:'5 дней терм (~1h30/день) + винный день и Каркасон. Пакеты от 1 490 € / группа (2 гостя).',
+
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_whatsapp2:'Написать в WhatsApp',
-        btn_telegram:'Написать в Telegram',
 
+        /* HERO */
+        hero_badge:'Thermes • Étang de Thau',
+        hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)',
+        hero_sub:'5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_whatsapp2:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+
+        /* GALLERY */
         gal_title:'Как это выглядит',
         gal_sub:'Thermes Balaruc, лагуна Thau и тёплая вода круглый год.',
         altHero:'Balaruc-les-Bains — термальный комплекс',
@@ -320,15 +347,7 @@
         altG2:'O’balia — термальная вода',
         altG3:'Подготовка к мини-курсу в Баларюк',
 
-        hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)',
-        hero_sub:'5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.',
-        price:'1 490 € за 2 гостя',
-        price_note:'≈ 745 €/чел при 2 гостях. Минимум: 2 гостя.',
-        spec_duration:'Длительность: 7 дней / 7 ночей',
-        spec_walk:'Ритм: slow-travel, короткие прогулки',
-        spec_langs:'Языки: RU/FR',
-        spec_start:'База: Balaruc-les-Bains (Étang de Thau)',
-
+        /* DETAILS */
         plan_title:'Программа по дням',
         d1:'День 1', d2:'День 2', d3:'День 3', d4:'День 4', d5:'День 5', d6:'День 6', d7:'День 7',
         t_d1:'Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.',
@@ -362,20 +381,21 @@
         tip_booking:'Слоты терм и доменов — лучше заранее.',
         tip_car:'Для экскурсий удобнее авто.',
 
+        /* PRICING */
         pricing_title:'Пакеты и цены',
         pricing_base_html:'<span><strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя)</span> — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em>',
         pricing_hotel3_html:'<span><strong>COMFORT 3★</strong> (7 ночей, 2 гостя)</span> — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em>',
         pricing_hotel4_html:'<span><strong>PREMIUM 4★</strong> (7 ночей, 2 гостя)</span> — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em>',
         pricing_note:'Точные расценки зависят от дат, наличия и опций. Зафиксируем в счёте-подтверждении.',
 
+        /* FORM */
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим слоты терм и дегустаций.',
         btn_send_form:'Отправить',
+        label_date:'Дата', label_guests:'Гостей', label_name:'Имя', label_contact:'Контакт (WhatsApp/Telegram)', label_message:'Сообщение',
+        sendto_label:'Куда отправить:',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-
-        /* подписи формы */
-        label_name:'Имя', label_contact:'Контакт (WhatsApp/Telegram)', label_date:'Дата', label_guests:'Гостей', label_message:'Сообщение'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
         htmlLang:'fr',
@@ -383,11 +403,15 @@
         metaDesc:'Semaine au bord de la lagune de Thau : mini-cure Escale «Hydro relaxante» (5 jours) + 2 excursions — journée vins et Carcassonne. Privé dès 2 pers. Forfaits : Base 1 490 €, Comfort 2 240 €, Premium 2 590 €.',
         ogTitle:'Balaruc-les-Bains — «Hydro relaxante» + Vins & Carcassonne (7 jours)',
         ogDesc:'5 jours de soins (~1h30/j) + vins & Carcassonne. Forfaits à partir de 1 490 € / groupe (2 pers.).',
+
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_whatsapp2:'Écrire sur WhatsApp',
-        btn_telegram:'Écrire sur Telegram',
+
+        hero_badge:'Thermes • Étang de Thau',
+        hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Vins & Carcassonne (7 jours)',
+        hero_sub:'Mini-cure Escale «Hydro relaxante» pendant 5 jours (~1h30/j) + 2 excursions : journée vins et Carcassonne. Privé dès 2 pers.',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_whatsapp2:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
 
         gal_title:'À quoi ça ressemble',
         gal_sub:'Thermes de Balaruc, lagune de Thau, eaux chaudes toute l’année.',
@@ -395,15 +419,6 @@
         altG1:'O’balia — intérieurs',
         altG2:'O’balia — bassins',
         altG3:'Préparer sa mini-cure',
-
-        hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Vins & Carcassonne (7 jours)',
-        hero_sub:'Mini-cure Escale «Hydro relaxante» pendant 5 jours (~1h30/j) + 2 excursions : journée vins et Carcassonne. Privé dès 2 pers.',
-        price:'1 490 € pour 2 personnes',
-        price_note:'≈ 745 €/pers. (base 2 pers.). Minimum : 2 pers.',
-        spec_duration:'Durée : 7 jours / 7 nuits',
-        spec_walk:'Rythme : slow-travel, petites balades',
-        spec_langs:'Langues : RU/FR',
-        spec_start:'Base : Balaruc-les-Bains (Étang de Thau)',
 
         plan_title:'Programme jour par jour',
         d1:'Jour 1', d2:'Jour 2', d3:'Jour 3', d4:'Jour 4', d5:'Jour 5', d6:'Jour 6', d7:'Jour 7',
@@ -447,11 +462,10 @@
         form_title:'Demande rapide / réservation',
         form_sub:'Réponse sous 24 h et confirmation des créneaux.',
         btn_send_form:'Envoyer',
+        label_date:'Date', label_guests:'Personnes', label_name:'Prénom/nom', label_contact:'Contact (WhatsApp/Telegram)', label_message:'Message',
+        sendto_label:'Envoyer vers :',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-
-        /* labels */
-        label_name:'Prénom/nom', label_contact:'Contact (WhatsApp/Telegram)', label_date:'Date', label_guests:'Personnes', label_message:'Message'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
@@ -473,7 +487,8 @@
         }
       });
 
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+      setAlt('alt-hero', t.altHero);
+      setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
 
       const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
@@ -484,25 +499,72 @@
       localStorage.setItem('site:lang', lang);
     }
 
-    (function(){
+    (function init(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
+
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+
+      // фокус на дату при клике "Забронировать"
+      document.getElementById('goBook')?.addEventListener('click', ()=>{
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
+      });
     })();
   </script>
 
-  <!-- CONFIG сначала, потом скрипты -->
+  <!-- CONFIG сначала, затем скрипты -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
-      telegram: 'ToursLanguedocbyIrene', // @username без @
+      telegram: 'ToursLanguedocbyIrene', // username без @
       ADMIN_SECRET: 'capion2025'
     };
   </script>
+
+  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <script>
+    (function adminGate(){
+      try{
+        const params = new URLSearchParams(location.search);
+        const token = params.get('admin');
+
+        if (token !== null) {
+          if (token === 'off') {
+            localStorage.removeItem('site:admin');
+          } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
+            localStorage.setItem('site:admin','1');
+          }
+          // очищаем URL
+          params.delete('admin');
+          const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
+          history.replaceState({},'', newUrl);
+        }
+
+        const isAdmin = localStorage.getItem('site:admin') === '1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+      }catch(e){
+        console.warn('[adminGate]', e);
+      }
+    })();
+  </script>
+
+  <!-- (опционально) защита админ-ссылок, если админ не включён -->
+  <script>
+    (function adminLinkGuard(){
+      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
+      if (!isAdmin) {
+        const style = document.createElement('style');
+        style.textContent = 'a[data-admin-link]{pointer-events:none; cursor:not-allowed; opacity:.65;}';
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
+
   <script src="../config.js" defer></script>
   <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
