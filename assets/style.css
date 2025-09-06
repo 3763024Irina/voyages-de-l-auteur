@@ -674,3 +674,12 @@ nav a.wa:hover{ background:#21be5a; }
 #about .rf-consent{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted,#6b7b73); }
 #about .rf-share{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px; }
 #about .rf-msg{ margin:6px 0 0; font-size:13px; color:var(--muted,#6b7b73); }
+
+/* admin gating — по умолчанию прячем всё помеченное admin-only */
+.admin-only{ display:none !important; }
+/* когда админ включён (html[data-admin="1"]), показываем и уважаем желаемый тип отображения */
+html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+html[data-admin="1"] .admin-only[data-display="inline-block"]{ display:inline-block !important; }
+/* на всякий случай дефолт */
+html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
