@@ -153,21 +153,26 @@
         <p class="subtitle" data-i18n="hero_sub">3–4 домена: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.</p>
       </div>
       <div class="card">
-        <div class="price" data-i18n="price">430 € за двоих</div>
+        <div class="price" data-i18n="price">400 € за двоих</div>
         <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">+100 € за каждого следующего гостя (до 4).</p>
         <div class="specs">
           <div class="spec" data-i18n="spec_duration">Длительность: ~7 часов</div>
           <div class="spec" data-i18n="spec_km">Маршрут: ~86 км</div>
           <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
           <div class="spec" data-i18n="spec_pickup">Пикап: Монпелье (отель/центр)</div>
-       <div class="admin-only" id="domainLinks" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
+      <div class="admin-only" id="domainLinks"
+     data-display="flex"
+     style="gap:8px; flex-wrap:wrap; padding-top:2px">
   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&output=classic">Puech-Haut</a>
   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20de%20Cazeneuve%2C%2034190%20Lauret&output=classic">Cazeneuve</a>
   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Clos%20Marie%2C%20Lauret&output=classic">Clos Marie</a>
   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas%20Brugui%C3%A8re%2C%20Valflaun%C3%A8s&output=classic">Mas Bruguière</a>
   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s&output=classic">Domaine de l’Hortus</a>
-  <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&waypoints=Ch%C3%A2teau%20de%20Cazeneuve%2C%2034190%20Lauret|Clos%20Marie%2C%20Lauret|Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s">Маршрут: MPL → Puech-Haut → Cazeneuve → Clos Marie → Hortus</a>
+  <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Montpellier&destination=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&waypoints=Ch%C3%A2teau%20de%20Cazeneuve%2C%2034190%20Lauret|Clos%20Marie%2C%20Lauret|Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s">
+    Маршрут: MPL → Puech-Haut → Cazeneuve → Clos Marie → Hortus
+  </a>
 </div>
+
 
       </div>
     </div>
@@ -518,28 +523,34 @@
 </script>
 
 <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+<!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
 <script>
   (function adminGate(){
     try{
       const params = new URLSearchParams(location.search);
       const token = params.get('admin');
+
       if (token !== null) {
         if (token === 'off') {
           localStorage.removeItem('site:admin');
         } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
-          localStorage.setItem('site:admin', '1');
+          localStorage.setItem('site:admin','1');
         }
+        // очищаем URL
         params.delete('admin');
         const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
-        history.replaceState({}, '', newUrl);
+        history.replaceState({},'', newUrl);
       }
+
+      // флаг на <html> — дальше управляет CSS
       const isAdmin = localStorage.getItem('site:admin') === '1';
-      document.querySelectorAll('.admin-only').forEach(el=>{
-        el.style.display = isAdmin ? (el.dataset.display || 'block') : 'none';
-      });
-    }catch(e){ console.warn('[adminGate]', e); }
+      document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+    }catch(e){
+      console.warn('[adminGate]', e);
+    }
   })();
 </script>
+
 
 <script src="../config.js" defer></script>
 <script src="../assets/js/contact.js" defer></script>
