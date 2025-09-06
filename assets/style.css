@@ -269,4 +269,57 @@ footer.container{ color:var(--muted); }
 .grid.cards{ display:grid; gap:1rem; grid-template-columns:1fr; }
 @media (min-width:600px){ .grid.cards{ grid-template-columns:repeat(2,1fr); } }
 @media (min-width:1024px){ .grid.cards{ grid-template-columns:repeat(3,1fr); } }
+/* === BOOK: компактная карточка формы === */
+#book{ padding: 32px 0 56px; }
+#book .card{
+  max-width: 720px;           /* ширина карточки */
+  margin: 0 auto;             /* центрируем */
+  padding: 20px 20px;
+  border-radius: 18px;
+  border: 1px solid #eee;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+#book .section-title{ font-size: 28px; margin: 0 0 6px; }
+#book .section-sub{ margin: 0 0 14px; color: var(--muted); }
+
+#book .fields{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 колонки на десктопе */
+  gap: 12px;
+}
+#book .fields .full{ grid-column: 1 / -1; } /* элементы на всю ширину */
+
+#book label{ font-weight: 700; font-size: 13px; color: var(--ink); }
+#book input, #book textarea, #book select{
+  height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+}
+#book textarea{ min-height: 110px; height: auto; resize: vertical; }
+
+/* ряд с подписью "Куда отправить" — аккуратная сетка */
+#book .form-row{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+#book .form-actions{
+  display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px;
+}
+#book .btn{ padding: 10px 12px; border-radius: 12px; }
+#book .btn.primary{ background: var(--brand); color: #fff; border-color: var(--brand); }
+#book .btn.primary:hover{ filter: brightness(.96); }
+
+/* мобильная адаптация */
+@media (max-width: 640px){
+  #book .card{ max-width: 100%; padding: 16px; }
+  #book .fields{ grid-template-columns: 1fr; }
+  #book .form-row{ grid-template-columns: 1fr; gap: 6px; }
+}
 
