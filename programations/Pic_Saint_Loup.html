@@ -256,50 +256,56 @@
   </section>
 
   <!-- BOOK (унифицировано под contact.js) -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
-      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим визиты в хозяйства.</p>
+<section id="book" class="container">
+  <div class="card" data-program data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
+    <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+    <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим визиты в хозяйства.</p>
 
-      <form class="fields" data-contact-form data-channel="telegram">
-        <div>
-          <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
-        </div>
-        <div class="full">
-          <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-        <div class="full">
-          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-        </div>
-        <div class="full">
-          <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
-        </div>
+    <form class="fields" data-contact-form data-channel="telegram">
+      <div>
+        <label for="when" data-i18n="label_date">Дата</label>
+        <input id="when" name="date" type="date" required>
+      </div>
+      <div>
+        <label for="guests" data-i18n="label_guests">Гостей</label>
+        <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
+      </div>
 
-        <div class="full" style="display:flex; gap:10px; align-items:center; margin-top:6px">
-          <label style="margin:0; font-weight:600">Куда отправить:</label>
-          <select name="channel">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
+      <div class="full">
+        <label for="name" data-i18n="label_name">Имя</label>
+        <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+      </div>
 
-        <div class="full" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
+      <div class="full">
+        <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+        <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+      </div>
+
+      <div class="full">
+        <label for="msg" data-i18n="label_message">Комментарий</label>
+        <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
+      </div>
+
+      <!-- аккуратный ряд выбора канала -->
+      <div class="form-row full">
+        <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+        <select id="sendto" name="channel">
+          <option value="whatsapp">WhatsApp</option>
+          <option value="telegram" selected>Telegram</option>
+          <option value="email">Email</option>
+        </select>
+      </div>
+
+      <!-- действия -->
+      <div class="form-actions full">
+        <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+        <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+      </div>
+    </form>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
