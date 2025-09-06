@@ -331,7 +331,7 @@
         title:'Grand Vin du Pic Saint-Loup — премиальный винный день | Tours Languedoc by Irène',
         metaDesc:'Индивидуальный тур: 3–4 домена (Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière) + возможен Hortus, обед, кроссовер. ~7 часов, ~86 км. База: Монпелье. 430 € за двоих, +100 €/гость (до 4).',
         ogTitle:'Grand Vin du Pic Saint-Loup — премиальный винный день',
-        ogDesc:'VIP: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы. 430 € за двоих, +100 €/гость.',
+        ogDesc:'VIP: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы. 400 € за двоих, +100 €/гость.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
@@ -340,7 +340,7 @@
         hero_badge:'Wine • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — премиальный винный день',
         hero_sub:'3–4 домена: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.',
-        price:'430 € за двоих',
+        price:'400 € за двоих',
         price_note:'+100 € за каждого следующего гостя (до 4).',
         spec_duration:'Длительность: ~7 часов',
         spec_km:'Маршрут: ~86 км',
@@ -379,9 +379,9 @@
         tip_time:'Лучшее окно: 10:00–16:30',
 
         pricing_title:'Стоимость',
-        pricing_base:'430 € — за двоих (индивидуально)',
+        pricing_base:'400 € — за двоих (индивидуально)',
         pricing_extra:'+ 100 € за каждого следующего гостя (до 4)',
-        pricing_examples:'Пример: 2 гостя — 430 €',
+        pricing_examples:'Пример: 2 гостя — 400 €',
         pricing_note:'Включено: частный транспорт, 3–4 дегустации, бронирования. Не включено: обед, личные покупки.',
 
         form_title:'Быстрый запрос / бронирование',
@@ -406,7 +406,7 @@
         hero_badge:'Vin • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — journée premium',
         hero_sub:'3–4 domaines : Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Déjeuner et panoramas. Privé, 2–4 pers., crossover.',
-        price:'430 € pour 2 personnes',
+        price:'400 € pour 2 personnes',
         price_note:'+100 € par personne supplémentaire (jusqu’à 4).',
         spec_duration:'Durée : ~7 h',
         spec_km:'Parcours : ~86 km',
@@ -445,7 +445,7 @@
         tip_time:'Meilleure plage horaire : 10:00–16:30',
 
         pricing_title:'Tarifs',
-        pricing_base:'430 € — pour 2 (privé)',
+        pricing_base:'400 € — pour 2 (privé)',
         pricing_extra:'+ 100 € par personne supplémentaire (jusqu’à 4)',
         pricing_examples:'Exemple : 2 pers. — 430 €',
         pricing_note:'Inclus : transport privé, 3–4 dégustations, réservations. Non inclus : déjeuner, achats pers.',
@@ -508,7 +508,7 @@
       fab?.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('open'); });
       document.addEventListener('click', (e)=>{ if(!document.getElementById('chatWidget')?.contains(e.target)) panel?.classList.remove('open'); });
     })();
-  <!-- CONFIG сначала, затем скрипты -->
+ <!-- CONFIG сначала, затем скрипты -->
 <script>
   window.APP_CONFIG = {
     whatsapp: '33759644813',
@@ -543,14 +543,7 @@
 
 <script src="../config.js" defer></script>
 <script src="../assets/js/contact.js" defer></script>
+<script src="../assets/js/chat-widget.js" defer></script>
 
-  <!-- Плавающая кнопка чата (WA/TG подключаются contact.js) -->
-  <div class="chat-widget" id="chatWidget" aria-live="polite">
-    <button class="chat-fab" id="chatFab" aria-label="Открыть чат">Чат</button>
-    <div class="chat-panel" id="chatPanel" role="menu" aria-label="Быстрый чат">
-      <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
-    </div>
-  </div>
 </body>
 </html>
