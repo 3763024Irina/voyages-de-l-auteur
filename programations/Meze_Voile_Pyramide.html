@@ -156,7 +156,7 @@
     </div>
   </header>
 
-  <!-- HERO (без кнопок под описанием, как в вашей структуре) -->
+  <!-- HERO -->
   <section class="hero">
     <div class="bg">
       <img src="../assets/voiles/IMG_9304.JPG" alt="" id="alt-hero"/>
@@ -167,6 +167,11 @@
         <span class="badge" data-i18n="hero_badge">Voile • Étang de Thau</span>
         <h2 class="title" data-i18n="hero_title">Mèze Voile — Hôtel de la Pyramide (7 ночей)</h2>
         <p class="subtitle" data-i18n="hero_sub">7 ночей в Мезе и 5 сессий на выбор: катамаран HC15/16, Hansa 303 или кайтинг (Fil d’Air). Цена зависит от сезона и отеля.</p>
+        <div class="actions">
+          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
       </div>
     </div>
   </section>
@@ -253,7 +258,7 @@
     <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
     <ul class="list">
       <li><strong class="price" data-i18n="price">от 950 € / 2 гостя (7 ночей)</strong></li>
-      <li data-i18n="price_note">Итог зависит от сезона, отеля и спорта. Ориентиры (без завтраков): Hansa ~950 €, Catamaran ~1 010 €, Kite (низкий сезон) ~2 440 €.</li>
+      <li data-i18n="price_note">Итог зависит от сезона, отеля и спорта. Ориентиры (без завтраков): Hansa от ~950 €, Catamaran от ~1 010 €, Kite (низкий сезон) от ~2 440 €.</li>
     </ul>
   </section>
 
@@ -479,7 +484,7 @@
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
 
-      // фокус на дату при клике "Забронировать" в шапке
+      // фокус на дату при клике "Забронировать"
       document.getElementById('goBook')?.addEventListener('click', ()=>{
         setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
