@@ -4,12 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Бéзье: круиз по Каналу дю Миди | Tours Languedoc by Irène</title>
-  <meta name="description" content="Закатный круиз по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Ужин на борту, вино и кофе включены. Индивидуально 2–6 гостей." />
-  <meta property="og:title" content="Бéзье: закатный круиз-ужин по Каналу дю Миди" />
-  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="voyages-de-l-auteur/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+  <title>Бéзье — закатный круиз-ужин (Canal du Midi) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Дîner à bord, вино и кофе включены. Приватно 2–6 гостей." />
+  <meta property="og:title" content="Бéзье — закатный круиз-ужин (Canal du Midi)" />
+  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены. 2–6 гостей." />
+  <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,6 +26,7 @@
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
+
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
     .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
     .brand{display:flex; align-items:center; gap:14px}
@@ -41,17 +41,19 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* HERO */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
-    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.68)}
+    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
-    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
-    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
-    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
 
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -76,28 +78,65 @@
     .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
     .mapwrap iframe{width:100%; height:380px; border:0}
 
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
-    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    .btn:hover{filter:brightness(.98)}
     .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
+    /* FORM (глобальные базовые) */
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+
+    /* BOOK: компактная карточка формы */
+    #book{ padding:32px 0 56px; }
+    #book .card{
+      max-width:720px; margin:0 auto;
+      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    #book .section-title{ font-size:28px; margin:0 0 6px; }
+    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
+
+    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #book .fields .full{ grid-column:1 / -1; }
+
+    #book input, #book textarea, #book select{ height:44px; }
+    #book textarea{ min-height:110px; height:auto; }
+
+    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book .btn{ padding:10px 12px; border-radius:12px; }
+    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    #book .btn.primary:hover{ filter:brightness(.96); }
+
+    /* admin gating */
+    .admin-only{ display:none !important; }
+    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
     @media (max-width: 1000px){
-      .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
+      #book .fields{grid-template-columns:1fr}
+      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
       h2.title{font-size:36px}
       nav ul{display:none}
+      .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
   </style>
 </head>
-<body>
+
+<body
+  data-program
+  data-program-title="Бéзье — закатный круиз-ужин (Canal du Midi)"
+  data-program-id="CRUISE-BEZIERS"
+>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -110,7 +149,7 @@
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
@@ -128,23 +167,9 @@
     </div>
     <div class="container inner">
       <div>
-        <span class="badge">HIT</span>
-        <h2 class="title" data-i18n="hero_title">Бéзье: круиз по Каналу дю Миди</h2>
-        <p class="subtitle" data-i18n="hero_sub">Фонсераны — Grand Bief — тоннель Малпас.</p>
-      </div>
-      <div class="card">
-        <div class="price" data-i18n="price">по запросу </div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: 3.5–4 ч</div>
-          <div class="spec" data-i18n="spec_time">Время: закат</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_start">Старт: Béziers — Fonseranes</div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-        </div>
+        <span class="badge" data-i18n="hero_badge">Canal du Midi • Béziers</span>
+        <h2 class="title" data-i18n="hero_title">Бéзье — закатный круиз-ужин по Каналу дю Миди</h2>
+        <p class="subtitle" data-i18n="hero_sub">Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местные вина и кофе включены. Приватно 2–6 гостей.</p>
       </div>
     </div>
   </section>
@@ -152,19 +177,12 @@
   <!-- GALLERY -->
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
-    <p class="section-sub" data-i18n="gal_sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief)</p>
-   <div class="gallery" aria-label="Галерея">
-  <div class="ph">
-    <img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="" id="alt-g1" loading="lazy">
-  </div>
-  <div class="ph">
-    <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="" id="alt-g2" loading="lazy">
-  </div>
-  <div class="ph">
-    <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="" id="alt-g3" loading="lazy">
-  </div>
-</div>
-
+    <p class="section-sub" data-i18n="gal_sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief) и закат на борту.</p>
+    <div class="gallery" aria-label="Галерея">
+      <div class="ph"><img id="alt-g1" src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" onerror="this.src='../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" onerror="this.src='../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="" loading="lazy"></div>
+    </div>
   </section>
 
   <!-- DETAILS -->
@@ -175,35 +193,47 @@
         <li><span class="time" data-i18n="t_pickup_time">По запросу</span> — <span data-i18n="t_pickup">Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.</span></li>
         <li><span class="time">18:30</span> — <span data-i18n="t_1830">Встреча у комплекса Фонсераны, посадка на лодку.</span></li>
         <li><span class="time">19:00</span> — <span data-i18n="t_1900">Проход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.</span></li>
-        <li><span class="time">21:15</span> — <span data-i18n="t_2115">Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь при золотом свете.</span></li>
-        <li><span class="time">22:15</span> — <span data-i18n="t_2215">Высадка у Фонсеранов. Прощальные фото.</span></li>
+        <li><span class="time">~20:00</span> — <span data-i18n="t_2000">Ужин на борту: закуски, горячее (set-menu), десерт. Вина Лангедока, вода, кофе.</span></li>
+        <li><span class="time">~21:15</span> — <span data-i18n="t_2115">Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь в «золотой час».</span></li>
+        <li><span class="time">~22:15</span> — <span data-i18n="t_2215">Высадка у Фонсеранов. Прощальные фото.</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid" role="list">
         <div class="pill" role="listitem" data-i18n="inc_transfer">Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)</div>
         <div class="pill" role="listitem" data-i18n="inc_seats">Бронированные места на борту</div>
-   
+        <div class="pill" role="listitem" data-i18n="inc_menu">Ужин set-menu</div>
+        <div class="pill" role="listitem" data-i18n="inc_wine">Местные вина и вода</div>
+        <div class="pill" role="listitem" data-i18n="inc_coffee">Кофе/чай</div>
         <div class="pill" role="listitem" data-i18n="inc_guide">Сопровождение RU/FR</div>
         <div class="pill" role="listitem" data-i18n="inc_photo">Фото-точки и истории канала</div>
       </div>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
       <ul class="list">
-        <li data-i18n="exc_extra"></li>
+        <li data-i18n="exc_extra">Дополнительные напитки/спецблюда вне сет-меню; чаевые.</li>
       </ul>
     </article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
-      <div class="mapwrap">
+
+      <div class="mapwrap" style="margin-bottom:10px">
         <iframe
           title="Карта: Écluses de Fonseranes"
-          src="https://www.google.com/maps?q=Écluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=embed"
+          src="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=embed"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
+      </div>
+
+      <!-- Ссылки — видны только в режиме администратора -->
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tunnel%20du%20Malpas%2C%20Colombiers&output=classic">Tunnel du Malpas</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&destination=Tunnel%20du%20Malpas%2C%20Colombiers&waypoints=Grand%20Bief%2C%20Canal%20du%20Midi">Маршрут: Fonseranes → Grand Bief → Malpas</a>
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
@@ -215,21 +245,59 @@
     </aside>
   </section>
 
-  <!-- BOOKING -->
+  <!-- PRICING -->
+  <section id="pricing" class="container" style="margin:3rem 0">
+    <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
+    <ul class="list">
+      <li><strong class="price" data-i18n="price">440 € / 2 гостя</strong></li>
+      <li data-i18n="price_note">Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.</li>
+    </ul>
+  </section>
+
+  <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" style="padding:18px">
+    <div class="card" data-program data-program-title="Бéзье — закатный круиз-ужин (Canal du Midi)" data-program-id="CRUISE-BEZIERS">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим ближайшие доступные даты.</p>
-      <form onsubmit="openMail(event)">
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_name">Имя</label>
-        <input id="f-name" name="name" required placeholder="Ваше имя" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-        <input id="f-contact" name="contact" required placeholder="+33… или email" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit" />
-        <label style="display:block; font-size:13px; color:var(--muted); margin:12px 0 6px" data-i18n="label_message">Дата и состав</label>
-        <textarea id="f-message" name="message" placeholder="Желаемая дата/период, кол-во гостей, трансфер нужен?" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; min-height:110px"></textarea>
-        <div style="display:flex; gap:10px; margin-top:14px">
-          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-          <a class="btn" href="https://wa.me/33600000000" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+
+      <form class="fields" data-contact-form data-channel="telegram">
+        <div>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+        </div>
+
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
+
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+        </div>
+
+        <div class="full">
+          <label for="msg" data-i18n="label_message">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="Желаемая дата/период, кол-во гостей, нужен ли трансфер…"></textarea>
+        </div>
+
+        <div class="form-row full">
+          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+          <select id="sendto" name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+
+        <div class="form-actions full">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
     </div>
@@ -246,218 +314,213 @@
     </div>
   </footer>
 
+  <!-- I18N -->
   <script>
     const i18n = {
       ru: {
-        htmlLang: 'ru',
-        title: 'Бéзье: закатный круиз-ужин по Каналу дю Миди | Tours Languedoc by Irène',
-        metaDesc: 'Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Ужин на борту, вино и кофе включены. Индивидуально 2–6 гостей.',
-        ogTitle: 'Бéзье: закатный круиз-ужин по Каналу дю Миди',
-        ogDesc: 'Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены.',
-        brand_sub: '— Путешествия со вкусом',
-        brand_sub_footer: 'Путешествия со вкусом',
-        nav_all: '← Все программы',
-        nav_why: 'Почему с нами',
-        nav_book: 'Забронировать',
-        btn_book: 'Забронировать',
-        btn_whatsapp: 'Написать в WhatsApp',
-        gal_title: 'Как это выглядит',
-        gal_sub: 'Шлюзы Фонсераны, «Большой канал» (Grand Bief) и ужин на борту.',
-        altHero: 'Фонсераны — ступенчатые шлюзы канала дю Миди, Бéзье',
-        altG1: 'Шлюзы Фонсераны на закате',
-        altG2: 'Канал дю Миди, платаны и вода',
-        altG3: 'Ужин на борту — закат, вино и сервировка',
-        hero_title: 'Бéзье: закатный круиз-ужин по Каналу дю Миди',
-        hero_sub: 'Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местное вино и кофе включены.',
-        price: '440 € / 2 гостя',
-        price_note: 'Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.',
-        spec_duration: 'Длительность: 3.5–4 ч',
-        spec_time: 'Время: закат',
-        spec_langs: 'Языки: RU/FR',
-        spec_start: 'Старт: Béziers — Fonseranes',
-        plan_title: 'Расписание вечера',
-        t_pickup_time: 'По запросу',
-        t_pickup: 'Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.',
-        t_1830: 'Встреча у комплекса Фонсераны, посадка на лодку.',
-        t_1900: 'Проход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.',
-        t_2000: 'Ужин на борту: закуски, горячее/сет-меню, десерт. Региональные вина, вода, кофе.',
-        t_2115: 'Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь при золотом свете.',
-        t_2215: 'Высадка у Фонсеранов. Прощальные фото.',
-        inc_title: 'Что включено',
-        inc_transfer: 'Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)',
-        inc_seats: 'Бронированные места на борту',
-        inc_menu: 'Ужин set-menu',
-        inc_wine: 'Местные вина и вода',
-        inc_coffee: 'Кофе/чай',
-        inc_guide: 'Сопровождение RU/FR',
-        inc_photo: 'Фото-точки и истории канала',
-        exc_title: 'Не включено',
-        exc_extra: 'Дополнительные напитки/спецблюда вне сет-меню, чаевые.',
-        where_title: 'Где это',
-        where_sub: 'Старт у <strong>Écluses de Fonseranes</strong>, Béziers.',
-        tips_title: 'Полезно знать',
-        tip_speed: 'Крейсерская скорость мала — идеально для фото и отдыха.',
-        tip_route: 'Маршрут может меняться из-за судоходного графика/погоды.',
-        tip_clothes: 'Рекомендуем уютную одежду и лёгкую накидку на вечерний бриз.',
-        form_title: 'Быстрый запрос / бронирование',
-        form_sub: 'Ответим в течение дня и подтвердим ближайшие доступные даты.',
-        label_name: 'Имя',
-        label_contact: 'Контакт (WhatsApp/Email)',
-        label_message: 'Дата и состав',
-        ph_name: 'Ваше имя',
-        ph_contact: '+33… или email',
-        ph_message: 'Желаемая дата/период, кол-во гостей, трансфер нужен?',
-        btn_send: 'Отправить',
-        btn_whatsapp2: 'Написать в WhatsApp',
-        nav_why_f: 'Почему с нами',
-        nav_all_f: 'Программы',
-        nav_format_f: 'Формат',
-        nav_contacts_f: 'Контакты',
-        mail_subject: 'Запрос: Бéзье — закатный круиз-ужин (сайт)'
+        htmlLang:'ru',
+        title:'Бéзье — закатный круиз-ужин (Canal du Midi) | Tours Languedoc by Irène',
+        metaDesc:'Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Дîner à bord, вино и кофе включены. Приватно 2–6 гостей.',
+        ogTitle:'Бéзье — закатный круиз-ужин (Canal du Midi)',
+        ogDesc:'Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены.',
+        brand_sub:'— Путешествия со вкусом',
+        brand_sub_footer:'Путешествия со вкусом',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+        hero_badge:'Canal du Midi • Béziers',
+        hero_title:'Бéзье — закатный круиз-ужин по Каналу дю Миди',
+        hero_sub:'Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местные вина и кофе включены. Приватно 2–6 гостей.',
+        gal_title:'Как это выглядит',
+        gal_sub:'Шлюзы Фонсераны, «Большой канал» (Grand Bief) и закат на борту.',
+        altHero:'Фонсераны — ступенчатые шлюзы канала дю Миди, Бéзье',
+        altG1:'Шлюзы Фонсераны на закате',
+        altG2:'Канал дю Миди, платаны и вода',
+        altG3:'Вид на Grand Bief и прогулочный борт',
+        altG4:'Béziers — вечерний канал',
+        plan_title:'Расписание вечера',
+        t_pickup_time:'По запросу',
+        t_pickup:'Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.',
+        t_1830:'Встреча у комплекса Фонсераны, посадка на лодку.',
+        t_1900:'Проход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.',
+        t_2000:'Ужин на борту: закуски, горячее (set-menu), десерт. Вина Лангедока, вода, кофе.',
+        t_2115:'Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь в «золотой час».',
+        t_2215:'Высадка у Фонсеранов. Прощальные фото.',
+        inc_title:'Что включено',
+        inc_transfer:'Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)',
+        inc_seats:'Бронированные места на борту',
+        inc_menu:'Ужин set-menu',
+        inc_wine:'Местные вина и вода',
+        inc_coffee:'Кофе/чай',
+        inc_guide:'Сопровождение RU/FR',
+        inc_photo:'Фото-точки и истории канала',
+        exc_title:'Не включено',
+        exc_extra:'Дополнительные напитки/спецблюда вне сет-меню; чаевые.',
+        where_title:'Где это',
+        where_sub:'Старт у <strong>Écluses de Fonseranes</strong>, Béziers.',
+        tips_title:'Полезно знать',
+        tip_speed:'Крейсерская скорость мала — идеально для фото и отдыха.',
+        tip_route:'Маршрут может меняться из-за судоходного графика/погоды.',
+        tip_clothes:'Рекомендуем уютную одежду и лёгкую накидку на вечерний бриз.',
+        pricing_title:'Стоимость',
+        price:'440 € / 2 гостя',
+        price_note:'Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.',
+        form_title:'Быстрый запрос / бронирование',
+        form_sub:'Ответим в течение дня и подтвердим ближайшие доступные даты.',
+        label_date:'Дата', label_guests:'Гостей',
+        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+        btn_send_form:'Отправить',
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
-        htmlLang: 'fr',
-        title: 'Béziers : croisière-dîner au coucher du soleil — Canal du Midi | Tours Languedoc by Irène',
-        metaDesc: 'Croisière-dîner au coucher du soleil sur le Canal du Midi (Fonseranes — Grand Bief — tunnel du Malpas). Dîner à bord, vin et café inclus. Privatif 2–6 personnes.',
-        ogTitle: 'Béziers : croisière-dîner au coucher du soleil — Canal du Midi',
-        ogDesc: 'Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord, vin et café inclus.',
-        brand_sub: '— Des voyages avec goût',
-        brand_sub_footer: 'Des voyages avec goût',
-        nav_all: '← Toutes les offres',
-        nav_why: 'Pourquoi nous',
-        nav_book: 'Réserver',
-        btn_book: 'Réserver',
-        btn_whatsapp: 'Écrire sur WhatsApp',
-        gal_title: 'À quoi ça ressemble',
-        gal_sub: 'Écluses de Fonseranes, le Grand Bief et dîner à bord.',
-        altHero: 'Écluses en escalier de Fonseranes, Canal du Midi — Béziers',
-        altG1: 'Écluses de Fonseranes au coucher du soleil',
-        altG2: 'Canal du Midi, platanes et eau',
-        altG3: 'Dîner à bord — coucher du soleil, vin et dressage',
-        hero_title: 'Béziers : croisière-dîner au coucher du soleil sur le Canal du Midi',
-        hero_sub: 'Fonseranes — Grand Bief — tunnel du Malpas. Dîner à bord, vin du coin et café inclus.',
-        price: '440 € / 2 pers.',
-        price_note: 'Personne supplémentaire : +80 € (max. 6). Dates/horaires — sur demande, saison douce.',
-        spec_duration: 'Durée : 3h30–4h',
-        spec_time: 'Horaire : coucher du soleil',
-        spec_langs: 'Langues : RU/FR',
-        spec_start: 'Départ : Béziers — Fonseranes',
-        plan_title: 'Déroulé de la soirée',
-        t_pickup_time: 'Sur demande',
-        t_pickup: 'Pick-up à l’hôtel (Montpellier / Sète / Béziers / Narbonne) et transfert jusqu’à Fonseranes.',
-        t_1830: 'Rendez-vous au site de Fonseranes, embarquement.',
-        t_1900: 'Passage de l’«échelle» d’écluses et sortie sur le Grand Bief — la plus longue ligne droite du canal.',
-        t_2000: 'Dîner à bord : entrées, plat (set-menu), dessert. Vins du Languedoc, eau, café.',
-        t_2115: 'Balade vers le tunnel du Malpas (selon navigation) et retour dans la lumière dorée.',
-        t_2215: 'Débarquement à Fonseranes. Photos d’adieu.',
-        inc_title: 'Inclus',
-        inc_transfer: 'Transfert privé A/R (zone : Montpellier — Sète — Béziers — Narbonne)',
-        inc_seats: 'Places réservées à bord',
-        inc_menu: 'Dîner set-menu',
-        inc_wine: 'Vins locaux et eau',
-        inc_coffee: 'Café/thé',
-        inc_guide: 'Accompagnement RU/FR',
-        inc_photo: 'Spots photo & histoires du canal',
-        exc_title: 'Non inclus',
-        exc_extra: 'Boissons/plats spéciaux hors menu, pourboires.',
-        where_title: 'Où ça se passe',
-        where_sub: 'Départ aux <strong>Écluses de Fonseranes</strong>, Béziers.',
-        tips_title: 'À savoir',
-        tip_speed: 'Allure douce — idéale pour les photos et la détente.',
-        tip_route: 'Le parcours peut varier selon la navigation/météo.',
-        tip_clothes: 'Prévoir une tenue confortable et une petite couche pour la brise du soir.',
-        form_title: 'Demande rapide / réservation',
-        form_sub: 'Réponse sous 24h avec confirmation des prochaines dates disponibles.',
-        label_name: 'Nom',
-        label_contact: 'Contact (WhatsApp/Email)',
-        label_message: 'Date et composition',
-        ph_name: 'Votre prénom/nom',
-        ph_contact: '+33… ou email',
-        ph_message: 'Période souhaitée, nb de personnes, transfert ?',
-        btn_send: 'Envoyer',
-        btn_whatsapp2: 'Écrire sur WhatsApp',
-        nav_why_f: 'Pourquoi nous',
-        nav_all_f: 'Offres',
-        nav_format_f: 'Format',
-        nav_contacts_f: 'Contacts',
-        mail_subject: 'Demande : Béziers — croisière-dîner coucher du soleil (site)'
+        htmlLang:'fr',
+        title:'Béziers — croisière-dîner coucher du soleil (Canal du Midi) | Tours Languedoc by Irène',
+        metaDesc:'Croisière-dîner au coucher du soleil sur le Canal du Midi (Fonseranes — Grand Bief — tunnel du Malpas). Dîner à bord, vin et café inclus. Privatif 2–6 pers.',
+        ogTitle:'Béziers — croisière-dîner coucher du soleil (Canal du Midi)',
+        ogDesc:'Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord, vin et café inclus.',
+        brand_sub:'— Des voyages avec goût',
+        brand_sub_footer:'Des voyages avec goût',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+        hero_badge:'Canal du Midi • Béziers',
+        hero_title:'Béziers : croisière-dîner au coucher du soleil sur le Canal du Midi',
+        hero_sub:'Fonseranes — Grand Bief — tunnel du Malpas. Dîner à bord, vins du coin et café inclus. Privatif 2–6 pers.',
+        gal_title:'À quoi ça ressemble',
+        gal_sub:'Écluses de Fonseranes, le Grand Bief et coucher de soleil à bord.',
+        altHero:'Écluses en escalier de Fonseranes, Canal du Midi — Béziers',
+        altG1:'Écluses de Fonseranes au coucher du soleil',
+        altG2:'Canal du Midi, platanes et eau',
+        altG3:'Vue sur le Grand Bief et un bateau promenade',
+        altG4:'Béziers — canal le soir',
+        plan_title:'Déroulé de la soirée',
+        t_pickup_time:'Sur demande',
+        t_pickup:'Pick-up à l’hôtel (Montpellier / Sète / Béziers / Narbonne) et transfert jusqu’à Fonseranes.',
+        t_1830:'Rendez-vous au site de Fonseranes, embarquement.',
+        t_1900:'Passage de l’échelle d’écluses et sortie sur le Grand Bief — la plus longue ligne droite du canal.',
+        t_2000:'Dîner à bord : entrées, plat (set-menu), dessert. Vins du Languedoc, eau, café.',
+        t_2115:'Balade vers le tunnel du Malpas (selon navigation) et retour dans la lumière dorée.',
+        t_2215:'Débarquement à Fonseranes. Photos d’adieu.',
+        inc_title:'Inclus',
+        inc_transfer:'Transfert privé A/R (zone : Montpellier — Sète — Béziers — Narbonne)',
+        inc_seats:'Places réservées à bord',
+        inc_menu:'Dîner set-menu',
+        inc_wine:'Vins locaux et eau',
+        inc_coffee:'Café/thé',
+        inc_guide:'Accompagnement RU/FR',
+        inc_photo:'Spots photo & histoires du canal',
+        exc_title:'Non inclus',
+        exc_extra:'Boissons/plats spéciaux hors menu ; pourboires.',
+        where_title:'Où ça se passe',
+        where_sub:'Départ aux <strong>Écluses de Fonseranes</strong>, Béziers.',
+        tips_title:'À savoir',
+        tip_speed:'Allure douce — idéale pour les photos et la détente.',
+        tip_route:'Le parcours peut varier selon la navigation/météo.',
+        tip_clothes:'Prévoir une tenue confortable et une petite couche pour la brise du soir.',
+        pricing_title:'Tarifs',
+        price:'440 € / 2 pers.',
+        price_note:'Personne supplémentaire : +80 € (max. 6). Dates/horaires — sur demande, saison douce.',
+        form_title:'Demande rapide / réservation',
+        form_sub:'Réponse sous 24 h avec confirmation des prochaines dates.',
+        label_date:'Date', label_guests:'Personnes',
+        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+        btn_send_form:'Envoyer',
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
-    const setAttrText = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); }
+    const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
+
     function applyLang(lang){
       const t = i18n[lang];
       document.documentElement.lang = t.htmlLang;
       document.title = t.title;
-      const md = document.querySelector('meta[name="description"]');
-      if(md) md.setAttribute('content', t.metaDesc);
-      const ogt = document.querySelector('meta[property="og:title"]');
-      if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd = document.querySelector('meta[property="og:description"]');
-      if(ogd) ogd.setAttribute('content', t.ogDesc);
+      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
+      const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
+      const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
 
-      // All [data-i18n]
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
         if(t[key]!==undefined){
-          // allow simple HTML in a few fields
-          if(['where_sub'].includes(key)) node.innerHTML = t[key];
-          else node.textContent = t[key];
+          if (['where_sub'].includes(key)) { node.innerHTML = t[key]; }
+          else { node.textContent = t[key]; }
         }
       });
 
-      // Placeholders
-      const fName = document.getElementById('f-name');
-      const fContact = document.getElementById('f-contact');
-      const fMessage = document.getElementById('f-message');
-      if(fName) fName.placeholder = t.ph_name;
-      if(fContact) fContact.placeholder = t.ph_contact;
-      if(fMessage) fMessage.placeholder = t.ph_message;
+      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3); setAlt('alt-g4', t.altG4);
 
-      // Alts
-      setAttrText('alt-hero', t.altHero);
-      setAttrText('alt-g1', t.altG1);
-      setAttrText('alt-g2', t.altG2);
-      setAttrText('alt-g3', t.altG3);
-
-      // Header brand aria-label swap (home)
       const brandHome = document.getElementById('brandHome');
-      if(brandHome){
-        brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil');
-      }
+      if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
 
-      // Toggle active button
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
-      // Save
-    localStorage.setItem('site:lang', lang);
+      localStorage.setItem('site:lang', lang);
     }
 
-    // Mailto builder with localized subject
-    function openMail(e){
-      e.preventDefault();
-      const fd = new FormData(e.target);
- const lang =
-  localStorage.getItem('lang')
-  || (((navigator.language || '').toLowerCase().startsWith('fr')) ? 'fr' : 'ru');
-
-      const subj = encodeURIComponent(i18n[lang].mail_subject);
-      const body = encodeURIComponent(
-        `Имя / Nom: ${fd.get('name')||''}\nКонтакт / Contact: ${fd.get('contact')||''}\nСообщение / Message: ${fd.get('message')||''}`
-      );
-      window.location.href = `mailto:hello@example.com?subject=${subj}&body=${body}`;
-    }
-
-    // Init language
-    (function(){
-    const saved = localStorage.getItem('site:lang');
-
+    (function init(){
+      const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
+
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+
+      // фокус на дату при клике "Забронировать"
+      document.getElementById('goBook')?.addEventListener('click', ()=>{
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
+      });
     })();
   </script>
+
+  <!-- CONFIG сначала, затем скрипты -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'de_iren', // username без @
+      ADMIN_SECRET: 'capion2025'
+    };
+  </script>
+
+  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <script>
+    (function adminGate(){
+      try{
+        const params = new URLSearchParams(location.search);
+        const token = params.get('admin');
+
+        if (token !== null) {
+          if (token === 'off') {
+            localStorage.removeItem('site:admin');
+          } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
+            localStorage.setItem('site:admin','1');
+          }
+          // очищаем URL
+          params.delete('admin');
+          const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
+          history.replaceState({},'', newUrl);
+        }
+
+        const isAdmin = localStorage.getItem('site:admin') === '1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+      }catch(e){
+        console.warn('[adminGate]', e);
+      }
+    })();
+  </script>
+
+  <!-- если админ не включён — делаем ссылки некликабельными -->
+  <script>
+    (function adminLinkGuard(){
+      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
+      if (!isAdmin) {
+        const style = document.createElement('style');
+        style.textContent = 'a[data-admin-link]{pointer-events:none; cursor:not-allowed; opacity:.65;}';
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
+
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
