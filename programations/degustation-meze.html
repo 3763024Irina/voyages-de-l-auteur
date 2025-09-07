@@ -1,397 +1,520 @@
 <!DOCTYPE html>
-<html lang="ru" data-program id="degustation-meze">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène</title>
   <meta name="description" content="Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы." />
+  <meta property="og:title" content="Mèze — дегустационный маршрут (Mèze & Montagnac)" />
+  <meta property="og:description" content="Короткие переезды: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы." />
+  <meta property="og:image" content="../assets/wines/vinograd.jpg" />
+  <meta name="theme-color" content="#0D2B1E" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{ --brand:#0D2B1E; --accent:#C9B886; --ink:#0b1b14; --muted:#6b7b73; --bg:#f8f7f3; --radius:14px; }
+    :root{
+      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
+      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px; --radius-lg:26px; --container:1100px;
+    }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-    a{color:var(--brand);text-decoration:none}
-    .container{max-width:980px;margin:0 auto;padding:20px}
-    .hero{background:linear-gradient(120deg,var(--brand),#174736);color:#fff;border-radius:18px;margin:16px 0;padding:22px 18px;display:grid;gap:10px}
-    .hero small{opacity:.9}
-    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;margin-right:8px}
-    .grid{display:grid;gap:14px}
-    @media(min-width:760px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
-    .card{background:#fff;border-radius:var(--radius);padding:16px;border:1px solid #e5e2db;box-shadow:0 1px 0 rgba(0,0,0,.02)}
-    .card h3{margin:0 0 6px 0;font-size:18px}
-    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-    .kpi{display:flex;gap:12px;flex-wrap:wrap}
-    .kpi div{background:#fff;border:1px dashed #e2ded5;border-radius:12px;padding:8px 12px}
-    .timeline{border-left:2px solid #e2ded5;margin-left:10px;padding-left:14px}
-    .timeline .item{margin:12px 0}
-    .pill{background:var(--brand);color:#fff;border:none;border-radius:999px;padding:10px 16px;cursor:pointer}
-    .pill.alt{background:var(--accent);color:#1c1b19}
-    .medal{display:inline-block;border:1px solid #e8e2d6;border-radius:10px;padding:6px 10px;background:#faf8f3}
-    .mini{font-size:12.5px;color:var(--muted)}
-    .map{background:#fff;border-radius:var(--radius);border:1px solid #e5e2db;padding:12px}
-    .logo-line{letter-spacing:.4px}
-    .awards{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
-    .note{font-size:12.5px;color:var(--muted)}
-    .lang-switch{display:flex;gap:6px}
-    .lang-switch button{background:#fff;border:1px solid #dcd6c8;border-radius:999px;padding:6px 10px;cursor:pointer}
-    .lang-switch button.active{background:var(--accent);border-color:var(--accent);color:#1c1b19}
-    .divider{height:1px;background:#e9e4da;margin:16px 0}
-  </style>
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}    
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:auto; padding:0 20px}
 
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{font-weight:600; padding:10px 12px; border-radius:12px}
+    nav a:hover{background:#f0f0f0}
+    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:10px 16px; box-shadow:var(--shadow)}
+    .lang{display:flex; align-items:center; gap:10px}
+    .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
+    .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+
+    /* HERO */
+    .hero{position:relative; isolation:isolate;}
+    .hero .bg{position:absolute; inset:0; z-index:-1;}
+    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
+    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
+    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
+    .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
+    h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
+
+    section{padding:52px 0}
+    .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
+    .section-sub{color:var(--muted); margin:0 0 22px}
+
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
+    .gallery img{width:100%; height:100%; object-fit:cover}
+
+    .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
+    .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .list{margin:0; padding-left:18px}
+    .list li{margin:8px 0}
+
+    .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
+    .timeline li{margin:12px 0}
+    .time{font-weight:800; color:var(--brand);}
+
+    .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
+
+    .price{font-weight:800; font-size:20px}
+
+    footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
+    .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
+    .footgrid a{color:#cfd8d3}
+
+    /* FORM (глобальные базовые) */
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+
+    /* BOOK: компактная карточка формы */
+    #book{ padding:32px 0 56px; }
+    #book .card{
+      max-width:720px; margin:0 auto;
+      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    #book .section-title{ font-size:28px; margin:0 0 6px; }
+    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
+
+    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #book .fields .full{ grid-column:1 / -1; }
+
+    #book input, #book textarea, #book select{ height:44px; }
+    #book textarea{ min-height:110px; height:auto; }
+
+    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book .btn{ padding:10px 12px; border-radius:12px; }
+    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    #book .btn.primary:hover{ filter:brightness(.96); }
+
+    /* admin gating: по умолчанию всё .admin-only скрыто */
+    .admin-only{ display:none !important; }
+    /* когда админ включён — показываем */
+    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
+    @media (max-width: 1000px){
+      .info-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      #book .fields{grid-template-columns:1fr}
+      #book .form-row{ grid-template-columns:1fr; gap:6px; }
+    }
+    @media (max-width: 640px){
+      .gallery{grid-template-columns:1fr}
+      h2.title{font-size:36px}
+      nav ul{display:none}
+      .hero .inner{ min-height:auto; padding:28px 0 34px; }
+    }
+  </style>
+</head>
+
+<body
+  data-program
+  data-program-title="Mèze — дегустационный маршрут (Mèze & Montagnac)"
+  data-program-id="DEGUST-MEZE"
+>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
+        <div class="logo" aria-hidden>Î</div>
+        <div>
+          <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
+        </div>
+      </a>
+      <nav class="lang">
+        <ul>
+          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+        </ul>
+        <div aria-label="Language switch">
+          <button id="btn-ru" class="active">RU</button>
+          <button id="btn-fr">FR</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg">
+      <img src="../assets/wines/vinograd.jpg" alt="" id="alt-hero"/>
+      <div class="overlay"></div>
+    </div>
+    <div class="container inner">
+      <div>
+        <span class="badge" data-i18n="hero_badge">Wine • Mèze & Montagnac</span>
+        <h2 class="title" data-i18n="hero_title">Mèze — дегустационный маршрут (Mèze & Montagnac)</h2>
+        <p class="subtitle" data-i18n="hero_sub">4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan).</p>
+</div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="container">
+    <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
+    <p class="section-sub" data-i18n="gal_sub">Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — компактный радиус вокруг Mèze & Montagnac.</p>
+    <div class="gallery" aria-label="Галерея">
+      <div class="ph"><img id="alt-g1" src="../assets/wines/belle-mare.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine de Belle Mare" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/wines/saint-andre.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine de Saint-André" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/wines/croix-gratiot.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine La Croix Gratiot" loading="lazy"></div>
+      <div class="ph"><img id="alt-g4" src="../assets/wines/mas-du-novi.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mas du Novi" loading="lazy"></div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="container info-grid">
+    <article class="card">
+      <h3 class="section-title" data-i18n="plan_title">Маршрут и тайминг</h3>
+      <ul class="timeline">
+        <li><span class="time">10:00</span> — <span data-i18n="t_depart_meze">выезд из Mèze (отель/порт). Короткий бриф.</span></li>
+        <li><span class="time">10:10</span> — <span>Domaine de Belle Mare — Picpoul у лагуны.</span></li>
+        <li><span class="time">11:05</span> — <span>Domaine de Saint-André — семейная винодельня, HVE.</span></li>
+        <li><span class="time">12:00</span> — <span>La Croix Gratiot (Montagnac) — Picpoul & экспериментальные кюве.</span></li>
+        <li><span class="time">12:50</span> — <span>Mas du Novi (Montagnac) — Grès de Montpellier, белые/красные.</span></li>
+        <li><span class="time">~14:15</span> — <span data-i18n="t_return_meze">возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце.</span></li>
+      </ul>
+
+      <h3 class="section-title" style="margin-top:24px" data-i18n="domains_title">Домены и награды</h3>
+      <ul class="list">
+        <li><strong>Domaine de Belle Mare (Mèze)</strong> — <span>Свежий <b>Picpoul de Pinet</b> у лагуны Thau; стиль: цитрус, соль, морской бриз.</span>
+          <div class="inc-grid" style="margin-top:8px">
+            <div class="pill">🥇/🥈 Concours Général Agricole (разные годы)</div>
+            <div class="pill">🏅 Decanter / DWWA — участия и обзоры</div>
+          </div>
+        </li>
+        <li><strong>Domaine de Saint-André (Mèze)</strong> — <span>Семейное хозяйство (HVE, Qualité Tourisme). Muscat, Vermentino, купажи.</span>
+          <div class="inc-grid" style="margin-top:8px">
+            <div class="pill">🥇 CGA Paris 2025 — Folie d’Inès Blanc (золото)</div>
+            <div class="pill">HVE · Accueil Vélo · Qualité Tourisme</div>
+          </div>
+        </li>
+        <li><strong>Domaine La Croix Gratiot (Montagnac)</strong> — <span>Picpoul-мастер из Монтаньяка; линейки от классики до Syndical.</span>
+          <div class="inc-grid" style="margin-top:8px">
+            <div class="pill">🏅 Decanter review — Syndical 2023</div>
+            <div class="pill">Высокие оценки по Picpoul (разные винтажи)</div>
+          </div>
+        </li>
+        <li><strong>Mas du Novi (Montagnac)</strong> — <span>Исторический дом на плато; <b>Grès de Montpellier</b> белые/красные.</span>
+          <div class="inc-grid" style="margin-top:8px">
+            <div class="pill">🥇/🥈 DWWA — Prestigi 2019, Ô de Novi 2019 (медали 2024)</div>
+            <div class="pill">Оценки критиков (91+ у части белых)</div>
+          </div>
+        </li>
+        <li><strong>Опция: Domaine Félines Jourdan (Mèze)</strong> — <span>Пикпуль с морским характером — стиль «устрицы & море».</span>
+          <div class="inc-grid" style="margin-top:8px">
+            <div class="pill">🥇/🥈 DWWA — медали (напр. винтаж 2024 на DWWA 2025)</div>
+            <div class="pill">Высокие оценки Decanter</div>
+          </div>
+        </li>
+      </ul>
+
+      <h3 class="section-title" style="margin-top:24px" data-i18n="terms_title">Условия и заметки</h3>
+      <ul class="list">
+        <li data-i18n="note_radius">Все локации в радиусе Mèze–Montagnac; короткие переезды.</li>
+        <li data-i18n="note_time">Тайминг ориентировочный; подтверждается по записи в доменах.</li>
+        <li data-i18n="note_oysters">Опционально: устрицы Tarbouriech (по времени/доступности).</li>
+      </ul>
+    </article>
+
+    <aside class="card">
+      <h3 class="section-title" data-i18n="where_title">Где это</h3>
+      <p class="section-sub" data-i18n="where_sub">Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — вокруг Mèze & Montagnac.</p>
+
+      <div class="ph" style="margin-bottom:10px">
+        <img src="../assets/wines/vinograd.jpg" alt="Mèze & Montagnac — виноградники" loading="lazy" style="width:100%; height:auto; display:block; border-radius:18px">
+      </div>
+
+      <!-- Ссылки — видны только в режиме администратора -->
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20Belle%20Mare%2C%20M%C3%A8ze&output=classic">Belle Mare</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20Saint-Andr%C3%A9%2C%20M%C3%A8ze&output=classic">Saint-André</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20La%20Croix%20Gratiot%2C%20Montagnac&output=classic">La Croix Gratiot</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas%20du%20Novi%2C%20Montagnac&output=classic">Mas du Novi</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20F%C3%A9lines%20Jourdan%2C%20M%C3%A8ze&output=classic">Félines Jourdan</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=M%C3%A8ze&destination=Domaine%20de%20Belle%20Mare%2C%20M%C3%A8ze&waypoints=Domaine%20de%20Saint-Andr%C3%A9%2C%20M%C3%A8ze|Domaine%20La%20Croix%20Gratiot%2C%20Montagnac|Mas%20du%20Novi%2C%20Montagnac">Маршрут: Mèze → Belle Mare → Saint-André → La Croix Gratiot → Mas du Novi</a>
+      </div>
+
+      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
+      <ul class="list">
+        <li data-i18n="tip_shoes">Удобная обувь (камень/гравий у виноградников)</li>
+        <li data-i18n="tip_sun">Лёгкая защита от солнца и воды — рекомендована</li>
+        <li data-i18n="tip_time">Лучшее окно: 10:00–14:30 для компактного трека</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- PRICING (опционально) -->
+  <section id="pricing" class="container" style="margin:3rem 0">
+    <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
+    <ul class="list">
+      <li data-i18n="pricing_base"><strong>По запросу</strong> — зависит от состава группы и выбранных опций</li>
+      <li data-i18n="pricing_note">Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.</li>
+    </ul>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book" class="container">
+    <div class="card" data-program data-program-title="Mèze — дегустационный маршрут (Mèze & Montagnac)" data-program-id="DEGUST-MEZE">
+      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим записи в хозяйства.</p>
+
+      <form class="fields" data-contact-form data-channel="telegram">
+        <div>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+        </div>
+
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
+
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+        </div>
+
+        <div class="full">
+          <label for="msg" data-i18n="label_message">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="Пикап (адрес), пожелания по винам/опциям…"></textarea>
+        </div>
+
+        <div class="form-row full">
+          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+          <select id="sendto" name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+
+        <div class="form-actions full">
+          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footgrid">
+        <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
+        <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
+        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" data-i18n="nav_contacts_f">Контакты</a></p></div>
+      </div>
+      <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
+    </div>
+  </footer>
+
+  <!-- I18N -->
   <script>
-    // i18n
-    const I18N = {
+    const i18n = {
       ru: {
-        siteCrumbHome:"Главная", siteCrumbPrograms:"Программы",
-        badges:["🍇 Дегустация","🏅 Decanter & Paris Agricole","🦪 Опция устрицы Thau"],
-        h1:"Mèze — дегустационный маршрут (только Mèze & Montagnac)",
-        subtitle:"4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями",
-        kpi:["🚐 Короткие переезды","📸 Фотостопы у доменов","🍷 4–6 вин/локацию","🦪 Опционально: устрицы Tarbouriech"],
-        ctaAsk:"Запросить дату", ctaShare:"Поделиться в WhatsApp / TG",
-        planTitle:"План дня (компактный радиус)",
-        plan:[
-          ["10:00","выезд из Mèze (отель/порт). Короткий бриф."],
-          ["10:10","Domaine de Belle Mare — Picpoul у лагуны."],
-          ["11:05","Domaine de Saint-André — семейная винодельня, HVE."],
-          ["12:00","La Croix Gratiot (Montagnac) — Picpoul & экспериментальные кюве."],
-          ["12:50","Mas du Novi (Montagnac) — Grès de Montpellier, белые/красные."],
-          ["~14:15","возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце."]
-        ],
-        noteTime:"Время ориентировочное; локации в радиусе Mèze–Montagnac.",
-        domainsTitle:"Домены и награды (Mèze & Montagnac)",
-        domains:[
-          {
-            title:"Domaine de Belle Mare (Mèze)",
-            text:"Свежий <b>Picpoul de Pinet</b> у лагуны Thau; стиль — цитрус, соль, морской бриз.",
-            awards:[
-              "🥇/🥈 <b>Concours Général Agricole</b> (разные годы)",
-              "🏅 <b>Decanter</b> дегустационные обзоры и DWWA-участие (напр. Picpoul 2022)"
-            ],
-            map:"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze"
-          },
-          {
-            title:"Domaine de Saint-André (Mèze)",
-            text:"Семейное хозяйство (HVE, Qualité Tourisme). Muscat, Vermentino, купажи.",
-            awards:[
-              "🥇 <b>Concours Général Agricole 2025</b> (Folie d’Inès Blanc — золото)",
-              "HVE · Accueil Vélo · Qualité Tourisme"
-            ],
-            map:"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze"
-          },
-          {
-            title:"Domaine La Croix Gratiot (Montagnac)",
-            text:"Picpoul-мастер из Монтаньяка; линейки от классики до Syndical.",
-            awards:[
-              "🏅 <b>Decanter review</b> Syndical 2023",
-              "Награды и высокие оценки по Picpoul (разные винтажи)"
-            ],
-            map:"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac"
-          },
-          {
-            title:"Mas du Novi (Montagnac)",
-            text:"Исторический дом на плато; <b>Grès de Montpellier</b> белые/красные.",
-            awards:[
-              "🥇/🥈 <b>DWWA</b> — Prestigi 2019, Ô de Novi 2019 (медали 2024)",
-              "Оценки критиков (91+ для белых линеек разных годов)"
-            ],
-            map:"https://maps.google.com/?q=Mas+du+Novi+Montagnac"
-          },
-          {
-            title:"Опция: Domaine Félines Jourdan (Mèze)",
-            text:"Пикпуль с морским характером; эталонный стиль «устрицы & море».",
-            awards:[
-              "🥇/🥈 <b>DWWA</b> — медали (например, винтаж 2024 отмечен в DWWA 2025)",
-              "Высокие оценки Decanter"
-            ],
-            map:"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
-          }
-        ],
-        mapTitle:"Карта маршрута", mapHint:"Откроется в приложении карт", mapOpen:"Открыть маршрут",
-        contactTitle:"Забронировать / уточнить детали",
-        contactHint:"Напишите удобным способом — отправим доступные даты и прайс под вашу группу.",
-        contactBtn:"Связаться (WhatsApp / TG)", contactForm:"Форма на сайте",
-        legal:"Примечание: награды/винтажи уточняются по наличию в день визита.",
-        footer:"© Tours Languedoc by Irène — Voyages de l’Auteur",
-        routeUrl:"https://www.google.com/maps/dir/M%C3%A8ze/Domaine+de+Belle+Mare,+M%C3%A8ze/Domaine+de+Saint-Andr%C3%A9,+M%C3%A8ze/Domaine+La+Croix+Gratiot,+Montagnac/Mas+du+Novi,+Montagnac",
-        programTitle:"Mèze — дегустация (Mèze & Montagnac)"
+        htmlLang:'ru',
+        title:'Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène',
+        metaDesc:'Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы.',
+        ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
+        ogDesc:'Короткие переезды: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы.',
+        brand_sub:'— Путешествия со вкусом',
+        brand_sub_footer:'Путешествия со вкусом',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+        hero_badge:'Wine • Mèze & Montagnac',
+        hero_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
+        hero_sub:'4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan).',
+        gal_title:'Как это выглядит',
+        gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — компактный радиус вокруг Mèze & Montagnac.',
+        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — лагуна и Picpoul', altG2:'Saint-André — винодельня HVE', altG3:'La Croix Gratiot — Picpoul', altG4:'Mas du Novi — Grès de Montpellier',
+        plan_title:'Маршрут и тайминг',
+        t_depart_meze:'выезд из Mèze (отель/порт). Короткий бриф.',
+        t_return_meze:'возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце.',
+        domains_title:'Домены и награды',
+        terms_title:'Условия и заметки',
+        note_radius:'Все локации в радиусе Mèze–Montagnac; короткие переезды.',
+        note_time:'Тайминг ориентировочный; подтверждается по записи в доменах.',
+        note_oysters:'Опционально: устрицы Tarbouriech (по времени/доступности).',
+        where_title:'Где это',
+        where_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — вокруг Mèze & Montagnac.',
+        tips_title:'Полезно знать',
+        tip_shoes:'Удобная обувь (камень/гравий у виноградников)',
+        tip_sun:'Лёгкая защита от солнца и воды — рекомендована',
+        tip_time:'Лучшее окно: 10:00–14:30 для компактного трека',
+        pricing_title:'Стоимость',
+        pricing_base:'По запросу — зависит от состава группы и выбранных опций',
+        pricing_note:'Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.',
+        form_title:'Быстрый запрос / бронирование',
+        form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.',
+        label_date:'Дата', label_guests:'Гостей',
+        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+        btn_send_form:'Отправить',
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
-        siteCrumbHome:"Accueil", siteCrumbPrograms:"Programmes",
-        badges:["🍇 Dégustation","🏅 Decanter & Paris Agricole","🦪 Option huîtres de Thau"],
-        h1:"Mèze — route de dégustation (Mèze & Montagnac uniquement)",
-        subtitle:"4–5 h · 3–4 arrêts · 10–15 min entre les domaines",
-        kpi:["🚐 Courtes distances","📸 Arrêts photo","🍷 4–6 vins / domaine","🦪 Option: huîtres Tarbouriech"],
-        ctaAsk:"Demander une date", ctaShare:"Partager via WhatsApp / TG",
-        planTitle:"Programme (rayon compact)",
-        plan:[
-          ["10:00","départ de Mèze (hôtel/port). Brief rapide."],
-          ["10:10","Domaine de Belle Mare — Picpoul au bord de la lagune."],
-          ["11:05","Domaine de Saint-André — domaine familial, HVE."],
-          ["12:00","La Croix Gratiot (Montagnac) — Picpoul & cuvées d’essai."],
-          ["12:50","Mas du Novi (Montagnac) — Grès de Montpellier, blancs/rouges."],
-          ["~14:15","retour à Mèze. Option : ajouter Félines Jourdan au début/à la fin."]
-        ],
-        noteTime:"Horaires indicatifs ; toutes les étapes dans le rayon Mèze–Montagnac.",
-        domainsTitle:"Domaines & distinctions (Mèze & Montagnac)",
-        domains:[
-          {
-            title:"Domaine de Belle Mare (Mèze)",
-            text:"<b>Picpoul de Pinet</b> au bord de l’étang de Thau : agrumes, salinité, brise marine.",
-            awards:[
-              "🥇/🥈 <b>Concours Général Agricole</b> (plusieurs années)",
-              "🏅 <b>Decanter</b> (revues & participations DWWA – ex. Picpoul 2022)"
-            ],
-            map:"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze"
-          },
-          {
-            title:"Domaine de Saint-André (Mèze)",
-            text:"Domaine familial (HVE, Qualité Tourisme). Muscat, Vermentino, assemblages.",
-            awards:[
-              "🥇 <b>Concours Général Agricole 2025</b> (Folie d’Inès Blanc — or)",
-              "HVE · Accueil Vélo · Qualité Tourisme"
-            ],
-            map:"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze"
-          },
-          {
-            title:"Domaine La Croix Gratiot (Montagnac)",
-            text:"Référence Picpoul à Montagnac ; gammes de la classique à Syndical.",
-            awards:[
-              "🏅 <b>Decanter review</b> Syndical 2023",
-              "Distinctions/bonnes notes régulières en Picpoul"
-            ],
-            map:"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac"
-          },
-          {
-            title:"Mas du Novi (Montagnac)",
-            text:"Domaine historique sur le plateau ; <b>Grès de Montpellier</b> blancs/rouges.",
-            awards:[
-              "🥇/🥈 <b>DWWA</b> — Prestigi 2019, Ô de Novi 2019 (médailles 2024)",
-              "Notes critiques (91+ sur plusieurs blancs)"
-            ],
-            map:"https://maps.google.com/?q=Mas+du+Novi+Montagnac"
-          },
-          {
-            title:"Option : Domaine Félines Jourdan (Mèze)",
-            text:"Picpoul au caractère marin ; style emblématique «huîtres & mer».",
-            awards:[
-              "🥇/🥈 <b>DWWA</b> — médailles (millésime 2024 primé au DWWA 2025)",
-              "Bonnes notes Decanter"
-            ],
-            map:"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
-          }
-        ],
-        mapTitle:"Carte de l’itinéraire", mapHint:"S’ouvrira dans l’app de cartes", mapOpen:"Ouvrir l’itinéraire",
-        contactTitle:"Réserver / demander des détails",
-        contactHint:"Écrivez-nous — nous revenons avec les dates et le tarif pour votre groupe.",
-        contactBtn:"Contacter (WhatsApp / TG)", contactForm:"Formulaire du site",
-        legal:"Note : récompenses/vintages à confirmer selon disponibilité le jour J.",
-        footer:"© Tours Languedoc by Irène — Voyages de l’Auteur",
-        routeUrl:"https://www.google.com/maps/dir/M%C3%A8ze/Domaine+de+Belle+Mare,+M%C3%A8ze/Domaine+de+Saint-Andr%C3%A9,+M%C3%A8ze/Domaine+La+Croix+Gratiot,+Montagnac/Mas+du+Novi,+Montagnac",
-        programTitle:"Mèze — dégustation (Mèze & Montagnac)"
+        htmlLang:'fr',
+        title:'Mèze — route de dégustation (Mèze & Montagnac) | Tours Languedoc by Irène',
+        metaDesc:'Journée compacte : Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan). 4–5 h, 3–4 arrêts, option huîtres.',
+        ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
+        ogDesc:'Courtes distances : Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan). 4–5 h, 3–4 arrêts, option huîtres.',
+        brand_sub:'— Des voyages avec goût',
+        brand_sub_footer:'Des voyages avec goût',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+        hero_badge:'Vin • Mèze & Montagnac',
+        hero_title:'Mèze — route de dégustation (Mèze & Montagnac)',
+        hero_sub:'4–5 h · 3–4 arrêts · 10–15 min entre les étapes. Domaines : Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan).',
+        gal_title:'À quoi ça ressemble',
+        gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (option) Félines Jourdan — rayon compact autour de Mèze & Montagnac.',
+        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — lagune & Picpoul', altG2:'Saint-André — domaine HVE', altG3:'La Croix Gratiot — Picpoul', altG4:'Mas du Novi — Grès de Montpellier',
+        plan_title:'Programme & timing',
+        t_depart_meze:'départ de Mèze (hôtel/port). Brief rapide.',
+        t_return_meze:'retour à Mèze. Option : ajouter Félines Jourdan au début/à la fin.',
+        domains_title:'Domaines & distinctions',
+        terms_title:'Conditions & remarques',
+        note_radius:'Toutes les étapes dans le rayon Mèze–Montagnac ; trajets courts.',
+        note_time:'Horaires indicatifs ; confirmés selon les réservations.',
+        note_oysters:'Option : huîtres Tarbouriech (selon créneau/disponibilité).',
+        where_title:'Où ça se passe',
+        where_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (option) Félines Jourdan — autour de Mèze & Montagnac.',
+        tips_title:'À savoir',
+        tip_shoes:'Chaussures confortables (pierres/graviers)',
+        tip_sun:'Protection soleil & eau conseillées',
+        tip_time:'Plage idéale : 10:00–14:30 pour un circuit compact',
+        pricing_title:'Tarifs',
+        pricing_base:'Sur demande — selon votre groupe et options',
+        pricing_note:'Parcours : 4–5 h, 3–4 arrêts. Options : huîtres Tarbouriech.',
+        form_title:'Demande rapide / réservation',
+        form_sub:'Réponse sous 24 h et confirmation des visites.',
+        label_date:'Date', label_guests:'Personnes',
+        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+        btn_send_form:'Envoyer',
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
-    const qs = (s,r=document)=>r.querySelector(s);
-    const qsa = (s,r=document)=>Array.from(r.querySelectorAll(s));
-    function detectLang(){
-      const saved = localStorage.getItem('site:lang');
-      if(saved) return saved;
-      const nav = (navigator.language||'').toLowerCase();
-      return nav.startsWith('fr') ? 'fr' : 'ru';
+    const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
+
+    function applyLang(lang){
+      const t = i18n[lang];
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
+      const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
+      const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+
+      document.querySelectorAll('[data-i18n]').forEach(node=>{
+        const key = node.getAttribute('data-i18n');
+        if(t[key]!==undefined){
+          if (/<[a-z][\s\S]*>/i.test(t[key])) { node.innerHTML = t[key]; }
+          else { node.textContent = t[key]; }
+        }
+      });
+
+      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3); setAlt('alt-g4', t.altG4);
+
+      const brandHome = document.getElementById('brandHome');
+      if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
+
+      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+
+      localStorage.setItem('site:lang', lang);
     }
+
+    (function init(){
+      const saved = localStorage.getItem('site:lang');
+      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+      applyLang(initial);
+
+      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
+      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
+
+      // фокус на дату при клике "Забронировать"
+      document.getElementById('goBook')?.addEventListener('click', ()=>{
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
+      });
+    })();
   </script>
-</head>
-<body>
-<header class="container">
-  <div class="row" style="justify-content:space-between;align-items:center">
-    <div class="logo-line"><strong>Tours Languedoc by Irène</strong> · Oysters • Wine • Sea • Castles</div>
-    <nav class="row mini">
-      <a id="crumbHome" href="../index.html">Главная</a>
-      <span style="opacity:.5">/</span>
-      <span id="crumbPrograms">Программы</span>
-      <span class="divider" style="width:16px;background:transparent"></span>
-      <div class="lang-switch">
-        <button type="button" data-lang="ru">RU</button>
-        <button type="button" data-lang="fr">FR</button>
-      </div>
-    </nav>
-  </div>
-</header>
 
-<main class="container" data-program-title="" data-program-id="DEGUST-MEZE" data-program="degust-meze">
-  <section class="hero">
-    <div class="row" id="badges"></div>
-    <h1 id="titleH1">...</h1>
-    <small id="subtitle">...</small>
-    <div class="kpi" id="kpi"></div>
-    <div class="row" style="margin-top:10px;gap:8px">
-      <button class="pill js-contact" id="ctaAsk" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
-      <button class="pill alt js-share" id="ctaShare" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 id="planTitle">...</h2>
-    <div class="timeline" id="timeline"></div>
-    <p class="note" id="noteTime">...</p>
-  </section>
-
-  <section class="grid cols-2" id="domains"></section>
-
-  <section class="map" style="margin:14px 0">
-    <b id="mapTitle">...</b><br/>
-    <span class="mini" id="mapHint">...</span><br/>
-    <a class="pill alt" id="mapOpen" href="#" target="_blank">...</a>
-  </section>
-
-  <section class="card">
-    <h3 id="contactTitle">...</h3>
-    <p class="mini" id="contactHint">...</p>
-    <div class="row">
-      <button class="pill js-contact" id="contactBtn" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
-      <a class="pill alt" id="contactForm" href="../index.html#contact">...</a>
-    </div>
-  </section>
-
-  <p class="note" id="legal">...</p>
-</main>
-
-<footer class="container mini" style="opacity:.8;margin-bottom:30px" id="footer">
-  © Tours Languedoc by Irène — Voyages de l’Auteur
-</footer>
-
-<script>
-(function(){
-  const PROGRAM_ID = 'DEGUST-MEZE';
-  let LANG = detectLang();
-
-  function applyLang(lang){
-    LANG = lang;
-    localStorage.setItem('site:lang', lang);
-    const t = I18N[lang];
-
-    qs('#crumbHome').textContent = t.siteCrumbHome;
-    qs('#crumbPrograms').textContent = t.siteCrumbPrograms;
-
-    const badges = qs('#badges'); badges.innerHTML='';
-    t.badges.forEach(b=>{ const s=document.createElement('span'); s.className='badge'; s.textContent=b; badges.appendChild(s); });
-
-    qs('#titleH1').innerHTML = t.h1;
-    qs('#subtitle').textContent = t.subtitle;
-
-    const kpi = qs('#kpi'); kpi.innerHTML='';
-    t.kpi.forEach(k=>{ const d=document.createElement('div'); d.textContent=k; kpi.appendChild(d); });
-
-    const ctaAsk = qs('#ctaAsk'), ctaShare=qs('#ctaShare');
-    ctaAsk.textContent = t.ctaAsk; ctaShare.textContent = t.ctaShare;
-    ctaAsk.setAttribute('data-program-title', t.programTitle);
-    ctaShare.setAttribute('data-program-title', t.programTitle);
-    qs('#contactBtn').textContent = t.contactBtn;
-    qs('#contactBtn').setAttribute('data-program-title', t.programTitle);
-
-    qs('#planTitle').textContent = t.planTitle;
-    const timeline = qs('#timeline'); timeline.innerHTML='';
-    const links = {
-      "Domaine de Belle Mare":"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze",
-      "Domaine de Saint-André":"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze",
-      "La Croix Gratiot":"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac",
-      "Mas du Novi":"https://maps.google.com/?q=Mas+du+Novi+Montagnac",
-      "Félines Jourdan":"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
+  <!-- CONFIG сначала, затем скрипты -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '33759644813',
+      telegram: 'de_iren', // username без @
+      ADMIN_SECRET: 'capion2025'
     };
-    t.plan.forEach(([time, txt])=>{
-      const div = document.createElement('div'); div.className='item';
-      const b = document.createElement('b'); b.textContent=time; div.appendChild(b); div.append(" — ");
-      let html = txt
-        .replace("Domaine de Belle Mare", `<a href="${links["Domaine de Belle Mare"]}" target="_blank">Domaine de Belle Mare</a>`)
-        .replace("Domaine de Saint-André", `<a href="${links["Domaine de Saint-André"]}" target="_blank">Domaine de Saint-André</a>`)
-        .replace("La Croix Gratiot", `<a href="${links["La Croix Gratiot"]}" target="_blank">La Croix Gratiot</a>`)
-        .replace("Mas du Novi", `<a href="${links["Mas du Novi"]}" target="_blank">Mas du Novi</a>`)
-        .replace("Félines Jourdan", `<a href="${links["Félines Jourdan"]}" target="_blank">Félines Jourdan</a>`);
-      const span = document.createElement('span'); span.innerHTML=html; div.appendChild(span);
-      timeline.appendChild(div);
-    });
-    qs('#noteTime').textContent = t.noteTime;
+  </script>
 
-    const doms = qs('#domains'); doms.innerHTML='';
-    t.domains.forEach(d=>{
-      const art=document.createElement('article'); art.className='card';
-      const h3=document.createElement('h3'); h3.innerHTML=d.title;
-      const p=document.createElement('p'); p.innerHTML=d.text;
-      const aw=document.createElement('div'); aw.className='awards';
-      d.awards.forEach(a=>{ const s=document.createElement('span'); s.className='medal'; s.innerHTML=a; aw.appendChild(s); });
-      const m=document.createElement('p'); m.className='mini'; m.innerHTML=(lang==='fr'?'Itinéraire':'Маршрут')+`: <a href="${d.map}" target="_blank">Google Maps</a>`;
-      art.append(h3,p,aw,m); doms.appendChild(art);
-    });
-
-    qs('#mapTitle').textContent = t.mapTitle;
-    qs('#mapHint').textContent = t.mapHint;
-    const mapOpen=qs('#mapOpen'); mapOpen.textContent=t.mapOpen; mapOpen.href=t.routeUrl;
-
-    qs('#contactTitle').textContent=t.contactTitle;
-    qs('#contactHint').textContent=t.contactHint;
-    qs('#contactForm').textContent=t.contactForm;
-
-    qs('#legal').textContent=t.legal;
-    qs('#footer').textContent=t.footer;
-
-    const main = qs('main'); main.setAttribute('data-program-title', t.programTitle);
-
-    qsa('.lang-switch button').forEach(b=> b.classList.toggle('active', b.getAttribute('data-lang')===lang));
-  }
-
-  qsa('.lang-switch button').forEach(btn=> btn.addEventListener('click', ()=>applyLang(btn.getAttribute('data-lang'))));
-  applyLang(LANG);
-
-  // contact.js интеграция + шэр
-  function programTitle(){ return I18N[LANG].programTitle; }
-
-  qsa('.js-contact').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      document.dispatchEvent(new CustomEvent('app:contact:open',{detail:{ programId:'DEGUST-MEZE', programTitle: programTitle() }}));
+  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <script>
+    (function adminGate(){
       try{
-        if(!window.APP_CONFIG || !APP_CONFIG.whatsapp) return;
-        const wa = String(APP_CONFIG.whatsapp).replace(/\D/g,''); if(wa) window.open('https://wa.me/'+wa,'_blank');
-      }catch(e){}
-    });
-  });
+        const params = new URLSearchParams(location.search);
+        const token = params.get('admin');
 
-  qsa('.js-share').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const t = I18N[LANG];
-      const text = `Programme / Программа: ${t.programTitle} (DEGUST-MEZE)
-Route: Mèze → Belle Mare → Saint-André → La Croix Gratiot → Mas du Novi (+ option Félines Jourdan)
-Awards: DWWA (Mas du Novi 2024, Félines Jourdan 2025), Decanter reviews (La Croix Gratiot, Belle Mare), CGA Paris 2025 (Saint-André).
-URL: ${location.href}`;
-      if(navigator.share){ navigator.share({text}).catch(()=>{}); return; }
-      const enc=encodeURIComponent(text);
-      const tg=`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${enc}`;
-      const wa=`https://wa.me/?text=${enc}`;
-      window.open(tg,'_blank'); setTimeout(()=>window.open(wa,'_blank'),300);
-    });
-  });
+        if (token !== null) {
+          if (token === 'off') {
+            localStorage.removeItem('site:admin');
+          } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
+            localStorage.setItem('site:admin','1');
+          }
+          // очищаем URL
+          params.delete('admin');
+          const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
+          history.replaceState({},'', newUrl);
+        }
 
-  // Регистрация в window.TOURS
-  window.TOURS = window.TOURS || [];
-  if(!window.TOURS.some(t=>t.id===PROGRAM_ID)){
-    window.TOURS.push({
-      id: PROGRAM_ID,
-      title: I18N[LANG].programTitle,
-      days: 1,
-      durationHours: 5,
-      start: 'Mèze',
-      awards: [
-        {place:'Mas du Novi (Montagnac)', note:'DWWA 2024 — Prestigi, Ô de Novi'},
-        {place:'Félines Jourdan (Mèze)', note:'DWWA 2025 — Picpoul 2024'},
-        {place:'Saint-André (Mèze)', note:'CGA Paris 2025 — or'},
-        {place:'La Croix Gratiot (Montagnac)', note:'Decanter review — Syndical 2023'},
-        {place:'Belle Mare (Mèze)', note:'Decanter review & DWWA entry — Picpoul 2022'}
-      ],
-      tagline: (LANG==='fr')?'Tout proche : Mèze & Montagnac — 1 jour':'Только рядом: Mèze & Montagnac — за 1 день',
-      href: location.href
-    });
-  }
-})();
-</script>
+        // флаг на <html> — дальше управляет CSS
+        const isAdmin = localStorage.getItem('site:admin') === '1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+      }catch(e){
+        console.warn('[adminGate]', e);
+      }
+    })();
+  </script>
+
+  <!-- (опционально) если у кого-то кэш: делаем админ-ссылки некликабельными, если админ не включён -->
+  <script>
+    (function adminLinkGuard(){
+      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
+      if (!isAdmin) {
+        const style = document.createElement('style');
+        style.textContent = 'a[data-admin-link]{pointer-events:none; cursor:not-allowed; opacity:.65;}';
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
+
+  <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
