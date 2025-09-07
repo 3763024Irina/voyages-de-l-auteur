@@ -8,6 +8,7 @@
   <meta name="description" content="Индивидуальный тур: 3–4 домена (Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière) + возможен Hortus, обед, кроссовер. ~7 часов, ~86 км. База: Монпелье. 430 € за двоих, +100 € за каждого дополнительного (до 4)." />
   <meta property="og:title" content="Grand Vin du Pic Saint-Loup — премиальный винный день" />
   <meta property="og:description" content="VIP-дегустации: Château Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. 430 € за двоих, +100 €/гость (до 4)." />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="../assets/wines/puech-haut.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -81,12 +82,12 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM (глобальные базовые) */
+    /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
-    /* BOOK: компактная карточка формы */
+    /* BOOK */
     #book{ padding:32px 0 56px; }
     #book .card{
       max-width:720px; margin:0 auto;
@@ -108,9 +109,8 @@
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
 
-    /* admin gating: по умолчанию всё .admin-only скрыто */
+    /* admin gating */
     .admin-only{ display:none !important; }
-    /* когда админ включён — показываем */
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
@@ -160,7 +160,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="bg">
-      <img src="../assets/wines/vinograd.jpg" alt="" id="alt-hero"/>
+      <img src="../assets/wines/vinograd.jpg" onerror="this.src='../assets/hortus.jpg'" alt="" id="alt-hero"/>
       <div class="overlay"></div>
     </div>
     <div class="container inner">
@@ -182,14 +182,14 @@
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Château Puech-Haut, Château de Cazeneuve, Clos Marie, Mas Bruguière, Domaine de l’Hortus и панорамы Пик Сен-Лу.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img id="alt-g1" src="../assets/wines/puech-haut.jpg" alt="Château Puech-Haut" loading="lazy"></div>
-      <div class="ph"><img id="alt-g2" src="../assets/wines/514248417_1068859488786241_7453965093341604798_n.jpg" alt="Clos Marie — vignobles" loading="lazy"></div>
-      <div class="ph"><img id="alt-g3" src="../assets/hortus.jpg" alt="Domaine de l’Hortus — panorama" loading="lazy"></div>
-      <div class="ph"><img id="alt-g4" src="../assets/wines/mas-bruguiere.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mas Bruguière — Pic Saint-Loup" loading="lazy"></div>
+      <div class="ph"><img id="alt-g1" src="../assets/wines/puech-haut.jpg" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/wines/514248417_1068859488786241_7453965093341604798_n.jpg" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/hortus.jpg" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g4" src="../assets/wines/mas-bruguiere.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- DETAILS -->
+  <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
       <h3 class="section-title" data-i18n="plan_title">Маршрут и тайминг</h3>
@@ -240,7 +240,7 @@
         <img src="../assets/hortus.jpg" alt="Pic Saint-Loup — панорама" loading="lazy" style="width:100%; height:auto; display:block; border-radius:18px">
       </div>
 
-      <!-- Ссылки — видны только в режиме администратора -->
+      <!-- Админ-ссылки -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20Puech-Haut%2C%20Saint-Dr%C3%A9z%C3%A9ry&output=classic">Puech-Haut</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20de%20Cazeneuve%2C%2034190%20Lauret&output=classic">Cazeneuve</a>
@@ -268,6 +268,7 @@
       <li data-i18n="pricing_examples">Пример: 2 гостя — 430 €</li>
     </ul>
     <p class="section-sub" data-i18n="pricing_note">Включено: частный транспорт, 3–4 дегустации (по записи), бронирования. Не включено: обед, личные покупки.</p>
+    <div id="tarDynamic" class="card" style="padding:12px; border:1px solid #eee; border-radius:12px; margin-top:10px"></div>
   </section>
 
   <!-- BOOK -->
@@ -299,6 +300,12 @@
         <div class="full">
           <label for="msg" data-i18n="label_message">Комментарий</label>
           <textarea id="msg" name="message" placeholder="Пикап (отель/адрес в Монпелье), пожелания по обеду/винам…"></textarea>
+        </div>
+
+        <div class="full">
+          <label data-i18n="label_total">Итог</label>
+          <div class="price" id="totalOut">—</div>
+          <p class="section-sub" style="margin:4px 0 0" data-i18n="total_note">База за 2 гостя — 430 € + 100 € за каждого сверх 2 (макс. 4).</p>
         </div>
 
         <div class="form-row full">
@@ -346,15 +353,13 @@
         hero_badge:'Wine • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — премиальный винный день',
         hero_sub:'3–4 домена: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Обед и панорамы Пик Сен-Лу. Индивидуально, 2–4 гостя, кроссовер.',
-        price:'430 € за двоих',
-        price_note:'+100 € за каждого следующего гостя (до 4).',
-        spec_duration:'Длительность: ~7 часов',
-        spec_km:'Маршрут: ~86 км',
-        spec_langs:'Языки: RU/FR',
-        spec_pickup:'Пикап: Монпелье (отель/центр)',
         gal_title:'Как это выглядит',
         gal_sub:'Château Puech-Haut, Château de Cazeneuve, Clos Marie, Mas Bruguière, Domaine de l’Hortus и панорамы Пик Сен-Лу.',
-        altHero:'Pic Saint-Loup — HERO', altG1:'Château Puech-Haut — арт и бочки', altG2:'Clos Marie — виноградники', altG3:'Domaine de l’Hortus — панорама', altG4:'Mas Bruguière — терруары Pic Saint-Loup',
+        altHero:'Pic Saint-Loup — панорама виноградников',
+        altG1:'Château Puech-Haut — арт и бочки',
+        altG2:'Clos Marie — виноградники',
+        altG3:'Domaine de l’Hortus — панорама',
+        altG4:'Mas Bruguière — терруары Pic Saint-Loup',
         plan_title:'Маршрут и тайминг',
         inc_title:'Что включено',
         inc_transport:'Частный транспорт (кроссовер), топливо, парковки',
@@ -382,8 +387,14 @@
         form_sub:'Ответим в течение дня и подтвердим визиты в хозяйства.',
         label_date:'Дата', label_guests:'Гостей',
         label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+        label_total:'Итог',
+        total_note:'База за 2 гостя — 430 € + 100 € за каждого сверх 2 (макс. 4).',
+        sendto_label:'Куда отправить:',
         btn_send_form:'Отправить',
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+        tar_grid:'Примеры (цена за группу)',
+        tar_hdr_guests:'Гостей',
+        tar_hdr_sum:'Сумма'
       },
       fr: {
         htmlLang:'fr',
@@ -398,15 +409,13 @@
         hero_badge:'Vin • Pic Saint-Loup',
         hero_title:'Grand Vin du Pic Saint-Loup — journée premium',
         hero_sub:'3–4 domaines : Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (+/− Hortus). Déjeuner et panoramas. Privé, 2–4 pers., crossover.',
-        price:'430 € pour 2 personnes',
-        price_note:'+100 € par personne supplémentaire (jusqu’à 4).',
-        spec_duration:'Durée : ~7 h',
-        spec_km:'Parcours : ~86 km',
-        spec_langs:'Langues : FR/RU',
-        spec_pickup:'Pick-up : Montpellier (hôtel/centre)',
         gal_title:'À quoi ça ressemble',
         gal_sub:'Château Puech-Haut, Château de Cazeneuve, Clos Marie, Mas Bruguière, Domaine de l’Hortus et panoramas.',
-        altHero:'Pic Saint-Loup — HERO', altG1:'Château Puech-Haut — art & fûts', altG2:'Clos Marie — vignes', altG3:'Domaine de l’Hortus — panorama', altG4:'Mas Bruguière — terroirs du Pic Saint-Loup',
+        altHero:'Pic Saint-Loup — panorama des vignes',
+        altG1:'Château Puech-Haut — art & fûts',
+        altG2:'Clos Marie — vignes',
+        altG3:'Domaine de l’Hortus — panorama',
+        altG4:'Mas Bruguière — terroirs du Pic Saint-Loup',
         plan_title:'Programme & timing',
         inc_title:'Inclus',
         inc_transport:'Transport privé (crossover), carburant, parkings',
@@ -434,12 +443,46 @@
         form_sub:'Réponse sous 24 h et confirmation des visites.',
         label_date:'Date', label_guests:'Personnes',
         label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+        label_total:'Total',
+        total_note:'Base 2 pers. — 430 € + 100 € par pers. au-delà (max. 4).',
+        sendto_label:'Envoyer vers :',
         btn_send_form:'Envoyer',
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+        tar_grid:'Exemples (prix par groupe)',
+        tar_hdr_guests:'Pers.',
+        tar_hdr_sum:'Total'
       }
     };
 
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
+
+    // ==== Pricing PS-L ====
+    const PRICE = { base2: 430, perExtra: 100, minGuests: 2, maxGuests: 4 };
+    const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+    const calcTotal = g => PRICE.base2 + Math.max(0, (Number(g||PRICE.minGuests)) - 2) * PRICE.perExtra;
+
+    function renderTarifs(lang){
+      const t=i18n[lang];
+      const rows=[];
+      for(let n=PRICE.minGuests; n<=PRICE.maxGuests; n++){
+        rows.push(`<tr><td>${n}</td><td><strong>${calcTotal(n).toLocaleString('fr-FR')} €</strong></td></tr>`);
+      }
+      const html = `
+        <div style="font-weight:700; margin:0 0 8px">${t.tar_grid}</div>
+        <div style="overflow:auto">
+          <table class="tarifs" style="width:100%; border-collapse:collapse">
+            <thead><tr><th style="text-align:left;padding:6px 0">${t.tar_hdr_guests}</th><th style="text-align:left;padding:6px 0">${t.tar_hdr_sum}</th></tr></thead>
+            <tbody>${rows.join('')}</tbody>
+          </table>
+        </div>`;
+      const box=document.getElementById('tarDynamic'); if(box) box.innerHTML=html;
+    }
+
+    function refreshTotal(){
+      const g = document.getElementById('guests')?.value || 2;
+      const out = document.getElementById('totalOut');
+      if(out) out.textContent = fmtEUR(calcTotal(g));
+    }
 
     function applyLang(lang){
       const t = i18n[lang];
@@ -452,12 +495,13 @@
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key = node.getAttribute('data-i18n');
         if(t[key]!==undefined){
-          if (/<[a-z][\s\S]*>/i.test(t[key])) { node.innerHTML = t[key]; }
-          else { node.textContent = t[key]; }
+          if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
+          else node.textContent = t[key];
         }
       });
 
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3); setAlt('alt-g4', t.altG4);
+      setAlt('alt-hero', t.altHero);
+      setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3); setAlt('alt-g4', t.altG4);
 
       const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
@@ -466,6 +510,9 @@
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
       localStorage.setItem('site:lang', lang);
+
+      renderTarifs(lang);
+      refreshTotal();
     }
 
     (function init(){
@@ -476,7 +523,9 @@
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
 
-      // фокус на дату при клике "Забронировать"
+      document.getElementById('guests')?.addEventListener('input', refreshTotal);
+      document.getElementById('guests')?.addEventListener('change', refreshTotal);
+
       document.getElementById('goBook')?.addEventListener('click', ()=>{
         setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
@@ -505,13 +554,11 @@
           } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
             localStorage.setItem('site:admin','1');
           }
-          // очищаем URL
           params.delete('admin');
           const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
           history.replaceState({},'', newUrl);
         }
 
-        // флаг на <html> — дальше управляет CSS
         const isAdmin = localStorage.getItem('site:admin') === '1';
         document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
       }catch(e){
@@ -520,7 +567,7 @@
     })();
   </script>
 
-  <!-- (опционально) если у кого-то кэш: делаем админ-ссылки некликабельными, если админ не включён -->
+  <!-- если админ не включён — делаем ссылки некликабельными -->
   <script>
     (function adminLinkGuard(){
       const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
