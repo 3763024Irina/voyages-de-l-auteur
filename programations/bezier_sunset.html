@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Бéзье — закатный круиз-ужин (Canal du Midi) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Дîner à bord, вино и кофе включены. Приватно 2–6 гостей." />
-  <meta property="og:title" content="Бéзье — закатный круиз-ужин (Canal du Midi)" />
-  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены. 2–6 гостей." />
+  <title>Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Круиз по Каналу дю Миди из Бéзье (Фонсераны — Grand Bief — тоннель Малпас). Днём или на закате. Ужин на борту — по запросу (опция). Приватно 2–6 гостей." />
+  <meta property="og:title" content="Бéзье — круиз по Каналу дю Миди (день/закат)" />
+  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция." />
   <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -75,21 +75,17 @@
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
-
     .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM (глобальные базовые) */
+    /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
-    /* BOOK: компактная карточка формы */
     #book{ padding:32px 0 56px; }
     #book .card{
       max-width:720px; margin:0 auto;
@@ -134,7 +130,7 @@
 
 <body
   data-program
-  data-program-title="Бéзье — закатный круиз-ужин (Canal du Midi)"
+  data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)"
   data-program-id="CRUISE-BEZIERS"
 >
   <header>
@@ -167,9 +163,9 @@
     </div>
     <div class="container inner">
       <div>
-        <span class="badge" data-i18n="hero_badge">Canal du Midi • Béziers</span>
-        <h2 class="title" data-i18n="hero_title">Бéзье — закатный круиз-ужин по Каналу дю Миди</h2>
-        <p class="subtitle" data-i18n="hero_sub">Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местные вина и кофе включены. Приватно 2–6 гостей.</p>
+        <span class="badge" data-i18n="hero_badge">Canal du Midi • День/Закат</span>
+        <h2 class="title" data-i18n="hero_title">Бéзье — круиз по Каналу дю Миди (днём или на закате)</h2>
+        <p class="subtitle" data-i18n="hero_sub">Фонсераны — Grand Bief — тоннель Малпас. Выбирайте дневной или закатный слот. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.</p>
       </div>
     </div>
   </section>
@@ -177,7 +173,7 @@
   <!-- GALLERY -->
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
-    <p class="section-sub" data-i18n="gal_sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief) и закат на борту.</p>
+    <p class="section-sub" data-i18n="gal_sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief) — днём и на закате.</p>
     <div class="gallery" aria-label="Галерея">
       <div class="ph"><img id="alt-g1" src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" onerror="this.src='../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="" loading="lazy"></div>
       <div class="ph"><img id="alt-g2" src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'" alt="" loading="lazy"></div>
@@ -188,62 +184,63 @@
   <!-- DETAILS -->
   <section class="container info-grid">
     <article class="card">
-      <h3 class="section-title" data-i18n="plan_title">Расписание вечера</h3>
+      <h3 class="section-title" data-i18n="plan_title">Программа и тайминг</h3>
       <ul class="timeline">
         <li><span class="time" data-i18n="t_pickup_time">По запросу</span> — <span data-i18n="t_pickup">Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.</span></li>
-        <li><span class="time">18:30</span> — <span data-i18n="t_1830">Встреча у комплекса Фонсераны, посадка на лодку.</span></li>
-        <li><span class="time">19:00</span> — <span data-i18n="t_1900">Проход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.</span></li>
-        <li><span class="time">~20:00</span> — <span data-i18n="t_2000">Ужин на борту: закуски, горячее (set-menu), десерт. Вина Лангедока, вода, кофе.</span></li>
-        <li><span class="time">~21:15</span> — <span data-i18n="t_2115">Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь в «золотой час».</span></li>
-        <li><span class="time">~22:15</span> — <span data-i18n="t_2215">Высадка у Фонсеранов. Прощальные фото.</span></li>
+        <li><span class="time">День</span> — <span data-i18n="t_day">Старт в первой половине дня: проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.</span></li>
+        <li><span class="time">Закат</span> — <span data-i18n="t_sunset">Старт под вечер: «золотой час» на Grand Bief, при возможности — подход к тоннелю Малпас.</span></li>
+        <li><span class="time">Опция</span> — <span data-i18n="t_dinner">Ужин на борту (set-menu) — по запросу, с доплатой.</span></li>
+        <li><span class="time">Финиш</span> — <span data-i18n="t_finish">Возврат к Фонсеранам, прощальные фото.</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid" role="list">
         <div class="pill" role="listitem" data-i18n="inc_transfer">Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)</div>
         <div class="pill" role="listitem" data-i18n="inc_seats">Бронированные места на борту</div>
-        <div class="pill" role="listitem" data-i18n="inc_menu">Ужин set-menu</div>
-        <div class="pill" role="listitem" data-i18n="inc_wine">Местные вина и вода</div>
-        <div class="pill" role="listitem" data-i18n="inc_coffee">Кофе/чай</div>
         <div class="pill" role="listitem" data-i18n="inc_guide">Сопровождение RU/FR</div>
         <div class="pill" role="listitem" data-i18n="inc_photo">Фото-точки и истории канала</div>
       </div>
 
+      <h3 class="section-title" style="margin-top:24px" data-i18n="opt_title">Опции</h3>
+      <div class="inc-grid" role="list">
+        <div class="pill" role="listitem" data-i18n="opt_dinner">Ужин на борту (set-menu) — по запросу, с доплатой</div>
+        <div class="pill" role="listitem" data-i18n="opt_wine">Аперитив/дегустация вин до/после круиза — по запросу</div>
+      </div>
+
       <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
       <ul class="list">
-        <li data-i18n="exc_extra">Дополнительные напитки/спецблюда вне сет-меню; чаевые.</li>
+        <li data-i18n="exc_extra">Алкоголь и блюда вне выбранного меню; чаевые.</li>
       </ul>
     </article>
 
-   <aside class="card">
-  <h3 class="section-title" data-i18n="where_title">Где это</h3>
-  <p class="section-sub" data-i18n="where_sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
+    <aside class="card">
+      <h3 class="section-title" data-i18n="where_title">Где это</h3>
+      <p class="section-sub" data-i18n="where_sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
 
-  <!-- Фото вместо карты -->
-  <div class="ph" style="margin-bottom:10px">
-    <img
-      src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg"
-      alt="Béziers — Canal du Midi на закате"
-      loading="lazy"
-      style="width:100%; height:auto; display:block; border-radius:18px">
-  </div>
+      <!-- Фото вместо карты -->
+      <div class="ph" style="margin-bottom:10px">
+        <img
+          src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg"
+          alt="Béziers — Canal du Midi на закате"
+          loading="lazy"
+          style="width:100%; height:auto; display:block; border-radius:18px">
+      </div>
 
-  <!-- Ссылки — видны только в режиме администратора -->
-  <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
-    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
-    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tunnel%20du%20Malpas%2C%20Colombiers&output=classic">Tunnel du Malpas</a>
-    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
-    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&destination=Tunnel%20du%20Malpas%2C%20Colombiers&waypoints=Grand%20Bief%2C%20Canal%20du%20Midi">Маршрут: Fonseranes → Grand Bief → Malpas</a>
-  </div>
+      <!-- Ссылки — видны только в режиме администратора -->
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tunnel%20du%20Malpas%2C%20Colombiers&output=classic">Tunnel du Malpas</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&destination=Tunnel%20du%20Malpas%2C%20Colombiers&waypoints=Grand%20Bief%2C%20Canal%20du%20Midi">Маршрут: Fonseranes → Grand Bief → Malpas</a>
+      </div>
 
-  <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
-  <ul class="list">
-    <li data-i18n="tip_speed">Крейсерская скорость мала — идеально для фото и отдыха.</li>
-    <li data-i18n="tip_route">Маршрут может меняться из-за судоходного графика/погоды.</li>
-    <li data-i18n="tip_clothes">Рекомендуем уютную одежду и лёгкую накидку на вечерний бриз.</li>
-  </ul>
-</aside>
-
+      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
+      <ul class="list">
+        <li data-i18n="tip_speed">Крейсерская скорость мала — идеально для фото и отдыха.</li>
+        <li data-i18n="tip_route">Маршрут и длительность зависят от навигационного графика/погоды.</li>
+        <li data-i18n="tip_clothes">Возьмите лёгкую накидку (вечерний бриз даже летом).</li>
+      </ul>
+    </aside>
   </section>
 
   <!-- PRICING -->
@@ -251,15 +248,15 @@
     <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
     <ul class="list">
       <li><strong class="price" data-i18n="price">440 € / 2 гостя</strong></li>
-      <li data-i18n="price_note">Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.</li>
+      <li data-i18n="price_note">Доп. гость: +80 € (макс. 6). Ужин на борту — опция с доплатой. Время: день или закат (по сезону/графику).</li>
     </ul>
   </section>
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" data-program data-program-title="Бéзье — закатный круиз-ужин (Canal du Midi)" data-program-id="CRUISE-BEZIERS">
+    <div class="card" data-program data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим ближайшие доступные даты.</p>
+      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим доступные дневные/закатные слоты. Опции — по запросу.</p>
 
       <form class="fields" data-contact-form data-channel="telegram">
         <div>
@@ -283,7 +280,7 @@
 
         <div class="full">
           <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Желаемая дата/период, кол-во гостей, нужен ли трансфер…"></textarea>
+          <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
         </div>
 
         <div class="form-row full">
@@ -320,53 +317,52 @@
     const i18n = {
       ru: {
         htmlLang:'ru',
-        title:'Бéзье — закатный круиз-ужин (Canal du Midi) | Tours Languedoc by Irène',
-        metaDesc:'Закатный круиз-ужин по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас). Дîner à bord, вино и кофе включены. Приватно 2–6 гостей.',
-        ogTitle:'Бéзье — закатный круиз-ужин (Canal du Midi)',
-        ogDesc:'Фонсераны, Grand Bief, тоннель Малпас. Ужин на борту, вино и кофе включены.',
+        title:'Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène',
+        metaDesc:'Круиз по Каналу дю Миди из Бéзье (Фонсераны — Grand Bief — тоннель Малпас). Днём или на закате. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.',
+        ogTitle:'Бéзье — круиз по Каналу дю Миди (день/закат)',
+        ogDesc:'Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
         btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        hero_badge:'Canal du Midi • Béziers',
-        hero_title:'Бéзье — закатный круиз-ужин по Каналу дю Миди',
-        hero_sub:'Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту, местные вина и кофе включены. Приватно 2–6 гостей.',
+        hero_badge:'Canal du Midi • День/Закат',
+        hero_title:'Бéзье — круиз по Каналу дю Миди (днём или на закате)',
+        hero_sub:'Фонсераны — Grand Bief — тоннель Малпас. Выбирайте дневной или закатный слот. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.',
         gal_title:'Как это выглядит',
-        gal_sub:'Шлюзы Фонсераны, «Большой канал» (Grand Bief) и закат на борту.',
-        altHero:'Фонсераны — ступенчатые шлюзы канала дю Миди, Бéзье',
-        altG1:'Шлюзы Фонсераны на закате',
-        altG2:'Канал дю Миди, платаны и вода',
-        altG3:'Вид на Grand Bief и прогулочный борт',
+        gal_sub:'Шлюзы Фонсераны, «Большой канал» (Grand Bief) — днём и на закате.',
+        altHero:'Фонсераны — ступенчатые шлюзы, Canal du Midi — Béziers',
+        altG1:'Фонсераны днём',
+        altG2:'Фонсераны на закате',
+        altG3:'Grand Bief — вид с борта',
         altG4:'Béziers — вечерний канал',
-        plan_title:'Расписание вечера',
+        plan_title:'Программа и тайминг',
         t_pickup_time:'По запросу',
         t_pickup:'Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.',
-        t_1830:'Встреча у комплекса Фонсераны, посадка на лодку.',
-        t_1900:'Проход по «лестнице» шлюзов и выход на Grand Bief — самый длинный прямой участок канала.',
-        t_2000:'Ужин на борту: закуски, горячее (set-menu), десерт. Вина Лангедока, вода, кофе.',
-        t_2115:'Прогулка к тоннелю Малпас (по судоходному графику) и обратный путь в «золотой час».',
-        t_2215:'Высадка у Фонсеранов. Прощальные фото.',
+        t_day:'Старт в первой половине дня: проход «лестницы» шлюзов, Grand Bief, фотостопы.',
+        t_sunset:'Старт под вечер: «золотой час» на Grand Bief; при возможности — подход к тоннелю Малпас.',
+        t_dinner:'Ужин на борту (set-menu) — по запросу, с доплатой.',
+        t_finish:'Возврат к Фонсеранам, прощальные фото.',
         inc_title:'Что включено',
         inc_transfer:'Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)',
         inc_seats:'Бронированные места на борту',
-        inc_menu:'Ужин set-menu',
-        inc_wine:'Местные вина и вода',
-        inc_coffee:'Кофе/чай',
         inc_guide:'Сопровождение RU/FR',
         inc_photo:'Фото-точки и истории канала',
+        opt_title:'Опции',
+        opt_dinner:'Ужин на борту (set-menu) — по запросу, с доплатой',
+        opt_wine:'Аперитив/дегустация вин до/после круиза — по запросу',
         exc_title:'Не включено',
-        exc_extra:'Дополнительные напитки/спецблюда вне сет-меню; чаевые.',
+        exc_extra:'Алкоголь и блюда вне выбранного меню; чаевые.',
         where_title:'Где это',
         where_sub:'Старт у <strong>Écluses de Fonseranes</strong>, Béziers.',
         tips_title:'Полезно знать',
         tip_speed:'Крейсерская скорость мала — идеально для фото и отдыха.',
-        tip_route:'Маршрут может меняться из-за судоходного графика/погоды.',
-        tip_clothes:'Рекомендуем уютную одежду и лёгкую накидку на вечерний бриз.',
+        tip_route:'Маршрут и длительность зависят от навигационного графика/погоды.',
+        tip_clothes:'Возьмите лёгкую накидку (вечерний бриз даже летом).',
         pricing_title:'Стоимость',
         price:'440 € / 2 гостя',
-        price_note:'Доп. гость: +80 € (макс. 6). Даты/время — по запросу, в тёплый сезон.',
+        price_note:'Доп. гость: +80 € (макс. 6). Ужин на борту — опция с доплатой. Время: день или закат (по сезону/графику).',
         form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и подтвердим ближайшие доступные даты.',
+        form_sub:'Ответим в течение дня и подтвердим доступные дневные/закатные слоты. Опции — по запросу.',
         label_date:'Дата', label_guests:'Гостей',
         label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
         btn_send_form:'Отправить',
@@ -374,53 +370,52 @@
       },
       fr: {
         htmlLang:'fr',
-        title:'Béziers — croisière-dîner coucher du soleil (Canal du Midi) | Tours Languedoc by Irène',
-        metaDesc:'Croisière-dîner au coucher du soleil sur le Canal du Midi (Fonseranes — Grand Bief — tunnel du Malpas). Dîner à bord, vin et café inclus. Privatif 2–6 pers.',
-        ogTitle:'Béziers — croisière-dîner coucher du soleil (Canal du Midi)',
-        ogDesc:'Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord, vin et café inclus.',
+        title:'Béziers — croisière Canal du Midi (journée ou coucher du soleil) | Tours Languedoc by Irène',
+        metaDesc:'Croisière au départ de Béziers (Fonseranes — Grand Bief — tunnel du Malpas). En journée ou au coucher du soleil. Dîner à bord en option. Privatif 2–6 pers.',
+        ogTitle:'Béziers — croisière Canal du Midi (journée/coucher du soleil)',
+        ogDesc:'Fonseranes, Grand Bief, tunnel du Malpas. Croisières de jour et au coucher du soleil. Dîner à bord — option.',
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
         btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        hero_badge:'Canal du Midi • Béziers',
-        hero_title:'Béziers : croisière-dîner au coucher du soleil sur le Canal du Midi',
-        hero_sub:'Fonseranes — Grand Bief — tunnel du Malpas. Dîner à bord, vins du coin et café inclus. Privatif 2–6 pers.',
+        hero_badge:'Canal du Midi • Jour/Coucher',
+        hero_title:'Béziers : croisière Canal du Midi (journée ou coucher du soleil)',
+        hero_sub:'Fonseranes — Grand Bief — tunnel du Malpas. Choisissez le créneau de jour ou coucher du soleil. Dîner à bord en option. Privatif 2–6 pers.',
         gal_title:'À quoi ça ressemble',
-        gal_sub:'Écluses de Fonseranes, le Grand Bief et coucher de soleil à bord.',
-        altHero:'Écluses en escalier de Fonseranes, Canal du Midi — Béziers',
-        altG1:'Écluses de Fonseranes au coucher du soleil',
-        altG2:'Canal du Midi, platanes et eau',
-        altG3:'Vue sur le Grand Bief et un bateau promenade',
+        gal_sub:'Écluses de Fonseranes et Grand Bief — de jour comme au coucher du soleil.',
+        altHero:'Écluses en escalier de Fonseranes — Canal du Midi, Béziers',
+        altG1:'Fonseranes en journée',
+        altG2:'Fonseranes au coucher du soleil',
+        altG3:'Grand Bief — vue depuis le bateau',
         altG4:'Béziers — canal le soir',
-        plan_title:'Déroulé de la soirée',
+        plan_title:'Programme & timing',
         t_pickup_time:'Sur demande',
-        t_pickup:'Pick-up à l’hôtel (Montpellier / Sète / Béziers / Narbonne) et transfert jusqu’à Fonseranes.',
-        t_1830:'Rendez-vous au site de Fonseranes, embarquement.',
-        t_1900:'Passage de l’échelle d’écluses et sortie sur le Grand Bief — la plus longue ligne droite du canal.',
-        t_2000:'Dîner à bord : entrées, plat (set-menu), dessert. Vins du Languedoc, eau, café.',
-        t_2115:'Balade vers le tunnel du Malpas (selon navigation) et retour dans la lumière dorée.',
-        t_2215:'Débarquement à Fonseranes. Photos d’adieu.',
+        t_pickup:'Pick-up hôtel (Montpellier / Sète / Béziers / Narbonne) et transfert vers Fonseranes.',
+        t_day:'Départ en journée : passage de l’échelle d’écluses, Grand Bief, arrêts photo.',
+        t_sunset:'Départ en fin de journée : «heure dorée» sur le Grand Bief ; selon navigation — approche du tunnel du Malpas.',
+        t_dinner:'Dîner à bord (set-menu) — sur demande, avec supplément.',
+        t_finish:'Retour à Fonseranes, photos d’adieu.',
         inc_title:'Inclus',
         inc_transfer:'Transfert privé A/R (zone : Montpellier — Sète — Béziers — Narbonne)',
         inc_seats:'Places réservées à bord',
-        inc_menu:'Dîner set-menu',
-        inc_wine:'Vins locaux et eau',
-        inc_coffee:'Café/thé',
         inc_guide:'Accompagnement RU/FR',
         inc_photo:'Spots photo & histoires du canal',
+        opt_title:'Options',
+        opt_dinner:'Dîner à bord (set-menu) — sur demande, supplément',
+        opt_wine:'Apéritif/dégustation de vins avant/après — sur demande',
         exc_title:'Non inclus',
-        exc_extra:'Boissons/plats spéciaux hors menu ; pourboires.',
+        exc_extra:'Alcool et plats hors menu choisi ; pourboires.',
         where_title:'Où ça se passe',
         where_sub:'Départ aux <strong>Écluses de Fonseranes</strong>, Béziers.',
         tips_title:'À savoir',
-        tip_speed:'Allure douce — idéale pour les photos et la détente.',
-        tip_route:'Le parcours peut varier selon la navigation/météo.',
-        tip_clothes:'Prévoir une tenue confortable et une petite couche pour la brise du soir.',
+        tip_speed:'Allure douce — parfaite pour les photos & la détente.',
+        tip_route:'Parcours et durée selon navigation/météo.',
+        tip_clothes:'Prévoyez une petite couche pour la brise du soir.',
         pricing_title:'Tarifs',
         price:'440 € / 2 pers.',
-        price_note:'Personne supplémentaire : +80 € (max. 6). Dates/horaires — sur demande, saison douce.',
+        price_note:'Pers. suppl. : +80 € (max. 6). Dîner à bord en option, avec supplément. Créneau jour ou coucher du soleil (selon saison/navigation).',
         form_title:'Demande rapide / réservation',
-        form_sub:'Réponse sous 24 h avec confirmation des prochaines dates.',
+        form_sub:'Réponse sous 24 h et confirmation des créneaux jour/coucher disponibles. Options sur demande.',
         label_date:'Date', label_guests:'Personnes',
         label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
         btn_send_form:'Envoyer',
@@ -465,14 +460,13 @@
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
 
-      // фокус на дату при клике "Забронировать"
       document.getElementById('goBook')?.addEventListener('click', ()=>{
         setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
     })();
   </script>
 
-  <!-- CONFIG сначала, затем скрипты -->
+  <!-- CONFIG -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
@@ -481,7 +475,7 @@
     };
   </script>
 
-  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <!-- ADMIN gate -->
   <script>
     (function adminGate(){
       try{
@@ -494,7 +488,6 @@
           } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
             localStorage.setItem('site:admin','1');
           }
-          // очищаем URL
           params.delete('admin');
           const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
           history.replaceState({},'', newUrl);
@@ -508,7 +501,7 @@
     })();
   </script>
 
-  <!-- если админ не включён — делаем ссылки некликабельными -->
+  <!-- admin links guard -->
   <script>
     (function adminLinkGuard(){
       const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
