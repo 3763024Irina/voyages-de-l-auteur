@@ -411,7 +411,7 @@
     </div>
   </footer>
 
-  <!-- === CONFIG (как на Saint-Guilhem): сначала APP_CONFIG, потом скрипты === -->
+  <!-- === CONFIG: сначала APP_CONFIG, затем вспомогательные скрипты === -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
@@ -420,7 +420,6 @@
     };
   </script>
   <script src="../config.js" defer></script>
-  <script src="../assets/js/contact.js" defer></script>
 
   <script>
     /* ---------- PRICING CORE ---------- */
@@ -568,7 +567,7 @@
       const total = priceForSelection(inHotel.value, inSeason.value, inPassloc.checked, inBB.checked, inSport.value);
       bookTotal.textContent = fmtEUR(total) + ' / 2';
       // авто-заполняем message (contact.js его возьмёт)
-      const userText = ''; // при желании можно объединять с ручным вводом
+      const userText = '';
       inMsg.value = `${buildAutoMessage()}${userText?'\n\n'+userText:''}`;
     }
 
@@ -767,7 +766,7 @@
     })();
   </script>
 
-  <!-- contact.js — должен быть после APP_CONFIG (см. выше) -->
+  <!-- contact.js — строго один раз, в самом конце, после APP_CONFIG -->
   <script src="../assets/js/contact.js"></script>
 </body>
 </html>
