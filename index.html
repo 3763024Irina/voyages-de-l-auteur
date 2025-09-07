@@ -115,10 +115,6 @@
     .about{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center}
     .about .portrait{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)}
     .about p{line-height:1.6}
-    .reviews{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .review{background:var(--paper); border:1px solid #eee; border-radius:18px; padding:18px; box-shadow:var(--shadow)}
-    .review .who{display:flex; align-items:center; gap:12px}
-    .avatar{width:40px; height:40px; border-radius:50%; background:#ddd}
 
     /* ===== Контакты и бронь (компактно) ===== */
     .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
@@ -165,26 +161,6 @@
     @media (max-width:1000px){
       .hero .contact-card{ width:100%; justify-self:stretch; align-self:start; }
     }
-
-    /* ===== Отзывы (компакт) ===== */
-    #reviews .list{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    #reviews .list .item{background:#fff; border:1px solid #eee; border-radius:14px; padding:12px; box-shadow:var(--shadow)}
-    #reviews .item .head{display:flex; align-items:center; gap:10px}
-    #reviews .item .ava{width:36px; height:36px; border-radius:50%; background:#eaeaea; overflow:hidden}
-    #reviews .item .ava img{width:100%; height:100%; object-fit:cover}
-    #reviews .item .name{font-weight:700}
-    #reviews details{background:#fff; border:1px solid #eee; border-radius:14px; padding:12px; box-shadow:var(--shadow)}
-    #reviews summary{cursor:pointer; font-weight:700; list-style:none}
-    #reviews summary::-webkit-details-marker{display:none}
-    #reviewForm .row{display:grid; gap:8px; margin:10px 0}
-    #reviewForm .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    #reviewForm .consent{display:flex; gap:8px; align-items:flex-start; font-size:14px; color:var(--muted)}
-    .stars{display:flex; gap:4px; align-items:center}
-    .stars input{display:none}
-    .stars label{cursor:pointer; font-size:18px}
-    .stars input:checked ~ label{opacity:.45}
-    @media(max-width:900px){ #reviews .list{grid-template-columns:repeat(2,1fr)} }
-    @media(max-width:600px){ #reviews .list{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
@@ -212,9 +188,7 @@
     <li><a href="#why" data-i18n="nav.why">Почему с нами</a></li>
     <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
     <li><a href="#format" data-i18n="nav.format">Формат</a></li>
-    <!-- было href="#contact" -->
     <li><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></li>
-    <!-- было href="#contact" -->
     <li><a class="cta" href="#contactCard" data-i18n="nav.book">Забронировать</a></li>
   </ul>
 </nav>
@@ -374,62 +348,11 @@
     <div class="about">
       <div>
         <p data-i18n="about.text">Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.</p>
-        <div class="reviews">
-          <div class="review"><div class="who"><div class="avatar"></div><strong>Мария</strong></div><p>Лучшее сочетание устриц, вин и видов — без толп. Вернёмся!</p></div>
-          <div class="review"><div class="who"><div class="avatar"></div><strong>Alex</strong></div><p>SUP на рассвете и дегустация на ферме — восторг.</p></div>
-          <div class="review"><div class="who"><div class="avatar"></div><strong>Claire</strong></div><p>Carcassonne et domaines familiaux — chic et authentique.</p></div>
-        </div>
+        <!-- Блок отзывов удалён по запросу -->
       </div>
       <!-- портрет справа удалён -->
     </div>
   </section>
-
-  <!-- REVIEWS (компактный блок со списком + сворачиваемой формой) -->
- <section id="reviews" class="container">
-  <h3 class="section-title">Отзывы</h3>
-
-  <!-- сюда загрузятся отзывы -->
-  <div id="reviewsList" class="reviews"></div>
-
-  <!-- форма отправки -->
-  <form id="reviewForm" class="review-form" style="margin-top:12px">
-    <!-- honeypot (скрытый анти-бот) -->
-    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;padding:0;border:0">
-
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end">
-      <div>
-        <label>Имя</label>
-        <input type="text" name="name" required placeholder="Ваше имя">
-      </div>
-      <div>
-        <label>Оценка</label>
-        <select name="rating">
-          <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
-        </select>
-      </div>
-      <div>
-        <label>Фото (необязательно)</label>
-        <input type="file" name="photo" accept="image/*">
-      </div>
-    </div>
-
-    <div style="margin-top:10px">
-      <label>Отзыв</label>
-      <textarea name="text" required rows="3" placeholder="Пара предложений…"></textarea>
-    </div>
-
-    <label style="display:flex;gap:8px;align-items:flex-start;margin-top:10px">
-      <input type="checkbox" name="consent" required>
-      <span>Согласен(а) на публикацию на сайте</span>
-    </label>
-
-    <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
-      <button class="btn primary" id="sendReviewBtn" type="submit">Отправить отзыв</button>
-      <span id="reviewMsg" class="section-sub" style="color:var(--muted)"></span>
-    </div>
-  </form>
-</section>
-
 
   <footer>
     <div class="container">
@@ -450,7 +373,6 @@
       <div class="inc" id="modalInc"></div>
       <p id="modalText"></p>
       <div style="display:flex; gap:10px; padding:10px 0 16px 0">
-       <!-- было: '#contact' -->
 <button class="btn primary"
         onclick="document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'})"
         data-i18n="nav.book">Забронировать</button>
@@ -739,33 +661,17 @@
   })();
   </script>
 
-  <!-- Конфиг + контакт-логика + отзывы -->
+  <!-- Конфиг + контакты -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '+33759644813',
       telegram: 'de_iren',
       // email: 'you@example.com',
-
-      // ===== Supabase для отзывов (замените на свои) =====
-      supabaseUrl: 'https://YOUR_PROJECT_ID.supabase.co',
-      supabaseAnonKey: 'YOUR_PUBLIC_ANON_KEY',
-      supabaseBucket: 'reviews',
-
       siteUrl: window.location.origin + window.location.pathname
     };
   </script>
   <script src="assets/js/contact.js" defer></script>
   <script src="assets/js/chat-widget.js" defer></script>
-
-  <!-- Публикация отзывов (отдельный модуль, который мы сделали ранее) -->
-  <script type="module" src="assets/js/reviews.js"></script>
-  <script>
-  window.APP_CONFIG = {
-    supabaseUrl: 'https://vafuyvmqquhcisgnipvf.supabase.co',
-    supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhZnV5dm1xcXVoY2lzZ25pcHZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNjg5NjAsImV4cCI6MjA3Mjg0NDk2MH0.iyY83JeEDDBi4Z0pvBrFWBPfbe0L96I6WspucCWKUkI', // Anon key
-    supabaseBucket: 'reviews' // имя бакета в Storage
-  };
-</script>
 </body>
 </html>
 
