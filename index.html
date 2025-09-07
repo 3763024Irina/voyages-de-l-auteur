@@ -173,6 +173,27 @@
     .topbar .social .icon-btn{border-color:rgba(255,255,255,.25); background:transparent; color:#e9e9e9}
     .topbar .social .icon-btn:hover{background:rgba(255,255,255,.08)}
     .hero .contact-card .btn.icon-btn{border-color:#e6e6e6; background:#fff}
+
+    /* --- FAB чат --- */
+    .fab{
+      position:fixed; right:18px; bottom:18px; z-index:60;
+      display:grid; gap:10px; justify-items:end;
+    }
+    .fab .bubble{
+      width:54px; height:54px; border-radius:999px; display:grid; place-items:center;
+      background:var(--brand); color:#fff; box-shadow:0 12px 28px rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.2);
+      cursor:pointer;
+    }
+    .fab .menu{display:none; padding-bottom:4px}
+    .fab.open .menu{display:grid; gap:8px; justify-items:end}
+    .fab .mini{width:44px; height:44px; border-radius:999px; display:grid; place-items:center;
+      background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow)}
+    .fab .mini:hover{background:#f5f5f5}
+    .fab .label{position:absolute; right:62px; margin-top:10px; background:#fff; border:1px solid #e6e6e6; border-radius:10px; padding:6px 10px; font-size:12px; color:var(--ink); box-shadow:var(--shadow)}
+    @media (prefers-reduced-motion:no-preference){
+      .fab .menu, .fab .bubble, .fab .mini{transition:transform .18s ease, opacity .18s ease, background .18s ease}
+      .fab.open .menu .mini{transform:translateY(0); opacity:1}
+    }
   </style>
 </head>
 <body>
@@ -394,18 +415,40 @@
     <div class="about">
       <div>
         <p data-i18n="about.text">Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.</p>
-        <!-- Блок отзывов удалён по запросу -->
       </div>
-      <!-- портрет справа удалён -->
     </div>
   </section>
 
   <footer>
     <div class="container">
       <div class="footgrid">
-        <div><strong>Tours Languedoc by Irène</strong><p>Des voyages avec goût</p></div>
+        <div>
+          <strong>Tours Languedoc by Irène</strong>
+          <p>Des voyages avec goût</p>
+          <!-- Соцсети в футере -->
+          <div class="social" aria-label="Социальные сети (футер)">
+            <a class="icon-btn" id="socVKf" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1l1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
+              <span class="sr-only">VK</span>
+            </a>
+            <a class="icon-btn" id="socFBf" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10h3V7h-3V6c0-.8.6-1 1-1h2V2h-3c-2.8 0-4 2-4 4v1H7v3h2v9h4v-9z"/></svg>
+              <span class="sr-only">Facebook</span>
+            </a>
+            <a class="icon-btn" id="socIGf" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zM17.8 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+            <a class="icon-btn" id="socTGf" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+              <span class="sr-only">Telegram</span>
+            </a>
+          </div>
+        </div>
         <div><p><a href="#why" data-i18n="nav.why">Почему с нами</a></p><p><a href="#tours" data-i18n="nav.tours">Программы</a></p></div>
-        <div><p><a href="#format" data-i18n="nav.format">Формат</a></p><p><a href="#contact" data-i18n="nav.contacts">Контакты</a></p></div>
+        <div><p><a href="#format" data-i18n="nav.format">Формат</a></p><p><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></p></div>
       </div>
       <div class="copy">© 2025 — Languedoc, France</div>
     </div>
@@ -719,11 +762,13 @@
     };
   </script>
 
-  <!-- Проставить href соцсетей из конфига -->
+  <!-- Проставить href соцсетей из конфига (шапка + футер) и логика FAB -->
   <script>
   (function(){
     const cfg = window.APP_CONFIG || {};
     const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
+
+    // Шапка
     setHref('socVK', cfg.vk || '#');
     setHref('socFB', cfg.facebook || '#');
     setHref('socIG', cfg.instagram || '#');
@@ -731,12 +776,69 @@
       const tg = cfg.telegram ? (String(cfg.telegram).startsWith('http') ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
       document.getElementById('socTG').href = tg;
     }
+
+    // Футер
+    setHref('socVKf', cfg.vk || '#');
+    setHref('socFBf', cfg.facebook || '#');
+    setHref('socIGf', cfg.instagram || '#');
+    if (document.getElementById('socTGf')) {
+      const tgF = cfg.telegram ? (String(cfg.telegram).startsWith('http') ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
+      document.getElementById('socTGf').href = tgF;
+    }
+
+    // FAB (чат)
+    const fab = document.getElementById('chatFab');
+    const fabMenu = document.getElementById('chatFabMenu');
+    const waBtn = document.querySelector('#chatFabMenu a[data-whatsapp]');
+    const tgBtn = document.querySelector('#chatFabMenu a[data-telegram]');
+    const goBtn = document.getElementById('fabGo');
+
+    if (fab) {
+      fab.addEventListener('click', (e)=>{
+        const root = fab.closest('.fab');
+        if (!root) return;
+        root.classList.toggle('open');
+      });
+      // Клик по "Написать" — скроллим к форме
+      if (goBtn) {
+        goBtn.addEventListener('click', ()=>{
+          document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'});
+          fab.closest('.fab')?.classList.remove('open');
+        });
+      }
+      // Для WA/TG href собирает contact.js по клику (data-* уже стоят)
+      if (waBtn) waBtn.addEventListener('click', ()=> fab.closest('.fab')?.classList.remove('open'));
+      if (tgBtn) tgBtn.addEventListener('click', ()=> fab.closest('.fab')?.classList.remove('open'));
+    }
   })();
   </script>
+
+  <!-- Плавающий чат (FAB) -->
+  <div class="fab" aria-live="polite">
+    <div class="menu" id="chatFabMenu">
+      <button class="mini" id="fabGo" aria-label="Написать сообщение" title="Написать">
+        <!-- Перо / письмо -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.2V21h3.8l11-11-3.8-3.8-11 11zM20.7 7.04c.4-.4.4-1 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.8 3.8 1.7-1.9z"/></svg>
+      </button>
+      <a class="mini" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+        <!-- WA -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.9 7l-3.1 1 1-3.1A8 8 0 1 1 20 12zm-8.9-3.3c-.2-.4-.4-.3-.6-.3h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.2.3 2 3.2 4.9 4.3 2.4 1 2.9.9 3.4.8.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2 0-.1-.1-.3-.3-.4l-1.3-.6c-.2-.1-.3-.1-.5.1l-.7.8c-.1.1-.3.1-.5 0-.2 0-1.5-.6-2.8-1.7-1-.9-1.7-2.1-1.9-2.4-.2-.3 0-.4.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.1-.3 0-.1-.1-.3-.1-.4l-.6-1.4z"/></svg>
+      </a>
+      <a class="mini" data-telegram href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+        <!-- TG -->
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+      </a>
+    </div>
+    <button class="bubble" id="chatFab" aria-label="Открыть быстрый чат" title="Связаться">
+      <!-- Иконка чата -->
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+    </button>
+  </div>
 
   <!-- Твои скрипты -->
   <script src="assets/js/contact.js" defer></script>
   <script src="assets/js/chat-widget.js" defer></script>
 </body>
 </html>
+tml>
 
