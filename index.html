@@ -385,58 +385,51 @@
   </section>
 
   <!-- REVIEWS (компактный блок со списком + сворачиваемой формой) -->
-  <section id="reviews" class="container">
-    <h3 class="section-title">Отзывы</h3>
-    <div id="reviewsList" class="list" aria-live="polite">
-      <!-- сюда загрузятся опубликованные отзывы из Supabase -->
+ <section id="reviews" class="container">
+  <h3 class="section-title">Отзывы</h3>
+
+  <!-- сюда загрузятся отзывы -->
+  <div id="reviewsList" class="reviews"></div>
+
+  <!-- форма отправки -->
+  <form id="reviewForm" class="review-form" style="margin-top:12px">
+    <!-- honeypot (скрытый анти-бот) -->
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;padding:0;border:0">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end">
+      <div>
+        <label>Имя</label>
+        <input type="text" name="name" required placeholder="Ваше имя">
+      </div>
+      <div>
+        <label>Оценка</label>
+        <select name="rating">
+          <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+        </select>
+      </div>
+      <div>
+        <label>Фото (необязательно)</label>
+        <input type="file" name="photo" accept="image/*">
+      </div>
     </div>
 
-    <details style="margin-top:14px">
-      <summary>Добавить отзыв</summary>
-      <form id="reviewForm" class="stack" style="margin-top:10px" novalidate>
-        <div class="grid2">
-          <div class="row">
-            <label for="rv-name">Имя</label>
-            <input id="rv-name" name="name" type="text" maxlength="60" required placeholder="Ваше имя">
-          </div>
-          <div class="row">
-            <label>Оценка</label>
-            <div class="stars" style="gap:6px">
-              <input type="radio" id="star5" name="rating" value="5" checked><label for="star5">★</label>
-              <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-              <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-              <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-              <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
-            </div>
-          </div>
-        </div>
+    <div style="margin-top:10px">
+      <label>Отзыв</label>
+      <textarea name="text" required rows="3" placeholder="Пара предложений…"></textarea>
+    </div>
 
-        <div class="row">
-          <label for="rv-text">Комментарий</label>
-          <textarea id="rv-text" name="text" rows="4" maxlength="800" required placeholder="Расскажите, что понравилось"></textarea>
-        </div>
+    <label style="display:flex;gap:8px;align-items:flex-start;margin-top:10px">
+      <input type="checkbox" name="consent" required>
+      <span>Согласен(а) на публикацию на сайте</span>
+    </label>
 
-        <div class="grid2">
-          <div class="row">
-            <label for="rv-photo">Фото (необязательно)</label>
-            <input id="rv-photo" name="photo" type="file" accept="image/*">
-          </div>
-          <div class="row">
-            <label for="rv-consent">Согласие</label>
-            <label class="consent">
-              <input id="rv-consent" name="consent" type="checkbox" required>
-              <span>Согласен(а) на публикацию отзыва и фото на сайте.</span>
-            </label>
-          </div>
-        </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:10px">
+      <button class="btn primary" id="sendReviewBtn" type="submit">Отправить отзыв</button>
+      <span id="reviewMsg" class="section-sub" style="color:var(--muted)"></span>
+    </div>
+  </form>
+</section>
 
-        <div class="row" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
-          <button id="sendReviewBtn" class="btn primary" type="submit">Отправить отзыв</button>
-          <span id="reviewMsg" style="font-size:13px; color:var(--muted)"></span>
-        </div>
-      </form>
-    </details>
-  </section>
 
   <footer>
     <div class="container">
