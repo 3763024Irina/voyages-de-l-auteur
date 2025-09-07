@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru" data-program id="degustation-meze">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы." />
+
+  <style>
+    :root{ --brand:#0D2B1E; --accent:#C9B886; --ink:#0b1b14; --muted:#6b7b73; --bg:#f8f7f3; --radius:14px; }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:14.5px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:980px;margin:0 auto;padding:20px}
+    .hero{background:linear-gradient(120deg,var(--brand),#174736);color:#fff;border-radius:18px;margin:16px 0;padding:22px 18px;display:grid;gap:10px}
+    .hero small{opacity:.9}
+    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;margin-right:8px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:760px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
+    .card{background:#fff;border-radius:var(--radius);padding:16px;border:1px solid #e5e2db;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+    .card h3{margin:0 0 6px 0;font-size:18px}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .kpi{display:flex;gap:12px;flex-wrap:wrap}
+    .kpi div{background:#fff;border:1px dashed #e2ded5;border-radius:12px;padding:8px 12px}
+    .timeline{border-left:2px solid #e2ded5;margin-left:10px;padding-left:14px}
+    .timeline .item{margin:12px 0}
+    .pill{background:var(--brand);color:#fff;border:none;border-radius:999px;padding:10px 16px;cursor:pointer}
+    .pill.alt{background:var(--accent);color:#1c1b19}
+    .medal{display:inline-block;border:1px solid #e8e2d6;border-radius:10px;padding:6px 10px;background:#faf8f3}
+    .mini{font-size:12.5px;color:var(--muted)}
+    .map{background:#fff;border-radius:var(--radius);border:1px solid #e5e2db;padding:12px}
+    .logo-line{letter-spacing:.4px}
+    .awards{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .note{font-size:12.5px;color:var(--muted)}
+    .lang-switch{display:flex;gap:6px}
+    .lang-switch button{background:#fff;border:1px solid #dcd6c8;border-radius:999px;padding:6px 10px;cursor:pointer}
+    .lang-switch button.active{background:var(--accent);border-color:var(--accent);color:#1c1b19}
+    .divider{height:1px;background:#e9e4da;margin:16px 0}
+  </style>
+
+  <script>
+    // i18n
+    const I18N = {
+      ru: {
+        siteCrumbHome:"Главная", siteCrumbPrograms:"Программы",
+        badges:["🍇 Дегустация","🏅 Decanter & Paris Agricole","🦪 Опция устрицы Thau"],
+        h1:"Mèze — дегустационный маршрут (только Mèze & Montagnac)",
+        subtitle:"4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями",
+        kpi:["🚐 Короткие переезды","📸 Фотостопы у доменов","🍷 4–6 вин/локацию","🦪 Опционально: устрицы Tarbouriech"],
+        ctaAsk:"Запросить дату", ctaShare:"Поделиться в WhatsApp / TG",
+        planTitle:"План дня (компактный радиус)",
+        plan:[
+          ["10:00","выезд из Mèze (отель/порт). Короткий бриф."],
+          ["10:10","Domaine de Belle Mare — Picpoul у лагуны."],
+          ["11:05","Domaine de Saint-André — семейная винодельня, HVE."],
+          ["12:00","La Croix Gratiot (Montagnac) — Picpoul & экспериментальные кюве."],
+          ["12:50","Mas du Novi (Montagnac) — Grès de Montpellier, белые/красные."],
+          ["~14:15","возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце."]
+        ],
+        noteTime:"Время ориентировочное; локации в радиусе Mèze–Montagnac.",
+        domainsTitle:"Домены и награды (Mèze & Montagnac)",
+        domains:[
+          {
+            title:"Domaine de Belle Mare (Mèze)",
+            text:"Свежий <b>Picpoul de Pinet</b> у лагуны Thau; стиль — цитрус, соль, морской бриз.",
+            awards:[
+              "🥇/🥈 <b>Concours Général Agricole</b> (разные годы)",
+              "🏅 <b>Decanter</b> дегустационные обзоры и DWWA-участие (напр. Picpoul 2022)"
+            ],
+            map:"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze"
+          },
+          {
+            title:"Domaine de Saint-André (Mèze)",
+            text:"Семейное хозяйство (HVE, Qualité Tourisme). Muscat, Vermentino, купажи.",
+            awards:[
+              "🥇 <b>Concours Général Agricole 2025</b> (Folie d’Inès Blanc — золото)",
+              "HVE · Accueil Vélo · Qualité Tourisme"
+            ],
+            map:"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze"
+          },
+          {
+            title:"Domaine La Croix Gratiot (Montagnac)",
+            text:"Picpoul-мастер из Монтаньяка; линейки от классики до Syndical.",
+            awards:[
+              "🏅 <b>Decanter review</b> Syndical 2023",
+              "Награды и высокие оценки по Picpoul (разные винтажи)"
+            ],
+            map:"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac"
+          },
+          {
+            title:"Mas du Novi (Montagnac)",
+            text:"Исторический дом на плато; <b>Grès de Montpellier</b> белые/красные.",
+            awards:[
+              "🥇/🥈 <b>DWWA</b> — Prestigi 2019, Ô de Novi 2019 (медали 2024)",
+              "Оценки критиков (91+ для белых линеек разных годов)"
+            ],
+            map:"https://maps.google.com/?q=Mas+du+Novi+Montagnac"
+          },
+          {
+            title:"Опция: Domaine Félines Jourdan (Mèze)",
+            text:"Пикпуль с морским характером; эталонный стиль «устрицы & море».",
+            awards:[
+              "🥇/🥈 <b>DWWA</b> — медали (например, винтаж 2024 отмечен в DWWA 2025)",
+              "Высокие оценки Decanter"
+            ],
+            map:"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
+          }
+        ],
+        mapTitle:"Карта маршрута", mapHint:"Откроется в приложении карт", mapOpen:"Открыть маршрут",
+        contactTitle:"Забронировать / уточнить детали",
+        contactHint:"Напишите удобным способом — отправим доступные даты и прайс под вашу группу.",
+        contactBtn:"Связаться (WhatsApp / TG)", contactForm:"Форма на сайте",
+        legal:"Примечание: награды/винтажи уточняются по наличию в день визита.",
+        footer:"© Tours Languedoc by Irène — Voyages de l’Auteur",
+        routeUrl:"https://www.google.com/maps/dir/M%C3%A8ze/Domaine+de+Belle+Mare,+M%C3%A8ze/Domaine+de+Saint-Andr%C3%A9,+M%C3%A8ze/Domaine+La+Croix+Gratiot,+Montagnac/Mas+du+Novi,+Montagnac",
+        programTitle:"Mèze — дегустация (Mèze & Montagnac)"
+      },
+      fr: {
+        siteCrumbHome:"Accueil", siteCrumbPrograms:"Programmes",
+        badges:["🍇 Dégustation","🏅 Decanter & Paris Agricole","🦪 Option huîtres de Thau"],
+        h1:"Mèze — route de dégustation (Mèze & Montagnac uniquement)",
+        subtitle:"4–5 h · 3–4 arrêts · 10–15 min entre les domaines",
+        kpi:["🚐 Courtes distances","📸 Arrêts photo","🍷 4–6 vins / domaine","🦪 Option: huîtres Tarbouriech"],
+        ctaAsk:"Demander une date", ctaShare:"Partager via WhatsApp / TG",
+        planTitle:"Programme (rayon compact)",
+        plan:[
+          ["10:00","départ de Mèze (hôtel/port). Brief rapide."],
+          ["10:10","Domaine de Belle Mare — Picpoul au bord de la lagune."],
+          ["11:05","Domaine de Saint-André — domaine familial, HVE."],
+          ["12:00","La Croix Gratiot (Montagnac) — Picpoul & cuvées d’essai."],
+          ["12:50","Mas du Novi (Montagnac) — Grès de Montpellier, blancs/rouges."],
+          ["~14:15","retour à Mèze. Option : ajouter Félines Jourdan au début/à la fin."]
+        ],
+        noteTime:"Horaires indicatifs ; toutes les étapes dans le rayon Mèze–Montagnac.",
+        domainsTitle:"Domaines & distinctions (Mèze & Montagnac)",
+        domains:[
+          {
+            title:"Domaine de Belle Mare (Mèze)",
+            text:"<b>Picpoul de Pinet</b> au bord de l’étang de Thau : agrumes, salinité, brise marine.",
+            awards:[
+              "🥇/🥈 <b>Concours Général Agricole</b> (plusieurs années)",
+              "🏅 <b>Decanter</b> (revues & participations DWWA – ex. Picpoul 2022)"
+            ],
+            map:"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze"
+          },
+          {
+            title:"Domaine de Saint-André (Mèze)",
+            text:"Domaine familial (HVE, Qualité Tourisme). Muscat, Vermentino, assemblages.",
+            awards:[
+              "🥇 <b>Concours Général Agricole 2025</b> (Folie d’Inès Blanc — or)",
+              "HVE · Accueil Vélo · Qualité Tourisme"
+            ],
+            map:"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze"
+          },
+          {
+            title:"Domaine La Croix Gratiot (Montagnac)",
+            text:"Référence Picpoul à Montagnac ; gammes de la classique à Syndical.",
+            awards:[
+              "🏅 <b>Decanter review</b> Syndical 2023",
+              "Distinctions/bonnes notes régulières en Picpoul"
+            ],
+            map:"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac"
+          },
+          {
+            title:"Mas du Novi (Montagnac)",
+            text:"Domaine historique sur le plateau ; <b>Grès de Montpellier</b> blancs/rouges.",
+            awards:[
+              "🥇/🥈 <b>DWWA</b> — Prestigi 2019, Ô de Novi 2019 (médailles 2024)",
+              "Notes critiques (91+ sur plusieurs blancs)"
+            ],
+            map:"https://maps.google.com/?q=Mas+du+Novi+Montagnac"
+          },
+          {
+            title:"Option : Domaine Félines Jourdan (Mèze)",
+            text:"Picpoul au caractère marin ; style emblématique «huîtres & mer».",
+            awards:[
+              "🥇/🥈 <b>DWWA</b> — médailles (millésime 2024 primé au DWWA 2025)",
+              "Bonnes notes Decanter"
+            ],
+            map:"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
+          }
+        ],
+        mapTitle:"Carte de l’itinéraire", mapHint:"S’ouvrira dans l’app de cartes", mapOpen:"Ouvrir l’itinéraire",
+        contactTitle:"Réserver / demander des détails",
+        contactHint:"Écrivez-nous — nous revenons avec les dates et le tarif pour votre groupe.",
+        contactBtn:"Contacter (WhatsApp / TG)", contactForm:"Formulaire du site",
+        legal:"Note : récompenses/vintages à confirmer selon disponibilité le jour J.",
+        footer:"© Tours Languedoc by Irène — Voyages de l’Auteur",
+        routeUrl:"https://www.google.com/maps/dir/M%C3%A8ze/Domaine+de+Belle+Mare,+M%C3%A8ze/Domaine+de+Saint-Andr%C3%A9,+M%C3%A8ze/Domaine+La+Croix+Gratiot,+Montagnac/Mas+du+Novi,+Montagnac",
+        programTitle:"Mèze — dégustation (Mèze & Montagnac)"
+      }
+    };
+
+    const qs = (s,r=document)=>r.querySelector(s);
+    const qsa = (s,r=document)=>Array.from(r.querySelectorAll(s));
+    function detectLang(){
+      const saved = localStorage.getItem('site:lang');
+      if(saved) return saved;
+      const nav = (navigator.language||'').toLowerCase();
+      return nav.startsWith('fr') ? 'fr' : 'ru';
+    }
+  </script>
+</head>
+<body>
+<header class="container">
+  <div class="row" style="justify-content:space-between;align-items:center">
+    <div class="logo-line"><strong>Tours Languedoc by Irène</strong> · Oysters • Wine • Sea • Castles</div>
+    <nav class="row mini">
+      <a id="crumbHome" href="../index.html">Главная</a>
+      <span style="opacity:.5">/</span>
+      <span id="crumbPrograms">Программы</span>
+      <span class="divider" style="width:16px;background:transparent"></span>
+      <div class="lang-switch">
+        <button type="button" data-lang="ru">RU</button>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container" data-program-title="" data-program-id="DEGUST-MEZE" data-program="degust-meze">
+  <section class="hero">
+    <div class="row" id="badges"></div>
+    <h1 id="titleH1">...</h1>
+    <small id="subtitle">...</small>
+    <div class="kpi" id="kpi"></div>
+    <div class="row" style="margin-top:10px;gap:8px">
+      <button class="pill js-contact" id="ctaAsk" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
+      <button class="pill alt js-share" id="ctaShare" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="planTitle">...</h2>
+    <div class="timeline" id="timeline"></div>
+    <p class="note" id="noteTime">...</p>
+  </section>
+
+  <section class="grid cols-2" id="domains"></section>
+
+  <section class="map" style="margin:14px 0">
+    <b id="mapTitle">...</b><br/>
+    <span class="mini" id="mapHint">...</span><br/>
+    <a class="pill alt" id="mapOpen" href="#" target="_blank">...</a>
+  </section>
+
+  <section class="card">
+    <h3 id="contactTitle">...</h3>
+    <p class="mini" id="contactHint">...</p>
+    <div class="row">
+      <button class="pill js-contact" id="contactBtn" data-program-id="DEGUST-MEZE" data-program-title="">...</button>
+      <a class="pill alt" id="contactForm" href="../index.html#contact">...</a>
+    </div>
+  </section>
+
+  <p class="note" id="legal">...</p>
+</main>
+
+<footer class="container mini" style="opacity:.8;margin-bottom:30px" id="footer">
+  © Tours Languedoc by Irène — Voyages de l’Auteur
+</footer>
+
+<script>
+(function(){
+  const PROGRAM_ID = 'DEGUST-MEZE';
+  let LANG = detectLang();
+
+  function applyLang(lang){
+    LANG = lang;
+    localStorage.setItem('site:lang', lang);
+    const t = I18N[lang];
+
+    qs('#crumbHome').textContent = t.siteCrumbHome;
+    qs('#crumbPrograms').textContent = t.siteCrumbPrograms;
+
+    const badges = qs('#badges'); badges.innerHTML='';
+    t.badges.forEach(b=>{ const s=document.createElement('span'); s.className='badge'; s.textContent=b; badges.appendChild(s); });
+
+    qs('#titleH1').innerHTML = t.h1;
+    qs('#subtitle').textContent = t.subtitle;
+
+    const kpi = qs('#kpi'); kpi.innerHTML='';
+    t.kpi.forEach(k=>{ const d=document.createElement('div'); d.textContent=k; kpi.appendChild(d); });
+
+    const ctaAsk = qs('#ctaAsk'), ctaShare=qs('#ctaShare');
+    ctaAsk.textContent = t.ctaAsk; ctaShare.textContent = t.ctaShare;
+    ctaAsk.setAttribute('data-program-title', t.programTitle);
+    ctaShare.setAttribute('data-program-title', t.programTitle);
+    qs('#contactBtn').textContent = t.contactBtn;
+    qs('#contactBtn').setAttribute('data-program-title', t.programTitle);
+
+    qs('#planTitle').textContent = t.planTitle;
+    const timeline = qs('#timeline'); timeline.innerHTML='';
+    const links = {
+      "Domaine de Belle Mare":"https://maps.google.com/?q=Domaine+de+Belle+Mare+M%C3%A8ze",
+      "Domaine de Saint-André":"https://maps.google.com/?q=Domaine+de+Saint-Andr%C3%A9+M%C3%A8ze",
+      "La Croix Gratiot":"https://maps.google.com/?q=Domaine+La+Croix+Gratiot+Montagnac",
+      "Mas du Novi":"https://maps.google.com/?q=Mas+du+Novi+Montagnac",
+      "Félines Jourdan":"https://maps.google.com/?q=Domaine+F%C3%A9lines+Jourdan+M%C3%A8ze"
+    };
+    t.plan.forEach(([time, txt])=>{
+      const div = document.createElement('div'); div.className='item';
+      const b = document.createElement('b'); b.textContent=time; div.appendChild(b); div.append(" — ");
+      let html = txt
+        .replace("Domaine de Belle Mare", `<a href="${links["Domaine de Belle Mare"]}" target="_blank">Domaine de Belle Mare</a>`)
+        .replace("Domaine de Saint-André", `<a href="${links["Domaine de Saint-André"]}" target="_blank">Domaine de Saint-André</a>`)
+        .replace("La Croix Gratiot", `<a href="${links["La Croix Gratiot"]}" target="_blank">La Croix Gratiot</a>`)
+        .replace("Mas du Novi", `<a href="${links["Mas du Novi"]}" target="_blank">Mas du Novi</a>`)
+        .replace("Félines Jourdan", `<a href="${links["Félines Jourdan"]}" target="_blank">Félines Jourdan</a>`);
+      const span = document.createElement('span'); span.innerHTML=html; div.appendChild(span);
+      timeline.appendChild(div);
+    });
+    qs('#noteTime').textContent = t.noteTime;
+
+    const doms = qs('#domains'); doms.innerHTML='';
+    t.domains.forEach(d=>{
+      const art=document.createElement('article'); art.className='card';
+      const h3=document.createElement('h3'); h3.innerHTML=d.title;
+      const p=document.createElement('p'); p.innerHTML=d.text;
+      const aw=document.createElement('div'); aw.className='awards';
+      d.awards.forEach(a=>{ const s=document.createElement('span'); s.className='medal'; s.innerHTML=a; aw.appendChild(s); });
+      const m=document.createElement('p'); m.className='mini'; m.innerHTML=(lang==='fr'?'Itinéraire':'Маршрут')+`: <a href="${d.map}" target="_blank">Google Maps</a>`;
+      art.append(h3,p,aw,m); doms.appendChild(art);
+    });
+
+    qs('#mapTitle').textContent = t.mapTitle;
+    qs('#mapHint').textContent = t.mapHint;
+    const mapOpen=qs('#mapOpen'); mapOpen.textContent=t.mapOpen; mapOpen.href=t.routeUrl;
+
+    qs('#contactTitle').textContent=t.contactTitle;
+    qs('#contactHint').textContent=t.contactHint;
+    qs('#contactForm').textContent=t.contactForm;
+
+    qs('#legal').textContent=t.legal;
+    qs('#footer').textContent=t.footer;
+
+    const main = qs('main'); main.setAttribute('data-program-title', t.programTitle);
+
+    qsa('.lang-switch button').forEach(b=> b.classList.toggle('active', b.getAttribute('data-lang')===lang));
+  }
+
+  qsa('.lang-switch button').forEach(btn=> btn.addEventListener('click', ()=>applyLang(btn.getAttribute('data-lang'))));
+  applyLang(LANG);
+
+  // contact.js интеграция + шэр
+  function programTitle(){ return I18N[LANG].programTitle; }
+
+  qsa('.js-contact').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.dispatchEvent(new CustomEvent('app:contact:open',{detail:{ programId:'DEGUST-MEZE', programTitle: programTitle() }}));
+      try{
+        if(!window.APP_CONFIG || !APP_CONFIG.whatsapp) return;
+        const wa = String(APP_CONFIG.whatsapp).replace(/\D/g,''); if(wa) window.open('https://wa.me/'+wa,'_blank');
+      }catch(e){}
+    });
+  });
+
+  qsa('.js-share').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const t = I18N[LANG];
+      const text = `Programme / Программа: ${t.programTitle} (DEGUST-MEZE)
+Route: Mèze → Belle Mare → Saint-André → La Croix Gratiot → Mas du Novi (+ option Félines Jourdan)
+Awards: DWWA (Mas du Novi 2024, Félines Jourdan 2025), Decanter reviews (La Croix Gratiot, Belle Mare), CGA Paris 2025 (Saint-André).
+URL: ${location.href}`;
+      if(navigator.share){ navigator.share({text}).catch(()=>{}); return; }
+      const enc=encodeURIComponent(text);
+      const tg=`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${enc}`;
+      const wa=`https://wa.me/?text=${enc}`;
+      window.open(tg,'_blank'); setTimeout(()=>window.open(wa,'_blank'),300);
+    });
+  });
+
+  // Регистрация в window.TOURS
+  window.TOURS = window.TOURS || [];
+  if(!window.TOURS.some(t=>t.id===PROGRAM_ID)){
+    window.TOURS.push({
+      id: PROGRAM_ID,
+      title: I18N[LANG].programTitle,
+      days: 1,
+      durationHours: 5,
+      start: 'Mèze',
+      awards: [
+        {place:'Mas du Novi (Montagnac)', note:'DWWA 2024 — Prestigi, Ô de Novi'},
+        {place:'Félines Jourdan (Mèze)', note:'DWWA 2025 — Picpoul 2024'},
+        {place:'Saint-André (Mèze)', note:'CGA Paris 2025 — or'},
+        {place:'La Croix Gratiot (Montagnac)', note:'Decanter review — Syndical 2023'},
+        {place:'Belle Mare (Mèze)', note:'Decanter review & DWWA entry — Picpoul 2022'}
+      ],
+      tagline: (LANG==='fr')?'Tout proche : Mèze & Montagnac — 1 jour':'Только рядом: Mèze & Montagnac — за 1 день',
+      href: location.href
+    });
+  }
+})();
+</script>
+</body>
+</html>
