@@ -121,8 +121,51 @@
     .avatar{width:40px; height:40px; border-radius:50%; background:#ddd}
 
     /* ===== Контакты и бронь (компактно) ===== */
-   
-    
+    .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+    .contact .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .stack{display:grid; gap:10px}
+    label{display:block; font-size:13px; color:var(--muted); margin:6px 0 4px}
+    input, select, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:100px}
+
+    footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
+    .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
+    .footgrid a{color:#cfd8d3; text-decoration:none}
+    .copy{margin-top:24px; font-size:13px; color:#9fb3a9}
+
+    @media (max-width: 1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .about,.hero .inner,.contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .hero h2{font-size:36px}
+      nav ul{display:none}
+    }
+
+    /* === HERO узкая форма (оставляем для быстрого запроса) === */
+    .hero .contact-card{
+      width: 360px; max-width: 100%;
+      justify-self: end; align-self: end;
+      padding: 14px 16px; border-radius: 16px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid #eee; box-shadow: var(--shadow);
+    }
+    .hero .contact-card form{ background:transparent; border:0; box-shadow:none; padding:0; }
+    .hero .contact-card input, .hero .contact-card textarea{
+      height: 40px; padding: 8px 10px; font:inherit;
+      border-radius:10px; border:1px solid #e6e6e6; background:#fff;
+      margin:6px 0 10px;
+    }
+    .hero .contact-card textarea{ min-height: 90px; height:auto; resize:vertical; }
+    .hero .contact-card .btn{ padding:10px 12px; border-radius:10px; }
+    .hero .contact-card input:focus, .hero .contact-card textarea:focus{
+      outline:2px solid rgba(13,43,30,.28); border-color:var(--brand);
+    }
+    @media (max-width:1000px){
+      .hero .contact-card{ width:100%; justify-self:stretch; align-self:start; }
+    }
+
     /* ===== Отзывы (компакт) ===== */
     #reviews .list{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     #reviews .list .item{background:#fff; border:1px solid #eee; border-radius:14px; padding:12px; box-shadow:var(--shadow)}
@@ -198,7 +241,49 @@
         </div>
       </div>
 
-      
+      <!-- Быстрый запрос (узкая карточка) -->
+      <div class="card contact-card" id="contactCard">
+        <strong data-i18n="form.fast">Быстрый запрос</strong>
+        <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
+          Отправьте пожелания — подберу маршрут и даты в течение дня.
+        </p>
+
+        <form
+          id="quickForm"
+          data-contact-form
+          data-program-title="Запрос с главной (быстрый)"
+          data-program-id="HOME-FAST"
+          data-channel="whatsapp"
+        >
+          <label for="f-name" data-i18n="form.name">Имя</label>
+          <input id="f-name" name="name" required placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name" />
+
+          <label for="f-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
+          <input id="f-contact" name="contact" required placeholder="+33…" data-i18n-placeholder="form.contact.ph" autocomplete="tel" inputmode="tel" pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
+
+          <div style="display:flex; gap:10px; margin-top:8px">
+            <div style="flex:1">
+              <label for="f-date" data-i18n="form.date">Дата</label>
+              <input type="date" id="f-date" name="date" />
+            </div>
+            <div style="width:140px">
+              <label for="f-guests" data-i18n="form.guests">Гостей</label>
+              <input type="number" id="f-guests" name="guests" min="1" value="2" />
+            </div>
+          </div>
+
+          <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
+          <textarea id="f-message" name="message" placeholder="Какие даты и интересы?" data-i18n-placeholder="form.msg.ph"></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
+            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
   <!-- WHY -->
   <section id="why" class="container why">
@@ -726,7 +811,7 @@
   <script>
     window.APP_CONFIG = {
       whatsapp: '+33759644813',
-      telegram: 'ToursLanguedocbyIrene',
+      telegram: 'de_iren',
       // email: 'you@example.com',
 
       // ===== Supabase для отзывов (замените на свои) =====
