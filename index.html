@@ -206,16 +206,19 @@
           <h1>Tours Languedoc by Irène <small>— Des voyages avec goût</small></h1>
         </div>
       </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="#why" data-i18n="nav.why">Почему с нами</a></li>
-          <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
-          <li><a href="#format" data-i18n="nav.format">Формат</a></li>
-          <li><a href="#contact" data-i18n="nav.contacts">Контакты</a></li>
-          <li><a class="cta" href="#contact" data-i18n="nav.book">Забронировать</a></li>
-        </ul>
-      </nav>
+    <nav>
+  <ul>
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="#why" data-i18n="nav.why">Почему с нами</a></li>
+    <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
+    <li><a href="#format" data-i18n="nav.format">Формат</a></li>
+    <!-- было href="#contact" -->
+    <li><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></li>
+    <!-- было href="#contact" -->
+    <li><a class="cta" href="#contactCard" data-i18n="nav.book">Забронировать</a></li>
+  </ul>
+</nav>
+
     </div>
   </header>
 
@@ -435,73 +438,6 @@
     </details>
   </section>
 
-  <!-- CONTACT (компактно: бронь + прямые контакты) -->
-  <section id="contact" class="container">
-    <h3 class="section-title" data-i18n="contact.title">Контакты и бронь</h3>
-    <div class="contact">
-      <!-- Бронь: короткая форма -->
-      <div class="card">
-        <form class="stack" data-contact-form data-program-title="Запрос с главной (контакты)" data-program-id="HOME-CONTACT" data-channel="whatsapp">
-          <div class="grid2">
-            <div>
-              <label for="c-name" data-i18n="form.name">Имя</label>
-              <input id="c-name" name="name" required placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name" />
-            </div>
-            <div>
-              <label for="c-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
-              <input id="c-contact" name="contact" required placeholder="+33…" data-i18n-placeholder="form.contact.ph" autocomplete="tel" inputmode="tel" pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
-            </div>
-          </div>
-
-          <div class="grid2">
-            <div>
-              <label for="c-date" data-i18n="form.date">Дата</label>
-              <input id="c-date" name="date" type="date">
-            </div>
-            <div>
-              <label for="c-guests" data-i18n="form.guests">Гостей</label>
-              <input id="c-guests" name="guests" type="number" min="1" value="2">
-            </div>
-          </div>
-
-          <div>
-            <label for="c-message" data-i18n="form.msg">Сообщение</label>
-            <textarea id="c-message" name="message" placeholder="Какие даты и интересы?" data-i18n-placeholder="form.msg.ph"></textarea>
-          </div>
-
-          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
-            <label for="c-channel" style="font-size:13px; color:#6c6c6c" data-i18n="contact.sendto">Куда отправить:</label>
-            <select id="c-channel" name="channel">
-              <option value="whatsapp" selected>WhatsApp</option>
-              <option value="telegram">Telegram</option>
-              <option value="both">WhatsApp + Telegram</option>
-            </select>
-            <span style="flex:1"></span>
-            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
-          </div>
-
-          <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
-            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">WhatsApp</a>
-            <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Telegram</a>
-          </div>
-        </form>
-      </div>
-
-      <!-- Контакты: карточка с прямыми ссылками -->
-      <div class="card">
-        <div class="stack">
-          <strong>Связаться напрямую</strong>
-          <div style="display:grid; gap:8px">
-            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Открыть WhatsApp</a>
-            <a class="btn" data-telegram href="#" target="_blank" rel="noopener">Открыть Telegram</a>
-            <a class="btn" id="emailLink" href="#" target="_blank" rel="noopener">Email</a>
-          </div>
-          <p class="section-sub" style="margin:8px 0 0">Ответ обычно в течение дня.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -521,8 +457,11 @@
       <div class="inc" id="modalInc"></div>
       <p id="modalText"></p>
       <div style="display:flex; gap:10px; padding:10px 0 16px 0">
-        <button class="btn primary" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav.book">Забронировать</button>
-        <a class="btn" href="index.html">На главную</a>
+       <!-- было: '#contact' -->
+<button class="btn primary"
+        onclick="document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'})"
+        data-i18n="nav.book">Забронировать</button>
+
       </div>
     </div>
   </dialog>
