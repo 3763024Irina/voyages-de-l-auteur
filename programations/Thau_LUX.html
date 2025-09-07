@@ -12,13 +12,6 @@
   <meta property="og:image" content="../assets/Etang-de-Thau.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
-  <!-- Favicons (опционально) -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="alternate icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -31,7 +24,7 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}    
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -49,18 +42,18 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* HERO */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.68)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
-    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
-    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
-    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
-    .price{font-weight:800; font-size:20px}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
 
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -82,43 +75,53 @@
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
-
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
-    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    .btn:hover{filter:brightness(.98)}
-
-    /* Tarifs (LS/HS) */
-    .toggle-row{display:flex; gap:8px; flex-wrap:wrap; margin:4px 0 12px}
-    .btn.toggle{user-select:none}
-    .btn.toggle.active{background:var(--brand); color:#fff; border-color:var(--brand)}
-    .tablewrap{overflow:auto}
-    table.tarifs{width:100%; border-collapse:collapse}
-    table.tarifs th, table.tarifs td{padding:8px 0; text-align:left; border-bottom:1px solid #f0f0f0}
-
-    /* Booking form (унифицировано) */
-    .fields{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-    .fields .full{grid-column:1/-1}
-    label{display:block; font-weight:700; margin-bottom:6px}
-    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
-    textarea{min-height:110px; resize:vertical}
-    .muted{color:var(--muted); font-size:12px}
+    .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
+    /* FORM (глобальные базовые) */
+    label{display:block; font-weight:700; margin-bottom:6px}
+    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:110px; resize:vertical}
+
+    /* BOOK */
+    #book{ padding:32px 0 56px; }
+    #book .card{
+      max-width:720px; margin:0 auto;
+      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
+      box-shadow:0 12px 30px rgba(0,0,0,.08);
+    }
+    #book .section-title{ font-size:28px; margin:0 0 6px; }
+    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
+    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    #book .fields .full{ grid-column:1 / -1; }
+    #book input, #book textarea, #book select{ height:44px; }
+    #book textarea{ min-height:110px; height:auto; }
+    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book .btn{ padding:10px 12px; border-radius:12px; }
+    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    #book .btn.primary:hover{ filter:brightness(.96); }
+
+    /* admin gating */
+    .admin-only{ display:none !important; }
+    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
     @media (max-width: 1000px){
-      .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
-      .fields{grid-template-columns:1fr}
+      #book .fields{grid-template-columns:1fr}
+      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
       h2.title{font-size:36px}
       nav ul{display:none}
+      .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
   </style>
 </head>
@@ -139,11 +142,12 @@
       <nav class="lang">
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
           <button id="btn-fr">FR</button>
-          <a class="cta" href="#book" id="goBook" data-i18n="nav_book" style="margin-left:10px">Забронировать</a>
         </div>
       </nav>
     </div>
@@ -152,7 +156,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="bg">
-      <img src="../assets/Etang-de-Thau.jpg" alt="" id="alt-hero" />
+      <img src="../assets/Etang-de-Thau.jpg" alt="" id="alt-hero"/>
       <div class="overlay"></div>
     </div>
     <div class="container inner">
@@ -167,21 +171,6 @@
         <h2 class="title" data-i18n="hero_title">LUX Étang de Thau — 1 день</h2>
         <p class="subtitle" data-i18n="hero_sub">Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — «relax & taste».</p>
       </div>
-      <div class="card">
-        <div class="price"><span id="heroPrice">1000 €</span> <span data-i18n="hero_price_tail">/ 1–2 гостя</span></div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="hero_price_note">Подробная сетка — в разделе «Стоимость» ниже.</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: ~8–9 ч</div>
-          <div class="spec" data-i18n="spec_walk">Маршрут: без пеших треков</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_start">Старт: Meze/ Cap d’Agde / Sète / Marseillan</div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -190,61 +179,89 @@
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/Etang-de-Thau.jpg" alt="" id="alt-g1" loading="lazy"></div>
-      <div class="ph"><img src="../assets/89621188_803100600179364_6086176174071873536_n.jpg" alt="" id="alt-g2" loading="lazy"></div>
-      <div class="ph"><img src="../assets/website-2-1.jpg" alt="" id="alt-g3" loading="lazy"></div>
+      <div class="ph"><img id="alt-g1" src="../assets/Etang-de-Thau.jpg" onerror="this.src='../assets/website-2-1.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/89621188_803100600179364_6086176174071873536_n.jpg" onerror="this.src='../assets/Etang-de-Thau.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/website-2-1.jpg" onerror="this.src='../assets/Etang-de-Thau.jpg'" alt="" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- DETAILS -->
+  <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
       <h3 class="section-title" data-i18n="plan_title">Программа дня</h3>
-      <ul class="timeline" id="scheduleList"></ul>
+      <ul class="timeline">
+        <li><span class="time">10:00</span> — <span data-i18n="t_1000">Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф на понтоне.</span></li>
+        <li><span class="time">10:30–13:00</span> — <span data-i18n="t_1030">Приватная лодка: устричные плантации — маяк Les Onglous (вход Канала дю Миди) — возврат. Дегустация устриц с локальным белым.</span></li>
+        <li><span class="time">13:15–15:00</span> — <span data-i18n="t_1315">Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый/безалк. pairing.</span></li>
+        <li><span class="time">15:10–16:20</span> — <span data-i18n="t_1510">Maison Noilly Prat (Марсельян): визит и премиум-дегустация.</span></li>
+        <li><span class="time">16:45–18:15</span> — <span data-i18n="t_1645">Винный финал: La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.</span></li>
+        <li><span class="time">18:30</span> — <span data-i18n="t_1830">Возврат в отель. Возможен фотостоп.</span></li>
+      </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
-      <div class="inc-grid" id="incGrid" role="list"></div>
+      <div class="inc-grid">
+        <div class="pill" data-i18n="inc_transfer">Частный трансфер на день</div>
+        <div class="pill" data-i18n="inc_boat">Приватная лодка 2,5–3 ч + дегустация устриц</div>
+        <div class="pill" data-i18n="inc_noilly">Noilly Prat — визит и дегустация (premium)</div>
+        <div class="pill" data-i18n="inc_wine">Приватная дегустация в La Croix Gratiot или Mas du Novi</div>
+        <div class="pill" data-i18n="inc_guide">Сопровождение RU/FR</div>
+      </div>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
-      <ul class="list" id="exList"></ul>
+      <ul class="list">
+        <li data-i18n="exc_lunch">Обед в Tarbouriech (оплата на месте).</li>
+        <li data-i18n="exc_drinks">Шампанское и особые напитки.</li>
+        <li data-i18n="exc_personal">Личные расходы.</li>
+      </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="opt_title">Опции</h3>
-      <ul class="list" id="optList"></ul>
+      <ul class="list">
+        <li data-i18n="opt_sunset">Продление до заката на воде с аперитивом.</li>
+        <li data-i18n="opt_second">Добавить второй винный домен.</li>
+        <li data-i18n="opt_oyster">Мастер-класс по устрицам.</li>
+        <li data-i18n="opt_vehicle">Апгрейд транспорта (по запросу).</li>
+      </ul>
     </article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.</p>
-      <div class="mapwrap">
-        <iframe
-          title="Карта: Étang de Thau"
-          src="https://www.google.com/maps?q=Etang%20de%20Thau%2C%20Marseillan&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+
+      <!-- Фото вместо карты -->
+      <div class="ph" style="margin-bottom:10px">
+        <img src="../assets/website-2-1.jpg" alt="Étang de Thau — причалы Марсельяна" loading="lazy" style="width:100%; height:auto; display:block; border-radius:18px">
+      </div>
+
+      <!-- Ссылки — только в режиме администратора -->
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Etang%20de%20Thau&output=classic">Étang de Thau</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Les%20Onglous&output=classic">Les Onglous</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Maison%20Noilly%20Prat%2C%20Marseillan&output=classic">Noilly Prat</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tarbouriech%2C%20Marseillan&output=classic">Tarbouriech</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Marseillan&destination=Mas%20du%20Novi%2C%20Montagnac&waypoints=Les%20Onglous|Maison%20Noilly%20Prat|Domaine%20La%20Croix%20Gratiot">Маршрут дня</a>
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
-      <ul class="list" id="tipsList"></ul>
+      <ul class="list">
+        <li data-i18n="tip_nowalks">Без пеших треков: короткие переходы авто ↔ понтон/залы.</li>
+        <li data-i18n="tip_wear">Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.</li>
+        <li data-i18n="tip_weather">Погода/ветер: порядок точек и дегустации можем корректировать.</li>
+        <li data-i18n="tip_start">Старт возможен из Cap d’Agde, Sète или Marseillan.</li>
+      </ul>
     </aside>
   </section>
 
-  <!-- TARIFS -->
-  <section class="container">
-    <div class="card">
-      <h3 class="section-title" data-i18n="tar_title">Стоимость</h3>
-      <p class="section-sub" data-i18n="tar_note">Обед не включён — оплачивается на месте. Возможна доплата в пиковые даты по доступности марины.</p>
-
-      <div class="toggle-row">
-        <button class="btn toggle active" id="btnLS" data-season="LS" data-i18n="tar_low">Низкий сезон</button>
-        <button class="btn toggle" id="btnHS" data-season="HS" data-i18n="tar_high">Высокий сезон</button>
-      </div>
-
-      <div id="tarDynamic"></div>
-    </div>
+  <!-- PRICING -->
+  <section id="pricing" class="container" style="margin:3rem 0">
+    <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
+    <ul class="list">
+      <li data-i18n="pricing_note">Обед не включён — оплачивается на месте. Возможна доплата в пиковые даты по доступности марины.</li>
+      <li><strong>LS (низкий сезон):</strong> <span id="priceLS">—</span></li>
+      <li><strong>HS (высокий сезон):</strong> <span id="priceHS">—</span></li>
+    </ul>
   </section>
 
-  <!-- BOOKING (унифицировано под contact.js) -->
+  <!-- BOOK -->
   <section id="book" class="container">
     <div class="card" data-program data-program-title="LUX Étang de Thau — 1 день" data-program-id="THAU-LUX-1D">
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
@@ -252,61 +269,44 @@
 
       <form class="fields" data-contact-form data-channel="telegram">
         <div>
-          <label for="date" data-i18n="label_date">Дата</label>
-          <input id="date" name="date" type="date" required>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
         </div>
         <div>
           <label for="guests" data-i18n="label_guests">Гостей</label>
           <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-        </div>
-        <div>
-          <label for="start" data-i18n="label_start">Старт</label>
-          <select id="start" name="start">
-            <option value="Marseillan">Marseillan</option>
-            <option value="Sète">Sète</option>
-            <option value="Cap d’Agde">Cap d’Agde</option>
-          </select>
-        </div>
-        <div>
-          <label for="pickup" data-i18n="label_pickup">Пикап (отель/адрес)</label>
-          <input id="pickup" name="pickup" type="text" placeholder="Hotel, rue…">
         </div>
 
         <div class="full">
           <label for="name" data-i18n="label_name">Имя</label>
           <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
+
         <div class="full">
           <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
           <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
         </div>
-        <div class="full">
-          <label for="message" data-i18n="label_message">Комментарий</label>
-          <textarea id="message" name="message" placeholder="Желаемые даты, состав, нужны ли опции (закат/2-й домен/мастер-класс)…"></textarea>
-        </div>
 
         <div class="full">
-          <label data-i18n="label_total">Итог</label>
-          <div class="price" id="totalOut">—</div>
-          <p class="muted" data-i18n="total_note">База за 1–2 гостей + доплата за каждого сверх 2 (сезон LS/HS). Обед — на месте.</p>
+          <label for="msg" data-i18n="label_message">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="Желаемые даты, состав, старт (Cap d’Agde / Sète / Marseillan)…"></textarea>
         </div>
 
-        <div class="full" style="display:flex; gap:10px; align-items:center; margin-top:6px">
-          <label style="margin:0; font-weight:600">Куда отправить:</label>
-          <select name="channel">
+        <div class="form-row full">
+          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
+          <select id="sendto" name="channel">
             <option value="whatsapp">WhatsApp</option>
             <option value="telegram" selected>Telegram</option>
             <option value="email">Email</option>
           </select>
         </div>
 
-        <div class="full" style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap">
+        <div class="form-actions full">
           <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
           <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
           <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
-      <p class="muted" style="margin-top:10px">ID: THAU-LUX-1D</p>
     </div>
   </section>
 
@@ -321,66 +321,13 @@
     </div>
   </footer>
 
+  <!-- I18N -->
   <script>
-    /* ====== Данные ====== */
-    const PRICE = {
-      LS: { base2: 1270, perExtra: 75 },
-      HS: { base2: 1460, perExtra: 86 },
-      minGuests: 2, maxGuests: 6
+    const PRICES = {
+      LS: { base2: 1270, perExtra: 75, max: 6 },
+      HS: { base2: 1460, perExtra: 86, max: 6 }
     };
 
-    const schedule = [
-      { time:'10:00', ru:'Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф по безопасности на воде.', fr:'Pickup à l’hôtel (Meze/ Cap d’Agde / Sète / Marseillan). Brief sécurité sur l’eau.' },
-      { time:'10:30–13:00', ru:'Приватная лодка по лагуне: устричные плантации → маяк Les Onglous (вход Канала дю Миди) → возврат. Дегустация свежих устриц с локальным белым.', fr:'Bateau privé : tables ostréicoles → phare des Onglous (entrée du Canal du Midi) → retour. Dégustation d’huîtres avec blanc local.' },
-      { time:'13:15–15:00', ru:'Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый и/или безалкогольный pairing.', fr:'Déjeuner chez Tarbouriech (Maison / Le St Barth). Menu saison ; pairing sans alcool possible.' },
-      { time:'15:10–16:20', ru:'Noilly Prat (Марсельян): визит и дегустация премиум-линейки.', fr:'Noilly Prat (Marseillan) : visite et dégustation premium.' },
-      { time:'16:45–18:15', ru:'Винный финал: Domaine La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.', fr:'Final vin : Domaine La Croix Gratiot (Picpoul) ou Mas du Novi (Languedoc). Dégustation privée.' },
-      { time:'18:30', ru:'Возврат в отель. По пути возможен фотостоп.', fr:'Retour à l’hôtel. Arrêt photo possible.' }
-    ];
-
-    const included = {
-      ru: [
-        'Частный трансфер на день.',
-        'Приватная лодка 2,5–3 ч с дегустацией устриц и бокалом локального вина.',
-        'Noilly Prat — визит и дегустация (premium).',
-        'Приватная дегустация в одном домене: La Croix Gratiot или Mas du Novi.',
-        'Сопровождение гида (RU/FR).'
-      ],
-      fr: [
-        'Transfert privé pour la journée.',
-        'Bateau privé 2,5–3 h avec dégustation d’huîtres et verre de blanc local.',
-        'Noilly Prat — visite et dégustation (premium).',
-        'Dégustation privée dans un domaine : La Croix Gratiot ou Mas du Novi.',
-        'Accompagnement guide (FR/RU).'
-      ]
-    };
-
-    const excluded = {
-      ru: ['Обед в Tarbouriech (оплата на месте).','Шампанское и особые напитки.','Личные расходы.'],
-      fr: ['Déjeuner chez Tarbouriech (règlement sur place).','Champagne et boissons spéciales.','Dépenses personnelles.']
-    };
-
-    const optionsList = {
-      ru: ['Продление до заката на воде с аперитивом.','Добавить второй винный домен.','Мастер-класс по устрицам.','Апгрейд транспорта (по запросу).'],
-      fr: ['Prolongation jusqu’au coucher de soleil avec apéritif.','Ajouter un deuxième domaine viticole.','Atelier huîtres.','Upgrade du véhicule (sur demande).']
-    };
-
-    const practice = {
-      ru: [
-        'Без пеших прогулок: только короткие проходы от авто до понтона/залов.',
-        'Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.',
-        'Погода: при ветре корректируем порядок точек; при волне — дегустация в защищённой акватории/зале.',
-        'Старт возможен из Cap d’Agde, Sète или Marseillan.'
-      ],
-      fr: [
-        'Sans marche : quelques pas entre voiture, ponton et salles.',
-        'Tenue : coupe-vent, lunettes, SPF ; chaussures antidérapantes.',
-        'Météo : ajustement si vent ; mer formée → dégustation en zone abritée/salle.',
-        'Départ possible de Cap d’Agde, Sète ou Marseillan.'
-      ]
-    };
-
-    /* ====== i18n ====== */
     const i18n = {
       ru: {
         htmlLang:'ru',
@@ -390,50 +337,63 @@
         ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
-        nav_all:'← Все программы', nav_book:'Забронировать',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
         btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
-        altHero:'Étang de Thau — лагуна, устрицы и лодка',
-        altG1:'Лагуна Thau и устричные плантации', altG2:'Плато морепродуктов Tarbouriech', altG3:'Вид на лагуну Thau с причала',
+
+        b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
         hero_title:'LUX Étang de Thau — 1 день',
         hero_sub:'Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — «relax & taste».',
-        hero_price_tail:'/ 1–2 гостя',
-        hero_price_note:'Подробная сетка — в разделе «Стоимость» ниже.',
-        b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
-        spec_duration:'Длительность: ~8–9 ч',
-        spec_walk:'Маршрут: без пеших треков',
-        spec_langs:'Языки: RU/FR',
-        spec_start:'Старт: Meze / Cap d’Agde / Sète / Marseillan',
+        gal_title:'Как это выглядит',
+        gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
+        altHero:'Étang de Thau — лагуна, устрицы и лодка',
+        altG1:'Лагуна Thau и устричные плантации',
+        altG2:'Плато морепродуктов Tarbouriech',
+        altG3:'Вид на лагуну Thau с причала',
 
         plan_title:'Программа дня',
+        t_1000:'Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф на понтоне.',
+        t_1030:'Приватная лодка: устричные плантации — маяк Les Onglous (вход Канала дю Миди) — возврат. Дегустация устриц с локальным белым.',
+        t_1315:'Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый/безалк. pairing.',
+        t_1510:'Maison Noilly Prat (Марсельян): визит и премиум-дегустация.',
+        t_1645:'Винный финал: La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.',
+        t_1830:'Возврат в отель. Возможен фотостоп.',
+
         inc_title:'Что включено',
+        inc_transfer:'Частный трансфер на день',
+        inc_boat:'Приватная лодка 2,5–3 ч + дегустация устриц',
+        inc_noilly:'Noilly Prat — визит и дегустация (premium)',
+        inc_wine:'Приватная дегустация в La Croix Gratiot или Mas du Novi',
+        inc_guide:'Сопровождение RU/FR',
+
         exc_title:'Не включено',
+        exc_lunch:'Обед в Tarbouriech (оплата на месте).',
+        exc_drinks:'Шампанское и особые напитки.',
+        exc_personal:'Личные расходы.',
+
         opt_title:'Опции',
+        opt_sunset:'Продление до заката на воде с аперитивом.',
+        opt_second:'Добавить второй винный домен.',
+        opt_oyster:'Мастер-класс по устрицам.',
+        opt_vehicle:'Апгрейд транспорта (по запросу).',
+
         where_title:'Где это',
         where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
         tips_title:'Полезно знать',
+        tip_nowalks:'Без пеших треков: короткие переходы авто ↔ понтон/залы.',
+        tip_wear:'Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.',
+        tip_weather:'Погода/ветер: порядок точек и дегустации можем корректировать.',
+        tip_start:'Старт возможен из Cap d’Agde, Sète или Marseillan.',
 
-        tar_title:'Стоимость',
-        tar_note:'Обед не включён — оплачивается на месте. Возможна доплата в пиковые даты по доступности марины.',
-        tar_low:'Низкий сезон',
-        tar_high:'Высокий сезон',
-        tar_base:'База за 1–2 гостей',
-        tar_pp:'За каждого сверх 2',
-        tar_grid:'Примеры (цена за группу)',
-        tar_max:'макс.',
-        tar_hdr_guests:'Гостей',
-        tar_hdr_sum:'Сумма',
-        tar_hdr_pp:'≈ €/чел',
+        pricing_title:'Стоимость',
+        pricing_note:'Обед не включён — оплачивается на месте. Возможна доплата в пиковые даты по доступности марины.',
 
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и предложим время старта и брони.',
-        label_date:'Дата', label_guests:'Гостей', label_start:'Старт', label_pickup:'Пикап (отель/адрес)',
+        label_date:'Дата', label_guests:'Гостей',
         label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
-        label_total:'Итог', total_note:'База за 1–2 + доплата за каждого сверх 2 (LS/HS). Обед — на месте.',
         btn_send_form:'Отправить',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        mail_subject:'Запрос: LUX Étang de Thau (сайт)'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
       },
       fr: {
         htmlLang:'fr',
@@ -443,186 +403,123 @@
         ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vin. Sans marche.',
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_book:'Réserver',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
         btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, tables ostréicoles, Tarbouriech et quais de Marseillan.',
-        altHero:'Étang de Thau — lagune, huîtres et bateau',
-        altG1:'Lagune de Thau et parcs ostréicoles', altG2:'Plateau de fruits de mer Tarbouriech', altG3:'Vue sur la lagune depuis le quai',
+
+        b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
         hero_title:'LUX Étang de Thau — 1 jour',
         hero_sub:'Bateau privé sur la lagune avec dégustation d’huîtres, déjeuner chez Tarbouriech, visite Noilly Prat et final vin. Transfert A/R hôtel. Sans marche — «relax & taste».',
-        hero_price_tail:'/ 1–2 pers.',
-        hero_price_note:'Détail des tarifs dans la section «Tarifs» ci-dessous.',
-        b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
-        spec_duration:'Durée : ~8–9 h',
-        spec_walk:'Parcours : sans marche',
-        spec_langs:'Langues : RU/FR',
-        spec_start:'Départ : Cap d’Agde / Sète / Marseillan',
+        gal_title:'À quoi ça ressemble',
+        gal_sub:'Lagune de Thau, tables ostréicoles, Tarbouriech et quais de Marseillan.',
+        altHero:'Étang de Thau — lagune, huîtres et bateau',
+        altG1:'Lagune de Thau et parcs ostréicoles',
+        altG2:'Plateau de fruits de mer Tarbouriech',
+        altG3:'Vue sur la lagune depuis le quai',
 
         plan_title:'Programme de la journée',
+        t_1000:'Pick-up à l’hôtel (Cap d’Agde / Sète / Marseillan). Brief sur le ponton.',
+        t_1030:'Bateau privé : parcs ostréicoles — phare des Onglous (entrée du Canal du Midi) — retour. Dégustation d’huîtres et verre de blanc.',
+        t_1315:'Déjeuner chez Tarbouriech (Maison / Le St Barth). Menu de saison ; pairing sans coquillages/soft possible.',
+        t_1510:'Maison Noilly Prat (Marseillan) : visite & dégustation premium.',
+        t_1645:'Final vin : La Croix Gratiot (Picpoul) ou Mas du Novi (Languedoc). Dégustation privée.',
+        t_1830:'Retour à l’hôtel. Arrêt photo possible.',
+
         inc_title:'Inclus',
+        inc_transfer:'Transfert privé journée',
+        inc_boat:'Bateau privé 2,5–3 h + dégustation d’huîtres',
+        inc_noilly:'Noilly Prat — visite & dégustation (premium)',
+        inc_wine:'Dégustation privée à La Croix Gratiot ou Mas du Novi',
+        inc_guide:'Accompagnement FR/RU',
+
         exc_title:'Non inclus',
+        exc_lunch:'Déjeuner chez Tarbouriech (règlement sur place).',
+        exc_drinks:'Champagne et boissons spéciales.',
+        exc_personal:'Dépenses personnelles.',
+
         opt_title:'Options',
+        opt_sunset:'Prolongation coucher de soleil avec apéritif.',
+        opt_second:'Ajouter un deuxième domaine.',
+        opt_oyster:'Atelier huîtres.',
+        opt_vehicle:'Upgrade véhicule (sur demande).',
+
         where_title:'Où ça se passe',
         where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
         tips_title:'À savoir',
+        tip_nowalks:'Sans marche : quelques pas voiture ↔ ponton/salles.',
+        tip_wear:'Tenue : coupe-vent, lunettes, SPF ; chaussures antidérapantes.',
+        tip_weather:'Météo/vent : ordre des étapes et dégustations ajustables.',
+        tip_start:'Départ possible de Cap d’Agde, Sète ou Marseillan.',
 
-        tar_title:'Tarifs',
-        tar_note:'Déjeuner non inclus — paiement sur place. Supplément possible aux dates de pointe selon la marina.',
-        tar_low:'Basse saison',
-        tar_high:'Haute saison',
-        tar_base:'Base pour 1–2 pers.',
-        tar_pp:'Par pers. au-delà de 2',
-        tar_grid:'Exemples (prix par groupe)',
-        tar_max:'max.',
-        tar_hdr_guests:'Pers.',
-        tar_hdr_sum:'Total',
-        tar_hdr_pp:'≈ €/pers.',
+        pricing_title:'Tarifs',
+        pricing_note:'Déjeuner non inclus — paiement sur place. Supplément possible aux dates de pointe selon la marina.',
 
         form_title:'Demande rapide / réservation',
-        form_sub:'Réponse sous 24h avec proposition d’horaire et de réservation.',
-        label_date:'Date', label_guests:'Personnes', label_start:'Départ', label_pickup:'Pick-up (hôtel/adresse)',
+        form_sub:'Réponse sous 24 h avec proposition d’horaire et de réservation.',
+        label_date:'Date', label_guests:'Personnes',
         label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
-        label_total:'Total', total_note:'Base 1–2 + supplément par pers. au-delà (BS/HS). Déjeuner — sur place.',
         btn_send_form:'Envoyer',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        mail_subject:'Demande : LUX Étang de Thau (site)'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
       }
     };
 
-    /* ====== Рендер и логика ====== */
-    let currentSeason = localStorage.getItem('prog:season') || 'LS';
-    const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-
     function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
 
-    function calcTotal(guests, season){
-      const g = Math.max(PRICE.minGuests, Math.min(PRICE.maxGuests, Number(guests||PRICE.minGuests)));
-      const conf = PRICE[season];
-      return conf.base2 + Math.max(0, g-2)*conf.perExtra;
-    }
-
     function applyLang(lang){
-      const t=i18n[lang];
-      document.documentElement.lang=t.htmlLang;
-      document.title=t.title;
-      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+      const t = i18n[lang];
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
+      const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
+      const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
 
       document.querySelectorAll('[data-i18n]').forEach(node=>{
         const key=node.getAttribute('data-i18n');
-        if(t[key]!==undefined) node.textContent=t[key];
+        if(t[key]!==undefined){
+          if(['where_sub'].includes(key)) node.innerHTML = t[key];
+          else node.textContent = t[key];
+        }
       });
 
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+      setAlt('alt-hero', t.altHero);
+      setAlt('alt-g1', t.altG1);
+      setAlt('alt-g2', t.altG2);
+      setAlt('alt-g3', t.altG3);
 
-      const brandHome=document.getElementById('brandHome');
+      // simple LS/HS snippet in pricing
+      const ls = PRICES.LS;
+      const hs = PRICES.HS;
+      const fmt = v => v.toLocaleString('fr-FR') + ' €';
+      const lsText = `${fmt(ls.base2)} (база 1–2) + ${fmt(ls.perExtra)} / чел сверх 2 (макс. ${ls.max})`;
+      const hsText = `${fmt(hs.base2)} (база 1–2) + ${fmt(hs.perExtra)} / чел сверх 2 (макс. ${hs.max})`;
+      document.getElementById('priceLS').textContent = (lang==='fr')
+        ? `${fmt(ls.base2)} (base 1–2) + ${fmt(ls.perExtra)} / pers. au-delà (max. ${ls.max})`
+        : lsText;
+      document.getElementById('priceHS').textContent = (lang==='fr')
+        ? `${fmt(hs.base2)} (base 1–2) + ${fmt(hs.perExtra)} / pers. au-delà (max. ${hs.max})`
+        : hsText;
+
+      const brandHome = document.getElementById('brandHome');
       if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
 
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
-      renderSchedule(lang);
-      renderListPills('incGrid', included[lang], true);
-      renderList('exList', excluded[lang]);
-      renderList('optList', optionsList[lang]);
-      renderList('tipsList', practice[lang]);
-
-      renderTarifs(currentSeason, lang);
-      updateHeroPrice(currentSeason);
-      refreshTotal();
-
       localStorage.setItem('site:lang', lang);
     }
 
-    function renderSchedule(lang){
-      const ul=document.getElementById('scheduleList');
-      ul.innerHTML = schedule.map(s=>`<li><span class="time">${s.time}</span> — ${lang==='fr'?s.fr:s.ru}</li>`).join('');
-    }
-    function renderList(id, arr){
-      const ul=document.getElementById(id);
-      ul.innerHTML = arr.map(x=>`<li>${x}</li>`).join('');
-    }
-    function renderListPills(id, arr){
-      const box=document.getElementById(id);
-      box.innerHTML = arr.map(x=>`<div class="pill" role="listitem">${x}</div>`).join('');
-    }
-
-    function renderTarifs(season, lang){
-      const t=i18n[lang]; const conf=PRICE[season];
-      const baseText = `${conf.base2.toLocaleString('fr-FR')} €`;
-      const ppText   = `${conf.perExtra.toLocaleString('fr-FR')} €`;
-
-      const rows=[];
-      for(let n=2; n<=PRICE.maxGuests; n++){
-        const total = conf.base2 + Math.max(0,n-2)*conf.perExtra;
-        const per   = Math.round((total/n)/5)*5;
-        rows.push(`<tr><td>${n}</td><td><strong>${total.toLocaleString('fr-FR')} €</strong></td><td>≈ ${per.toLocaleString('fr-FR')} ${t.tar_hdr_pp.replace('≈ ','').split(' ')[0]}${t.tar_hdr_pp.includes('pers')?' /pers.':' /чел'}</td></tr>`);
-      }
-
-      document.getElementById('tarDynamic').innerHTML = `
-        <p style="font-size:18px; margin:0 0 8px">
-          <span>${t.tar_base}</span>: <strong>${baseText}</strong>
-        </p>
-        <p class="section-sub" style="margin:0 0 10px">
-          + <strong>${ppText}</strong> ${t.tar_pp} (${t.tar_max} ${PRICE.maxGuests})
-        </p>
-        <div class="card" style="padding:12px; border:1px solid #eee; border-radius:12px; margin-top:10px">
-          <div style="font-weight:700; margin:0 0 8px">${t.tar_grid}</div>
-          <div class="tablewrap">
-            <table class="tarifs">
-              <thead><tr><th>${t.tar_hdr_guests}</th><th>${t.tar_hdr_sum}</th><th>${t.tar_hdr_pp}</th></tr></thead>
-              <tbody>${rows.join('')}</tbody>
-            </table>
-          </div>
-        </div>
-      `;
-
-      document.getElementById('btnLS').classList.toggle('active', season==='LS');
-      document.getElementById('btnHS').classList.toggle('active', season==='HS');
-      localStorage.setItem('prog:season', season);
-    }
-
-    function updateHeroPrice(season){
-      const conf=PRICE[season];
-      const el=document.getElementById('heroPrice');
-      if(el) el.textContent = `${conf.base2.toLocaleString('fr-FR')} €`;
-    }
-
-    function refreshTotal(){
-      const g = document.getElementById('guests')?.value || 2;
-      const t = calcTotal(g, currentSeason);
-      const out = document.getElementById('totalOut');
-      if(out) out.textContent = fmtEUR(t);
-    }
-
-    // События сезона
-    document.addEventListener('click', (e)=>{
-      if(e.target?.id==='btnLS'){ currentSeason='LS'; renderTarifs('LS', getLang()); updateHeroPrice('LS'); refreshTotal(); }
-      if(e.target?.id==='btnHS'){ currentSeason='HS'; renderTarifs('HS', getLang()); updateHeroPrice('HS'); refreshTotal(); }
-    });
-
-    function getLang(){ return localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'); }
-
     (function init(){
-      const saved=localStorage.getItem('site:lang');
-      const initial=saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+      const saved = localStorage.getItem('site:lang');
+      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
 
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
 
-      // бронирование — реакции на ввод для итога
-      document.getElementById('guests').addEventListener('input', refreshTotal);
-      document.getElementById('guests').addEventListener('change', refreshTotal);
-
-      // клик «Забронировать» — фокус на дату
+      // фокус на дату при клике "Забронировать"
       document.getElementById('goBook')?.addEventListener('click', ()=>{
-        setTimeout(()=>document.getElementById('date')?.focus(), 60);
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
-
-      refreshTotal();
     })();
   </script>
 
@@ -634,8 +531,49 @@
       ADMIN_SECRET: 'capion2025'
     };
   </script>
+
+  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <script>
+    (function adminGate(){
+      try{
+        const params = new URLSearchParams(location.search);
+        const token = params.get('admin');
+
+        if (token !== null) {
+          if (token === 'off') {
+            localStorage.removeItem('site:admin');
+          } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
+            localStorage.setItem('site:admin','1');
+          }
+          // очищаем URL
+          params.delete('admin');
+          const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
+          history.replaceState({},'', newUrl);
+        }
+
+        const isAdmin = localStorage.getItem('site:admin') === '1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+      }catch(e){
+        console.warn('[adminGate]', e);
+      }
+    })();
+  </script>
+
+  <!-- если админ не включён — делаем ссылки некликабельными -->
+  <script>
+    (function adminLinkGuard(){
+      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
+      if (!isAdmin) {
+        const style = document.createElement('style');
+        style.textContent = 'a[data-admin-link]{pointer-events:none; cursor:not-allowed; opacity:.65;}';
+        document.head.appendChild(style);
+      }
+    })();
+  </script>
+
   <script src="../config.js" defer></script>
   <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
