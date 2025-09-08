@@ -755,10 +755,14 @@
       recalc();
     })();
   </script>
-
-  <!-- contact.js — строго один раз, в самом конце -->
-   <script src="../config.js" defer></script>
-  <script src="../assets/js/contact.js" defer></script>
-  <script src="../assets/js/chat-widget.js" defer></script>
+ <script>
+  window.APP_CONFIG = window.APP_CONFIG || {};
+  window.APP_CONFIG.whatsapp = '+33 7 59 64 48 13';
+  window.APP_CONFIG.telegram_user = 'de_iren';                 // запасной
+  window.APP_CONFIG.telegram_bot  = 'de_iren_order_bot';       // ваш бот
+  window.APP_CONFIG.bot_prestart_url = 'https://iren-order-bot.onrender.com/health'; // ваш URL
+</script>
+<script src="assets/js/contact.js"></script>
+    <script src="assets/js/chat-widget.js" defer></script>
 </body>
 </html>
