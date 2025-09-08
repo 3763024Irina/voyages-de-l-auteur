@@ -32,7 +32,7 @@
     .brand{display:flex; align-items:center; gap:14px}
     .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
     .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
-    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    .brand small{display:block; font-size:12px; color:#6c6c6c; margin-top:2px}
     nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     nav a{font-weight:600; padding:10px 12px; border-radius:12px}
     nav a:hover{background:#f0f0f0}
@@ -174,6 +174,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Верхний блок связи убран -->
       <div class="card">
         <div class="price" id="heroPrice">—</div>
         <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.</p>
@@ -185,8 +187,6 @@
         </div>
         <div style="display:flex; gap:10px; margin-top:12px">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -307,11 +307,11 @@
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_hotel_t">🏨 Отели</h4>
       <ul class="list">
-        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — 90 €/ночь → 630 € / номер <em>(BB +140 € → 770 €)</em></li>
-        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — 120 €/ночь → 840 € / номер <em>(BB +168 € → 1 008 €)</em></li>
-        <li><strong data-i18n="h_four">4★</strong> — 155 €/ночь → 1 085 € / номер <em>(BB +252 € → 1 337 €)</em></li>
+        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — ориентир низк. сезон: 90 €/ночь → 630 € / номер <em>(BB +140 € → 770 €)</em></li>
+        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — ориентир низк. сезон: 120 €/ночь → 840 € / номер <em>(BB +168 € → 1 008 €)</em></li>
+        <li><strong data-i18n="h_four">4★</strong> — ориентир низк. сезон: 155 €/ночь → 1 085 € / номер <em>(BB +252 € → 1 337 €)</em></li>
       </ul>
-      <p class="muted">BB — завтраки на 2 гостей за 7 ночей. Туристический налог ~1–2 €/чел/ночь — оплачивается на месте.</p>
+      <p class="muted">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе (по датам). Туристический налог ~1–2 €/чел/ночь — оплачивается на месте.</p>
     </div>
   </section>
 
@@ -372,7 +372,6 @@
 
           <div class="full">
             <label>Комментарий</label>
-            <!-- именно name="message" читает contact.js -->
             <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
           </div>
 
@@ -411,7 +410,7 @@
     </div>
   </footer>
 
-  <!-- === CONFIG: сначала APP_CONFIG, затем вспомогательные скрипты === -->
+  <!-- === CONFIG === -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
@@ -422,22 +421,37 @@
   <script src="../config.js" defer></script>
 
   <script>
-    /* ---------- PRICING CORE ---------- */
+    /* ---------- PRICING CORE (сезонность отелей и проката) ---------- */
     const roundTo5 = n => Math.round(n/5)*5;
     const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
-    const hotels = { budget:630, pyramide:840, four:1085 };
-    const breakfast = { budget:140, pyramide:168, four:252 }; // BB на 2 за 7 ночей
+    // Отели за 7 ночей (низкий/высокий сезон)
+    const hotels = {
+      low:  { budget: 630, pyramide: 840,  four: 1085 },
+      high: { budget: 770, pyramide: 980,  four: 1280 }
+    };
+    // Завтраки (BB) за 7 ночей на 2 гостей — оставили без сезонности
+    const breakfast = {
+      low:  { budget: 140, pyramide: 168, four: 252 },
+      high: { budget: 140, pyramide: 168, four: 252 }
+    };
+    // Прокат/уроки: низкий/высокий сезон (для kitesurf уже было по сезонам)
     const rent = {
-      cat:{ noPass:300, pass:222, license:28 },
-      hansa:{ noPass:225, pass:166.5, license:28 },
+      low:  { cat:{ noPass:300, pass:222, license:28 }, hansa:{ noPass:225, pass:166.5, license:28 } },
+      high: { cat:{ noPass:330, pass:244, license:28 }, hansa:{ noPass:245, pass:183.5, license:28 } }
     };
     const kite = { low2p:1490, high2p:1590 };
 
-    const withBB = (h, bb) => hotels[h] + (bb ? breakfast[h] : 0);
-    const priceCat   = (h, pass, bb) => roundTo5((withBB(h,bb) + (pass?rent.cat.pass:rent.cat.noPass) + rent.cat.license) * 1.15);
-    const priceHansa = (h, pass, bb) => roundTo5((withBB(h,bb) + (pass?rent.hansa.pass:rent.hansa.noPass) + rent.hansa.license) * 1.15);
-    const priceKite  = (h, season, bb) => roundTo5((withBB(h,bb) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
+    const withBB = (season, h, bb) => hotels[season][h] + (bb ? breakfast[season][h] : 0);
+
+    const priceCat   = (h, season, pass, bb) =>
+      roundTo5((withBB(season,h,bb) + (pass?rent[season].cat.pass:rent[season].cat.noPass) + rent[season].cat.license) * 1.15);
+
+    const priceHansa = (h, season, pass, bb) =>
+      roundTo5((withBB(season,h,bb) + (pass?rent[season].hansa.pass:rent[season].hansa.noPass) + rent[season].hansa.license) * 1.15);
+
+    const priceKite  = (h, season, bb) =>
+      roundTo5((withBB(season,h,bb) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
 
     /* ---------- UI BINDINGS (top controls) ---------- */
     const hotelSel = document.getElementById('hotelSel');
@@ -460,10 +474,15 @@
       const useBB = bb.checked;
       return {
         hotel, season, usePass, useBB,
-        pCat:   priceCat(hotel, usePass, useBB),
-        pHansa: priceHansa(hotel, usePass, useBB),
+        pCat:   priceCat(hotel, season, usePass, useBB),
+        pHansa: priceHansa(hotel, season, usePass, useBB),
         pKite:  priceKite(hotel, season, useBB)
       };
+    }
+
+    function heroLabel(val){
+      const fr = document.documentElement.lang==='fr';
+      return fmtEUR(val) + (fr ? ' / 2 pers.' : ' / 2 гостя');
     }
 
     function recalc(){
@@ -472,11 +491,8 @@
       outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
       outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
 
-      const minPrice = Math.min(s.pCat, s.pHansa, s.pKite);
-      outHero.textContent  =
-        (document.documentElement.lang==='fr' ? 'à partir de ' : 'от ')
-        + fmtEUR(minPrice)
-        + (document.documentElement.lang==='fr' ? ' / 2 pers.' : ' / 2 гостя');
+      const heroVal = (selectedSport==='cat') ? s.pCat : (selectedSport==='hansa' ? s.pHansa : s.pKite);
+      outHero.textContent = heroLabel(heroVal);
 
       syncBookingFromControls();
     }
@@ -530,8 +546,8 @@
     function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
 
     function priceForSelection(hotelKey, season, pass, bbChecked, sport){
-      if (sport==='cat')   return priceCat(hotelKey, pass, bbChecked);
-      if (sport==='hansa') return priceHansa(hotelKey, pass, bbChecked);
+      if (sport==='cat')   return priceCat(hotelKey, season, pass, bbChecked);
+      if (sport==='hansa') return priceHansa(hotelKey, season, pass, bbChecked);
       return priceKite(hotelKey, season, bbChecked);
     }
 
@@ -566,13 +582,28 @@
     function updateBooking(){
       const total = priceForSelection(inHotel.value, inSeason.value, inPassloc.checked, inBB.checked, inSport.value);
       bookTotal.textContent = fmtEUR(total) + ' / 2';
-      // авто-заполняем message (contact.js его возьмёт)
       const userText = '';
       inMsg.value = `${buildAutoMessage()}${userText?'\n\n'+userText:''}`;
     }
 
     ['change','input'].forEach(evt=>{
       [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inBB,inPassloc,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
+    });
+
+    /* ---- Синхронизация bottom -> top ---- */
+    inSeason.addEventListener('change', ()=>{
+      const val = inSeason.value;
+      seasonInputs.forEach(r=>{ r.checked = (r.value===val); });
+      recalc();
+    });
+    inHotel.addEventListener('change', ()=>{ hotelSel.value = inHotel.value; recalc(); });
+    inBB.addEventListener('change', ()=>{ bb.checked = inBB.checked; recalc(); });
+    inPassloc.addEventListener('change', ()=>{ passloc.checked = inPassloc.checked; recalc(); });
+    inSport.addEventListener('change', ()=>{
+      selectedSport = inSport.value;
+      sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
+      document.getElementById('passlocWrap').style.display = (selectedSport==='kite') ? 'none' : 'flex';
+      recalc();
     });
 
     /* ---------- I18N ---------- */
@@ -760,14 +791,14 @@
       document.getElementById('btn-fr').onclick = ()=>applyLang('fr');
 
       applyLang(initial);
-      // начальный вид Pass’Loc
       document.getElementById('passlocWrap').style.display = (selectedSport==='kite') ? 'none' : 'flex';
       recalc();
     })();
   </script>
 
-  <!-- contact.js — строго один раз, в самом конце, после APP_CONFIG -->
-  <script src="../assets/js/contact.js"></script>
+    <script src="../config.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
