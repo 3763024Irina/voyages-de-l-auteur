@@ -171,6 +171,14 @@ async function openTelegramBot(){
 }
 
 
+  // Переходим к боту В ЭТОЙ ЖЕ ВКЛАДКЕ
+  const urlWeb = `https://t.me/${BOT}?start=${encodeURIComponent(token)}`;
+  window.location.href = urlWeb;
+
+  setTimeout(()=>{ tgLock = false; }, 800);
+}
+
+
   // ==== Telegram ПРОФИЛЬ ====
   async function openTelegramProfile(){
     const who = TG_USER || TG_BOT;
