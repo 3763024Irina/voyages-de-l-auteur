@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Неделя на лагуне Thau: проживание в Мезе (7 ночей) и 5 сессий активности на выбор — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и типу отеля." />
-  <meta property="og:title" content="Mèze Voile — Hôtel de la Pyramide (7 ночей)" />
+  <title>Mèze Voile — Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Лагуна Thau: проживание в Мезе (от 7 ночей) и 5 сессий активности — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и отелю." />
+  <meta property="og:title" content="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" />
   <meta property="og:description" content="3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически." />
   <meta property="og:image" content="../assets/voiles/catama1.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
@@ -47,13 +47,10 @@
     .hero .overlay{position:absolute; inset:0; background:
       radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent),
       linear-gradient(to bottom, rgba(13,43,30,.55), rgba(13,43,30,.25));}
-    .hero .inner{min-height:60vh; display:grid; grid-template-columns:1.1fr .9fr; gap:34px; align-items:end; padding:32px 0 46px}
+    .hero .inner{min-height:50vh; display:grid; grid-template-columns:1fr; gap:26px; align-items:end; padding:32px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
     .subtitle{color:#f7f7f7; font-size:18px; max-width:650px}
-    .hero .card{background:rgba(255,255,255,.92); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
-    .specs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:10px; color:#333}
-    .spec{padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
 
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -105,7 +102,6 @@
     .muted{color:var(--muted); font-size:12px}
 
     @media (max-width: 1000px){
-      .hero .inner{grid-template-columns:1fr}
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
       .grid3{grid-template-columns:1fr}
@@ -118,7 +114,7 @@
     }
   </style>
 </head>
-<body data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
+<body data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -150,8 +146,10 @@
     <div class="container inner">
       <div>
         <span class="badge">Voile • Étang de Thau</span>
-        <h2 class="title" data-i18n="hero_title">Mèze Voile — Hôtel de la Pyramide (7 ночей)</h2>
-        <p class="subtitle" data-i18n="hero_sub">3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и (для паруса) Pass’Loc — цена пересчитается автоматически.</p>
+        <h2 class="title" data-i18n="hero_title">Mèze Voile — Hôtel de la Pyramide (от 7 ночей)</h2>
+        <p class="subtitle" data-i18n="hero_sub">
+          3 предложения: Катамаран, Hansa 303, Кайтинг. Пакет от 7 ночей: выберите сезон, отель и (для паруса) Pass’Loc — цена пересчитается автоматически.
+        </p>
         <div class="controls">
           <div class="switch" id="seasonWrap">
             <span data-i18n="lbl_season">Сезон:</span>
@@ -174,21 +172,7 @@
           </div>
         </div>
       </div>
-
-      <!-- Верхний блок связи убран -->
-      <div class="card">
-        <div class="price" id="heroPrice">—</div>
-        <p style="margin:6px 0 0; color:var(--muted)" data-i18n="price_note">Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.</p>
-        <div class="specs">
-          <div class="spec" data-i18n="spec_duration">Длительность: 8 дней / 7 ночей</div>
-          <div class="spec" data-i18n="spec_walk">Ритм: активный, ветер по погоде</div>
-          <div class="spec" data-i18n="spec_langs">Языки: RU/FR</div>
-          <div class="spec" data-i18n="spec_start">База: Mèze (Étang de Thau)</div>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:12px">
-          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-        </div>
-      </div>
+      <!-- справа ничего нет -->
     </div>
   </section>
 
@@ -221,17 +205,16 @@
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что входит (БАЗА)</h3>
       <div class="listwrap">
         <ul class="list">
-          <li data-i18n="inc_hotel">Проживание 7 ночей (выбранный тип отеля)</li>
+          <li data-i18n="inc_hotel">Проживание от 7 ночей (выбранный тип отеля)</li>
           <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)</li>
           <li data-i18n="inc_license">Для паруса: лицензия FFVoile 14 € × 2</li>
         </ul>
       </div>
 
       <h3 class="section-title" style="margin-top:28px" data-i18n="choose_title">Выберите вид спорта</h3>
-      <p class="section-sub" data-i18n="choose_sub">Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.</p>
+      <p class="section-sub" data-i18n="choose_sub">Цены ниже считаются для базового пакета (от 7 ночей) и зависят от настроек выше. Все суммы — за 2 гостей.</p>
 
       <div class="grid3" data-program data-program-id="MEZE-VOILE-7N">
-        <!-- CATAMARAN -->
         <article class="card selectable selected" id="card-cat" data-sport="cat">
           <div class="thumb">
             <img src="../assets/voiles/catamaran.jpg" alt="Catamaran HC15/16 — Étang de Thau" loading="lazy" id="img-cat">
@@ -246,7 +229,6 @@
           </div>
         </article>
 
-        <!-- HANSA 303 -->
         <article class="card selectable" id="card-hansa" data-sport="hansa">
           <div class="thumb">
             <img src="../assets/voiles/hansa-303.jpg" alt="Hansa 303 — Étang de Thau" loading="lazy" id="img-hansa">
@@ -261,7 +243,6 @@
           </div>
         </article>
 
-        <!-- KITESURF -->
         <article class="card selectable" id="card-kite" data-sport="kite">
           <div class="thumb">
             <img src="../assets/voiles/kite.jpg" alt="Kitesurf — Fil d’Air, Étang de Thau" loading="lazy" id="img-kite">
@@ -275,19 +256,14 @@
             <a class="btn bookBtn" href="#book" data-sport="kite" data-i18n="btn_book">Забронировать</a>
           </div>
         </article>
-      </div> <!-- /grid3 -->
+      </div>
     </article>
 
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.</p>
       <div class="mapwrap">
-        <iframe
-          title="Карта: Mèze"
-          src="https://www.google.com/maps?q=M%C3%A8ze%2C%20France&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe title="Карта: Mèze" src="https://www.google.com/maps?q=M%C3%A8ze%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
@@ -302,7 +278,7 @@
   <!-- BRIEF -->
   <section class="container">
     <h3 class="section-title" data-i18n="brief_title">Кратко о туре</h3>
-    <p class="section-sub" data-i18n="brief_sub">8 дней / 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.</p>
+    <p class="section-sub" data-i18n="brief_sub">От 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.</p>
 
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_hotel_t">🏨 Отели</h4>
@@ -311,7 +287,7 @@
         <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — ориентир низк. сезон: 120 €/ночь → 840 € / номер <em>(BB +168 € → 1 008 €)</em></li>
         <li><strong data-i18n="h_four">4★</strong> — ориентир низк. сезон: 155 €/ночь → 1 085 € / номер <em>(BB +252 € → 1 337 €)</em></li>
       </ul>
-      <p class="muted">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе (по датам). Туристический налог ~1–2 €/чел/ночь — оплачивается на месте.</p>
+      <p class="muted">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе. Дополнительные ночи — по запросу.</p>
     </div>
   </section>
 
@@ -320,7 +296,7 @@
     <h3 class="section-title">Быстрый запрос / бронирование</h3>
     <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
-    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (7 ночей)" data-program-id="MEZE-VOILE-7N">
+    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
       <form data-contact-form data-channel="telegram">
         <div class="fields">
           <div>
@@ -378,7 +354,7 @@
           <div class="full">
             <label>Итог</label>
             <div class="price" id="bookTotal">—</div>
-            <p class="muted" id="bookNote">Цена за 2 гостей / 7 ночей. Состав смотрите выше.</p>
+            <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
           </div>
 
           <div class="full" style="display:flex; gap:10px; align-items:center">
@@ -425,17 +401,14 @@
     const roundTo5 = n => Math.round(n/5)*5;
     const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
-    // Отели за 7 ночей (низкий/высокий сезон)
     const hotels = {
       low:  { budget: 630, pyramide: 840,  four: 1085 },
       high: { budget: 770, pyramide: 980,  four: 1280 }
     };
-    // Завтраки (BB) за 7 ночей на 2 гостей — оставили без сезонности
     const breakfast = {
       low:  { budget: 140, pyramide: 168, four: 252 },
       high: { budget: 140, pyramide: 168, four: 252 }
     };
-    // Прокат/уроки: низкий/высокий сезон (для kitesurf уже было по сезонам)
     const rent = {
       low:  { cat:{ noPass:300, pass:222, license:28 }, hansa:{ noPass:225, pass:166.5, license:28 } },
       high: { cat:{ noPass:330, pass:244, license:28 }, hansa:{ noPass:245, pass:183.5, license:28 } }
@@ -453,13 +426,12 @@
     const priceKite  = (h, season, bb) =>
       roundTo5((withBB(season,h,bb) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
 
-    /* ---------- UI BINDINGS (top controls) ---------- */
+    /* ---------- UI BINDINGS ---------- */
     const hotelSel = document.getElementById('hotelSel');
     const passloc  = document.getElementById('passloc');
     const bb       = document.getElementById('bb');
     const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
-    const outHero  = document.getElementById('heroPrice');
     const outCat   = document.getElementById('price-cat');
     const outHansa = document.getElementById('price-hansa');
     const outKite  = document.getElementById('price-kite');
@@ -480,20 +452,11 @@
       };
     }
 
-    function heroLabel(val){
-      const fr = document.documentElement.lang==='fr';
-      return fmtEUR(val) + (fr ? ' / 2 pers.' : ' / 2 гостя');
-    }
-
     function recalc(){
       const s = pricesSnapshot();
       outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
       outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
       outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
-
-      const heroVal = (selectedSport==='cat') ? s.pCat : (selectedSport==='hansa' ? s.pHansa : s.pKite);
-      outHero.textContent = heroLabel(heroVal);
-
       syncBookingFromControls();
     }
 
@@ -524,7 +487,7 @@
       });
     });
 
-    /* ---------- BOOKING FORM (для contact.js) ---------- */
+    /* ---------- BOOKING FORM ---------- */
     const inWhen    = document.getElementById('in-when');
     const inGuests  = document.getElementById('in-guests');
     const inName    = document.getElementById('in-name');
@@ -537,12 +500,8 @@
     const inMsg     = document.getElementById('in-msg');
     const bookTotal = document.getElementById('bookTotal');
 
-    function getHotelName(key){
-      return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key;
-    }
-    function getSportName(key){
-      return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key;
-    }
+    function getHotelName(key){ return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key; }
+    function getSportName(key){ return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key; }
     function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
 
     function priceForSelection(hotelKey, season, pass, bbChecked, sport){
@@ -564,7 +523,7 @@
         `Отель: ${getHotelName(hotel)} • Сезон: ${getSeasonName(season)}`,
         `Завтраки (BB): ${bbUse?'Да':'Нет'}`,
         `Pass’Loc (парус): ${sport==='kite' ? '—' : (pass?'Да':'Нет')}`,
-        `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (7 ночей)`
+        `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (от 7 ночей)`
       ];
       return lines.join('\n');
     }
@@ -590,7 +549,6 @@
       [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inBB,inPassloc,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
     });
 
-    /* ---- Синхронизация bottom -> top ---- */
     inSeason.addEventListener('change', ()=>{
       const val = inSeason.value;
       seasonInputs.forEach(r=>{ r.checked = (r.value===val); });
@@ -610,9 +568,9 @@
     const i18n = {
       ru: {
         htmlLang:'ru',
-        title:'Mèze Voile — Hôtel de la Pyramide (7 ночей) | Tours Languedoc by Irène',
-        metaDesc:'Неделя на лагуне Thau: проживание в Мезе (7 ночей) и 5 сессий активности на выбор — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и типу отеля.',
-        ogTitle:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
+        title:'Mèze Voile — Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène',
+        metaDesc:'Лагуна Thau: проживание в Мезе (от 7 ночей) и 5 сессий активности — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и отелю.',
+        ogTitle:'Mèze Voile — Hôtel de la Pyramide (от 7 ночей)',
         ogDesc:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически.',
         brand_sub:'— Путешествия со вкусом',
         brand_sub_footer:'Путешествия со вкусом',
@@ -624,10 +582,10 @@
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
         altCat:'Катамаран HC15/16 — фото', altHansa:'Hansa 303 — фото', altKite:'Kitesurf — фото',
 
-        hero_title:'Mèze Voile — Hôtel de la Pyramide (7 ночей)',
-        hero_sub:'3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон, отель и Pass’Loc — цена пересчитается автоматически.',
-        price_note:'Цены за 2 гостей, 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.',
-        spec_duration:'Длительность: 8 дней / 7 ночей',
+        hero_title:'Mèze Voile — Hôtel de la Pyramide (от 7 ночей)',
+        hero_sub:'3 предложения: Катамаран, Hansa 303, Кайтинг. Пакет от 7 ночей: выберите сезон, отель и Pass’Loc — цена пересчитается автоматически.',
+        price_note:'Цены за 2 гостей, от 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.',
+        spec_duration:'Длительность: от 7 ночей',
         spec_walk:'Ритм: активный, ветер по погоде',
         spec_langs:'Языки: RU/FR',
         spec_start:'База: Mèze (Étang de Thau)',
@@ -644,12 +602,12 @@
         t_d8:'Завтрак, чек-аут до 11:00.',
 
         inc_title:'Что входит (БАЗА)',
-        inc_hotel:'Проживание 7 ночей (выбранный тип отеля)',
+        inc_hotel:'Проживание от 7 ночей (выбранный тип отеля)',
         inc_course:'Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)',
         inc_license:'Для паруса: лицензия FFVoile 14 € × 2',
 
         choose_title:'Выберите вид спорта',
-        choose_sub:'Цены ниже пересчитываются от ваших настроек (сверху). Все суммы — за 2 гостей.',
+        choose_sub:'Цены ниже считаются для базового пакета (от 7 ночей) и зависят от настроек выше. Все суммы — за 2 гостей.',
         choose_cat_t:'Катамаран HC15/16',
         choose_cat_d:'5× аренда по 2 часа (2 перс.), можно с Pass’Loc.',
         choose_hansa_d:'5× аренда по 2 часа (1–2 перс.), можно с Pass’Loc.',
@@ -663,7 +621,7 @@
         tip_level:'Для проката — уровень FFVoile 3. Несовершеннолетние — с взрослым.',
 
         brief_title:'Кратко о туре',
-        brief_sub:'8 дней / 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.',
+        brief_sub:'От 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.',
         brief_hotel_t:'🏨 Отели',
         h_budget:'Бюджет 2–3★',
         h_pyramide:'Hôtel de la Pyramide 3★',
@@ -674,13 +632,14 @@
         bb:'Завтраки (BB)',
         use_passloc:'Использовать Pass’Loc для паруса',
 
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+        btn_send:'Отправить'
       },
       fr: {
         htmlLang:'fr',
-        title:"Mèze Voile — Hôtel de la Pyramide (7 nuits) | Tours Languedoc by Irène",
-        metaDesc:"Semaine sur l’Étang de Thau : hébergement à Mèze (7 nuits) et 5 séances au choix — catamaran HC15/16, Hansa 303 ou kitesurf. Prix mis à jour selon saison et hôtel.",
-        ogTitle:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
+        title:"Mèze Voile — Hôtel de la Pyramide (dès 7 nuits) | Tours Languedoc by Irène",
+        metaDesc:"Étang de Thau : séjour à Mèze (dès 7 nuits) et 5 séances au choix — catamaran HC15/16, Hansa 303 ou kitesurf. Prix selon saison et hôtel.",
+        ogTitle:"Mèze Voile — Hôtel de la Pyramide (dès 7 nuits)",
         ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix s’actualise.",
         brand_sub:'— Des voyages avec goût',
         brand_sub_footer:'Des voyages avec goût',
@@ -692,10 +651,10 @@
         altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
         altCat:'Catamaran HC15/16 — photo', altHansa:'Hansa 303 — photo', altKite:'Kitesurf — photo',
 
-        hero_title:"Mèze Voile — Hôtel de la Pyramide (7 nuits)",
-        hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison, hôtel et Pass’Loc — le prix se met à jour.",
-        price_note:"Prix pour 2 pers., 7 nuits. Inclus : hébergement, 5 séances de l’activité choisie; pour la voile — licences; accompagnement.",
-        spec_duration:"Durée : 8 jours / 7 nuits",
+        hero_title:"Mèze Voile — Hôtel de la Pyramide (dès 7 nuits)",
+        hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Forfait dès 7 nuits : choisissez saison, hôtel et Pass’Loc — le prix se met à jour.",
+        price_note:"Prix pour 2 pers., dès 7 nuits. Inclus : hébergement, 5 séances; pour la voile — licences; accompagnement.",
+        spec_duration:"Durée : dès 7 nuits",
         spec_walk:"Rythme : actif, vent selon météo",
         spec_langs:"Langues : RU/FR",
         spec_start:"Base : Mèze (Étang de Thau)",
@@ -712,12 +671,12 @@
         t_d8:"Petit-déj., check-out avant 11h.",
 
         inc_title:'Inclus (BASE)',
-        inc_hotel:'Hébergement 7 nuits (hôtel choisi)',
+        inc_hotel:'Hébergement dès 7 nuits (hôtel choisi)',
         inc_course:'Activité 5 jours (catamaran/Hansa — location 2 h/jour; kite — stage 4 h/jour)',
         inc_license:'Pour la voile : licence FFVoile 14 € × 2',
 
         choose_title:'Choisissez votre sport',
-        choose_sub:'Les prix ci-dessous suivent vos réglages (en haut). Montants pour 2 personnes.',
+        choose_sub:'Les prix ci-dessous sont pour le forfait de base (dès 7 nuits) et dépendent de vos réglages. Montants pour 2 personnes.',
         choose_cat_t:'Catamaran HC15/16',
         choose_cat_d:'Location 5× 2 h (2 pers.), Pass’Loc possible.',
         choose_hansa_d:'Location 5× 2 h (1–2 pers.), Pass’Loc possible.',
@@ -731,7 +690,7 @@
         tip_level:'Pour la location : niveau FFVoile 3; mineurs accompagnés.',
 
         brief_title:'En bref',
-        brief_sub:'8 jours / 7 nuits • 2–6 pers. • base : Mèze, Étang de Thau.',
+        brief_sub:'Dès 7 nuits • 2–6 pers. • base : Mèze, Étang de Thau.',
         brief_hotel_t:'🏨 Hôtels',
         h_budget:'Économique 2–3★',
         h_pyramide:'Hôtel de la Pyramide 3★',
@@ -742,7 +701,8 @@
         bb:'Petits déj. (BB)',
         use_passloc:'Utiliser Pass’Loc pour la voile',
 
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+        btn_send:'Envoyer'
       }
     };
 
@@ -796,9 +756,7 @@
     })();
   </script>
 
-    <script src="../config.js" defer></script>
-  <script src="../assets/js/contact.js" defer></script>
-  <script src="../assets/js/chat-widget.js" defer></script>
+  <!-- contact.js — строго один раз, в самом конце -->
+  <script src="../assets/js/contact.js"></script>
 </body>
 </html>
-
