@@ -1,14 +1,17 @@
 /* contact.js — WhatsApp & Telegram только.
    — Жёсткая валидация: name, contact, date, guests, message — обязательны.
    — WA: сразу чат с номером + текст
-   — TG: deeplink к @username (если указан), текст копируется в буфер; иначе share-url
+   — TG: открывает чат @username, ТЕКСТ НАДЕЖНО копируется в буфер; затем фолбэк на web/share
 */
 (function(){
   if (window.__CONTACT_INIT__) { console.warn('[contact.js] already initialized'); return; }
   window.__CONTACT_INIT__ = true;
 
   // --------- конфиг ---------
-  const CFG = window.APP_CONFIG || {};                   // { whatsapp: "+33...", telegram_user: "myuser" }
+  const CFG = window.APP_CONFIG || {}; // { whatsapp: "+33...", telegram_user: "de_iren" }
+  const DEF_WA = '+33 7 59 64 48 13';
+  const DEF_TG = 'de_iren';
+
   const LANG = () => (localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'));
   const qs = (s, r=document)=>r.querySelector(s);
   const qa = (s, r=document)=>Array.from(r.querySelectorAll(s));
@@ -22,7 +25,7 @@
       badGuests:'Минимум 1 гость',
       badDate:'Укажите дату',
       firstInvalid:'Проверьте форму — заполните все поля.',
-      copiedTG:'Текст заявки скопирован. Откройте чат Telegram и вставьте его.'
+      copiedTG:'Текст заявки скопирован. Откройте Telegram и вставьте его.'
     },
     fr:{
       required:'Champ requis',
@@ -35,15 +38,35 @@
   };
   const t = k => (I18N[LANG()]||I18N.ru)[k];
 
+  // --------- helpers: copy + toast ---------
+  function legacyCopy(text){
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(_) {}
+    document.body.removeChild(ta);
+  }
+  async function copyText(text){
+    try{
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else { legacyCopy(text); }
+    } catch(_){ legacyCopy(text); }
+  }
+  function toast(msg){
+    const el = document.createElement('div');
+    el.textContent = msg;
+    el.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:#0D2B1E;color:#fff;padding:8px 12px;border-radius:10px;font:500 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:10000;opacity:0;transition:opacity .2s';
+    document.body.appendChild(el); requestAnimationFrame(()=>el.style.opacity='1');
+    setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),250); }, 1600);
+  }
+
   // --------- helpers: ошибки ---------
   function injectErrCSS(){
     if(document.getElementById('contactjs-error-css')) return;
     const style = document.createElement('style');
     style.id='contactjs-error-css';
-    style.textContent = `
-      .field-error{ color:#d33; font-size:12px; margin-top:6px }
-      .is-error{ border-color:#d33 !important; outline:0 }
-    `;
+    style.textContent = `.field-error{color:#d33;font-size:12px;margin-top:6px}.is-error{border-color:#d33!important;outline:0}`;
     document.head.appendChild(style);
   }
   function clearError(el){
@@ -160,30 +183,51 @@
     if (ctx.date)  out.push(`\nДата: ${ctx.date}`);
     if (ctx.guests)out.push(`\nГостей: ${ctx.guests}`);
     out.push(`\nПрограмма: ${prog.title} (${prog.id})`);
+    out.push(`\nСтраница: ${location.href}`);
     if (ctx.contact) out.push(`\nКонтакт: ${ctx.contact}`);
     return out.join('').trim();
   }
 
   // --------- отправители ---------
   function openWA(text){
-    const wa = digits(CFG.whatsapp||'');
-    if (!wa) { alert('В config.js не указан номер whatsapp'); return; }
+    const wa = digits(CFG.whatsapp||DEF_WA);
+    if (!wa) { alert('В config.js не указан номер WhatsApp'); return; }
     const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener');
   }
+
   function openTG(text){
-    const user = String(CFG.telegram_user || CFG.telegram || '').replace(/^@/, '');
-    try{ navigator.clipboard?.writeText(text); }catch(_){}
-    if (user) {
-      const deeplink = `tg://resolve?domain=${encodeURIComponent(user)}`;
-      const web = `https://t.me/${user}`;
-      let w; try{ w = window.open(deeplink,'_blank'); }catch(_){}
-      setTimeout(()=>{ if(!w || w.closed) window.open(web,'_blank','noopener'); }, 200);
-      setTimeout(()=>alert(t('copiedTG')), 300);
-      return;
+    const user = String(CFG.telegram_user || CFG.telegram || DEF_TG).replace(/^@/, '');
+    // 1) Копируем ТЕКСТ НАДЕЖНО
+    copyText(text).then(()=>toast(t('copiedTG'))).catch(()=>toast(t('copiedTG')));
+
+    // 2) Пробуем открыть приложение Telegram с диалогом @user
+    const deep = `tg://resolve?domain=${encodeURIComponent(user)}`;
+    const web  = `https://t.me/${user}`;
+    const share = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+
+    const isiOSorAndroid = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+    if (isiOSorAndroid) {
+      // На мобилах чаще срабатывает прямой переход
+      location.href = deep;
+      // Если приложение не перехватило deeplink и страница осталась видимой — откроем web, затем share
+      setTimeout(()=>{ if (document.visibilityState === 'visible') {
+        window.open(web, '_blank', 'noopener,noreferrer');
+        setTimeout(()=>window.open(share,'_blank','noopener,noreferrer'), 300);
+      } }, 600);
+    } else {
+      // На десктопах пробуем открыть в новом окне, затем фолбэк
+      let w;
+      try{ w = window.open(deep,'_blank'); }catch(_){}
+      setTimeout(()=>{
+        try{
+          if(!w || w.closed) {
+            const w2 = window.open(web,'_blank','noopener,noreferrer');
+            setTimeout(()=>{ try{ if(!w2 || w2.closed) window.open(share,'_blank','noopener,noreferrer'); }catch(_){ window.open(share,'_blank','noopener,noreferrer'); } }, 300);
+          }
+        }catch(_){ window.open(web,'_blank','noopener,noreferrer'); }
+      }, 250);
     }
-    const url = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
-    window.open(url,'_blank','noopener');
   }
 
   // --------- перехват submit (data-contact-form) ---------
@@ -200,7 +244,7 @@
     const text = buildText(ctx, prog);
 
     const ch = (form.elements['channel']?.value || form.dataset.channel || '').toLowerCase();
-    const channel = ch || (digits(CFG.whatsapp||'') ? 'whatsapp' : 'telegram');
+    const channel = ch || (digits(CFG.whatsapp||DEF_WA) ? 'whatsapp' : 'telegram');
 
     if (channel==='whatsapp') openWA(text);
     else openTG(text);
@@ -228,14 +272,14 @@
     if (a.matches('[data-book], [data-booking], .js-book, a[href^="#book"]')){
       e.preventDefault();
       const chSel = (form?.elements?.channel?.value || a.dataset.channel || a.closest('[data-channel]')?.dataset.channel || '').toLowerCase();
-      const channel = chSel || (digits(CFG.whatsapp||'') ? 'whatsapp' : 'telegram');
+      const channel = chSel || (digits(CFG.whatsapp||DEF_WA) ? 'whatsapp' : 'telegram');
       if (channel==='whatsapp') openWA(text); else openTG(text);
     }
   }, true);
 
   // --------- базовые href (на случай отсутствия текста) ---------
   function patchBase(){
-    const wa = digits(CFG.whatsapp||'');
+    const wa = digits(CFG.whatsapp||DEF_WA);
     if (wa) qa('[data-whatsapp]').forEach(a=>{
       const href = a.getAttribute('href')||'';
       if(!href || href==='#' || href.startsWith('https://wa.me/')){
@@ -244,14 +288,15 @@
       a.target = '_blank'; a.rel = 'noopener';
     });
 
-    const user = String(CFG.telegram_user || CFG.telegram || '').replace(/^@/,'');
+    const user = String(CFG.telegram_user || CFG.telegram || DEF_TG).replace(/^@/,'');
     qa('[data-telegram]').forEach(a=>{
-      a.setAttribute('href', user ? `https://t.me/${user}` : 'https://t.me/share/url');
+      // Визуально ведём на профиль; JS-обработчик всё равно перехватит клик
+      a.setAttribute('href', `https://t.me/${user}`);
       a.target = '_blank'; a.rel = 'noopener';
     });
   }
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', patchBase, {once:true});
   else patchBase();
 
-  console.log('[contact.js] ready (validation + TG deeplink/share fallback)');
+  console.log('[contact.js] ready (validation + TG deeplink/share fallback + robust clipboard)');
 })();
