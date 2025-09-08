@@ -110,22 +110,30 @@
   }
 
   // ---- OPENERS ----
-  function openTelegramDeepLink({ botUser, token }) {
-    const username = String(botUser || CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
-    if (!username || !token) { alert('Не получена ссылка для Telegram.'); return; }
+ function openTelegramDeepLink({ botUser, token }) {
+  const username = String(botUser || CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
+  if (!username || !token) { alert('Не получена ссылка для Telegram.'); return; }
 
-    const tgApp = `tg://resolve?domain=${encodeURIComponent(username)}&start=${encodeURIComponent(token)}`;
-    const tgWeb = `https://t.me/${encodeURIComponent(username)}?start=${encodeURIComponent(token)}`;
+  const tgApp = `tg://resolve?domain=${encodeURIComponent(username)}&start=${encodeURIComponent(token)}`;
+  const tgWeb = `https://t.me/${encodeURIComponent(username)}?start=${encodeURIComponent(token)}`;
 
-    let win = null, opened = false;
-    try { win = window.open('', '_blank', 'noopener,noreferrer'); } catch {}
-    const go = (url)=>{ if (win) { win.location = url; opened = true; } else { opened = !!window.open(url, '_blank','noopener,noreferrer'); } };
-
-    if (isMobile) { go(tgApp); setTimeout(()=>{ if(!opened) go(tgWeb); }, 700); }
-    else { go(tgWeb); }
-
-    setTimeout(()=>{ if(!opened){ const a=document.createElement('a'); a.href=tgWeb; a.target='_blank'; a.textContent='Открыть Telegram'; a.style.cssText='position:fixed;left:50%;top:70px;transform:translateX(-50%);background:#fff;padding:10px 14px;border:1px solid #ccc;border-radius:10px;z-index:99999'; document.body.appendChild(a);} }, 1100);
+  // Никаких window.open — Safari/десктоп их может блокировать.
+  // Идём в той же вкладке. На мобилках пробуем app-схему и откатываемся на web.
+  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+  if (isMobile) {
+    const start = Date.now();
+    try { window.location.href = tgApp; } catch {}
+    setTimeout(() => {
+      // если приложение не схватило deeplink, уйдём в веб-бота
+      if (Date.now() - start < 1500) {
+        window.location.href = tgWeb;
+      }
+    }, 700);
+  } else {
+    // Десктоп — сразу веб-бот
+    window.location.href = tgWeb;
   }
+}
 
   function openTelegramProfile(username) {
     const u = String(username || CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
