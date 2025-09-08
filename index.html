@@ -717,36 +717,111 @@
   </script>
 
   <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] -->
-  <script>
-  (function(){
-    function getForm(rootId){ return document.getElementById(rootId) || document.querySelector('[data-contact-form]'); }
-    function buildText(f){
-      const name = f?.querySelector('[name="name"]')?.value.trim() || '';
-      const contact = f?.querySelector('[name="contact"]')?.value.trim() || '';
-      const message = f?.querySelector('[name="message"]')?.value.trim() || '';
-      const hello = (localStorage.getItem('site:lang')||'ru')==='fr' ? 'Bonjour! ' : 'Здравствуйте! ';
-      return `${hello}${name ? 'Меня зовут ' + name + '. ' : ''}${message}\nКонтакт: ${contact}`.trim();
-    }
+ <script>
+(function () {
+  const CFG = window.APP_CONFIG || {};
 
-    document.querySelectorAll('a[data-whatsapp]').forEach(btn=>{
-      btn.addEventListener('click', (e)=>{
-        const wa = String((window.APP_CONFIG && APP_CONFIG.whatsapp) || '').replace(/\D/g,'');
-        if (!wa) { e.preventDefault(); alert('В config.js не задан номер WhatsApp'); return; }
-        const f = btn.closest('form') || getForm('quickForm');
-        const text = buildText(f);
-        btn.href = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
-      });
-    });
+  // ---- helpers ----
+  const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const getForm = (btn) =>
+    btn.closest?.('form') ||
+    document.querySelector('[data-contact-form]') ||
+    document.getElementById('quickForm') ||
+    document.forms[0] || document;
 
-    document.querySelectorAll('a[data-telegram]').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const f = btn.closest('form') || getForm('quickForm');
-        const text = buildText(f);
-        btn.href = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+  const normalizePreUrl = (u)=>{
+    if(!u) return '';
+    try{
+      let url = new URL(u, location.origin);
+      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+      if (!/\/prestart\/?$/i.test(url.pathname)) {
+        if (!url.pathname.endsWith('/')) url.pathname += '/';
+        url.pathname += 'prestart';
+      }
+      return url.toString();
+    }catch{ return u; }
+  };
+  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
+
+  const buildPayload = (form)=>{
+    const q = (sel)=> (form.querySelector(sel)?.value || '').trim();
+    const program = {
+      title: form.dataset.programTitle
+          || document.documentElement.getAttribute('data-program-title')
+          || document.querySelector('meta[property="og:title"]')?.content
+          || document.title,
+      id: form.dataset.programId || document.documentElement.getAttribute('data-program-id') || '',
+      url: location.href
+    };
+    return {
+      name: q('[name="name"]'),
+      contact: q('[name="contact"]'),
+      date: q('[name="date"]'),
+      guests: q('[name="guests"]') || '1',
+      message: q('[name="message"]'),
+      program
+    };
+  };
+
+  const prestart = async (payload)=>{
+    if (!PRE_URL) return null;
+    try{
+      const r = await fetch(PRE_URL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
       });
+      const j = await r.json().catch(()=>null);
+      return j?.token || null;
+    }catch{ return null; }
+  };
+
+  const openTelegram = (token)=>{
+    const user = (CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
+    if (!user) { alert('Не задан telegram_bot/telegram_user в APP_CONFIG'); return; }
+    const url = token
+      ? `https://t.me/${user}?start=${encodeURIComponent(token)}`
+      : `https://t.me/${user}`;
+    location.href = url; // в той же вкладке
+  };
+
+  // ---- WhatsApp ----
+  $all('a[data-whatsapp]').forEach((btn)=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const form = getForm(btn);
+      const p = buildPayload(form);
+      const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
+      if (!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
+
+      const lines = [
+        `Имя: ${p.name}`,
+        `Контакт: ${p.contact}`,
+        `Дата: ${p.date}`,
+        `Гостей: ${p.guests}`,
+        `Программа: ${p.program.title}${p.program.id ? ` (${p.program.id})` : ''}`,
+        `Страница: ${p.program.url}`,
+        p.message ? `Сообщение: ${p.message}` : ''
+      ].filter(Boolean);
+
+      location.href = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
     });
-  })();
-  </script>
+  });
+
+  // ---- Telegram (бот с токеном; если нет — профиль) ----
+  $all('a[data-telegram]').forEach((btn)=>{
+    btn.addEventListener('click', async (e)=>{
+      e.preventDefault();
+      const form = getForm(btn);
+      const payload = buildPayload(form);
+      const token = await prestart(payload);
+      openTelegram(token);
+    });
+  });
+})();
+</script>
+
 
   <!-- mailto -->
   <script>
