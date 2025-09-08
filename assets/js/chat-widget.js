@@ -129,41 +129,47 @@
   };
 
   // ==== Telegram через БОТА ====
-  let tgLock=false;
-  async function openTelegramBot(){
-    if (tgLock) return; tgLock=true;
+let tgLock = false;
+async function openTelegramBot(){
+  if (tgLock) return; tgLock = true;
 
-    if (!TG_BOT || !PRE_URL) { tgLock=false; return openTelegramProfile(); }
+  const CFG = window.APP_CONFIG || {};
+  const BOT = (CFG.telegram_bot || '').replace(/^@/, '');
+  const PRE = CFG.bot_prestart_url || '';
+  if (!BOT || !PRE) { tgLock = false; return openTelegramProfile(); }
 
-    const payload = {
-      name: 'Site visitor',
-      contact: 'telegram',
-      date: new Date().toISOString().slice(0,10),
-      guests: '1',
-      message: orderText,
-      program: { title: getProgramTitle(), id: programId, url: location.href },
-      origin: location.origin
-    };
+  const payload = {
+    name: 'Site visitor',
+    contact: 'telegram',
+    date: new Date().toISOString().slice(0,10),
+    guests: '1',
+    message: '', // никаких копирований/вставок
+    program: {
+      title: (document.querySelector('[data-program-title]')?.textContent?.trim())
+          || (document.querySelector('meta[property="og:title"]')?.content)
+          || document.title,
+      id: (document.documentElement?.dataset?.programId)
+          || (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || 'PAGE',
+      url: location.href
+    }
+  };
 
-    let token = '';
-    try{
-      const r = await fetch(PRE_URL, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload), keepalive:true
-      });
-      const j = await r.json().catch(()=>null);
-      token = String(j?.token || j?.id || '');
-    }catch(e){ /* сеть упала — уйдём в профиль */ }
+  let token = '';
+  try{
+    const r = await fetch(PRE, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive:true });
+    const j = await r.json().catch(()=>null);
+    token = String(j?.token || '');
+  }catch(_){}
 
-    if (!token) { tgLock=false; return openTelegramProfile(); }
+  if (!token) { tgLock = false; return openTelegramProfile(); }
 
-    const deep = `tg://resolve?domain=${TG_BOT}&start=${encodeURIComponent(token)}`;
-    const web  = `https://t.me/${TG_BOT}?start=${encodeURIComponent(token)}`;
+  // Переходим к боту В ЭТОЙ ЖЕ ВКЛАДКЕ
+  const urlWeb = `https://t.me/${BOT}?start=${encodeURIComponent(token)}`;
+  window.location.href = urlWeb;
 
-    try{ await copyToClipboard(orderText); showToast(t('toastCopied')); }catch(_){}
-    openDeepLink(deep, web);
-    setTimeout(()=>{ tgLock=false; }, 900);
-  }
+  setTimeout(()=>{ tgLock = false; }, 800);
+}
+
 
   // ==== Telegram ПРОФИЛЬ ====
   async function openTelegramProfile(){
