@@ -1,15 +1,15 @@
-/* contact.js — WhatsApp & Telegram (с поддержкой бота и жёсткой валидацией)
-   Обязательно: name, contact, date, guests, message.
+<script>
+/* contact.js — WhatsApp & Telegram (бот + жёсткая валидация) — v3.2
+   Обязательные поля: name, contact, date, guests, message.
 
-   WhatsApp:   wa.me/<digits>?text=...
-   Telegram:   если заданы bot и bot_prestart_url → POST /prestart → t.me/<bot>?start=<token>
-               иначе — копируем текст в буфер и открываем чат (бот или @username).
+   WhatsApp:  wa.me/<digits>?text=...
+   Telegram:  если заданы bot и bot_prestart_url → POST /prestart → t.me/<bot>?start=<token>
+              иначе — копируем текст в буфер и открываем чат (бот или @username).
 
-   ВАЖНО: обновлено открытие Telegram:
-   • сохраняем “user gesture” (пред-открываем вкладку) → меньше блокировок;
-   • iOS — переводим ТЕКУЩУЮ вкладку на tg:// (самый надёжный способ), делаем web-fallback;
-   • Android — используем intent:// с fallback на t.me;
-   • Desktop — пробуем tg://, затем t.me.
+   Обновления:
+   • стабильное открытие Telegram: iOS (tg:// → web → AppStore), Android (intent://), Desktop (tg:// → t.me);
+   • /health автоматически меняется на /prestart, http → https;
+   • локализация RU/FR в сообщении и ошибках; анти-дубль кликов.
 
    Пример конфига:
    <script>
@@ -23,7 +23,6 @@
 */
 (function () {
   'use strict';
-
   if (window.__CONTACT_INIT__) { console.warn('[contact.js] already initialized'); return; }
   window.__CONTACT_INIT__ = true;
 
@@ -33,14 +32,13 @@
   const DEF_TG = 'de_iren';
   const digits = (s='') => String(s).replace(/\D/g,'');
 
-  // WA только цифры
   const WA_DIGITS = digits(CFG.whatsapp || DEF_WA);
 
-  // Нормализуем bot_prestart_url: /health → /prestart
   function normalizePreUrl(u){
     if(!u) return '';
     try{
-      const url = new URL(u, location.origin);
+      let url = new URL(u, location.origin);
+      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
       if (/\/health\/?$/i.test(url.pathname)) {
         url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
       }
@@ -50,7 +48,10 @@
   const TG_BOT = String(CFG.telegram_bot||'').replace(/^@/,'');
   const PRE_URL = normalizePreUrl(CFG.bot_prestart_url||'');
 
-  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+  const UA = navigator.userAgent;
+  const isiOS = /iPad|iPhone|iPod/i.test(UA);
+  const isAndroid = /Android/i.test(UA);
+
   const LANG = () => (localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'));
   const qs = (s,r=document)=>r.querySelector(s);
   const qa = (s,r=document)=>Array.from(r.querySelectorAll(s));
@@ -59,13 +60,19 @@
   const I18N = {
     ru:{
       required:'Заполните поле',
-      badContact:'Укажите телефон (WhatsApp), @username Telegram или email',
+      badContact:'Укажите телефон (WhatsApp), @username в Telegram или email',
       badGuests:'Минимум 1 гость',
       badDate:'Укажите дату',
       firstInvalid:'Проверьте форму — заполните все поля.',
       copiedTG:'Текст заявки скопирован. Откройте Telegram и вставьте его.',
       botFail:'Не удалось связаться с ботом. Попробуйте ещё раз или выберите WhatsApp.',
-      waMissing:'В config.js не указан корректный номер WhatsApp'
+      waMissing:'В config.js не указан корректный номер WhatsApp',
+      msgHello:(name)=> name?`Здравствуйте! Меня зовут ${name}. `:`Здравствуйте! `,
+      msgDate:(v)=>`\nДата: ${v}`,
+      msgGuests:(v)=>`\nГостей: ${v}`,
+      msgProgram:(t,id)=>`\nПрограмма: ${t}${id?` (${id})`:''}`,
+      msgPage:(u)=>`\nСтраница: ${u}`,
+      msgContact:(c)=>`\nКонтакт: ${c}`
     },
     fr:{
       required:'Champ requis',
@@ -75,12 +82,19 @@
       firstInvalid:'Vérifiez le formulaire — remplissez tous les champs.',
       copiedTG:'Texte copié. Ouvrez Telegram et collez-le.',
       botFail:"Impossible de contacter le bot. Réessayez ou choisissez WhatsApp.",
-      waMissing:"Le numéro WhatsApp n'est pas correctement configuré"
+      waMissing:"Le numéro WhatsApp n'est pas correctement configuré",
+      msgHello:(name)=> name?`Bonjour ! Je m’appelle ${name}. `:`Bonjour ! `,
+      msgDate:(v)=>`\nDate : ${v}`,
+      msgGuests:(v)=>`\nPersonnes : ${v}`,
+      msgProgram:(t,id)=>`\nProgramme : ${t}${id?` (${id})`:''}`,
+      msgPage:(u)=>`\nPage : ${u}`,
+      msgContact:(c)=>`\nContact : ${c}`
     }
   };
-  const t = k => (I18N[LANG()]||I18N.ru)[k];
+  const t = (k)=> (I18N[LANG()]||I18N.ru)[k];
 
-  // ---------- helpers: copy + toast ----------
+  // ---------- helpers (copy/toast) ----------
+  let toastLock=false;
   function legacyCopy(text){
     const ta=document.createElement('textarea');
     ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px';
@@ -93,14 +107,15 @@
     catch(_){ legacyCopy(text); }
   }
   function toast(msg){
+    if(toastLock) return; toastLock=true;
     const el=document.createElement('div');
     el.textContent=msg;
     el.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:#0D2B1E;color:#fff;padding:8px 12px;border-radius:10px;font:500 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:10000;opacity:0;transition:opacity .2s';
     document.body.appendChild(el); requestAnimationFrame(()=>el.style.opacity='1');
-    setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),250); },1600);
+    setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>{ el.remove(); toastLock=false; },250); },1600);
   }
 
-  // ---------- helpers: ошибки ----------
+  // ---------- errors ----------
   function injectErrCSS(){
     if(document.getElementById('contactjs-error-css')) return;
     const style=document.createElement('style');
@@ -120,26 +135,21 @@
     el.parentElement && el.parentElement.appendChild(m);
   }
 
-  // ---------- валидаторы ----------
+  // ---------- validators ----------
   const isPhone = v => /^[+\d][\d\s().-]{6,}$/.test((v||'').trim());
   const isTG    = v => /^@?[a-zA-Z0-9_]{5,}$/.test((v||'').trim());
   const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v||'').trim());
 
-  function findField(form,variants){
-    for(const sel of variants){ const el=form.querySelector(sel); if(el) return el; }
-    return null;
-  }
+  function findField(form,variants){ for(const sel of variants){ const el=form.querySelector(sel); if(el) return el; } return null; }
   function ensureRequiredAttrs(form){
     const map = {
       name:['[name="name"]','#name'],
       contact:['[name="contact"]','#contact'],
       date:['[name="date"]','#when','#date'],
       guests:['[name="guests"]','#guests'],
-      message:['[name="message"]','#msg','#message']
+      message:['[name="message"]','#msg','#message','#comment']
     };
-    Object.keys(map).forEach(key=>{
-      const el=findField(form,map[key]); if(el) el.setAttribute('required','required');
-    });
+    Object.keys(map).forEach(key=>{ const el=findField(form,map[key]); if(el) el.setAttribute('required','required'); });
   }
   function validateForm(form){
     injectErrCSS(); let ok=true;
@@ -148,7 +158,7 @@
     const fContact = findField(form,['[name="contact"]','#contact']);
     const fDate    = findField(form,['[name="date"]','#when','#date']);
     const fGuests  = findField(form,['[name="guests"]','#guests']);
-    const fMsg     = findField(form,['[name="message"]','#msg','#message']);
+    const fMsg     = findField(form,['[name="message"]','#msg','#message','#comment']);
 
     [fName,fContact,fDate,fGuests,fMsg].forEach(el=>clearError(el));
 
@@ -176,23 +186,22 @@
       el.addEventListener('input',()=>clearError(el),{once:true});
       el.addEventListener('change',()=>clearError(el),{once:true});
     });
-
     return ok;
   }
 
-  // ---------- сбор данных для сообщения ----------
+  // ---------- data builders ----------
   function programInfo(fromEl){
-    const root = fromEl?.closest('[data-program],[data-program-title],[data-program-id]') || document.body;
-    const heroTitle = qs('.hero .title')?.textContent?.trim() || '';
-    const metaTitle = qs('meta[property="og:title"]')?.getAttribute('content') || '';
+    const root = fromEl?.closest('[data-program],[data-program-title],[data-program-id]') || document.documentElement;
+    const ogTitle = qs('meta[property="og:title"]')?.getAttribute('content') || '';
+    const heroTitle = qs('.hero .title, .program-title, h1')?.textContent?.trim() || '';
     const docTitle  = document.title.replace(/\s*[|—-].*$/, '').trim();
-    const title = root?.dataset?.programTitle || metaTitle || heroTitle || docTitle || 'Программа';
+    const title = root?.dataset?.programTitle || ogTitle || heroTitle || docTitle || 'Программа';
     const id    = root?.dataset?.programId ||
-                  (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || 'N/A';
+                  (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || '';
     return { title, id };
   }
   function ctxFrom(el){
-    const form = el?.closest('form') || qs('[data-contact-form]');
+    const form = el?.closest('form') || qs('[data-contact-form]') || document.querySelector('form');
     const fd = form ? new FormData(form) : new FormData();
     const first = names => { for(const n of names){ const v = fd.get(n); if(v) return String(v).trim(); } return ''; };
     return {
@@ -200,49 +209,44 @@
       contact:first(['contact','phone']),
       date:   first(['date','when','day']),
       guests: first(['guests','persons','people']),
-      message:first(['message'])
+      message:first(['message','comment'])
     };
   }
   function buildText(ctx, prog){
-    const hello = (LANG()==='fr') ? 'Bonjour! ' : 'Здравствуйте! ';
+    const L = (I18N[LANG()]||I18N.ru);
     const out = [];
-    out.push(hello + (ctx.name ? `Меня зовут ${ctx.name}. ` : ''));
+    out.push(L.msgHello(ctx.name));
     if (ctx.message) out.push(ctx.message);
-    if (ctx.date)  out.push(`\nДата: ${ctx.date}`);
-    if (ctx.guests)out.push(`\nГостей: ${ctx.guests}`);
-    out.push(`\nПрограмма: ${prog.title} (${prog.id})`);
-    out.push(`\nСтраница: ${location.href}`);
-    if (ctx.contact) out.push(`\nКонтакт: ${ctx.contact}`);
+    if (ctx.date)   out.push(L.msgDate(ctx.date));
+    if (ctx.guests) out.push(L.msgGuests(ctx.guests));
+    out.push(L.msgProgram(prog.title, prog.id));
+    out.push(L.msgPage(location.href));
+    if (ctx.contact) out.push(L.msgContact(ctx.contact));
     return out.join('').trim();
   }
 
-  // ---------- отправители ----------
+  // ---------- senders ----------
   function openWA(text){
     if(!WA_DIGITS){ alert(t('waMissing')); return; }
     const url = `https://wa.me/${WA_DIGITS}?text=${encodeURIComponent(text)}`;
     window.open(url,'_blank','noopener');
   }
 
-  // ЖЁСТКАЯ логика открытия Telegram (бот/юзер + intent + deeplink), с сохранением user gesture
+  let clickLock=false;
   async function openTG(text, ctx, prog){
+    if(clickLock) return; clickLock=true;
     const cfg  = window.APP_CONFIG || {};
     const bot  = (cfg.telegram_bot||'').replace(/^@/,'');
     const user = (cfg.telegram_user||cfg.telegram||DEF_TG).replace(/^@/,'');
-    const who  = bot || user || 'de_iren';
+    const who  = bot || user || DEF_TG;
 
-    // 1) Пред-открываем пустую вкладку — сохраняем user gesture (чтобы deeplink не заблокировали)
+    // 1) пред-вкладка (user gesture)
     const tab = window.open('', '_blank');
 
-    // 2) Копируем текст заявки — всегда будет под рукой
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        legacyCopy(text);
-      }
-    } catch(_) { /* ignore */ }
+    // 2) копируем текст
+    try{ await copyText(text); toast(t('copiedTG')); }catch(_){}
 
-    // 3) Пытаемся получить token у бота (prestart)
+    // 3) токен у бота
     let token = '';
     if (bot && PRE_URL){
       try{
@@ -255,41 +259,35 @@
           body:JSON.stringify(payload), keepalive:true
         });
         const j = await r.json().catch(()=>null);
-        if (j?.ok && j?.token) token = String(j.token);
+        if (j?.token) token = String(j.token);
+        else if (j?.ok && j?.id) token = String(j.id);
         else console.warn('[contact.js] prestart bad response:', {status:r.status, body:j});
       }catch(e){ console.warn('[contact.js] prestart failed:', e); }
     }
 
-    // 4) Ссылки
+    // 4) ссылки
     const deep   = `tg://resolve?domain=${who}${token?`&start=${encodeURIComponent(token)}`:''}`;
     const web    = `https://t.me/${who}${token?`?start=${encodeURIComponent(token)}`:''}`;
     const intent = `intent://resolve?domain=${who}${token?`&start=${encodeURIComponent(token)}`:''}` +
                    `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(web)};end`;
+    const appStore = 'https://apps.apple.com/app/telegram-messenger/id686449807';
 
-    const UA = navigator.userAgent;
-    const isiOS = /iPad|iPhone|iPod/i.test(UA);
-    const isAndroid = /Android/i.test(UA);
-
-    // 5) Навигация по платформам (макс. надёжность)
-    if (isiOS){
-      // iOS: самый стабильный способ — текущая вкладка на tg://, резервная — на web
-      try{ if(tab) tab.location = web; }catch(_){}
-      location.href = deep;
-      setTimeout(()=>{ if(document.visibilityState==='visible'){ location.href = web; } }, 800);
-    } else if (isAndroid){
-      // Android: intent:// открывает приложение; web — fallback
-      try{ if(tab) tab.location = intent; else location.href=intent; }
-      catch(_){ location.href = intent; }
-    } else {
-      // Desktop: сначала tg:// в пред-открытой вкладке, потом web
-      try{ if(tab) tab.location = deep; else location.href=deep; }
-      catch(_){ location.href = deep; }
-      setTimeout(()=>{
-        try{
-          if(!tab || tab.closed) window.open(web, '_self');
-          else tab.location = web;
-        }catch(_){ location.href = web; }
-      }, 500);
+    try{
+      if (isiOS){
+        if(tab) tab.location = web;
+        location.href = deep;
+        setTimeout(()=>{ if(document.visibilityState==='visible'){ location.href = web; setTimeout(()=>{ if(document.visibilityState==='visible') location.href = appStore; },900); } }, 800);
+      } else if (isAndroid){
+        if(tab) tab.location = intent; else location.href=intent;
+      } else {
+        if(tab) tab.location = deep; else location.href=deep;
+        setTimeout(()=>{
+          try{ if(!tab || tab.closed) window.open(web, '_self'); else tab.location = web; }
+          catch(_){ location.href = web; }
+        }, 500);
+      }
+    } finally {
+      setTimeout(()=>{ clickLock=false; }, 1200);
     }
   }
 
@@ -307,11 +305,10 @@
     const ch = (form.elements['channel']?.value || form.dataset.channel || '').toLowerCase();
     const channel = ch || (WA_DIGITS ? 'whatsapp' : 'telegram');
 
-    if(channel==='whatsapp') openWA(text);
-    else openTG(text, ctx, prog);
+    if(channel==='whatsapp') openWA(text); else openTG(text, ctx, prog);
   }, true);
 
-  // ---------- клики (кнопки / ссылки) ----------
+  // ---------- clicks (кнопки/ссылки) ----------
   document.addEventListener('click',(e)=>{
     const a = e.target.closest('a[data-whatsapp], a[data-telegram], [data-book], [data-booking], .js-book, a[href^="#book"]');
     if(!a) return;
@@ -337,7 +334,7 @@
     }
   }, true);
 
-  // ---------- базовые href (на случай отсутствия текста) ----------
+  // ---------- базовые href-подстановки ----------
   function patchBase(){
     if (WA_DIGITS) qa('[data-whatsapp]').forEach(a=>{
       const href=a.getAttribute('href')||'';
@@ -354,8 +351,8 @@
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', patchBase, {once:true});
   else patchBase();
 
-  // debug (можно удалить)
+  // debug
   window.CONTACT_DEBUG = { WA_DIGITS, TG_BOT, PRE_URL };
-
-  console.log('[contact.js] ready (v3) — validation + WA normalize + TG prestart + robust deeplink/intent + fallbacks');
+  console.log('[contact.js] ready (v3.2) — validation + WA normalize + TG prestart + robust deeplink/intent + fallbacks');
 })();
+</script>
