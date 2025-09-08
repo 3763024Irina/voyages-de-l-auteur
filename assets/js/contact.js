@@ -1,7 +1,7 @@
-/* assets/js/contact.js  — универсальный коннектор
-   Работает на всех страницах одним подключением.
+/* assets/js/contact.js  — универсальный коннектор (v1.2: delegated capture bind)
+   Подключается одной строкой на любой странице.
 
-   Требуется window.APP_CONFIG в HTML (один раз на странице):
+   Нужен window.APP_CONFIG:
    <script>
      window.APP_CONFIG = {
        whatsapp: '+33 7 59 64 48 13',
@@ -47,17 +47,15 @@
     } catch {}
   }
 
-  function getLang(){ return document.documentElement.lang || localStorage.getItem('site:lang') || 'ru'; }
-
   function findForm(fromEl) {
     return fromEl?.closest?.('form')
         || $('[data-contact-form]')
-        || $('form'); // крайний случай — первый <form>
+        || $('form');
   }
 
   function valByNames(form, names) {
     for (const n of names) {
-      const el = form.querySelector(`[name="${n}"]`) || $(n.startsWith('#')||n.startsWith('.') ? n : null);
+      const el = form.querySelector(`[name="${n}"]`);
       if (el && 'value' in el) return String(el.value).trim();
     }
     return '';
@@ -68,13 +66,12 @@
   function collectPayload(fromEl) {
     const form = findForm(fromEl) || document;
 
-    const name    = valByNames(form, ['name', '#req_name']);
-    const contact = valByNames(form, ['contact', '#req_contact']);
-    const date    = valByNames(form, ['date', '#req_date']);
-    const guests  = toIntSafe(valByNames(form, ['guests', '#req_guests']) || '1', 1);
-    const message = valByNames(form, ['message', '#req_message']);
+    const name    = valByNames(form, ['name']);
+    const contact = valByNames(form, ['contact']);
+    const date    = valByNames(form, ['date']);
+    const guests  = toIntSafe(valByNames(form, ['guests']) || '1', 1);
+    const message = valByNames(form, ['message']);
 
-    // Программа — ищем в атрибутах страницы/формы
     const program = {
       title: form?.dataset?.programTitle
           || document.documentElement.getAttribute('data-program-title')
@@ -165,19 +162,15 @@
   // ---- HANDLERS ----
   async function onSendTelegram(e) {
     e && e.preventDefault();
-    const btn = e?.currentTarget;
+    const btn = e?.currentTarget && e.currentTarget.nodeType === 1 ? e.currentTarget : undefined;
     try {
-      btn && (btn.disabled = true, btn.classList.add('is-loading'));
+      if (btn) { btn.disabled = true; btn.classList.add('is-loading'); }
+
       const payload = collectPayload(btn);
       if (!validatePayload(payload)) return;
 
       const preUrl = String(CFG.bot_prestart_url || '').trim();
-      if (!preUrl) {
-        // если бэкенд не задан — открываем личку как fallback
-        openTelegramProfile(CFG.telegram_user || CFG.telegram_bot);
-        toast('Открываю Telegram…', true);
-        return;
-      }
+      if (!preUrl) { openTelegramProfile(CFG.telegram_user || CFG.telegram_bot); toast('Открываю Telegram…', true); return; }
 
       const resp = await postJSON(preUrl, payload);
       if (!resp?.ok) throw new Error('prestart failed');
@@ -188,15 +181,15 @@
       console.error('[contact.js][tg] error:', err);
       toast('Не удалось открыть Telegram.', false);
     } finally {
-      btn && (btn.disabled = false, btn.classList.remove('is-loading'));
+      if (btn) { btn.disabled = false; btn.classList.remove('is-loading'); }
     }
   }
 
   async function onSendWhatsApp(e) {
     e && e.preventDefault();
-    const btn = e?.currentTarget;
+    const btn = e?.currentTarget && e.currentTarget.nodeType === 1 ? e.currentTarget : undefined;
     try {
-      btn && (btn.disabled = true, btn.classList.add('is-loading'));
+      if (btn) { btn.disabled = true; btn.classList.add('is-loading'); }
       const p = collectPayload(btn);
       if (!validatePayload(p)) return;
       openWhatsApp(p);
@@ -205,7 +198,7 @@
       console.error('[contact.js][wa] error:', err);
       toast('Не удалось открыть WhatsApp.', false);
     } finally {
-      btn && (btn.disabled = false, btn.classList.remove('is-loading'));
+      if (btn) { btn.disabled = false; btn.classList.remove('is-loading'); }
     }
   }
 
@@ -215,46 +208,6 @@
     toast('Открываю Telegram…', true);
   }
 
-  // ---- AUTO BIND (на всех страницах) ----
-  function bindAll() {
-    // Клики по кнопкам/ссылкам (любые селекторы)
-    const tgBtnSel = '#btn-telegram, [data-action="telegram"], [data-telegram], .js-open-telegram-bot';
-    const tgProfileSel = '#btn-telegram-profile, [data-action="telegram-profile"], [data-telegram-profile], .js-open-telegram-profile';
-    const waBtnSel = '#btn-whatsapp, [data-action="whatsapp"], [data-whatsapp], .js-open-whatsapp';
-
-    $$(tgBtnSel).forEach(el => {
-      if (el.__boundTG) return; el.__boundTG = true;
-      el.addEventListener('click', onSendTelegram);
-      if (el.tagName === 'A') el.addEventListener('click', (e)=>{ if (el.getAttribute('href') === '#') e.preventDefault(); });
-    });
-
-    $$(tgProfileSel).forEach(el => {
-      if (el.__boundTGP) return; el.__boundTGP = true;
-      el.addEventListener('click', onOpenTelegramProfile);
-      if (el.tagName === 'A') el.addEventListener('click', (e)=>{ if (el.getAttribute('href') === '#') e.preventDefault(); });
-    });
-
-    $$(waBtnSel).forEach(el => {
-      if (el.__boundWA) return; el.__boundWA = true;
-      el.addEventListener('click', onSendWhatsApp);
-      if (el.tagName === 'A') el.addEventListener('click', (e)=>{ if (el.getAttribute('href') === '#') e.preventDefault(); });
-    });
-
-    // Сабмит любой формы с data-contact-form
-    $$( 'form[data-contact-form]' ).forEach(form => {
-      if (form.__boundSubmit) return; form.__boundSubmit = true;
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const chan = (form.dataset.channel || 'telegram').toLowerCase();
-        if (chan === 'whatsapp') onSendWhatsApp(e);
-        else onSendTelegram(e);
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindAll);
-  } else {
-    bindAll();
-  }
-})();
+  // Вспомогалки для делегированного клика
+  const callTG  = (el)=> onSendTelegram({ currentTarget: el, preventDefault(){} });
+  const c
