@@ -823,6 +823,21 @@
     });
   })();
   </script>
+  <!-- 1) Конфиг (должен идти раньше остальных скриптов) -->
+<script>
+  window.APP_CONFIG = window.APP_CONFIG || {};
+  window.APP_CONFIG.whatsapp = '+33 7 59 64 48 13';
+  window.APP_CONFIG.telegram_user = 'de_iren';                 // запасной @user (без @)
+  window.APP_CONFIG.telegram_bot  = 'de_iren_order_bot';       // бот
+  window.APP_CONFIG.bot_prestart_url = 'https://iren-order-bot.onrender.com/prestart'; // prestart
+</script>
+
+<!-- 2) Основной скрипт формы (валидация + WA/TG) -->
+<script src="assets/js/contact.js" defer></script>
+
+<!-- 3) Плавающий виджет иконок WA/TG (на всех страницах) -->
+<script src="assets/js/chat-widget.js" defer></script>
+
 </body>
 </html>
 
