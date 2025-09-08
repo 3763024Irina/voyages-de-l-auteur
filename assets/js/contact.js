@@ -338,6 +338,7 @@
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', patchBase, {once:true});
   else patchBase();
 
+   
   // debug
   window.CONTACT_DEBUG = { WA_DIGITS, TG_BOT, PRE_URL };
   console.log('[contact.js] ready (v3.3) — validation + WA normalize + TG prestart + robust deeplink/intent + fallbacks');
