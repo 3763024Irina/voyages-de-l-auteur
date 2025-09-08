@@ -1,26 +1,47 @@
-/* assets/js/chat-widget.js — плавающие иконки WA + TG (только иконки)
-   TG при наличии бота:
-     1) шлёт мини-заявку на /prestart → получает token
-     2) открывает t.me/<бот>?start=<token> (заявка придёт автоматически)
-   Фолбэк: открыть чат (бот или @de_iren) и скопировать текст в буфер.
-   WA: открыть чат с предзаполненным текстом.
+/* chat-widget.js — плавающие иконки WA + TG (FAB), v1.2
+   Изменения v1.2:
+   • Нормализуем PRE_URL (http→https, /health→/prestart)
+   • Android intent://, iOS deeplink с web-fallback, desktop tg:// → web
+   • Автокопирование текста для TG, локализованный тост (RU/FR)
+   • Debounce на открытие, singletons
 */
 ;(function(){
   if (window.__CHAT_WIDGET__) return; window.__CHAT_WIDGET__ = true;
 
   const CFG = window.APP_CONFIG || {};
   const digits = s => String(s||'').replace(/\D/g,'');
-  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+  const UA = navigator.userAgent;
+  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(UA);
+  const isiOS = /iPad|iPhone|iPod/i.test(UA);
+  const isAndroid = /Android/i.test(UA);
+  const LANG = () => (localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'));
+
+  const L = {
+    ru: { toastCopied:'Текст заказа скопирован — вставьте в Telegram' },
+    fr: { toastCopied:'Texte copié — collez-le dans Telegram' }
+  };
+  const t = k => (L[LANG()]||L.ru)[k];
 
   const WA_NUMBER = digits(CFG.whatsapp || '+33 7 59 64 48 13');
   const TG_USER   = (CFG.telegram_user || 'de_iren').replace(/^@/, '');
   const TG_BOT    = (CFG.telegram_bot  || '').replace(/^@/, '');
-  const PRE_URL   = CFG.bot_prestart_url || '';
+
+  function normalizePreUrl(u){
+    if(!u) return '';
+    try{
+      let url = new URL(u, location.origin);
+      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+      if (/\/health\/?$/i.test(url.pathname)) {
+        url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+      }
+      return url.toString();
+    }catch{ return u; }
+  }
+  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
 
   /* ---------- CSS ---------- */
   const css = `
   [data-contact-panel]{display:none!important;}
-
   .chat-fab{
     position:fixed; right:20px; bottom:calc(20px + env(safe-area-inset-bottom));
     width:56px; height:56px; border-radius:999px; border:0; cursor:pointer;
@@ -30,14 +51,12 @@
   }
   .chat-fab:hover{ transform:translateY(-1px); box-shadow:0 12px 28px rgba(0,0,0,.2); }
   .chat-fab svg{ width:26px; height:26px; }
-
   .chat-menu{
     position:fixed; right:20px; bottom:calc(86px + env(safe-area-inset-bottom));
     background:#fff; border-radius:16px; padding:10px;
     box-shadow:0 16px 40px rgba(0,0,0,.18); z-index:9999; display:none;
   }
   .chat-menu[data-open]{ display:block; }
-
   .chat-row{ display:flex; align-items:center; gap:10px; }
   .chat-ico{
     width:44px; height:44px; border-radius:999px; border:1px solid #e8ece9;
@@ -46,7 +65,6 @@
   }
   .chat-ico:hover{ background:#f7f6f3; transform:translateY(-1px); }
   .chat-ico svg{ width:20px; height:20px; }
-
   .toast{
     position:fixed; left:50%; transform:translateX(-50%);
     bottom:calc(140px + env(safe-area-inset-bottom));
@@ -63,80 +81,101 @@
   /* ---------- Текст заказа ---------- */
   const getProgramTitle = () =>
     (document.querySelector('[data-program-title]')?.textContent?.trim()) ||
-    (document.querySelector('h1')?.textContent?.trim()) || document.title;
+    (document.querySelector('meta[property="og:title"]')?.getAttribute('content')) ||
+    (document.querySelector('.hero .title, .program-title, h1')?.textContent?.trim()) ||
+    document.title.replace(/\s*[|—-].*$/, '').trim();
 
-  const programId = (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || 'PAGE';
+  const programId = (document.documentElement?.dataset?.programId) ||
+                    (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || 'PAGE';
+
   const orderText =
 `Здравствуйте! Хочу заказать тур.
-— Программа: ${getProgramTitle()}
+— Программа: ${getProgramTitle()} (${programId})
 — Страница: ${location.href}
 — Даты: ____
 — Гостей: ____
 — Пожелания: ____`;
 
   /* ---------- WA ---------- */
-  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(orderText)}`;
+  const waUrl = WA_NUMBER ? `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(orderText)}` : null;
 
-  /* ---------- сервисные функции ---------- */
-  const copyToClipboard = (txt) => {
-    try { return navigator.clipboard?.writeText(txt); }
-    catch(_) { /* ignore */ }
+  /* ---------- утилиты ---------- */
+  const copyToClipboard = async (txt) => {
+    try { if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(txt); return; } } catch(_){}
+    // fallback
+    const ta=document.createElement('textarea'); ta.value=txt; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px';
+    document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(_){}
+    ta.remove();
   };
   const showToast = (msg) => {
-    const t = document.createElement('div'); t.className='toast'; t.textContent = msg;
-    document.body.appendChild(t); requestAnimationFrame(()=>t.setAttribute('data-show',''));
-    setTimeout(()=>{ t.removeAttribute('data-show'); setTimeout(()=>t.remove(),250); }, 1800);
+    const tdiv = document.createElement('div'); tdiv.className='toast'; tdiv.textContent = msg;
+    document.body.appendChild(tdiv); requestAnimationFrame(()=>tdiv.setAttribute('data-show',''));
+    setTimeout(()=>{ tdiv.removeAttribute('data-show'); setTimeout(()=>tdiv.remove(),250); }, 1800);
   };
   const openDeepLink = (deep, web) => {
-    if (isMobile) {
+    if (isiOS) {
       location.href = deep;
-      setTimeout(()=>{ if (document.visibilityState === 'visible') window.open(web,'_blank','noopener'); }, 600);
-    } else {
-      let w; try{ w = window.open(deep,'_blank'); }catch(_){}
-      setTimeout(()=>{ try{ if(!w || w.closed) window.open(web,'_blank','noopener'); }catch(_){ window.open(web,'_blank','noopener'); } }, 250);
+      setTimeout(()=>{ if (document.visibilityState === 'visible') window.open(web,'_blank','noopener'); }, 700);
+      return;
     }
+    if (isAndroid) {
+      const intent = `intent://${deep.replace(/^.*?:\/\//,'')}` +
+        `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(web)};end`;
+      try{ location.href = intent; }catch(_){ window.open(web,'_blank','noopener'); }
+      return;
+    }
+    // desktop
+    let w=undefined; try{ w = window.open(deep,'_blank'); }catch(_){}
+    setTimeout(()=>{ try{ if(!w || w.closed) window.open(web,'_blank','noopener'); }catch(_){ window.open(web,'_blank','noopener'); } }, 350);
   };
 
-  /* ---------- TG: через бота (если настроен) ---------- */
+  /* ---------- TG через бота (если настроен) ---------- */
+  let tgLock=false;
   async function openTelegramBot(){
+    if (tgLock) return; tgLock=true;
     // Если нет бота/URL — фолбэк
-    if (!TG_BOT || !PRE_URL) return fallbackTelegram();
+    if (!TG_BOT || !PRE_URL) { tgLock=false; return fallbackTelegram(); }
 
-    // Мини-payload (без формы): всё не пустое, чтобы /prestart принял
     const payload = {
       name: 'Site visitor',
       contact: 'telegram',
       date: new Date().toISOString().slice(0,10),
       guests: '1',
       message: orderText,
-      program: { title: getProgramTitle(), id: programId, url: location.href }
+      program: { title: getProgramTitle(), id: programId, url: location.href },
+      origin: location.origin
     };
 
+    let token = '';
     try{
       const r = await fetch(PRE_URL, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload), keepalive:true
       });
-      const j = await r.json();
-      if (!j?.ok || !j?.token) throw new Error('No token');
-
-      const deep = `tg://resolve?domain=${TG_BOT}&start=${encodeURIComponent(j.token)}`;
-      const web  = `https://t.me/${TG_BOT}?start=${encodeURIComponent(j.token)}`;
-      openDeepLink(deep, web);
+      const j = await r.json().catch(()=>null);
+      if (j?.token) token = String(j.token);
+      else if (j?.ok && j?.id) token = String(j.id);
     }catch(e){
-      console.warn('[chat-widget] bot prestart failed:', e);
-      fallbackTelegram();
+      console.warn('[chat-widget] prestart failed:', e);
     }
+    if (!token) { tgLock=false; return fallbackTelegram(); }
+
+    const deep = `tg://resolve?domain=${TG_BOT}&start=${encodeURIComponent(token)}`;
+    const web  = `https://t.me/${TG_BOT}?start=${encodeURIComponent(token)}`;
+    try{
+      await copyToClipboard(orderText);
+      showToast(t('toastCopied'));
+    }catch(_){}
+    openDeepLink(deep, web);
+    setTimeout(()=>{ tgLock=false; }, 1000);
   }
 
-  /* ---------- TG: фолбэк (бот или личный @de_iren) ---------- */
-  function fallbackTelegram(){
-    copyToClipboard(orderText);
-    showToast('Текст заказа скопирован — вставьте в Telegram');
-    const user = TG_BOT || TG_USER; // если бот задан, открываем бота; иначе личный аккаунт
-    const deep = `tg://resolve?domain=${user}`;
-    const web  = `https://t.me/${user}`;
+  /* ---------- TG фолбэк (бот или @user) ---------- */
+  async function fallbackTelegram(){
+    const who = TG_BOT || TG_USER;
+    const deep = `tg://resolve?domain=${who}`;
+    const web  = `https://t.me/${who}`;
+    try{ await copyToClipboard(orderText); showToast(t('toastCopied')); }catch(_){}
     openDeepLink(deep, web);
   }
 
@@ -145,8 +184,7 @@
   fab.type = 'button';
   fab.className = 'chat-fab';
   fab.setAttribute('aria-label','Открыть мессенджеры');
-  fab.innerHTML = `
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 12c0-5.5 4.8-10 10.7-10S24 6.5 24 12s-4.8 10-10.7 10c-1.6 0-3.2-.3-4.7-.9L2 22l1.2-5C2.4 15.3 2 13.7 2 12z"/></svg>`;
+  fab.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 12c0-5.5 4.8-10 10.7-10S24 6.5 24 12s-4.8 10-10.7 10c-1.6 0-3.2-.3-4.7-.9L2 22l1.2-5C2.4 15.3 2 13.7 2 12z"/></svg>`;
   document.body.appendChild(fab);
 
   /* ---------- Меню (2 иконки) ---------- */
@@ -173,9 +211,9 @@
     const a = btn.dataset.a;
 
     if (a === 'wa') {
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (waUrl) window.open(waUrl, '_blank', 'noopener,noreferrer');
     } else {
-      // Telegram: сначала пробуем режим бота (если настроен), иначе фолбэк
+      // Telegram: сначала режим бота (если задан), иначе fallback
       if (TG_BOT && PRE_URL) openTelegramBot(); else fallbackTelegram();
     }
     menu.removeAttribute('data-open');
