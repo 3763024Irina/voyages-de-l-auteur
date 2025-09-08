@@ -1,33 +1,28 @@
-/* assets/js/contact.js  — универсальный коннектор (v1.2: delegated capture bind)
+/* assets/js/contact.js — универсальный коннектор (v1.2: delegated capture bind)
    Подключается одной строкой на любой странице.
 
-   Нужен window.APP_CONFIG:
+   В HTML ДОЛЖЕН быть window.APP_CONFIG до подключения этого файла:
    <script>
      window.APP_CONFIG = {
        whatsapp: '+33 7 59 64 48 13',
-       telegram_user: 'de_iren',          // профиль
-       telegram_bot:  'de_iren_order_bot',// бот для заявок
+       telegram_user: 'de_iren',
+       telegram_bot:  'de_iren_order_bot',
        bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
      };
    </script>
 */
 (function () {
   'use strict';
-
   if (window.__CONTACT_INIT__) return;
   window.__CONTACT_INIT__ = true;
 
   // ---- CONFIG ----
- <script>
-  window.APP_CONFIG = {
-    whatsapp: '+33 7 59 64 48 13',
-    telegram_user: 'de_iren',
-    telegram_bot: 'de_iren_order_bot',
-    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
-    telegram_open: 'bot' // опционально: 'auto' | 'bot' | 'profile'
-  };
-</script>
-
+  const CFG = Object.assign({
+    whatsapp: '',
+    telegram_user: '',
+    telegram_bot: '',
+    bot_prestart_url: '',
+    telegram_open: 'auto'
   }, window.APP_CONFIG || {});
 
   // ---- UTILS ----
@@ -51,6 +46,21 @@
       setTimeout(() => { box.style.opacity = '0'; }, 2000);
     } catch {}
   }
+
+  function normalizePreUrl(u){
+    if(!u) return '';
+    try{
+      let url = new URL(u, location.origin);
+      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+      if (!/\/prestart\/?$/i.test(url.pathname)) {
+        if (!url.pathname.endsWith('/')) url.pathname += '/';
+        url.pathname += 'prestart';
+      }
+      return url.toString();
+    }catch{ return u; }
+  }
+  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
 
   function findForm(fromEl) {
     return fromEl?.closest?.('form')
@@ -108,50 +118,43 @@
     const res = await fetch(url, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      keepalive: true
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
 
   // ---- OPENERS ----
- function openTelegramDeepLink({ botUser, token }) {
-  const username = String(botUser || CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
-  if (!username || !token) { alert('Не получена ссылка для Telegram.'); return; }
+  function openTelegramDeepLink({ botUser, token }) {
+    const username = String(botUser || CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
+    if (!username) { alert('Не получена ссылка для Telegram.'); return; }
 
-  const tgApp = `tg://resolve?domain=${encodeURIComponent(username)}&start=${encodeURIComponent(token)}`;
-  const tgWeb = `https://t.me/${encodeURIComponent(username)}?start=${encodeURIComponent(token)}`;
+    // Если нет токена — открываем просто профиль/бота
+    if (!token) {
+      location.href = `https://t.me/${encodeURIComponent(username)}`;
+      return;
+    }
 
-  // Никаких window.open — Safari/десктоп их может блокировать.
-  // Идём в той же вкладке. На мобилках пробуем app-схему и откатываемся на web.
-  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
-  if (isMobile) {
-    const start = Date.now();
-    try { window.location.href = tgApp; } catch {}
-    setTimeout(() => {
-      // если приложение не схватило deeplink, уйдём в веб-бота
-      if (Date.now() - start < 1500) {
-        window.location.href = tgWeb;
-      }
-    }, 700);
-  } else {
-    // Десктоп — сразу веб-бот
-    window.location.href = tgWeb;
+    const tgApp = `tg://resolve?domain=${encodeURIComponent(username)}&start=${encodeURIComponent(token)}`;
+    const tgWeb = `https://t.me/${encodeURIComponent(username)}?start=${encodeURIComponent(token)}`;
+
+    // В этой же вкладке, без pop-up
+    if (isMobile) {
+      const start = Date.now();
+      try { location.href = tgApp; } catch {}
+      setTimeout(() => {
+        if (Date.now() - start < 1500) location.href = tgWeb;
+      }, 700);
+    } else {
+      location.href = tgWeb;
+    }
   }
-}
 
   function openTelegramProfile(username) {
     const u = String(username || CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
-    if (!u) { alert('Не задан telegram_user'); return; }
-    const tgApp = `tg://resolve?domain=${encodeURIComponent(u)}`;
-    const tgWeb = `https://t.me/${encodeURIComponent(u)}`;
-
-    let win = null, opened = false;
-    try { win = window.open('', '_blank', 'noopener,noreferrer'); } catch {}
-    const go = (url)=>{ if (win) { win.location = url; opened = true; } else { opened = !!window.open(url, '_blank','noopener,noreferrer'); } };
-
-    if (isMobile) { go(tgApp); setTimeout(()=>{ if(!opened) go(tgWeb); }, 600); }
-    else { go(tgWeb); }
+    if (!u) { alert('Не задан telegram_user/telegram_bot'); return; }
+    location.href = `https://t.me/${encodeURIComponent(u)}`;
   }
 
   function openWhatsApp(p) {
@@ -169,7 +172,7 @@
     ].filter(Boolean);
     const text = encodeURIComponent(lines.join('\n'));
     const waUrl = `https://wa.me/${phone}?text=${text}`;
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    location.href = waUrl; // та же вкладка — меньше блокировок
   }
 
   // ---- HANDLERS ----
@@ -182,12 +185,13 @@
       const payload = collectPayload(btn);
       if (!validatePayload(payload)) return;
 
-      const preUrl = String(CFG.bot_prestart_url || '').trim();
+      const preUrl = PRE_URL;
       if (!preUrl) { openTelegramProfile(CFG.telegram_user || CFG.telegram_bot); toast('Открываю Telegram…', true); return; }
 
       const resp = await postJSON(preUrl, payload);
-      if (!resp?.ok) throw new Error('prestart failed');
-      const token = resp.token;
+      const token = resp?.token || (resp?.ok && resp?.id ? String(resp.id) : '');
+      if (!token) { openTelegramProfile(CFG.telegram_user || CFG.telegram_bot); return; }
+
       openTelegramDeepLink({ botUser: (CFG.telegram_bot || CFG.telegram_user).replace(/^@/, ''), token });
       toast('Открываю Telegram…', true);
     } catch (err) {
@@ -221,6 +225,45 @@
     toast('Открываю Telegram…', true);
   }
 
-  // Вспомогалки для делегированного клика
+  // ---- Делегированный capture-bind: перехватываем любые старые обработчики ----
   const callTG  = (el)=> onSendTelegram({ currentTarget: el, preventDefault(){} });
-  const c
+  const callWA  = (el)=> onSendWhatsApp({ currentTarget: el, preventDefault(){} });
+  const callTGP = (el)=> onOpenTelegramProfile({ currentTarget: el, preventDefault(){} });
+
+  document.addEventListener('click', (ev)=>{
+    const t = ev.target;
+    if (!(t instanceof Element)) return;
+
+    const tgBotEl  = t.closest('[data-telegram], [data-action="telegram"], #btn-telegram');
+    const tgProfEl = t.closest('[data-telegram-profile], [data-action="telegram-profile"], #btn-telegram-profile');
+    const waEl     = t.closest('[data-whatsapp], [data-action="whatsapp"], #btn-whatsapp');
+
+    if (tgBotEl) {
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      callTG(tgBotEl);
+      return;
+    }
+    if (tgProfEl) {
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      callTGP(tgProfEl);
+      return;
+    }
+    if (waEl) {
+      ev.preventDefault(); ev.stopImmediatePropagation();
+      callWA(waEl);
+      return;
+    }
+  }, true); // capture!
+
+  // Сабмит любой формы с data-contact-form
+  $$('form[data-contact-form]').forEach(form=>{
+    if (form.__boundSubmit) return;
+    form.__boundSubmit = true;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const chan = (form.dataset.channel || 'telegram').toLowerCase();
+      if (chan === 'whatsapp') onSendWhatsApp({ currentTarget: form, preventDefault(){} });
+      else onSendTelegram({ currentTarget: form, preventDefault(){} });
+    });
+  });
+})();
