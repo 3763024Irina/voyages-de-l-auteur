@@ -18,11 +18,16 @@
   window.__CONTACT_INIT__ = true;
 
   // ---- CONFIG ----
-  const CFG = Object.assign({
-    whatsapp: '',
-    telegram_user: '',
-    telegram_bot: '',
-    bot_prestart_url: ''
+ <script>
+  window.APP_CONFIG = {
+    whatsapp: '+33 7 59 64 48 13',
+    telegram_user: 'de_iren',
+    telegram_bot: 'de_iren_order_bot',
+    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
+    telegram_open: 'bot' // опционально: 'auto' | 'bot' | 'profile'
+  };
+</script>
+
   }, window.APP_CONFIG || {});
 
   // ---- UTILS ----
