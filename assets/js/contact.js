@@ -1,25 +1,9 @@
-<script>
-/* contact.js — WhatsApp & Telegram (бот + жёсткая валидация) — v3.2
-   Обязательные поля: name, contact, date, guests, message.
-
-   WhatsApp:  wa.me/<digits>?text=...
-   Telegram:  если заданы bot и bot_prestart_url → POST /prestart → t.me/<bot>?start=<token>
-              иначе — копируем текст в буфер и открываем чат (бот или @username).
-
-   Обновления:
-   • стабильное открытие Telegram: iOS (tg:// → web → AppStore), Android (intent://), Desktop (tg:// → t.me);
-   • /health автоматически меняется на /prestart, http → https;
-   • локализация RU/FR в сообщении и ошибках; анти-дубль кликов.
-
-   Пример конфига:
-   <script>
-     window.APP_CONFIG = {
-       whatsapp: '+33 7 59 64 48 13',
-       telegram_user: 'de_iren',
-       telegram_bot:  'de_iren_order_bot',
-       bot_prestart_url: 'https://iren-order-bot.onrender.com/health' // можно /health — заменим на /prestart
-     };
-   </script>
+/* contact.js — WhatsApp & Telegram (бот + жёсткая валидация) — v3.3
+   Изменения v3.3:
+   • Фикс редких опечаток и гонок при openTG()
+   • Ещё надёжнее deeplink: iOS → tg:// → web → AppStore; Android → intent:// → web
+   • Нормализация bot_prestart_url: http→https, /health→/prestart
+   • Строже сбор заголовка программы (og:title → [data-program-title] → .hero/.program-title/h1 → document.title)
 */
 (function () {
   'use strict';
@@ -38,7 +22,9 @@
     if(!u) return '';
     try{
       let url = new URL(u, location.origin);
+      // force https
       if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+      // /health -> /prestart
       if (/\/health\/?$/i.test(url.pathname)) {
         url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
       }
@@ -193,9 +179,10 @@
   function programInfo(fromEl){
     const root = fromEl?.closest('[data-program],[data-program-title],[data-program-id]') || document.documentElement;
     const ogTitle = qs('meta[property="og:title"]')?.getAttribute('content') || '';
+    const dataTitle = root?.dataset?.programTitle || '';
     const heroTitle = qs('.hero .title, .program-title, h1')?.textContent?.trim() || '';
     const docTitle  = document.title.replace(/\s*[|—-].*$/, '').trim();
-    const title = root?.dataset?.programTitle || ogTitle || heroTitle || docTitle || 'Программа';
+    const title = dataTitle || ogTitle || heroTitle || docTitle || 'Программа';
     const id    = root?.dataset?.programId ||
                   (location.pathname.split('/').pop()||'').replace(/\.[a-z0-9]+$/i,'') || '';
     return { title, id };
@@ -235,15 +222,15 @@
   let clickLock=false;
   async function openTG(text, ctx, prog){
     if(clickLock) return; clickLock=true;
-    const cfg  = window.APP_CONFIG || {};
-    const bot  = (cfg.telegram_bot||'').replace(/^@/,'');
-    const user = (cfg.telegram_user||cfg.telegram||DEF_TG).replace(/^@/,'');
+
+    const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+    const user = (CFG.telegram_user||CFG.telegram||DEF_TG).replace(/^@/,'');
     const who  = bot || user || DEF_TG;
 
     // 1) пред-вкладка (user gesture)
     const tab = window.open('', '_blank');
 
-    // 2) копируем текст
+    // 2) скопировать текст
     try{ await copyText(text); toast(t('copiedTG')); }catch(_){}
 
     // 3) токен у бота
@@ -265,7 +252,7 @@
       }catch(e){ console.warn('[contact.js] prestart failed:', e); }
     }
 
-    // 4) ссылки
+    // 4) deeplinks
     const deep   = `tg://resolve?domain=${who}${token?`&start=${encodeURIComponent(token)}`:''}`;
     const web    = `https://t.me/${who}${token?`?start=${encodeURIComponent(token)}`:''}`;
     const intent = `intent://resolve?domain=${who}${token?`&start=${encodeURIComponent(token)}`:''}` +
@@ -353,6 +340,5 @@
 
   // debug
   window.CONTACT_DEBUG = { WA_DIGITS, TG_BOT, PRE_URL };
-  console.log('[contact.js] ready (v3.2) — validation + WA normalize + TG prestart + robust deeplink/intent + fallbacks');
+  console.log('[contact.js] ready (v3.3) — validation + WA normalize + TG prestart + robust deeplink/intent + fallbacks');
 })();
-</script>
