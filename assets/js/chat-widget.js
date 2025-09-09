@@ -40,22 +40,45 @@
     return base.join('\n');
   }
 
-  // WhatsApp — чат с номером и автотекстом
-  function openWA(){
+  // ---------- надёжное открытие через скрытые <a>, без window.open ----------
+  function navigateSafely(href){
+    // создаём одноразовую ссылку и кликаем
+    const a = document.createElement('a');
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    // в iOS/Android иногда помогает принудительное добавление в DOM
+    a.style.position = 'fixed';
+    a.style.left = '-9999px';
+    document.body.appendChild(a);
+    a.click();
+    // небольшая задержка перед удалением — чтобы не было сбоев на iOS WebKit
+    setTimeout(() => a.remove(), 500);
+  }
+
+  function openWA(e){
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
     const phone = digits(CFG.whatsapp || '');
-    if (!phone) return alert('Не задан номер WhatsApp в APP_CONFIG.');
+    if (!phone){
+      alert('Не задан номер WhatsApp в APP_CONFIG.');
+      return;
+    }
     const text = buildQuickText();
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+    const href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    navigateSafely(href);
   }
 
-  // Telegram — официальный экран шаринга с автотекстом заявки (без бэкенда)
-  function openTG(){
+  function openTG(e){
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
     const text = buildQuickText();
+    // офиц. шаринг Telegram — на мобилках открывает приложение, на десктопе — Web/Native TG
     const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
-    window.open(shareUrl, '_blank', 'noopener');
+    navigateSafely(shareUrl);
   }
 
-  // Стили: круглые плавающие иконки
+  // ---------- стили кнопок ----------
   function injectStyles(){
     if (document.getElementById('chat-fab-css')) return;
     const css = `
@@ -76,17 +99,23 @@
 
   function makeBtn(cls, svg, onClick, label){
     const b = document.createElement('button');
-    b.type = 'button'; b.className = 'chat-fab ' + cls; b.innerHTML = svg;
+    b.type = 'button'; // защита от submit в формах
+    b.className = 'chat-fab ' + cls;
+    b.innerHTML = svg;
     b.setAttribute('aria-label', label);
     b.title = label;
-    b.addEventListener('click', onClick);
+
+    // Жёстко блокируем любые делегированные обработчики сверху
+    b.addEventListener('click', onClick, { passive: false });
+    b.addEventListener('mousedown', e => { e.preventDefault(); e.stopPropagation(); }, { passive: false });
+    b.addEventListener('touchstart', e => { e.preventDefault(); e.stopPropagation(); }, { passive: false });
+
     return b;
   }
 
   function init(){
     injectStyles();
 
-    // SVG иконки (инлайн)
     const waSVG = `
       <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
         <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
@@ -101,6 +130,6 @@
     document.body.appendChild(makeBtn('tg', tgSVG, openTG, 'Telegram'));
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('DOMContentLoaded', init, { once: true });
 })();
 </script>
