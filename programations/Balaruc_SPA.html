@@ -84,7 +84,7 @@
     /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
-    textarea{min-height:110px; resize:vertical}
+    textarea{min_HEIGHT:110px; resize:vertical}
 
     /* BOOK */
     #book{ padding:32px 0 56px; }
@@ -127,7 +127,7 @@
       .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
 
-    /* === ИКОНКИ ДЛЯ КНОПОК WA/TG === */
+    /* Иконки для кнопок WA/TG в форме */
     [data-whatsapp], [data-telegram] { position:relative; padding-left:42px !important }
     [data-whatsapp]::before, [data-telegram]::before {
       content:""; position:absolute; left:14px; top:50%; transform:translateY(-50%);
@@ -176,7 +176,7 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO (без WA/TG) -->
   <section class="hero">
     <div class="bg">
       <img src="../assets/Balaruc-Obalia.jpg" alt="" id="alt-hero" />
@@ -189,8 +189,6 @@
         <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
         <div class="actions">
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -307,8 +305,8 @@
         </div>
 
         <div class="form-actions full">
-          <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Telegram</a>
+          <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
     </div>
@@ -325,12 +323,12 @@
     </div>
   </footer>
 
-  <!-- ===== WA/TG: встроенная логика (иконки + отправка + плавающий чат) ===== -->
+  <!-- ===== WA/TG: логика отправки + плавающий чат ===== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',      // номер WA
-      telegram_user: 'de_iren',           // @юзер без @ (фоллбэк)
-      telegram_bot:  'de_iren_order_bot', // бот без @ (если используешь prestart)
+      whatsapp: '+33 7 59 64 48 13',
+      telegram_user: 'de_iren',
+      telegram_bot:  'de_iren_order_bot',
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     };
 
@@ -381,13 +379,12 @@
         }
       }
 
-      function openWhatsApp(text){
+      function openWA(text){
         const phone = digits(CFG.whatsapp || '');
         if (!phone) return alert('Не задан номер WhatsApp.');
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
       }
-
-      async function openTelegram(text){
+      async function openTG(text){
         const bot = (CFG.telegram_bot || '').replace(/^@/,'');
         const pre = CFG.bot_prestart_url || '';
         if (bot && pre){
@@ -401,46 +398,33 @@
               window.open(`https://t.me/${bot}?start=${encodeURIComponent(data.token)}`, '_blank', 'noopener');
               return;
             }
-          }catch(e){ /* фоллбэк ниже */ }
+          }catch(e){ /* fallback ниже */ }
         }
         const user = (CFG.telegram_user || bot || '').replace(/^@/,'');
         if (!user) return alert('Не задан Telegram.');
         window.open(`https://t.me/${user}`, '_blank', 'noopener');
       }
 
-      function wireHero(){
-        qsa('[data-whatsapp]').forEach(btn=>{
-          if (btn.__wired) return; btn.__wired = true;
-          btn.addEventListener('click', (e)=>{
-            e.preventDefault(); openWhatsApp(buildMessage(null));
-          });
-        });
-        qsa('[data-telegram]').forEach(btn=>{
-          if (btn.__wired) return; btn.__wired = true;
-          btn.addEventListener('click', async (e)=>{
-            e.preventDefault(); await openTelegram(buildMessage(null));
-          });
-        });
-      }
-
+      // Кнопки в форме
       function wireForm(form){
         if (!form || form.__wired) return; form.__wired = true;
         const waBtn = form.querySelector('[data-whatsapp]');
         const tgBtn = form.querySelector('[data-telegram]');
         if (waBtn){
-          waBtn.addEventListener('click', (e)=>{
+          waBtn.addEventListener('click', e=>{
             e.preventDefault();
-            try{ validate(form); openWhatsApp(buildMessage(form)); }catch(err){ alert(err.message); }
+            try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message); }
           });
         }
         if (tgBtn){
-          tgBtn.addEventListener('click', async (e)=>{
+          tgBtn.addEventListener('click', async e=>{
             e.preventDefault();
-            try{ validate(form); await openTelegram(buildMessage(form)); }catch(err){ alert(err.message); }
+            try{ validate(form); await openTG(buildMessage(form)); }catch(err){ alert(err.message); }
           });
         }
       }
 
+      // Плавающие кнопки
       function injectFab(){
         if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
         const wa = document.createElement('button');
@@ -449,7 +433,7 @@
         wa.addEventListener('click', ()=>{
           const form = qs('[data-contact-form]') || null;
           try{ form && validate(form); }catch(_){}
-          openWhatsApp(buildMessage(form));
+          openWA(buildMessage(form));
         });
 
         const tg = document.createElement('button');
@@ -458,7 +442,7 @@
         tg.addEventListener('click', async ()=>{
           const form = qs('[data-contact-form]') || null;
           try{ form && validate(form); }catch(_){}
-          await openTelegram(buildMessage(form));
+          await openTG(buildMessage(form));
         });
 
         document.body.appendChild(wa);
@@ -466,10 +450,11 @@
       }
 
       function init(){
-        wireHero();
-        qsa('[data-contact-form]').forEach(wireForm);
+        // Провести форму
+        const form = qs('[data-contact-form]'); wireForm(form);
+        // Плавающие
         injectFab();
-        // фокус на дату при клике «Забронировать»
+        // Фокус на дату при клике «Забронировать»
         document.getElementById('goBook')?.addEventListener('click', ()=>{
           setTimeout(()=>document.getElementById('when')?.focus(), 60);
         });
