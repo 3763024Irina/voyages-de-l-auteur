@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="ru" data-program-id="BALARUC-HYDRO-7D" data-program-title="Balaruc — Hydro relaxante (7 дней)">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Готовые пакеты: Базовый 1 490 € (2 гостя), Comfort 2 240 €, Premium 2 590 €." />
-  <meta property="og:title" content="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)" />
-  <meta property="og:description" content="5 дней терм (~1h30/день) + винный день и Каркасон. Готовые пакеты: 1 490 € / группа (2 гостя) и версии с отелями." />
-  <meta property="og:image" content="../assets/Balaruc-Obalia.jpg" />
-  <meta name="theme-color" content="#0D2B1E" />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней) | Tours Languedoc by Irène</title>
+<meta name="description" content="Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Готовые пакеты: Базовый 1 490 € (2 гостя), Comfort 2 240 €, Premium 2 590 €." />
+<meta property="og:title" content="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)" />
+<meta property="og:description" content="5 дней терм (~1h30/день) + винный день и Каркасон. Готовые пакеты: 1 490 € / группа (2 гостя) и версии с отелями." />
+<meta property="og:image" content="../assets/Balaruc-Obalia.jpg" />
+<meta name="theme-color" content="#0D2B1E" />
 
-  <style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
     :root{
       --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
       --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
@@ -120,7 +123,17 @@
       nav ul{display:none}
       .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
-  </style>
+    /* FAB: плавающие кнопки WA/TG */
+.chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
+.chat-fab svg{width:22px; height:22px; display:block}
+.chat-fab.wa{bottom:76px}
+.chat-fab.tg{bottom:26px}
+
+
+/* Contacts grid */
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:700px){.contact-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body data-program data-program-title="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)" data-program-id="BALARUC-HYDRO-7D">
 
@@ -277,7 +290,20 @@
       </form>
     </div>
   </section>
+<section id="contacts" class="container" style="margin:3rem 0 2rem">
+<h3 class="section-title">Контакты</h3>
+<p class="section-sub">Пиши, звони — отвечу в течение дня.</p>
+<div class="contact-grid">
+<a class="btn" data-ct-wa target="_blank" rel="noopener">WhatsApp: <strong><span data-ct-wa-text></span></strong></a>
+<a class="btn" data-ct-tg-bot target="_blank" rel="noopener">Telegram Bot: <strong>@<span data-ct-tg-bot-text></span></strong></a>
+<a class="btn" data-ct-tg-user target="_blank" rel="noopener">Telegram: <strong>@<span data-ct-tg-user-text></span></strong></a>
+<a class="btn" data-ct-phone>Телефон: <strong><span data-ct-phone-text></span></strong></a>
+<a class="btn" data-ct-email href="mailto:hello@tours-languedoc.com">Email: <strong>hello@tours-languedoc.com</strong></a>
+</div>
+</section>
 
+
+<footer>…</footer>
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -616,7 +642,48 @@
   })();
   </script>
 
+<script>
+(function(){
+const CFG = window.APP_CONFIG || {};
+const q = (s,r=document)=>r.querySelector(s);
+const digits = s=>String(s||'').replace(/\D/g,'');
+
+
+const wa=digits(CFG.whatsapp||'');
+if(wa){q('[data-ct-wa]').href='https://wa.me/'+wa; q('[data-ct-wa-text]').textContent='+'+wa; q('[data-ct-phone]').href='tel:+'+wa; q('[data-ct-phone-text]').textContent='+'+wa;}
+const tgBot=(CFG.telegram_bot||'').replace(/^@/,'');
+if(tgBot){q('[data-ct-tg-bot]').href='https://t.me/'+tgBot; q('[data-ct-tg-bot-text]').textContent=tgBot;} else q('[data-ct-tg-bot]')?.remove();
+const tgUser=(CFG.telegram_user||'').replace(/^@/,'');
+if(tgUser){q('[data-ct-tg-user]').href='https://t.me/'+tgUser; q('[data-ct-tg-user-text]').textContent=tgUser;} else q('[data-ct-tg-user]')?.remove();
+})();
+</script>
+
+<script>
+window.APP_CONFIG = {
+whatsapp: '+33 7 59 64 48 13',
+telegram_user: 'de_iren',
+telegram_bot: 'de_iren_order_bot',
+bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
+};
+</script>
+<!-- ===== FAB кнопки ===== -->
+<script>
+(function(){
+if(window.__FAB_INIT__)return;window.__FAB_INIT__=true;
+const CFG=window.APP_CONFIG||{};const isiOS=/iP(hone|ad|od)/i.test(navigator.userAgent);
+const digits=s=>String(s||'').replace(/\D/g,'');
+function buildMessage(){return 'Заявка с сайта Tours Languedoc by Irène';}
+function openWA(){const phone=digits(CFG.whatsapp||'');if(!phone)return;location.href='https://wa.me/'+phone;}
+function openTG(){const bot=(CFG.telegram_bot||'').replace(/^@/,'');const user=(CFG.telegram_user||'').replace(/^@/,'');if(bot)location.href='https://t.me/'+bot;else if(user)location.href='https://t.me/'+user;}
+function mk(id,cls,svg,cb){if(document.getElementById(id))return;const b=document.createElement('button');b.id=id;b.className=cls;b.type='button';b.innerHTML=svg;b.addEventListener('click',cb);document.body.appendChild(b);}
+document.addEventListener('DOMContentLoaded',()=>{
+const waSvg='<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>';
+const tgSvg='<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>';
+mk('fab-wa','chat-fab wa',waSvg,()=>openWA(buildMessage()));
+mk('fab-tg','chat-fab tg',tgSvg,()=>openTG(buildMessage()));
+});
+})();
+</script>
 </body>
 </html>
-html>
 
