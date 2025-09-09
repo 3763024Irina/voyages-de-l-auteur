@@ -165,7 +165,7 @@
     .hero .contact-card textarea{ min-height: 90px; height:auto; resize:vertical; }
     .hero .contact-card .btn{ padding:10px 12px; border-radius:10px; }
     .hero .contact-card input:focus, .hero .contact-card textarea:focus{
-      outline:2px solid rgba(13,43,30,.28); border-color:var(--brand);
+      outline:2px солид rgba(13,43,30,.28); border-color:var(--brand);
     }
     @media (max-width:1000px){
       .hero .contact-card{ width:100%; justify-self:stretch; align-self:start; }
@@ -227,7 +227,8 @@
               <span class="sr-only">Instagram</span>
             </a>
             <a class="icon-btn" id="socTG" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6л-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+              <!-- Исправленный path (латинская l) -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
               <span class="sr-only">Telegram</span>
             </a>
           </div>
@@ -257,29 +258,28 @@
           <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
           <li><a href="#format" data-i18n="nav.format">Формат</a></li>
           <li><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></li>
-
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- HERO -->
-<section class="hero">
-  <div class="bg">
-    <img src="assets/wines/vinograd.jpg" alt="Sud de la France — mer et vignobles"/>
-    <div class="overlay"></div>
-  </div>
-
-  <div class="container inner">
-    <div>
-      <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
-      <p data-i18n="hero.text">
-        10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тау,
-        походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.
-      </p>
+  <section class="hero">
+    <div class="bg">
+      <img src="assets/wines/vinograd.jpg" alt="Sud de la France — mer et vignobles"/>
+      <div class="overlay"></div>
     </div>
-  </div>
-</section>
+
+    <div class="container inner">
+      <div>
+        <h2 data-i18n="hero.title">Юг Франции без шаблонов: устрицы, вино, горы, замки и море</h2>
+        <p data-i18n="hero.text">
+          10 готовых маршрутов по Лангедоку и Руссильону + VIP-программы под ваши интересы: дегустации на лагуне Тау,
+          походы к Пику Сен-Лу, средневековый Каркасон, бирюзовые ущелья Эро и водные виды спорта на Средиземном море.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- WHY -->
   <section id="why" class="container why">
@@ -656,114 +656,112 @@
     applyLang(getLang());
   </script>
 
-  <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] -->
- <script>
-(function () {
-  const CFG = window.APP_CONFIG || {};
+  <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] (если появятся в формах/ссылках) -->
+  <script>
+  (function () {
+    const CFG = window.APP_CONFIG || {};
 
-  // ---- helpers ----
-  const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
-  const getForm = (btn) =>
-    btn.closest?.('form') ||
-    document.querySelector('[data-contact-form]') ||
-    document.getElementById('quickForm') ||
-    document.forms[0] || document;
+    const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
+    const getForm = (btn) =>
+      btn?.closest?.('form') ||
+      document.querySelector('[data-contact-form]') ||
+      document.getElementById('quickForm') ||
+      document.forms[0] || document;
 
-  const normalizePreUrl = (u)=>{
-    if(!u) return '';
-    try{
-      let url = new URL(u, location.origin);
-      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
-      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
-      if (!/\/prestart\/?$/i.test(url.pathname)) {
-        if (!url.pathname.endsWith('/')) url.pathname += '/';
-        url.pathname += 'prestart';
-      }
-      return url.toString();
-    }catch{ return u; }
-  };
-  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
-
-  const buildPayload = (form)=>{
-    const q = (sel)=> (form.querySelector(sel)?.value || '').trim();
-    const program = {
-      title: form.dataset.programTitle
-          || document.documentElement.getAttribute('data-program-title')
-          || document.querySelector('meta[property="og:title"]')?.content
-          || document.title,
-      id: form.dataset.programId || document.documentElement.getAttribute('data-program-id') || '',
-      url: location.href
+    const normalizePreUrl = (u)=>{
+      if(!u) return '';
+      try{
+        let url = new URL(u, location.origin);
+        if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+        if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+        if (!/\/prestart\/?$/i.test(url.pathname)) {
+          if (!url.pathname.endsWith('/')) url.pathname += '/';
+          url.pathname += 'prestart';
+        }
+        return url.toString();
+      }catch{ return u; }
     };
-    return {
-      name: q('[name="name"]'),
-      contact: q('[name="contact"]'),
-      date: q('[name="date"]'),
-      guests: q('[name="guests"]') || '1',
-      message: q('[name="message"]'),
-      program
-    };
-  };
+    const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
 
-  const prestart = async (payload)=>{
-    if (!PRE_URL) return null;
-    try{
-      const r = await fetch(PRE_URL, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload)
+    const buildPayload = (form)=>{
+      const q = (sel)=> (form.querySelector(sel)?.value || '').trim();
+      const program = {
+        title: form?.dataset?.programTitle
+            || document.documentElement.getAttribute('data-program-title')
+            || document.querySelector('meta[property="og:title"]')?.content
+            || document.title,
+        id: form?.dataset?.programId || document.documentElement.getAttribute('data-program-id') || '',
+        url: location.href
+      };
+      return {
+        name: q('[name="name"]'),
+        contact: q('[name="contact"]'),
+        date: q('[name="date"]'),
+        guests: q('[name="guests"]') || '1',
+        message: q('[name="message"]'),
+        program
+      };
+    };
+
+    const prestart = async (payload)=>{
+      if (!PRE_URL) return null;
+      try{
+        const r = await fetch(PRE_URL, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const j = await r.json().catch(()=>null);
+        return j?.token || null;
+      }catch{ return null; }
+    };
+
+    const openTelegram = (token)=>{
+      const user = (CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
+      if (!user) { alert('Не задан telegram_bot/telegram_user в APP_CONFIG'); return; }
+      const url = token
+        ? `https://t.me/${user}?start=${encodeURIComponent(token)}`
+        : `https://t.me/${user}`;
+      location.href = url;
+    };
+
+    // ---- WhatsApp ----
+    $all('a[data-whatsapp]').forEach((btn)=>{
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const form = getForm(btn);
+        const p = buildPayload(form);
+        const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
+        if (!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
+
+        const lines = [
+          `Имя: ${p.name}`,
+          `Контакт: ${p.contact}`,
+          `Дата: ${p.date}`,
+          `Гостей: ${p.guests}`,
+          `Программа: ${p.program.title}${p.program.id ? ` (${p.program.id})` : ''}`,
+          `Страница: ${p.program.url}`,
+          p.message ? `Сообщение: ${p.message}` : ''
+        ].filter(Boolean);
+
+        location.href = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
       });
-      const j = await r.json().catch(()=>null);
-      return j?.token || null;
-    }catch{ return null; }
-  };
-
-  const openTelegram = (token)=>{
-    const user = (CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
-    if (!user) { alert('Не задан telegram_bot/telegram_user в APP_CONFIG'); return; }
-    const url = token
-      ? `https://t.me/${user}?start=${encodeURIComponent(token)}`
-      : `https://t.me/${user}`;
-    location.href = url; // в той же вкладке
-  };
-
-  // ---- WhatsApp ----
-  $all('a[data-whatsapp]').forEach((btn)=>{
-    btn.addEventListener('click', (e)=>{
-      e.preventDefault();
-      const form = getForm(btn);
-      const p = buildPayload(form);
-      const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
-      if (!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
-
-      const lines = [
-        `Имя: ${p.name}`,
-        `Контакт: ${p.contact}`,
-        `Дата: ${p.date}`,
-        `Гостей: ${p.guests}`,
-        `Программа: ${p.program.title}${p.program.id ? ` (${p.program.id})` : ''}`,
-        `Страница: ${p.program.url}`,
-        p.message ? `Сообщение: ${p.message}` : ''
-      ].filter(Boolean);
-
-      location.href = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
     });
-  });
 
-  // ---- Telegram (бот с токеном; если нет — профиль) ----
-  $all('a[data-telegram]').forEach((btn)=>{
-    btn.addEventListener('click', async (e)=>{
-      e.preventDefault();
-      const form = getForm(btn);
-      const payload = buildPayload(form);
-      const token = await prestart(payload);
-      openTelegram(token);
+    // ---- Telegram (бот с токеном; если нет — профиль) ----
+    $all('a[data-telegram]').forEach((btn)=>{
+      btn.addEventListener('click', async (e)=>{
+        e.preventDefault();
+        const form = getForm(btn);
+        const payload = buildPayload(form);
+        const token = await prestart(payload);
+        openTelegram(token);
+      });
     });
-  });
-})();
-</script>
+  })();
+  </script>
 
-
-  <!-- mailto -->
+  <!-- mailto автозаполнение -->
   <script>
   (function(){
     const el   = document.getElementById('emailLink');
@@ -776,169 +774,143 @@
   })();
   </script>
 
-  <!-- Конфиг + соцсети -->
- <script>
-  Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
-    instagram: 'https://www.instagram.com/tours_languedoc',
-    facebook:  'https://www.facebook.com/tourslanguedoc',
-    vk:        'https://vk.com/tours_languedoc',
-    siteUrl: window.location.origin + window.location.pathname
-  });
-</script>
+  <!-- === Глобальный конфиг сайта (ОДИН раз) === -->
+  <script>
+    Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
+      instagram: 'https://www.instagram.com/tours_languedoc',
+      facebook:  'https://www.facebook.com/tourslanguedoc',
+      vk:        'https://vk.com/tours_languedoc',
+      whatsapp:  '+33 7 59 64 48 13',
+      telegram_user: 'de_iren',           // без @
+      telegram_bot:  'de_iren_order_bot', // без @ (если есть бот)
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
+      siteUrl: window.location.origin + window.location.pathname
+    });
+  </script>
 
+  <!-- Проставить href соцсетей из APP_CONFIG (учитываем telegram_user/telegram_bot) -->
+  <script>
+  (function(){
+    const cfg = window.APP_CONFIG || {};
+    const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
 
- <!-- Проставить href соцсетей из конфига (топ, футер) -->
-<script>
-(function(){
-  const cfg = window.APP_CONFIG || {};
-  const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
+    setHref('socVK',  cfg.vk || '#');
+    setHref('socFB',  cfg.facebook || '#');
+    setHref('socIG',  cfg.instagram || '#');
+    setHref('socVKf', cfg.vk || '#');
+    setHref('socFBf', cfg.facebook || '#');
+    setHref('socIGf', cfg.instagram || '#');
 
-  // Топбар
-  setHref('socVK',  cfg.vk || '#');
-  setHref('socFB',  cfg.facebook || '#');
-  setHref('socIG',  cfg.instagram || '#');
-  if (document.getElementById('socTG')) {
-    const tg = cfg.telegram ? (/^https?:/i.test(cfg.telegram) ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
-    document.getElementById('socTG').href = tg;
-  }
+    const tgHandle = (cfg.telegram || cfg.telegram_user || cfg.telegram_bot || '').replace(/^@/,'');
+    const tgUrl = tgHandle ? (/^https?:/i.test(tgHandle) ? tgHandle : 'https://t.me/' + tgHandle) : '#';
+    if (document.getElementById('socTG'))  document.getElementById('socTG').href  = tgUrl;
+    if (document.getElementById('socTGf')) document.getElementById('socTGf').href = tgUrl;
+  })();
+  </script>
 
-  // Футер
-  setHref('socVKf', cfg.vk || '#');
-  setHref('socFBf', cfg.facebook || '#');
-  setHref('socIGf', cfg.instagram || '#');
-  if (document.getElementById('socTGf')) {
-    const tgF = cfg.telegram ? (/^https?:/i.test(cfg.telegram) ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
-    document.getElementById('socTGf').href = tgF;
-  }
-})();
-</script>
+  <!-- Плавающий чат (FAB) — одна разметка -->
+  <div class="fab" aria-live="polite">
+    <div class="menu" id="chatFabMenu">
+      <button class="mini" id="fabGo" aria-label="Написать сообщение" title="Написать">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 17.2V21h3.8l11-11-3.8-3.8-11 11zM20.7 7.04c.4-.4.4-1 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.8 3.8 1.7-1.9z"/>
+        </svg>
+      </button>
 
-<!-- Плавающий чат (FAB) -->
-<div class="fab" aria-live="polite">
-  <div class="menu" id="chatFabMenu">
-    <button class="mini" id="fabGo" aria-label="Написать сообщение" title="Написать">
+      <!-- WhatsApp -->
+      <button class="mini" id="btn-whatsapp" type="button" aria-label="WhatsApp" title="WhatsApp">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 12a8 8 0 0 1-11.9 7l-3.1 1 1-3.1A8 8 0 1 1 20 12zm-8.9-3.3c-.2-.4-.4-.3-.6-.3h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.2.3 2 3.2 4.9 4.3 2.4 1 2.9.9 3.4.8.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2 0-.1-.1-.3-.3-.4l-1.3-.6c-.2-.1-.3-.1-.5.1l-.7.8c-.1.1-.3.1-.5 0-.2 0-1.5-.6-2.8-1.7-1-.9-1.7-2.1-1.9-2.4-.2-.3 0-.4.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.1-.3 0-.1-.1-.3-.1-.4l-.6-1.4z"/>
+        </svg>
+      </button>
+
+      <!-- Telegram -->
+      <button class="mini" id="btn-telegram" type="button" aria-label="Telegram" title="Telegram">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/>
+        </svg>
+      </button>
+    </div>
+
+    <button class="bubble" id="chatFab" aria-label="Открыть быстрый чат" title="Связаться">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M3 17.2V21h3.8l11-11-3.8-3.8-11 11zM20.7 7.04c.4-.4.4-1 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.8 3.8 1.7-1.9z"/>
-      </svg>
-    </button>
-
-    <!-- WhatsApp -->
-    <button class="mini" id="btn-whatsapp" type="button" aria-label="WhatsApp" title="WhatsApp">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20 12a8 8 0 0 1-11.9 7l-3.1 1 1-3.1A8 8 0 1 1 20 12zm-8.9-3.3c-.2-.4-.4-.3-.6-.3h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.2.3 2 3.2 4.9 4.3 2.4 1 2.9.9 3.4.8.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2 0-.1-.1-.3-.3-.4l-1.3-.6c-.2-.1-.3-.1-.5.1l-.7.8c-.1.1-.3.1-.5 0-.2 0-1.5-.6-2.8-1.7-1-.9-1.7-2.1-1.9-2.4-.2-.3 0-.4.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.1-.3 0-.1-.1-.3-.1-.4l-.6-1.4z"/>
-      </svg>
-    </button>
-
-    <!-- Telegram -->
-    <button class="mini" id="btn-telegram" type="button" aria-label="Telegram" title="Telegram">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/>
+        <path fill="#fff" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
       </svg>
     </button>
   </div>
 
-<!-- Конфиг чата (НЕ перезаписываем, а дополняем) -->
-<script>
-Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
-  whatsapp: '+33 7 59 64 48 13',
-  telegram_user: 'de_iren',           // без @
-  telegram_bot:  'de_iren_order_bot', // без @
-  bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-});
-</script>
+  <!-- Подключение кликов для FAB: WhatsApp / Telegram (ОДИН скрипт) -->
+  <script>
+  (function(){
+    const CFG = window.APP_CONFIG || {};
+    const $ = (s, r=document)=>r.querySelector(s);
+    const root = $('.fab'), bubble = $('#chatFab'), btnWA = $('#btn-whatsapp'), btnTG = $('#btn-telegram'), goBtn = $('#fabGo');
 
-<!-- Подключение кликов для FAB: WhatsApp / Telegram -->
-<script>
-(function(){
-  const CFG = window.APP_CONFIG || {};
-  const $ = (s, r=document)=>r.querySelector(s);
-  const root = $('.fab'), bubble = $('#chatFab'), btnWA = $('#btn-whatsapp'), btnTG = $('#btn-telegram'), goBtn = $('#fabGo');
+    // Открытие/закрытие меню
+    bubble?.addEventListener('click', ()=> root?.classList.toggle('open'));
+    goBtn?.addEventListener('click', ()=>{
+      document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'});
+      root?.classList.remove('open');
+    });
+    document.addEventListener('click', e=>{ if(!e.target.closest('.fab')) root?.classList.remove('open'); });
 
-  // Открытие/закрытие меню
-  bubble?.addEventListener('click', ()=> root?.classList.toggle('open'));
-  goBtn?.addEventListener('click', ()=>{
-    document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'});
-    root?.classList.remove('open');
-  });
-  document.addEventListener('click', e=>{ if(!e.target.closest('.fab')) root?.classList.remove('open'); });
+    const isiOS=/iP(hone|ad|od)/i.test(navigator.userAgent), isAndroid=/Android/i.test(navigator.userAgent);
 
-  // --- Вспомогательное
-  const isiOS=/iP(hone|ad|od)/i.test(navigator.userAgent), isAndroid=/Android/i.test(navigator.userAgent);
-
-  function buildText(){
-    const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
-    return `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
-  }
-  function openWhatsApp(){
-    const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
-    if(!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
-    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildText())}`;
-  }
-  function normalizePreUrl(u){
-    if(!u) return '';
-    try{
-      const url = new URL(u, location.origin);
-      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i,'/prestart');
-      if (!/\/prestart\/?$/i.test(url.pathname)) url.pathname = (url.pathname.replace(/\/$/,'') + '/prestart');
-      return url.toString();
-    }catch{ return u; }
-  }
-  async function prestart(){
-    const PRE = normalizePreUrl(CFG.bot_prestart_url || '');
-    if(!PRE) return null;
-    try{
-      const r = await fetch(PRE, { method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ page: location.href, title: document.title }) });
-      const j = await r.json().catch(()=>null);
-      return j?.token || null;
-    }catch{ return null; }
-  }
-  function openTGDeep(domain, start){
-    const https  = start ? `https://t.me/${domain}?start=${encodeURIComponent(start)}` : `https://t.me/${domain}`;
-    const scheme = start ? `tg://resolve?domain=${domain}&start=${encodeURIComponent(start)}` : `tg://resolve?domain=${domain}`;
-    const intent = `intent://resolve?domain=${domain}${start?`&start=${encodeURIComponent(start)}`:''}`
-                 + `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
-    if (isiOS){ location.href = scheme; setTimeout(()=>{ location.href = https; }, 800); return; }
-    if (isAndroid){ location.href = intent; setTimeout(()=>{ location.href = https; }, 1200); return; }
-    try{ location.href = scheme; }catch(_){}
-    setTimeout(()=>{ location.href = https; }, 300);
-    setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${domain}`; }, 900);
-  }
-  async function openTelegram(){
-    const bot  = (CFG.telegram_bot  || '').replace(/^@/,'');
-    const user = (CFG.telegram_user || '').replace(/^@/,'');
-    if (bot){
-      const token = await prestart();                 // пробуем /prestart токен
-      openTGDeep(bot, token || ''); return;
+    function buildText(){
+      const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
+      return `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
     }
-    if (user){ openTGDeep(user); return; }            // личный чат
-    alert('В APP_CONFIG не задан telegram_bot или telegram_user');
-  }
+    function openWhatsApp(){
+      const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
+      if(!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
+      location.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildText())}`;
+    }
+    function normalizePreUrl(u){
+      if(!u) return '';
+      try{
+        const url = new URL(u, location.origin);
+        if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i,'/prestart');
+        if (!/\/prestart\/?$/i.test(url.pathname)) url.pathname = (url.pathname.replace(/\/$/,'') + '/prestart');
+        return url.toString();
+      }catch{ return u; }
+    }
+    async function prestart(){
+      const PRE = normalizePreUrl(CFG.bot_prestart_url || '');
+      if(!PRE) return null;
+      try{
+        const r = await fetch(PRE, { method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ page: location.href, title: document.title }) });
+        const j = await r.json().catch(()=>null);
+        return j?.token || null;
+      }catch{ return null; }
+    }
+    function openTGDeep(domain, start){
+      const https  = start ? `https://t.me/${domain}?start=${encodeURIComponent(start)}` : `https://t.me/${domain}`;
+      const scheme = start ? `tg://resolve?domain=${domain}&start=${encodeURIComponent(start)}` : `tg://resolve?domain=${domain}`;
+      const intent = `intent://resolve?domain=${domain}${start?`&start=${encodeURIComponent(start)}`:''}`
+                   + `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+      if (isiOS){ location.href = scheme; setTimeout(()=>{ location.href = https; }, 800); return; }
+      if (isAndroid){ location.href = intent; setTimeout(()=>{ location.href = https; }, 1200); return; }
+      try{ location.href = scheme; }catch(_){}
+      setTimeout(()=>{ location.href = https; }, 300);
+      setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${domain}`; }, 900);
+    }
+    async function openTelegram(){
+      const bot  = (CFG.telegram_bot  || '').replace(/^@/,'');
+      const user = (CFG.telegram_user || '').replace(/^@/,'');
+      if (bot){
+        const token = await prestart();                 // пробуем /prestart токен
+        openTGDeep(bot, token || ''); return;
+      }
+      if (user){ openTGDeep(user); return; }            // личный чат
+      alert('В APP_CONFIG не задан telegram_bot или telegram_user');
+    }
 
-  // Клики по кнопкам внутри FAB
-  btnWA?.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); root?.classList.remove('open'); });
-  btnTG?.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); root?.classList.remove('open'); });
-})();
-</script>
-
-
-  <button class="bubble" id="chatFab" aria-label="Открыть быстрый чат" title="Связаться">
-    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="#fff" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
-    </svg>
-  </button>
-</div>
-<!-- === гарантируем APP_CONFIG (не перезаписываем, а дополняем) === -->
-<script>
-  Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
-    whatsapp: '+33 7 59 64 48 13',           // ваш номер
-    telegram_user: 'de_iren',                // без @
-    telegram_bot:  'de_iren_order_bot',      // без @ (если есть бот)
-    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-  });
-</script>
-
+    // Клики по кнопкам внутри FAB
+    btnWA?.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); root?.classList.remove('open'); });
+    btnTG?.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); root?.classList.remove('open'); });
+  })();
+  </script>
 
 </body>
 </html>
-
