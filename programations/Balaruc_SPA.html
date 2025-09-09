@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-program-id="BALARUC-HYDRO-7D" data-program-title="Balaruc — Hydro relaxante (7 дней)">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -88,11 +88,7 @@
 
     /* BOOK */
     #book{ padding:32px 0 56px; }
-    #book .card{
-      max-width:720px; margin:0 auto;
-      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
-    }
+    #book .card{ max-width:720px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
     #book .section-title{ font-size:28px; margin:0 0 6px; }
     #book .section-sub{ margin:0 0 14px; color:var(--muted); }
 
@@ -110,10 +106,8 @@
     .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
     .mapwrap iframe{width:100%; height:380px; border:0}
 
-    .admin-only{ display:none !important; }
-    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
-    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
-    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+    /* скрываем любые уцелевшие старые элементы мини-чата/флоат-кнопок */
+    #mini-chat,.minichat,.chat-fab{display:none!important}
 
     @media (max-width: 1000px){
       .info-grid{grid-template-columns:1fr}
@@ -126,51 +120,10 @@
       nav ul{display:none}
       .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
-
-    /* Иконки для кнопок WA/TG в форме */
-    [data-whatsapp], [data-telegram] { position:relative; padding-left:42px !important }
-    [data-whatsapp]::before, [data-telegram]::before {
-      content:""; position:absolute; left:14px; top:50%; transform:translateY(-50%);
-      width:20px; height:20px; background-size:contain; background-repeat:no-repeat; opacity:.95;
-    }
-    [data-whatsapp]::before {
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%2305a884' d='M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216'/%3E%3Cpath fill='%2305a884' d='M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3'/%3E%3C/svg%3E");
-    }
-    [data-telegram]::before {
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23008ad6' d='M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z'/%3E%3C/svg%3E");
-    }
-
-    /* Плавающие круглые кнопки */
-    .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
-    .chat-fab svg{width:22px; height:22px; display:block}
-    .chat-fab.wa{bottom:76px}
-    .chat-fab.tg{bottom:26px}
-
-    /* Мини-чат снизу */
-    .minichat{
-      position:fixed; left:12px; right:12px; bottom:12px; z-index:9998;
-      display:flex; gap:10px; align-items:center; justify-content:center;
-      background:#fff; border:1px solid #e7e7e7; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.12);
-      padding:8px 10px;
-    }
-    .minichat .mi{display:inline-flex; align-items:center; gap:8px; border:1px solid #e7e7e7; background:#fff; border-radius:999px; padding:9px 12px; font-weight:700; cursor:pointer}
-    .minichat .mi svg{width:18px; height:18px}
-    .minichat .mi.wa{border-color:#cfeee6}
-    .minichat .mi.tg{border-color:#cfe0f4}
-    .minichat .label{font-size:12px; color:#6b7a73; margin-right:6px}
-    @media (max-width:640px){
-      .minichat{left:8px; right:8px}
-      .minichat .label{display:none}
-    }
   </style>
 </head>
+<body data-program data-program-title="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)" data-program-id="BALARUC-HYDRO-7D">
 
-<body
-  data-program
-  data-program-title="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)"
-  data-program-id="BALARUC-HYDRO-7D"
->
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -263,11 +216,7 @@
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.</p>
       <div class="mapwrap">
-        <iframe
-          title="Карта: Balaruc-les-Bains"
-          src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Карта: Balaruc-les-Bains" src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
@@ -340,543 +289,334 @@
     </div>
   </footer>
 
-  <!-- ======= ЕДИНЫЙ конфиг ======= -->
+  <!-- ===== i18n RU/FR ===== -->
+  <script>
+  ;(() => {
+    const I18N = {
+      ru: {
+        brand_sub: "— Путешествия со вкусом",
+        nav_all: "← Все программы",
+        nav_why: "Почему с нами",
+        nav_book: "Забронировать",
+        hero_badge: "Thermes • Étang de Thau",
+        hero_title: "Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)",
+        hero_sub: "5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.",
+        btn_book: "Забронировать",
+        gal_title: "Как это выглядит",
+        gal_sub: "Thermes Balaruc, лагуна Thau и тёплая вода круглый год.",
+        plan_title: "Программа по дням",
+        d1: "День 1", d2: "День 2", d3: "День 3", d4: "День 4", d5: "День 5", d6: "День 6", d7: "День 7",
+        t_d1: "Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.",
+        t_d2: "Утро: Escale «Hydro relaxante» (блок процедур ≈1h30). После обеда — свободно.",
+        t_d3: "Утро: Escale «Hydro relaxante». После обеда — свободно.",
+        t_d4: "<strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.",
+        t_d5: "Утро: Escale «Hydro relaxante». Свободное время у лагуны.",
+        t_d6: "<strong>Каркасон</strong> (полный день): La Cité, Château Comtal, стены. По времени — кафе в Бастиде.",
+        t_d7: "Утро: последний блок «Hydro relaxante». Чек-аут, выезд.",
+        inc_title: "Что включено",
+        inc_guide: "Организация и сопровождение RU/FR (2 дня экскурсий)",
+        inc_spa: "Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей",
+        inc_tours: "Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)",
+        inc_notes: "Рекомендации по ресторанам/устрицам в Bouzigues",
+        exc_title: "Не включено",
+        exc_hotel: "Проживание (см. пакеты ниже)",
+        exc_transport: "Транспорт (аренда авто/водитель)",
+        exc_meals: "Питание и личные расходы",
+        exc_ins: "Авиабилеты/страховка",
+        opt_title: "Опции",
+        opt_transfer: "Частные трансферы: MPL/BZR/MRS ↔ Balaruc — по запросу",
+        opt_boat: "Приватная лодка/устрицы на лагуне Thau — по запросу",
+        where_title: "Где это",
+        where_sub: "Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.",
+        tips_title: "Полезно знать",
+        tip_swim: "Для терм нужны шлёпанцы/шапочка/купальник (по правилам центра).",
+        tip_booking: "Слоты терм и доменов лучше бронировать заранее.",
+        tip_car: "Для экскурсий удобнее авто; парковки у терм и доменов есть.",
+        pricing_title: "Пакеты и цены",
+        pricing_base_html: "<span><strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя)</span> — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em>",
+        pricing_hotel3_html: "<span><strong>COMFORT 3★</strong> (7 ночей, 2 гостя)</span> — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em>",
+        pricing_hotel4_html: "<span><strong>PREMIUM 4★</strong> (7 ночей, 2 гостя)</span> — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em>",
+        pricing_note: "Точные расценки зависят от дат, наличия и выбранных опций. Зафиксируем в счёте-подтверждении.",
+        form_title: "Быстрый запрос / бронирование",
+        form_sub: "Ответим в течение дня и подтвердим слоты терм и дегустаций.",
+        label_date: "Дата",
+        label_guests: "Гостей",
+        label_name: "Имя",
+        label_contact: "Контакт (WhatsApp/Telegram)",
+        label_message: "Сообщение",
+        btn_whatsapp2: "Написать в WhatsApp",
+        btn_telegram: "Написать в Telegram",
+        brand_sub_footer: "Путешествия со вкусом",
+        nav_why_f: "Почему с нами",
+        nav_all_f: "Программы",
+        nav_format_f: "Формат",
+        nav_contacts_f: "Контакты"
+      },
+      fr: {
+        brand_sub: "— Des voyages avec goût",
+        nav_all: "← Tous les programmes",
+        nav_why: "Pourquoi nous",
+        nav_book: "Réserver",
+        hero_badge: "Thermes • Étang de Thau",
+        hero_title: "Balaruc-les-Bains — «Hydro relaxante» + Vin & Carcassonne (7 jours)",
+        hero_sub: "5 jours du mini-parcours Escale «Hydro relaxante» (≈1h30/jour) + 2 excursions: journée vin et Carcassonne. Privé dès 2 personnes.",
+        btn_book: "Réserver",
+        gal_title: "À quoi ça ressemble",
+        gal_sub: "Thermes de Balaruc, lagune de Thau et eau chaude toute l’année.",
+        plan_title: "Programme par jour",
+        d1: "Jour 1", d2: "Jour 2", d3: "Jour 3", d4: "Jour 4", d5: "Jour 5", d6: "Jour 6", d7: "Jour 7",
+        t_d1: "Arrivée (MPL/Béziers/Sète), check-in. Soirée sur la lagune de Thau: huîtres + Picpoul.",
+        t_d2: "Matin: Escale «Hydro relaxante» (≈1h30). Après-midi libre.",
+        t_d3: "Matin: Escale «Hydro relaxante». Après-midi libre.",
+        t_d4: "<strong>Journée vin</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi ou Daumas Gassac). Déjeuner en option.",
+        t_d5: "Matin: Escale «Hydro relaxante». Temps libre à la lagune.",
+        t_d6: "<strong>Carcassonne</strong> (journée): Cité, Château Comtal, remparts. Café dans la Bastide si le temps le permet.",
+        t_d7: "Matin: dernière séance «Hydro relaxante». Check-out, départ.",
+        inc_title: "Inclus",
+        inc_guide: "Organisation et accompagnement RU/FR (2 jours d’excursions)",
+        inc_spa: "Thermes: mini-parcours «Hydro relaxante» — 5 jours d’affilée (≈1h30/jour) pour 2 personnes",
+        inc_tours: "Excursions: Journée vin et Carcassonne (réservations et billets)",
+        inc_notes: "Recommandations restos/huîtres à Bouzigues",
+        exc_title: "Non inclus",
+        exc_hotel: "Hébergement (voir les forfaits ci-dessous)",
+        exc_transport: "Transport (location de voiture/chauffeur)",
+        exc_meals: "Repas et dépenses personnelles",
+        exc_ins: "Vols/assurance",
+        opt_title: "Options",
+        opt_transfer: "Transferts privés: MPL/BZR/MRS ↔ Balaruc — sur demande",
+        opt_boat: "Bateau privé/huîtres sur l’étang de Thau — sur demande",
+        where_title: "Où c’est",
+        where_sub: "Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.",
+        tips_title: "Bon à savoir",
+        tip_swim: "Prévoyez tongs/bonnet/maillot (règles du centre).",
+        tip_booking: "Mieux vaut réserver les créneaux thermes & domaines à l’avance.",
+        tip_car: "Voiture conseillée; parkings aux thermes et domaines.",
+        pricing_title: "Forfaits et prix",
+        pricing_base_html: "<span><strong>BASIQUE</strong> (sans hôtel, 7 jours, 2 pers.)</span> — <strong>1 490 € / groupe</strong> <em>(≈ 745 €/pers.)</em>",
+        pricing_hotel3_html: "<span><strong>CONFORT 3★</strong> (7 nuits, 2 pers.)</span> — <strong>2 240 € / groupe</strong> <em>(≈ 1 120 €/pers.)</em>",
+        pricing_hotel4_html: "<span><strong>PREMIUM 4★</strong> (7 nuits, 2 pers.)</span> — <strong>2 590 € / groupe</strong> <em>(≈ 1 295 €/pers.)</em>",
+        pricing_note: "Les tarifs exacts dépendent des dates, disponibilités et options. Confirmés sur le devis.",
+        form_title: "Demande rapide / réservation",
+        form_sub: "Réponse dans la journée et confirmation des créneaux (thermes & dégustations).",
+        label_date: "Date",
+        label_guests: "Personnes",
+        label_name: "Nom",
+        label_contact: "Contact (WhatsApp/Telegram)",
+        label_message: "Message",
+        btn_whatsapp2: "Écrire sur WhatsApp",
+        btn_telegram: "Écrire sur Telegram",
+        brand_sub_footer: "Des voyages avec goût",
+        nav_why_f: "Pourquoi nous",
+        nav_all_f: "Programmes",
+        nav_format_f: "Format",
+        nav_contacts_f: "Contacts"
+      }
+    };
+
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    const apply = (lang) => {
+      const dict = I18N[lang] || I18N.ru;
+      document.documentElement.setAttribute('lang', lang);
+      $$('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (!key) return;
+        const val = dict[key];
+        if (!val) return;
+        if (key.endsWith('_html')) el.innerHTML = val; else el.textContent = val;
+      });
+      $('#btn-ru')?.classList.toggle('active', lang==='ru');
+      $('#btn-fr')?.classList.toggle('active', lang==='fr');
+      localStorage.setItem('site:lang', lang);
+    };
+
+    const pref = localStorage.getItem('site:lang');
+    const auto = ((navigator.language||'ru').toLowerCase().startsWith('fr')) ? 'fr' : 'ru';
+    apply(pref || auto);
+
+    $('#btn-ru')?.addEventListener('click', ()=>apply('ru'));
+    $('#btn-fr')?.addEventListener('click', ()=>apply('fr'));
+  })();
+  </script>
+
+  <!-- ===== ЕДИНЫЙ APP_CONFIG ===== -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',
-      telegram_bot:  'de_iren_order_bot',
+      telegram_user: 'de_iren',           // без @
+      telegram_bot:  'de_iren_order_bot', // без @
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     };
   </script>
 
-  <!-- ======= ЛОГИКА WA/TG + FAB + МИНИ-ЧАТ ======= -->
+  <!-- ===== WA/TG с iOS-фиксами (tg:// + https fallback; БЕЗ /prestart на iOS) ===== -->
   <script>
-  (function(){
+  ;(function(){
     'use strict';
     if (window.__CONTACT_INIT__) return; window.__CONTACT_INIT__ = true;
 
     const CFG = window.APP_CONFIG || {};
-    const digits = s => String(s||'').replace(/\D/g,'');
-    const qs  = (sel, root=document) => root.querySelector(sel);
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const UA = navigator.userAgent;
+    const isiOS = /iP(hone|ad|od)/i.test(UA);
+    const isAndroid = /Android/i.test(UA);
 
-    // ---- контекст и сообщение ----
+    function digits(s){ return String(s||'').replace(/\D/g,''); }
+
     function pageContext(){
       const html = document.documentElement, body = document.body;
-      const ctx = {
+      const title = $('h1, .page-title, .title')?.textContent?.trim() || document.title || '';
+      return {
         url: location.href,
-        title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
+        title,
         programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
-        programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || ''
+        programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || title
       };
-      if (!ctx.programTitle) ctx.programTitle = ctx.title;
-      return ctx;
     }
-
-    function buildMessage(form=null){
-      const ctx = pageContext();
-      const f = n => form?.querySelector(`[name="\${n}"]`)?.value?.trim() || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        ctx.programId ? \`Программа: \${ctx.programTitle} [\${ctx.programId}]\` : \`Страница: \${ctx.title}\`,
-        \`URL: \${ctx.url}\`,
-        form ? '—' : '',
-        form ? \`Дата: \${f('date')}\` : '',
-        form ? \`Гостей: \${f('guests')}\` : '',
-        form ? \`Имя: \${f('name')}\` : '',
-        form ? \`Контакт: \${f('contact')}\` : '',
-        form && f('message') ? \`Сообщение: \${f('message')}\` : ''
-      ].filter(Boolean).join('\\n');
-    }
-
     function validate(form){
-      if (!form) return;
       for (const n of ['date','guests','name','contact']){
-        const el = form.querySelector(\`[name="\${n}"]\`);
-        if (!el || !String(el.value||'').trim()){
-          el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.');
-        }
+        const el = form.querySelector('[name="'+n+'"]');
+        if (!el || !String(el.value||'').trim()){ el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.'); }
       }
     }
-
-    // ---- WhatsApp ----
-    function openWA(text){
-      const phone = digits(CFG.whatsapp || '');
-      if (!phone) { alert('Не задан номер WhatsApp.'); return; }
-      window.open(\`https://wa.me/\${phone}?text=\${encodeURIComponent(text)}\`, '_blank', 'noopener');
+    function buildMessage(form=null){
+      const ctx = pageContext();
+      const f = n => form?.querySelector('[name="'+n+'"]')?.value?.trim() || '';
+      const lines = [
+        'Заявка с сайта Tours Languedoc by Irène',
+        ctx.programId ? 'Программа: '+ctx.programTitle+' ['+ctx.programId+']' : 'Страница: '+ctx.title,
+        'URL: '+ctx.url
+      ];
+      if (form){
+        lines.push('—','Дата: '+f('date'),'Гостей: '+f('guests'),'Имя: '+f('name'),'Контакт: '+f('contact'));
+        const m=f('message'); if (m) lines.push('Сообщение: '+m);
+      }
+      return lines.join('\n');
+    }
+    function copy(text){
+      if (navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).catch(()=>{});
+      }
+    }
+    function toast(msg){
+      try{
+        const d = document.createElement('div');
+        d.textContent = msg;
+        d.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 14px;border-radius:12px;font:600 14px/1.2 system-ui;z-index:99999;box-shadow:0 6px 18px rgba(0,0,0,.2)';
+        document.body.appendChild(d); setTimeout(()=>d.remove(), 2200);
+      }catch(_){}
     }
 
-    // ---- Telegram: prestart -> бот, иначе окно шаринга ----
-    async function openTG(text){
-      const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-      const pre = CFG.bot_prestart_url || '';
+    // --- Telegram deeplink + надежные фоллбэки ---
+    function openTGDeep(domain, startParam){
+      const hasStart = !!startParam;
+      const enc = encodeURIComponent;
+      const tgScheme = hasStart
+        ? 'tg://resolve?domain='+enc(domain)+'&start='+enc(startParam)
+        : 'tg://resolve?domain='+enc(domain);
+      const https = hasStart
+        ? 'https://t.me/'+enc(domain)+'?start='+enc(startParam)
+        : 'https://t.me/'+enc(domain);
+      const web = 'https://web.telegram.org/k/#@'+enc(domain);
 
+      if (isiOS){
+        // iOS: top-level переход
+        location.href = tgScheme;
+        setTimeout(()=>{ location.href = https; }, 800);
+        return;
+      }
+      if (isAndroid){
+        // Android: intent не обязателен, https поднимает приложение
+        location.href = https;
+        return;
+      }
+      // Desktop: схема -> https -> web
+      try{ window.open(tgScheme, '_self'); }catch(_){}
+      setTimeout(()=>{ try{ window.open(https, '_self'); }catch(_){ } }, 300);
+      setTimeout(()=>{ try{ window.open(web, '_self'); }catch(_){ } }, 900);
+    }
+
+    // WhatsApp
+    function openWA(text){
+      const phone = digits(CFG.whatsapp || '');
+      if (!phone) throw new Error('Не задан номер WhatsApp в APP_CONFIG.');
+      const href = 'https://wa.me/'+phone+'?text='+encodeURIComponent(text);
+      if (isiOS) { location.href = href; } else { window.open(href,'_blank','noopener'); }
+    }
+
+    // Telegram (на iOS — без /prestart)
+    async function openTG(text){
+      const bot  = (CFG.telegram_bot || '').replace(/^@/,'');
+      const user = (CFG.telegram_user || '').replace(/^@/,'');
+      const pre  = (CFG.bot_prestart_url || '').replace(/\/+$/,''); // trim trailing slash
+
+      if (isiOS){
+        if (bot){ copy(text); openTGDeep(bot); toast('Текст заявки скопирован — вставьте в Telegram и отправьте.'); return; }
+        if (user){ copy(text); openTGDeep(user); toast('Текст заявки скопирован — вставьте в Telegram и отправьте.'); return; }
+        location.href = 'https://t.me/share/url?url='+encodeURIComponent(location.href)+'&text='+encodeURIComponent(text);
+        return;
+      }
+
+      // Android/Desktop: пробуем /prestart -> token
       if (bot && pre){
         try{
-          const res = await fetch(pre.replace(/\\/health\\/?$/, '/prestart'), {
+          const url = pre.endsWith('/prestart') ? pre : pre + '/prestart';
+          const res = await fetch(url, {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({ text, page: location.href })
           });
-          const data = await res.json();
-          if (data && data.token){
-            window.open(\`https://t.me/\${bot}?start=\${encodeURIComponent(data.token)}\`, '_blank', 'noopener');
-            return;
+          if (res.ok){
+            const data = await res.json();
+            if (data && data.token){ openTGDeep(bot, data.token); return; }
           }
-        }catch(e){ /* перейдём на фоллбэк */ }
+        }catch(_){}
       }
-      const shareUrl = \`https://t.me/share/url?url=\${encodeURIComponent(location.href)}&text=\${encodeURIComponent(text)}\`;
-      window.open(shareUrl, '_blank', 'noopener');
+      if (bot){ copy(text); openTGDeep(bot); toast('Текст заявки скопирован — вставьте в Telegram и отправьте.'); return; }
+      if (user){ copy(text); openTGDeep(user); toast('Текст заявки скопирован — вставьте в Telegram и отправьте.'); return; }
+      window.open('https://t.me/share/url?url='+encodeURIComponent(location.href)+'&text='+encodeURIComponent(text), '_blank','noopener');
     }
 
-    // ---- проводка формы ----
+    // защита кнопок
+    function harden(btn){
+      if (!btn) return;
+      btn.setAttribute('type','button');
+      const stop = e => { e.preventDefault(); e.stopPropagation(); };
+      btn.addEventListener('mousedown', stop, {passive:false});
+      btn.addEventListener('touchstart', stop, {passive:false});
+    }
+
+    // проводка формы
     function wireForm(form){
       if (!form || form.__wired) return; form.__wired = true;
-      const waBtn = form.querySelector('[data-whatsapp]');
-      const tgBtn = form.querySelector('[data-telegram]');
-      if (waBtn){
-        waBtn.addEventListener('click', e=>{
-          e.preventDefault();
-          try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message); }
-        });
-      }
-      if (tgBtn){
-        tgBtn.addEventListener('click', async e=>{
-          e.preventDefault();
-          try{ validate(form); await openTG(buildMessage(form)); }catch(err){ alert(err.message); }
-        });
-      }
-    }
-
-    // ---- плавающие кнопки ----
-    function injectFab(){
-      if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
-
-      const wa = document.createElement('button');
-      wa.id='fab-wa'; wa.className='chat-fab wa'; wa.innerHTML = `
-        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>`;
-      wa.addEventListener('click', ()=>{
-        const form = qs('[data-contact-form]') || null;
-        try{ form && validate(form); }catch(_){}
-        openWA(buildMessage(form));
-      });
-
-      const tg = document.createElement('button');
-      tg.id='fab-tg'; tg.className='chat-fab tg'; tg.innerHTML = `
-        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>`;
-      tg.addEventListener('click', async ()=>{
-        const form = qs('[data-contact-form]') || null;
-        try{ form && validate(form); }catch(_){}
-        await openTG(buildMessage(form));
-      });
-
-      document.body.appendChild(wa);
-      document.body.appendChild(tg);
-    }
-
-    // ---- мини-чат снизу ----
-    function injectMiniChat(){
-      if (document.getElementById('mini-chat')) return;
-      const wrap = document.createElement('div');
-      wrap.id = 'mini-chat';
-      wrap.className = 'minichat';
-      wrap.innerHTML = `
-        <span class="label">Есть вопросы?</span>
-        <button class="mi wa" type="button" title="WhatsApp">
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
-          <span>WhatsApp</span>
-        </button>
-        <button class="mi tg" type="button" title="Telegram">
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
-          <span>Telegram</span>
-        </button>
-      `;
-      document.body.appendChild(wrap);
-
-      wrap.querySelector('.mi.wa')?.addEventListener('click', ()=>{
-        const form = qs('[data-contact-form]') || null;
-        try{ form && validate(form); }catch(_){}
-        openWA(buildMessage(form));
-      });
-      wrap.querySelector('.mi.tg')?.addEventListener('click', async ()=>{
-        const form = qs('[data-contact-form]') || null;
-        try{ form && validate(form); }catch(_){}
-        await openTG(buildMessage(form));
-      });
-    }
-
-    function init(){
-      wireForm(qs('[data-contact-form]'));
-      injectFab();
-      injectMiniChat();
-      document.getElementById('goBook')?.addEventListener('click', ()=>{
-        setTimeout(()=>document.getElementById('when')?.focus(), 60);
-      });
-    }
-    document.addEventListener('DOMContentLoaded', init);
-  })();
-  <!-- CONFIG -->
-   <!-- ======= ЕДИНЫЙ конфиг (оставь только один, без дублей) ======= -->
-  <script>
-    window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',
-      telegram_bot:  'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-    };
-  </script>
-
-  <!-- ======= ЛОГИКА WA/TG + FAB + МИНИ-ЧАТ (исправлено) ======= -->
-  <script>
-  (function(){
-    'use strict';
-    if (window.__CONTACT_INIT__) return; window.__CONTACT_INIT__ = true;
-
-    const CFG = window.APP_CONFIG || {};
-    const digits = s => String(s||'').replace(/\D/g,'');
-    const qs  = (sel, root=document) => root.querySelector(sel);
-
-    function pageContext(){
-      const html = document.documentElement, body = document.body;
-      const ctx = {
-        url: location.href,
-        title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
-        programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
-        programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || ''
-      };
-      if (!ctx.programTitle) ctx.programTitle = ctx.title;
-      return ctx;
-    }
-
-    function buildMessage(form=null){
-      const ctx = pageContext();
-      const f = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';  /* <-- фикс селектора */
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-        `URL: ${ctx.url}`,
-        form ? '—' : '',
-        form ? `Дата: ${f('date')}` : '',
-        form ? `Гостей: ${f('guests')}` : '',
-        form ? `Имя: ${f('name')}` : '',
-        form ? `Контакт: ${f('contact')}` : '',
-        form && f('message') ? `Сообщение: ${f('message')}` : ''
-      ].filter(Boolean).join('\n');
-    }
-
-    function validate(form){
-      if (!form) return;
-      for (const n of ['date','guests','name','contact']){
-        const el = form.querySelector(`[name="${n}"]`);
-        if (!el || !String(el.value||'').trim()){
-          el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.');
-        }
-      }
-    }
-
-    function openWA(text){
-      const phone = digits(CFG.whatsapp || '');
-      if (!phone) { alert('Не задан номер WhatsApp.'); return; }
-      const a = document.createElement('a');
-      a.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-      a.target = '_blank'; a.rel='noopener';
-      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 100);
-    }
-
-    async function openTG(text){
-      const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-      const pre = CFG.bot_prestart_url || '';
-      if (bot && pre){
-        try{
-          const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ text, page: location.href })
-          });
-          const data = await res.json();
-          if (data?.token){
-            const a = document.createElement('a');
-            a.href = `https://t.me/${bot}?start=${encodeURIComponent(data.token)}`;
-            a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
-            return;
-          }
-        }catch(e){}
-      }
-      const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
-      const a = document.createElement('a'); a.href = shareUrl; a.target='_blank'; a.rel='noopener';
-      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
-    }
-
-    function wireForm(form){
-      if (!form || form.__wired) return; form.__wired = true;
-      const waBtn = form.querySelector('[data-whatsapp]');
-      const tgBtn = form.querySelector('[data-telegram]');
-      if (waBtn){
-        waBtn.setAttribute('type','button');
-        waBtn.addEventListener('click', e=>{
-          e.preventDefault();
-          try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message); }
+      const wa = form.querySelector('[data-whatsapp]');
+      const tg = form.querySelector('[data-telegram]');
+      if (wa && !wa.__wired){
+        wa.__wired = true; harden(wa);
+        wa.addEventListener('click', e=>{
+          try{ e.preventDefault(); validate(form); openWA(buildMessage(form)); }
+          catch(err){ alert(err.message||'Не удалось открыть WhatsApp'); }
         }, {passive:false});
       }
-      if (tgBtn){
-        tgBtn.setAttribute('type','button');
-        tgBtn.addEventListener('click', async e=>{
-          e.preventDefault();
-          try{ validate(form); await openTG(buildMessage(form)); }catch(err){ alert(err.message); }
+      if (tg && !tg.__wired){
+        tg.__wired = true; harden(tg);
+        tg.addEventListener('click', async e=>{
+          try{ e.preventDefault(); validate(form); await openTG(buildMessage(form)); }
+          catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
         }, {passive:false});
       }
     }
 
-    function injectFab(){
-      if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
-      const mk = (id, cls, click, svg) => {
-        const b = document.createElement('button');
-        b.id=id; b.className=cls; b.type='button'; b.innerHTML=svg;
-        b.addEventListener('click', click, {passive:false});
-        return b;
-      };
-      const waSvg = `<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>`;
-      const tgSvg = `<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>`;
-      const form = qs('[data-contact-form]') || null;
-      document.body.appendChild(mk('fab-wa','chat-fab wa', ()=>{
-        try{ form && validate(form); }catch(_){}
-        openWA(buildMessage(form));
-      }, waSvg));
-      document.body.appendChild(mk('fab-tg','chat-fab tg', async ()=>{
-        try{ form && validate(form); }catch(_){}
-        await openTG(buildMessage(form));
-      }, tgSvg));
-    }
-
-    function injectMiniChat(){
-      if (document.getElementById('mini-chat')) return;
-      const wrap = document.createElement('div');
-      wrap.id='mini-chat'; wrap.className='minichat';
-      wrap.innerHTML = `
-        <span class="label">Есть вопросы?</span>
-        <button class="mi wa" type="button" title="WhatsApp">
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24..."/></svg>
-          <span>WhatsApp</span>
-        </button>
-        <button class="mi tg" type="button" title="Telegram">
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3..."/></svg>
-          <span>Telegram</span>
-        </button>`;
-      document.body.appendChild(wrap);
-      const form = qs('[data-contact-form]') || null;
-      wrap.querySelector('.mi.wa')?.addEventListener('click', ()=>{
-        try{ form && validate(form); }catch(_){}
-        openWA(buildMessage(form));
-      });
-      wrap.querySelector('.mi.tg')?.addEventListener('click', async ()=>{
-        try{ form && validate(form); }catch(_){}
-        await openTG(buildMessage(form));
-      });
-    }
-
-    function init(){
-      const form = qs('[data-contact-form]');
-      wireForm(form);
-      injectFab();
-      injectMiniChat();
+    document.addEventListener('DOMContentLoaded', ()=>{
+      wireForm(document.querySelector('[data-contact-form]'));
       document.getElementById('goBook')?.addEventListener('click', ()=>{
         setTimeout(()=>document.getElementById('when')?.focus(), 60);
       });
-    }
-    document.addEventListener('DOMContentLoaded', init, {once:true});
+    }, { once:true });
   })();
   </script>
-
-<!-- === APP_CONFIG (единственный) === -->
-<script>
-  window.APP_CONFIG = {
-    whatsapp: '+33 7 59 64 48 13',
-    telegram_user: 'de_iren',
-    telegram_bot:  'de_iren_order_bot',
-    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart', // именно /prestart
-    telegram_open: 'auto' // 'auto' | 'bot' | 'profile'
-  };
-</script>
-
-
-<!-- === WA/TG (БОТ включён, НЕТ mini-chat, НЕТ share) === -->
-<script>
-;(function(){
-  'use strict';
-  if (window.__CONTACT_INIT__) return; window.__CONTACT_INIT__ = true;
-
-  const CFG = window.APP_CONFIG || {};
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const qs  = (sel, root=document) => root.querySelector(sel);
-  const UA = navigator.userAgent;
-  const isiOS = /iP(hone|ad|od)/i.test(UA);
-  const isAndroid = /Android/i.test(UA);
-
-  // ---------- helpers ----------
-  function copy(text){
-    if (navigator.clipboard && window.isSecureContext){
-      navigator.clipboard.writeText(text).catch(()=>{});
-    }
-  }
-  function toast(msg){
-    try{
-      const d = document.createElement('div');
-      d.textContent = msg;
-      d.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 14px;border-radius:12px;font:600 14px/1.2 system-ui;z-index:99999;box-shadow:0 6px 18px rgba(0,0,0,.2)';
-      document.body.appendChild(d); setTimeout(()=>d.remove(), 2200);
-    }catch(_){}
-  }
-  function harden(btn){
-    if (!btn) return;
-    btn.setAttribute('type','button');
-    const stop = e => { e.preventDefault(); e.stopPropagation(); };
-    btn.addEventListener('mousedown', stop, {passive:false});
-    btn.addEventListener('touchstart', stop, {passive:false});
-  }
-
-  // ---------- контекст / сообщение ----------
-  function pageContext(){
-    const html = document.documentElement, body = document.body;
-    const title = qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '';
-    return {
-      url: location.href,
-      title,
-      programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
-      programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || title,
-      programPrice: body.getAttribute('data-program-price') || html.getAttribute('data-program-price') || ''
-    };
-  }
-  function validate(form){
-    for (const n of ['date','guests','name','contact']){
-      const el = form.querySelector(`[name="${n}"]`);
-      if (!el || !String(el.value||'').trim()){ el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.'); }
-    }
-  }
-  function buildMessage(form=null){
-    const ctx = pageContext();
-    const f = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const lines = [
-      'Заявка с сайта Tours Languedoc by Irène',
-      ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      ctx.programPrice ? `Пакет/цена: ${ctx.programPrice}` : '',
-      `URL: ${ctx.url}`
-    ];
-    if (form){
-      lines.push('—', `Дата: ${f('date')}`, `Гостей: ${f('guests')}`, `Имя: ${f('name')}`, `Контакт: ${f('contact')}`);
-      if (f('message')) lines.push(`Сообщение: ${f('message')}`);
-    }
-    return lines.filter(Boolean).join('\n');
-  }
-
-  // ---------- WhatsApp ----------
-  function openWA(text){
-    const phone = digits(CFG.whatsapp || '');
-    if (!phone) throw new Error('Не задан номер WhatsApp в APP_CONFIG.');
-    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
-  }
-
-  // ---------- Telegram deep-link (без share) ----------
-  function openTGDeep(domain, startParam){ // domain: bot или user
-    const hasStart = !!startParam;
-    const https = hasStart
-      ? `https://t.me/${encodeURIComponent(domain)}?start=${encodeURIComponent(startParam)}`
-      : `https://t.me/${encodeURIComponent(domain)}`;
-    const tgScheme = hasStart
-      ? `tg://resolve?domain=${encodeURIComponent(domain)}&start=${encodeURIComponent(startParam)}`
-      : `tg://resolve?domain=${encodeURIComponent(domain)}`;
-    const intent = `intent://resolve?domain=${encodeURIComponent(domain)}${hasStart?`&start=${encodeURIComponent(startParam)}`:''}` +
-                   `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
-    // iOS — только топ-левел навигация стабильно открывает схему
-    if (isiOS){
-      location.href = tgScheme;
-      setTimeout(()=>{ location.href = https; }, 800);
-      return;
-    }
-    // Android — интент, затем https на всякий случай
-    if (isAndroid){
-      location.href = intent;
-      setTimeout(()=>{ location.href = https; }, 1200);
-      return;
-    }
-    // Desktop — схема -> https -> web.telegram
-    try{ window.open(tgScheme, '_self'); }catch(_){}
-    setTimeout(()=>{ try{ window.open(https, '_self'); }catch(_){} }, 300);
-    setTimeout(()=>{ try{ window.open(`https://web.telegram.org/k/#@${encodeURIComponent(domain)}`, '_self'); }catch(_){} }, 900);
-  }
-
-  async function openTG(text){
-    const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-    const pre = CFG.bot_prestart_url || '';
-    // 1) Бот через /prestart
-    if (bot && pre){
-      try{
-        const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ text, page: location.href })
-        });
-        if (res.ok){
-          const data = await res.json();
-          if (data && data.token){
-            openTGDeep(bot, data.token);
-            return;
-          }
-        }
-      }catch(_){ /* идём дальше */ }
-    }
-    // 2) Прямо в чат бота (без токена)
-    if (bot){
-      copy(text);
-      openTGDeep(bot);
-      toast('Текст заявки скопирован — вставьте в Telegram и отправьте.');
-      return;
-    }
-    // 3) Прямо в личный чат @username
-    const user = (CFG.telegram_user || '').replace(/^@/,'');
-    if (user){
-      copy(text);
-      openTGDeep(user);
-      toast('Текст заявки скопирован — вставьте в Telegram и отправьте.');
-      return;
-    }
-    throw new Error('Не задан Telegram (bot или username) в APP_CONFIG.');
-  }
-
-  // ---------- проводка формы ----------
-  function wireForm(form){
-    if (!form || form.__wired) return; form.__wired = true;
-    const wa = form.querySelector('[data-whatsapp]');
-    const tg = form.querySelector('[data-telegram]');
-    if (wa && !wa.__wired){
-      wa.__wired = true; harden(wa);
-      wa.addEventListener('click', e=>{
-        try{ e.preventDefault(); validate(form); openWA(buildMessage(form)); }
-        catch(err){ alert(err.message||'Не удалось открыть WhatsApp'); }
-      }, {passive:false});
-    }
-    if (tg && !tg.__wired){
-      tg.__wired = true; harden(tg);
-      tg.addEventListener('click', async e=>{
-        try{ e.preventDefault(); validate(form); await openTG(buildMessage(form)); }
-        catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
-      }, {passive:false});
-    }
-  }
-
-  // ---------- init ----------
-  function init(){
-    const form = qs('[data-contact-form]');
-    wireForm(form);
-    document.getElementById('goBook')?.addEventListener('click', ()=>{
-      setTimeout(()=>qs('#when')?.focus(), 60);
-    });
-  }
-  document.addEventListener('DOMContentLoaded', init, { once:true });
-})();
-</script>
-
-<!-- На всякий случай скрыть любые уцелевшие старые элементы мини-чата -->
-<style>#mini-chat,.minichat{display:none!important}</style>
 
 </body>
 </html>
+html>
 
