@@ -67,10 +67,31 @@
   }
 
   // ✅ Telegram SHARE (без бэкенда): откроет окно «Поделиться» с заполненным текстом
-  function openTelegram(text){
-    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
-    window.open(shareUrl, '_blank', 'noopener');
+ <script>
+function openTelegram(text){
+  const user = (window.APP_CONFIG?.telegram_user || '').replace(/^@/,'');
+  if (!user) { alert('Не задан Telegram username в APP_CONFIG. Пример: telegram_user: "de_iren"'); return; }
+
+  // 1) Копируем заявку в буфер обмена (тихо).
+  // Если копирование не получится (http/https/разрешения), просто продолжаем.
+  if (navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).catch(()=>{});
   }
+
+  // 2) Открываем чат с вашим контактам — клиент сразу попадает в диалог с вами.
+  window.open(`https://t.me/${encodeURIComponent(user)}`, '_blank', 'noopener');
+
+  // 3) Подсказка: что текст уже скопирован (чтобы клиент вставил и отправил).
+  try {
+    const note = document.createElement('div');
+    note.textContent = 'Текст заявки скопирован. Вставьте в Telegram и отправьте.';
+    note.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 14px;border-radius:10px;font:600 14px/1.2 system-ui;z-index:99999;box-shadow:0 6px 18px rgba(0,0,0,.2)';
+    document.body.appendChild(note);
+    setTimeout(()=>note.remove(), 2500);
+  } catch(_) {}
+}
+</script>
+
 
   // -------- кнопки в герое (data-whatsapp / data-telegram) --------
   function wireHero(){
