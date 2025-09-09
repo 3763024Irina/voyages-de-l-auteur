@@ -787,57 +787,34 @@
 </script>
 
 
-  <!-- Проставить href соцсетей из конфига (топ, футер) и логика FAB -->
-  <script>
-  (function(){
-    const cfg = window.APP_CONFIG || {};
-    const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
+ <!-- Проставить href соцсетей из конфига (топ, футер) -->
+<script>
+(function(){
+  const cfg = window.APP_CONFIG || {};
+  const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
 
-    // Топбар
-    setHref('socVK', cfg.vk || '#');
-    setHref('socFB', cfg.facebook || '#');
-    setHref('socIG', cfg.instagram || '#');
-    if (document.getElementById('socTG')) {
-      const tg = cfg.telegram ? (String(cfg.telegram).startsWith('http') ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
-      document.getElementById('socTG').href = tg;
-    }
+  // Топбар
+  setHref('socVK',  cfg.vk || '#');
+  setHref('socFB',  cfg.facebook || '#');
+  setHref('socIG',  cfg.instagram || '#');
+  if (document.getElementById('socTG')) {
+    const tg = cfg.telegram ? (/^https?:/i.test(cfg.telegram) ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
+    document.getElementById('socTG').href = tg;
+  }
 
-    // Футер
-    setHref('socVKf', cfg.vk || '#');
-    setHref('socFBf', cfg.facebook || '#');
-    setHref('socIGf', cfg.instagram || '#');
-    if (document.getElementById('socTGf')) {
-      const tgF = cfg.telegram ? (String(cfg.telegram).startsWith('http') ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
-      document.getElementById('socTGf').href = tgF;
-    }
+  // Футер
+  setHref('socVKf', cfg.vk || '#');
+  setHref('socFBf', cfg.facebook || '#');
+  setHref('socIGf', cfg.instagram || '#');
+  if (document.getElementById('socTGf')) {
+    const tgF = cfg.telegram ? (/^https?:/i.test(cfg.telegram) ? cfg.telegram : 'https://t.me/' + cfg.telegram) : '#';
+    document.getElementById('socTGf').href = tgF;
+  }
+})();
+</script>
 
-    // FAB (чат)
-    const fab = document.getElementById('chatFab');
-    const fabMenu = document.getElementById('chatFabMenu');
-    const waBtn = document.querySelector('#chatFabMenu a[data-whatsapp]');
-    const tgBtn = document.querySelector('#chatFabMenu a[data-telegram]');
-    const goBtn = document.getElementById('fabGo');
-
-    if (fab) {
-      fab.addEventListener('click', (e)=>{
-        const root = fab.closest('.fab');
-        if (!root) return;
-        root.classList.toggle('open');
-      });
-      if (goBtn) {
-        goBtn.addEventListener('click', ()=>{
-          document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'});
-          fab.closest('.fab')?.classList.remove('open');
-        });
-      }
-      if (waBtn) waBtn.addEventListener('click', ()=> fab.closest('.fab')?.classList.remove('open'));
-      if (tgBtn) tgBtn.addEventListener('click', ()=> fab.closest('.fab')?.classList.remove('open'));
-    }
-  })();
-  </script>
-
-  <!-- Плавающий чат (FAB) -->
-  <div class="fab" aria-live="polite">
+<!-- Плавающий чат (FAB) -->
+<div class="fab" aria-live="polite">
   <div class="menu" id="chatFabMenu">
     <button class="mini" id="fabGo" aria-label="Написать сообщение" title="Написать">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -859,15 +836,98 @@
       </svg>
     </button>
   </div>
-<!-- === гарантируем APP_CONFIG (не перезаписываем, а дополняем) === -->
+
+  <button class="bubble" id="chatFab" aria-label="Открыть быстрый чат" title="Связаться">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#fff" d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+    </svg>
+  </button>
+</div>
+
+<!-- Конфиг чата (НЕ перезаписываем, а дополняем) -->
 <script>
-  Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
-    whatsapp: '+33 7 59 64 48 13',
-    telegram_user: 'de_iren',           // без @
-    telegram_bot:  'de_iren_order_bot', // без @
-    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-  });
+Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
+  whatsapp: '+33 7 59 64 48 13',
+  telegram_user: 'de_iren',           // без @
+  telegram_bot:  'de_iren_order_bot', // без @
+  bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
+});
 </script>
+
+<!-- Подключение кликов для FAB: WhatsApp / Telegram -->
+<script>
+(function(){
+  const CFG = window.APP_CONFIG || {};
+  const $ = (s, r=document)=>r.querySelector(s);
+  const root = $('.fab'), bubble = $('#chatFab'), btnWA = $('#btn-whatsapp'), btnTG = $('#btn-telegram'), goBtn = $('#fabGo');
+
+  // Открытие/закрытие меню
+  bubble?.addEventListener('click', ()=> root?.classList.toggle('open'));
+  goBtn?.addEventListener('click', ()=>{
+    document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'});
+    root?.classList.remove('open');
+  });
+  document.addEventListener('click', e=>{ if(!e.target.closest('.fab')) root?.classList.remove('open'); });
+
+  // --- Вспомогательное
+  const isiOS=/iP(hone|ad|od)/i.test(navigator.userAgent), isAndroid=/Android/i.test(navigator.userAgent);
+
+  function buildText(){
+    const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
+    return `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
+  }
+  function openWhatsApp(){
+    const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
+    if(!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildText())}`;
+  }
+  function normalizePreUrl(u){
+    if(!u) return '';
+    try{
+      const url = new URL(u, location.origin);
+      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i,'/prestart');
+      if (!/\/prestart\/?$/i.test(url.pathname)) url.pathname = (url.pathname.replace(/\/$/,'') + '/prestart');
+      return url.toString();
+    }catch{ return u; }
+  }
+  async function prestart(){
+    const PRE = normalizePreUrl(CFG.bot_prestart_url || '');
+    if(!PRE) return null;
+    try{
+      const r = await fetch(PRE, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ page: location.href, title: document.title }) });
+      const j = await r.json().catch(()=>null);
+      return j?.token || null;
+    }catch{ return null; }
+  }
+  function openTGDeep(domain, start){
+    const https  = start ? `https://t.me/${domain}?start=${encodeURIComponent(start)}` : `https://t.me/${domain}`;
+    const scheme = start ? `tg://resolve?domain=${domain}&start=${encodeURIComponent(start)}` : `tg://resolve?domain=${domain}`;
+    const intent = `intent://resolve?domain=${domain}${start?`&start=${encodeURIComponent(start)}`:''}`
+                 + `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+    if (isiOS){ location.href = scheme; setTimeout(()=>{ location.href = https; }, 800); return; }
+    if (isAndroid){ location.href = intent; setTimeout(()=>{ location.href = https; }, 1200); return; }
+    try{ location.href = scheme; }catch(_){}
+    setTimeout(()=>{ location.href = https; }, 300);
+    setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${domain}`; }, 900);
+  }
+  async function openTelegram(){
+    const bot  = (CFG.telegram_bot  || '').replace(/^@/,'');
+    const user = (CFG.telegram_user || '').replace(/^@/,'');
+    if (bot){
+      const token = await prestart();                 // пробуем /prestart токен
+      openTGDeep(bot, token || ''); return;
+    }
+    if (user){ openTGDeep(user); return; }            // личный чат
+    alert('В APP_CONFIG не задан telegram_bot или telegram_user');
+  }
+
+  // Клики по кнопкам внутри FAB
+  btnWA?.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); root?.classList.remove('open'); });
+  btnTG?.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); root?.classList.remove('open'); });
+})();
+</script>
+
 
 <!-- === Проводка FAB: открытие меню + WhatsApp + Telegram === -->
 <script>
