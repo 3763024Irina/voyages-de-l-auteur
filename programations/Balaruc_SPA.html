@@ -686,18 +686,18 @@
   })();
   </script>
 
-<!-- ======= APP_CONFIG ======= -->
+<!-- ======= APP_CONFIG (единый) ======= -->
 <script>
   window.APP_CONFIG = {
     whatsapp: '+33 7 59 64 48 13',          // номер WA (можно с пробелами/плюсом)
-    telegram_user: 'de_iren',               // ваш @юзер без @
-    telegram_bot:  'de_iren_order_bot',     // ваш бот без @
+    telegram_user: 'de_iren',               // ваш Telegram @username (без @)
+    telegram_bot:  'de_iren_order_bot',     // ваш бот (без @)
     bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
-    show_fab: true,                         // круглые плавающие кнопки (поставьте false, чтобы убрать)
+    show_fab: false                         // круглые плавающие иконки (true/false)
   };
 </script>
 
-<!-- ======= WA/TG ЛОГИКА (единый скрипт) ======= -->
+<!-- ======= WA/TG — единый скрипт (без mini-chat) ======= -->
 <script>
 ;(function(){
   'use strict';
@@ -706,13 +706,12 @@
   const CFG = window.APP_CONFIG || {};
   const digits = s => String(s||'').replace(/\D/g,'');
   const qs  = (sel, root=document) => root.querySelector(sel);
-  const qsa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
   // ---------- безопасная навигация (без window.open) ----------
   function go(href){
     const a = document.createElement('a');
     a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    a.style.position='fixed'; a.style.left='-9999px';
+    a.style.position = 'fixed'; a.style.left = '-9999px';
     document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 300);
   }
 
@@ -743,14 +742,16 @@
     const need = ['date','guests','name','contact'];
     for (const n of need){
       const el = form.querySelector(`[name="${n}"]`);
-      if (!el || !String(el.value||'').trim()){ el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.'); }
+      if (!el || !String(el.value||'').trim()){
+        el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.');
+      }
     }
   }
 
   // ---------- сбор текста ----------
   function buildMessage(form=null){
     const ctx = pageContext();
-    const f = (n) => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+    const f = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
     const lines = [
       `Заявка с сайта Tours Languedoc by Irène`,
       ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
@@ -776,11 +777,12 @@
     go(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`);
   }
 
-  // ---------- Telegram (бот → фоллбэк) ----------
+  // ---------- Telegram (бот → личный чат → share) ----------
   async function openTG(text){
     const bot = (CFG.telegram_bot || '').replace(/^@/,'');
     const pre = CFG.bot_prestart_url || '';
-    // 1) пробуем через /prestart для бота (если настроено)
+
+    // 1) бот через /prestart
     if (bot && pre){
       try{
         const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
@@ -797,7 +799,8 @@
         }
       }catch(_){}
     }
-    // 2) личный чат с копированием текста
+
+    // 2) личный чат + копирование текста
     const user = (CFG.telegram_user || '').replace(/^@/,'');
     if (navigator.clipboard && window.isSecureContext){
       navigator.clipboard.writeText(text).catch(()=>{});
@@ -807,11 +810,12 @@
       toast('Текст заявки скопирован. Вставьте в Telegram и отправьте.');
       return;
     }
+
     // 3) крайний фоллбэк — окно шаринга
     go(`https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`);
   }
 
-  // ---------- проводка кнопок ----------
+  // ---------- проводка кнопок формы ----------
   function harden(btn){
     if (!btn) return;
     btn.setAttribute('type','button');
@@ -824,6 +828,7 @@
     if (!form || form.__wired) return; form.__wired = true;
     const wa = form.querySelector('[data-whatsapp]');
     const tg = form.querySelector('[data-telegram]');
+
     if (wa && !wa.__wired){
       wa.__wired = true; harden(wa);
       wa.addEventListener('click', e=>{
@@ -831,6 +836,7 @@
         try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message||'Не удалось открыть WhatsApp'); }
       }, {passive:false});
     }
+
     if (tg && !tg.__wired){
       tg.__wired = true; harden(tg);
       tg.addEventListener('click', async e=>{
@@ -840,10 +846,25 @@
     }
   }
 
-  // ---------- плав. кнопки (по желанию) ----------
+  // ---------- опциональные FAB (круглые кнопки справа) ----------
   function injectFab(){
     if (CFG.show_fab === false) return;
     if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
+
+    const cssId = 'chat-fab-css';
+    if (!document.getElementById(cssId)){
+      const s = document.createElement('style');
+      s.id = cssId;
+      s.textContent = `
+        .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
+                  box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
+        .chat-fab svg{width:22px; height:22px; display:block}
+        .chat-fab.wa{bottom:76px}
+        .chat-fab.tg{bottom:26px}
+        @media (max-width:480px){ .chat-fab.wa{bottom:86px} .chat-fab.tg{bottom:36px} }
+      `;
+      document.head.appendChild(s);
+    }
 
     const mk = (id, cls, svg, onClick) => {
       const b = document.createElement('button');
@@ -866,33 +887,21 @@
     });
   }
 
-  // ---------- стили для FAB (если нужны) ----------
-  (function injectFabStyles(){
-    const cssId = 'chat-fab-css';
-    if (document.getElementById(cssId)) return;
-    const s = document.createElement('style');
-    s.id = cssId;
-    s.textContent = `
-      .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-                box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
-      .chat-fab svg{width:22px; height:22px; display:block}
-      .chat-fab.wa{bottom:76px}
-      .chat-fab.tg{bottom:26px}
-      @media (max-width:480px){ .chat-fab.wa{bottom:86px} .chat-fab.tg{bottom:36px} }
-    `;
-    document.head.appendChild(s);
-  })();
-
   // ---------- init ----------
   function init(){
-    wireForm(qs('[data-contact-form]'));
-    injectFab(); // уберите в конфиге show_fab:false, чтобы не показывать
-    // плавный фокус из шапки
-    document.getElementById('goBook')?.addEventListener('click', ()=>{ setTimeout(()=>qs('#when')?.focus(), 60); });
+    const form = qs('[data-contact-form]');
+    wireForm(form);
+    injectFab(); // мини-чат НЕ существует; остаются только кнопки формы и (опционально) FAB
+    document.getElementById('goBook')?.addEventListener('click', ()=>{
+      setTimeout(()=>qs('#when')?.focus(), 60);
+    });
   }
   document.addEventListener('DOMContentLoaded', init, { once:true });
 })();
 </script>
+
+<!-- На всякий случай: если где-то остался старый mini-chat в стилях/DOM — скрываем насильно -->
+<style>#mini-chat,.minichat{display:none!important}</style>
 
 
 
