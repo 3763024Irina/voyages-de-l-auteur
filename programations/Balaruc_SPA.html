@@ -102,7 +102,6 @@
     #book input, #book textarea, #book select{ height:44px; }
     #book textarea{ min-height:110px; height:auto; }
 
-    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
     #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
     #book .btn{ padding:10px 12px; border-radius:12px; }
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
@@ -120,7 +119,6 @@
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
       #book .fields{grid-template-columns:1fr}
-      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -170,9 +168,8 @@
         <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)</h2>
         <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
         <div class="actions">
+          <!-- оставляем только кнопку бронирования -->
           <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </div>
     </div>
@@ -263,7 +260,7 @@
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
 
-      <!-- ВНИМАНИЕ: только две кнопки WA/TG, без submit и без select -->
+      <!-- две кнопки WA/TG внутри формы оставляем -->
       <form class="fields" data-contact-form>
         <div>
           <label for="when" data-i18n="label_date">Дата</label>
@@ -289,7 +286,6 @@
           <textarea id="msg" name="message" placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"></textarea>
         </div>
 
-        <!-- УДАЛЕНО: блок выбора канала и кнопка submit -->
         <div class="form-actions full">
           <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp2">WhatsApp</a>
           <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Telegram</a>
@@ -309,18 +305,18 @@
     </div>
   </footer>
 
-  <!-- I18N (без изменений) -->
+  <!-- I18N (если нужен перевод – вставь свой блок словарей тут) -->
   <script>
-    /* ... ваш блок i18n без изменений ... */
+    /* your i18n here if used */
   </script>
 
-  <!-- ЕДИНЫЙ КОНФИГ (объединённый; старые конфиги удалить) -->
+  <!-- ЕДИНЫЙ КОНФИГ -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',        // номер WA (цифры выделим автоматически)
-      telegram_user: 'de_iren',             // запасной @user (без @)
-      telegram_bot:  'de_iren_order_bot',   // бот (без @), если используете prestart
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart', // сервис токена
+      whatsapp: '+33 7 59 64 48 13',
+      telegram_user: 'de_iren',
+      telegram_bot:  'de_iren_order_bot',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
@@ -331,7 +327,6 @@
       try{
         const params = new URLSearchParams(location.search);
         const token = params.get('admin');
-
         if (token !== null) {
           if (token === 'off') {
             localStorage.removeItem('site:admin');
@@ -342,17 +337,14 @@
           const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
           history.replaceState({},'', newUrl);
         }
-
         const isAdmin = localStorage.getItem('site:admin') === '1';
         document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-      }catch(e){
-        console.warn('[adminGate]', e);
-      }
+      }catch(e){ console.warn('[adminGate]', e); }
     })();
   </script>
 
-  <!-- Скрипты (ВАЖЕН ПОРЯДОК) -->
-  <script src="assets/js/contact.js" defer></script>
-  <script src="assets/js/chat-widget.js" defer></script>
+  <!-- Скрипты (путь из папки programations) -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
