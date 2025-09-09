@@ -129,3 +129,15 @@ window.APP_CONFIG = Object.assign({
   window.__setAdmin = setAdmin;
   window.__isAdmin  = isAdmin;
 })();
+
+<!-- assets/js/config.js -->
+<script>
+  window.APP_CONFIG = {
+    whatsapp: '+33 7 59 64 48 13',  // твой номер WA (любой вид, мы сами нормализуем)
+    telegram_user: 'de_iren',       // твой @юзер без @
+    // telegram_bot: 'de_iren_order_bot',      // если есть бот (опционально)
+    // bot_prestart_url: 'https://.../prestart' // если есть бэкенд под бота (опционально)
+    telegram_open: 'auto',          // 'auto' | 'bot' | 'profile'
+    lang: 'auto'                    // 'ru' | 'fr' | 'auto'
+  };
+</script>
