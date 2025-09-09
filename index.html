@@ -257,7 +257,7 @@
           <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
           <li><a href="#format" data-i18n="nav.format">Формат</a></li>
           <li><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></li>
-          <li><a class="cta" href="#contactCard" data-i18n="nav.book">Забронировать</a></li>
+
         </ul>
       </nav>
     </div>
@@ -866,19 +866,168 @@
     </svg>
   </button>
 </div>
-
-
+<!-- === гарантируем APP_CONFIG (не перезаписываем, а дополняем) === -->
 <script>
-    window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',
-     
-    };
-  </script>
+  Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
+    whatsapp: '+33 7 59 64 48 13',           // ваш номер
+    telegram_user: 'de_iren',                // без @
+    telegram_bot:  'de_iren_order_bot',      // без @ (если есть бот)
+    bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
+  });
+</script>
 
-  <!-- Наши скрипты -->
-  <script src="assets/js/contact.js"></script>
-  <script src="assets/js/chat-widget.js" defer></script>
+<!-- === Wiring FAB: #btn-whatsapp / #btn-telegram === -->
+<script>
+(function(){
+  const CFG = window.APP_CONFIG || {};
+  const $    = (s, r=document)=>r.querySelector(s);
+  const $$   = (s, r=document)=>Array.from(r.querySelectorAll(s));
+  const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
+  const isAndroid = /Android/i.test(navigator.userAgent);
+
+  // ближайшая "контактная" форма (если нет — берём первую или document)
+  function getForm(btn){
+    return btn?.closest?.('form')
+        || $('[data-contact-form]')
+        || $('#quickForm')
+        || document.forms[0]
+        || document;
+  }
+  const qv = (form, name)=> (form.querySelector(`[name="${name}"]`)?.value || '').trim();
+
+  function buildText(form){
+    const title = document.querySelector('meta[property="og:title"]')?.content
+               || document.documentElement.getAttribute('data-program-title')
+               || document.title;
+    const pid   = document.documentElement.getAttribute('data-program-id') || (form?.dataset.programId||'');
+    const lines = [
+      `Имя: ${qv(form,'name')}`,
+      `Контакт: ${qv(form,'contact')}`,
+      `Дата: ${qv(form,'date')}`,
+      `Гостей: ${qv(form,'guests') || '1'}`,
+      `Программа: ${title}${pid?` (${pid})`:''}`,
+      `Страница: ${location.href}`,
+      qv(form,'message') ? `Сообщение: ${qv(form,'message')}` : ''
+    ].filter(Boolean);
+    return lines.join('\n');
+  }
+
+  function normalizePreUrl(u){
+    if(!u) return '';
+    try{
+      const url = new URL(u, location.origin);
+      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+      if (!/\/prestart\/?$/i.test(url.pathname)) url.pathname = (url.pathname.replace(/\/$/,'') + '/prestart');
+      return url.toString();
+    }catch{ return u; }
+  }
+  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
+
+  async function prestart(payload){
+    if(!PRE_URL) return null;
+    try{
+      const r = await fetch(PRE_URL, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const j = await r.json().catch(()=>null);
+      return j && j.token ? j.token : null;
+    }catch{ return null; }
+  }
+
+  function copy(text){
+    if (navigator.clipboard && window.isSecureContext){
+      navigator.clipboard.writeText(text).catch(()=>{});
+    }
+  }
+
+  function openTGDeep(domain, start){
+    const https = start
+      ? `https://t.me/${encodeURIComponent(domain)}?start=${encodeURIComponent(start)}`
+      : `https://t.me/${encodeURIComponent(domain)}`;
+    const tgScheme = start
+      ? `tg://resolve?domain=${encodeURIComponent(domain)}&start=${encodeURIComponent(start)}`
+      : `tg://resolve?domain=${encodeURIComponent(domain)}`;
+    const intent = `intent://resolve?domain=${encodeURIComponent(domain)}${start?`&start=${encodeURIComponent(start)}`:''}`
+                 + `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+
+    if (isiOS) {
+      location.href = tgScheme;
+      setTimeout(()=>{ location.href = https; }, 800);
+      return;
+    }
+    if (isAndroid) {
+      location.href = intent;
+      setTimeout(()=>{ location.href = https; }, 1200);
+      return;
+    }
+    try{ location.href = tgScheme; }catch(_){}
+    setTimeout(()=>{ location.href = https; }, 300);
+    setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${encodeURIComponent(domain)}`; }, 900);
+  }
+
+  async function openTelegram(text){
+    const bot  = (CFG.telegram_bot  || '').replace(/^@/,'');
+    const user = (CFG.telegram_user || '').replace(/^@/,'');
+
+    // 1) пробуем бота с /prestart
+    if (bot){
+      const token = await prestart({
+        name:qv(document,'name'), contact:qv(document,'contact'),
+        date:qv(document,'date'), guests:qv(document,'guests')||'1',
+        message:qv(document,'message'),
+        program:{ title: document.title, id: document.documentElement.getAttribute('data-program-id')||'', url: location.href }
+      });
+      if (token){ openTGDeep(bot, token); return; }
+      // 2) просто чат бота
+      copy(text);
+      openTGDeep(bot);
+      return;
+    }
+    // 3) личный чат
+    if (user){
+      copy(text);
+      openTGDeep(user);
+      return;
+    }
+    alert('В APP_CONFIG не задан telegram_bot или telegram_user');
+  }
+
+  function openWhatsApp(text){
+    const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
+    if(!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
+    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  }
+
+  // --- навесить обработчики на FAB ---
+  const btnWA = document.getElementById('btn-whatsapp');
+  const btnTG = document.getElementById('btn-telegram');
+  const fabRoot = document.querySelector('.fab');
+  const closeFab = ()=> fabRoot?.classList.remove('open');
+
+  btnWA?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const form = getForm(btnWA);
+    const text = buildText(form);
+    openWhatsApp(text);
+    closeFab();
+  });
+  btnTG?.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    const form = getForm(btnTG);
+    const text = buildText(form);
+    await openTelegram(text);
+    closeFab();
+  });
+
+  // закрывать меню по клику вне
+  document.addEventListener('click', (e)=>{
+    const inside = e.target.closest?.('.fab');
+    if (!inside) closeFab();
+  });
+})();
+</script>
+
 </body>
 </html>
 
