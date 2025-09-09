@@ -94,6 +94,7 @@
     .hero .inner{display:grid; grid-template-columns:1.2fr auto; gap:28px; align-items:center; min-height:50vh}
     .hero h2{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.06; color:#fff; margin:0 0 12px}
     .hero p{color:#f7f7f7; font-size:18px; max-width:640px}
+    .hero .card{background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
 
     .tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .tag{font-size:13px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid #e8e8e8; background:#fff}
@@ -124,13 +125,13 @@
     .about .portrait{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)}
     .about p{line-height:1.6}
 
-    /* ===== Контакты и бронь (основной блок) ===== */
+    /* ===== Контакты и бронь (компактно) ===== */
     .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
     .contact .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .stack{display:grid; gap:10px}
     label{display:block; font-size:13px; color:var(--muted); margin:6px 0 4px}
     input, select, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
-    textarea{min-height:110px}
+    textarea{min-height:100px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
@@ -147,7 +148,30 @@
       nav ul{display:none}
     }
 
-    /* --- Соцсети + кнопки-иконки --- */
+    /* === HERO узкая форма (быстрый запрос) === */
+    .hero .contact-card{
+      width: 360px; max-width: 100%;
+      justify-self: end; align-self: end;
+      padding: 14px 16px; border-radius: 16px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid #eee; box-shadow: var(--shadow);
+    }
+    .hero .contact-card form{ background:transparent; border:0; box-shadow:none; padding:0; }
+    .hero .contact-card input, .hero .contact-card textarea{
+      height: 40px; padding: 8px 10px; font:inherit;
+      border-radius:10px; border:1px solid #e6e6e6; background:#fff;
+      margin:6px 0 10px;
+    }
+    .hero .contact-card textarea{ min-height: 90px; height:auto; resize:vertical; }
+    .hero .contact-card .btn{ padding:10px 12px; border-radius:10px; }
+    .hero .contact-card input:focus, .hero .contact-card textarea:focus{
+      outline:2px solid rgba(13,43,30,.28); border-color:var(--brand);
+    }
+    @media (max-width:1000px){
+      .hero .contact-card{ width:100%; justify-self:stretch; align-self:start; }
+    }
+
+    /* --- Соцсети + кнопки-иконки вне топбара (общие) --- */
     .social{display:flex; align-items:center; gap:12px}
     .icon-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
       border:1px solid #e6e6e6; border-radius:999px; background:#fff; box-shadow:var(--shadow)}
@@ -171,7 +195,7 @@
     .fab .mini{width:44px; height:44px; border-radius:999px; display:grid; place-items:center;
       background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow)}
     .fab .mini:hover{background:#f5f5f5}
-    .fab .label{position:absolute; right:62px; margin-top:10px; background:#fff; border:1px solid #e6e6e6; border-radius:10px; padding:6px 10px; font-size:12px; color:#ink; box-shadow:var(--shadow)}
+    .fab .label{position:absolute; right:62px; margin-top:10px; background:#fff; border:1px solid #e6e6e6; border-radius:10px; padding:6px 10px; font-size:12px; color:var(--ink); box-shadow:var(--shadow)}
     @media (prefers-reduced-motion:no-preference){
       .fab .menu, .fab .bubble, .fab .mini{transition:transform .18s ease, opacity .18s ease, background .18s ease}
       .fab.open .menu .mini{transform:translateY(0); opacity:1}
@@ -186,10 +210,10 @@
       <div class="inner">
         <div class="left">
           <div class="note" data-i18n="top.note">Авторские туры по Югу Франции</div>
-          <!-- Соцсети в ТОПЕ -->
+          <!-- Соцсети в ТОПЕ (рядом с надписью) -->
           <div class="social" aria-label="Социальные сети">
             <a class="icon-btn" id="socVK" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1л1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1l1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
               <span class="sr-only">VK</span>
             </a>
             <a class="icon-btn" id="socFB" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
@@ -232,8 +256,8 @@
           <li><a href="#why" data-i18n="nav.why">Почему с нами</a></li>
           <li><a href="#tours" data-i18n="nav.tours">Программы</a></li>
           <li><a href="#format" data-i18n="nav.format">Формат</a></li>
-          <li><a href="#contact" data-i18n="nav.contacts">Контакты</a></li>
-          <li><a class="cta" href="#contact" data-i18n="nav.book">Забронировать</a></li>
+          <li><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></li>
+          <li><a class="cta" href="#contactCard" data-i18n="nav.book">Забронировать</a></li>
         </ul>
       </nav>
     </div>
@@ -261,7 +285,59 @@
         </div>
       </div>
 
-      <!-- (БЫСТРЫЙ ЗАПРОС УДАЛЁН) -->
+      <!-- Быстрый запрос (узкая карточка) -->
+      <div class="card contact-card" id="contactCard">
+        <strong data-i18n="form.fast">Быстрый запрос</strong>
+        <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
+          Отправьте пожелания — подберу маршрут и даты в течение дня.
+        </p>
+
+        <form
+          id="quickForm"
+          data-contact-form
+          data-program-title="Запрос с главной (быстрый)"
+          data-program-id="HOME-FAST"
+          data-channel="whatsapp"
+        >
+          <label for="f-name" data-i18n="form.name">Имя</label>
+          <input id="f-name" name="name" required placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name" />
+
+          <label for="f-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
+          <input id="f-contact" name="contact" required placeholder="+33…" data-i18n-placeholder="form.contact.ph" autocomplete="tel" inputmode="tel" pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
+
+          <div style="display:flex; gap:10px; margin-top:8px">
+            <div style="flex:1">
+              <label for="f-date" data-i18n="form.date">Дата</label>
+              <input type="date" id="f-date" name="date" />
+            </div>
+            <div style="width:140px">
+              <label for="f-guests" data-i18n="form.guests">Гостей</label>
+              <input type="number" id="f-guests" name="guests" min="1" value="2" />
+            </div>
+          </div>
+
+          <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
+          <textarea id="f-message" name="message" placeholder="Какие даты и интересы?" data-i18n-placeholder="form.msg.ph"></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:12px">
+            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
+
+            <!-- Иконка WhatsApp -->
+            <a class="btn icon-btn" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 12a8 8 0 0 1-11.9 7l-3.1 1 1-3.1A8 8 0 1 1 20 12zm-8.9-3.3c-.2-.4-.4-.3-.6-.3h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.5s1 2.9 1.1 3.1c.2.3 2 3.2 4.9 4.3 2.4 1 2.9.9 3.4.8.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2 0-.1-.1-.3-.3-.4l-1.3-.6c-.2-.1-.3-.1-.5.1l-.7.8c-.1.1-.3.1-.5 0-.2 0-1.5-.6-2.8-1.7-1-.9-1.7-2.1-1.9-2.4-.2-.3 0-.4.1-.5l.3-.3c.1-.1.1-.2.2-.3.1-.1.1-.2.1-.3 0-.1-.1-.3-.1-.4l-.6-1.4z"/>
+              </svg>
+              <span class="sr-only">WhatsApp</span>
+            </a>
+
+            <!-- Иконка Telegram -->
+            <a class="btn icon-btn" data-telegram href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+              <span class="sr-only">Telegram</span>
+            </a>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -355,77 +431,6 @@
     </div>
   </section>
 
-  <!-- CONTACTS & BOOKING (основной, вместо быстрого запроса) -->
-  <section id="contact" class="container">
-    <h3 class="section-title" data-i18n="contact.title">Контакты и бронь</h3>
-    <div class="contact">
-      <div class="card">
-        <form id="mainForm"
-              data-contact-form
-              data-program-title="Запрос с главной"
-              data-program-id="HOME"
-              data-channel="whatsapp">
-          <div class="stack">
-            <div>
-              <label for="m-name" data-i18n="form.name">Имя</label>
-              <input id="m-name" name="name" required placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name"/>
-            </div>
-            <div>
-              <label for="m-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
-              <input id="m-contact" name="contact" required placeholder="+33…" data-i18n-placeholder="form.contact.ph" autocomplete="tel" inputmode="tel" pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
-            </div>
-            <div style="display:flex; gap:10px">
-              <div style="flex:1">
-                <label for="m-date" data-i18n="form.date">Дата</label>
-                <input type="date" id="m-date" name="date"/>
-              </div>
-              <div style="width:160px">
-                <label for="m-guests" data-i18n="form.guests">Гостей</label>
-                <input type="number" id="m-guests" name="guests" min="1" value="2"/>
-              </div>
-            </div>
-            <div>
-              <label for="m-msg" data-i18n="form.msg">Сообщение</label>
-              <textarea id="m-msg" name="message" placeholder="Какие даты и интересы?" data-i18n-placeholder="form.msg.ph"></textarea>
-            </div>
-
-            <div style="display:flex; gap:10px; margin-top:6px">
-              <a class="btn primary" data-whatsapp href="#" aria-label="WhatsApp" title="WhatsApp" data-i18n="form.whatsapp">Написать в WhatsApp</a>
-              <a class="btn icon-btn" data-telegram href="#" aria-label="Telegram" title="Telegram">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5л2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7л-1.9 12.3c-.1.7-.5.9-1.1.6л-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
-                <span class="sr-only">Telegram</span>
-              </a>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="card">
-        <div class="stack">
-          <p><strong>Tours Languedoc by Irène</strong><br/>Des voyages avec goût</p>
-          <p id="contactArea"><span data-i18n="contact.area">Регион</span>: Occitanie / Languedoc</p>
-          <div class="social">
-            <a class="icon-btn" id="socVKf2" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1л1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
-            </a>
-            <a class="icon-btn" id="socFBf2" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10h3V7h-3V6c0-.8.6-1 1-1h2V2h-3c-2.8 0-4 2-4 4v1H7v3h2v9h4v-9z"/></svg>
-            </a>
-            <a class="icon-btn" id="socIGf2" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zM17.8 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-              </svg>
-            </a>
-            <a class="icon-btn" id="socTGf2" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5л2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7л-1.9 12.3c-.1.7-.5.9-1.1.6л-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
-            </a>
-          </div>
-          <p><a id="emailLink" href="#"></a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -435,7 +440,7 @@
           <!-- Соцсети в футере -->
           <div class="social" aria-label="Социальные сети (футер)">
             <a class="icon-btn" id="socVKf" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1л1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1l1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
               <span class="sr-only">VK</span>
             </a>
             <a class="icon-btn" id="socFBf" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
@@ -449,13 +454,13 @@
               <span class="sr-only">Instagram</span>
             </a>
             <a class="icon-btn" id="socTGf" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5л2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7л-1.9 12.3c-.1.7-.5.9-1.1.6л-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
               <span class="sr-only">Telegram</span>
             </a>
           </div>
         </div>
         <div><p><a href="#why" data-i18n="nav.why">Почему с нами</a></p><p><a href="#tours" data-i18n="nav.tours">Программы</a></p></div>
-        <div><p><a href="#format" data-i18n="nav.format">Формат</a></p><p><a href="#contact" data-i18n="nav.contacts">Контакты</a></p></div>
+        <div><p><a href="#format" data-i18n="nav.format">Формат</a></p><p><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></p></div>
       </div>
       <div class="copy">© 2025 — Languedoc, France</div>
     </div>
@@ -470,7 +475,7 @@
       <p id="modalText"></p>
       <div style="display:flex; gap:10px; padding:10px 0 16px 0">
         <button class="btn primary"
-                onclick="document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'})"
+                onclick="document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'})"
                 data-i18n="nav.book">Забронировать</button>
       </div>
     </div>
@@ -478,6 +483,7 @@
 
   <!-- ===== i18n, карточки, утилиты ===== -->
   <script>
+    // ===== i18n RU/FR =====
     const dict = {
       ru: {
         'top.note': 'Авторские туры по Югу Франции',
@@ -711,65 +717,65 @@
   </script>
 
   <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] -->
-  <script>
-  (function () {
-    const CFG = window.APP_CONFIG || {};
+ <script>
+(function () {
+  const CFG = window.APP_CONFIG || {};
 
-    // ---- helpers ----
-    const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
-    const getForm = (btn) =>
-      btn.closest?.('form') ||
-      document.querySelector('[data-contact-form]') ||
-      document.getElementById('mainForm') ||
-      document.forms[0] || document;
+  // ---- helpers ----
+  const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const getForm = (btn) =>
+    btn.closest?.('form') ||
+    document.querySelector('[data-contact-form]') ||
+    document.getElementById('quickForm') ||
+    document.forms[0] || document;
 
-    const normalizePreUrl = (u)=>{
-      if(!u) return '';
-      try{
-        let url = new URL(u, location.origin);
-        if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
-        if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
-        if (!/\/prestart\/?$/i.test(url.pathname)) {
-          if (!url.pathname.endsWith('/')) url.pathname += '/';
-          url.pathname += 'prestart';
-        }
-        return url.toString();
-      }catch{ return u; }
+  const normalizePreUrl = (u)=>{
+    if(!u) return '';
+    try{
+      let url = new URL(u, location.origin);
+      if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
+      if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
+      if (!/\/prestart\/?$/i.test(url.pathname)) {
+        if (!url.pathname.endsWith('/')) url.pathname += '/';
+        url.pathname += 'prestart';
+      }
+      return url.toString();
+    }catch{ return u; }
+  };
+  const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
+
+  const buildPayload = (form)=>{
+    const q = (sel)=> (form.querySelector(sel)?.value || '').trim();
+    const program = {
+      title: form.dataset.programTitle
+          || document.documentElement.getAttribute('data-program-title')
+          || document.querySelector('meta[property="og:title"]')?.content
+          || document.title,
+      id: form.dataset.programId || document.documentElement.getAttribute('data-program-id') || '',
+      url: location.href
     };
-    const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
-
-    const buildPayload = (form)=>{
-      const q = (sel)=> (form.querySelector(sel)?.value || '').trim();
-      const program = {
-        title: form.dataset.programTitle
-            || document.documentElement.getAttribute('data-program-title')
-            || document.querySelector('meta[property="og:title"]')?.content
-            || document.title,
-        id: form.dataset.programId || document.documentElement.getAttribute('data-program-id') || '',
-        url: location.href
-      };
-      return {
-        name: q('[name="name"]'),
-        contact: q('[name="contact"]'),
-        date: q('[name="date"]'),
-        guests: q('[name="guests"]') || '1',
-        message: q('[name="message"]'),
-        program
-      };
+    return {
+      name: q('[name="name"]'),
+      contact: q('[name="contact"]'),
+      date: q('[name="date"]'),
+      guests: q('[name="guests"]') || '1',
+      message: q('[name="message"]'),
+      program
     };
+  };
 
-    const prestart = async (payload)=>{
-      if (!PRE_URL) return null;
-      try{
-        const r = await fetch(PRE_URL, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-        const j = await r.json().catch(()=>null);
-        return j?.token || null;
-      }catch{ return null; }
-    };
+  const prestart = async (payload)=>{
+    if (!PRE_URL) return null;
+    try{
+      const r = await fetch(PRE_URL, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const j = await r.json().catch(()=>null);
+      return j?.token || null;
+    }catch{ return null; }
+  };
 
   const openTelegram = (token)=>{
     const user = (CFG.telegram_bot || CFG.telegram_user || '').replace(/^@/, '');
