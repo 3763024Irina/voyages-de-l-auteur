@@ -777,15 +777,15 @@
   </script>
 
   <!-- Конфиг + соцсети -->
-  <script>
-    window.APP_CONFIG = {
-      instagram: 'https://www.instagram.com/tours_languedoc',
-      facebook:  'https://www.facebook.com/tourslanguedoc',
-      vk:        'https://vk.com/tours_languedoc',
-      // email: 'you@example.com',
-      siteUrl: window.location.origin + window.location.pathname
-    };
-  </script>
+ <script>
+  Object.assign(window.APP_CONFIG || (window.APP_CONFIG = {}), {
+    instagram: 'https://www.instagram.com/tours_languedoc',
+    facebook:  'https://www.facebook.com/tourslanguedoc',
+    vk:        'https://vk.com/tours_languedoc',
+    siteUrl: window.location.origin + window.location.pathname
+  });
+</script>
+
 
   <!-- Проставить href соцсетей из конфига (топ, футер) и логика FAB -->
   <script>
