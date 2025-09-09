@@ -285,43 +285,6 @@
         </div>
       </div>
 
-      <!-- Быстрый запрос (узкая карточка) -->
-      <div class="card contact-card" id="contactCard">
-        <strong data-i18n="form.fast">Быстрый запрос</strong>
-        <p class="muted" data-i18n="form.sub" style="margin:6px 0 10px">
-          Отправьте пожелания — подберу маршрут и даты в течение дня.
-        </p>
-
-        <form
-          id="quickForm"
-          data-contact-form
-          data-program-title="Запрос с главной (быстрый)"
-          data-program-id="HOME-FAST"
-          data-channel="whatsapp"
-        >
-          <label for="f-name" data-i18n="form.name">Имя</label>
-          <input id="f-name" name="name" required placeholder="Ваше имя" data-i18n-placeholder="form.name.ph" autocomplete="name" />
-
-          <label for="f-contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="f-contact" name="contact" required placeholder="+33…" data-i18n-placeholder="form.contact.ph" autocomplete="tel" inputmode="tel" pattern="\+?\d[\d\s()-]{5,19}" title="Номер телефона, например +33 7 59 64 48 13" />
-
-          <div style="display:flex; gap:10px; margin-top:8px">
-            <div style="flex:1">
-              <label for="f-date" data-i18n="form.date">Дата</label>
-              <input type="date" id="f-date" name="date" />
-            </div>
-            <div style="width:140px">
-              <label for="f-guests" data-i18n="form.guests">Гостей</label>
-              <input type="number" id="f-guests" name="guests" min="1" value="2" />
-            </div>
-          </div>
-
-          <label for="f-message" data-i18n="form.msg" style="margin-top:8px">Сообщение</label>
-          <textarea id="f-message" name="message" placeholder="Какие даты и интересы?" data-i18n-placeholder="form.msg.ph"></textarea>
-
-          <div style="display:flex; gap:10px; margin-top:12px">
-            <button class="btn primary" type="submit" data-i18n="form.send">Отправить</button>
-
             <!-- Иконка WhatsApp -->
             <a class="btn icon-btn" data-whatsapp href="#" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
