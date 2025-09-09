@@ -10,48 +10,53 @@
 
   // -------- контекст страницы --------
   function pageContext(){
-    const html = document.documentElement;
+    const html = document.documentElement, body = document.body;
     const ctx = {
       url: location.href,
       title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
-      programId: html.getAttribute('data-program-id') || qs('[data-program-id]')?.getAttribute('data-program-id') || '',
-      programTitle: html.getAttribute('data-program-title') || qs('[data-program-title]')?.getAttribute('data-program-title') || '',
-      programPrice: html.getAttribute('data-program-price') || qs('[data-program-price]')?.getAttribute('data-program-price') || ''
+      programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
+      programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || '',
+      programPrice: body.getAttribute('data-program-price') || html.getAttribute('data-program-price') || ''
     };
     if (!ctx.programTitle) ctx.programTitle = ctx.title;
     return ctx;
   }
 
-  // -------- валидация --------
+  // -------- валидация формы --------
   function validate(form){
     const need = ['date','guests','name','contact']; // message — опционален
     for (const n of need){
       const el = form.querySelector(`[name="${n}"]`);
       if (!el || !String(el.value||'').trim()){
-        el?.focus(); throw new Error('Пожалуйста, заполните все обязательные поля.');
+        el?.focus(); throw new Error('Пожалуйста, заполните дату, гостей, имя и контакт.');
       }
     }
   }
 
-  // -------- сбор текста --------
+  // -------- сбор текста заявки --------
   function buildMessage(form=null){
     const ctx = pageContext();
     const f = name => form?.querySelector(`[name="${name}"]`)?.value?.trim() || '';
 
-    const parts = [
+    const lines = [
       `Заявка с сайта Tours Languedoc by Irène`,
       ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
       ctx.programPrice ? `Пакет/цена: ${ctx.programPrice}` : '',
-      `URL: ${ctx.url}`,
-      form ? '—' : '',
-      form ? `Дата: ${f('date')}` : '',
-      form ? `Гостей: ${f('guests')}` : '',
-      form ? `Имя: ${f('name')}` : '',
-      form ? `Контакт: ${f('contact')}` : '',
-      form ? (f('message') ? `Сообщение: ${f('message')}` : '') : ''
-    ].filter(Boolean);
+      `URL: ${ctx.url}`
+    ];
 
-    return parts.join('\n');
+    if (form){
+      lines.push(
+        '—',
+        `Дата: ${f('date')}`,
+        `Гостей: ${f('guests')}`,
+        `Имя: ${f('name')}`,
+        `Контакт: ${f('contact')}`
+      );
+      if (f('message')) lines.push(`Сообщение: ${f('message')}`);
+    }
+
+    return lines.filter(Boolean).join('\n');
   }
 
   // -------- каналы --------
@@ -61,28 +66,13 @@
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
   }
 
-  async function openTelegram(text){
-    const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-    const pre = CFG.bot_prestart_url || '';
-    if (bot && pre){
-      try{
-        const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
-          method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ text, page: location.href })
-        });
-        const data = await res.json();
-        if (data && data.token){
-          window.open(`https://t.me/${bot}?start=${encodeURIComponent(data.token)}`, '_blank', 'noopener');
-          return;
-        }
-      }catch(e){ /* fallback ниже */ }
-    }
-    const user = (CFG.telegram_user || bot || '').replace(/^@/,'');
-    if (!user) throw new Error('Не задан Telegram в APP_CONFIG.');
-    window.open(`https://t.me/${user}`, '_blank', 'noopener');
+  // ✅ Telegram SHARE (без бэкенда): откроет окно «Поделиться» с заполненным текстом
+  function openTelegram(text){
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+    window.open(shareUrl, '_blank', 'noopener');
   }
 
-  // -------- кнопки в герое --------
+  // -------- кнопки в герое (data-whatsapp / data-telegram) --------
   function wireHero(){
     qsa('[data-whatsapp]').forEach(btn=>{
       if (btn.__wired) return; btn.__wired = true;
@@ -93,14 +83,14 @@
     });
     qsa('[data-telegram]').forEach(btn=>{
       if (btn.__wired) return; btn.__wired = true;
-      btn.addEventListener('click', async (e)=>{
+      btn.addEventListener('click', (e)=>{
         e.preventDefault();
-        try{ await openTelegram(buildMessage(null)); }catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
+        try{ openTelegram(buildMessage(null)); }catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
       });
     });
   }
 
-  // -------- форма без submit: только WA/TG --------
+  // -------- кнопки в форме (.form-actions [data-whatsapp]/[data-telegram]) --------
   function wireForm(form){
     if (!form || form.__wired) return; form.__wired = true;
 
@@ -116,9 +106,9 @@
     }
     if (tgBtn && !tgBtn.__wired){
       tgBtn.__wired = true;
-      tgBtn.addEventListener('click', async (e)=>{
+      tgBtn.addEventListener('click', (e)=>{
         e.preventDefault();
-        try{ validate(form); await openTelegram(buildMessage(form)); }catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
+        try{ validate(form); openTelegram(buildMessage(form)); }catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
       });
     }
   }
