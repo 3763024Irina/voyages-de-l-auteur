@@ -84,7 +84,7 @@
     /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
-    textarea{min_HEIGHT:110px; resize:vertical}
+    textarea{min-height:110px; resize:vertical}
 
     /* BOOK */
     #book{ padding:32px 0 56px; }
@@ -146,6 +146,23 @@
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
+
+    /* Мини-чат снизу */
+    .minichat{
+      position:fixed; left:12px; right:12px; bottom:12px; z-index:9998;
+      display:flex; gap:10px; align-items:center; justify-content:center;
+      background:#fff; border:1px solid #e7e7e7; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,.12);
+      padding:8px 10px;
+    }
+    .minichat .mi{display:inline-flex; align-items:center; gap:8px; border:1px solid #e7e7e7; background:#fff; border-radius:999px; padding:9px 12px; font-weight:700; cursor:pointer}
+    .minichat .mi svg{width:18px; height:18px}
+    .minichat .mi.wa{border-color:#cfeee6}
+    .minichat .mi.tg{border-color:#cfe0f4}
+    .minichat .label{font-size:12px; color:#6b7a73; margin-right:6px}
+    @media (max-width:640px){
+      .minichat{left:8px; right:8px}
+      .minichat .label{display:none}
+    }
   </style>
 </head>
 
@@ -176,7 +193,7 @@
     </div>
   </header>
 
-  <!-- HERO (без WA/TG) -->
+  <!-- HERO -->
   <section class="hero">
     <div class="bg">
       <img src="../assets/Balaruc-Obalia.jpg" alt="" id="alt-hero" />
@@ -323,7 +340,7 @@
     </div>
   </footer>
 
-  <!-- ===== WA/TG: логика отправки + плавающий чат ===== -->
+  <!-- ======= ЕДИНЫЙ конфиг ======= -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '+33 7 59 64 48 13',
@@ -331,156 +348,178 @@
       telegram_bot:  'de_iren_order_bot',
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     };
-
-    (function(){
-      'use strict';
-      if (window.__CONTACT_INIT__) return; window.__CONTACT_INIT__ = true;
-
-      const CFG = window.APP_CONFIG || {};
-      const digits = s => String(s||'').replace(/\D/g,'');
-      const qs  = (sel, root=document) => root.querySelector(sel);
-      const qsa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
-
-      function pageContext(){
-        const html = document.documentElement, body = document.body;
-        const ctx = {
-          url: location.href,
-          title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
-          programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
-          programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || ''
-        };
-        if (!ctx.programTitle) ctx.programTitle = ctx.title;
-        return ctx;
-      }
-
-      function buildMessage(form=null){
-        const ctx = pageContext();
-        const f = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-        return [
-          `Заявка с сайта Tours Languedoc by Irène`,
-          ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-          `URL: ${ctx.url}`,
-          form ? '—' : '',
-          form ? `Дата: ${f('date')}` : '',
-          form ? `Гостей: ${f('guests')}` : '',
-          form ? `Имя: ${f('name')}` : '',
-          form ? `Контакт: ${f('contact')}` : '',
-          form && f('message') ? `Сообщение: ${f('message')}` : ''
-        ].filter(Boolean).join('\n');
-      }
-
-      function validate(form){
-        const need = ['date','guests','name','contact'];
-        for (const n of need){
-          const el = form.querySelector(`[name="${n}"]`);
-          if (!el || !String(el.value||'').trim()){
-            el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.');
-          }
-        }
-      }
-
- function openWA(text){
-  const phone = digits(CFG.whatsapp || '');
-  if (!phone) { alert('Не задан номер WhatsApp.'); return; }
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-}
-
-async function openTG(text){
-  const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-  const pre = CFG.bot_prestart_url || '';
-
-  // 1) Пробуем через ваш бэкенд: вернёт token -> откроем бота с payload
-  if (bot && pre){
-    try{
-      const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ text, page: location.href })
-      });
-      const data = await res.json();
-      if (data && data.token){
-        window.open(`https://t.me/${bot}?start=${encodeURIComponent(data.token)}`, '_blank', 'noopener');
-        return;
-      }
-    }catch(e){
-      // падаем в фоллбэк ниже
-    }
-  }
-
-  // 2) Надёжный фоллбэк — окно шаринга Telegram с уже заполненным текстом
-  // Пользователь выбирает чат (бот/аккаунт), текст заявки уже вставлен.
-  const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
-  window.open(shareUrl, '_blank', 'noopener');
-}
-
-
-      // Кнопки в форме
-      function wireForm(form){
-        if (!form || form.__wired) return; form.__wired = true;
-        const waBtn = form.querySelector('[data-whatsapp]');
-        const tgBtn = form.querySelector('[data-telegram]');
-        if (waBtn){
-          waBtn.addEventListener('click', e=>{
-            e.preventDefault();
-            try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message); }
-          });
-        }
-        if (tgBtn){
-          tgBtn.addEventListener('click', async e=>{
-            e.preventDefault();
-            try{ validate(form); await openTG(buildMessage(form)); }catch(err){ alert(err.message); }
-          });
-        }
-      }
-
-      // Плавающие кнопки
-      function injectFab(){
-        if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
-        const wa = document.createElement('button');
-        wa.id='fab-wa'; wa.className='chat-fab wa'; wa.innerHTML = `
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>`;
-        wa.addEventListener('click', ()=>{
-          const form = qs('[data-contact-form]') || null;
-          try{ form && validate(form); }catch(_){}
-          openWA(buildMessage(form));
-        });
-
-        const tg = document.createElement('button');
-        tg.id='fab-tg'; tg.className='chat-fab tg'; tg.innerHTML = `
-          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>`;
-        tg.addEventListener('click', async ()=>{
-          const form = qs('[data-contact-form]') || null;
-          try{ form && validate(form); }catch(_){}
-          await openTG(buildMessage(form));
-        });
-
-        document.body.appendChild(wa);
-        document.body.appendChild(tg);
-      }
-
-      function init(){
-        // Провести форму
-        const form = qs('[data-contact-form]'); wireForm(form);
-        // Плавающие
-        injectFab();
-        // Фокус на дату при клике «Забронировать»
-        document.getElementById('goBook')?.addEventListener('click', ()=>{
-          setTimeout(()=>document.getElementById('when')?.focus(), 60);
-        });
-      }
-      document.addEventListener('DOMContentLoaded', init);
-    })();
-  
-<script>
-    window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',
-     
-    };
   </script>
 
-  <!-- Наши скрипты -->
-  <script src="assets/js/contact.js"></script>
-  <script src="assets/js/chat-widget.js" defer></script>
+  <!-- ======= ЛОГИКА WA/TG + FAB + МИНИ-ЧАТ ======= -->
+  <script>
+  (function(){
+    'use strict';
+    if (window.__CONTACT_INIT__) return; window.__CONTACT_INIT__ = true;
+
+    const CFG = window.APP_CONFIG || {};
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const qs  = (sel, root=document) => root.querySelector(sel);
+
+    // ---- контекст и сообщение ----
+    function pageContext(){
+      const html = document.documentElement, body = document.body;
+      const ctx = {
+        url: location.href,
+        title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
+        programId: body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
+        programTitle: body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || ''
+      };
+      if (!ctx.programTitle) ctx.programTitle = ctx.title;
+      return ctx;
+    }
+
+    function buildMessage(form=null){
+      const ctx = pageContext();
+      const f = n => form?.querySelector(`[name="\${n}"]`)?.value?.trim() || '';
+      return [
+        'Заявка с сайта Tours Languedoc by Irène',
+        ctx.programId ? \`Программа: \${ctx.programTitle} [\${ctx.programId}]\` : \`Страница: \${ctx.title}\`,
+        \`URL: \${ctx.url}\`,
+        form ? '—' : '',
+        form ? \`Дата: \${f('date')}\` : '',
+        form ? \`Гостей: \${f('guests')}\` : '',
+        form ? \`Имя: \${f('name')}\` : '',
+        form ? \`Контакт: \${f('contact')}\` : '',
+        form && f('message') ? \`Сообщение: \${f('message')}\` : ''
+      ].filter(Boolean).join('\\n');
+    }
+
+    function validate(form){
+      if (!form) return;
+      for (const n of ['date','guests','name','contact']){
+        const el = form.querySelector(\`[name="\${n}"]\`);
+        if (!el || !String(el.value||'').trim()){
+          el?.focus(); throw new Error('Заполните: дату, гостей, имя и контакт.');
+        }
+      }
+    }
+
+    // ---- WhatsApp ----
+    function openWA(text){
+      const phone = digits(CFG.whatsapp || '');
+      if (!phone) { alert('Не задан номер WhatsApp.'); return; }
+      window.open(\`https://wa.me/\${phone}?text=\${encodeURIComponent(text)}\`, '_blank', 'noopener');
+    }
+
+    // ---- Telegram: prestart -> бот, иначе окно шаринга ----
+    async function openTG(text){
+      const bot = (CFG.telegram_bot || '').replace(/^@/,'');
+      const pre = CFG.bot_prestart_url || '';
+
+      if (bot && pre){
+        try{
+          const res = await fetch(pre.replace(/\\/health\\/?$/, '/prestart'), {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ text, page: location.href })
+          });
+          const data = await res.json();
+          if (data && data.token){
+            window.open(\`https://t.me/\${bot}?start=\${encodeURIComponent(data.token)}\`, '_blank', 'noopener');
+            return;
+          }
+        }catch(e){ /* перейдём на фоллбэк */ }
+      }
+      const shareUrl = \`https://t.me/share/url?url=\${encodeURIComponent(location.href)}&text=\${encodeURIComponent(text)}\`;
+      window.open(shareUrl, '_blank', 'noopener');
+    }
+
+    // ---- проводка формы ----
+    function wireForm(form){
+      if (!form || form.__wired) return; form.__wired = true;
+      const waBtn = form.querySelector('[data-whatsapp]');
+      const tgBtn = form.querySelector('[data-telegram]');
+      if (waBtn){
+        waBtn.addEventListener('click', e=>{
+          e.preventDefault();
+          try{ validate(form); openWA(buildMessage(form)); }catch(err){ alert(err.message); }
+        });
+      }
+      if (tgBtn){
+        tgBtn.addEventListener('click', async e=>{
+          e.preventDefault();
+          try{ validate(form); await openTG(buildMessage(form)); }catch(err){ alert(err.message); }
+        });
+      }
+    }
+
+    // ---- плавающие кнопки ----
+    function injectFab(){
+      if (document.getElementById('fab-wa') || document.getElementById('fab-tg')) return;
+
+      const wa = document.createElement('button');
+      wa.id='fab-wa'; wa.className='chat-fab wa'; wa.innerHTML = `
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>`;
+      wa.addEventListener('click', ()=>{
+        const form = qs('[data-contact-form]') || null;
+        try{ form && validate(form); }catch(_){}
+        openWA(buildMessage(form));
+      });
+
+      const tg = document.createElement('button');
+      tg.id='fab-tg'; tg.className='chat-fab tg'; tg.innerHTML = `
+        <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>`;
+      tg.addEventListener('click', async ()=>{
+        const form = qs('[data-contact-form]') || null;
+        try{ form && validate(form); }catch(_){}
+        await openTG(buildMessage(form));
+      });
+
+      document.body.appendChild(wa);
+      document.body.appendChild(tg);
+    }
+
+    // ---- мини-чат снизу ----
+    function injectMiniChat(){
+      if (document.getElementById('mini-chat')) return;
+      const wrap = document.createElement('div');
+      wrap.id = 'mini-chat';
+      wrap.className = 'minichat';
+      wrap.innerHTML = `
+        <span class="label">Есть вопросы?</span>
+        <button class="mi wa" type="button" title="WhatsApp">
+          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
+          <span>WhatsApp</span>
+        </button>
+        <button class="mi tg" type="button" title="Telegram">
+          <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
+          <span>Telegram</span>
+        </button>
+      `;
+      document.body.appendChild(wrap);
+
+      wrap.querySelector('.mi.wa')?.addEventListener('click', ()=>{
+        const form = qs('[data-contact-form]') || null;
+        try{ form && validate(form); }catch(_){}
+        openWA(buildMessage(form));
+      });
+      wrap.querySelector('.mi.tg')?.addEventListener('click', async ()=>{
+        const form = qs('[data-contact-form]') || null;
+        try{ form && validate(form); }catch(_){}
+        await openTG(buildMessage(form));
+      });
+    }
+
+    function init(){
+      wireForm(qs('[data-contact-form]'));
+      injectFab();
+      injectMiniChat();
+      document.getElementById('goBook')?.addEventListener('click', ()=>{
+        setTimeout(()=>document.getElementById('when')?.focus(), 60);
+      });
+    }
+    document.addEventListener('DOMContentLoaded', init);
+  })();
+  </script>
+
+  <!-- (если у тебя уже есть внешние файлы — можно оставить их подключение ниже, они не конфликтуют) -->
+  <script src="assets/js/contact.js"></script> -->
+  <script src="assets/js/chat-widget.js" defer></script> -->
 </body>
 </html>
+
