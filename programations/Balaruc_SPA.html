@@ -379,31 +379,40 @@
         }
       }
 
-      function openWA(text){
-        const phone = digits(CFG.whatsapp || '');
-        if (!phone) return alert('Не задан номер WhatsApp.');
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+ function openWA(text){
+  const phone = digits(CFG.whatsapp || '');
+  if (!phone) { alert('Не задан номер WhatsApp.'); return; }
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+}
+
+async function openTG(text){
+  const bot = (CFG.telegram_bot || '').replace(/^@/,'');
+  const pre = CFG.bot_prestart_url || '';
+
+  // 1) Пробуем через ваш бэкенд: вернёт token -> откроем бота с payload
+  if (bot && pre){
+    try{
+      const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ text, page: location.href })
+      });
+      const data = await res.json();
+      if (data && data.token){
+        window.open(`https://t.me/${bot}?start=${encodeURIComponent(data.token)}`, '_blank', 'noopener');
+        return;
       }
-      async function openTG(text){
-        const bot = (CFG.telegram_bot || '').replace(/^@/,'');
-        const pre = CFG.bot_prestart_url || '';
-        if (bot && pre){
-          try{
-            const res = await fetch(pre.replace(/\/health\/?$/,'/prestart'), {
-              method:'POST', headers:{'Content-Type':'application/json'},
-              body: JSON.stringify({ text, page: location.href })
-            });
-            const data = await res.json();
-            if (data && data.token){
-              window.open(`https://t.me/${bot}?start=${encodeURIComponent(data.token)}`, '_blank', 'noopener');
-              return;
-            }
-          }catch(e){ /* fallback ниже */ }
-        }
-        const user = (CFG.telegram_user || bot || '').replace(/^@/,'');
-        if (!user) return alert('Не задан Telegram.');
-        window.open(`https://t.me/${user}`, '_blank', 'noopener');
-      }
+    }catch(e){
+      // падаем в фоллбэк ниже
+    }
+  }
+
+  // 2) Надёжный фоллбэк — окно шаринга Telegram с уже заполненным текстом
+  // Пользователь выбирает чат (бот/аккаунт), текст заявки уже вставлен.
+  const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(text)}`;
+  window.open(shareUrl, '_blank', 'noopener');
+}
+
 
       // Кнопки в форме
       function wireForm(form){
