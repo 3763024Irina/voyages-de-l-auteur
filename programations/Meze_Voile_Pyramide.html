@@ -102,6 +102,17 @@
     textarea{min-height:110px; resize:vertical}
     .sharebar{display:flex; gap:10px; flex-wrap:wrap}
     .muted{color:var(--muted); font-size:12px}
+/* правый блок в шапке */
+.right{display:flex; align-items:center; gap:16px}
+
+/* социальные иконки в шапке */
+.social{display:flex; gap:10px}
+.social-btn{
+  width:40px; height:40px; border-radius:999px; display:grid; place-items:center;
+  background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow);
+}
+.social-btn svg{width:20px; height:20px; display:block}
+.social-btn:hover{filter:brightness(.98)}
 
     @media (max-width: 1000px){
       .info-grid{grid-template-columns:1fr}
@@ -843,6 +854,76 @@
 
 <!-- 3) Плавающий виджет иконок WA/TG (на всех страницах) -->
 <script src="assets/js/chat-widget.js" defer></script>
+  <script>
+;(function(){
+  if (window.__SOCIAL_HEADER_WIRE__) return; window.__SOCIAL_HEADER_WIRE__ = true;
+
+  const CFG = window.APP_CONFIG || {};
+  const digits = s => String(s||'').replace(/\D/g,'');
+  const enc = s => encodeURIComponent(String(s||''));
+
+  // Тот же текст заявки, что и в форме/кнопках
+  function pageCtx(){
+    const html = document.documentElement;
+    return {
+      url: location.href,
+      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
+             || document.title || '',
+      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
+             || html.getAttribute('data-program-id') || ''
+    };
+  }
+  function buildText(){
+    const f = document.querySelector('[data-contact-form]');
+    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+    const ctx = pageCtx();
+    return [
+      'Заявка с сайта Tours Languedoc by Irène',
+      ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
+      `Дата: ${get('date')||'-'}`,
+      `Гостей: ${get('guests')||'-'}`,
+      `Имя: ${get('name')||'-'}`,
+      `Контакт: ${get('contact')||'-'}`,
+      `Сообщение: ${get('message')||'-'}`,
+      `Ссылка: ${ctx.url}`
+    ].join('\n');
+  }
+  function safeOpen(href){
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener';
+    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
+  }
+  async function openTelegram(){
+    const bot = (CFG.telegram_bot||'').replace(/^@/,'');
+    const pre = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+    const user= (CFG.telegram_user||'').replace(/^@/,'');
+    if (bot && /^https?:\/\//i.test(pre)){
+      try{
+        const res = await fetch(pre, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ text: buildText(), ...pageCtx() })
+        });
+        const data = await res.json().catch(()=>({}));
+        const tme = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
+        if (tme){ safeOpen(tme); return; }
+      }catch(e){}
+    }
+    if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
+  }
+  function openWhatsApp(){
+    const num = digits(CFG.whatsapp || '');
+    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
+    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+  }
+
+  const wa = document.querySelector('[data-social-wa]');
+  const tg = document.querySelector('[data-social-tg]');
+  wa && wa.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+  tg && tg.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
+})();
+</script>
+
 
 </body>
 </html>
