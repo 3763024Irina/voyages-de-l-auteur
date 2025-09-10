@@ -427,9 +427,126 @@
 
 
 
-<!-- Подключение скриптов -->
-<script src="assets/js/contact.js"></script>
-<script src="assets/js/chat-widget.js" defer></script>
+  <script src="assets/js/contact.js"></script>
+  <script src="assets/js/chat-widget.js" defer></script>
+<script>
+;(function(){
+  // --- защита от двойной инициализации ---
+  if (window.__QUICK_CONTACT_INIT__) return; window.__QUICK_CONTACT_INIT__ = true;
+
+  const CFG = window.APP_CONFIG || {};
+  const digits = s => String(s||'').replace(/\D/g,'');
+  const enc = s => encodeURIComponent(String(s||''));
+  const $  = (s,r=document)=>r.querySelector(s);
+  const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+
+  function pageCtx(){
+    const html = document.documentElement;
+    return {
+      url: location.href,
+      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
+             || document.title || '',
+      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
+             || html.getAttribute('data-program-id') || ''
+    };
+  }
+
+  function buildText(){
+    const f = $('[data-contact-form]');
+    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+    const ctx = pageCtx();
+    const parts = [
+      'Заявка с сайта Tours Languedoc by Irène',
+      ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
+      `Дата: ${get('date')||'-'}`,
+      `Гостей: ${get('guests')||'-'}`,
+      `Имя: ${get('name')||'-'}`,
+      `Контакт: ${get('contact')||'-'}`,
+      `Сообщение: ${get('message')||'-'}`,
+      `Ссылка: ${ctx.url}`
+    ];
+    return parts.join('\n');
+  }
+
+  function safeOpen(href){
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
+  }
+
+  async function openTelegram(){
+    const bot = (CFG.telegram_bot||'').replace(/^@/,'');
+    const pre = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+    const user= (CFG.telegram_user||'').replace(/^@/,'');
+
+    // если есть бот + prestart, используем токен
+    if (bot && pre && /^https?:\/\//i.test(pre)){
+      try{
+        const res = await fetch(pre, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ text: buildText(), ...pageCtx() })
+        });
+        const data = await res.json().catch(()=>({}));
+        // ожидаем либо готовую t.me ссылку, либо токен
+        const tme = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
+        if (tme){ safeOpen(tme); return; }
+      }catch(e){ console.warn('[prestart] fail', e); }
+    }
+    // иначе — профиль или сам бот
+    if (user) safeOpen(`https://t.me/${user}`);
+    else if (bot) safeOpen(`https://t.me/${bot}`);
+  }
+
+  function openWhatsApp(){
+    const num = digits(CFG.whatsapp || '');
+    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
+    const url = `https://wa.me/${num}?text=${enc(buildText())}`;
+    safeOpen(url);
+  }
+
+  // ---- обработчики формы (убираем перезагрузку страницы) ----
+  function wireFormButtons(){
+    $$('[data-whatsapp]').forEach(el=>{
+      el.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+      // подстрахуем href, чтобы не было перехода на "#"
+      el.setAttribute('href','javascript:void(0)');
+    });
+    $$('[data-telegram]').forEach(el=>{
+      el.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
+      el.setAttribute('href','javascript:void(0)');
+    });
+  }
+
+  // ---- плавающие кнопки (если их нет) ----
+  function ensureFAB(){
+    if (document.querySelector('.chat-fab.tg') || document.querySelector('.chat-fab.wa')) return;
+
+    const btnWA = document.createElement('button');
+    btnWA.className = 'chat-fab wa';
+    btnWA.innerHTML = '<svg viewBox="0 0 256 256"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>';
+    btnWA.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+    document.body.appendChild(btnWA);
+
+    const btnTG = document.createElement('button');
+    btnTG.className = 'chat-fab tg';
+    btnTG.innerHTML = '<svg viewBox="0 0 256 256"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>';
+    btnTG.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
+    document.body.appendChild(btnTG);
+  }
+
+  function init(){
+    wireFormButtons();
+    ensureFAB();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, {once:true});
+  } else {
+    init();
+  }
+})();
+</script>
 
 </body>
 </html>
