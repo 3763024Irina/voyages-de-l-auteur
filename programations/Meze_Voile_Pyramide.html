@@ -366,13 +366,16 @@
           <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
         </div>
 
-        <div class="full" style="display:flex; gap:10px; align-items:center">
-          <label style="font-weight:600; margin:0">Куда отправить:</label>
-          <select name="channel">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-          </select>
-        </div>
+     <!-- Кнопки контакта (без селекта и без Submit) -->
+<div class="form-actions full">
+  <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="wa_btn">
+    Написать в WhatsApp
+  </a>
+  <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="tg_btn">
+    Написать в Telegram
+  </a>
+</div>
+
 
         <div class="full sharebar">
           <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
