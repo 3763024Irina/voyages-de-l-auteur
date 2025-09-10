@@ -103,16 +103,33 @@
     navigateSafely(`https://wa.me/${phone}?text=${enc(text)}`);
   }
 
-  function openTelegram(text, e){
-    e?.preventDefault?.(); e?.stopPropagation?.();
-    const user = (CFG.telegram_user || '').replace(/^@/,'');
-    if (!user) throw new Error('Не задан Telegram username в APP_CONFIG (пример: "de_iren").');
-    if (navigator.clipboard && window.isSecureContext){
-      navigator.clipboard.writeText(text).catch(()=>{});
-    }
-    navigateSafely(`https://t.me/${enc(user)}`);
-    toast('Текст заявки скопирован. Вставьте в Telegram и отправьте.');
+ function openTelegram(text, e){
+  e?.preventDefault?.(); e?.stopPropagation?.();
+  const user = (CFG.telegram_user || '').replace(/^@/,'');
+  if (!user) throw new Error('Не задан Telegram username в APP_CONFIG (пример: "de_iren").');
+
+  // скопируем текст (если можно)
+  if (navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).catch(()=>{});
   }
+
+  const deep = `tg://resolve?domain=${encodeURIComponent(user)}`;
+  const web  = `https://t.me/${encodeURIComponent(user)}`;
+  const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // на мобилках — сразу системный диплинк в этом же табе (сохраняем «жест»)
+    try { location.href = deep; } catch(_){}
+    // если приложения нет — через ~1.2с откроется веб-версия
+    setTimeout(()=>{ try{ location.href = web; }catch(_){ navigateSafely(web); } }, 1200);
+  } else {
+    // на десктопе достаточно веб-версии
+    navigateSafely(web);
+  }
+
+  toast('Текст заявки скопирован. Вставьте в Telegram и отправьте.');
+}
+
 
   // ---------- хелперы привязки ----------
   function hardenClickable(el){
@@ -193,11 +210,12 @@
     }
     if (tgBtn && !tgBtn.__wired){
       tgBtn.__wired = true; hardenClickable(tgBtn);
-     tgBtn.addEventListener('click', e=>{
+    tgBtn.addEventListener('click', (e)=>{
   e.preventDefault();
-  try { validate(form); openTG(buildMessage(form)); }
-  catch(err){ alert(err.message); }
+  try { validate(form); openTelegram(buildMessage(form), e); }
+  catch(err){ alert(err.message || 'Не удалось открыть Telegram'); }
 }, {passive:false});
+
     }
   }
 
