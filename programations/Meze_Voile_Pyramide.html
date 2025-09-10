@@ -305,76 +305,79 @@
     </div>
   </section>
 
-  <!-- BOOKING -->
-  <section class="container" id="book">
-    <h3 class="section-title">Быстрый запрос / бронирование</h3>
-    <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
+<!-- BOOKING -->
+<section class="container" id="book">
+  <h3 class="section-title">Быстрый запрос / бронирование</h3>
+  <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
-    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
-      <form data-contact-form data-channel="telegram" class="fields">
-        <div>
-          <label>Дата заезда</label>
-          <input type="date" id="in-when" name="date" required>
-        </div>
-        <div>
-          <label>Гостей</label>
-          <input type="number" id="in-guests" name="guests" min="1" value="2" required>
-        </div>
+  <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
+    <form data-contact-form data-channel="telegram" class="fields">
+      <div>
+        <label>Дата заезда</label>
+        <input type="date" id="in-when" name="date" required>
+      </div>
+      <div>
+        <label>Гостей</label>
+        <input type="number" id="in-guests" name="guests" min="1" value="2" required>
+      </div>
 
-        <div>
-          <label>Имя</label>
-          <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
-        </div>
-        <div>
-          <label>Контакт (WhatsApp/Telegram/email)</label>
-          <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
-        </div>
+      <div>
+        <label>Имя</label>
+        <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
+      </div>
+      <div>
+        <label>Контакт (WhatsApp/Telegram/email)</label>
+        <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
+      </div>
 
-        <div>
-          <label>Вид спорта</label>
-          <select id="in-sport">
-            <option value="cat">Катамаран HC15/16</option>
-            <option value="hansa">Hansa 303</option>
-            <option value="kite">Kitesurf</option>
-          </select>
-        </div>
-        <div>
-          <label>Отель</label>
-          <select id="in-hotel">
-            <option value="budget">Бюджет 2–3★</option>
-            <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
-            <option value="four">4★</option>
-          </select>
-        </div>
+      <div>
+        <label>Вид спорта</label>
+        <select id="in-sport">
+          <option value="cat">Катамаран HC15/16</option>
+          <option value="hansa">Hansa 303</option>
+          <option value="kite">Kitesurf</option>
+        </select>
+      </div>
+      <div>
+        <label>Отель</label>
+        <select id="in-hotel">
+          <option value="budget">Бюджет 2–3★</option>
+          <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
+          <option value="four">4★</option>
+        </select>
+      </div>
 
-        <div>
-          <label>Сезон</label>
-          <select id="in-season">
-            <option value="low">Низкий</option>
-            <option value="high">Высокий</option>
-          </select>
-        </div>
+      <div>
+        <label>Сезон</label>
+        <select id="in-season">
+          <option value="low">Низкий</option>
+          <option value="high">Высокий</option>
+        </select>
+      </div>
 
-        <div class="full">
-          <label>Комментарий</label>
-          <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
-        </div>
+      <div class="full">
+        <label>Комментарий</label>
+        <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+      </div>
 
-        <div class="full">
-          <label>Итог</label>
-          <div class="price" id="bookTotal">—</div>
-          <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
-        </div>
+      <div class="full">
+        <label>Итог</label>
+        <div class="price" id="bookTotal">—</div>
+        <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
+      </div>
 
-     <!-- Кнопки контакта (без селекта и без Submit) -->
-<div class="form-actions full">
-  <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="wa_btn">
-    Написать в WhatsApp
-  </a>
-  <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="tg_btn">
-    Написать в Telegram
-  </a>
-</div>
+      <!-- Кнопки контакта -->
+      <div class="form-actions full">
+        <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="wa_btn">
+          Написать в WhatsApp
+        </a>
+        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="tg_btn">
+          Написать в Telegram
+        </a>
+      </div>
+    </form>
+  </div>
+</section>
 
 
         <div class="full sharebar">
