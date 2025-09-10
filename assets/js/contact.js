@@ -192,9 +192,11 @@
     }
     if (tgBtn && !tgBtn.__wired){
       tgBtn.__wired = true; hardenClickable(tgBtn);
-      tgBtn.addEventListener('click', (e)=>{
-        try{ validate(form); openTelegram(buildMessage(form), e); }catch(err){ alert(err.message||'Не удалось открыть Telegram'); }
-      }, { passive:false });
+     tgBtn.addEventListener('click', e=>{
+  e.preventDefault();
+  try { validate(form); openTG(buildMessage(form)); }
+  catch(err){ alert(err.message); }
+}, {passive:false});
     }
   }
 
