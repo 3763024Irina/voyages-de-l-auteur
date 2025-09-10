@@ -685,7 +685,7 @@
       h_budget:'Бюджет 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
       lbl_season:'Сезон:', low:'Низкий', high:'Высокий', lbl_hotel:'Отель:',
       nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-      btn_send:'Отправить'
+      
     },
     fr:{ htmlLang:'fr',
       title:"Mèze Voile — Hôtel de la Pyramide (dès 7 nuits) | Tours Languedoc by Irène",
@@ -727,7 +727,7 @@
       h_budget:'Économique 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
       lbl_season:'Saison :', low:'Basse', high:'Haute', lbl_hotel:'Hôtel :',
       nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-      btn_send:'Envoyer'
+      
     }
   };
 
@@ -774,8 +774,8 @@
   </script>
 
   <!-- Подключение скриптов -->
-  <script src="assets/js/contact.js" defer></script>
-  <script src="assets/js/chat-widget.js" defer></script>
+  <script src="..assets/js/contact.js" defer></script>
+  <script src="..assets/js/chat-widget.js" defer></script>
 
   <!-- Фикс WA/TG: обработчики без перезагрузки + резервные FAB -->
  <script>
@@ -911,15 +911,23 @@
 })();
 </script>
 
+<style>
+/* Резервные стили FAB (если виджет не инжектнул свои) */
+.chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
+  box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
+.chat-fab svg{width:22px; height:22px; display:block}
+.chat-fab.wa{bottom:76px}
+.chat-fab.tg{bottom:26px}
+</style>
+
 <script>
-;(() => {
+;(()=> {
   if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
   const CFG = window.APP_CONFIG || {};
   const digits = s => String(s||'').replace(/\D/g,'');
   const enc = s => encodeURIComponent(String(s||''));
 
-  // Тот же текст заявки, что и в форме
   function buildText(){
     const f = document.querySelector('[data-contact-form]');
     const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
@@ -944,32 +952,29 @@
     a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
     document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
   }
-
   async function openTelegram(){
     const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
     const user = (CFG.telegram_user||'').replace(/^@/,'');
     const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-
     if (bot && /^https?:\/\//i.test(pre)){
       try{
-        const res  = await fetch(pre, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() })});
-        const data = await res.json().catch(()=>({}));
-        const url  = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
-        if (url){ safeOpen(url); return; }
+        const r = await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ text: buildText() })});
+        const j = await r.json().catch(()=>({}));
+        const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+        if (tme){ safeOpen(tme); return; }
       }catch(e){}
     }
     if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
   }
-
   function openWhatsApp(){
-    const num = digits(CFG.whatsapp||'');
+    const num = digits(CFG.whatsapp || '');
     if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
     safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
   }
 
-  // Создаём две плавающие кнопки, если их ещё нет
   function ensureFAB(){
-    if (document.querySelector('.chat-fab.wa') || document.querySelector('.chat-fab.tg')) return;
+    // если виджет уже отрисовал свои кнопки — ничего не делаем
+    if (document.querySelector('.chat-fab.tg') || document.querySelector('.chat-fab.wa')) return;
 
     const btnWA = document.createElement('button');
     btnWA.className = 'chat-fab wa';
@@ -984,7 +989,6 @@
     document.body.appendChild(btnTG);
   }
 
-  // Инициализация
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', ensureFAB, {once:true});
   } else {
@@ -992,6 +996,7 @@
   }
 })();
 </script>
+
 
 </body>
 </html>
