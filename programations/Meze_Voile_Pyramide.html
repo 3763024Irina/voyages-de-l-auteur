@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-program-id="MEZE-VOILE-7N">
+<html lang="ru" data-program-id="MEZE-VOILE-7N" data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -61,9 +61,7 @@
     .gallery img{width:100%; height:100%; object-fit:cover}
 
     .controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:10px}
-    .select, .switch, .check{display:flex; gap:10px; align-items:center; padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
-    .check.big{padding:14px 16px; font-size:16px}
-    .check.big input{transform:scale(1.12)}
+    .select, .switch{display:flex; gap:10px; align-items:center; padding:10px 12px; background:#fff; border:1px solid #eee; border-radius:12px; font-weight:600}
     select{border:0; background:transparent; font-weight:700}
 
     .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
@@ -102,18 +100,26 @@
     textarea{min-height:110px; resize:vertical}
     .sharebar{display:flex; gap:10px; flex-wrap:wrap}
     .muted{color:var(--muted); font-size:12px}
-/* правый блок в шапке */
-.right{display:flex; align-items:center; gap:16px}
 
-/* социальные иконки в шапке */
-.social{display:flex; gap:10px}
-.social-btn{
-  width:40px; height:40px; border-radius:999px; display:grid; place-items:center;
-  background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow);
-}
-.social-btn svg{width:20px; height:20px; display:block}
-.social-btn:hover{filter:brightness(.98)}
-    /* — жёстко фиксируем размеры SVG-иконок — */
+    /* FAB (плавающие кнопки, как на Balaruc) */
+    .chat-fab{
+      position:fixed; right:16px; z-index:9999; border:0; padding:14px;
+      border-radius:999px; box-shadow:0 6px 18px rgba(0,0,0,.18);
+      cursor:pointer; background:#fff; display:grid; place-items:center
+    }
+    .chat-fab svg{ width:22px; height:22px; display:block }
+    .chat-fab.wa{ bottom:76px }
+    .chat-fab.tg{ bottom:26px }
+
+    /* правый блок в шапке */
+    .right{display:flex; align-items:center; gap:16px}
+    .social{display:flex; gap:10px}
+    .social-btn{
+      width:40px; height:40px; border-radius:999px; display:grid; place-items:center;
+      background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow);
+    }
+    .social-btn svg{width:20px; height:20px; display:block}
+    .social-btn:hover{filter:brightness(.98)}
 
     @media (max-width: 1000px){
       .info-grid{grid-template-columns:1fr}
@@ -128,44 +134,43 @@
     }
   </style>
 </head>
-<body data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
- <header>
-  <div class="container nav">
-    <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
-      <div class="logo" aria-hidden>Î</div>
-      <div>
-        <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
-      </div>
-    </a>
-
-    <!-- Социальные иконки + навигация -->
-    <div class="right">
-      <div class="social" aria-label="Соцсети">
-        <!-- WhatsApp -->
-        <a class="social-btn wa" href="javascript:void(0)" title="WhatsApp" data-social-wa>
-          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
-        </a>
-        <!-- Telegram -->
-        <a class="social-btn tg" href="javascript:void(0)" title="Telegram" data-social-tg>
-          <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
-        </a>
-      </div>
-
-      <nav class="lang">
-        <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
-        </ul>
-        <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
+<body data-program-id="MEZE-VOILE-7N" data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)">
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
+        <div class="logo" aria-hidden>Î</div>
+        <div>
+          <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
         </div>
-      </nav>
-    </div>
-  </div>
-</header>
+      </a>
 
+      <!-- Социальные иконки + навигация -->
+      <div class="right">
+        <div class="social" aria-label="Соцсети">
+          <!-- WhatsApp -->
+          <a class="social-btn wa" href="javascript:void(0)" title="WhatsApp" data-social-wa>
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a class="social-btn tg" href="javascript:void(0)" title="Telegram" data-social-tg>
+            <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
+          </a>
+        </div>
+
+        <nav class="lang">
+          <ul>
+            <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+            <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+            <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+          </ul>
+          <div aria-label="Language switch">
+            <button id="btn-ru" class="active">RU</button>
+            <button id="btn-fr">FR</button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <!-- HERO -->
   <section class="hero">
@@ -193,9 +198,6 @@
               <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
               <option value="four" data-i18n="h_four">4★</option>
             </select>
-          </div>
-          <div class="check big" id="bbWrap">
-            <label><input type="checkbox" id="bb"> <span data-i18n="bb">Завтраки (BB)</span></label>
           </div>
         </div>
       </div>
@@ -231,7 +233,7 @@
       <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что входит (БАЗА)</h3>
       <div class="listwrap">
         <ul class="list">
-          <li data-i18n="inc_hotel">Проживание от 7 ночей (выбранный тип отеля)</li>
+          <li data-i18n="inc_hotel">Проживание от 7 ночей (выбранный тип отеля) — с завтраками</li>
           <li data-i18n="inc_course">Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)</li>
           <li data-i18n="inc_license">Для паруса: лицензия FFVoile 14 € × 2</li>
         </ul>
@@ -309,9 +311,9 @@
     <div class="card" style="margin-bottom:14px">
       <h4 data-i18n="brief_hotel_t">🏨 Отели</h4>
       <ul class="list">
-        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — ориентир низк. сезон: 90 €/ночь → 630 € / номер <em>(BB +140 € → 770 €)</em></li>
-        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — ориентир низк. сезон: 120 €/ночь → 840 € / номер <em>(BB +168 € → 1 008 €)</em></li>
-        <li><strong data-i18n="h_four">4★</strong> — ориентир низк. сезон: 155 €/ночь → 1 085 € / номер <em>(BB +252 € → 1 337 €)</em></li>
+        <li><strong data-i18n="h_budget">Бюджет 2–3★</strong> — ориентир низк. сезон: <strong>770 €</strong> / номер <em>(с завтраками)</em></li>
+        <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — ориентир низк. сезон: <strong>1 008 €</strong> / номер <em>(с завтраками)</em></li>
+        <li><strong data-i18n="h_four">4★</strong> — ориентир низк. сезон: <strong>1 337 €</strong> / номер <em>(с завтраками)</em></li>
       </ul>
       <p class="muted">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе. Дополнительные ночи — по запросу.</p>
     </div>
@@ -323,78 +325,73 @@
     <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
     <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
-      <form data-contact-form data-channel="telegram">
-        <div class="fields">
-          <div>
-            <label>Дата заезда</label>
-            <input type="date" id="in-when" name="date" required>
-          </div>
-          <div>
-            <label>Гостей</label>
-            <input type="number" id="in-guests" name="guests" min="1" value="2" required>
-          </div>
+      <form data-contact-form data-channel="telegram" class="fields">
+        <div>
+          <label>Дата заезда</label>
+          <input type="date" id="in-when" name="date" required>
+        </div>
+        <div>
+          <label>Гостей</label>
+          <input type="number" id="in-guests" name="guests" min="1" value="2" required>
+        </div>
 
-          <div>
-            <label>Имя</label>
-            <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
-          </div>
-          <div>
-            <label>Контакт (WhatsApp/Telegram/email)</label>
-            <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
-          </div>
+        <div>
+          <label>Имя</label>
+          <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
+        </div>
+        <div>
+          <label>Контакт (WhatsApp/Telegram/email)</label>
+          <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
+        </div>
 
-          <div>
-            <label>Вид спорта</label>
-            <select id="in-sport">
-              <option value="cat">Катамаран HC15/16</option>
-              <option value="hansa">Hansa 303</option>
-              <option value="kite">Kitesurf</option>
-            </select>
-          </div>
-          <div>
-            <label>Отель</label>
-            <select id="in-hotel">
-              <option value="budget">Бюджет 2–3★</option>
-              <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
-              <option value="four">4★</option>
-            </select>
-          </div>
+        <div>
+          <label>Вид спорта</label>
+          <select id="in-sport">
+            <option value="cat">Катамаран HC15/16</option>
+            <option value="hansa">Hansa 303</option>
+            <option value="kite">Kitesurf</option>
+          </select>
+        </div>
+        <div>
+          <label>Отель</label>
+          <select id="in-hotel">
+            <option value="budget">Бюджет 2–3★</option>
+            <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
+            <option value="four">4★</option>
+          </select>
+        </div>
 
-          <div>
-            <label>Сезон</label>
-            <select id="in-season">
-              <option value="low">Низкий</option>
-              <option value="high">Высокий</option>
-            </select>
-          </div>
-          <div class="full">
-            <label style="font-size:16px"><input type="checkbox" id="in-bb"> Завтраки (BB)</label>
-          </div>
+        <div>
+          <label>Сезон</label>
+          <select id="in-season">
+            <option value="low">Низкий</option>
+            <option value="high">Высокий</option>
+          </select>
+        </div>
 
-          <div class="full">
-            <label>Комментарий</label>
-            <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
-          </div>
+        <div class="full">
+          <label>Комментарий</label>
+          <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+        </div>
 
-          <div class="full">
-            <label>Итог</label>
-            <div class="price" id="bookTotal">—</div>
-            <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
-          </div>
+        <div class="full">
+          <label>Итог</label>
+          <div class="price" id="bookTotal">—</div>
+          <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
+        </div>
 
-          <div class="full" style="display:flex; gap:10px; align-items:center">
-            <label style="font-weight:600; margin:0">Куда отправить:</label>
-            <select name="channel">
-              <option value="whatsapp">WhatsApp</option>
-              <option value="telegram" selected>Telegram</option>
-            </select>
-          </div>
+        <div class="full" style="display:flex; gap:10px; align-items:center">
+          <label style="font-weight:600; margin:0">Куда отправить:</label>
+          <select name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+          </select>
+        </div>
 
-          <div class="full sharebar">
-            <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
-            <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-            <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-          </div>
+        <div class="full sharebar">
+          <button class="btn primary" type="submit" data-i18n="btn_send">Отправить</button>
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
     </div>
@@ -411,12 +408,13 @@
     </div>
   </footer>
 
-  <!-- === JS: калькулятор, i18n, контакт/бот, иконки чата === -->
+  <!-- === JS: калькулятор, i18n, контакт/бот === -->
   <script>
-  /* ---------- PRICING CORE ---------- */
+  /* ---------- PRICING CORE (BB включены) ---------- */
   const roundTo5 = n => Math.round(n/5)*5;
   const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
+  // База и завтраки (для вычисления итогов с BB)
   const hotels = {
     low:  { budget: 630, pyramide: 840,  four: 1085 },
     high: { budget: 770, pyramide: 980,  four: 1280 }
@@ -430,14 +428,14 @@
     high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
   };
   const kite = { low2p:1490, high2p:1590 };
-  const withBB = (season, h, bb) => hotels[season][h] + (bb ? breakfast[season][h] : 0);
 
-  const priceCat   = (h, season, bb) => roundTo5((withBB(season,h,bb) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
-  const priceHansa = (h, season, bb) => roundTo5((withBB(season,h,bb) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
-  const priceKite  = (h, season, bb) => roundTo5((withBB(season,h,bb) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
+  const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
+
+  const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
+  const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
+  const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
 
   const hotelSel = document.getElementById('hotelSel');
-  const bb       = document.getElementById('bb');
   const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
   const outCat   = document.getElementById('price-cat');
@@ -450,12 +448,11 @@
   function pricesSnapshot(){
     const hotel = hotelSel.value;
     const season = currentSeason();
-    const useBB = bb.checked;
     return {
-      hotel, season, useBB,
-      pCat:   priceCat(hotel, season, useBB),
-      pHansa: priceHansa(hotel, season, useBB),
-      pKite:  priceKite(hotel, season, useBB)
+      hotel, season,
+      pCat:   priceCat(hotel, season),
+      pHansa: priceHansa(hotel, season),
+      pKite:  priceKite(hotel, season)
     };
   }
   function recalc(){
@@ -467,7 +464,6 @@
   }
   ['change','input'].forEach(evt=>{
     hotelSel.addEventListener(evt,recalc);
-    bb.addEventListener(evt,recalc);
     seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
   });
 
@@ -500,7 +496,6 @@
     const inSport   = document.getElementById('in-sport');
     const inHotel   = document.getElementById('in-hotel');
     const inSeason  = document.getElementById('in-season');
-    const inBB      = document.getElementById('in-bb');
     const inMsg     = document.getElementById('in-msg');
     const bookTotal = document.getElementById('bookTotal');
 
@@ -508,23 +503,20 @@
     function getSportName(key){ return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key; }
     function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
 
-    function priceForSelection(hotelKey, season, bbChecked, sport){
-      if (sport==='cat')   return priceCat(hotelKey, season, bbChecked);
-      if (sport==='hansa') return priceHansa(hotelKey, season, bbChecked);
-      return priceKite(hotelKey, season, bbChecked);
+    function priceForSelection(hotelKey, season, sport){
+      if (sport==='cat')   return priceCat(hotelKey, season);
+      if (sport==='hansa') return priceHansa(hotelKey, season);
+      return priceKite(hotelKey, season);
     }
 
     function buildAutoMessage(){
       const hotel  = inHotel.value;
       const season = inSeason.value;
       const sport  = inSport.value;
-      const bbUse  = inBB.checked;
-
-      const total  = priceForSelection(hotel, season, bbUse, sport);
+      const total  = priceForSelection(hotel, season, sport);
       const lines = [
         `Спорт: ${getSportName(sport)}`,
         `Отель: ${getHotelName(hotel)} • Сезон: ${getSeasonName(season)}`,
-        `Завтраки (BB): ${bbUse?'Да':'Нет'}`,
         `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (от 7 ночей)`
       ];
       return lines.join('\n');
@@ -539,8 +531,7 @@
         message: (inMsg.value||'').trim(),
         sport:   inSport.value,
         hotel:   inHotel.value,
-        season:  inSeason.value,
-        bb:      inBB.checked
+        season:  inSeason.value
       };
     }
     function validateCtx(ctx){
@@ -555,7 +546,7 @@
     function buildText(ctx){
       const title = (document.querySelector('[data-program-title]')?.textContent||document.title).trim();
       const pid   = document.body.getAttribute('data-program-id') || 'PAGE';
-      const price = priceForSelection(ctx.hotel, ctx.season, ctx.bb, ctx.sport);
+      const price = priceForSelection(ctx.hotel, ctx.season, ctx.sport);
       return [
         `Здравствуйте! Меня зовут ${ctx.name}.`,
         ctx.message,
@@ -563,7 +554,6 @@
         `Гостей: ${ctx.guests}`,
         `Спорт: ${getSportName(ctx.sport)}`,
         `Отель: ${getHotelName(ctx.hotel)} • Сезон: ${getSeasonName(ctx.season)}`,
-        `Завтраки (BB): ${ctx.bb?'Да':'Нет'}`,
         `Ориентировочная стоимость: ${fmtEUR(price)} / 2 (от 7 ночей)`,
         `Программа: ${title} (${pid})`,
         `Страница: ${location.href}`,
@@ -572,19 +562,18 @@
     }
 
     function updateBooking(){
-      const total = priceForSelection(inHotel.value, inSeason.value, inBB.checked, inSport.value);
+      const total = priceForSelection(inHotel.value, inSeason.value, inSport.value);
       bookTotal.textContent = fmtEUR(total) + ' / 2';
       if (!inMsg.value) inMsg.value = buildAutoMessage();
     }
     function syncBookingFromControls(){
       inHotel.value  = document.getElementById('hotelSel').value;
       inSeason.value = [...document.querySelectorAll('input[name="season"]')].find(r=>r.checked).value;
-      inBB.checked   = document.getElementById('bb').checked;
       inSport.value  = selectedSport;
       updateBooking();
     }
     ['change','input'].forEach(evt=>{
-      [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inBB,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
+      [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
     });
 
     // copy helpers
@@ -604,7 +593,7 @@
       window.open(url,'_blank','noopener');
     }
 
-    async function openTG(text, ctx, prog){
+    async function openTG(text, ctx){
       const bot = (cfg.telegram_bot||'').replace(/^@/,'');
       const user= (cfg.telegram_user||'').replace(/^@/,'');
 
@@ -689,7 +678,7 @@
       t_d6:'Сессия ~2–3 часа. Вечером — Sète/Marseillan.',
       t_d7:'Свободный день: рынок, устрицы, пляж.',
       t_d8:'Завтрак, чек-аут до 11:00.',
-      inc_title:'Что входит (БАЗА)', inc_hotel:'Проживание от 7 ночей (выбранный тип отеля)',
+      inc_title:'Что входит (БАЗА)', inc_hotel:'Проживание от 7 ночей (выбранный тип отеля) — с завтраками',
       inc_course:'Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)',
       inc_license:'Для паруса: лицензия FFVoile 14 € × 2',
       choose_title:'Выберите вид спорта', choose_sub:'Цены ниже считаются для базового пакета (от 7 ночей) и зависят от настроек выше. Все суммы — за 2 гостей.',
@@ -703,7 +692,7 @@
       brief_title:'Кратко о туре', brief_sub:'От 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.',
       brief_hotel_t:'🏨 Отели',
       h_budget:'Бюджет 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
-      lbl_season:'Сезон:', low:'Низкий', high:'Высокий', lbl_hotel:'Отель:', bb:'Завтраки (BB)',
+      lbl_season:'Сезон:', low:'Низкий', high:'Высокий', lbl_hotel:'Отель:',
       nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
       btn_send:'Отправить'
     },
@@ -714,7 +703,7 @@
       ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix s’actualise.",
       brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
       nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-      btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+      btn_book:'Réserver', btn_whatsapp:"Écrire sur WhatsApp", btn_telegram:"Écrire sur Telegram",
       gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, catamaran HC15/16, promenade et huîtres.',
       altHero:'Mèze Voile — HERO', altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
       altCat:'Catamaran HC15/16 — photo', altHansa:'Hansa 303 — photo', altKite:'Kitesurf — photo',
@@ -731,7 +720,7 @@
       t_d6:"Séance ~2–3 h. Soirée à Sète/Marseillan.",
       t_d7:"Journée libre : marché, huîtres, plage.",
       t_d8:"Petit-déj., check-out avant 11h.",
-      inc_title:'Inclus (BASE)', inc_hotel:'Hébergement dès 7 nuits (hôtel choisi)',
+      inc_title:'Inclus (BASE)', inc_hotel:"Hébergement dès 7 nuits (hôtel choisi) — petits déj. inclus",
       inc_course:'Activité 5 jours (catamaran/Hansa — location 2 h/jour; kite — stage 4 h/jour)',
       inc_license:'Pour la voile : licence FFVoile 14 € × 2',
       choose_title:'Choisissez votre sport', choose_sub:'Les prix ci-dessous sont pour le forfait de base (dès 7 nuits) et dépendent de vos réglages. Montants pour 2 personnes.',
@@ -745,7 +734,7 @@
       brief_title:'En bref', brief_sub:'Dès 7 nuits • 2–6 pers. • base : Mèze, Étang de Thau.',
       brief_hotel_t:'🏨 Hôtels',
       h_budget:'Économique 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
-      lbl_season:'Saison :', low:'Basse', high:'Haute', lbl_hotel:'Hôtel :', bb:'Petits déj. (BB)',
+      lbl_season:'Saison :', low:'Basse', high:'Haute', lbl_hotel:'Hôtel :',
       nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
       btn_send:'Envoyer'
     }
@@ -783,89 +772,19 @@
   })();
   </script>
 
-
-  <!-- 1) Конфиг (должен идти раньше остальных скриптов) -->
-<script>
-  window.APP_CONFIG = window.APP_CONFIG || {};
-  window.APP_CONFIG.whatsapp = '+33 7 59 64 48 13';
-  window.APP_CONFIG.telegram_user = 'de_iren';                 // запасной @user (без @)
-  window.APP_CONFIG.telegram_bot  = 'de_iren_order_bot';       // бот
-  window.APP_CONFIG.bot_prestart_url = 'https://iren-order-bot.onrender.com/prestart'; // prestart
-</script>
-
-<!-- 2) Основной скрипт формы (валидация + WA/TG) -->
-<script src="assets/js/contact.js" defer></script>
-
-<!-- 3) Плавающий виджет иконок WA/TG (на всех страницах) -->
-<script src="assets/js/chat-widget.js" defer></script>
+  <!-- ======= APP_CONFIG (единственный) ======= -->
   <script>
-;(function(){
-  if (window.__SOCIAL_HEADER_WIRE__) return; window.__SOCIAL_HEADER_WIRE__ = true;
-
-  const CFG = window.APP_CONFIG || {};
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const enc = s => encodeURIComponent(String(s||''));
-
-  // Тот же текст заявки, что и в форме/кнопках
-  function pageCtx(){
-    const html = document.documentElement;
-    return {
-      url: location.href,
-      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-             || document.title || '',
-      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-             || html.getAttribute('data-program-id') || ''
+    window.APP_CONFIG = {
+      whatsapp: '+33 7 59 64 48 13',
+      telegram_user: 'de_iren',
+      telegram_bot:  'de_iren_order_bot',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     };
-  }
-  function buildText(){
-    const f = document.querySelector('[data-contact-form]');
-    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const ctx = pageCtx();
-    return [
-      'Заявка с сайта Tours Languedoc by Irène',
-      ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      `Дата: ${get('date')||'-'}`,
-      `Гостей: ${get('guests')||'-'}`,
-      `Имя: ${get('name')||'-'}`,
-      `Контакт: ${get('contact')||'-'}`,
-      `Сообщение: ${get('message')||'-'}`,
-      `Ссылка: ${ctx.url}`
-    ].join('\n');
-  }
-  function safeOpen(href){
-    const a = document.createElement('a');
-    a.href = href; a.target = '_blank'; a.rel = 'noopener';
-    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
-  }
-  async function openTelegram(){
-    const bot = (CFG.telegram_bot||'').replace(/^@/,'');
-    const pre = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-    const user= (CFG.telegram_user||'').replace(/^@/,'');
-    if (bot && /^https?:\/\//i.test(pre)){
-      try{
-        const res = await fetch(pre, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ text: buildText(), ...pageCtx() })
-        });
-        const data = await res.json().catch(()=>({}));
-        const tme = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
-        if (tme){ safeOpen(tme); return; }
-      }catch(e){}
-    }
-    if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
-  }
-  function openWhatsApp(){
-    const num = digits(CFG.whatsapp || '');
-    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
-    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-  }
+  </script>
 
-  const wa = document.querySelector('[data-social-wa]');
-  const tg = document.querySelector('[data-social-tg]');
-  wa && wa.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
-  tg && tg.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
-})();
+  <!-- Подключение скриптов -->
+  <script src="assets
+
 </script>
 
 
