@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-program-id="DEGUST-MEZE" data-program-title="Mèze — дегустационный маршрут (Mèze & Montagnac)">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,7 +23,7 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}    
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -50,7 +50,6 @@
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
     .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .btn:hover{filter:brightness(.98)}
@@ -81,12 +80,11 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM (глобальные базовые) */
+    /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
-    /* BOOK: компактная карточка формы */
     #book{ padding:32px 0 56px; }
     #book .card{
       max-width:720px; margin:0 auto;
@@ -95,22 +93,17 @@
     }
     #book .section-title{ font-size:28px; margin:0 0 6px; }
     #book .section-sub{ margin:0 0 14px; color:var(--muted); }
-
     #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     #book .fields .full{ grid-column:1 / -1; }
-
-    #book input, #book textarea, #book select{ height:44px; }
+    #book input, #book textarea{ height:44px; }
     #book textarea{ min-height:110px; height:auto; }
-
-    #book .form-row{ display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:center; }
     #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
     #book .btn{ padding:10px 12px; border-radius:12px; }
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
 
-    /* admin gating: по умолчанию всё .admin-only скрыто */
+    /* admin gating */
     .admin-only{ display:none !important; }
-    /* когда админ включён — показываем */
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
@@ -119,7 +112,6 @@
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
       #book .fields{grid-template-columns:1fr}
-      #book .form-row{ grid-template-columns:1fr; gap:6px; }
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -127,21 +119,38 @@
       nav ul{display:none}
       .hero .inner{ min-height:auto; padding:28px 0 34px; }
     }
+
+    /* === FAB внизу справа === */
+    .chat-fab{
+      position:fixed; right:16px; z-index:9999;
+      border:0; padding:14px; border-radius:999px; background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
+    }
+    .chat-fab svg{width:22px; height:22px; display:block}
+    .chat-fab.wa{bottom:76px}
+    .chat-fab.tg{bottom:26px}
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+
+    /* тосты/валидация — contact.js */
+    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
+    .form-toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+      font-size:14px; max-width:90vw; text-align:center;
+    }
   </style>
 </head>
 
 <body
   data-program
   data-program-title="Mèze — дегустационный маршрут (Mèze & Montagnac)"
-  data-program-id="DEGUST-MEZE"
->
+  data-program-id="DEGUST-MEZE">
+
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
         <div class="logo" aria-hidden>Î</div>
-        <div>
-          <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
-        </div>
+        <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
       <nav class="lang">
         <ul>
@@ -168,7 +177,7 @@
         <span class="badge" data-i18n="hero_badge">Wine • Mèze & Montagnac</span>
         <h2 class="title" data-i18n="hero_title">Mèze — дегустационный маршрут (Mèze & Montagnac)</h2>
         <p class="subtitle" data-i18n="hero_sub">4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan).</p>
-</div>
+      </div>
     </div>
   </section>
 
@@ -177,12 +186,9 @@
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — компактный радиус вокруг Mèze & Montagnac.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img id="alt-g1" src="../assets/wines2/IMG_0118.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine de Belle Mare" loading="lazy"></div>
-      <div class="ph"><img id="alt-g2" src="../assets/wines2/IMG_0153.JPG.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine de Saint-André" loading="lazy"></div>
-      <div class="ph"><img id="alt-g3" src="../assets/wines2/IMG_0177.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Domaine La Croix Gratiot" loading="lazy"></div>
-      <div class="ph"><img id="alt-g4" src="../assets/wines/belle_mare.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mas du Novi" loading="lazy"></div>
-       <div class="ph"><img id="alt-g4" src="../assets/wines2/IMG_0112.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mas du Novi" loading="lazy"></div>
-       <div class="ph"><img id="alt-g4" src="../assets/wines2/IMG_0170.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mas du Novi" loading="lazy"></div>
+      <div class="ph"><img id="alt-g1" src="../assets/wines2/IMG_0118.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/wines2/IMG_0153.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/wines2/IMG_0177.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" loading="lazy"></div>
     </div>
   </section>
 
@@ -213,7 +219,7 @@
             <div class="pill">HVE · Accueil Vélo · Qualité Tourisme</div>
           </div>
         </li>
-        <li><strong>Domaine La Croix Gratiot (Montagnac)</strong> — <span>Picpoul-мастер из Монтаньяка; линейки от классики до Syndical(классический Picpoul AOP).</span>
+        <li><strong>Domaine La Croix Gratiot (Montagnac)</strong> — <span>Picpoul-мастер из Монтаньяка; линейки от классики до Syndical (классический Picpoul AOP).</span>
           <div class="inc-grid" style="margin-top:8px">
             <div class="pill">🏅 Decanter review — Syndical 2023</div>
             <div class="pill">Высокие оценки по Picpoul (разные винтажи)</div>
@@ -249,14 +255,13 @@
         <img src="../assets/wines2/IMG_0167.JPG" alt="Mèze & Montagnac — виноградники" loading="lazy" style="width:100%; height:auto; display:block; border-radius:18px">
       </div>
 
-      <!-- Ссылки — видны только в режиме администратора -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20Belle%20Mare%2C%20M%C3%A8ze&output=classic">Belle Mare</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20Saint-Andr%C3%A9%2C%20M%C3%A8ze&output=classic">Saint-André</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20La%20Croix%20Gratiot%2C%20Montagnac&output=classic">La Croix Gratiot</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas%20du%20Novi%2C%20Montagnac&output=classic">Mas du Novi</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20F%C3%A9lines%20Jourdan%2C%20M%C3%A8ze&output=classic">Félines Jourdan</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=M%C3%A8ze&destination=Domaine%20de%20Belle%20Mare%2C%20M%C3%A8ze&waypoints=Domaine%20de%20Saint-Andr%C3%A9%2C%20M%C3%A8ze|Domaine%20La%20Croix%20Gratiot%2C%20Montagnac|Mas%20du%20Novi%2C%20Montagnac">Маршрут: Mèze → Belle Mare → Saint-André → La Croix Gratiot → Mas du Novi</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=M%C3%A8ze&destination=Domaine%20de%20Belle%20Mare%2C%20M%C3%A8ze&waypoints=Domaine%20de%20Saint-Andr%C3%A9%2C%20M%C3%A8ze|Domaine%20La%20Croix%20Gratiot%2C%20Montagnac|Mas%20du%20Novi%2C%20Montagnac">Маршрут дня</a>
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
@@ -268,7 +273,7 @@
     </aside>
   </section>
 
-  <!-- PRICING (опционально) -->
+  <!-- PRICING -->
   <section id="pricing" class="container" style="margin:3rem 0">
     <h3 class="section-title" data-i18n="pricing_title">Стоимость</h3>
     <ul class="list">
@@ -283,7 +288,8 @@
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим записи в хозяйства.</p>
 
-      <form class="fields" data-contact-form data-channel="telegram">
+      <!-- форма БЕЗ submit — только WA/TG -->
+      <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
         <div>
           <label for="when" data-i18n="label_date">Дата</label>
           <input id="when" name="date" type="date" required>
@@ -308,19 +314,9 @@
           <textarea id="msg" name="message" placeholder="Пикап (адрес), пожелания по винам/опциям…"></textarea>
         </div>
 
-        <div class="form-row full">
-          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
-          <select id="sendto" name="channel">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
-
         <div class="form-actions full">
-          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
           <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+          <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
         </div>
       </form>
     </div>
@@ -337,25 +333,24 @@
     </div>
   </footer>
 
-  <!-- I18N -->
+  <!-- ===== I18N ===== -->
   <script>
     const i18n = {
-      ru: {
-        htmlLang:'ru',
+      ru:{htmlLang:'ru',
         title:'Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène',
         metaDesc:'Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы.',
         ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
         ogDesc:'Короткие переезды: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы.',
-        brand_sub:'— Путешествия со вкусом',
-        brand_sub_footer:'Путешествия со вкусом',
+        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+        btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         hero_badge:'Wine • Mèze & Montagnac',
         hero_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
         hero_sub:'4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan).',
         gal_title:'Как это выглядит',
         gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — компактный радиус вокруг Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — лагуна и Picpoul', altG2:'Saint-André — винодельня HVE', altG3:'La Croix Gratiot — Picpoul', altG4:'Mas du Novi — Grès de Montpellier',
+        altHero:'Mèze & Montagnac — HERO',
+        altG1:'Belle Mare — лагуна и Picpoul', altG2:'Saint-André — винодельня HVE', altG3:'La Croix Gratiot — Picpoul',
         plan_title:'Маршрут и тайминг',
         t_depart_meze:'выезд из Mèze (отель/порт). Короткий бриф.',
         t_return_meze:'возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце.',
@@ -374,28 +369,23 @@
         pricing_base:'По запросу — зависит от состава группы и выбранных опций',
         pricing_note:'Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.',
         form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.',
-        label_date:'Дата', label_guests:'Гостей',
-        label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
-        btn_send_form:'Отправить',
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты'
+        form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.'
       },
-      fr: {
-        htmlLang:'fr',
+      fr:{htmlLang:'fr',
         title:'Mèze — route de dégustation (Mèze & Montagnac) | Tours Languedoc by Irène',
         metaDesc:'Journée compacte : Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan). 4–5 h, 3–4 arrêts, option huîtres.',
         ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
         ogDesc:'Courtes distances : Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan). 4–5 h, 3–4 arrêts, option huîtres.',
-        brand_sub:'— Des voyages avec goût',
-        brand_sub_footer:'Des voyages avec goût',
+        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_book:'Réserver', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+        btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         hero_badge:'Vin • Mèze & Montagnac',
         hero_title:'Mèze — route de dégustation (Mèze & Montagnac)',
         hero_sub:'4–5 h · 3–4 arrêts · 10–15 min entre les étapes. Domaines : Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan).',
         gal_title:'À quoi ça ressemble',
         gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (option) Félines Jourdan — rayon compact autour de Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — lagune & Picpoul', altG2:'Saint-André — domaine HVE', altG3:'La Croix Gratiot — Picpoul', altG4:'Mas du Novi — Grès de Montpellier',
+        altHero:'Mèze & Montagnac — HERO',
+        altG1:'Belle Mare — lagune & Picpoul', altG2:'Saint-André — domaine HVE', altG3:'La Croix Gratiot — Picpoul',
         plan_title:'Programme & timing',
         t_depart_meze:'départ de Mèze (hôtel/port). Brief rapide.',
         t_return_meze:'retour à Mèze. Option : ajouter Félines Jourdan au début/à la fin.',
@@ -414,16 +404,11 @@
         pricing_base:'Sur demande — selon votre groupe et options',
         pricing_note:'Parcours : 4–5 h, 3–4 arrêts. Options : huîtres Tarbouriech.',
         form_title:'Demande rapide / réservation',
-        form_sub:'Réponse sous 24 h et confirmation des visites.',
-        label_date:'Date', label_guests:'Personnes',
-        label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
-        btn_send_form:'Envoyer',
-        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts'
+        form_sub:'Réponse sous 24 h et confirmation des visites.'
       }
     };
 
-    const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
-
+    function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
     function applyLang(lang){
       const t = i18n[lang];
       document.documentElement.lang = t.htmlLang;
@@ -431,51 +416,44 @@
       const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
       const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
       const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-
       document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key = node.getAttribute('data-i18n');
+        const key=node.getAttribute('data-i18n');
         if(t[key]!==undefined){
-          if (/<[a-z][\s\S]*>/i.test(t[key])) { node.innerHTML = t[key]; }
-          else { node.textContent = t[key]; }
+          if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
+          else node.textContent = t[key];
         }
       });
-
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3); setAlt('alt-g4', t.altG4);
-
-      const brandHome = document.getElementById('brandHome');
-      if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
+      setAlt('alt-hero', t.altHero);
+      setAlt('alt-g1', t.altG1);
+      setAlt('alt-g2', t.altG2);
+      setAlt('alt-g3', t.altG3);
 
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-
       localStorage.setItem('site:lang', lang);
     }
-
-    (function init(){
+    (function initLang(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
       applyLang(initial);
-
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-
-      // фокус на дату при клике "Забронировать"
-      document.getElementById('goBook')?.addEventListener('click', ()=>{
-        setTimeout(()=>document.getElementById('when')?.focus(), 60);
-      });
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
     })();
   </script>
 
-  <!-- CONFIG сначала, затем скрипты -->
+  <!-- ==== CONFIG (единый, без дублей) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',
-      telegram: 'de_iren', // username без @
+      whatsapp: '33759644813',                 // номер для wa.me (очистится до цифр)
+      telegram_user: 'de_iren',                // username без @
+      telegram_bot: 'de_iren_order_bot',       // бот
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
 
-  <!-- ADMIN gate: ?admin=capion2025 -> ON, ?admin=off -> OFF -->
+  <!-- ==== Admin gate ==== -->
   <script>
     (function adminGate(){
       try{
@@ -483,51 +461,39 @@
         const token = params.get('admin');
 
         if (token !== null) {
-          if (token === 'off') {
-            localStorage.removeItem('site:admin');
-          } else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) {
-            localStorage.setItem('site:admin','1');
-          }
-          // очищаем URL
+          if (token === 'off') localStorage.removeItem('site:admin');
+          else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) localStorage.setItem('site:admin','1');
           params.delete('admin');
-          const newUrl = location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash;
-          history.replaceState({},'', newUrl);
+          history.replaceState({},'', location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash);
         }
-
-        // флаг на <html> — дальше управляет CSS
         const isAdmin = localStorage.getItem('site:admin') === '1';
         document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-      }catch(e){
-        console.warn('[adminGate]', e);
-      }
+        if (!isAdmin){
+          const s=document.createElement('style');
+          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
+          document.head.appendChild(s);
+        }
+      }catch(e){ console.warn('[adminGate]', e); }
     })();
   </script>
 
-  <!-- (опционально) если у кого-то кэш: делаем админ-ссылки некликабельными, если админ не включён -->
-  <script>
-    (function adminLinkGuard(){
-      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
-      if (!isAdmin) {
-        const style = document.createElement('style');
-        style.textContent = 'a[data-admin-link]{pointer-events:none; cursor:not-allowed; opacity:.65;}';
-        document.head.appendChild(style);
-      }
-    })();
-  </script>
-<!-- 1) Конфиг (должен идти раньше остальных скриптов) -->
-<script>
-  window.APP_CONFIG = window.APP_CONFIG || {};
-  window.APP_CONFIG.whatsapp = '+33 7 59 64 48 13';
-  window.APP_CONFIG.telegram_user = 'de_iren';                 // запасной @user (без @)
-  window.APP_CONFIG.telegram_bot  = 'de_iren_order_bot';       // бот
-  window.APP_CONFIG.bot_prestart_url = 'https://iren-order-bot.onrender.com/prestart'; // prestart
-</script>
+  <!-- === FAB: плавающие кнопки === -->
+  <button class="chat-fab wa" aria-label="Написать в WhatsApp" title="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
+      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
+    </svg>
+  </button>
 
-<!-- 2) Основной скрипт формы (валидация + WA/TG) -->
-<script src="assets/js/contact.js" defer></script>
+  <button class="chat-fab tg" aria-label="Написать в Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
+    </svg>
+  </button>
 
-<!-- 3) Плавающий виджет иконок WA/TG (на всех страницах) -->
-<script src="assets/js/chat-widget.js" defer></script>
-
+  <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
+>
