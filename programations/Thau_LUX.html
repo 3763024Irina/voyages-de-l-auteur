@@ -281,7 +281,7 @@
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
 
       <!-- форма БЕЗ submit — только WA/TG -->
-      <form class="fields" data-contact-form>
+     <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
         <div>
           <label for="when" data-i18n="label_date">Дата</label>
           <input id="when" name="date" type="date" required>
