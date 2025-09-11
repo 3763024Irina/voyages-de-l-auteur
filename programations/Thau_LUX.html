@@ -81,7 +81,7 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM */
+    /* FORM (базовые) */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
@@ -133,7 +133,7 @@
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* валидация/тост */
+    /* тосты/валидация — используются contact.js */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
     .form-toast{
       position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
@@ -280,7 +280,7 @@
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
 
-      <!-- форма без submit/селекта — только две кнопки -->
+      <!-- форма БЕЗ submit/селекта — только две кнопки -->
       <form class="fields" data-contact-form>
         <div>
           <label for="when" data-i18n="label_date">Дата</label>
@@ -414,7 +414,6 @@
     };
 
     function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
-
     function applyLang(lang){
       const t = i18n[lang];
       document.documentElement.lang = t.htmlLang;
@@ -444,15 +443,11 @@
         (lang==='fr') ? `${fmt(hs.base2)} (base 1–2) + ${fmt(hs.perExtra)} / pers. au-delà (max. ${hs.max})`
                       : `${fmt(hs.base2)} (база 1–2) + ${fmt(hs.perExtra)} / чел сверх 2 (макс. ${hs.max})`;
 
-      const brandHome = document.getElementById('brandHome');
-      if(brandHome){ brandHome.setAttribute('aria-label', lang==='ru' ? 'На главную' : 'Accueil'); }
-
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
 
       localStorage.setItem('site:lang', lang);
     }
-
     (function initLang(){
       const saved = localStorage.getItem('site:lang');
       const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
@@ -463,17 +458,15 @@
     })();
   </script>
 
-  <!-- ==== CONFIG (единая) ==== -->
+  <!-- ==== CONFIG (единый, без дублей) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',               // номер для wa.me (очистится до цифр)
-      telegram_user: 'ToursLanguedocbyIrene',// username без @ (резерв)
-      // опционально — режим через бота + сервер (раскомментируй и укажи свои значения):
-      telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
+      whatsapp: '33759644813',                 // номер для wa.me (будет очищен до цифр)
+      telegram_user: 'ToursLanguedocbyIrene',  // username без @ (или используйте бота ниже)
+      // telegram_bot: 'de_iren_order_bot',
+      // bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
- 
   </script>
 
   <!-- ==== Admin gate ==== -->
@@ -499,118 +492,9 @@
     })();
   </script>
 
-  <!-- ==== Контакты: валидация + WA/TG + FAB ==== -->
-  <script>
-  ;(() => {
-    if (window.__CONTACT_BIND__) return; window.__CONTACT_BIND__ = true;
-
-    const CFG = window.APP_CONFIG || {};
-    const digits = s => String(s||'').replace(/\D/g,'');
-    const enc = s => encodeURIComponent(String(s||''));
-
-    function toast(msg, ms=2400){
-      const t = document.createElement('div');
-      t.className = 'form-toast'; t.textContent = msg;
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), ms);
-    }
-
-    function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-                 || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-                 || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
-
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad = null;
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        toast('Заполните дату, гостей, имя и контакт');
-        return false;
-      }
-      return true;
-    }
-
-    function safeOpen(href){
-      const a = document.createElement('a');
-      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
-    }
-
-    async function openTelegram(){
-      if(!validateForm()) return;
-      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-      const user = (CFG.telegram_user||'').replace(/^@/,'');
-      const pre  = String(CFG.bot_prestart_url||'')
-                    .replace(/\/health\/?$/,'/prestart')
-                    .replace(/\/$/,'/prestart');
-
-      if (bot && /^https?:\/\//i.test(pre)){
-        try{
-          const r = await fetch(pre, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ text: buildText() })
-          });
-          const j = await r.json().catch(()=>({}));
-          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-          if (tme){ safeOpen(tme); return; }
-        }catch(e){ /* fallback ниже */ }
-      }
-      if (user) safeOpen(`https://t.me/${user}`);
-      else if (bot) safeOpen(`https://t.me/${bot}`);
-      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
-    }
-
-    function openWhatsApp(){
-      if(!validateForm()) return;
-      const num = digits(CFG.whatsapp || '');
-      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
-      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-    }
-
-    function bind(){
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
-      });
-      document.querySelectorAll('[data-telegram]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
-      });
-    }
-
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', bind, {once:true});
-    } else {
-      bind();
-    }
-  })();
-  </script>
-      <<script src="../assets/js/contact.js" defer></script> 
-  <<script src="../assets/js/chat-widget.js" defer></script>
+  <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
