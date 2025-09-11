@@ -274,46 +274,37 @@
       <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим брони в гроте и домене.</p>
 
-      <form class="fields" data-contact-form data-channel="telegram">
-        <div>
-          <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="1" max="6" value="2" required>
-        </div>
+     <form class="fields" data-contact-form>
+  <div>
+    <label for="when">Дата</label>
+    <input id="when" name="date" type="date" required>
+  </div>
+  <div>
+    <label for="guests">Гостей</label>
+    <input id="guests" name="guests" type="number" min="1" max="6" value="2" required>
+  </div>
 
-        <div class="full">
-          <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
+  <div class="full">
+    <label for="name">Имя</label>
+    <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+  </div>
 
-        <div class="full">
-          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Telegram/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / @username / email" required>
-        </div>
+  <div class="full">
+    <label for="contact">Контакт (WhatsApp/Telegram/Email)</label>
+    <input id="contact" name="contact" type="text" placeholder="+33… / @username / email" required>
+  </div>
 
-        <div class="full">
-          <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Предпочтения по времени, нужен ли второй домен, пожелания по обеду…"></textarea>
-        </div>
+  <div class="full">
+    <label for="msg">Комментарий</label>
+    <textarea id="msg" name="message" placeholder="Предпочтения по времени, нужен ли второй домен, пожелания по обеду…"></textarea>
+  </div>
 
-        <div class="form-row full">
-          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
-          <select id="sendto" name="channel">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
+  <div class="form-actions full">
+    <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener">Написать в Telegram</a>
+  </div>
+</form>
 
-        <div class="form-actions full">
-          <button class="btn primary" type="submit" data-i18n="btn_send_form">Отправить</button>
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </form>
     </div>
   </section>
 
@@ -576,33 +567,22 @@
       safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
     }
 
-    function bind(){
-      // submit формы → канал из селекта
-      const form = document.querySelector('[data-contact-form]');
-      form?.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        const ch = (form.querySelector('[name="channel"]')?.value || 'telegram').toLowerCase();
-        if (ch === 'whatsapp') openWhatsApp();
-        else if (ch === 'telegram') openTelegram();
-        else toast('Напишите нам на email: tours@languedoc.example');
-      });
+function bind(){
+  // только явные кнопки
+  document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+    el.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+  });
+  document.querySelectorAll('[data-telegram]').forEach(el=>{
+    el.addEventListener('click', (e)=>{ e.preventDefault(); openTelegram(); });
+  });
+}
 
-      // явные кнопки
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
-      });
-      document.querySelectorAll('[data-telegram]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
-      });
-    }
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', bind, { once: true });
+} else {
+  bind();
+}
 
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', bind, {once:true});
-    } else {
-      bind();
-    }
-  })();
-  </script>
 
   <!-- (Опционально) внешние файлы, если используешь общие версии для всего сайта -->
   <<script src="../assets/js/contact.js" defer></script> 
