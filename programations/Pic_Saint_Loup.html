@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-program-id="PSL-GRAND-VIN-1D" data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -86,6 +86,7 @@
     #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     #book .fields .full{ grid-column:1 / -1; }
     #book input, #book textarea{ height:44px; }
+    #book textarea{ height:auto; }
     #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; justify-content:flex-end; }
     #book .btn{ padding:10px 12px; border-radius:12px; }
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
@@ -108,14 +109,19 @@
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+
+    /* валидация */
+    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
+    .form-toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+      font-size:14px; max-width:90vw; text-align:center;
+    }
   </style>
 </head>
 
-<body
-  data-program
-  data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день"
-  data-program-id="PSL-GRAND-VIN-1D"
->
+<body>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
@@ -139,7 +145,7 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-program-title="Grand Vin du Pic Saint-Loup — премиальный винный день" data-program-id="PSL-GRAND-VIN-1D">
     <div class="bg">
       <img src="../assets/wines/vinograd.jpg" onerror="this.src='../assets/hortus.jpg'" alt="Pic Saint-Loup — панорама" />
       <div class="overlay"></div>
@@ -286,7 +292,7 @@
     </div>
   </footer>
 
-  <!-- === FAB: плавающие кнопки внизу справа === -->
+  <!-- === FAB: плавающие кнопки внизу справа (готовые элементы) === -->
   <button class="chat-fab wa"
           aria-label="Написать в WhatsApp"
           title="WhatsApp"
@@ -308,12 +314,14 @@
     </svg>
   </button>
 
-  <!-- ==== CONFIG (для contact.js и виджета) ==== -->
+  <!-- ==== CONFIG (для отправки) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',        // номер для wa.me
-      telegram_user: 'de_iren',       // @user без @
-      telegram_mode: 'profile',       // 'profile' | 'share'
+      whatsapp: '33759644813',        // номер для wa.me (любой формат; в коде очистится до цифр)
+      telegram_user: 'de_iren',       // резервный профиль @user (без @)
+      // если добавишь ниже два поля, будет режим через бота/сервер:
+      // telegram_bot: 'de_iren_order_bot',
+      // bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart автоматически
       ADMIN_SECRET: 'capion2025'
     };
   </script>
@@ -341,88 +349,128 @@
     })();
   </script>
 
-  <!-- ==== Контакты + Мини-чат ==== -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, открытие WA/TG, биндинг всех кнопок ==== -->
+  <script>
+  ;(() => {
+    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
-<script>
-;(()=> {
-  if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+    // --- config/helpers ---
+    const CFG = window.APP_CONFIG || {};
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const enc = s => encodeURIComponent(String(s||''));
 
-  const CFG = window.APP_CONFIG || {};
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const enc = s => encodeURIComponent(String(s||''));
-
-  function buildText(){
-    const f = document.querySelector('[data-contact-form]');
-    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-               || document.title || '';
-    const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-               || document.documentElement.getAttribute('data-program-id') || '';
-    return [
-      'Заявка с сайта Tours Languedoc by Irène',
-      pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-      `Дата: ${get('date')||'-'}`,
-      `Гостей: ${get('guests')||'-'}`,
-      `Имя: ${get('name')||'-'}`,
-      `Контакт: ${get('contact')||'-'}`,
-      `Сообщение: ${get('message')||'-'}`,
-      `Ссылка: ${location.href}`
-    ].join('\n');
-  }
-
-  function safeOpen(href){
-    const a=document.createElement('a');
-    a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
-    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
-  }
-  async function openTelegram(){
-    const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-    const user = (CFG.telegram_user||'').replace(/^@/,'');
-    const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-    if (bot && /^https?:\/\//i.test(pre)){
-      try{
-        const r = await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ text: buildText() })});
-        const j = await r.json().catch(()=>({}));
-        const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-        if (tme){ safeOpen(tme); return; }
-      }catch(e){}
+    // --- UI toast ---
+    function toast(msg, ms=2400){
+      const t = document.createElement('div');
+      t.className = 'form-toast'; t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), ms);
     }
-    if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
-  }
-  function openWhatsApp(){
-    const num = digits(CFG.whatsapp || '');
-    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
-    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-  }
 
-  function ensureFAB(){
-    // если виджет уже отрисовал свои кнопки — ничего не делаем
-    if (document.querySelector('.chat-fab.tg') || document.querySelector('.chat-fab.wa')) return;
+    // --- build booking text from form ---
+    function buildText(){
+      const f = document.querySelector('[data-contact-form]');
+      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
+                 || document.title || '';
+      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
+                 || document.documentElement.getAttribute('data-program-id') || '';
+      return [
+        'Заявка с сайта Tours Languedoc by Irène',
+        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+        `Дата: ${get('date')||'-'}`,
+        `Гостей: ${get('guests')||'-'}`,
+        `Имя: ${get('name')||'-'}`,
+        `Контакт: ${get('contact')||'-'}`,
+        `Сообщение: ${get('message')||'-'}`,
+        `Ссылка: ${location.href}`
+      ].join('\n');
+    }
 
-    const btnWA = document.createElement('button');
-    btnWA.className = 'chat-fab wa';
-    btnWA.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>';
-    btnWA.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
-    document.body.appendChild(btnWA);
+    // --- validation ---
+    const REQUIRED = ['date','guests','name','contact'];
+    function validateForm({scroll=true}={}){
+      const f = document.querySelector('[data-contact-form]');
+      if(!f){ toast('Форма не найдена'); return false; }
+      let firstBad = null;
+      REQUIRED.forEach(n=>{
+        const el = f.querySelector(`[name="${n}"]`);
+        const val = el?.value?.trim();
+        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
+        el?.classList.toggle('input-error', !ok);
+        if(!ok && !firstBad) firstBad = el;
+      });
+      if(firstBad){
+        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+        firstBad.focus();
+        toast('Заполните дату, гостей, имя и контакт');
+        return false;
+      }
+      return true;
+    }
 
-    const btnTG = document.createElement('button');
-    btnTG.className = 'chat-fab tg';
-    btnTG.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>';
-    btnTG.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
-    document.body.appendChild(btnTG);
-  }
+    // --- safe open ---
+    function safeOpen(href){
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
+    }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ensureFAB, {once:true});
-  } else {
-    ensureFAB();
-  }
-})();
-</script>
+    // --- openers ---
+    async function openTelegram(){
+      if(!validateForm()) return;
 
-  <!-- ==== Утилита для суммы ==== -->
+      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+      const user = (CFG.telegram_user||'').replace(/^@/,'');
+      const pre  = String(CFG.bot_prestart_url||'')
+                    .replace(/\/health\/?$/,'/prestart')
+                    .replace(/\/$/,'/prestart');
+
+      // если настроен сервер /prestart — шлём туда текст, открываем t.me/<bot>?start=<token>
+      if (bot && /^https?:\/\//i.test(pre)){
+        try{
+          const r = await fetch(pre, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ text: buildText() })
+          });
+          const j = await r.json().catch(()=>({}));
+          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+          if (tme){ safeOpen(tme); return; }
+        }catch(e){ /* fallback ниже */ }
+      }
+      // иначе — профиль/бот напрямую (Telegram не вставит текст автоматически — ограничение клиента)
+      if (user) safeOpen(`https://t.me/${user}`);
+      else if (bot) safeOpen(`https://t.me/${bot}`);
+      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
+    }
+
+    function openWhatsApp(){
+      if(!validateForm()) return;
+      const num = digits(CFG.whatsapp || '');
+      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+    }
+
+    // --- bind ALL buttons (и в форме, и FAB, и футер) ---
+    function bind(){
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
+      });
+      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
+      });
+    }
+
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', bind, {once:true});
+    } else {
+      bind();
+    }
+  })();
+  </script>
+
+  <!-- ==== Калькулятор суммы ==== -->
   <script>
     (function(){
       const guests = document.getElementById('guests');
