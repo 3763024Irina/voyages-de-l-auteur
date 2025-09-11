@@ -8,6 +8,7 @@
   <meta name="description" content="Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы." />
   <meta property="og:title" content="Mèze — дегустационный маршрут (Mèze & Montagnac)" />
   <meta property="og:description" content="Короткие переезды: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы." />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="../assets/wines/vinograd.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -82,7 +83,7 @@
 
     /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
-    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    input, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
     #book{ padding:32px 0 56px; }
@@ -131,7 +132,7 @@
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* тосты/валидация — contact.js */
+    /* тосты/валидация — делает contact.js, классы на всякий: */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
     .form-toast{
       position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
@@ -207,36 +208,11 @@
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="domains_title">Домены и награды</h3>
       <ul class="list">
-        <li><strong>Domaine de Belle Mare (Mèze)</strong> — <span>Свежий <b>Picpoul de Pinet</b> у лагуны Thau; стиль: цитрус, соль, морской бриз.</span>
-          <div class="inc-grid" style="margin-top:8px">
-            <div class="pill">🥇/🥈 Concours Général Agricole (разные годы)</div>
-            <div class="pill">🏅 Decanter / DWWA — участия и обзоры</div>
-          </div>
-        </li>
-        <li><strong>Domaine de Saint-André (Mèze)</strong> — <span>Семейное хозяйство (HVE, Qualité Tourisme). Muscat, Vermentino, купажи.</span>
-          <div class="inc-grid" style="margin-top:8px">
-            <div class="pill">🥇 CGA Paris 2025 — Folie d’Inès Blanc (золото)</div>
-            <div class="pill">HVE · Accueil Vélo · Qualité Tourisme</div>
-          </div>
-        </li>
-        <li><strong>Domaine La Croix Gratiot (Montagnac)</strong> — <span>Picpoul-мастер из Монтаньяка; линейки от классики до Syndical (классический Picpoul AOP).</span>
-          <div class="inc-grid" style="margin-top:8px">
-            <div class="pill">🏅 Decanter review — Syndical 2023</div>
-            <div class="pill">Высокие оценки по Picpoul (разные винтажи)</div>
-          </div>
-        </li>
-        <li><strong>Mas du Novi (Montagnac)</strong> — <span>Исторический дом на плато; <b>Grès de Montpellier</b> белые/красные.</span>
-          <div class="inc-grid" style="margin-top:8px">
-            <div class="pill">🥇/🥈 DWWA — Prestigi 2019, Ô de Novi 2019 (медали 2024)</div>
-            <div class="pill">Оценки критиков (91+ у части белых)</div>
-          </div>
-        </li>
-        <li><strong>Опция: Domaine Félines Jourdan (Mèze)</strong> — <span>Пикпуль с морским характером — стиль «устрицы & море».</span>
-          <div class="inc-grid" style="margin-top:8px">
-            <div class="pill">🥇/🥈 DWWA — медали (напр. винтаж 2024 на DWWA 2025)</div>
-            <div class="pill">Высокие оценки Decanter</div>
-          </div>
-        </li>
+        <li><strong>Domaine de Belle Mare (Mèze)</strong> — <span>Свежий <b>Picpoul de Pinet</b> у лагуны Thau; стиль: цитрус, соль, морской бриз.</span></li>
+        <li><strong>Domaine de Saint-André (Mèze)</strong> — <span>Семейное хозяйство (HVE, Qualité Tourisme). Muscat, Vermentino, купажи.</span></li>
+        <li><strong>Domaine La Croix Gratiot (Montagnac)</strong> — <span>Picpoul-мастер из Монтаньяка; линейки от классики до Syndical.</span></li>
+        <li><strong>Mas du Novi (Montagnac)</strong> — <span>Исторический дом на плато; <b>Grès de Montpellier</b> белые/красные.</span></li>
+        <li><strong>Опция: Domaine Félines Jourdan (Mèze)</strong> — <span>Пикпуль с морским характером — стиль «устрицы & море».</span></li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px" data-i18n="terms_title">Условия и заметки</h3>
@@ -333,10 +309,25 @@
     </div>
   </footer>
 
+  <!-- === FAB: плавающие кнопки === -->
+  <button class="chat-fab wa" aria-label="Написать в WhatsApp" title="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
+      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
+    </svg>
+  </button>
+
+  <button class="chat-fab tg" aria-label="Написать в Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
+    </svg>
+  </button>
+
   <!-- ===== I18N ===== -->
   <script>
     const i18n = {
-      ru:{htmlLang:'ru',
+      ru: {
+        htmlLang:'ru',
         title:'Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène',
         metaDesc:'Однодневный маршрут: только Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan). 4–5 часов, 3–4 остановки, опция устрицы.',
         ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
@@ -349,8 +340,7 @@
         hero_sub:'4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ опция Félines Jourdan).',
         gal_title:'Как это выглядит',
         gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (опция) Félines Jourdan — компактный радиус вокруг Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO',
-        altG1:'Belle Mare — лагуна и Picpoul', altG2:'Saint-André — винодельня HVE', altG3:'La Croix Gratiot — Picpoul',
+        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — лагуна и Picpoul', altG2:'Saint-André — винодельня HVE', altG3:'La Croix Gratiot — Picpoul',
         plan_title:'Маршрут и тайминг',
         t_depart_meze:'выезд из Mèze (отель/порт). Короткий бриф.',
         t_return_meze:'возврат в Mèze. Опция: добавить Félines Jourdan в начале/конце.',
@@ -371,7 +361,8 @@
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.'
       },
-      fr:{htmlLang:'fr',
+      fr: {
+        htmlLang:'fr',
         title:'Mèze — route de dégustation (Mèze & Montagnac) | Tours Languedoc by Irène',
         metaDesc:'Journée compacte : Mèze & Montagnac — Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan). 4–5 h, 3–4 arrêts, option huîtres.',
         ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
@@ -384,8 +375,7 @@
         hero_sub:'4–5 h · 3–4 arrêts · 10–15 min entre les étapes. Domaines : Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi (+ option Félines Jourdan).',
         gal_title:'À quoi ça ressemble',
         gal_sub:'Belle Mare • Saint-André • La Croix Gratiot • Mas du Novi • (option) Félines Jourdan — rayon compact autour de Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO',
-        altG1:'Belle Mare — lagune & Picpoul', altG2:'Saint-André — domaine HVE', altG3:'La Croix Gratiot — Picpoul',
+        altHero:'Mèze & Montagnac — HERO', altG1:'Belle Mare — lagune & Picpoul', altG2:'Saint-André — domaine HVE', altG3:'La Croix Gratiot — Picpoul',
         plan_title:'Programme & timing',
         t_depart_meze:'départ de Mèze (hôtel/port). Brief rapide.',
         t_return_meze:'retour à Mèze. Option : ajouter Félines Jourdan au début/à la fin.',
@@ -410,31 +400,24 @@
 
     function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
     function applyLang(lang){
-      const t = i18n[lang];
-      document.documentElement.lang = t.htmlLang;
-      document.title = t.title;
-      const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt = document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd = document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      document.querySelectorAll('[data-i18n]').forEach(node=>{
-        const key=node.getAttribute('data-i18n');
-        if(t[key]!==undefined){
-          if (/<[a-z][\s\S]*>/i.test(t[key])) node.innerHTML = t[key];
-          else node.textContent = t[key];
-        }
+      const t=i18n[lang];
+      document.documentElement.lang=t.htmlLang;
+      document.title=t.title;
+      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
+      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
+      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+      document.querySelectorAll('[data-i18n]').forEach(n=>{
+        const k=n.getAttribute('data-i18n');
+        if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
       });
-      setAlt('alt-hero', t.altHero);
-      setAlt('alt-g1', t.altG1);
-      setAlt('alt-g2', t.altG2);
-      setAlt('alt-g3', t.altG3);
-
+      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
       localStorage.setItem('site:lang', lang);
     }
     (function initLang(){
-      const saved = localStorage.getItem('site:lang');
-      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+      const saved=localStorage.getItem('site:lang');
+      const initial=saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
       applyLang(initial);
       document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
       document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
@@ -442,7 +425,7 @@
     })();
   </script>
 
-  <!-- ==== CONFIG (единый, без дублей) ==== -->
+  <!-- ==== CONFIG (единый) ==== -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',                 // номер для wa.me (очистится до цифр)
@@ -453,22 +436,21 @@
     };
   </script>
 
-  <!-- ==== Admin gate ==== -->
+  <!-- ==== Admin gate (как на других страницах) ==== -->
   <script>
     (function adminGate(){
       try{
-        const params = new URLSearchParams(location.search);
-        const token = params.get('admin');
-
-        if (token !== null) {
-          if (token === 'off') localStorage.removeItem('site:admin');
-          else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) localStorage.setItem('site:admin','1');
+        const params=new URLSearchParams(location.search);
+        const token=params.get('admin');
+        if(token!==null){
+          if(token==='off') localStorage.removeItem('site:admin');
+          else if(token===(window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
           params.delete('admin');
           history.replaceState({},'', location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash);
         }
-        const isAdmin = localStorage.getItem('site:admin') === '1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
+        const isAdmin=localStorage.getItem('site:admin')==='1';
+        document.documentElement.setAttribute('data-admin', isAdmin?'1':'0');
+        if(!isAdmin){
           const s=document.createElement('style');
           s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
           document.head.appendChild(s);
@@ -477,23 +459,9 @@
     })();
   </script>
 
-  <!-- === FAB: плавающие кнопки === -->
-  <button class="chat-fab wa" aria-label="Написать в WhatsApp" title="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
-      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
-    </svg>
-  </button>
-
-  <button class="chat-fab tg" aria-label="Написать в Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
-    </svg>
-  </button>
-
   <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
   <script src="../assets/js/contact.js" defer></script>
   <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
->
+
