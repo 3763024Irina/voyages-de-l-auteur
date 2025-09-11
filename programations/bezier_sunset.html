@@ -270,44 +270,38 @@
 
       <!-- запрет submit — форма работает через WA/TG/email без перезагрузки -->
       <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
-        <div>
-          <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-        </div>
+  <div>
+    <label for="when" data-i18n="label_date">Дата</label>
+    <input id="when" name="date" type="date" required>
+  </div>
+  <div>
+    <label for="guests" data-i18n="label_guests">Гостей</label>
+    <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+  </div>
 
-        <div class="full">
-          <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
+  <div class="full">
+    <label for="name" data-i18n="label_name">Имя</label>
+    <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+  </div>
 
-        <div class="full">
-          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-        </div>
+  <div class="full">
+    <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+    <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+  </div>
 
-        <div class="full">
-          <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
-        </div>
+  <div class="full">
+    <label for="msg" data-i18n="label_message">Комментарий</label>
+    <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
+  </div>
 
-        <div class="form-row full">
-          <label for="sendto"><span data-i18n="sendto_label">Куда отправить:</span></label>
-          <select id="sendto" name="channel">
-            <option value="whatsapp">WhatsApp</option>
-            <option value="telegram" selected>Telegram</option>
-            <option value="email">Email</option>
-          </select>
-        </div>
+  <!-- УДАЛЁН select «Куда отправить» -->
 
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </form>
+  <div class="form-actions full">
+    <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+    <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+  </div>
+</form>
+
     </div>
   </section>
 
