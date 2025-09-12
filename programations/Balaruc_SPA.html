@@ -439,6 +439,7 @@
   <script src="../assets/js/chat-widget.js" defer></script>
 
  <!-- Фикс WA/TG: клики без перезагрузки (БЕЗ автосоздания FAB) -->
+<!-- Фикс WA/TG: делегирование кликов, валидация, БЕЗ автосоздания FAB -->
 <script>
 ;(()=> {
   if (window.__QUICK_CONTACT_INIT__) return; window.__QUICK_CONTACT_INIT__ = true;
@@ -447,9 +448,8 @@
   const digits = s => String(s||'').replace(/\D/g,'');
   const enc = s => encodeURIComponent(String(s||''));
   const $  = (s,r=document)=>r.querySelector(s);
-  const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
 
-  // на всякий случай блокируем нативный submit
+  // Блокируем нативный submit на всякий случай
   document.querySelector('[data-contact-form]')
     ?.addEventListener('submit', e => e.preventDefault());
 
@@ -463,10 +463,8 @@
     const html = document.documentElement;
     return {
       url: location.href,
-      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-           || document.title || '',
-      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-           || html.getAttribute('data-program-id') || ''
+      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '',
+      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || html.getAttribute('data-program-id') || ''
     };
   }
 
@@ -487,24 +485,27 @@
 
   const REQUIRED = ['date','guests','name','contact'];
   function validateForm({scroll=true}={}){
-    const f = document.querySelector('[data-contact-form]'); if(!f){ toast('Форма не найдена'); return false; }
+    const f = document.querySelector('[data-contact-form]');
+    if(!f){ toast('Форма не найдена'); return false; }
     let firstBad=null;
-    REQUIRED.forEach(n=>{
+    for (const n of REQUIRED){
       const el=f.querySelector(`[name="${n}"]`);
       const val=el?.value?.trim();
       const ok=Boolean(val && (n!=='guests' || Number(val)>0));
       el?.classList.toggle('input-error', !ok);
       if(!ok && !firstBad) firstBad=el;
-    });
+    }
     if(firstBad){
       if(scroll) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-      firstBad.focus(); toast('Заполните дату, гостей, имя и контакт'); return false;
+      firstBad.focus(); toast('Заполните дату, гостей, имя и контакт'); 
+      return false;
     }
     return true;
   }
 
   function safeOpen(href){
-    const a=document.createElement('a'); a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
+    const a=document.createElement('a');
+    a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
     document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60);
   }
 
@@ -516,7 +517,11 @@
 
     if (bot && /^https?:\/\//i.test(pre)){
       try{
-        const res=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText(),...pageCtx()})});
+        const res=await fetch(pre,{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({text:buildText(),...pageCtx()})
+        });
         const data=await res.json().catch(()=>({}));
         const tme=data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
         if(tme){ safeOpen(tme); return; }
@@ -529,26 +534,26 @@
 
   function openWhatsApp(){
     if(!validateForm()) return;
-    const num=digits(CFG.whatsapp||''); if(!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+    const num=digits(CFG.whatsapp||'');
+    if(!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
     safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
   }
 
-  function wire(){
-    $$('[data-whatsapp]').forEach(el=>{
-      el.addEventListener('click', e=>{ e.preventDefault(); openWhatsApp(); });
-      el.setAttribute('href','javascript:void(0)');
-    });
-    $$('[data-telegram], .js-telegram').forEach(el=>{
-      el.addEventListener('click', e=>{ e.preventDefault(); openTelegram(); });
-      el.setAttribute('href','javascript:void(0)');
-    });
-    // ВАЖНО: здесь БОЛЬШЕ НЕТ автосоздания .chat-fab — их даёт chat-widget.js
+  // Делегирование кликов — работает и для динамически добавленных FAB
+  function onClick(e){
+    const tg = e.target.closest?.('[data-telegram], .js-telegram');
+    const wa = e.target.closest?.('[data-whatsapp]');
+    if (tg){
+      e.preventDefault(); openTelegram();
+    } else if (wa){
+      e.preventDefault(); openWhatsApp();
+    }
   }
+  document.addEventListener('click', onClick);
 
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wire,{once:true});
-  else wire();
 })();
 </script>
+
 
 
 </body>
