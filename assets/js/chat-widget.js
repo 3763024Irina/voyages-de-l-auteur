@@ -1,6 +1,12 @@
-/* chat-widget.js — мини-чат WA/TG, v2.1
-   Требует: window.APP_CONFIG = { whatsapp, telegram_user?, telegram_bot?, telegram_open?, bot_prestart_url? }
-   Работает на всех страницах, собирает контекст и поля формы (если есть).
+/* chat-widget.js — мини-чат WA/TG, v2.2
+   Требует: window.APP_CONFIG = {
+     whatsapp,                 // номер (любая форма) -> очистится до цифр
+     telegram_user?,           // username без @ (резерв)
+     telegram_bot?,            // @бот (можно без @)
+     telegram_open?='auto',    // 'auto' | 'bot' | 'profile'
+     bot_prestart_url?,        // URL сервера: .../prestart (или .../health — заменим)
+     chat_widget?='on'         // 'off' чтобы отключить виджет на странице
+   }
 */
 ;(function(){
   if (window.__CHAT_WIDGET__) return; window.__CHAT_WIDGET__ = true;
@@ -15,7 +21,11 @@
     const html = document.documentElement;
     return {
       url: location.href,
-      title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
+      // предпочитаем явные заголовки, потом <title>
+      title: qs('[data-program-title]')?.getAttribute?.('data-program-title')
+          || qs('h1, .page-title, .title')?.textContent?.trim()
+          || document.title
+          || '',
       programId: html.getAttribute('data-program-id')
                || qs('[data-program-id]')?.getAttribute('data-program-id')
                || ''
@@ -67,7 +77,7 @@
     a.style.position='fixed'; a.style.left='-9999px';
     document.body.appendChild(a);
     a.click();
-    setTimeout(()=>a.remove(), 400);
+    setTimeout(()=>a.remove(), 300);
   }
 
   // ---------- WA ----------
@@ -83,13 +93,17 @@
   async function openTG(e){
     e?.preventDefault?.(); e?.stopPropagation?.();
     const text = buildQuickText();
-    // пробуем скопировать — удобно вставить в чат
+
+    // пробуем скопировать — удобно вставить в чат (в HTTPS)
     try{ await navigator.clipboard.writeText(text); }catch(_){}
 
     const user = (CFG.telegram_user||'').replace(/^@/,'');
     const bot  = (CFG.telegram_bot ||'').replace(/^@/,'');
     const mode = String(CFG.telegram_open||'auto').toLowerCase();
-    let pre   = (CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart');
+
+    let pre = String(CFG.bot_prestart_url||'')
+                .replace(/\/health\/?$/,'/prestart')
+                .replace(/\/$/,'/prestart');
 
     // 1) если есть prestart и бот, и режим разрешает — пробуем токен
     if ((mode==='auto' || mode==='bot') && bot && pre){
@@ -103,15 +117,22 @@
             url: location.href
           })
         });
-        const j = await r.json();
-        if (j && j.token){
+        const j = await r.json().catch(()=>({}));
+
+        if (j?.tme){                       // сервер дал готовую t.me-ссылку
+          navigateSafely(j.tme);
+          return;
+        }
+        if (j?.token){                     // deep-link для мобилы + веб fallback
+          const deep = `tg://resolve?domain=${bot}&start=${enc(j.token)}`;
+          try { location.href = deep; } catch(_) {}
           navigateSafely(`https://t.me/${bot}?start=${enc(j.token)}`);
           return;
         }
-      }catch(_) { /* fallback ниже */ }
+      }catch(_){ /* пойдём вfallback ниже */ }
     }
 
-    // 2) режимы: принудительно бот / профиль / авто
+    // 2) принудительные режимы
     if (mode==='bot' && bot){ navigateSafely(`https://t.me/${bot}`); return; }
     if (mode==='profile' && user){ navigateSafely(`https://t.me/${user}`); return; }
 
@@ -119,7 +140,7 @@
     if (user){ navigateSafely(`https://t.me/${user}`); return; }
     if (bot){  navigateSafely(`https://t.me/${bot}`);  return; }
 
-    // 4) Share URL (всегда работает на десктопе/вебе)
+    // 4) Share URL (всегда доступно)
     navigateSafely(`https://t.me/share/url?url=${enc(location.href)}&text=${enc(text)}`);
   }
 
@@ -129,14 +150,16 @@
     const s = document.createElement('style');
     s.id = 'chat-fab-css';
     s.textContent = `
-      .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-                box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
-      .chat-fab svg{width:22px; height:22px; display:block}
-      .chat-fab.wa{bottom:76px; background:#25D366; color:#fff}
-      .chat-fab.tg{bottom:26px; background:#229ED9; color:#fff}
+      .chat-fab.cw{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
+                   box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; color:#fff;
+                   display:grid; place-items:center; transition:transform .12s ease, box-shadow .12s ease}
+      .chat-fab.cw:hover{ transform: translateY(-1px); box-shadow:0 8px 22px rgba(0,0,0,.22) }
+      .chat-fab.cw svg{width:22px; height:22px; display:block}
+      .chat-fab.cw.wa{bottom:76px; background:#25D366}
+      .chat-fab.cw.tg{bottom:26px; background:#229ED9}
       @media (max-width: 480px){
-        .chat-fab.wa{bottom:86px}
-        .chat-fab.tg{bottom:36px}
+        .chat-fab.cw.wa{bottom:86px}
+        .chat-fab.cw.tg{bottom:36px}
       }
     `;
     document.head.appendChild(s);
@@ -145,7 +168,7 @@
   function makeBtn(cls, svg, onClick, label){
     const b = document.createElement('button');
     b.type='button';
-    b.className='chat-fab '+cls;
+    b.className='chat-fab cw '+cls;
     b.innerHTML=svg;
     b.setAttribute('aria-label',label);
     b.title=label;
@@ -159,7 +182,31 @@
     return b;
   }
 
+  // биндим уже существующие элементы страницы
+  function bindExisting(){
+    const bindOne = (el, fn) => {
+      if (!el || el.dataset.cwBound) return;
+      el.addEventListener('click', (e)=>{ e.preventDefault(); fn(e); }, { passive:false });
+      el.dataset.cwBound = '1';
+    };
+
+    document.querySelectorAll('[data-whatsapp]').forEach(el=> bindOne(el, openWA));
+    document.querySelectorAll('[data-telegram]').forEach(el=> bindOne(el, openTG));
+    document.querySelectorAll('[data-chat-open]').forEach(el=>{
+      const mode = (el.getAttribute('data-chat-open')||'').toLowerCase();
+      bindOne(el, mode==='whatsapp' ? openWA : openTG);
+    });
+  }
+
   function init(){
+    // возможность глобально отключить виджет
+    if (String((window.APP_CONFIG||{}).chat_widget||'on').toLowerCase()==='off') return;
+
+    // если уже есть любые чат-кнопки — просто привяжем клики и выйдем (не рисуем свои)
+    bindExisting();
+    if (document.querySelector('.chat-fab, [data-chat-open], [data-whatsapp], [data-telegram]')) return;
+
+    // иначе — ставим свои FAB
     injectStyles();
 
     const waSVG = `
@@ -178,3 +225,4 @@
 
   document.addEventListener('DOMContentLoaded', init, { once:true });
 })();
+);
