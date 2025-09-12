@@ -107,6 +107,14 @@
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+    /* Валидация — одинаково с первой страницей */
+.input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
+.form-toast{
+  position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+  background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+  font-size:14px; max-width:90vw; text-align:center;
+}
+
 
     @media (max-width: 1000px){
       .info-grid{grid-template-columns:1fr}
