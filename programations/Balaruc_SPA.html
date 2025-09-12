@@ -272,7 +272,8 @@
       <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="book_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
 
-      <form class="fields" data-contact-form>
+    <form class="fields" data-contact-form novalidate onsubmit="return false;">
+
         <div>
           <label for="when" data-i18n="date_label">Дата</label>
           <input id="when" name="date" type="date" required>
@@ -298,8 +299,8 @@
         </div>
 
         <div class="form-actions full">
-          <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="wa_btn">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="tg_btn">Написать в Telegram</a>
+     <a class="btn primary" data-whatsapp href="javascript:void(0)" rel="noopener" data-i18n="wa_btn">Написать в WhatsApp</a>
+<a class="btn" data-telegram href="javascript:void(0)" rel="noopener" data-i18n="tg_btn">Написать в Telegram</a>
         </div>
       </form>
     </div>
@@ -448,6 +449,8 @@
   const enc = s => encodeURIComponent(String(s||''));
   const $  = (s,r=document)=>r.querySelector(s);
   const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+// Запрет natively submit
+document.querySelector('[data-contact-form]')?.addEventListener('submit', (e)=> e.preventDefault());
 
   function toast(msg, ms=2400){
     const t = document.createElement('div');
