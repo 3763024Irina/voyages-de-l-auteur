@@ -1,4 +1,4 @@
-/* chat-widget.js — мини-чат WA/TG, v2.2
+/* chat-widget.js — мини-чат WA/TG, v2.3 (uniform FAB)
    Требует: window.APP_CONFIG = {
      whatsapp,                 // номер (любая форма) -> очистится до цифр
      telegram_user?,           // username без @ (резерв)
@@ -21,11 +21,9 @@
     const html = document.documentElement;
     return {
       url: location.href,
-      // предпочитаем явные заголовки, потом <title>
       title: qs('[data-program-title]')?.getAttribute?.('data-program-title')
           || qs('h1, .page-title, .title')?.textContent?.trim()
-          || document.title
-          || '',
+          || document.title || '',
       programId: html.getAttribute('data-program-id')
                || qs('[data-program-id]')?.getAttribute('data-program-id')
                || ''
@@ -94,7 +92,6 @@
     e?.preventDefault?.(); e?.stopPropagation?.();
     const text = buildQuickText();
 
-    // пробуем скопировать — удобно вставить в чат (в HTTPS)
     try{ await navigator.clipboard.writeText(text); }catch(_){}
 
     const user = (CFG.telegram_user||'').replace(/^@/,'');
@@ -105,7 +102,7 @@
                 .replace(/\/health\/?$/,'/prestart')
                 .replace(/\/$/,'/prestart');
 
-    // 1) если есть prestart и бот, и режим разрешает — пробуем токен
+    // 1) prestart-токен (если бот задан и режим позволяет)
     if ((mode==='auto' || mode==='bot') && bot && pre){
       try{
         const r = await fetch(pre, {
@@ -118,51 +115,91 @@
           })
         });
         const j = await r.json().catch(()=>({}));
-
-        if (j?.tme){                       // сервер дал готовую t.me-ссылку
-          navigateSafely(j.tme);
-          return;
-        }
-        if (j?.token){                     // deep-link для мобилы + веб fallback
+        if (j?.tme){ navigateSafely(j.tme); return; }
+        if (j?.token){
           const deep = `tg://resolve?domain=${bot}&start=${enc(j.token)}`;
           try { location.href = deep; } catch(_) {}
           navigateSafely(`https://t.me/${bot}?start=${enc(j.token)}`);
           return;
         }
-      }catch(_){ /* пойдём вfallback ниже */ }
+      }catch(_){ /* fallback ниже */ }
     }
 
     // 2) принудительные режимы
     if (mode==='bot' && bot){ navigateSafely(`https://t.me/${bot}`); return; }
     if (mode==='profile' && user){ navigateSafely(`https://t.me/${user}`); return; }
 
-    // 3) авто: сначала профиль, потом бот, потом официальный share
+    // 3) авто: профиль → бот → официальный share
     if (user){ navigateSafely(`https://t.me/${user}`); return; }
     if (bot){  navigateSafely(`https://t.me/${bot}`);  return; }
 
-    // 4) Share URL (всегда доступно)
+    // 4) share url
     navigateSafely(`https://t.me/share/url?url=${enc(location.href)}&text=${enc(text)}`);
   }
 
-  // ---------- стили ----------
+  // ---------- стили (единый для всех страниц) ----------
   function injectStyles(){
     if (document.getElementById('chat-fab-css')) return;
     const s = document.createElement('style');
     s.id = 'chat-fab-css';
     s.textContent = `
-      .chat-fab.cw{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-                   box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; color:#fff;
-                   display:grid; place-items:center; transition:transform .12s ease, box-shadow .12s ease}
-      .chat-fab.cw:hover{ transform: translateY(-1px); box-shadow:0 8px 22px rgba(0,0,0,.22) }
-      .chat-fab.cw svg{width:22px; height:22px; display:block}
-      .chat-fab.cw.wa{bottom:76px; background:#25D366}
-      .chat-fab.cw.tg{bottom:26px; background:#229ED9}
+      .chat-fab.cw{
+        position:fixed; right:16px; z-index:9999;
+        width:56px; height:56px; padding:0;
+        border:0; border-radius:999px; cursor:pointer;
+        display:grid; place-items:center;
+        box-shadow:0 10px 24px rgba(0,0,0,.16);
+        transition:transform .12s ease, box-shadow .12s ease, opacity .12s ease;
+        background:#fff; color:#fff;
+      }
+      .chat-fab.cw:hover{ transform: translateY(-1px); box-shadow:0 14px 30px rgba(0,0,0,.22) }
+      .chat-fab.cw:active{ transform: translateY(0); box-shadow:0 8px 18px rgba(0,0,0,.18) }
+      .chat-fab.cw:focus-visible{ outline:3px solid rgba(0,0,0,.25); outline-offset:2px }
+      .chat-fab.cw svg{ width:22px; height:22px; display:block }
+      .chat-fab.cw.wa{ bottom:76px; background:#25D366; color:#fff }
+      .chat-fab.cw.tg{ bottom:26px; background:#229ED9; color:#fff }
       @media (max-width: 480px){
-        .chat-fab.cw.wa{bottom:86px}
-        .chat-fab.cw.tg{bottom:36px}
+        .chat-fab.cw.wa{ bottom:86px }
+        .chat-fab.cw.tg{ bottom:36px }
       }
     `;
     document.head.appendChild(s);
+  }
+
+  // нормализация существующих FAB (цвет + размеры + SVG -> currentColor)
+  function normalizeFab(el, kind){
+    el.classList.add('chat-fab','cw',kind);
+    // делаем иконки реактивными
+    el.querySelectorAll('svg [fill]').forEach(n=> n.setAttribute('fill','currentColor'));
+    el.querySelectorAll('svg [stroke]').forEach(n=> n.setAttribute('stroke','currentColor'));
+    // убираем случайные inline-стили, мешающие единому виду
+    el.removeAttribute('style');
+    // button без submit
+    if (el.tagName === 'BUTTON' && !el.hasAttribute('type')) el.setAttribute('type','button');
+  }
+
+  // биндим и унифицируем уже существующие элементы
+  function bindExisting(){
+    const bindOne = (el, fn, kind) => {
+      if (!el) return;
+      normalizeFab(el, kind);
+      if (el.dataset.cwBound) return;
+      const stop = e => { e.preventDefault(); e.stopPropagation(); };
+      el.addEventListener('click', e => { stop(e); fn(e); }, { passive:false });
+      el.addEventListener('mousedown', stop, { passive:false });
+      el.addEventListener('touchstart', stop, { passive:false });
+      el.dataset.cwBound = '1';
+    };
+
+    document.querySelectorAll('[data-whatsapp]').forEach(el=> bindOne(el, openWA, 'wa'));
+    document.querySelectorAll('[data-telegram]').forEach(el=> bindOne(el, openTG, 'tg'));
+    document.querySelectorAll('[data-chat-open]').forEach(el=>{
+      const mode = (el.getAttribute('data-chat-open')||'').toLowerCase();
+      bindOne(el, mode==='whatsapp' ? openWA : openTG, mode==='whatsapp' ? 'wa' : 'tg');
+    });
+    // также подхватим «старые» .chat-fab без data-атрибутов
+    document.querySelectorAll('.chat-fab.wa:not([data-cw-skip])').forEach(el=> bindOne(el, openWA, 'wa'));
+    document.querySelectorAll('.chat-fab.tg:not([data-cw-skip])').forEach(el=> bindOne(el, openTG, 'tg'));
   }
 
   function makeBtn(cls, svg, onClick, label){
@@ -173,7 +210,6 @@
     b.setAttribute('aria-label',label);
     b.title=label;
 
-    // защита от делегированных обработчиков
     const stop = e => { e.preventDefault(); e.stopPropagation(); };
     b.addEventListener('click', onClick, { passive:false });
     b.addEventListener('mousedown', stop, { passive:false });
@@ -182,33 +218,8 @@
     return b;
   }
 
-  // биндим уже существующие элементы страницы
-  function bindExisting(){
-    const bindOne = (el, fn) => {
-      if (!el || el.dataset.cwBound) return;
-      el.addEventListener('click', (e)=>{ e.preventDefault(); fn(e); }, { passive:false });
-      el.dataset.cwBound = '1';
-    };
-
-    document.querySelectorAll('[data-whatsapp]').forEach(el=> bindOne(el, openWA));
-    document.querySelectorAll('[data-telegram]').forEach(el=> bindOne(el, openTG));
-    document.querySelectorAll('[data-chat-open]').forEach(el=>{
-      const mode = (el.getAttribute('data-chat-open')||'').toLowerCase();
-      bindOne(el, mode==='whatsapp' ? openWA : openTG);
-    });
-  }
-
-  function init(){
-    // возможность глобально отключить виджет
-    if (String((window.APP_CONFIG||{}).chat_widget||'on').toLowerCase()==='off') return;
-
-    // если уже есть любые чат-кнопки — просто привяжем клики и выйдем (не рисуем свои)
-    bindExisting();
-    if (document.querySelector('.chat-fab, [data-chat-open], [data-whatsapp], [data-telegram]')) return;
-
-    // иначе — ставим свои FAB
+  function createDefaultFABs(){
     injectStyles();
-
     const waSVG = `
       <svg viewBox="0 0 256 256" aria-hidden="true" role="img">
         <path fill="currentColor" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
@@ -218,11 +229,20 @@
       <svg viewBox="0 0 256 256" aria-hidden="true" role="img">
         <path fill="currentColor" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
       </svg>`;
-
     document.body.appendChild(makeBtn('wa', waSVG, openWA, 'WhatsApp'));
     document.body.appendChild(makeBtn('tg', tgSVG, openTG, 'Telegram'));
   }
 
+  function init(){
+    if (String((window.APP_CONFIG||{}).chat_widget||'on').toLowerCase()==='off') return;
+
+    injectStyles();
+    bindExisting();
+
+    // Если после биндинга ни одной кнопки не найдено — рисуем свои.
+    const any = document.querySelector('.chat-fab.cw, [data-whatsapp], [data-telegram], [data-chat-open]');
+    if (!any) createDefaultFABs();
+  }
+
   document.addEventListener('DOMContentLoaded', init, { once:true });
 })();
-);
