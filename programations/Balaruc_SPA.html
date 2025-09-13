@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Готовые пакеты: Базовый 1 490 € (2 гостя), Comfort 2 240 €, Premium 2 590 €." />
+  <meta name="description" content="Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Готовые пакеты: Базовый 1 490 €, Comfort 2 240 €, Premium 2 590 €." />
   <meta property="og:title" content="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)" />
-  <meta property="og:description" content="5 дней терм (~1h30/день) + винный день и Каркасон. Готовые пакеты: 1 490 € / группа (2 гостя) и версии с отелями." />
+  <meta property="og:description" content="5 дней терм (~1h30/день) + винный день и Каркасон. Пакеты и бронь." />
+  <meta property="og:type" content="website" />
   <meta property="og:image" content="../assets/Balaruc-Obalia.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
@@ -15,15 +16,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
-      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:18px; --radius-lg:26px; --container:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -41,11 +36,11 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* HERO */
-    .hero{position:relative; isolation:isolate;}
-    .hero .bg{position:absolute; inset:0; z-index:-1;}
+    /* HERO (как в PSL) */
+    .hero{position:relative; isolation:isolate}
+    .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
-    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
+    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25))}
     .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
@@ -67,14 +62,11 @@
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .list{margin:0; padding-left:18px}
     .list li{margin:8px 0}
-
     .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
     .timeline li{margin:12px 0}
-    .time{font-weight:800; color:var(--brand);}
-
+    .time{font-weight:800; color:var(--brand)}
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
-
     .price{font-weight:800; font-size:20px}
 
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
@@ -83,7 +75,7 @@
 
     /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
-    input, textarea, select{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    input, textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
     /* BOOK */
@@ -93,87 +85,46 @@
     #book .section-sub{ margin:0 0 14px; color:var(--muted); }
     #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     #book .fields .full{ grid-column:1 / -1; }
-    #book input, #book textarea, #book select{ height:44px; }
-    #book textarea{ min-height:110px; height:auto; }
-    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+    #book input, #book textarea{ height:44px; }
+    #book textarea{ height:auto; }
+    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; justify-content:flex-end; }
     #book .btn{ padding:10px 12px; border-radius:12px; }
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
 
-    .mapwrap{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee}
-    .mapwrap iframe{width:100%; height:380px; border:0}
+    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
+    @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    .admin-only{ display:none !important; }
-    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
-    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
-    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
-
-    /* Валидация — одинаково с первой страницей */
-    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{
-      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
-      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
-      font-size:14px; max-width:90vw; text-align:center;
-    }
-
-    @media (max-width: 1000px){
-      .info-grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns:repeat(2,1fr)}
-      #book .fields{grid-template-columns:1fr}
-    }
-    @media (max-width: 640px){
-      .gallery{grid-template-columns:1fr}
-      h2.title{font-size:36px}
-      nav ul{display:none}
-      .hero .inner{ min-height:auto; padding:28px 0 34px; }
-    }
-
-    /* Иконки для кнопок WA/TG в форме */
-    [data-whatsapp], [data-telegram] { position:relative; padding-left:42px !important }
-    [data-whatsapp]::before, [data-telegram]::before {
-      content:""; position:absolute; left:14px; top:50%; transform:translateY(-50%);
-      width:20px; height:20px; background-size:contain; background-repeat:no-repeat; opacity:.95;
-    }
-    [data-whatsapp]::before {
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%2305a884' d='M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216'/%3E%3Cpath fill='%2305a884' d='M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3'/%3E%3C/svg%3E");
-    }
-    [data-telegram]::before {
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='%23008ad6' d='M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z'/></svg>");
-    }
-
-    /* FAB (плавающие кнопки) */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center
-    }
+    /* === FAB (ТОЛЬКО 2) === */
+    .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center}
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+    .chat-fab::before,.chat-fab::after{content:none!important;display:none!important}
+    .chat-fab:not([data-own-fab]){display:none!important}
 
-    /* FIX: отключить любые псевдоэлементы у FAB (убирает «двойные надписи») */
-    .chat-fab::before,
-    .chat-fab::after {
-      content: none !important;
-      display: none !important;
-    }
+    /* валидация */
+    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
+    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
   </style>
 </head>
 
-<body data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
+<body>
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
         <div class="logo" aria-hidden>Î</div>
-        <div>
-          <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
-        </div>
+        <div><h1>Tours Languedoc by Irène <small>— Путешествия со вкусом</small></h1></div>
       </a>
+
       <nav class="lang">
         <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+          <li><a href="../index.html#tours">← Все программы</a></li>
+          <li><a href="../index.html#why">Почему с нами</a></li>
+          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
         </ul>
+
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
           <button id="btn-fr">FR</button>
@@ -183,132 +134,126 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
     <div class="bg">
-      <img src="../assets/Balaruc-Obalia.jpg" alt="" id="alt-hero" />
+      <img src="../assets/Balaruc-Obalia.jpg" alt="Balaruc-les-Bains — термы" />
       <div class="overlay"></div>
     </div>
     <div class="container inner">
       <div>
-        <span class="badge" data-i18n="hero_badge">Thermes • Étang de Thau</span>
-        <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)</h2>
-        <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
-        <div class="actions">
-          <a class="btn primary" href="#book" data-i18n="btn_book">Забронировать</a>
-        </div>
+        <span class="badge">Thermes • Étang de Thau</span>
+        <h2 class="title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)</h2>
+        <p class="subtitle">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
+        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
       </div>
     </div>
   </section>
 
   <!-- GALLERY -->
   <section class="container">
-    <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
-    <p class="section-sub" data-i18n="gal_sub">Thermes Balaruc, лагуна Thau и тёплая вода круглый год.</p>
+    <h3 class="section-title">Как это выглядит</h3>
+    <p class="section-sub">Thermes Balaruc, лагуна Thau и тёплая вода круглый год.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img id="alt-g1" src="../assets/353A6169-1.jpg" alt="Thermes Balaruc — intérieur" loading="lazy"></div>
-      <div class="ph"><img id="alt-g2" src="../assets/THERMES DE BALARUC LES BAINS ©E.JONDREVILLE_06.jpg" alt="Thermes Balaruc — bassin" loading="lazy"></div>
-      <div class="ph"><img id="alt-g3" src="../assets/je-prepare-ma-cure-a-balaruc-les-bains-10110660-11542930.jpg" alt="Préparation cure thermale Balaruc" loading="lazy"></div>
+      <div class="ph"><img src="../assets/353A6169-1.jpg" alt="Thermes — интерьер" loading="lazy"></div>
+      <div class="ph"><img src="../assets/THERMES DE BALARUC LES BAINS ©E.JONDREVILLE_06.jpg" alt="Thermes — бассейн" loading="lazy"></div>
+      <div class="ph"><img src="../assets/je-prepare-ma-cure-a-balaruc-les-bains-10110660-11542930.jpg" alt="Подготовка к курсу" loading="lazy"></div>
     </div>
   </section>
 
-  <!-- DETAILS -->
+  <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
-      <h3 class="section-title" data-i18n="plan_title">Программа по дням</h3>
+      <h3 class="section-title">Программа по дням</h3>
       <ul class="timeline">
-        <li data-i18n="day1"><span class="time">День 1</span> — Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.</li>
-        <li data-i18n="day2"><span class="time">День 2</span> — Утро: Escale «Hydro relaxante» (≈1h30). После обеда — свободно.</li>
-        <li data-i18n="day3"><span class="time">День 3</span> — Утро: Escale «Hydro relaxante». После обеда — свободно.</li>
-        <li data-i18n="day4"><span class="time">День 4</span> — <strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.</li>
-        <li data-i18n="day5"><span class="time">День 5</span> — Утро: Escale «Hydro relaxante». Свободное время у лагуны.</li>
-        <li data-i18n="day6"><span class="time">День 6</span> — <strong>Каркасон</strong> (полный день): La Cité, Château Comtal, стены. По времени — кафе в Бастиде.</li>
-        <li data-i18n="day7"><span class="time">День 7</span> — Утро: последний блок «Hydro relaxante». Чек-аут, выезд.</li>
+        <li><span class="time">День 1</span> — Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.</li>
+        <li><span class="time">День 2</span> — Утро: Escale «Hydro relaxante» (≈1h30). После обеда — свободно.</li>
+        <li><span class="time">День 3</span> — Утро: Escale «Hydro relaxante». После обеда — свободно.</li>
+        <li><span class="time">День 4</span> — <strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.</li>
+        <li><span class="time">День 5</span> — Утро: Escale «Hydro relaxante». Свободное время у лагуны.</li>
+        <li><span class="time">День 6</span> — <strong>Каркасон</strong> (полный день): Cité, Château Comtal, стены. При желании — кафе в Бастиде.</li>
+        <li><span class="time">День 7</span> — Утро: последний блок «Hydro relaxante». Чек-аут, выезд.</li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
-      <div class="inc-grid" role="list">
-        <div class="pill" role="listitem" data-i18n="inc_1">Организация и сопровождение RU/FR (2 дня экскурсий)</div>
-        <div class="pill" role="listitem" data-i18n="inc_2">Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей</div>
-        <div class="pill" role="listitem" data-i18n="inc_3">Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)</div>
-        <div class="pill" role="listitem" data-i18n="inc_4">Рекомендации по ресторанам/устрицам в Bouzigues</div>
+      <h3 class="section-title" style="margin-top:24px">Что включено</h3>
+      <div class="inc-grid">
+        <div class="pill">Организация и сопровождение RU/FR (2 дня экскурсий)</div>
+        <div class="pill">Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей</div>
+        <div class="pill">Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)</div>
       </div>
 
-      <h3 class="section-title" style="margin-top:24px" data-i18n="notinc_title">Не включено</h3>
+      <h3 class="section-title" style="margin-top:24px">Не включено</h3>
       <ul class="list">
-        <li data-i18n="notinc_1">Проживание (см. пакеты ниже)</li>
-        <li data-i18n="notinc_2">Транспорт (аренда авто/водитель)</li>
-        <li data-i18n="notinc_3">Питание и личные расходы</li>
-        <li data-i18n="notinc_4">Авиабилеты/страховка</li>
+        <li>Проживание (см. пакеты ниже)</li>
+        <li>Транспорт (аренда авто/водитель)</li>
+        <li>Питание и личные расходы</li>
+        <li>Авиабилеты/страховка</li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px" data-i18n="options_title">Опции</h3>
+      <h3 class="section-title" style="margin-top:24px">Опции</h3>
       <ul class="list">
-        <li data-i18n="opt_1">Частные трансферы: MPL/BZR/MRS ↔ Balaruc — по запросу</li>
-        <li data-i18n="opt_2">Приватная лодка/устрицы на лагуне Thau — по запросу</li>
+        <li>Частные трансферы: MPL/BZR/MRS ↔ Balaruc — по запросу</li>
+        <li>Приватная лодка/устрицы на лагуне Thau — по запросу</li>
       </ul>
     </article>
 
     <aside class="card">
-      <h3 class="section-title" data-i18n="where_title">Где это</h3>
-      <p class="section-sub" data-i18n="where_sub">Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.</p>
-      <div class="mapwrap">
-        <iframe title="Карта: Balaruc-les-Bains" src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <h3 class="section-title">Где это</h3>
+      <p class="section-sub">Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.</p>
+      <div class="ph" style="margin-bottom:10px">
+        <img src="../assets/Balaruc-Obalia.jpg" alt="Balaruc — панорама" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
-      <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
-      <ul class="list">
-        <li data-i18n="tip_1">Для терм нужны шлёпанцы/шапочка/купальник (по правилам центра).</li>
-        <li data-i18n="tip_2">Слоты терм и доменов лучше бронировать заранее.</li>
-        <li data-i18n="tip_3">Для экскурсий удобнее авто; парковки у терм и доменов есть.</li>
-      </ul>
+      <div class="mapwrap" style="border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee">
+        <iframe title="Карта: Balaruc-les-Bains" src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:380px; border:0"></iframe>
+      </div>
     </aside>
   </section>
 
   <!-- PRICING -->
   <section id="pricing" class="container" style="margin:3rem 0">
-    <h3 class="section-title" data-i18n="pricing_title">Пакеты и цены</h3>
+    <h3 class="section-title">Пакеты и цены</h3>
     <ul class="list">
-      <li data-i18n="pack_basic"><span><strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя)</span> — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em></li>
-      <li data-i18n="pack_comfort"><span><strong>COMFORT 3★</strong> (7 ночей, 2 гостя)</span> — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em></li>
-      <li data-i18n="pack_premium"><span><strong>PREMIUM 4★</strong> (7 ночей, 2 гостя)</span> — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em></li>
+      <li><strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя) — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em></li>
+      <li><strong>COMFORT 3★</strong> (7 ночей, 2 гостя) — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em></li>
+      <li><strong>PREMIUM 4★</strong> (7 ночей, 2 гостя) — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em></li>
     </ul>
-    <p class="section-sub" data-i18n="pricing_note">Точные расценки зависят от дат, наличия и выбранных опций. Зафиксируем в счёте-подтверждении.</p>
+    <p class="section-sub">Точные расценки зависят от дат, наличия и опций — зафиксируем в счёте-подтверждении.</p>
   </section>
 
   <!-- BOOK -->
   <section id="book" class="container">
     <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
-      <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="book_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
+      <h3 class="section-title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
 
       <form class="fields" data-contact-form novalidate onsubmit="return false;">
         <div>
-          <label for="when" data-i18n="date_label">Дата</label>
+          <label for="when">Дата</label>
           <input id="when" name="date" type="date" required>
         </div>
         <div>
-          <label for="guests" data-i18n="guests_label">Гостей</label>
+          <label for="guests">Гостей</label>
           <input id="guests" name="guests" type="number" min="2" value="2" required>
         </div>
 
         <div class="full">
-          <label for="name" data-i18n="name_label">Имя</label>
+          <label for="name">Имя</label>
           <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
 
         <div class="full">
-          <label for="contact" data-i18n="contact_label">Контакт (WhatsApp/Telegram)</label>
+          <label for="contact">Контакт (WhatsApp/Telegram)</label>
           <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
         </div>
 
         <div class="full">
-          <label for="msg" data-i18n="msg_label">Сообщение</label>
-          <textarea id="msg" name="message" data-i18n-ph="msg_ph" placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"></textarea>
+          <label for="msg">Сообщение</label>
+          <textarea id="msg" name="message" placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"></textarea>
         </div>
 
         <div class="form-actions full">
-          <a class="btn primary" data-whatsapp href="javascript:void(0)" rel="noopener" data-i18n="wa_btn">Написать в WhatsApp</a>
-          <a class="btn" data-telegram href="javascript:void(0)" rel="noopener" data-i18n="tg_btn">Написать в Telegram</a>
+          <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
+          <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
         </div>
       </form>
     </div>
@@ -317,147 +262,76 @@
   <footer>
     <div class="container">
       <div class="footgrid">
-        <div><strong>Tours Languedoc by Irène</strong><p data-i18n="brand_sub">Путешествия со вкусом</p></div>
-        <div><p><a href="../index.html#why" data-i18n="foot_why">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="foot_programs">Программы</a></p></div>
-        <div><p><a href="../index.html#format" data-i18n="foot_format">Формат</a></p><p><a href="#book" data-i18n="foot_contacts">Контакты</a></p></div>
+        <div><strong>Tours Languedoc by Irène</strong><p>Путешествия со вкусом</p></div>
+        <div><p><a href="../index.html#why">Почему с нами</a></p><p><a href="../index.html#tours">Программы</a></p></div>
+        <div><p><a href="../index.html#format">Формат</a></p><p><a class="js-telegram" href="#">Написать</a></p></div>
       </div>
       <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
   </footer>
 
-  <!-- ======= APP_CONFIG (единственный) ======= -->
+  <!-- === FAB (строго 2, свои) === -->
+  <button class="chat-fab wa" data-own-fab aria-label="Написать в WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
+      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
+    </svg>
+  </button>
+
+  <button class="chat-fab tg" data-own-fab aria-label="Написать в Telegram" data-chat-open="telegram" data-telegram>
+    <svg viewBox="0 0 256 256" aria-hidden="true">
+      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
+    </svg>
+  </button>
+
+  <!-- ==== CONFIG ==== -->
   <script>
+    // Запретить сторонним виджетам плодить FAB
+    window.__CHAT_WIDGET_DISABLE__ = true;
+
     window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',            // без @
-      telegram_bot:  'de_iren_order_bot',  // без @
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
+      whatsapp: '33759644813',        // очистится до цифр
+      telegram_user: 'de_iren',       // без @
+      telegram_bot: 'de_iren_order_bot',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart
+      ADMIN_SECRET: 'capion2025'
     };
   </script>
 
-  <!-- ======= I18N: RU/FR словарь и переключатель ======= -->
+  <!-- ВАЖНО: не подключаем внешние виджеты, которые создают свои FAB -->
+  <!-- <script src="../assets/js/chat-widget.js" defer></script> -->
+
+  <!-- Admin gate -->
   <script>
-  ;(()=> {
-    const dict = {
-      brand_sub:     { ru: '— Путешествия со вкусом', fr: '— Des voyages avec goût' },
-      nav_all:       { ru: '← Все программы', fr: '← Tous les programmes' },
-      nav_why:       { ru: 'Почему с нами', fr: 'Pourquoi nous' },
-      nav_book:      { ru: 'Забронировать', fr: 'Réserver' },
-
-      hero_badge:    { ru: 'Thermes • Étang de Thau', fr: 'Thermes • Étang de Thau' },
-      hero_title:    { ru: 'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 дней)', fr: 'Balaruc-les-Bains — «Hydro relaxante» + Vin & Carcassonne (7 jours)' },
-      hero_sub:      { ru: '5 дней мини-курса Escale «Hydro relaxante» (≈1h30/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.', fr: '5 jours du mini-parcours Escale «Hydro relaxante» (≈1h30/jour) + 2 excursions : journée vin & Carcassonne. Privé à partir de 2 personnes.' },
-      btn_book:      { ru: 'Забронировать', fr: 'Réserver' },
-
-      gal_title:     { ru: 'Как это выглядит', fr: 'À quoi ça ressemble' },
-      gal_sub:       { ru: 'Thermes Balaruc, лагуна Thau и тёплая вода круглый год.', fr: 'Thermes de Balaruc, l’étang de Thau et une eau chaude toute l’année.' },
-
-      plan_title:    { ru: 'Программа по дням', fr: 'Programme jour par jour' },
-      day1: { ru: '<span class="time">День 1</span> — Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.', fr: '<span class="time">Jour 1</span> — Arrivée (MPL/Béziers/Sète), check-in. Soir à l’étang de Thau : huîtres + Picpoul.' },
-      day2: { ru: '<span class="time">День 2</span> — Утро: Escale «Hydro relaxante» (≈1h30). После обеда — свободно.', fr: '<span class="time">Jour 2</span> — Matin : Escale «Hydro relaxante» (≈1h30). Après-midi libre.' },
-      day3: { ru: '<span class="time">День 3</span> — Утро: Escale «Hydro relaxante». После обеда — свободно.', fr: '<span class="time">Jour 3</span> — Matin : Escale «Hydro relaxante». Après-midi libre.' },
-      day4: { ru: '<span class="time">День 4</span> — <strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.', fr: '<span class="time">Jour 4</span> — <strong>Journée vin</strong> : Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi ou Daumas Gassac). Déjeuner en option.' },
-      day5: { ru: '<span class="time">День 5</span> — Утро: Escale «Hydro relaxante». Свободное время у лагуны.', fr: '<span class="time">Jour 5</span> — Matin : Escale «Hydro relaxante». Temps libre au bord de l’étang.' },
-      day6: { ru: '<span class="time">День 6</span> — <strong>Каркасон</strong> (полный день): La Cité, Château Comtal, стены. По времени — кафе в Бастиде.', fr: '<span class="time">Jour 6</span> — <strong>Carcassonne</strong> (journée complète) : Cité, Château Comtal, remparts. Café dans la Bastide si le temps le permet.' },
-      day7: { ru: '<span class="time">День 7</span> — Утро: последний блок «Hydro relaxante». Чек-аут, выезд.', fr: '<span class="time">Jour 7</span> — Matin : dernière séance «Hydro relaxante». Check-out, départ.' },
-
-      inc_title:     { ru: 'Что включено', fr: 'Inclus' },
-      inc_1:         { ru: 'Организация и сопровождение RU/FR (2 дня экскурсий)', fr: 'Organisation et accompagnement RU/FR (2 jours d’excursions)' },
-      inc_2:         { ru: 'Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей', fr: 'Thermes : mini-parcours «Hydro relaxante» — 5 jours consécutifs (≈1h30/jour) pour 2 personnes' },
-      inc_3:         { ru: 'Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)', fr: 'Excursions : Journée vin et Carcassonne (réservations des dégustations et billets)' },
-      inc_4:         { ru: 'Рекомендации по ресторанам/устрицам в Bouzigues', fr: 'Recommandations restaurants/huîtres à Bouzigues' },
-
-      notinc_title:  { ru: 'Не включено', fr: 'Non inclus' },
-      notinc_1:      { ru: 'Проживание (см. пакеты ниже)', fr: 'Hébergement (voir les forfaits ci-dessous)' },
-      notinc_2:      { ru: 'Транспорт (аренда авто/водитель)', fr: 'Transport (location de voiture/chauffeur)' },
-      notinc_3:      { ru: 'Питание и личные расходы', fr: 'Repas et dépenses personnelles' },
-      notinc_4:      { ru: 'Авиабилеты/страховка', fr: 'Vols/assurance' },
-
-      options_title: { ru: 'Опции', fr: 'Options' },
-      opt_1:         { ru: 'Частные трансферы: MPL/BZR/MRS ↔ Balaruc — по запросу', fr: 'Transferts privés : MPL/BZR/MRS ↔ Balaruc — sur demande' },
-      opt_2:         { ru: 'Приватная лодка/устрицы на лагуне Thau — по запросу', fr: 'Bateau privé/huîtres sur l’étang de Thau — sur demande' },
-
-      where_title:   { ru: 'Где это', fr: 'Où c’est' },
-      where_sub:     { ru: 'Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.', fr: 'Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.' },
-      tips_title:    { ru: 'Полезно знать', fr: 'Bon à savoir' },
-      tip_1:         { ru: 'Для терм нужны шлёпанцы/шапочка/купальник (по правилам центра).', fr: 'Pour les thermes : tongs/bonnet/maillot requis (règlement du centre).' },
-      tip_2:         { ru: 'Слоты терм и доменов лучше бронировать заранее.', fr: 'Mieux vaut réserver les créneaux thermes et domaines à l’avance.' },
-      tip_3:         { ru: 'Для экскурсий удобнее авто; парковки у терм и доменов есть.', fr: 'Voiture recommandée pour les excursions ; parkings aux thermes et domaines.' },
-
-      pricing_title: { ru: 'Пакеты и цены', fr: 'Forfaits et tarifs' },
-      pack_basic:    { ru: '<strong>БАЗОВЫЙ</strong> (без отеля, 7 дней, 2 гостя) — <strong>1 490 € / группа</strong> <em>(≈ 745 €/чел)</em>', fr: '<strong>BASIQUE</strong> (sans hôtel, 7 jours, 2 pers.) — <strong>1 490 € / groupe</strong> <em>(≈ 745 €/pers.)</em>' },
-      pack_comfort:  { ru: '<strong>COMFORT 3★</strong> (7 ночей, 2 гостя) — <strong>2 240 € / группа</strong> <em>(≈ 1 120 €/чел)</em>', fr: '<strong>CONFORT 3★</strong> (7 nuits, 2 pers.) — <strong>2 240 € / groupe</strong> <em>(≈ 1 120 €/pers.)</em>' },
-      pack_premium:  { ru: '<strong>PREMIUM 4★</strong> (7 ночей, 2 гостя) — <strong>2 590 € / группа</strong> <em>(≈ 1 295 €/чел)</em>', fr: '<strong>PREMIUM 4★</strong> (7 nuits, 2 pers.) — <strong>2 590 € / groupe</strong> <em>(≈ 1 295 €/pers.)</em>' },
-      pricing_note:  { ru: 'Точные расценки зависят от дат, наличия и выбранных опций. Зафиксируем в счёте-подтверждении.', fr: 'Les tarifs précis dépendent des dates, des disponibilités et des options. Nous les confirmerons sur facture.' },
-
-      book_title:    { ru: 'Быстрый запрос / бронирование', fr: 'Demande rapide / réservation' },
-      book_sub:      { ru: 'Ответим в течение дня и подтвердим слоты терм и дегустаций.', fr: 'Réponse sous 24h et confirmation des créneaux thermes & dégustations.' },
-      date_label:    { ru: 'Дата', fr: 'Date' },
-      guests_label:  { ru: 'Гостей', fr: 'Personnes' },
-      name_label:    { ru: 'Имя', fr: 'Nom' },
-      contact_label: { ru: 'Контакт (WhatsApp/Telegram)', fr: 'Contact (WhatsApp/Telegram)' },
-      msg_label:     { ru: 'Сообщение', fr: 'Message' },
-      msg_ph:        { ru: 'Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания', fr: 'Forfait (Basique/Confort/Premium), souhaits de dates, notes' },
-      wa_btn:        { ru: 'Написать в WhatsApp', fr: 'Écrire sur WhatsApp' },
-      tg_btn:        { ru: 'Написать в Telegram', fr: 'Écrire sur Telegram' },
-
-      foot_why:      { ru: 'Почему с нами', fr: 'Pourquoi nous' },
-      foot_programs: { ru: 'Программы', fr: 'Programmes' },
-      foot_format:   { ru: 'Формат', fr: 'Format' },
-      foot_contacts: { ru: 'Контакты', fr: 'Contacts' }
-    };
-
-    const $ = (s, r=document)=>r.querySelector(s);
-    const $$= (s, r=document)=>Array.from(r.querySelectorAll(s));
-    const getLang = ()=> localStorage.getItem('site:lang') || 'ru';
-    const setLang = l => localStorage.setItem('site:lang', l);
-
-    function apply(lang){
-      $$('[data-i18n]').forEach(el=>{
-        const k = el.getAttribute('data-i18n');
-        const e = dict[k]; if (!e) return;
-        const val = e[lang] ?? e['ru'];
-        if (/<\/?[a-z][\s\S]*>/i.test(val)) el.innerHTML = val;
-        else el.textContent = val;
-      });
-      $$('[data-i18n-ph]').forEach(el=>{
-        const k = el.getAttribute('data-i18n-ph');
-        const e = dict[k]; if (!e) return;
-        el.setAttribute('placeholder', e[lang] ?? e['ru']);
-      });
-      $('#btn-ru')?.classList.toggle('active', lang==='ru');
-      $('#btn-fr')?.classList.toggle('active', lang==='fr');
-      document.documentElement.setAttribute('lang', lang==='fr' ? 'fr' : 'ru');
-    }
-
-    function init(){
-      const lang = getLang();
-      apply(lang);
-      $('#btn-ru')?.addEventListener('click', ()=>{ setLang('ru'); apply('ru'); });
-      $('#btn-fr')?.addEventListener('click', ()=>{ setLang('fr'); apply('fr'); });
-    }
-
-    document.addEventListener('DOMContentLoaded', init, {once:true});
-  })();
+    (function(){
+      try{
+        const p = new URLSearchParams(location.search);
+        const t = p.get('admin');
+        if (t !== null){
+          if (t === 'off') localStorage.removeItem('site:admin');
+          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
+          p.delete('admin');
+          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
+        }
+        const isAdmin = localStorage.getItem('site:admin')==='1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+        if (!isAdmin){
+          const s=document.createElement('style');
+          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
+          document.head.appendChild(s);
+        }
+      }catch(e){ console.warn(e); }
+    })();
   </script>
 
-  <!-- Подключение скриптов -->
-  <script src="../assets/js/contact.js"></script>
-  <script src="../assets/js/chat-widget.js" defer></script>
-
-  <!-- Фикс WA/TG: делегирование кликов, валидация, БЕЗ автосоздания FAB -->
+  <!-- Единый скрипт: валидация, WA/TG, биндинг, антидубли -->
   <script>
-  ;(()=> {
-    if (window.__QUICK_CONTACT_INIT__) return; window.__QUICK_CONTACT_INIT__ = true;
+  ;(() => {
+    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
     const CFG = window.APP_CONFIG || {};
     const digits = s => String(s||'').replace(/\D/g,'');
     const enc = s => encodeURIComponent(String(s||''));
-    const $  = (s,r=document)=>r.querySelector(s);
-
-    // Блокируем нативный submit на всякий случай
-    document.querySelector('[data-contact-form]')
-      ?.addEventListener('submit', e => e.preventDefault());
 
     function toast(msg, ms=2400){
       const t = document.createElement('div');
@@ -465,27 +339,20 @@
       document.body.appendChild(t); setTimeout(()=>t.remove(), ms);
     }
 
-    function pageCtx(){
-      const html = document.documentElement;
-      return {
-        url: location.href,
-        title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '',
-        programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || html.getAttribute('data-program-id') || ''
-      };
-    }
-
     function buildText(){
-      const f = $('[data-contact-form]'); const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const ctx = pageCtx();
+      const f = document.querySelector('[data-contact-form]');
+      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
       return [
         'Заявка с сайта Tours Languedoc by Irène',
-        ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
+        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
         `Дата: ${get('date')||'-'}`,
         `Гостей: ${get('guests')||'-'}`,
         `Имя: ${get('name')||'-'}`,
         `Контакт: ${get('contact')||'-'}`,
         `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${ctx.url}`
+        `Ссылка: ${location.href}`
       ].join('\n');
     }
 
@@ -503,7 +370,7 @@
       }
       if(firstBad){
         if(scroll) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-        firstBad.focus(); toast('Заполните дату, гостей, имя и контакт'); 
+        firstBad.focus(); toast('Заполните дату, гостей, имя и контакт');
         return false;
       }
       return true;
@@ -523,11 +390,7 @@
 
       if (bot && /^https?:\/\//i.test(pre)){
         try{
-          const res=await fetch(pre,{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({text:buildText(),...pageCtx()})
-          });
+          const res=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
           const data=await res.json().catch(()=>({}));
           const tme=data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
           if(tme){ safeOpen(tme); return; }
@@ -545,40 +408,21 @@
       safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
     }
 
-    // Делегирование кликов — работает и для динамически добавленных FAB
-    function onClick(e){
-      const tg = e.target.closest?.('[data-telegram], .js-telegram');
-      const wa = e.target.closest?.('[data-whatsapp]');
-      if (tg){
-        e.preventDefault(); openTelegram();
-      } else if (wa){
-        e.preventDefault(); openWhatsApp();
-      }
+    function bind(){
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation(); openWhatsApp(); },{passive:false});
+      });
+      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation(); openTelegram(); },{passive:false});
+      });
+      // подчистить любые чужие FAB, если вдруг появились
+      document.querySelectorAll('.chat-fab:not([data-own-fab])').forEach(el=>el.remove());
     }
-    document.addEventListener('click', onClick);
 
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', bind, {once:true});
+    } else { bind(); }
   })();
   </script>
-
-  <!-- === FAB: плавающие кнопки внизу справа === -->
-  <button class="chat-fab wa"
-          aria-label="Написать в WhatsApp"
-          data-chat-open="whatsapp"
-          data-whatsapp>
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
-      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
-    </svg>
-  </button>
-
-  <button class="chat-fab tg"
-          aria-label="Написать в Telegram"
-          data-chat-open="telegram"
-          data-telegram>
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
-    </svg>
-  </button>
-
 </body>
 </html>
