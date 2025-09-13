@@ -592,7 +592,13 @@
       const l = getLang();
       const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
       const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-      const price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
+     let price;
+if (item.seasonal) {
+  price = (l === 'fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
+} else {
+  price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
+}
+
       const url   = item.href ? resolveHref(item.href) : '';
       const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
       const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
