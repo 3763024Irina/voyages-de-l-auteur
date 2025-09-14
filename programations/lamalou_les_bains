@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru" data-program-id="LAMALOU-THERMES-14D" data-program-title="Lamalou-les-Bains — термальное восстановление (от 14 дней)">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Lamalou-les-Bains — термальное восстановление (от 14 дней) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Курорт Lamalou-les-Bains в горах Орб: проживание от 14 ночей, запись на процедуры Chaîne Thermale du Soleil, приватные трансферы, персональная организация от Ирэн. Индивидуально." />
+  <meta property="og:title" content="Lamalou-les-Bains — термальное восстановление (от 14 дней)" />
+  <meta property="og:description" content="Проживание 14–21 ночь · помощь с записью в термы CTS · приватные трансферы · прозрачная смета с моей прибылью." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/spa/lamalou-cover.jpg" />
+
+  <link rel="preload" href="../assets/style.css" as="style" />
+  <link rel="stylesheet" href="../assets/style.css" />
+  <script defer src="../assets/config.js"></script>
+  <script defer src="../assets/contact.js"></script>
+  <style>
+    .pill {display:inline-block;padding:4px 10px;border:1px solid var(--accent);border-radius:999px;font-size:12px}
+    .grid{display:grid;gap:12px}
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .muted{opacity:.85}
+    .table-min{min-width:860px}
+    .admin-only{display:none}
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <header class="hero" style="background-image:url('../assets/spa/lamalou-cover.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="breadcrumbs"><a href="../index.html">Главная</a> · Термальные курорты</div>
+      <h1>Lamalou-les-Bains — термальное восстановление <span class="pill">от 14 дней</span></h1>
+      <p class="lead">Зелёный курорт Chaîne Thermale du Soleil в Верхнем Орбе: проживание 14–21 ночь, помощь с записью на процедуры, приватные трансферы и полное сопровождение от Ирэн.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#book">Запрос/бронирование</a>
+        <a class="btn btn-outline" href="#pricing">Смета</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- КОРОТКО / МЕТА -->
+  <section class="container">
+    <ul class="facts">
+      <li><b>Длительность:</b> 14–21 ночь</li>
+      <li><b>База:</b> Lamalou-les-Bains (Hérault)</li>
+      <li><b>Сезон:</b> март–ноябрь</li>
+      <li><b>Процедуры:</b> CTS — Lamalou (<a href="https://www.chainethermale.fr/checkout/reservation" target="_blank" rel="noopener">онлайн‑запись</a>)</li>
+      <li><b>Трансферы:</b> MPL/Béziers/Nîmes/Perpignan</li>
+    </ul>
+  </section>
+
+  <!-- ОПИСАНИЕ -->
+  <section class="container grid cols-2">
+    <div class="card">
+      <h3>Почему Lamalou</h3>
+      <p>Спокойный горный климат, хвойные леса и минеральные воды. Курорт специализируется на ревматологии, неврологии и ЛОР‑профиле. Всё рядом: термы, парки, набережная реки Орб, кафе и рынки.</p>
+      <ul class="check">
+        <li>Проживание в апартаментах/резиденциях в 5–12 мин пешком от терм.</li>
+        <li>Мягкий распорядок: утренние процедуры, дневной отдых, лёгкие прогулки.</li>
+        <li>Возможны wellness‑пакеты 6–12 дней, если медкурса не требуется.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Что я делаю для вас</h3>
+      <ul class="check">
+        <li>Подбор жилья и заключение договора с хозяином/резиденцией.</li>
+        <li>Помощь с онлайн‑записью в CTS: выбор курсов и времени.</li>
+        <li>Приватные трансферы аэропорт/вокзал ⇄ Lamalou.</li>
+        <li>Welcome‑набор + стартовые покупки, помощь на месте 7/7 (RU/FR).</li>
+        <li>По выходным — мягкие поездки (Сен‑Шиньян, Оларг, устрицы Thau).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- СМЕТА / ЦЕНЫ -->
+  <section id="pricing" class="container">
+    <h3 class="section-title">Смета (ориентир за 2 гостей, 14 ночей)</h3>
+    <p class="section-sub muted">Процедуры CTS оплачиваются <b>напрямую</b> в Chaîne Thermale du Soleil; я помогаю с записью.</p>
+    <div class="card" style="overflow:auto">
+      <table class="table-min">
+        <thead>
+          <tr>
+            <th style="text-align:left">Пакет</th>
+            <th>Жильё 14 ночей</th>
+            <th>Уборка/сборы</th>
+            <th>Тур.налог</th>
+            <th>Трансфер RT</th>
+            <th>Оргсбор</th>
+            <th>Моя прибыль</th>
+            <th>Итого</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left"><b>Standard</b> (студия 2★)</td>
+            <td>€ 70×14 = <b>€ 980</b></td>
+            <td>€ 60</td>
+            <td>€ 1.0×14 = € 14</td>
+            <td>Седан MPL RT <b>€ 240</b></td>
+            <td>€ 180</td>
+            <td><b>€ 220</b></td>
+            <td><b>€ 1 694</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:left"><b>Комфорт</b> (T1 3★ ближе к центру)</td>
+            <td>€ 95×14 = <b>€ 1 330</b></td>
+            <td>€ 70</td>
+            <td>€ 1.2×14 = € 17</td>
+            <td>Седан Béziers RT <b>€ 180</b></td>
+            <td>€ 220</td>
+            <td><b>€ 280</b></td>
+            <td><b>€ 2 097</b></td>
+          </tr>
+          <tr>
+            <td style="text-align:left"><b>Комфорт+</b> (T2, тихий квартал)</td>
+            <td>€ 120×14 = <b>€ 1 680</b></td>
+            <td>€ 80</td>
+            <td>€ 1.5×14 = € 21</td>
+            <td>Минивэн MPL RT <b>€ 340</b></td>
+            <td>€ 260</td>
+            <td><b>€ 340</b></td>
+            <td><b>€ 2 721</b></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">Логика прибыли: ~15% маржи на проживание + фиксированный оргсбор (координация, связь с термами, поддержка 7/7). При 21 ночи — перерасчёт по суткам; август — сезонная надбавка у объектов.</p>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <h4>Трансферы (1–3 pax)</h4>
+        <ul>
+          <li>Montpellier ⇄ Lamalou: <b>€ 120</b> в одну</li>
+          <li>Béziers ⇄ Lamalou: <b>€ 90</b> в одну</li>
+          <li>Nîmes/Perpignan: <b>€ 160–180</b> в одну</li>
+        </ul>
+        <p class="muted">Ночь/праздники +20%. 4–7 pax — минивэн.</p>
+      </div>
+      <div class="card">
+        <h4>Не входит</h4>
+        <ul>
+          <li>Процедуры CTS (оплата на сайте CTS).</li>
+          <li>Питание; в апартаментах — кухня.</li>
+          <li>Страховка путешественника.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Опции выходного дня</h4>
+        <ul>
+          <li>Olargues + Gorges d'Orb (лёгкая прогулка)</li>
+          <li>Винный полдень: Saint‑Chinian/Faugères</li>
+          <li>Побережье: Agde — Marseillan — устрицы Thau</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- БРОНИРОВАНИЕ -->
+  <section class="container" id="book">
+    <h3 class="section-title">Быстрый запрос / бронирование</h3>
+    <p class="section-sub">Сначала заполняете данные — потом увидите текст заявки и подтвердите отправку в WA/TG.</p>
+
+    <div class="card" data-program data-program-title="Lamalou-les-Bains — термальное восстановление (от 14 дней)" data-program-id="LAMALOU-THERMES-14D">
+      <form data-contact-form data-channel="telegram" class="fields">
+        <div>
+          <label>Дата заезда</label>
+          <input type="date" name="date" required>
+        </div>
+        <div>
+          <label>Ночей</label>
+          <input type="number" name="nights" min="14" value="14" required>
+        </div>
+        <div>
+          <label>Гостей</label>
+          <input type="number" name="guests" min="1" value="2" required>
+        </div>
+        <div>
+          <label>Класс жилья</label>
+          <select name="lodging">
+            <option>Апартаменты Standard</option>
+            <option>Комфорт</option>
+            <option>Комфорт+</option>
+          </select>
+        </div>
+        <div>
+          <label>Контакт (телефон/Telegram)</label>
+          <input type="text" name="contact" placeholder="@username или +33…" required>
+        </div>
+        <div class="full" style="display:flex;gap:10px;align-items:center">
+          <label style="font-weight:600;margin:0">Куда отправить:</label>
+          <select name="channel">
+            <option value="whatsapp">WhatsApp</option>
+            <option value="telegram" selected>Telegram</option>
+          </select>
+        </div>
+        <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap">
+          <button type="submit" class="btn">Сформировать заявку и открыть чат</button>
+          <button type="reset" class="btn btn-outline">Сбросить</button>
+        </div>
+        <p class="muted" style="margin-top:6px">Ничего не отправится без вашего подтверждения.</p>
+      </form>
+    </div>
+
+    <!-- sharebar только здесь -->
+    <div class="sharebar" data-sharebar>
+      <a data-wa class="ic ic--wa" aria-label="WhatsApp" rel="noopener" target="_blank"></a>
+      <a data-tg class="ic ic--tg" aria-label="Telegram" rel="noopener" target="_blank"></a>
+    </div>
+  </section>
+
+  <!-- FAQ / ПРИМЕЧАНИЯ -->
+  <section class="container">
+    <h3 class="section-title">Вопросы</h3>
+    <details class="card"><summary>Можно 14 ночей, если медкурсы идут 18–21 день?</summary>
+      <p>Да. Возможны wellness/forme пакеты на 6–12 дней или индивидуальная программа. Медицинские курсы по назначению врача оформим при наличии документов.</p>
+    </details>
+    <details class="card"><summary>Как считается моя прибыль?</summary>
+      <p>Прозрачно: ~15% маржи на проживание + фиксированный оргсбор за сопровождение. В смете это отдельная строка «Моя прибыль».</p>
+    </details>
+    <details class="card"><summary>Можно без трансфера?</summary>
+      <p>Можно. Тогда строка трансфера исключается из сметы.</p>
+    </details>
+  </section>
+
+  <!-- АДМИН-ССЫЛКИ (включение ?admin=lamalou2025) -->
+  <section class="container admin-only" data-display="flex" style="gap:8px;flex-wrap:wrap;margin-top:8px">
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lamalou-les-Bains&output=classic">Карта Lamalou</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/etablissement/lamalou-les-bains">CTS — Lamalou</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/checkout/reservation">Резервация процедур CTS</a>
+  </section>
+
+  <footer class="container">
+    <p class="muted">© Tours Languedoc by Irène — авторская организация термальных программ в Occitanie.</p>
+  </footer>
+
+  <script>
+    // включение админ-ссылок параметром ?admin=lamalou2025
+    (function(){
+      const p = new URLSearchParams(location.search).get('admin');
+      if(p === 'lamalou2025'){
+        document.querySelectorAll('.admin-only').forEach(el=>{ el.style.display = el.dataset.display || 'block'; });
+      }
+    })();
+
+    // безопасный предпросмотр и отправка через contact.js (ни один мессенджер не открывается до заполнения)
+    (function(){
+      const form = document.querySelector('[data-contact-form]');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const fd = new FormData(form);
+        const when   = (fd.get('date')||'').trim();
+        const nights = (fd.get('nights')||'').trim();
+        const guests = (fd.get('guests')||'').trim();
+        const lodging= (fd.get('lodging')||'').trim();
+        const contact= (fd.get('contact')||'').trim();
+        const channel= (fd.get('channel')||'telegram');
+        if(!when || !nights){ alert('Укажите дату и длительность (мин. 14 ночей).'); return; }
+        if(!contact){ alert('Укажите контакт: телефон или @username.'); return; }
+        const text = `Lamalou-les-Bains — запрос
+`+
+          `Даты: с ${when}, ночей: ${nights}
+`+
+          `Гостей: ${guests}
+`+
+          `Жильё: ${lodging}
+`+
+          `Контакт: ${contact}
+`+
+          `Пожелания: …`;
+        const edited = prompt('Проверьте/отредактируйте текст заявки перед отправкой:', text);
+        if(edited === null) return;
+        window.dispatchEvent(new CustomEvent('contact:send', { detail: { channel, text: edited } }));
+      }, { passive:false });
+    })();
+  </script>
+</body>
+</html>
