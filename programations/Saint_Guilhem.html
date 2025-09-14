@@ -313,28 +313,51 @@
     };
   </script>
 
-  <!-- ==== Admin gate ==== -->
-  <script>
-    (function(){
-      try{
-        const p = new URLSearchParams(location.search);
-        const t = p.get('admin');
-        if (t !== null){
-          if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
-          p.delete('admin');
-          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-        }
-        const isAdmin = localStorage.getItem('site:admin')==='1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn(e); }
-    })();
-  </script>
+       <!-- Админ-ссылки (включаются ?admin=capion2025) -->
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
+        <!-- ——— Локации дня ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Saint-Guilhem-le-D%C3%A9sert&output=classic">Saint-Guilhem</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Parking%20du%20Pont%20du%20Diable%20(Aniane)&output=classic">Парковка Pont du Diable</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Parking%20Saint-Guilhem-le-D%C3%A9sert&output=classic">Парковка Saint-Guilhem</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grotte%20de%20Clamouse&output=classic">Grotte de Clamouse</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Pont%20du%20Diable%20(H%C3%A9rault)&output=classic">Pont du Diable</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20Capion&output=classic">Château Capion</a>
+
+        <!-- ——— Билеты/сайты ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Grotte+de+Clamouse+billetterie">Clamouse — билеты</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Abbaye+de+Gellone+mus%C3%A9e+infos">Abbaye (музей) — инфо</a>
+
+        <!-- ——— Обед ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=La+Table+du+Pont+du+Diable&output=classic">La Table du Pont du Diable</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=La+Table+du+Pont+du+Diable+r%C3%A9servation">La Table — резервация</a>
+
+        <!-- ——— Дегустации ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Ch%C3%A2teau+Capion+d%C3%A9gustation+r%C3%A9servation">Capion — запись</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="mailto:contact@chateau-capion.com?subject=R%C3%A9servation%20d%C3%A9gustation&body=Bonjour%2C%20">Capion — email</a>
+
+        <!-- ——— Опция 2-й домен ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas+de+Daumas+Gassac&output=classic">Mas de Daumas Gassac</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Daumas+Gassac+d%C3%A9gustation+r%C3%A9servation">Daumas — запись</a>
+
+        <!-- ——— Видовые / трек к Castrum ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Castrum+Saint-Guilhem+sentier+itin%C3%A9raire">Castrum — трек</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Belv%C3%A9d%C3%A8re+Cirque+de+l%E2%80%99Infernet">Belvédère (Infernet)</a>
+
+        <!-- ——— Маршруты дня ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&origin=Saint-Guilhem-le-D%C3%A9sert&destination=Ch%C3%A2teau%20Capion&waypoints=Grotte%20de%20Clamouse|Pont%20du%20Diable%20(H%C3%A9rault)">
+          Маршрут: SG ➜ Clamouse ➜ Pont ➜ Capion
+        </a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener"
+           href="https://www.google.com/maps/dir/?api=1&origin=M%C3%A8ze&destination=Saint-Guilhem-le-D%C3%A9sert&waypoints=Grotte%20de%20Clamouse|Pont%20du%20Diable%20(H%C3%A9rault)|Ch%C3%A2teau%20Capion&travelmode=driving">
+          Из Mèze (полный круг)
+        </a>
+
+        <!-- ——— Погода/река ——— -->
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Saint-Guilhem-le-D%C3%A9sert">Погода SG</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=H%C3%A9rault+d%C3%A9bit+Pont+du+Diable">Дебит реки Hérault</a>
+      </div>
+
 
   <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, открытие WA/TG, биндинг всех кнопок ==== -->
   <script>
