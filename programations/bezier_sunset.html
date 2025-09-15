@@ -69,14 +69,8 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-
-
-
-    
     /* FAB (как в PSL) */
     .chat-fab{
-
-      
       position:fixed; right:16px; z-index:9999;
       border:0; padding:14px; border-radius:999px; background:#fff;
       box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
@@ -84,7 +78,7 @@
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
-
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
     /* Анти-дубли: показываем только «ручные» FAB */
     .chat-fab:not([data-fab="manual"]){ display:none !important; }
