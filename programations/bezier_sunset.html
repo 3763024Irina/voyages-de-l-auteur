@@ -101,7 +101,7 @@
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
     /* === FAB внизу справа === */
-    .chat-fab{
+     .chat-fab{
       position:fixed; right:16px; z-index:9999;
       border:0; padding:14px; border-radius:999px; background:#fff;
       box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
@@ -110,6 +110,14 @@
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+
+    /* валидация */
+    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
+    .form-toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+      font-size:14px; max-width:90vw; text-align:center;
+    }
 
     /* валидация */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
