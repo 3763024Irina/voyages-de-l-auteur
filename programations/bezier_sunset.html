@@ -12,6 +12,7 @@
   <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -149,23 +150,25 @@
 <body
   data-program
   data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)"
-  data-program-id="CRUISE-BEZIERS"
->
+  data-program-id="CRUISE-BEZIERS">
+
   <header>
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
         <div class="logo" aria-hidden>Î</div>
-        <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
+        <div>
+          <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
+        </div>
       </a>
-      <nav class="lang">
+      <nav class="lang" aria-label="Навигация">
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
+          <button id="btn-ru" class="active" type="button">RU</button>
+          <button id="btn-fr" type="button">FR</button>
         </div>
       </nav>
     </div>
@@ -270,38 +273,36 @@
 
       <!-- запрет submit — форма работает через WA/TG/email без перезагрузки -->
       <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
-  <div>
-    <label for="when" data-i18n="label_date">Дата</label>
-    <input id="when" name="date" type="date" required>
-  </div>
-  <div>
-    <label for="guests" data-i18n="label_guests">Гостей</label>
-    <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-  </div>
+        <div>
+          <label for="when" data-i18n="label_date">Дата</label>
+          <input id="when" name="date" type="date" required>
+        </div>
+        <div>
+          <label for="guests" data-i18n="label_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+        </div>
 
-  <div class="full">
-    <label for="name" data-i18n="label_name">Имя</label>
-    <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-  </div>
+        <div class="full">
+          <label for="name" data-i18n="label_name">Имя</label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+        </div>
 
-  <div class="full">
-    <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-    <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-  </div>
+        <div class="full">
+          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
+          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
+        </div>
 
-  <div class="full">
-    <label for="msg" data-i18n="label_message">Комментарий</label>
-    <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
-  </div>
+        <div class="full">
+          <label for="msg" data-i18n="label_message">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
+        </div>
 
-  <!-- УДАЛЁН select «Куда отправить» -->
-
-  <div class="form-actions full">
-    <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-    <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-  </div>
-</form>
-
+        <!-- УДАЛЁН select «Куда отправить» -->
+        <div class="form-actions full">
+          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -333,13 +334,157 @@
   <!-- ===== I18N ===== -->
   <script>
     const i18n = {
-      /* ... ваш объект i18n без изменений (как в исходнике) ... */
+      ru: {
+        htmlLang: 'ru',
+        title: 'Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène',
+        metaDesc: 'Круиз по Каналу дю Миди из Бéзье (Фонсераны — Grand Bief — тоннель Малпас). Днём или на закате. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.',
+        ogTitle: 'Бéзье — круиз по Каналу дю Миди (день/закат)',
+        ogDesc: 'Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция.',
+        brand_sub: '— Путешествия со вкусом',
+        nav_all: '← Все программы',
+        nav_why: 'Почему с нами',
+        nav_book: 'Забронировать',
+
+        hero_badge: 'Canal du Midi • День/Закат',
+        hero_title: 'Бéзье — круиз по Каналу дю Миди (днём или на закате)',
+        hero_sub: 'Фонсераны — Grand Bief — тоннель Малпас. Выбирайте дневной или закатный слот. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.',
+
+        gal_title: 'Как это выглядит',
+        gal_sub: 'Шлюзы Фонсераны, «Большой канал» (Grand Bief) — днём и на закате.',
+
+        plan_title: 'Программа и тайминг',
+        t_pickup_time: 'По запросу',
+        t_pickup: 'Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.',
+        t_day: 'Старт в первой половине дня: проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.',
+        t_sunset: 'Старт под вечер: «золотой час» на Grand Bief, при возможности — подход к тоннелю Малпас.',
+        t_dinner: 'Ужин на борту (set-menu) — по запросу, с доплатой.',
+        t_finish: 'Возврат к Фонсеранам, прощальные фото.',
+
+        inc_title: 'Что включено',
+        inc_transfer: 'Приватный трансфер от/до отеля (зона: Монтпелье — Сет — Бéзье — Нарбон)',
+        inc_seats: 'Бронированные места на борту',
+        inc_guide: 'Сопровождение RU/FR',
+        inc_photo: 'Фото-точки и истории канала',
+
+        opt_title: 'Опции',
+        opt_dinner: 'Ужин на борту (set-menu) — по запросу, с доплатой',
+        opt_wine: 'Аперитив/дегустация вин до/после круиза — по запросу',
+
+        exc_title: 'Не включено',
+        exc_extra: 'Алкоголь и блюда вне выбранного меню; чаевые.',
+
+        where_title: 'Где это',
+        where_sub: 'Старт у <strong>Écluses de Fonseranes</strong>, Béziers.',
+
+        tips_title: 'Полезно знать',
+        tip_speed: 'Крейсерская скорость мала — идеально для фото и отдыха.',
+        tip_route: 'Маршрут и длительность зависят от навигационного графика/погоды.',
+        tip_clothes: 'Возьмите лёгкую накидку (вечерний бриз даже летом).',
+
+        pricing_title: 'Стоимость',
+        price: '440 € / 2 гостя',
+        price_note: ' Ужин на борту — опция с доплатой. Время: день или закат (по сезону/графику).',
+
+        form_title: 'Быстрый запрос / бронирование',
+        form_sub: 'Ответим в течение дня и подтвердим доступные дневные/закатные слоты. Опции — по запросу.',
+        label_date: 'Дата',
+        label_guests: 'Гостей',
+        label_name: 'Имя',
+        label_contact: 'Контакт (WhatsApp/Email)',
+        label_message: 'Комментарий',
+        btn_whatsapp: 'Написать в WhatsApp',
+        btn_telegram: 'Написать в Telegram',
+
+        brand_sub_footer: 'Путешествия со вкусом',
+        nav_why_f: 'Почему с нами',
+        nav_all_f: 'Программы',
+        nav_format_f: 'Формат',
+        nav_contacts_f: 'Контакты',
+
+        altHero: 'Канал дю Миди у Бéзье — шлюзы Фонсераны',
+        altG1: 'Фонсераны — лестница шлюзов (исторический вид)',
+        altG2: 'Grand Bief — участок канала между Бéзье и Коломбье',
+        altG3: 'Закат на канале дю Миди'
+      },
+      fr: {
+        htmlLang: 'fr',
+        title: 'Béziers — Croisière sur le Canal du Midi (journée ou coucher du soleil) | Tours Languedoc by Irène',
+        metaDesc: 'Croisière depuis Béziers (Écluses de Fonseranes — Grand Bief — Tunnel du Malpas). En journée ou au coucher du soleil. Dîner à bord en option. Privé 2–6 pers.',
+        ogTitle: 'Béziers — Croisière Canal du Midi (jour/coucher du soleil)',
+        ogDesc: 'Fonseranes, Grand Bief, tunnel du Malpas. Créneaux jour & sunset. Dîner à bord en option.',
+        brand_sub: '— Des voyages avec goût',
+        nav_all: '← Tous les programmes',
+        nav_why: 'Pourquoi nous',
+        nav_book: 'Réserver',
+
+        hero_badge: 'Canal du Midi • Jour/Sunset',
+        hero_title: 'Béziers — Croisière sur le Canal du Midi (jour ou sunset)',
+        hero_sub: 'Fonseranes — Grand Bief — tunnel du Malpas. Créneaux jour ou sunset. Dîner à bord en option. Privé 2–6 pers.',
+
+        gal_title: 'À quoi ça ressemble',
+        gal_sub: 'Écluses de Fonseranes et Grand Bief — de jour et au coucher du soleil.',
+
+        plan_title: 'Programme & timing',
+        t_pickup_time: 'Selon demande',
+        t_pickup: 'Pick-up à l’hôtel (Montpellier / Sète / Béziers / Narbonne) et transfert à Fonseranes.',
+        t_day: 'Départ en matinée : passage de la « cascade » d’écluses, Grand Bief, arrêts photo.',
+        t_sunset: 'Départ en fin d’après-midi : golden hour sur le Grand Bief, approche du tunnel du Malpas si possible.',
+        t_dinner: 'Dîner à bord (menu fixe) — sur demande, en supplément.',
+        t_finish: 'Retour à Fonseranes, photos de fin.',
+
+        inc_title: 'Inclus',
+        inc_transfer: 'Transfert privé A/R hôtel (zone : Montpellier — Sète — Béziers — Narbonne)',
+        inc_seats: 'Places réservées à bord',
+        inc_guide: 'Accompagnement RU/FR',
+        inc_photo: 'Spots photo & histoires du canal',
+
+        opt_title: 'Options',
+        opt_dinner: 'Dîner à bord (menu fixe) — sur demande, supplément',
+        opt_wine: 'Apéritif/dégustation avant/après la croisière — sur demande',
+
+        exc_title: 'Non inclus',
+        exc_extra: 'Alcool et plats hors menu ; pourboires.',
+
+        where_title: 'Où c’est',
+        where_sub: 'Départ aux <strong>Écluses de Fonseranes</strong>, Béziers.',
+
+        tips_title: 'Bon à savoir',
+        tip_speed: 'Vitesse de croisière faible — idéal pour les photos et le repos.',
+        tip_route: 'Itinéraire & durée dépendent de la navigation/météo.',
+        tip_clothes: 'Prévoyez une petite veste (brise du soir, même l’été).',
+
+        pricing_title: 'Tarif',
+        price: '440 € / 2 pers.',
+        price_note: ' Dîner à bord en option. Créneaux jour ou sunset (selon saison/horaire).',
+
+        form_title: 'Demande rapide / réservation',
+        form_sub: 'Réponse dans la journée. Nous confirmons les créneaux jour/sunset. Options sur demande.',
+        label_date: 'Date',
+        label_guests: 'Personnes',
+        label_name: 'Nom',
+        label_contact: 'Contact (WhatsApp/Email)',
+        label_message: 'Commentaire',
+        btn_whatsapp: 'Écrire sur WhatsApp',
+        btn_telegram: 'Écrire sur Telegram',
+
+        brand_sub_footer: 'Des voyages avec goût',
+        nav_why_f: 'Pourquoi nous',
+        nav_all_f: 'Programmes',
+        nav_format_f: 'Format',
+        nav_contacts_f: 'Contacts',
+
+        altHero: 'Canal du Midi à Béziers — Écluses de Fonseranes',
+        altG1: 'Fonseranes — enfilade d’écluses (vue historique)',
+        altG2: 'Grand Bief — tronçon du canal entre Béziers et Colombiers',
+        altG3: 'Coucher de soleil sur le canal du Midi'
+      }
     };
 
     const setAlt = (id, text) => { const el = document.getElementById(id); if(el) el.setAttribute('alt', text); };
 
     function applyLang(lang){
       const t = i18n[lang];
+      if(!t) return;
       document.documentElement.lang = t.htmlLang;
       document.title = t.title;
       const md = document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
@@ -375,9 +520,9 @@
   <!-- ==== CONFIG (единый) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',                 // номер для wa.me (очистится до цифр)
-      telegram_user: 'de_iren',                // username без @
-      telegram_bot: 'de_iren_order_bot',       // бот
+      whatsapp: '33759644813',          // номер для wa.me (очистится до цифр)
+      telegram_user: 'de_iren',         // username без @ (личка)
+      telegram_bot: 'de_iren_order_bot',// бот (для автозаполнения, если нужно)
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
@@ -408,8 +553,8 @@
   </script>
 
   <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
