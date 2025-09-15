@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    .chat-fab{ display:none !important; }
+   
     :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
     *{box-sizing:border-box} html,body{height:100%}
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
@@ -393,17 +393,7 @@
 <script src="..assets/js/contact.js" defer></script>
 <script src="..assets/js/chat-widget.js" defer></script>
 
-<!-- Уборщик дублей: удаляем любые плавающие FAB после загрузки -->
-<script>
-  (function(){
-    const kill = () => document.querySelectorAll('.chat-fab').forEach(el => el.remove());
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', kill, {once:true});
-    } else {
-      kill();
-    }
-  })();
-</script>
+
 
 </body>
 </html>
