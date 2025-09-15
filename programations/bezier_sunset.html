@@ -18,7 +18,7 @@
   <style>
     :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg); padding-bottom:120px;}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -103,11 +103,12 @@
     .chat-fab{
       position:fixed; right:16px; z-index:9999;
       border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
+      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center;
+      bottom: max(16px, env(safe-area-inset-bottom) + 16px);
     }
     .chat-fab svg{width:22px; height:22px; display:block}
-    .chat-fab.wa{bottom:76px}
-    .chat-fab.tg{bottom:26px}
+    .chat-fab.wa{bottom: max(76px, env(safe-area-inset-bottom) + 76px)}
+    .chat-fab.tg{bottom: max(26px, env(safe-area-inset-bottom) + 26px)}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
     /* toast + ошибки */
@@ -278,22 +279,22 @@
     </svg>
   </button>
 
-  <!-- ==== CONFIG (для отправки) ==== -->
+  <!-- ==== CONFIG ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',        // номер для wa.me
-      telegram_user: 'de_iren',       // @user без @
+      whatsapp: '33759644813',
+      telegram_user: 'de_iren',
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart автоматически
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
 
-  <!-- Подключение скриптов (ровно как в PSL) -->
+  <!-- Подключение скриптов -->
   <script src="../assets/js/contact.js" defer></script>
   <script src="../assets/js/chat-widget.js" defer></script>
 
-  <!-- ==== Admin gate (тот же, что в PSL) ==== -->
+  <!-- Admin gate -->
   <script>
     (function(){
       try{
@@ -316,7 +317,7 @@
     })();
   </script>
 
-  <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, WA/TG биндинг ==== -->
+  <!-- ЕДИНЫЙ WA/TG биндинг + min для даты -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
@@ -324,6 +325,17 @@
     const CFG = window.APP_CONFIG || {};
     const digits = s => String(s||'').replace(/\D/g,'');
     const enc = s => encodeURIComponent(String(s||''));
+
+    // min=сегодня для input[type=date]
+    (function setMinToday(){
+      const el = document.getElementById('when');
+      if(!el) return;
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const day = String(d.getDate()).padStart(2,'0');
+      el.min = `${y}-${m}-${day}`;
+    })();
 
     function toast(msg, ms=2400){
       const t = document.createElement('div');
