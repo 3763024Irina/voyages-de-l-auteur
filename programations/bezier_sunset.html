@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru" data-program-id="CRUISE-BEZIERS" data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)">
+<html lang="ru" data-program-id="LAMALOU-THERMES-14D" data-program-title="Lamalou-les-Bains — термальное восстановление (от 14 дней)">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Круиз по Каналу дю Миди из Бéзье (Фонсераны — Grand Bief — тоннель Малпас). Днём или на закате. Ужин на борту — по запросу (опция). Приватно 2–6 гостей." />
-  <meta property="og:title" content="Бéзье — круиз по Каналу дю Миди (день/закат)" />
-  <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция." />
+  <title>Lamalou-les-Bains — термальное восстановление (от 14 дней) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Курорт Lamalou-les-Bains в горах Орб: проживание от 14 ночей, запись на процедуры Chaîne Thermale du Soleil, приватные трансферы, персональная организация от Ирэн. Индивидуально." />
+  <meta property="og:title" content="Lamalou-les-Bains — термальное восстановление (от 14 дней)" />
+  <meta property="og:description" content="Проживание 14–21 ночь · помощь с записью в термы CTS · приватные трансферы · прозрачная смета с моей прибылью." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+  <meta property="og:image" content="../assets/spa/lamalou-cover.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,14 +36,15 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* HERO */
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
-    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
+    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
     .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25))}
-    .hero .inner{min-height:52vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
+    .hero .inner{min-height:50vh; display:grid; grid-template-columns:1fr; gap:18px; align-items:end; padding:38px 0 46px}
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
-    h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    h2.title{font-family:"Cormorant Garamond",serif; font-size:44px; line-height:1.05; color:#fff; margin:8px 0 10px}
+    .subtitle{color:#f7f7f7; font-size:18px; max-width:820px}
     .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
@@ -52,43 +53,31 @@
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
     .section-sub{color:var(--muted); margin:0 0 22px}
-    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
-    .gallery img{width:100%; height:100%; object-fit:cover}
+
     .info-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:22px}
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .list{margin:0; padding-left:18px}
     .list li{margin:8px 0}
-    .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
-    .timeline li{margin:12px 0}
-    .time{font-weight:800; color:var(--brand)}
-    .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
-    .price{font-weight:800; font-size:20px}
+
+    .facts{display:flex; gap:14px; flex-wrap:wrap; list-style:none; padding:0; margin:0}
+    .facts li{background:#fff; border:1px solid #eee; border-radius:999px; padding:8px 12px; box-shadow:var(--shadow)}
+
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
+    .gallery img{width:100%; height:100%; object-fit:cover}
+
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FAB (как в PSL) */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999;
-      border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
-    }
-    .chat-fab svg{width:22px; height:22px; display:block}
-    .chat-fab.wa{bottom:76px}
-    .chat-fab.tg{bottom:26px}
-    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
-
-    /* Анти-дубли: показываем только «ручные» FAB */
-    .chat-fab:not([data-fab="manual"]){ display:none !important; }
-
-    /* форма */
+    /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
-    input, textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    input, textarea, select{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
+
+    /* BOOK */
     #book{ padding:32px 0 56px; }
-    #book .card{ max-width:720px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
+    #book .card{ max-width:820px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
     #book .section-title{ font-size:28px; margin:0 0 6px; }
     #book .section-sub{ margin:0 0 14px; color:var(--muted); }
     #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
@@ -108,12 +97,16 @@
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
+    /* FAB */
+    .chat-fab{ position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center }
+    .chat-fab svg{width:22px; height:22px; display:block}
+    .chat-fab.wa{bottom:76px}
+    .chat-fab.tg{bottom:26px}
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+
+    /* validation */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{
-      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
-      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
-      font-size:14px; max-width:90vw; text-align:center;
-    }
+    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
   </style>
 </head>
 
@@ -124,6 +117,7 @@
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small>— Путешествия со вкусом</small></h1></div>
       </a>
+
       <nav class="lang">
         <ul>
           <li><a href="../index.html#tours">← Все программы</a></li>
@@ -139,116 +133,153 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
+  <section class="hero" data-program-title="Lamalou-les-Bains — термальное восстановление (от 14 дней)" data-program-id="LAMALOU-THERMES-14D">
     <div class="bg">
-      <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'" alt="Béziers — Canal du Midi" />
+      <img src="../assets/spa/lamalou-cover.jpg" alt="Lamalou-les-Bains — парк и термы" />
       <div class="overlay"></div>
     </div>
     <div class="container inner">
       <div>
-        <span class="badge">Canal du Midi • День/Закат</span>
-        <h2 class="title">Бéзье — круиз по Каналу дю Миди (днём или на закате)</h2>
-        <p class="subtitle">Фонсераны — Grand Bief — тоннель Малпас. Выбирайте дневной или закатный слот. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.</p>
+        <span class="badge">Thermes • Chaîne Thermale du Soleil</span>
+        <h2 class="title">Lamalou-les-Bains — термальное восстановление <span style="font-size:.6em; font-weight:800">от 14 дней</span></h2>
+        <p class="subtitle">Зелёный курорт в Верхнем Орбе: проживание 14–21 ночь, помощь с записью на процедуры CTS, приватные трансферы и поддержка на месте 7/7 (RU/FR). <b>Цена за двоих от € 1 690 / 14 ночей</b>.</p>
         <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
       </div>
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- META FACTS -->
   <section class="container">
-    <h3 class="section-title">Как это выглядит</h3>
-    <p class="section-sub">Шлюзы Фонсераны, «Большой канал» (Grand Bief) — днём и на закате.</p>
-    <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes" loading="lazy"></div>
-      <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief" loading="lazy"></div>
-      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Canal du Midi — закат" loading="lazy"></div>
-    </div>
+    <ul class="facts">
+      <li><b>Длительность:</b> 14–21 ночь</li>
+      <li><b>База:</b> Lamalou-les-Bains (Hérault)</li>
+      <li><b>Сезон:</b> март–ноябрь</li>
+      <li><b>Процедуры:</b> CTS — Lamalou (<a href="https://www.chainethermale.fr/checkout/reservation" target="_blank" rel="noopener">онлайн‑запись</a>)</li>
+      <li><b>Трансферы:</b> MPL/Béziers/Nîmes/Perpignan</li>
+    </ul>
   </section>
 
   <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
-      <h3 class="section-title">Программа и тайминг</h3>
-      <ul class="timeline">
-        <li><span class="time">По запросу</span> — Пикап от отеля (Монтпелье / Сет / Бéзье / Нарбон) и трансфер к Фонсеранам.</li>
-        <li><span class="time">День</span> — Проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.</li>
-        <li><span class="time">Закат</span> — «Золотой час» на Grand Bief, при возможности — подход к тоннелю Малпас.</li>
-        <li><span class="time">Опция</span> — Ужин на борту (set-menu) — по запросу, с доплатой.</li>
-        <li><span class="time">Финиш</span> — Возврат к Фонсеранам, прощальные фото.</li>
+      <h3 class="section-title">Почему Lamalou</h3>
+      <p class="section-sub">Спокойный горный климат, хвойные леса и минеральные воды. Курорт специализируется на ревматологии, неврологии и ЛОР‑профиле. Всё рядом: термы, парки, набережная Орба, кафе и рынки.</p>
+      <ul class="list">
+        <li>Проживание в апартаментах/резиденциях в 5–12 мин пешком от терм.</li>
+        <li>Мягкий распорядок: утренние процедуры, дневной отдых, прогулки.</li>
+        <li>Возможны wellness‑пакеты 6–12 дней, если медкурса не требуется.</li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px">Что включено</h3>
-      <div class="inc-grid">
-        <div class="pill">Приватный трансфер от/до отеля (Монтпелье — Сет — Бéзье — Нарбон)</div>
-        <div class="pill">Бронированные места на борту</div>
-        <div class="pill">Сопровождение RU/FR</div>
-        <div class="pill">Фото-точки и истории канала</div>
+      <h3 class="section-title" style="margin-top:22px">Что я делаю для вас</h3>
+      <ul class="list">
+        <li>Подбор жилья и договор с хозяином/резиденцией.</li>
+        <li>Помощь с онлайн‑записью в CTS: выбор курсов/времени.</li>
+        <li>Приватные трансферы аэропорт/вокзал ⇄ Lamalou.</li>
+        <li>Welcome‑набор + стартовые покупки, помощь 7/7 (RU/FR).</li>
+        <li>По выходным — мягкие поездки (Saint‑Chinian, Olargues, Thau).</li>
+      </ul>
+
+      <h3 class="section-title" style="margin-top:22px">Стоимость</h3>
+      <div class="card">
+        <p><b>Цена за 2 гостей:</b> от <span class="price">€ 1 690</span> за 14 ночей.</p>
+        <p class="section-sub">Включает подбор жилья, сопровождение и помощь с записью в CTS. <b>Процедуры CTS</b> оплачиваются <b>напрямую</b> в Chaîne Thermale du Soleil. Моя модель — ~15% маржи на проживание + фиксированный оргсбор.</p>
       </div>
 
-      <h3 class="section-title" style="margin-top:24px">Не включено</h3>
-      <ul class="list">
-        <li>Алкоголь и блюда вне выбранного меню; чаевые.</li>
-      </ul>
+      <div class="gallery"" style="margin-top:14px">
+        <div class="ph"><img src="../assets/spa/lamalou-park.jpg" alt="Парк Lamalou" loading="lazy"></div>
+        <div class="ph"><img src="../assets/spa/lamalou-thermes.jpg" alt="Термы Lamalou" loading="lazy"></div>
+        <div class="ph"><img src="../assets/spa/lamalou-village.jpg" alt="Вилладж Lamalou" loading="lazy"></div>
+      </div>
     </article>
 
     <aside class="card">
       <h3 class="section-title">Где это</h3>
-      <p class="section-sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
-      <div class="ph" style="margin-bottom:10px">
-        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — Canal du Midi на закате" loading="lazy" style="width:100%; border-radius:18px">
+      <p class="section-sub">Lamalou-les-Bains • Chaîne Thermale du Soleil • Haut Orb.</p>
+      <div class="ph" style="margin-bottom:10px; aspect-ratio:16/10; border-radius:18px; overflow:hidden">
+        <img src="../assets/spa/lamalou-map.jpg" alt="Lamalou — карта/окрестности" loading="lazy" style="width:100%; height:100%; object-fit:cover">
       </div>
 
+      <!-- Админ-ссылки (включаются секретом) -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tunnel%20du%20Malpas%2C%20Colombiers&output=classic">Tunnel du Malpas</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lamalou-les-Bains&output=classic">Карта Lamalou</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/etablissement/lamalou-les-bains">CTS — Lamalou</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/checkout/reservation">Резервация процедур CTS</a>
       </div>
 
-      <h3 class="section-title" style="margin-top:20px">Полезно знать</h3>
-      <ul class="list">
-        <li>Крейсерская скорость мала — идеально для фото и отдыха.</li>
-        <li>Маршрут и длительность зависят от навигационного графика/погоды.</li>
-        <li>Возьмите лёгкую накидку (вечерний бриз даже летом).</li>
-      </ul>
+      <div class="card" style="margin-top:14px">
+        <h4>Трансферы (1–3 pax)</h4>
+        <ul class="list" style="margin-top:8px">
+          <li>Montpellier ⇄ Lamalou: <b>€ 120</b> в одну</li>
+          <li>Béziers ⇄ Lamalou: <b>€ 90</b> в одну</li>
+          <li>Nîmes/Perpignan: <b>€ 160–180</b> в одну</li>
+        </ul>
+        <p class="section-sub">Ночь/праздники +20%. 4–7 pax — минивэн.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px">
+        <h4>Не входит</h4>
+        <ul class="list" style="margin-top:8px">
+          <li>Процедуры CTS (оплата на сайте CTS).</li>
+          <li>Питание; в апартаментах — кухня.</li>
+          <li>Страховка путешественника.</li>
+        </ul>
+      </div>
     </aside>
   </section>
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" data-program data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
+    <div class="card" data-program data-program-title="Lamalou-les-Bains — термальное восстановление (от 14 дней)" data-program-id="LAMALOU-THERMES-14D">
       <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим доступные дневные/закатные слоты. Опции — по запросу.</p>
+      <p class="section-sub">Сначала заполняете данные — потом увидите текст заявки и подтвердите отправку в WA/TG.</p>
 
       <form class="fields" data-contact-form>
         <div>
-          <label for="when">Дата</label>
+          <label for="when">Дата заезда</label>
           <input id="when" name="date" type="date" required>
         </div>
         <div>
-          <label for="guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
+          <label for="nights">Ночей</label>
+          <input id="nights" name="nights" type="number" min="14" value="14">
         </div>
-
+        <div>
+          <label for="guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="1" value="2" required>
+        </div>
+        <div>
+          <label for="lodging">Класс жилья</label>
+          <select id="lodging" name="lodging">
+            <option>Апартаменты Standard</option>
+            <option>Комфорт</option>
+            <option>Комфорт+</option>
+          </select>
+        </div>
         <div class="full">
           <label for="name">Имя</label>
           <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
-
         <div class="full">
           <label for="contact">Контакт (WhatsApp/Telegram)</label>
           <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
         </div>
-
         <div class="full">
           <label for="msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
+          <textarea id="msg" name="message" placeholder="Пожелания по жилью/времени процедур, трансфер…"></textarea>
         </div>
-
         <div class="form-actions full">
           <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
           <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
         </div>
       </form>
+    </div>
+
+    <!-- sharebar, если нужно -->
+    <div class="admin-only" data-display="block" style="margin-top:10px">
+      <div class="section-sub">Sharebar доступна через data attributes:</div>
+      <div class="sharebar" data-sharebar>
+        <a data-wa class="ic ic--wa" aria-label="WhatsApp" rel="noopener" target="_blank"></a>
+        <a data-tg class="ic ic--tg" aria-label="Telegram" rel="noopener" target="_blank"></a>
+      </div>
     </div>
   </section>
 
@@ -263,32 +294,27 @@
     </div>
   </footer>
 
-  <!-- === FAB: ручные (как в PSL) === -->
-  <button class="chat-fab wa" aria-label="Написать в WhatsApp" data-whatsapp data-fab="manual">
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
-      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
-    </svg>
+  <!-- FAB: floating buttons -->
+  <button class="chat-fab wa" aria-label="Написать в WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+    <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
+  </button>
+  <button class="chat-fab tg" aria-label="Написать в Telegram" data-chat-open="telegram" data-telegram>
+    <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
   </button>
 
-  <button class="chat-fab tg" aria-label="Написать в Telegram" data-telegram data-fab="manual">
-    <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
-    </svg>
-  </button>
-
-  <!-- ==== CONFIG (как в PSL) ==== -->
+  <!-- ==== CONFIG (для отправки) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',
-      telegram_user: 'de_iren',
+      whatsapp: '33759644813',        // номер для wa.me (любой формат; в коде очистится до цифр)
+      telegram_user: 'de_iren',       // резервный профиль @user (без @)
+      // если добавить ниже поля — будет режим через бота/сервер (Telegram не принимает текст напрямую из браузера)
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
-      ADMIN_SECRET: 'capion2025'
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменится на /prestart автоматически
+      ADMIN_SECRET: 'capion2025'      // единый секрет для админ-режима
     };
   </script>
 
-  <!-- ==== Admin gate ==== -->
+  <!-- ==== Admin gate (как на PSL) ==== -->
   <script>
     (function(){
       try{
@@ -296,7 +322,7 @@
         const t = p.get('admin');
         if (t !== null){
           if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
+          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'') || t === 'lamalou2025') localStorage.setItem('site:admin','1');
           p.delete('admin');
           history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
         }
@@ -311,7 +337,7 @@
     })();
   </script>
 
-  <!-- ==== ЕДИНЫЙ inline-скрипт (валидация + WA/TG) ==== -->
+  <!-- ==== Unified contact logic (точно как на PSL) ==== -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
@@ -323,7 +349,8 @@
     function toast(msg, ms=2400){
       const t = document.createElement('div');
       t.className = 'form-toast'; t.textContent = msg;
-      document.body.appendChild(t); setTimeout(()=>t.remove(), ms);
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), ms);
     }
 
     function buildText(){
@@ -334,8 +361,10 @@
       return [
         'Заявка с сайта Tours Languedoc by Irène',
         pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
+        `Дата заезда: ${get('date')||'-'}`,
+        `Ночей: ${get('nights')||'14'}`,
         `Гостей: ${get('guests')||'-'}`,
+        `Жильё: ${get('lodging')||'-'}`,
         `Имя: ${get('name')||'-'}`,
         `Контакт: ${get('contact')||'-'}`,
         `Сообщение: ${get('message')||'-'}`,
@@ -382,7 +411,7 @@
           const j = await r.json().catch(()=>({}));
           const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
           if (tme){ safeOpen(tme); return; }
-        }catch(e){ /* fallback ниже */ }
+        }catch(e){ /* fallback */ }
       }
       if (user) safeOpen(`https://t.me/${user}`);
       else if (bot) safeOpen(`https://t.me/${bot}`);
@@ -397,27 +426,21 @@
     }
 
     function bind(){
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
-      });
-      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
-      });
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); }); });
+      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); }); });
     }
 
-    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); } else { bind(); }
-
-    /* Смотрим на DOM и выпиливаем любые чужие FAB, если chat-widget вдруг их дорисует */
-    const mo = new MutationObserver(() => {
-      document.querySelectorAll('.chat-fab:not([data-fab="manual"])').forEach(el=>el.remove());
-    });
-    mo.observe(document.body, {childList:true, subtree:true});
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', bind, {once:true});
+    } else { bind(); }
   })();
   </script>
 
-  <!-- Подключения (как в PSL) -->
-  <script src="../assets/js/contact.js" defer></script>
-  <script src="../assets/js/chat-widget.js" defer></script>
+  <!-- Фокус на дате при клике "Забронировать" -->
+  <script>
+    (function(){
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+    })();
+  </script>
 </body>
 </html>
