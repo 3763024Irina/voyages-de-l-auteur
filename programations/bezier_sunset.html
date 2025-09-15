@@ -399,6 +399,22 @@
     }
   })();
   </script>
+  <!-- Подключения (как в PSL) -->
+<script src="..assets/js/contact.js" defer></script>
+<script src="..assets/js/chat-widget.js" defer></script>
+
+<!-- Уборщик дублей: удаляем любые плавающие FAB после загрузки -->
+<script>
+  (function(){
+    const kill = () => document.querySelectorAll('.chat-fab').forEach(el => el.remove());
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', kill, {once:true});
+    } else {
+      kill();
+    }
+  })();
+</script>
+
 </body>
 </html>
 
