@@ -93,9 +93,9 @@
     #book .btn.primary:hover{ filter:brightness(.96); }
 
     .admin-only{ display:none !important; }
-    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !重要; }
-    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !重要; }
-    html[data-admin="1"] .admin-only:not([data-display]){ display:block !重要; }
+    html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
+    html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
+    html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
 
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
@@ -113,7 +113,11 @@
 
     /* валидация */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
+    .form-toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+      font-size:14px; max-width:90vw; text-align:center;
+    }
   </style>
 </head>
 
@@ -143,7 +147,9 @@
   <!-- HERO -->
   <section class="hero" data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
     <div class="bg">
-      <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'" alt="Béziers — Canal du Midi" />
+      <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg"
+           onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'"
+           alt="Béziers — Canal du Midi, Фонсераны" />
       <div class="overlay"></div>
     </div>
     <div class="container inner">
@@ -161,9 +167,9 @@
     <h3 class="section-title">Как это выглядит</h3>
     <p class="section-sub">Шлюзы Фонсераны, Grand Bief и закатные виды.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes" loading="lazy"></div>
-      <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief" loading="lazy"></div>
-      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Закат на канале" loading="lazy"></div>
+      <div class="ph"><img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes — каскад шлюзов" loading="lazy"></div>
+      <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief — широкая гладь" loading="lazy"></div>
+      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Закат на Канале дю Миди" loading="lazy"></div>
     </div>
   </section>
 
@@ -172,32 +178,39 @@
     <article class="card">
       <h3 class="section-title">Программа и тайминг</h3>
       <ul class="timeline">
-        <li><span class="time">По запросу</span> — Пикап от отеля и трансфер к Фонсеранам.</li>
+        <li><span class="time">По запросу</span> — Пикап из отеля и трансфер к Фонсеранам.</li>
         <li><span class="time">День</span> — Проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.</li>
         <li><span class="time">Закат</span> — «Золотой час» на Grand Bief, при возможности — тоннель Малпас.</li>
         <li><span class="time">Опция</span> — Ужин на борту (set-menu) по запросу.</li>
-        <li><span class="time">Финиш</span> — Возврат к Фонсеранам.</li>
+        <li><span class="time">Финиш</span> — Возврат к Фонсеранам и трансфер в отель.</li>
       </ul>
 
       <h3 class="section-title" style="margin-top:24px">Что включено</h3>
       <div class="inc-grid">
         <div class="pill">Приватный трансфер от/до отеля</div>
-        <div class="pill">Бронированные места на борту</div>
+        <div class="pill">Бронь мест на борту</div>
         <div class="pill">Сопровождение RU/FR</div>
-        <div class="pill">Фото-точки и истории канала</div>
+        <div class="pill">Лучшие фото-точки и истории канала</div>
       </div>
 
       <h3 class="section-title" style="margin-top:24px">Не включено</h3>
       <ul class="list">
         <li>Алкоголь и блюда вне выбранного меню; чаевые.</li>
       </ul>
+
+      <h3 class="section-title" style="margin-top:24px">Условия</h3>
+      <ul class="list">
+        <li>Индивидуально, 2–6 гостей. Время — днём или на закате.</li>
+        <li>Финальная программа зависит от уровня воды/графика шлюзов.</li>
+        <li>Аванс 30 %, бесплатная отмена за 7 дней.</li>
+      </ul>
     </article>
 
     <aside class="card">
       <h3 class="section-title">Где это</h3>
-      <p class="section-sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers.</p>
+      <p class="section-sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers. Маршрут: Grand Bief → (опц.) тоннель Malpas.</p>
       <div class="ph" style="margin-bottom:10px">
-        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — закат" loading="lazy" style="width:100%; border-radius:18px">
+        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — закат на канале" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
       <!-- Админ-ссылки (включаются ?admin=capion2025) -->
@@ -269,15 +282,15 @@
 
   <button class="chat-fab tg" aria-label="Написать в Telegram" data-chat-open="telegram" data-telegram>
     <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0  0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
+      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
     </svg>
   </button>
 
   <!-- ==== CONFIG (для отправки) ==== -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',
-      telegram_user: 'de_iren',
+      whatsapp: '33759644813',        // номер для wa.me (любой формат; в коде очистится до цифр)
+      telegram_user: 'de_iren',       // резервный профиль @user (без @)
       telegram_bot: 'de_iren_order_bot',
       bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart автоматически
       ADMIN_SECRET: 'capion2025'
@@ -373,13 +386,18 @@
 
     async function openTelegram(){
       if(!validateForm()) return;
+
       const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
       const user = (CFG.telegram_user||'').replace(/^@/,'');
       const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
 
       if (bot && /^https?:\/\//i.test(pre)){
         try{
-          const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
+          const r = await fetch(pre, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ text: buildText() })
+          });
           const j = await r.json().catch(()=>({}));
           const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
           if (tme){ safeOpen(tme); return; }
@@ -398,13 +416,20 @@
     }
 
     function bind(){
-      document.querySelectorAll('[data-whatsapp]').forEach(el=> el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); }));
-      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=> el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); }));
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
+      });
+      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
+      });
       document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
     }
 
-    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); }
-    else { bind(); }
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', bind, {once:true});
+    } else {
+      bind();
+    }
   })();
   </script>
 </body>
