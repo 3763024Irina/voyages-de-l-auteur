@@ -68,6 +68,22 @@
     footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
+
+    /* FAB (как в PSL) */
+    .chat-fab{
+      position:fixed; right:16px; z-index:9999;
+      border:0; padding:14px; border-radius:999px; background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
+    }
+    .chat-fab svg{width:22px; height:22px; display:block}
+    .chat-fab.wa{bottom:76px}
+    .chat-fab.tg{bottom:26px}
+    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
+
+    /* Анти-дубли: показываем только «ручные» FAB */
+    .chat-fab:not([data-fab="manual"]){ display:none !important; }
+
+    /* форма */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
@@ -83,26 +99,21 @@
     #book .btn{ padding:10px 12px; border-radius:12px; }
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
+
     .admin-only{ display:none !important; }
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
+
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    /* FAB, как в PSL */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999;
-      border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
-    }
-    .chat-fab svg{width:22px; height:22px; display:block}
-    .chat-fab.wa{bottom:76px}
-    .chat-fab.tg{bottom:26px}
-    .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
-
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
+    .form-toast{
+      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
+      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
+      font-size:14px; max-width:90vw; text-align:center;
+    }
   </style>
 </head>
 
@@ -252,7 +263,7 @@
     </div>
   </footer>
 
-  <!-- === FAB: ручные, как в PSL (помечены data-fab="manual") === -->
+  <!-- === FAB: ручные (как в PSL) === -->
   <button class="chat-fab wa" aria-label="Написать в WhatsApp" data-whatsapp data-fab="manual">
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
@@ -272,7 +283,7 @@
       whatsapp: '33759644813',
       telegram_user: 'de_iren',
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // клиент заменит на /prestart
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
@@ -300,7 +311,7 @@
     })();
   </script>
 
-  <!-- ==== ЕДИНЫЙ inline-скрипт (как в PSL): валидация, WA/TG ==== -->
+  <!-- ==== ЕДИНЫЙ inline-скрипт (валидация + WA/TG) ==== -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
@@ -397,12 +408,11 @@
 
     if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); } else { bind(); }
 
-    /* УДАЛЯЕМ ДУБЛИКАТЫ FAB, если виджет их дорисовал */
-    const cleanFabs = () => {
-      const manual = new Set(Array.from(document.querySelectorAll('.chat-fab[data-fab="manual"]')));
-      document.querySelectorAll('.chat-fab').forEach(el => { if (!manual.has(el)) el.remove(); });
-    };
-    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', cleanFabs, {once:true}); } else { cleanFabs(); }
+    /* Смотрим на DOM и выпиливаем любые чужие FAB, если chat-widget вдруг их дорисует */
+    const mo = new MutationObserver(() => {
+      document.querySelectorAll('.chat-fab:not([data-fab="manual"])').forEach(el=>el.remove());
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
   })();
   </script>
 
@@ -411,4 +421,3 @@
   <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
-
