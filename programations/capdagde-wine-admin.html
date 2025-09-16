@@ -53,9 +53,10 @@
     }
 
     /* RU/FR toggle */
-    [data-lang="fr"]{ display:none; }
-    html[data-lang="fr"] [data-lang="ru"]{ display:none; }
-    html[data-lang="fr"] [data-lang="fr"]{ display:revert; }
+ 
+html:not([data-lang="fr"]) [data-lang="fr"] { display: none; } /* по умолчанию скрыт FR */
+html[data-lang="fr"] [data-lang="ru"]       { display: none; }  /* при fr скрыт RU */
+
   </style>
 </head>
 <body>
