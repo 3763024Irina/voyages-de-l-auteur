@@ -24,7 +24,8 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    /* NEW: отступ, чтобы FAB не наезжал на футер */
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg); padding-bottom:120px;}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -219,7 +220,7 @@
       <ul class="list">
         <li data-i18n="note_radius">Все локации в радиусе Mèze–Montagnac; короткие переезды.</li>
         <li data-i18n="note_time">Тайминг ориентировочный; подтверждается по записи в доменах.</li>
-        <li data-i18n="note_oysters">Опционально: устрицы (по желанию).</li>
+        <li data-i18n="note_oysters">Опционально: устрицы Tarbouriech (по времени/доступности).</li>
       </ul>
     </article>
 
@@ -323,7 +324,7 @@
     </svg>
   </button>
 
-  <!-- ===== I18N ===== -->
+  <!-- ===== I18N (как у тебя) ===== -->
   <script>
     const i18n = {
       ru: {
@@ -431,7 +432,7 @@
       whatsapp: '33759644813',                 // номер для wa.me (очистится до цифр)
       telegram_user: 'de_iren',                // username без @
       telegram_bot: 'de_iren_order_bot',       // бот
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart', // можно сразу /prestart
       ADMIN_SECRET: 'capion2025'
     };
   </script>
@@ -459,9 +460,133 @@
     })();
   </script>
 
+  <!-- ==== ЕДИНЫЙ WA/TG биндинг + min для даты (как на CRUISE/PSL) ==== -->
+  <script>
+  ;(() => {
+    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+
+    const CFG = window.APP_CONFIG || {};
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const enc = s => encodeURIComponent(String(s||''));
+
+    // NEW: min=сегодня для input[type=date]
+    (function setMinToday(){
+      const el = document.getElementById('when');
+      if(!el) return;
+      const d = new Date();
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const day = String(d.getDate()).padStart(2,'0');
+      el.min = `${y}-${m}-${day}`;
+    })();
+
+    function toast(msg, ms=2400){
+      const t = document.createElement('div');
+      t.className = 'form-toast'; t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), ms);
+    }
+
+    // NEW: строим текст заявки с учётом активного языка (берём видимый заголовок HERO)
+    function buildText(){
+      const f = document.querySelector('[data-contact-form]');
+      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const title = document.querySelector('.hero .title')?.textContent?.trim()
+                 || document.body.getAttribute('data-program-title')
+                 || document.title || '';
+      const pid   = document.body.getAttribute('data-program-id') || '';
+      return [
+        'Заявка с сайта Tours Languedoc by Irène',
+        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+        `Дата: ${get('date')||'-'}`,
+        `Гостей: ${get('guests')||'-'}`,
+        `Имя: ${get('name')||'-'}`,
+        `Контакт: ${get('contact')||'-'}`,
+        `Сообщение: ${get('message')||'-'}`,
+        `Ссылка: ${location.href}`
+      ].join('\n');
+    }
+
+    // Валидация
+    const REQUIRED = ['date','guests','name','contact'];
+    function validateForm({scroll=true}={}){
+      const f = document.querySelector('[data-contact-form]');
+      if(!f){ toast('Форма не найдена / Form introuvable'); return false; }
+      let firstBad = null;
+      REQUIRED.forEach(n=>{
+        const el = f.querySelector(`[name="${n}"]`);
+        const val = el?.value?.trim();
+        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
+        el?.classList.toggle('input-error', !ok);
+        if(!ok && !firstBad) firstBad = el;
+      });
+      if(firstBad){
+        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+        firstBad.focus();
+        toast('Заполните дату, гостей, имя и контакт');
+        return false;
+      }
+      return true;
+    }
+
+    // Безопасное открытие
+    function safeOpen(href){
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
+    }
+
+    // Telegram
+    async function openTelegram(){
+      if(!validateForm()) return;
+      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+      const user = (CFG.telegram_user||'').replace(/^@/,'');
+      const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+
+      if (bot && /^https?:\/\//i.test(pre)){
+        try{
+          const r = await fetch(pre, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ text: buildText() })
+          });
+          const j = await r.json().catch(()=>({}));
+          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+          if (tme){ safeOpen(tme); return; }
+        }catch(e){ /* fallback */ }
+      }
+      if (user) safeOpen(`https://t.me/${user}`);
+      else if (bot) safeOpen(`https://t.me/${bot}`);
+      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
+    }
+
+    // WhatsApp
+    function openWhatsApp(){
+      if(!validateForm()) return;
+      const num = digits(CFG.whatsapp || '');
+      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+    }
+
+    // Привязка всех кнопок (форма, FAB, футер)
+    function bind(){
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
+      });
+      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
+      });
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+    }
+    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); }
+    else { bind(); }
+  })();
+  </script>
+
   <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <!-- FIX: путь к ассетам (добавлен / после ..) -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 </body>
 </html>
 
