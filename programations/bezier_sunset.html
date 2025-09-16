@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru" data-program-id="CRUISE-BEZIERS" data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)">
+<html lang="ru" data-lang="ru" data-program-id="CRUISE-BEZIERS"
+      data-program-title-ru="Бéзье — круиз по Каналу дю Миди (днём или на закате)"
+      data-program-title-fr="Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,7 +20,7 @@
   <style>
     :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
     *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg); padding-bottom:120px;}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
 
@@ -72,11 +74,6 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM */
-    label{display:block; font-weight:700; margin-bottom:6px}
-    input, textarea{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
-    textarea{min-height:110px; resize:vertical}
-
     /* BOOK */
     #book{ padding:32px 0 56px; }
     #book .card{ max-width:720px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
@@ -99,25 +96,28 @@
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    /* === FAB === */
+    /* FAB (как в PSL) */
     .chat-fab{
       position:fixed; right:16px; z-index:9999;
       border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center;
-      bottom: max(16px, env(safe-area-inset-bottom) + 16px);
+      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
     }
     .chat-fab svg{width:22px; height:22px; display:block}
-    .chat-fab.wa{bottom: max(76px, env(safe-area-inset-bottom) + 76px)}
-    .chat-fab.tg{bottom: max(26px, env(safe-area-inset-bottom) + 26px)}
+    .chat-fab.wa{bottom:76px}
+    .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* toast + ошибки */
+    /* Валидация + тосты */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
     .form-toast{
       position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
       background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
       font-size:14px; max-width:90vw; text-align:center;
     }
+
+    /* === I18N переключение: прячем неактивный язык === */
+    html[data-lang="ru"] [data-i18n="fr"]{ display:none !important; }
+    html[data-lang="fr"] [data-i18n="ru"]{ display:none !important; }
   </style>
 </head>
 
@@ -126,14 +126,19 @@
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
         <div class="logo" aria-hidden>Î</div>
-        <div><h1>Tours Languedoc by Irène <small>— Путешествия со вкусом</small></h1></div>
+        <div>
+          <h1>
+            <span data-i18n="ru">Tours Languedoc by Irène <small>— Путешествия со вкусом</small></span>
+            <span data-i18n="fr">Tours Languedoc by Irène <small>— Voyages avec goût</small></span>
+          </h1>
+        </div>
       </a>
 
       <nav class="lang">
         <ul>
-          <li><a href="../index.html#tours">← Все программы</a></li>
-          <li><a href="../index.html#why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
+          <li><a href="../index.html#tours"><span data-i18n="ru">← Все программы</span><span data-i18n="fr">← Tous les programmes</span></a></li>
+          <li><a href="../index.html#why"><span data-i18n="ru">Почему с нами</span><span data-i18n="fr">Pourquoi nous</span></a></li>
+          <li><a class="cta" href="#book" id="goBook"><span data-i18n="ru">Забронировать</span><span data-i18n="fr">Réserver</span></a></li>
         </ul>
 
         <div aria-label="Language switch">
@@ -145,7 +150,10 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero" data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
+  <section class="hero"
+           data-program-id="CRUISE-BEZIERS"
+           data-program-title-ru="Бéзье — круиз по Каналу дю Миди (днём или на закате)"
+           data-program-title-fr="Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)">
     <div class="bg">
       <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg"
            onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'"
@@ -154,59 +162,115 @@
     </div>
     <div class="container inner">
       <div>
-        <span class="badge">Canal du Midi • День/Закат</span>
-        <h2 class="title">Бéзье — круиз по Каналу дю Миди (днём или на закате)</h2>
-        <p class="subtitle">Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.</p>
-        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
+        <span class="badge">
+          <span data-i18n="ru">Canal du Midi • День/Закат</span>
+          <span data-i18n="fr">Canal du Midi • Jour/Coucher de soleil</span>
+        </span>
+
+        <h2 class="title">
+          <span data-i18n="ru">Бéзье — круиз по Каналу дю Миди (днём или на закате)</span>
+          <span data-i18n="fr">Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)</span>
+        </h2>
+
+        <p class="subtitle">
+          <span data-i18n="ru">Фонсераны — Grand Bief — тоннель Малпас. Ужин на борту — по запросу (опция). Приватно 2–6 гостей.</span>
+          <span data-i18n="fr">Fonseranes — Grand Bief — tunnel du Malpas. Dîner à bord — sur demande (option). Privé, 2–6 personnes.</span>
+        </p>
+
+        <div class="actions"><a class="btn primary" href="#book"><span data-i18n="ru">Забронировать</span><span data-i18n="fr">Réserver</span></a></div>
       </div>
     </div>
   </section>
 
   <!-- GALLERY -->
   <section class="container">
-    <h3 class="section-title">Как это выглядит</h3>
-    <p class="section-sub">Шлюзы Фонсераны, Grand Bief и закатные виды.</p>
+    <h3 class="section-title">
+      <span data-i18n="ru">Как это выглядит</span>
+      <span data-i18n="fr">À quoi ça ressemble</span>
+    </h3>
+    <p class="section-sub">
+      <span data-i18n="ru">Шлюзы Фонсераны, Grand Bief и закатные виды.</span>
+      <span data-i18n="fr">Les écluses de Fonseranes, le Grand Bief et les vues au coucher du soleil.</span>
+    </p>
     <div class="gallery" aria-label="Галерея">
       <div class="ph"><img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes" loading="lazy"></div>
       <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief" loading="lazy"></div>
-      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Закат на канале" loading="lazy"></div>
+      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Coucher de soleil" loading="lazy"></div>
     </div>
   </section>
 
   <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
-      <h3 class="section-title">Программа и тайминг</h3>
+      <h3 class="section-title">
+        <span data-i18n="ru">Программа и тайминг</span>
+        <span data-i18n="fr">Programme et timing</span>
+      </h3>
       <ul class="timeline">
-        <li><span class="time">По запросу</span> — Пикап из отеля и трансфер к Фонсеранам.</li>
-        <li><span class="time">День</span> — Проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.</li>
-        <li><span class="time">Закат</span> — «Золотой час» на Grand Bief, при возможности — тоннель Малпас.</li>
-        <li><span class="time">Опция</span> — Ужин на борту (set-menu) по запросу.</li>
-        <li><span class="time">Финиш</span> — Возврат к Фонсеранам и трансфер в отель.</li>
+        <li>
+          <span class="time"><span data-i18n="ru">По запросу</span><span data-i18n="fr">Sur demande</span></span>
+          <span data-i18n="ru"> — Пикап из отеля и трансфер к Фонсеранам.</span>
+          <span data-i18n="fr"> — prise en charge à l’hôtel et transfert aux écluses de Fonseranes.</span>
+        </li>
+        <li>
+          <span class="time"><span data-i18n="ru">День</span><span data-i18n="fr">Journée</span></span>
+          <span data-i18n="ru"> — Проход «лестницы» шлюзов, выход на Grand Bief, фотостопы.</span>
+          <span data-i18n="fr"> — Passage de l’escalier d’écluses, sortie sur le Grand Bief, arrêts photo.</span>
+        </li>
+        <li>
+          <span class="time"><span data-i18n="ru">Закат</span><span data-i18n="fr">Coucher de soleil</span></span>
+          <span data-i18n="ru"> — «Золотой час» на Grand Bief, при возможности — тоннель Малпас.</span>
+          <span data-i18n="fr"> — Golden hour sur le Grand Bief, si possible — tunnel du Malpas.</span>
+        </li>
+        <li>
+          <span class="time"><span data-i18n="ru">Опция</span><span data-i18n="fr">Option</span></span>
+          <span data-i18n="ru"> — Ужин на борту (set-menu) по запросу.</span>
+          <span data-i18n="fr"> — Dîner à bord (menu fixe) sur demande.</span>
+        </li>
+        <li>
+          <span class="time"><span data-i18n="ru">Финиш</span><span data-i18n="fr">Fin</span></span>
+          <span data-i18n="ru"> — Возврат к Фонсеранам и трансфер в отель.</span>
+          <span data-i18n="fr"> — Retour à Fonseranes et transfert à l’hôtel.</span>
+        </li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px">Что включено</h3>
+      <h3 class="section-title" style="margin-top:24px">
+        <span data-i18n="ru">Что включено</span>
+        <span data-i18n="fr">Inclus</span>
+      </h3>
       <div class="inc-grid">
-        <div class="pill">Приватный трансфер от/до отеля</div>
-        <div class="pill">Бронированные места на борту</div>
-        <div class="pill">Сопровождение RU/FR</div>
-        <div class="pill">Фото-точки и истории канала</div>
+        <div class="pill"><span data-i18n="ru">Приватный трансфер от/до отеля</span><span data-i18n="fr">Transfert privé hôtel A/R</span></div>
+        <div class="pill"><span data-i18n="ru">Бронированные места на борту</span><span data-i18n="fr">Places réservées à bord</span></div>
+        <div class="pill"><span data-i18n="ru">Сопровождение RU/FR</span><span data-i18n="fr">Accompagnement RU/FR</span></div>
+        <div class="pill"><span data-i18n="ru">Фото-точки и истории канала</span><span data-i18n="fr">Spots photo et histoires du canal</span></div>
       </div>
 
-      <h3 class="section-title" style="margin-top:24px">Не включено</h3>
+      <h3 class="section-title" style="margin-top:24px">
+        <span data-i18n="ru">Не включено</span>
+        <span data-i18n="fr">Non inclus</span>
+      </h3>
       <ul class="list">
-        <li>Алкоголь и блюда вне выбранного меню; чаевые.</li>
+        <li>
+          <span data-i18n="ru">Алкоголь и блюда вне выбранного меню; чаевые.</span>
+          <span data-i18n="fr">Alcool et plats hors menu sélectionné ; pourboires.</span>
+        </li>
       </ul>
     </article>
 
     <aside class="card">
-      <h3 class="section-title">Где это</h3>
-      <p class="section-sub">Старт у <strong>Écluses de Fonseranes</strong>, Béziers. Маршрут: Grand Bief → (опц.) тоннель Malpas.</p>
+      <h3 class="section-title">
+        <span data-i18n="ru">Где это</span>
+        <span data-i18n="fr">Où ça se passe</span>
+      </h3>
+      <p class="section-sub">
+        <span data-i18n="ru">Старт у <strong>Écluses de Fonseranes</strong>, Béziers. Маршрут: Grand Bief → (опц.) тоннель Malpas.</span>
+        <span data-i18n="fr">Départ aux <strong>Écluses de Fonseranes</strong>, Béziers. Itinéraire : Grand Bief → (option) tunnel du Malpas.</span>
+      </p>
       <div class="ph" style="margin-bottom:10px">
-        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — закат" loading="lazy" style="width:100%; border-radius:18px">
+        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — coucher de soleil" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
-      <!-- Админ-ссылки (включаются ?admin=capion2025) -->
+      <!-- Admin-ссылки -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
@@ -217,38 +281,49 @@
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" data-program data-program-title="Бéзье — круиз по Каналу дю Миди (день/закат)" data-program-id="CRUISE-BEZIERS">
-      <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим визиты.</p>
+    <!-- Только форма + WA/TG (без цены/калькулятора) -->
+    <div class="card"
+         data-program
+         data-program-id="CRUISE-BEZIERS"
+         data-program-title-ru="Бéзье — круиз по Каналу дю Миди (день/закат)"
+         data-program-title-fr="Béziers — croisière sur le Canal du Midi (jour/coucher de soleil)">
+      <h3 class="section-title">
+        <span data-i18n="ru">Быстрый запрос / бронирование</span>
+        <span data-i18n="fr">Demande rapide / réservation</span>
+      </h3>
+      <p class="section-sub">
+        <span data-i18n="ru">Ответим в течение дня и подтвердим визиты.</span>
+        <span data-i18n="fr">Réponse dans la journée et confirmation des visites.</span>
+      </p>
 
       <form class="fields" data-contact-form>
         <div>
-          <label for="when">Дата</label>
+          <label for="when"><span data-i18n="ru">Дата</span><span data-i18n="fr">Date</span></label>
           <input id="when" name="date" type="date" required>
         </div>
         <div>
-          <label for="guests">Гостей</label>
+          <label for="guests"><span data-i18n="ru">Гостей</span><span data-i18n="fr">Participants</span></label>
           <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
         </div>
 
         <div class="full">
-          <label for="name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
+          <label for="name"><span data-i18n="ru">Имя</span><span data-i18n="fr">Nom</span></label>
+          <input id="name" name="name" type="text" placeholder="Имя и фамилия / Nom et prénom" required>
         </div>
 
         <div class="full">
-          <label for="contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
+          <label for="contact"><span data-i18n="ru">Контакт (WhatsApp/Telegram)</span><span data-i18n="fr">Contact (WhatsApp/Telegram)</span></label>
+          <input id="contact" name="contact" type="text" placeholder="+33… или @username / ou @username" required>
         </div>
 
         <div class="full">
-          <label for="msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="День или закат? Нужен ли ужин/аперитив? Пикап-адрес…"></textarea>
+          <label for="msg"><span data-i18n="ru">Комментарий</span><span data-i18n="fr">Commentaire</span></label>
+          <textarea id="msg" name="message" placeholder="RU: День или закат? Ужин/аперитив? Пикап-адрес… | FR: Journée ou coucher de soleil ? Dîner/apéritif ? Adresse de prise en charge…"></textarea>
         </div>
 
         <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
+          <a class="btn" data-whatsapp href="#"><span data-i18n="ru">Отправить в WhatsApp</span><span data-i18n="fr">Envoyer sur WhatsApp</span></a>
+          <a class="btn primary" data-telegram href="#"><span data-i18n="ru">Отправить в Telegram</span><span data-i18n="fr">Envoyer sur Telegram</span></a>
         </div>
       </form>
     </div>
@@ -257,29 +332,37 @@
   <footer>
     <div class="container">
       <div class="footgrid">
-        <div><strong>Tours Languedoc by Irène</strong><p>Путешествия со вкусом</p></div>
-        <div><p><a href="../index.html#why">Почему с нами</a></p><p><a href="../index.html#tours">Программы</a></p></div>
-        <div><p><a href="../index.html#format">Формат</a></p><p><a class="js-telegram" href="#">Написать</a></p></div>
+        <div><strong>Tours Languedoc by Irène</strong>
+          <p><span data-i18n="ru">Путешествия со вкусом</span><span data-i18n="fr">Voyages avec goût</span></p>
+        </div>
+        <div>
+          <p><a href="../index.html#why"><span data-i18n="ru">Почему с нами</span><span data-i18n="fr">Pourquoi nous</span></a></p>
+          <p><a href="../index.html#tours"><span data-i18n="ru">Программы</span><span data-i18n="fr">Programmes</span></a></p>
+        </div>
+        <div>
+          <p><a href="../index.html#format"><span data-i18n="ru">Формат</span><span data-i18n="fr">Format</span></a></p>
+          <p><a class="js-telegram" href="#"><span data-i18n="ru">Написать</span><span data-i18n="fr">Écrire</span></a></p>
+        </div>
       </div>
       <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
   </footer>
 
-  <!-- === FAB (как в PSL) === -->
-  <button class="chat-fab wa" aria-label="Написать в WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+  <!-- FAB -->
+  <button class="chat-fab wa" aria-label="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
       <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
     </svg>
   </button>
 
-  <button class="chat-fab tg" aria-label="Написать в Telegram" data-chat-open="telegram" data-telegram>
+  <button class="chat-fab tg" aria-label="Telegram" data-chat-open="telegram" data-telegram>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
     </svg>
   </button>
 
-  <!-- ==== CONFIG ==== -->
+  <!-- CONFIG -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
@@ -290,9 +373,9 @@
     };
   </script>
 
-  <!-- Подключение скриптов -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <!-- Скрипты -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 
   <!-- Admin gate -->
   <script>
@@ -317,7 +400,7 @@
     })();
   </script>
 
-  <!-- ЕДИНЫЙ WA/TG биндинг + min для даты -->
+  <!-- Единый WA/TG + I18N -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
@@ -326,17 +409,6 @@
     const digits = s => String(s||'').replace(/\D/g,'');
     const enc = s => encodeURIComponent(String(s||''));
 
-    // min=сегодня для input[type=date]
-    (function setMinToday(){
-      const el = document.getElementById('when');
-      if(!el) return;
-      const d = new Date();
-      const y = d.getFullYear();
-      const m = String(d.getMonth()+1).padStart(2,'0');
-      const day = String(d.getDate()).padStart(2,'0');
-      el.min = `${y}-${m}-${day}`;
-    })();
-
     function toast(msg, ms=2400){
       const t = document.createElement('div');
       t.className = 'form-toast'; t.textContent = msg;
@@ -344,11 +416,36 @@
       setTimeout(()=>t.remove(), ms);
     }
 
+    // === I18N: переключение языка (RU/FR) ===
+    const root = document.documentElement;
+    function setLang(lang){
+      root.setAttribute('data-lang', lang);
+      document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+      document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+      // Обновим <title> под язык (опционально описание можно тоже обновлять)
+      const tRU = root.getAttribute('data-program-title-ru') || document.title;
+      const tFR = root.getAttribute('data-program-title-fr') || document.title;
+      document.title = (lang==='fr') ? `${tFR} | Tours Languedoc by Irène` : `${tRU} | Tours Languedoc by Irène`;
+    }
+    document.getElementById('btn-ru')?.addEventListener('click', ()=> setLang('ru'));
+    document.getElementById('btn-fr')?.addEventListener('click', ()=> setLang('fr'));
+    // Восстановим из localStorage, если есть
+    const saved = localStorage.getItem('site:lang');
+    setLang(saved || 'ru');
+    // Сохраняем выбор
+    const obs = new MutationObserver(()=>{
+      localStorage.setItem('site:lang', root.getAttribute('data-lang')||'ru');
+    });
+    obs.observe(root, { attributes:true, attributeFilter:['data-lang'] });
+
+    // === Build booking text: берём заголовок активного языка ===
     function buildText(){
       const f = document.querySelector('[data-contact-form]');
       const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+      const lang = root.getAttribute('data-lang') || 'ru';
+      const titleEl = document.querySelector(`[data-program-title-${lang}]`) || document.querySelector('[data-program]') || root;
+      const title = titleEl?.getAttribute(`data-program-title-${lang}`) || document.title || '';
+      const pid   = (titleEl?.getAttribute('data-program-id')) || root.getAttribute('data-program-id') || '';
       return [
         'Заявка с сайта Tours Languedoc by Irène',
         pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
@@ -361,10 +458,11 @@
       ].join('\n');
     }
 
+    // Валидация
     const REQUIRED = ['date','guests','name','contact'];
     function validateForm({scroll=true}={}){
       const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
+      if(!f){ toast('Форма не найдена / Form introuvable'); return false; }
       let firstBad = null;
       REQUIRED.forEach(n=>{
         const el = f.querySelector(`[name="${n}"]`);
@@ -376,18 +474,22 @@
       if(firstBad){
         if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
         firstBad.focus();
-        toast('Заполните дату, гостей, имя и контакт');
+        toast(root.getAttribute('data-lang')==='fr'
+              ? 'Remplissez la date, les participants, le nom et le contact'
+              : 'Заполните дату, гостей, имя и контакт');
         return false;
       }
       return true;
     }
 
+    // Безопасное открытие
     function safeOpen(href){
       const a = document.createElement('a');
       a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
       document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
     }
 
+    // Telegram
     async function openTelegram(){
       if(!validateForm()) return;
       const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
@@ -396,11 +498,7 @@
 
       if (bot && /^https?:\/\//i.test(pre)){
         try{
-          const r = await fetch(pre, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ text: buildText() })
-          });
+          const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
           const j = await r.json().catch(()=>({}));
           const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
           if (tme){ safeOpen(tme); return; }
@@ -411,6 +509,7 @@
       else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
     }
 
+    // WhatsApp
     function openWhatsApp(){
       if(!validateForm()) return;
       const num = digits(CFG.whatsapp || '');
@@ -418,6 +517,7 @@
       safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
     }
 
+    // Биндинг всех кнопок
     function bind(){
       document.querySelectorAll('[data-whatsapp]').forEach(el=>{
         el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
@@ -427,12 +527,8 @@
       });
       document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
     }
-
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', bind, {once:true});
-    } else {
-      bind();
-    }
+    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); }
+    else { bind(); }
   })();
   </script>
 </body>
