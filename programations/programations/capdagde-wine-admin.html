@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru" data-program-id="CAPDAGDE-WINE-ADMIN" data-program-title="Cap d’Agde — винные домены (админ)">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cap d’Agde — винные домены (админ) | Tours Languedoc by Irène</title>
+  <meta name="description" content="Внутренняя админ-страница: винные домены вокруг Cap d’Agde с быстрыми ссылками и картами." />
+  <meta name="theme-color" content="#0D2B1E" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:var(--bg)}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:auto; padding:0 20px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+    .brand small{display:block; font-size:12px; color:var(--muted); margin-top:2px}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{font-weight:600; padding:10px 12px; border-radius:12px}
+    nav a:hover{background:#f0f0f0}
+    .lang{display:flex; align-items:center; gap:10px}
+    .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
+    .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:10px 16px; box-shadow:var(--shadow)}
+
+    h2.title{font-family:"Cormorant Garamond",serif; font-size:36px; margin:22px 0 0}
+    .section-title{font-family:"Cormorant Garamond",serif; font-size:28px; margin:28px 0 10px}
+    .section-sub{color:var(--muted); margin:0 0 18px}
+    section{padding:28px 0}
+
+    .grid{display:grid; grid-template-columns:1fr; gap:14px}
+    .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:16px; box-shadow:var(--shadow)}
+    .row{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+    .name{font-weight:800}
+    .tag{display:inline-block; padding:6px 10px; border:1px solid #e6e6e6; border-radius:999px; font-size:12px; background:#fff}
+    .btn{display:inline-flex; align-items:center; gap:6px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn:hover{filter:brightness(.98)}
+    .pill{border:1px solid #e6e6e6; border-radius:12px; padding:8px 10px; background:#fff}
+    .muted{color:var(--muted)}
+    .warn{background:#fff5f2; border-color:#ffd5c6}
+
+    .lock{display:none}
+    html[data-admin="0"] .lock{display:block}
+    html[data-admin="0"] .admin-content{display:none}
+
+    @media (max-width: 700px){
+      .row > .btn{flex:1 1 auto}
+    }
+
+    /* RU/FR toggle */
+    [data-lang="fr"]{ display:none; }
+    html[data-lang="fr"] [data-lang="ru"]{ display:none; }
+    html[data-lang="fr"] [data-lang="fr"]{ display:revert; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="На главную">
+        <div class="logo" aria-hidden>Î</div>
+        <div>
+          <h1>
+            Tours Languedoc by Irène
+            <small><span data-lang="ru">— Путешествия со вкусом</span><span data-lang="fr">— Des voyages avec goût</span></small>
+          </h1>
+        </div>
+      </a>
+      <nav class="lang">
+        <ul>
+          <li><a href="../index.html#tours"><span data-lang="ru">← Все программы</span><span data-lang="fr">← Tous les programmes</span></a></li>
+        </ul>
+        <div aria-label="Language switch">
+          <button id="btn-ru" class="active">RU</button>
+          <button id="btn-fr">FR</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Баннер блокировки -->
+  <section class="lock">
+    <div class="container">
+      <div class="card warn">
+        <h2 class="title"><span data-lang="ru">Доступ закрыт</span><span data-lang="fr">Accès restreint</span></h2>
+        <p class="section-sub">
+          <span data-lang="ru">Это внутренняя страница. Откройте с параметром <code>?admin=capion2025</code> или вернитесь на главную.</span>
+          <span data-lang="fr">Page interne. Ouvrez-la avec le paramètre <code>?admin=capion2025</code> ou revenez à l’accueil.</span>
+        </p>
+        <div class="row">
+          <a class="btn" href="../index.html"><span data-lang="ru">На главную</span><span data-lang="fr">Accueil</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Основное содержимое для админа -->
+  <section class="admin-content">
+    <div class="container">
+      <h2 class="title">
+        <span data-lang="ru">Cap d’Agde — винные домены (админ)</span>
+        <span data-lang="fr">Cap d’Agde — domaines viticoles (admin)</span>
+      </h2>
+      <p class="section-sub">
+        <span data-lang="ru">Быстрые ссылки: официальный сайт/агрегатор + Google Maps. Подбирай 2–3 домена под запрос клиента (сезон, стиль, логистика).</span>
+        <span data-lang="fr">Liens rapides : site/agrégateur + Google Maps. Sélectionne 2–3 domaines selon le brief (saison, style, logistique).</span>
+      </p>
+
+      <div class="grid">
+
+        <!-- 1. Mas du Novi -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Mas du Novi — Montagnac</div>
+            <span class="tag">Thau / proche</span>
+          </div>
+          <p class="muted" data-lang="ru">Близко к Étang de Thau; стильные дегустации и прогулки по виноградникам.</p>
+          <p class="muted" data-lang="fr">Proche de l’étang de Thau ; belles dégustations et balade dans les vignes.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=Mas+du+Novi+site%20ruedesvignerons.com">Ruedesvignerons</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas%20du%20Novi%20Montagnac&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 2. Domaine de la Baume -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine de la Baume — Servian / Pézenas</div>
+            <span class="tag">Must-visit</span>
+          </div>
+          <p class="muted" data-lang="ru">Семейный домен, часто в списках «must visit» в округе.</p>
+          <p class="muted" data-lang="fr">Domaine familial, souvent cité parmi les incontournables du secteur.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=Domaine+de+la+Baume+site%3Aruedesvignerons.com">Ruedesvignerons</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20la%20Baume%20Servian&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 3. Domaine de Saint-Pierre -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine de Saint-Pierre — Vias-Plage</div>
+            <span class="tag">Mer / plage</span>
+          </div>
+          <p class="muted" data-lang="ru">Рядом с побережьем; удобно совместить с пляжным днём.</p>
+          <p class="muted" data-lang="fr">Au bord de mer ; facile à combiner avec une journée plage.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.capdagde.com/">Capdagde.com</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20Saint-Pierre%20Vias%20Plage&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 4. La Madeleine Saint-Jean -->
+        <div class="card">
+          <div class="row">
+            <div class="name">La Madeleine Saint-Jean — Marseillan</div>
+            <span class="tag">Thau</span>
+          </div>
+          <p class="muted" data-lang="ru">На берегу Thau; отличная связка с устрицами Bouzigues.</p>
+          <p class="muted" data-lang="fr">Sur l’étang de Thau ; parfait à combiner avec des huîtres à Bouzigues.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://lamadeleinesaintjean.com/">Site officiel</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=La%20Madeleine%20Saint-Jean%20Marseillan&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 5. Abbaye de Valmagne -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Abbaye de Valmagne — Villeveyrac</div>
+            <span class="tag">Patrimoine</span>
+          </div>
+          <p class="muted" data-lang="ru">Историческое аббатство-винодельня с экскурсиями.</p>
+          <p class="muted" data-lang="fr">Abbaye viticole historique avec visites guidées.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=Abbaye+de+Valmagne+site%3Aruedesvignerons.com">Ruedesvignerons</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Abbaye%20de%20Valmagne%20Villeveyrac&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 6. Domaine La Croix Belle -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine La Croix Belle — Florensac / IGP Côtes de Thongue</div>
+            <span class="tag">Visite courte</span>
+          </div>
+          <p class="muted" data-lang="ru">Доступно для короткой дегустации и визита.</p>
+          <p class="muted" data-lang="fr">Pratique pour une dégustation et visite courte.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=Domaine+La+Croix+Belle+site%3Aruedesvignerons.com">Ruedesvignerons</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20La%20Croix%20Belle%20Florensac&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 7. Domaine Montrose -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine Montrose — Tourbes</div>
+            <span class="tag">Classique proche</span>
+          </div>
+          <p class="muted" data-lang="ru">Часто рекомендуют как «ближайшую классику» к Агду.</p>
+          <p class="muted" data-lang="fr">Recommandé comme « classique proche » d’Agde.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.capdagde.com/">Capdagde.com</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20Montrose%20Tourbes&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 8. Les Vignerons de Florensac (coop) -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Les Vignerons de Florensac — coopérative</div>
+            <span class="tag">Panorama styles</span>
+          </div>
+          <p class="muted" data-lang="ru">Несколько стилей в одном месте; удобно для обзорной дегустации.</p>
+          <p class="muted" data-lang="fr">Plusieurs styles au même endroit ; pratique pour une dégustation « panorama ».</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.capdagde.com/">Capdagde.com</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Vignerons%20de%20Florensac&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 9. Domaine du Bosc -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine du Bosc — Hérault</div>
+            <span class="tag">Sélections régionales</span>
+          </div>
+          <p class="muted" data-lang="ru">Часто в региональных подборках винного туризма.</p>
+          <p class="muted" data-lang="fr">Souvent cité dans les sélections œnotouristiques régionales.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://winetourism.com/">Winetourism</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20du%20Bosc%20H%C3%A9rault&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+        <!-- 10. Domaine Les Aurelles -->
+        <div class="card">
+          <div class="row">
+            <div class="name">Domaine Les Aurelles — près de Pézenas</div>
+            <span class="tag">Terroir</span>
+          </div>
+          <p class="muted" data-lang="ru">Чуть дальше, но сильный терруар и пейзажи.</p>
+          <p class="muted" data-lang="fr">Un peu plus loin, mais terroir et paysages remarquables.</p>
+          <div class="row">
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q=Domaine+Les+Aurelles+P%C3%A9zenas">Recherche</a>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20Les%20Aurelles%20P%C3%A9zenas&output=classic">Google Maps</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top:24px">
+    <div class="container" style="padding:18px 0; color:#789085">
+      <div><strong>Tours Languedoc by Irène</strong> — <span data-lang="ru">админ-справка</span><span data-lang="fr">mémo admin</span></div>
+    </div>
+  </footer>
+
+  <script>
+    // === CONFIG ===
+    window.APP_CONFIG = { ADMIN_SECRET: 'capion2025' };
+
+    // === RU/FR toggle ===
+    (function(){
+      const html = document.documentElement;
+      const ru = document.getElementById('btn-ru');
+      const fr = document.getElementById('btn-fr');
+      function setLang(l){ html.setAttribute('data-lang', l); ru.classList.toggle('active', l==='ru'); fr.classList.toggle('active', l==='fr'); }
+      ru?.addEventListener('click', ()=>setLang('ru'));
+      fr?.addEventListener('click', ()=>setLang('fr'));
+      setLang('ru');
+    })();
+
+    // === Admin gate (совместимо с твоими страницами) ===
+    (function(){
+      try{
+        const p = new URLSearchParams(location.search);
+        const t = p.get('admin');
+        if (t !== null){
+          if (t === 'off') localStorage.removeItem('site:admin');
+          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
+          p.delete('admin');
+          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
+        }
+        const isAdmin = localStorage.getItem('site:admin')==='1';
+        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+      }catch(e){ console.warn(e); }
+    })();
+  </script>
+</body>
+</html>
