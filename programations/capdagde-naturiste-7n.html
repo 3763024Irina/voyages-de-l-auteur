@@ -370,15 +370,49 @@
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
     // --- RU/FR toggle ---
-    (function(){
-      const html = document.documentElement;
-      const ru = document.getElementById('btn-ru');
-      const fr = document.getElementById('btn-fr');
-      function setLang(l){ html.setAttribute('data-lang', l); ru.classList.toggle('active', l==='ru'); fr.classList.toggle('active', l==='fr'); }
-      ru?.addEventListener('click', ()=>setLang('ru'));
-      fr?.addEventListener('click', ()=>setLang('fr'));
-      setLang('ru');
-    })();
+   // --- RU/FR toggle (with memory + URL + html[lang]) ---
+  (function(){
+    const html = document.documentElement;
+    const btnRu = document.getElementById('btn-ru');
+    const btnFr = document.getElementById('btn-fr');
+
+    const url = new URL(location.href);
+    const urlLang = (url.searchParams.get('lang') || location.hash.replace('#','') || '').toLowerCase();
+    const memLang = localStorage.getItem('site:lang');
+    const navLang = (navigator.language || 'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+    let current = (urlLang === 'ru' || urlLang === 'fr') ? urlLang : (memLang || navLang || 'ru');
+
+    function applyLang(l){
+      current = (l === 'fr') ? 'fr' : 'ru';
+      html.setAttribute('data-lang', current);
+      html.setAttribute('lang', current);
+      btnRu?.classList.toggle('active', current === 'ru');
+      btnFr?.classList.toggle('active', current === 'fr');
+      localStorage.setItem('site:lang', current);
+
+      const u = new URL(location.href);
+      u.searchParams.set('lang', current);
+      history.replaceState({}, '', u.toString());
+    }
+
+    btnRu?.addEventListener('click', ()=>applyLang('ru'));
+    btnFr?.addEventListener('click', ()=>applyLang('fr'));
+
+    applyLang(current);
+
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a');
+      if(!a) return;
+      const href = a.getAttribute('href') || '';
+      const isInternal = href && !/^https?:\/\//i.test(href) && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
+      if(isInternal){
+        const u = new URL(href, location.origin);
+        u.searchParams.set('lang', current);
+        a.setAttribute('href', u.pathname + (u.search||'') + (u.hash||''));
+      }
+    });
+  })();
+
 
     // --- config/helpers ---
     const CFG = window.APP_CONFIG || {};
