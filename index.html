@@ -427,53 +427,56 @@
     </div>
   </dialog>
 
-  <!-- ===== i18n, карточки, утилиты ===== -->
-  <script>
-    // ===== i18n RU/FR =====
-    const dict = {
-      ru: {
-        'top.note': 'Авторские туры по Югу Франции',
-        'nav.why': 'Почему с нами', 'nav.tours': 'Программы', 'nav.format': 'Формат', 'nav.contacts': 'Контакты', 'nav.book': 'Забронировать',
-        'hero.title': 'Юг Франции без шаблонов: устрицы, вино, горы, замки и море',
-        'hero.text': '10 программ по Лангедоку и Руссильону: авторские туры с дегустациями на лагуне Тау, прогулками к Пику Сен-Лу, средневековым Каркасоном, а также визитами в Кап д’Агд, Сет и Безье. Индивидуальные VIP-маршруты под ваши интересы — гастрономия, вино, природа и культура.',
-        'form.fast': 'Быстрый запрос', 'form.sub': 'Отправьте пожелания — подберу маршрут и даты в течение дня.',
-        'form.name': 'Имя', 'form.contact': 'Контакт (WhatsApp/Telegram)', 'form.msg': 'Сообщение', 'form.send': 'Отправить', 'form.whatsapp':'Написать в WhatsApp',
-        'form.date':'Дата','form.guests':'Гостей',
-        'form.name.ph':'Ваше имя','form.contact.ph':'+…','form.msg.ph':'Какие даты и интересы?',
-        'why.title': 'Почему с нами', 'why.sub': 'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
-        'why.1.title': 'Гастрономия у истоков', 'why.1.text': 'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
-        'why.3.title': 'История и стиль', 'why.3.text': 'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
-        'tours.title': '10 программ на выбор', 'tours.sub': 'Недельные, однодневные, полудневные и уик-энд туры. Индивидуально 1–6 гостей или мини-группа.',
-        'format.title': 'Формат путешествий',
-        'format.1.title':'Приватно и удобно', 'format.1.text':'Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.',
-        'format.2.title':'Без посредников', 'format.2.text':'Работаем напрямую с доменами и фермерами — честный продукт и цены.',
-        'format.3.title':'Море и актив', 'format.3.text':'SUP, каяк, снорклинг — по погоде и желанию группы.',
-        'about.title':'О нас', 'about.text':'Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.',
-        'contact.title':'Контакты и бронь', 'contact.area':'Регион',
-        'contact.sendto':'Куда отправить:'
-      },
-      fr: {
-        'top.note': 'Voyages sur mesure dans le Sud de la France',
-        'nav.why': 'Pourquoi nous', 'nav.tours': 'Programmes', 'nav.format': 'Format', 'nav.contacts': 'Contacts', 'nav.book': 'Réserver',
-        'hero.title': 'Le Sud de la France sans clichés : huîtres, vin, montagnes, châteaux et mer',
-        'hero.text': '10 programmes en Languedoc et Roussillon : circuits d’auteur avec dégustations sur la lagune de Thau, balades vers le Pic Saint-Loup, découverte de Carcassonne médiévale, ainsi que visites de Cap d’Agde, Sète et Béziers. Programmes VIP sur mesure selon vos envies — gastronomie, vin, nature et patrimoine.',
-        'form.fast': 'Demande rapide', 'form.sub': 'Envoyez vos souhaits — je propose un itinéraire et des dates dans la journée.',
-        'form.name': 'Nom', 'form.contact': 'Contact (WhatsApp/Telegram)', 'form.msg': 'Message', 'form.send': 'Envoyer', 'form.whatsapp':'Écrire sur WhatsApp',
-        'form.date':'Date','form.guests':'Personnes',
-        'form.name.ph':'Votre nom','form.contact.ph':'+33…','form.msg.ph':'Dates et centres d’intérêt ?',
-        'why.title': 'Pourquoi nous', 'why.sub': 'Expertise locale, transport privé, focus gastronomie et nature.',
-        'why.1.title': 'Gastronomie à la source', 'why.1.text': 'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
-        'why.3.title': 'Histoire & style', 'why.3.text': 'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
-        'tours.title': '10 programmes au choix', 'tours.sub': 'Demi-journée, journée, week-end. 1–6 personnes ou mini-groupe.',
-        'format.title': 'Format des voyages',
-        'format.1.title':'Privé & confortable', 'format.1.text':'Transport privé, rythme flexible, meilleurs points de vue.',
-        'format.2.title':'Sans intermédiaires', 'format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
-        'format.3.title':'Mer & activités', 'format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
-        'about.title':'À propos', 'about.text':'Je suis Irène, basée en Languedoc, j’organise des voyages intimistes et raffinés. FR/RU.',
-        'contact.title':'Contacts & réservation', 'contact.area':'Région',
-        'contact.sendto':'Envoyer vers :'
-      }
-    };
+ const dict = {
+  ru: {
+    'top.note': 'Авторские туры по Югу Франции',
+    'nav.why': 'Почему с нами', 'nav.tours': 'Программы', 'nav.format': 'Формат', 'nav.contacts': 'Контакты', 'nav.book': 'Забронировать',
+
+    // === обновлено ===
+    'hero.title': 'Юг Франции без шаблонов: вино, море, замки, wellness',
+    'hero.text': 'Авторские туры Лангедока: 10 готовых маршрутов + эксклюзивные VIP-программы. Дегустации вин и устриц на лагуне Тау, походы к Пику Сен-Лу, средневековый Каркасон, кайтинг и катамаран на Средиземном море и утончённый wellness-отдых в лучших термальных спа региона.',
+
+    'form.fast': 'Быстрый запрос', 'form.sub': 'Отправьте пожелания — подберу маршрут и даты в течение дня.',
+    'form.name': 'Имя', 'form.contact': 'Контакт (WhatsApp/Telegram)', 'form.msg': 'Сообщение', 'form.send': 'Отправить', 'form.whatsapp':'Написать в WhatsApp',
+    'form.date':'Дата','form.guests':'Гостей',
+    'form.name.ph':'Ваше имя','form.contact.ph':'+…','form.msg.ph':'Какие даты и интересы?',
+    'why.title': 'Почему с нами', 'why.sub': 'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
+    'why.1.title': 'Гастрономия у истоков', 'why.1.text': 'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
+    'why.3.title': 'История и стиль', 'why.3.text': 'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
+    'tours.title': '10 программ на выбор', 'tours.sub': 'Недельные, однодневные, полудневные и уик-энд туры. Индивидуально 1–6 гостей или мини-группа.',
+    'format.title': 'Формат путешествий',
+    'format.1.title':'Приватно и удобно', 'format.1.text':'Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.',
+    'format.2.title':'Без посредников', 'format.2.text':'Работаем напрямую с доменами и фермерами — честный продукт и цены.',
+    'format.3.title':'Море и актив', 'format.3.text':'SUP, каяк, снорклинг — по погоде и желанию группы.',
+    'about.title':'О нас', 'about.text':'Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.',
+    'contact.title':'Контакты и бронь', 'contact.area':'Регион',
+    'contact.sendto':'Куда отправить:'
+  },
+  fr: {
+    'top.note': 'Voyages sur mesure dans le Sud de la France',
+    'nav.why': 'Pourquoi nous', 'nav.tours': 'Programmes', 'nav.format': 'Format', 'nav.contacts': 'Contacts', 'nav.book': 'Réserver',
+
+    // === обновлено ===
+    'hero.title': 'Sud de la France sans clichés : vin, mer, châteaux, bien-être',
+    'hero.text': 'Circuits d’auteur en Languedoc : 10 itinéraires prêts + programmes VIP exclusifs. Dégustations de vins et d’huîtres au bord de l’étang de Thau, randonnées vers le Pic Saint-Loup, découverte de Carcassonne, kitesurf et catamaran en Méditerranée et détente bien-être dans les meilleurs thermes et spas de la région.',
+
+    'form.fast': 'Demande rapide', 'form.sub': 'Envoyez vos souhaits — je propose un itinéraire et des dates dans la journée.',
+    'form.name': 'Nom', 'form.contact': 'Contact (WhatsApp/Telegram)', 'form.msg': 'Message', 'form.send': 'Envoyer', 'form.whatsapp':'Écrire sur WhatsApp',
+    'form.date':'Date','form.guests':'Personnes',
+    'form.name.ph':'Votre nom','form.contact.ph':'+33…','form.msg.ph':'Dates et centres d’intérêt ?',
+    'why.title': 'Pourquoi nous', 'why.sub': 'Expertise locale, transport privé, focus gastronomie et nature.',
+    'why.1.title': 'Gastronomie à la source', 'why.1.text': 'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
+    'why.3.title': 'Histoire & style', 'why.3.text': 'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
+    'tours.title': '10 programmes au choix', 'tours.sub': 'Demi-journée, journée, week-end. 1–6 personnes ou mini-groupe.',
+    'format.title': 'Format des voyages',
+    'format.1.title':'Privé & confortable', 'format.1.text':'Transport privé, rythme flexible, meilleurs points de vue.',
+    'format.2.title':'Sans intermédiaires', 'format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
+    'format.3.title':'Mer & activités', 'format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
+    'about.title':'À propos', 'about.text':'Je suis Irène, basée en Languedoc, j’organise des voyages intimistes et raffinés. FR/RU.',
+    'contact.title':'Contacts & réservation', 'contact.area':'Région',
+    'contact.sendto':'Envoyer vers :'
+  }
+};
 
     function getLang(){ return localStorage.getItem('site:lang') || 'ru'; }
     const langLinks = document.querySelectorAll('.lang a');
