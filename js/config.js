@@ -141,3 +141,24 @@ window.APP_CONFIG = Object.assign({
     lang: 'auto'                    // 'ru' | 'fr' | 'auto'
   };
 </script>
+  // экспорт
+  window.__setAdmin = setAdmin;
+  window.__isAdmin  = isAdmin;
+})();
+
+/* ===== Переводы (i18n) ===== */
+window.i18n = {
+  ru: {
+    hero: {
+      title: "Юг Франции без шаблонов: вино, море, замки, wellness",
+      text: "Авторские туры Лангедока: 10 готовых маршрутов + эксклюзивные VIP-программы. Дегустации вин и устриц на лагуне Тау, походы к Пику Сен-Лу, средневековый Каркасон, кайтинг и катамаран на Средиземном море и утончённый wellness-отдых в лучших термальных спа региона."
+    }
+  },
+  fr: {
+    hero: {
+      title: "Sud de la France sans clichés : vin, mer, châteaux, bien-être",
+      text: "Circuits d’auteur en Languedoc : 10 itinéraires prêts + programmes VIP exclusifs. Dégustations de vins et d’huîtres au bord de l’étang de Thau, randonnées vers le Pic Saint-Loup, découverte de la cité médiévale de Carcassonne, kitesurf et catamaran en Méditerranée et détente bien-être dans les meilleurs thermes et spas de la région."
+    }
+  }
+};
+
