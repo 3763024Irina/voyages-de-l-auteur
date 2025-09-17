@@ -202,6 +202,43 @@
     }
 
     @media (max-width:560px){ .topbar .note{display:none} }
+    /* === Features (иконки + текст) === */
+.features{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin:12px 0 22px;
+}
+@media (min-width:640px){
+  .features{ grid-template-columns: repeat(3,1fr); gap:16px; }
+}
+.feature-card{
+  background:var(--paper);
+  border:1px solid #eee;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  min-height:168px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.feature-card:hover{ transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.12); }
+.feature-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.feature-icon{
+  width:34px; height:34px; flex:0 0 34px;
+  display:grid; place-items:center;
+  border-radius:12px; background:rgba(13,43,30,.08);
+  color:var(--brand);
+}
+.feature-title{ font-weight:700; line-height:1.12; font-size:18px; color:var(--ink); }
+.feature-text{
+  margin-top:6px; color:var(--muted); line-height:1.45;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+}
+.feature-more{ margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none; }
+.feature-more:after{ content:" →"; }
+
   </style>
 </head>
 <body>
@@ -337,35 +374,49 @@
   </section>
 
   <!-- FORMAT -->
-  <section id="format" class="container">
-    <h3 class="section-title" data-i18n="format.title">Формат путешествий</h3>
-    <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-      <article class="card">
-        <div class="cover"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=1200&auto=format&fit=crop" alt="Частный трансфер"></div>
-        <div class="body">
-          <h3 data-i18n="format.1.title">Приватно и удобно</h3>
-          <div class="meta"><span data-i18n="format.1.text">Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.</span></div>
-        </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
-      </article>
-      <article class="card">
-        <div class="cover"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Локальные домены"></div>
-        <div class="body">
-          <h3 data-i18n="format.2.title">Без посредников</h3>
-          <div class="meta"><span data-i18n="format.2.text">Работаем напрямую с доменами и фермерами — честный продукт и цены.</span></div>
-        </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
-      </article>
-      <article class="card">
-        <div class="cover"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="Средиземное море"></div>
-        <div class="body">
-          <h3 data-i18n="format.3.title">Море и актив</h3>
-          <div class="meta"><span data-i18n="format.3.text">SUP, каяк, снорклинг — по погоде и желанию группы.</span></div>
-        </div>
-        <div class="foot"><span class="price">—</span><span aria-hidden> </span></div>
-      </article>
-    </div>
+<!-- FORMAT -->
+<section id="format" class="container">
+  <h3 class="section-title" data-i18n="format.title">Формат путешествий</h3>
+
+  <section class="features" aria-label="Формат путешествий">
+    <!-- 1. Приватно и удобно -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-car"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.1.title">Приватно и удобно</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.1.text">
+        Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.
+      </p>
+      <a class="feature-more" href="#contactCard" data-i18n="format.more">Подробнее</a>
+    </article>
+
+    <!-- 2. Без посредников -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-wine"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.2.title">Без посредников</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.2.text">
+        Работаем напрямую с доменами и фермерами — честный продукт и цены.
+      </p>
+      <a class="feature-more" href="#tours" data-i18n="format.more">Подробнее</a>
+    </article>
+
+    <!-- 3. Море и актив -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-wave"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.3.title">Море и актив</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.3.text">
+        SUP, каяк, снорклинг — по погоде и желанию группы.
+      </p>
+      <a class="feature-more" href="#tours" data-i18n="format.more">Подробнее</a>
+    </article>
   </section>
+</section>
+
 
   <!-- ABOUT -->
   <section id="about" class="container">
@@ -942,6 +993,24 @@ if (item.seasonal) {
     btnTG?.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); root?.classList.remove('open'); });
   })();
   </script>
+<!-- SVG sprite for feature icons -->
+<svg width="0" height="0" style="position:absolute;opacity:0" aria-hidden="true">
+  <symbol id="i-car" viewBox="0 0 24 24">
+    <path d="M3 12l2-5a3 3 0 012.8-2h6.4A3 3 0 0117 7l2 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="2" y="11" width="20" height="6" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    <circle cx="7" cy="18" r="1.6" fill="currentColor"/>
+    <circle cx="17" cy="18" r="1.6" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-wine" viewBox="0 0 24 24">
+    <path d="M7 3h10v3a5 5 0 01-5 5 5 5 0 01-5-5V3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M12 11v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M9 21h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24">
+    <path d="M3 15c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M6 18c2 0 2-2 4-2s2 2 4 2 2-2 4-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </symbol>
+</svg>
 
 </body>
 </html>
