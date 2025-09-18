@@ -357,6 +357,203 @@
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=m%C3%A9t%C3%A9o+Saint-Guilhem-le-D%C3%A9sert">Погода SG</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=H%C3%A9rault+d%C3%A9bit+Pont+du+Diable">Дебит реки Hérault</a>
       </div>
+<!-- ==== I18N RU ⇄ FR (языковой переключатель) ==== -->
+<script>
+(function(){
+  const N = {
+    brand_sub:  document.querySelector('.brand small'),
+    nav_all:    document.querySelector('nav ul li:nth-child(1) a'),
+    nav_why:    document.querySelector('nav ul li:nth-child(2) a'),
+    nav_book:   document.getElementById('goBook'),
+    hero_title: document.querySelector('.hero h2.title'),
+    hero_sub:   document.querySelector('.hero .subtitle'),
+    gal_title:  document.querySelectorAll('h3.section-title')[0],
+    gal_sub:    document.querySelectorAll('.section-sub')[0],
+    prog_title: document.querySelector('.info-grid article .section-title'),
+    inc_title:  document.querySelectorAll('.info-grid article .section-title')[1],
+    notinc_t:   document.querySelectorAll('.info-grid article .section-title')[2],
+    opts_t:     document.querySelectorAll('.info-grid article .section-title')[3],
+    where_t:    document.querySelector('.info-grid aside .section-title'),
+    where_s:    document.querySelector('.info-grid aside .section-sub'),
+    tips_t:     document.querySelectorAll('.info-grid aside .section-title')[1],
+    pricing_t:  document.querySelector('#pricing .section-title'),
+    book_t:     document.querySelector('#book .section-title'),
+    book_s:     document.querySelector('#book .section-sub'),
+    lbl_date:   document.querySelector('label[for="when"]'),
+    lbl_guests: document.querySelector('label[for="guests"]'),
+    lbl_name:   document.querySelector('label[for="name"]'),
+    lbl_contact:document.querySelector('label[for="contact"]'),
+    lbl_msg:    document.querySelector('label[for="msg"]'),
+    btn_wa:     document.querySelector('[data-whatsapp]'),
+    btn_tg:     document.querySelector('[data-telegram]'),
+    f_why:      document.querySelector('footer a[href*="#why"]'),
+    f_tours:    document.querySelector('footer a[href*="#tours"]'),
+    f_format:   document.querySelector('footer a[href*="#format"]'),
+    f_write:    document.querySelector('footer .js-telegram'),
+    price_line1: document.querySelector('#pricing .list li:nth-child(1)'),
+    price_line2: document.querySelector('#pricing .list li:nth-child(2)')
+  };
+  const TL = Array.from(document.querySelectorAll('.timeline li'));
+
+  // RU — снимаем с DOM, чтобы не дублировать тексты
+  const RU = {
+    brand_sub:N.brand_sub?.textContent, nav_all:N.nav_all?.textContent, nav_why:N.nav_why?.textContent, nav_book:N.nav_book?.textContent,
+    hero_title:N.hero_title?.textContent, hero_sub:N.hero_sub?.textContent,
+    gal_title:N.gal_title?.textContent, gal_sub:N.gal_sub?.textContent,
+    prog_title:N.prog_title?.textContent, inc_title:N.inc_title?.textContent, notinc_t:N.notinc_t?.textContent, opts_t:N.opts_t?.textContent,
+    where_t:N.where_t?.textContent, where_s:N.where_s?.textContent, tips_t:N.tips_t?.textContent,
+    pricing_t:N.pricing_t?.textContent,
+    book_t:N.book_t?.textContent, book_s:N.book_s?.textContent,
+    lbl_date:N.lbl_date?.textContent, lbl_guests:N.lbl_guests?.textContent, lbl_name:N.lbl_name?.textContent,
+    lbl_contact:N.lbl_contact?.textContent, lbl_msg:N.lbl_msg?.textContent,
+    btn_wa:N.btn_wa?.textContent, btn_tg:N.btn_tg?.textContent,
+    f_why:N.f_why?.textContent, f_tours:N.f_tours?.textContent, f_format:N.f_format?.textContent, f_write:N.f_write?.textContent,
+    price1:N.price_line1?.innerHTML, price2:N.price_line2?.textContent,
+    title: document.title,
+    metaDesc: document.querySelector('meta[name="description"]')?.getAttribute('content')||'',
+    ogTitle: document.querySelector('meta[property="og:title"]')?.getAttribute('content')||'',
+    ogDesc:  document.querySelector('meta[property="og:description"]')?.getAttribute('content')||'',
+    tl: TL.map(li=>li.innerHTML)
+  };
+
+  // FR — переводы
+  const FR = {
+    brand_sub:'— Des voyages avec goût',
+    nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+    hero_title:'Saint-Guilhem-le-Désert — abbaye, Castrum, grotte de Clamouse et Château Capion',
+    hero_sub:"Abbaye de Gellone, ruelles médiévales et panoramas, puis grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Départ de Mèze.",
+    gal_title:'À quoi ça ressemble',
+    gal_sub:'Saint-Guilhem-le-Désert, montée au Castrum, grotte de Clamouse et Château Capion.',
+    prog_title:'Programme de la journée',
+    inc_title:'Inclus',
+    notinc_t:'Non inclus',
+    opts_t:'Options',
+    where_t:'Où ça se passe',
+    where_s:'Saint-Guilhem-le-Désert • Grotte de Clamouse • Pont du Diable • Château Capion.',
+    tips_t:'À savoir',
+    pricing_t:'Tarifs',
+    book_t:'Demande / réservation rapide',
+    book_s:'Réponse sous 24 h et confirmation des réservations grotte & domaine.',
+    lbl_date:'Date', lbl_guests:'Pers.', lbl_name:'Nom', lbl_contact:'Contact (WhatsApp/Telegram/Email)', lbl_msg:'Commentaire',
+    btn_wa:'Envoyer sur WhatsApp', btn_tg:'Envoyer sur Telegram',
+    f_why:'Pourquoi nous', f_tours:'Offres', f_format:'Format', f_write:'Écrire',
+    price1:'<strong class="price">300 € / 2 personnes</strong>',
+    price2:'Pers. suppl. : +70 € (max. 6). Déjeuner 25–35 € / pers. (sur place).',
+    title:'Saint-Guilhem-le-Désert — abbaye, Castrum, grotte de Clamouse et Château Capion | Tours Languedoc by Irène',
+    metaDesc:"Saint-Guilhem-le-Désert (abbaye, ruelles, panoramas), montée au Castrum, grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Privé, départ de Mèze. 300 € / 2 pers.",
+    ogTitle:'Saint-Guilhem — abbaye, Castrum, Clamouse et Château Capion',
+    ogDesc:"Village UNESCO + Castrum, puis grotte de Clamouse, déjeuner au Pont du Diable et dégustation au Château Capion. Privé, départ de Mèze.",
+    tl:[
+      '<span class="time">09:00</span> — Départ de Mèze / transfert vers le village.',
+      '<span class="time">10:00</span> — Saint-Guilhem : abbaye, ruelles, montée au Castrum (points de vue).',
+      '<span class="time">12:30</span> — Transfert vers la grotte de Clamouse.',
+      '<span class="time">12:45</span> — Visite de la grotte (~1 h 30, ~+15 °C à l’intérieur).',
+      '<span class="time">14:30</span> — Déjeuner — La Table du Pont du Diable (selon saison).',
+      '<span class="time">15:30</span> — Dégustation — Château Capion (sur réservation).',
+      '<span class="time">17:00</span> — Retour à Mèze.',
+      '<span class="time">18:00</span> — Fin de la journée.'
+    ],
+    // списки "включено / не включено / опции / советы"
+    inc_list:[
+      'Transport privé (crossover/SUV), chauffeur-accompagnateur',
+      'Parkings et carburant',
+      'Réservations : Grotte de Clamouse et dégustation au Château Capion',
+      'Balade dans le village et au Castrum : points clés & photo-stops'
+    ],
+    notinc_list:[
+      'Déjeuner (≈ 25–35 € / pers., à régler sur place).',
+      'Billets grotte et/ou musée de l’abbaye (en option).',
+      'Dépenses personnelles.'
+    ],
+    opts_list:[
+      'Deuxième domaine (ex. Mas de Daumas Gassac) — +10–20 € / pers. dégustation.',
+      'Belvédères supplémentaires (selon le temps).'
+    ],
+    tips_list:[
+      'Chaussures à semelle adhérente (sentiers caillouteux).',
+      'Protection légère contre soleil et eau.',
+      'Dans la grotte ≈ +15 °C toute l’année — prenez une veste.'
+    ]
+  };
+
+  function setText(n, v){ if(n && typeof v==='string') n.textContent = v; }
+  function setHTML(n, v){ if(n && typeof v==='string') n.innerHTML = v; }
+  function setMeta(name, content, prop=false){
+    const sel = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+    const el = document.querySelector(sel);
+    if (el && content) el.setAttribute('content', content);
+  }
+
+  // Перерисовать списки для FR (русские оставляем как есть)
+  function replaceList(ul, items){
+    if (!ul || !Array.isArray(items)) return;
+    ul.innerHTML = items.map(x=>`<li>${x}</li>`).join('');
+  }
+
+  function applyLang(lang){
+    const L = (lang==='fr') ? FR : RU;
+    document.documentElement.lang = (lang==='fr') ? 'fr' : 'ru';
+
+    // мета
+    document.title = L.title || document.title;
+    setMeta('description', L.metaDesc);
+    setMeta('og:title', L.ogTitle, true);
+    setMeta('og:description', L.ogDesc, true);
+
+    // тексты
+    setText(N.brand_sub, L.brand_sub);
+    setText(N.nav_all, L.nav_all); setText(N.nav_why, L.nav_why); setText(N.nav_book, L.nav_book);
+    setText(N.hero_title, L.hero_title); setText(N.hero_sub, L.hero_sub);
+    setText(N.gal_title, L.gal_title); setText(N.gal_sub, L.gal_sub);
+    setText(N.prog_title, L.prog_title); setText(N.inc_title, L.inc_title); setText(N.notinc_t, L.notinc_t); setText(N.opts_t, L.opts_t);
+    setText(N.where_t, L.where_t); setText(N.where_s, L.where_s); setText(N.tips_t, L.tips_t);
+    setText(N.pricing_t, L.pricing_t);
+    setText(N.book_t, L.book_t); setText(N.book_s, L.book_s);
+    setText(N.lbl_date, L.lbl_date); setText(N.lbl_guests, L.lbl_guests); setText(N.lbl_name, L.lbl_name); setText(N.lbl_contact, L.lbl_contact); setText(N.lbl_msg, L.lbl_msg);
+    setText(N.btn_wa, L.btn_wa); setText(N.btn_tg, L.btn_tg);
+    setText(N.f_why, L.f_why); setText(N.f_tours, L.f_tours); setText(N.f_format, L.f_format); setText(N.f_write, L.f_write);
+    setHTML(N.price_line1, L.price1); setText(N.price_line2, L.price2);
+
+    // таймлайн
+    if (Array.isArray(L.tl)) for (let i=0; i<L.tl.length && i<TL.length; i++) setHTML(TL[i], L.tl[i]);
+
+    // блоки списков (включено/не включено/опции/советы) — только для FR
+    if (lang==='fr'){
+      const lists = document.querySelectorAll('.info-grid article .list');
+      replaceList(lists[0], FR.notinc_list); // осторожно: порядок блоков на странице: "Не включено" — первый UL
+      // но у тебя "Что включено" — через .inc-grid (не UL), так что трогаем то, что точно UL:
+      // 0: "Не включено", 1: "Опции"
+      replaceList(lists[1], FR.opts_list);
+
+      const tipsUl = document.querySelectorAll('.info-grid aside .list')[0];
+      replaceList(tipsUl, FR.tips_list);
+    } else {
+      // RU — ничего не перестраиваем
+    }
+
+    // активное состояние кнопок
+    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+
+    localStorage.setItem('site:lang', lang);
+  }
+
+  function init(){
+    document.getElementById('btn-ru')?.addEventListener('click', ()=>applyLang('ru'));
+    document.getElementById('btn-fr')?.addEventListener('click', ()=>applyLang('fr'));
+
+    const p = new URLSearchParams(location.search);
+    let lang = p.get('lang');
+    if (!lang && (location.hash==='#fr' || location.hash==='#ru')) lang = location.hash.substring(1);
+    if (!lang) lang = localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+
+    if (p.get('lang')){ p.delete('lang'); history.replaceState(null,'', location.pathname + (p.toString()?`?${p}`:'') + location.hash); }
+    applyLang(lang==='fr'?'fr':'ru');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
+  else init();
+})();
+</script>
 
 
   <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, открытие WA/TG, биндинг всех кнопок ==== -->
