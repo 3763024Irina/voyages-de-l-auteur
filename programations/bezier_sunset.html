@@ -6,13 +6,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- Base SEO (RU по умолчанию, FR подставляется скриптом ниже) -->
   <title>Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Круиз по Каналу дю Миди из Бéзье (Фонсераны — Grand Bief — тоннель Малпас). Днём или на закате. Ужин на борту — по запросу (опция). Приватно 2–6 гостей." />
+  <meta name="description" content="Круиз по Каналу дю Миди из Бéзье: Фонсераны — Grand Bief — тоннель Малпас. Днём или на закате. Ужин на борту — опция. Приватно 2–6 гостей." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://www.goutvoyage.com/programations/bezier_sunset.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://www.goutvoyage.com/programations/bezier_sunset.html?lang=ru" />
+  <link rel="alternate" hreflang="fr" href="https://www.goutvoyage.com/programations/bezier_sunset.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://www.goutvoyage.com/programations/bezier_sunset.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta property="og:title" content="Бéзье — круиз по Каналу дю Миди (день/закат)" />
   <meta property="og:description" content="Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+  <meta property="og:url" content="https://www.goutvoyage.com/programations/bezier_sunset.html?lang=ru" />
+  <meta property="og:image" content="https://www.goutvoyage.com/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Бéзье — круиз по Каналу дю Миди (день/закат)" />
+  <meta name="twitter:description" content="Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция." />
+  <meta name="twitter:image" content="https://www.goutvoyage.com/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" />
+
   <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- Favicons / PWA -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/icons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/icons/favicon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -38,7 +68,6 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* HERO */
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
@@ -96,29 +125,25 @@
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    /* FAB (как в PSL) */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999;
-      border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
-    }
+    /* FAB */
+    .chat-fab{ position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center }
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* Валидация + тосты */
+    /* Тосты / валидация */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{
-      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
-      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
-      font-size:14px; max-width:90vw; text-align:center;
-    }
+    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
 
-    /* === I18N переключение: прячем неактивный язык === */
+    /* I18N: скрываем неактивный язык */
     html[data-lang="ru"] [data-i18n="fr"]{ display:none !important; }
     html[data-lang="fr"] [data-i18n="ru"]{ display:none !important; }
   </style>
+
+  <!-- GA4 (замените ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 
 <body>
@@ -140,7 +165,6 @@
           <li><a href="../index.html#why"><span data-i18n="ru">Почему с нами</span><span data-i18n="fr">Pourquoi nous</span></a></li>
           <li><a class="cta" href="#book" id="goBook"><span data-i18n="ru">Забронировать</span><span data-i18n="fr">Réserver</span></a></li>
         </ul>
-
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
           <button id="btn-fr">FR</button>
@@ -155,7 +179,8 @@
            data-program-title-ru="Бéзье — круиз по Каналу дю Миди (днём или на закате)"
            data-program-title-fr="Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)">
     <div class="bg">
-      <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg"
+      <img id="alt-hero"
+           src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg"
            onerror="this.src='../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg'"
            alt="Béziers — Canal du Midi" />
       <div class="overlay"></div>
@@ -193,9 +218,9 @@
       <span data-i18n="fr">Les écluses de Fonseranes, le Grand Bief et les vues au coucher du soleil.</span>
     </p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes" loading="lazy"></div>
-      <div class="ph"><img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief" loading="lazy"></div>
-      <div class="ph"><img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Coucher de soleil" loading="lazy"></div>
+      <div class="ph"><img id="alt-g1" src="../assets/Fonseranes-Locks_history_tourism_holidays-min.jpg" alt="Fonseranes" loading="lazy"></div>
+      <div class="ph"><img id="alt-g2" src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="Grand Bief" loading="lazy"></div>
+      <div class="ph"><img id="alt-g3" src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Coucher de soleil" loading="lazy"></div>
     </div>
   </section>
 
@@ -210,7 +235,7 @@
         <li>
           <span class="time"><span data-i18n="ru">По запросу</span><span data-i18n="fr">Sur demande</span></span>
           <span data-i18n="ru"> — Пикап из отеля и трансфер к Фонсеранам.</span>
-          <span data-i18n="fr"> — prise en charge à l’hôtel et transfert aux écluses de Fonseranes.</span>
+          <span data-i18n="fr"> — Prise en charge à l’hôtel et transfert aux écluses de Fonseranes.</span>
         </li>
         <li>
           <span class="time"><span data-i18n="ru">День</span><span data-i18n="fr">Journée</span></span>
@@ -267,7 +292,7 @@
         <span data-i18n="fr">Départ aux <strong>Écluses de Fonseranes</strong>, Béziers. Itinéraire : Grand Bief → (option) tunnel du Malpas.</span>
       </p>
       <div class="ph" style="margin-bottom:10px">
-        <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — coucher de soleil" loading="lazy" style="width:100%; border-radius:18px">
+        <img id="alt-side" src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — coucher de soleil" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
       <!-- Admin-ссылки -->
@@ -281,12 +306,9 @@
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <!-- Только форма + WA/TG (без цены/калькулятора) -->
-    <div class="card"
-         data-program
-         data-program-id="CRUISE-BEZIERS"
-         data-program-title-ru="Бéзье — круиз по Каналу дю Миди (день/закат)"
-         data-program-title-fr="Béziers — croisière sur le Canal du Midi (jour/coucher de soleil)">
+    <div class="card" data-program data-program-id="CRUISE-BEZIERS"
+         data-program-title-ru="Бéзье — круиз по Каналу дю Миди (днём или на закате)"
+         data-program-title-fr="Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)">
       <h3 class="section-title">
         <span data-i18n="ru">Быстрый запрос / бронирование</span>
         <span data-i18n="fr">Demande rapide / réservation</span>
@@ -296,7 +318,7 @@
         <span data-i18n="fr">Réponse dans la journée et confirmation des visites.</span>
       </p>
 
-      <form class="fields" data-contact-form>
+      <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
         <div>
           <label for="when"><span data-i18n="ru">Дата</span><span data-i18n="fr">Date</span></label>
           <input id="when" name="date" type="date" required>
@@ -322,8 +344,8 @@
         </div>
 
         <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#"><span data-i18n="ru">Отправить в WhatsApp</span><span data-i18n="fr">Envoyer sur WhatsApp</span></a>
-          <a class="btn primary" data-telegram href="#"><span data-i18n="ru">Отправить в Telegram</span><span data-i18n="fr">Envoyer sur Telegram</span></a>
+          <a class="btn" data-whatsapp href="javascript:void(0)"><span data-i18n="ru">Отправить в WhatsApp</span><span data-i18n="fr">Envoyer sur WhatsApp</span></a>
+          <a class="btn primary" data-telegram href="javascript:void(0)"><span data-i18n="ru">Отправить в Telegram</span><span data-i18n="fr">Envoyer sur Telegram</span></a>
         </div>
       </form>
     </div>
@@ -349,31 +371,30 @@
   </footer>
 
   <!-- FAB -->
-  <button class="chat-fab wa" aria-label="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
+  <button class="chat-fab wa" aria-label="WhatsApp" title="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
       <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
     </svg>
   </button>
-
-  <button class="chat-fab tg" aria-label="Telegram" data-chat-open="telegram" data-telegram>
+  <button class="chat-fab tg" aria-label="Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
     </svg>
   </button>
 
-  <!-- CONFIG -->
+  <!-- CONFIG (единая с другими страницами) -->
   <script>
     window.APP_CONFIG = {
       whatsapp: '33759644813',
       telegram_user: 'de_iren',
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
 
-  <!-- Скрипты -->
+  <!-- Внешние (если используете) -->
   <script src="../assets/js/contact.js" defer></script>
   <script src="../assets/js/chat-widget.js" defer></script>
 
@@ -400,137 +421,242 @@
     })();
   </script>
 
-  <!-- Единый WA/TG + I18N -->
+  <!-- I18N RU ⇄ FR + SEO-мета на лету + WA/TG -->
   <script>
-  ;(() => {
-    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+    const BASE_URL = 'https://www.goutvoyage.com';
+    const PAGE_PATH = '/programations/bezier_sunset.html';
 
-    const CFG = window.APP_CONFIG || {};
-    const digits = s => String(s||'').replace(/\D/g,'');
-    const enc = s => encodeURIComponent(String(s||''));
+    const I18N_META = {
+      ru: {
+        title: 'Бéзье — круиз по Каналу дю Миди (днём или на закате) | Tours Languedoc by Irène',
+        desc: 'Круиз по Каналу дю Миди из Бéзье: Фонсераны — Grand Bief — тоннель Малпас. Днём или на закате. Ужин на борту — опция. Приватно 2–6 гостей.',
+        ogTitle: 'Бéзье — круиз по Каналу дю Миди (день/закат)',
+        ogDesc: 'Фонсераны, Grand Bief, тоннель Малпас. Дневные и закатные круизы. Ужин на борту — опция.',
+        locale: 'ru_RU',
+        alts: {
+          hero: 'Канал дю Миди — Бéзье',
+          g1: 'Шлюзы Фонсераны',
+          g2: 'Grand Bief — ровный участок канала',
+          g3: 'Закат на канале',
+          side: 'Бéзье — виды на закате'
+        }
+      },
+      fr: {
+        title: 'Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil) | Tours Languedoc by Irène',
+        desc: 'Croisière au départ de Béziers : Fonseranes — Grand Bief — tunnel du Malpas. En journée ou au coucher du soleil. Dîner à bord en option. Privé 2–6 pers.',
+        ogTitle: 'Béziers — croisière Canal du Midi (jour/coucher de soleil)',
+        ogDesc: 'Fonseranes, Grand Bief, tunnel du Malpas. Croisières de jour et au sunset. Dîner à bord en option.',
+        locale: 'fr_FR',
+        alts: {
+          hero: 'Canal du Midi — Béziers',
+          g1: 'Écluses de Fonseranes',
+          g2: 'Grand Bief — section du canal',
+          g3: 'Coucher de soleil sur le canal',
+          side: 'Béziers — vues au coucher de soleil'
+        }
+      }
+    };
 
-    function toast(msg, ms=2400){
-      const t = document.createElement('div');
-      t.className = 'form-toast'; t.textContent = msg;
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), ms);
-    }
+    function setContent(sel, value){ const el = document.querySelector(sel); if(el && value) el.setAttribute('content', value); }
+    function setHref(sel, value){ const el = document.querySelector(sel); if(el && value) el.setAttribute('href', value); }
 
-    // === I18N: переключение языка (RU/FR) ===
-    const root = document.documentElement;
-    function setLang(lang){
-      root.setAttribute('data-lang', lang);
+    function applyLang(lang){
+      const L = I18N_META[lang] || I18N_META.ru;
+      document.documentElement.setAttribute('data-lang', lang);
       document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
-      // Обновим <title> под язык (опционально описание можно тоже обновлять)
-      const tRU = root.getAttribute('data-program-title-ru') || document.title;
-      const tFR = root.getAttribute('data-program-title-fr') || document.title;
-      document.title = (lang==='fr') ? `${tFR} | Tours Languedoc by Irène` : `${tRU} | Tours Languedoc by Irène`;
-    }
-    document.getElementById('btn-ru')?.addEventListener('click', ()=> setLang('ru'));
-    document.getElementById('btn-fr')?.addEventListener('click', ()=> setLang('fr'));
-    // Восстановим из localStorage, если есть
-    const saved = localStorage.getItem('site:lang');
-    setLang(saved || 'ru');
-    // Сохраняем выбор
-    const obs = new MutationObserver(()=>{
-      localStorage.setItem('site:lang', root.getAttribute('data-lang')||'ru');
-    });
-    obs.observe(root, { attributes:true, attributeFilter:['data-lang'] });
 
-    // === Build booking text: берём заголовок активного языка ===
-    function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const lang = root.getAttribute('data-lang') || 'ru';
-      const titleEl = document.querySelector(`[data-program-title-${lang}]`) || document.querySelector('[data-program]') || root;
-      const title = titleEl?.getAttribute(`data-program-title-${lang}`) || document.title || '';
-      const pid   = (titleEl?.getAttribute('data-program-id')) || root.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
+      const url = `${BASE_URL}${PAGE_PATH}?lang=${lang}`;
+
+      // Title + description
+      document.title = L.title;
+      setContent('meta[name="description"]', L.desc);
+
+      // OG/Twitter
+      setContent('meta[property="og:title"]', L.ogTitle);
+      setContent('meta[property="og:description"]', L.ogDesc);
+      setContent('meta[property="og:url"]', url);
+      setContent('meta[property="og:locale"]', L.locale);
+      setContent('meta[name="twitter:title"]', L.ogTitle);
+      setContent('meta[name="twitter:description"]', L.ogDesc);
+
+      // Canonical + hreflang
+      setHref('link[rel="canonical"]', url);
+      setHref('link[rel="alternate"][hreflang="ru"]', `${BASE_URL}${PAGE_PATH}?lang=ru`);
+      setHref('link[rel="alternate"][hreflang="fr"]', `${BASE_URL}${PAGE_PATH}?lang=fr`);
+      setHref('link[rel="alternate"][hreflang="x-default"]', `${BASE_URL}${PAGE_PATH}`);
+
+      // ALT'ы
+      const AM = L.alts||{};
+      const map = { '#alt-hero':AM.hero, '#alt-g1':AM.g1, '#alt-g2':AM.g2, '#alt-g3':AM.g3, '#alt-side':AM.side };
+      Object.entries(map).forEach(([sel, val])=>{ const el=document.querySelector(sel); if(el && val) el.setAttribute('alt', val); });
+
+      // Сохранить и почистить URL
+      localStorage.setItem('site:lang', lang);
+      const p = new URL(location.href); p.searchParams.set('lang', lang); history.replaceState({},'', p.toString());
     }
 
-    // Валидация
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена / Form introuvable'); return false; }
-      let firstBad = null;
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        toast(root.getAttribute('data-lang')==='fr'
-              ? 'Remplissez la date, les participants, le nom et le contact'
-              : 'Заполните дату, гостей, имя и контакт');
-        return false;
+    // Init язык
+    (function initLang(){
+      const p = new URLSearchParams(location.search);
+      let lang = p.get('lang') || localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+      applyLang(lang);
+      document.getElementById('btn-ru')?.addEventListener('click', ()=>applyLang('ru'));
+      document.getElementById('btn-fr')?.addEventListener('click', ()=>applyLang('fr'));
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 80));
+    })();
+
+    // === Биндер формы + WA/TG (единый со страницами) ===
+    (function bindContact(){
+      if (window.__CONTACT_BIND__) return; window.__CONTACT_BIND__ = true;
+      const CFG = window.APP_CONFIG || {};
+      const digits = s => String(s||'').replace(/\D/g,'');
+      const enc = s => encodeURIComponent(String(s||''));
+
+      function toast(msg, ms=2200){ const t=document.createElement('div'); t.className='form-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(), ms); }
+
+      function buildText(){
+        const f = document.querySelector('[data-contact-form]');
+        const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+        const lang = (document.documentElement.getAttribute('data-lang')||'ru');
+        const holder = document.querySelector('[data-program]') || document.documentElement;
+        const title = holder.getAttribute(`data-program-title-${lang}`) || document.title || '';
+        const pid = holder.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+        return [
+          'Заявка с сайта Tours Languedoc by Irène',
+          pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+          `Дата: ${get('date')||'-'}`,
+          `Гостей: ${get('guests')||'-'}`,
+          `Имя: ${get('name')||'-'}`,
+          `Контакт: ${get('contact')||'-'}`,
+          `Сообщение: ${get('message')||'-'}`,
+          `Ссылка: ${location.href}`
+        ].join('\n');
       }
-      return true;
-    }
 
-    // Безопасное открытие
-    function safeOpen(href){
-      const a = document.createElement('a');
-      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
-    }
-
-    // Telegram
-    async function openTelegram(){
-      if(!validateForm()) return;
-      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-      const user = (CFG.telegram_user||'').replace(/^@/,'');
-      const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-
-      if (bot && /^https?:\/\//i.test(pre)){
-        try{
-          const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
-          const j = await r.json().catch(()=>({}));
-          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-          if (tme){ safeOpen(tme); return; }
-        }catch(e){ /* fallback */ }
+      const REQUIRED = ['date','guests','name','contact'];
+      function validateForm({scroll=true}={}){
+        const f = document.querySelector('[data-contact-form]');
+        if(!f){ toast('Форма не найдена / Form introuvable'); return false; }
+        let firstBad = null;
+        REQUIRED.forEach(n=>{
+          const el = f.querySelector(`[name="${n}"]`);
+          const val = el?.value?.trim();
+          const ok = Boolean(val && (n!=='guests' || Number(val)>0));
+          el?.classList.toggle('input-error', !ok);
+          if(!ok && !firstBad) firstBad = el;
+        });
+        if(firstBad){
+          if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+          firstBad.focus();
+          const fr = document.documentElement.getAttribute('data-lang')==='fr';
+          toast(fr ? 'Remplissez la date, les participants, le nom et le contact'
+                   : 'Заполните дату, гостей, имя и контакт');
+          return false;
+        }
+        return true;
       }
-      if (user) safeOpen(`https://t.me/${user}`);
-      else if (bot) safeOpen(`https://t.me/${bot}`);
-      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
-    }
 
-    // WhatsApp
-    function openWhatsApp(){
-      if(!validateForm()) return;
-      const num = digits(CFG.whatsapp || '');
-      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
-      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-    }
+      function safeOpen(href){ const a=document.createElement('a'); a.href=href; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
 
-    // Биндинг всех кнопок
-    function bind(){
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
-      });
-      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
-        el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
-      });
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
-    }
-    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); }
-    else { bind(); }
-  })();
+      async function openTelegram(){
+        if(!validateForm()) return;
+        const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+        const user = (CFG.telegram_user||'').replace(/^@/,'');
+        const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+        const text = buildText();
+
+        if (bot && /^https?:\/\//i.test(pre)){
+          try{
+            const r = await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text, url:location.href, program:(document.documentElement.getAttribute('data-program-id')||'')})});
+            const j = await r.json().catch(()=>({}));
+            const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+            if (tme){ safeOpen(tme); return; }
+          }catch(e){}
+        }
+        if (user) { safeOpen(`https://t.me/${user}`); return; }
+        if (bot)  { safeOpen(`https://t.me/${bot}`);  return; }
+      }
+
+      function openWhatsApp(){
+        if(!validateForm()) return;
+        const num = digits(CFG.whatsapp||'');
+        if(!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+        safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+      }
+
+      function bind(){
+        document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+          el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
+        });
+        document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+          el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
+        });
+        document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+      }
+      if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', bind, {once:true});
+      else bind();
+    })();
+  </script>
+
+  <!-- JSON-LD схемы -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://www.goutvoyage.com/",
+    "logo":"https://www.goutvoyage.com/icons/apple-touch-icon.png",
+    "areaServed":"Occitanie, France",
+    "contactPoint":[{"@type":"ContactPoint","contactType":"customer service","telephone":"+33 7 59 64 48 13","availableLanguage":["ru","fr","en"]}]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://www.goutvoyage.com/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Accueil / Home","item":"https://www.goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Programations","item":"https://www.goutvoyage.com/programations/"},
+      {"@type":"ListItem","position":3,"name":"Béziers — croisière / Бéзье — круиз","item":"https://www.goutvoyage.com/programations/bezier_sunset.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TouristTrip",
+    "name":"Бéзье — круиз по Каналу дю Миди",
+    "alternateName":"Béziers — croisière sur le Canal du Midi",
+    "description":"Fonseranes — Grand Bief — tunnel du Malpas. Croisières de jour et au coucher du soleil. Dîner à bord en option.",
+    "image":"https://www.goutvoyage.com/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg",
+    "touristType":["luxury travel","culinary tourism","boat tour"],
+    "itinerary":[
+      {"@type":"Place","name":"Écluses de Fonseranes"},
+      {"@type":"Place","name":"Grand Bief"},
+      {"@type":"Place","name":"Tunnel du Malpas"}
+    ],
+    "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://www.goutvoyage.com/"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Есть ли вариант на закате?","acceptedAnswer":{"@type":"Answer","text":"Да, можно выбрать дневной или sunset-слот. Тайминг подстраиваем под сезон."}},
+      {"@type":"Question","name":"Где старт?","acceptedAnswer":{"@type":"Answer","text":"Старт у Écluses de Fonseranes (Бéзье). Возможен трансфер от/до отеля."}},
+      {"@type":"Question","name":"Можно ли ужин на борту?","acceptedAnswer":{"@type":"Answer","text":"Да, по запросу — фикс-меню/аперитив. Сообщите предпочтения заранее."}}
+    ]
+  }
   </script>
 </body>
 </html>
-
