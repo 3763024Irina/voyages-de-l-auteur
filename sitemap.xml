@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главная -->
+  <url>
+    <loc>https://goutvoyage.com/</loc>
+    <lastmod>2025-09-18</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Programations -->
+  <url><loc>https://goutvoyage.com/programations/Balaruc_SPA.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/Meze_Voile_Pyramide.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/Pic_Saint_Loup.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/Saint_Guilhem.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/Thau_LUX.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/Vins_Languedoc.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/bezier_sunset.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/capdagde-naturiste-7n.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/degustation-meze.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/lamalou_les_bains.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+  <url><loc>https://goutvoyage.com/programations/thermes.html</loc><lastmod>2025-09-18</lastmod><priority>0.8</priority></url>
+
+  <!-- Админ-страницы (можно убрать, если не нужны в поиске) -->
+  <url><loc>https://goutvoyage.com/programations/capdagde-wine-admin.html</loc><lastmod>2025-09-18</lastmod><priority>0.1</priority></url>
+</urlset>
