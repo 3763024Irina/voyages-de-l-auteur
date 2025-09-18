@@ -320,174 +320,192 @@
   </button>
 
   <!-- I18N RU ⇄ FR + SEO-обновление мета -->
-  <script>
-    const BASE_URL = 'https://www.goutvoyage.com';
-    const PAGE_PATH = '/programations/Thau_LUX.html';
+ <!-- I18N RU ⇄ FR + SEO-обновление мета -->
+<script>
+  const BASE_URL = 'https://www.goutvoyage.com';
+  const PAGE_PATH = '/programations/Thau_LUX.html';
 
-    const I18N = {
-      ru: {
-        meta:{ title:'LUX Étang de Thau — авторский день вокруг лагуны | Tours Languedoc by Irène',
-               desc:'LUX-программа вокруг лагуны Thau: приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat и винный финал. Без пеших прогулок.',
-               ogTitle:'LUX Étang de Thau — 1 день',
-               ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
-               locale:'ru_RU' },
-        brand_sub:'— Путешествия со вкусом',
-        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        brand_sub_footer:'Путешествия со вкусом', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
-        hero_title:'LUX Étang de Thau — 1 день',
-        hero_sub:'Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — «relax & taste».',
-        gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
-        plan_title:'Программа дня',
-        t_1000:'Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф на понтоне.',
-        t_1030:'Приватная лодка: устричные плантации — маяк Les Onglous (вход Канала дю Миди) — возврат. Дегустация устриц с локальным белым.',
-        t_1315:'Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый/безалк. pairing.',
-        t_1510:'Maison Noilly Prat (Марсельян): визит и премиум-дегустация.',
-        t_1645:'Винный финал: La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.',
-        t_1830:'Возврат в отель. Возможен фотостоп.',
-        inc_title:'Что включено',
-        inc_transfer:'Частный трансфер на день',
-        inc_boat:'Приватная лодка 2,5–3 ч + дегустация устриц',
-        inc_noilly:'Noilly Prat — визит и дегустация (premium)',
-        inc_wine:'Приватная дегустация в La Croix Gratiot или Mas du Novi',
-        inc_guide:'Сопровождение RU/FR',
-        exc_title:'Не включено',
-        exc_lunch:'Обед в Tarbouriech (оплата на месте).',
-        exc_drinks:'Шампанское и особые напитки.',
-        exc_personal:'Личные расходы.',
-        opt_title:'Опции',
-        opt_sunset:'Продление до заката на воде с аперитивом.',
-        opt_second:'Добавить второй винный домен.',
-        opt_oyster:'Мастер-класс по устрицам.',
-        opt_vehicle:'Апгрейд транспорта (по запросу).',
-        where_title:'Где это',
-        where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
-        tips_title:'Полезно знать',
-        tip_nowalks:'Без пеших треков: короткие переходы авто ↔ понтон/залы.',
-        tip_wear:'Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.',
-        tip_weather:'Погода/ветер: порядок точек и дегустации можем корректировать.',
-        tip_start:'Старт возможен из Cap d’Agde, Sète или Marseillan.',
-        form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и предложим время старта и брони.',
-        label_date:'Дата', label_guests:'Гостей', label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
-        btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        alt_hero:'Étang de Thau — панорама лагуны',
-        alt_g1:'Лагуна Thau — на воде', alt_g2:'Марсельян — устричные столы', alt_g3:'Причалы и лагуна'
-      },
-      fr: {
-        meta:{ title:'LUX Étang de Thau — journée signature autour de la lagune | Tours Languedoc by Irène',
-               desc:'Programme LUX autour de l’étang de Thau : bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat et final vins. Sans marche.',
-               ogTitle:'LUX Étang de Thau — 1 journée',
-               ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vins. Sans marche.',
-               locale:'fr_FR' },
-        brand_sub:'— Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        brand_sub_footer:'Des voyages avec goût', nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
-        hero_title:'LUX Étang de Thau — 1 journée',
-        hero_sub:'Bateau privé sur la lagune avec dégustation d’huîtres, déjeuner chez Tarbouriech, visite Noilly Prat et final vins. Transfert hôtel. Zéro randonnée — « relax & taste ».',
-        gal_title:'À quoi ça ressemble', gal_sub:'Étang de Thau, tables ostréicoles, Tarbouriech et pontons de Marseillan.',
-        plan_title:'Programme de la journée',
-        t_1000:'Pick-up à l’hôtel (Cap d’Agde / Sète / Marseillan). Brief sur le ponton.',
-        t_1030:'Bateau privé : parcs à huîtres — phare des Onglous (entrée du canal du Midi) — retour. Dégustation d’huîtres avec blanc local.',
-        t_1315:'Déjeuner chez Tarbouriech (Maison / Le St Barth). Menu de saison ; pairing sans coquillages/sans alcool possible.',
-        t_1510:'Maison Noilly Prat (Marseillan) : visite et dégustation premium.',
-        t_1645:'Final vins : La Croix Gratiot (Picpoul) ou Mas du Novi (Languedoc). Dégustation privée.',
-        t_1830:'Retour à l’hôtel. Photo-stop possible.',
-        inc_title:'Inclus',
-        inc_transfer:'Transfert privé à la journée',
-        inc_boat:'Bateau privé 2,5–3 h + dégustation d’huîtres',
-        inc_noilly:'Noilly Prat — visite & dégustation (premium)',
-        inc_wine:'Dégustation privée à La Croix Gratiot ou Mas du Novi',
-        inc_guide:'Accompagnement RU/FR',
-        exc_title:'Non inclus',
-        exc_lunch:'Déjeuner chez Tarbouriech (règlement sur place).',
-        exc_drinks:'Champagne et boissons spéciales.',
-        exc_personal:'Dépenses personnelles.',
-        opt_title:'Options',
-        opt_sunset:'Prolonger jusqu’au coucher de soleil avec apéritif.',
-        opt_second:'Ajouter un deuxième domaine.',
-        opt_oyster:'Atelier huîtres.',
-        opt_vehicle:'Upgrade véhicule (sur demande).',
-        where_title:'Où ça se passe',
-        where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
-        tips_title:'À savoir',
-        tip_nowalks:'Sans marche : courtes distances voiture ↔ ponton/salles.',
-        tip_wear:'Tenue : coupe-vent léger, lunettes, SPF ; chaussures antidérapantes.',
-        tip_weather:'Météo/vent : l’ordre des arrêts peut être ajusté.',
-        tip_start:'Départ possible de Cap d’Agde, Sète ou Marseillan.',
-        form_title:'Demande / réservation rapide',
-        form_sub:'Réponse sous 24 h avec propositions d’horaire et réservations.',
-        label_date:'Date', label_guests:'Pers.', label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
-        btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        alt_hero:'Étang de Thau — panorama de la lagune',
-        alt_g1:'Étang de Thau — sur l’eau', alt_g2:'Marseillan — tables ostréicoles', alt_g3:'Pontons et lagune'
-      }
-    };
-
-    function setText(node, v){ if(node && typeof v==='string') node.textContent=v; }
-    function setMeta(name, content, prop=false){
-      const sel = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`;
-      const el = document.querySelector(sel);
-      if(el && content) el.setAttribute('content', content);
+  const I18N = {
+    ru: {
+      meta:{ title:'LUX Étang de Thau — авторский день вокруг лагуны | Tours Languedoc by Irène',
+             desc:'LUX-программа вокруг лагуны Thau: приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat и винный финал. Без пеших прогулок.',
+             ogTitle:'LUX Étang de Thau — 1 день',
+             ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
+             locale:'ru_RU' },
+      brand_sub:'— Путешествия со вкусом',
+      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+      brand_sub_footer:'Путешествия со вкусом', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+      b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
+      hero_title:'LUX Étang de Thau — 1 день',
+      hero_sub:'Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — «relax & taste».',
+      gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
+      plan_title:'Программа дня',
+      t_1000:'Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф на понтоне.',
+      t_1030:'Приватная лодка: устричные плантации — маяк Les Onglous (вход Канала дю Миди) — возврат. Дегустация устриц с локальным белым.',
+      t_1315:'Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый/безалк. pairing.',
+      t_1510:'Maison Noilly Prat (Марсельян): визит и премиум-дегустация.',
+      t_1645:'Винный финал: La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.',
+      t_1830:'Возврат в отель. Возможен фотостоп.',
+      inc_title:'Что включено',
+      inc_transfer:'Частный трансфер на день',
+      inc_boat:'Приватная лодка 2,5–3 ч + дегустация устриц',
+      inc_noilly:'Noilly Prat — визит и дегустация (premium)',
+      inc_wine:'Приватная дегустация в La Croix Gratiot или Mas du Novi',
+      inc_guide:'Сопровождение RU/FR',
+      exc_title:'Не включено',
+      exc_lunch:'Обед в Tarbouriech (оплата на месте).',
+      exc_drinks:'Шампанское и особые напитки.',
+      exc_personal:'Личные расходы.',
+      opt_title:'Опции',
+      opt_sunset:'Продление до заката на воде с аперитивом.',
+      opt_second:'Добавить второй винный домен.',
+      opt_oyster:'Мастер-класс по устрицам.',
+      opt_vehicle:'Апгрейд транспорта (по запросу).',
+      where_title:'Где это',
+      where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
+      tips_title:'Полезно знать',
+      tip_nowalks:'Без пеших треков: короткие переходы авто ↔ понтон/залы.',
+      tip_wear:'Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.',
+      tip_weather:'Погода/ветер: порядок точек и дегустации можем корректировать.',
+      tip_start:'Старт возможен из Cap d’Agde, Sète или Marseillan.',
+      form_title:'Быстрый запрос / бронирование',
+      form_sub:'Ответим в течение дня и предложим время старта и брони.',
+      label_date:'Дата', label_guests:'Гостей', label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+      btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+      alt_hero:'Étang de Thau — панорама лагуны',
+      alt_g1:'Лагуна Thau — на воде', alt_g2:'Марсельян — устричные столы', alt_g3:'Причалы и лагуна'
+    },
+    fr: {
+      meta:{ title:'LUX Étang de Thau — journée signature autour de la lagune | Tours Languedoc by Irène',
+             desc:'Programme LUX autour de l’étang de Thau : bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat et final vins. Sans marche.',
+             ogTitle:'LUX Étang de Thau — 1 journée',
+             ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vins. Sans marche.',
+             locale:'fr_FR' },
+      brand_sub:'— Des voyages avec goût',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      brand_sub_footer:'Des voyages avec goût', nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+      b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
+      hero_title:'LUX Étang de Thau — 1 journée',
+      hero_sub:'Bateau privé sur la lagune avec dégustation d’huîtres, déjeuner chez Tarbouriech, visite Noilly Prat et final vins. Transfert hôtel. Zéro randonnée — « relax & taste ».',
+      gal_title:'À quoi ça ressemble', gal_sub:'Étang de Thau, tables ostréicoles, Tarbouriech et pontons de Marseillan.',
+      plan_title:'Programme de la journée',
+      t_1000:'Pick-up à l’hôtel (Cap d’Agde / Sète / Marseillan). Brief sur le ponton.',
+      t_1030:'Bateau privé : parcs à huîtres — phare des Onglous (entrée du canal du Midi) — retour. Dégustation d’huîtres avec blanc local.',
+      t_1315:'Déjeuner chez Tarbouriech (Maison / Le St Barth). Menu de saison ; pairing sans coquillages/sans alcool possible.',
+      t_1510:'Maison Noilly Prat (Marseillan) : visite et dégustation premium.',
+      t_1645:'Final vins : La Croix Gratiot (Picpoul) ou Mas du Novi (Languedoc). Dégustation privée.',
+      t_1830:'Retour à l’hôtel. Photo-stop possible.',
+      inc_title:'Inclus',
+      inc_transfer:'Transfert privé à la journée',
+      inc_boat:'Bateau privé 2,5–3 h + dégustation d’huîtres',
+      inc_noilly:'Noilly Prat — visite & dégustation (premium)',
+      inc_wine:'Dégustation privée à La Croix Gratiot ou Mas du Novi',
+      inc_guide:'Accompagnement RU/FR',
+      exc_title:'Non inclus',
+      exc_lunch:'Déjeuner chez Tarbouriech (règlement sur place).',
+      exc_drinks:'Champagne et boissons spéciales.',
+      exc_personal:'Dépenses personnelles.',
+      opt_title:'Options',
+      opt_sunset:'Prolonger jusqu’au coucher de soleil avec apéritif.',
+      opt_second:'Ajouter un deuxième domaine.',
+      opt_oyster:'Atelier huîtres.',
+      opt_vehicle:'Upgrade véhicule (sur demande).',
+      where_title:'Où ça se passe',
+      where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
+      tips_title:'À savoir',
+      tip_nowalks:'Sans marche : courtes distances voiture ↔ ponton/salles.',
+      tip_wear:'Tenue : coupe-vent léger, lunettes, SPF ; chaussures antidérapantes.',
+      tip_weather:'Météo/vent : l’ordre des arrêts peut être ajusté.',
+      tip_start:'Départ possible de Cap d’Agde, Sète ou Marseillan.',
+      form_title:'Demande / réservation rapide',
+      form_sub:'Réponse sous 24 h avec propositions d’horaire et réservations.',
+      label_date:'Date', label_guests:'Pers.', label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+      btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+      alt_hero:'Étang de Thau — panorama de la lagune',
+      alt_g1:'Étang de Thau — sur l’eau', alt_g2:'Marseillan — tables ostréicoles', alt_g3:'Pontons et lagune'
     }
-    function setLink(rel, href){
-      const el = document.querySelector(`link[rel="${rel}"]`);
-      if(el && href) el.setAttribute('href', href);
-    }
+  };
 
-    function applyLang(lang){
-      const L = I18N[lang] || I18N.ru;
-      const url = `${BASE_URL}${PAGE_PATH}?lang=${lang}`;
-      document.documentElement.lang = (lang==='fr') ? 'fr' : 'ru';
+  function setText(node, v){ if(node && typeof v==='string') node.textContent=v; }
+  function setMeta(name, content, prop=false){
+    const sel = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+    const el = document.querySelector(sel);
+    if(el && content) el.setAttribute('content', content);
+  }
 
-      // Мета и OG/Twitter
-      document.title = L.meta.title;
-      setMeta('description', L.meta.desc);
-      setMeta('og:title', L.meta.ogTitle, true);
-      setMeta('og:description', L.meta.ogDesc, true);
-      setMeta('og:url', url, true);
-      setMeta('og:locale', L.meta.locale, true);
-      setMeta('twitter:title', L.meta.ogTitle);
-      setMeta('twitter:description', L.meta.ogDesc);
-      setLink('canonical', url);
-      // hreflang ссылки (фиксированные, но обновим на всякий)
-      setLink('alternate[hreflang="ru"]', `${BASE_URL}${PAGE_PATH}?lang=ru`);
-      setLink('alternate[hreflang="fr"]', `${BASE_URL}${PAGE_PATH}?lang=fr`);
+  // ✅ Новый хелпер для простых <link rel="...">
+  function setRelHref(rel, href){
+    const el = document.querySelector(`link[rel="${rel}"]`);
+    if (el && href) el.setAttribute('href', href);
+  }
+  // ✅ Новый хелпер для <link rel="alternate" hreflang="..">
+  function setHreflangHref(lang, href){
+    const el = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+    if (el && href) el.setAttribute('href', href);
+  }
 
-      // Тексты по data-i18n
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if (L[key] !== undefined) setText(el, L[key]);
-      });
+  function applyLang(lang){
+    const L = I18N[lang] || I18N.ru;
+    const url = `${BASE_URL}${PAGE_PATH}?lang=${lang}`;
+    document.documentElement.lang = (lang==='fr') ? 'fr' : 'ru';
 
-      // ALT для изображений
-      const altMap = { 'alt-hero':'alt_hero', 'alt-g1':'alt_g1', 'alt-g2':'alt_g2', 'alt-g3':'alt_g3' };
-      Object.entries(altMap).forEach(([id, k])=>{
-        const el = document.getElementById(id);
-        if (el && L[k]) el.setAttribute('alt', L[k]);
-      });
+    // Мета и OG/Twitter
+    document.title = L.meta.title;
+    setMeta('description', L.meta.desc);
+    setMeta('og:title', L.meta.ogTitle, true);
+    setMeta('og:description', L.meta.ogDesc, true);
+    setMeta('og:url', url, true);
+    setMeta('og:locale', L.meta.locale, true);
+    setMeta('twitter:title', L.meta.ogTitle);
+    setMeta('twitter:description', L.meta.ogDesc);
 
-      // Кнопки RU/FR
-      document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+    // Canonical
+    setRelHref('canonical', url);
 
-      // Сохраняем и чистим URL
-      localStorage.setItem('site:lang', lang);
-      const p = new URL(location.href);
-      p.searchParams.set('lang', lang);
-      history.replaceState({}, '', p.toString());
-    }
+    // hreflang (исправлено)
+    setHreflangHref('ru', `${BASE_URL}${PAGE_PATH}?lang=ru`);
+    setHreflangHref('fr', `${BASE_URL}${PAGE_PATH}?lang=fr`);
+    // необязательно, но полезно: x-default без query
+    const xdef = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
+    if (xdef) xdef.setAttribute('href', `${BASE_URL}${PAGE_PATH}`);
 
-    (function initLang(){
-      const params = new URLSearchParams(location.search);
-      let lang = params.get('lang') || localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      applyLang(lang);
-      document.getElementById('btn-ru')?.addEventListener('click', ()=>applyLang('ru'));
-      document.getElementById('btn-fr')?.addEventListener('click', ()=>applyLang('fr'));
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 80));
-    })();
-  </script>
+    // Тексты по data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if (L[key] !== undefined) setText(el, L[key]);
+    });
+
+    // ALT для изображений
+    const altMap = { 'alt-hero':'alt_hero', 'alt-g1':'alt_g1', 'alt-g2':'alt_g2', 'alt-g3':'alt_g3' };
+    Object.entries(altMap).forEach(([id, k])=>{
+      const el = document.getElementById(id);
+      if (el && L[k]) el.setAttribute('alt', L[k]);
+    });
+
+    // Кнопки RU/FR
+    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+
+    // Сохраняем и чистим URL
+    localStorage.setItem('site:lang', lang);
+    const p = new URL(location.href);
+    p.searchParams.set('lang', lang);
+    history.replaceState({}, '', p.toString());
+  }
+
+  (function initLang(){
+    const params = new URLSearchParams(location.search);
+    let lang = params.get('lang')
+      || localStorage.getItem('site:lang')
+      || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+
+    applyLang(lang);
+    document.getElementById('btn-ru')?.addEventListener('click', ()=>applyLang('ru'));
+    document.getElementById('btn-fr')?.addEventListener('click', ()=>applyLang('fr'));
+    document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 80));
+  })();
+</script>
+
 
   <!-- CONFIG -->
   <script>
