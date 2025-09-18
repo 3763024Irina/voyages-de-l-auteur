@@ -371,11 +371,9 @@
 
       <!-- Кнопки контакта -->
       <div class="form-actions full">
-        <a class="btn primary" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="wa_btn">
-          Написать в WhatsApp
-        </a>
-        <a class="btn" data-telegram href="#" target="_blank" rel="noopener" data-i18n="tg_btn">
-          Написать в Telegram
+       <a class="btn primary" data-whatsapp ... data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+<a class="btn" data-telegram ... data-i18n="btn_telegram">Написать в Telegram</a>
+
         </a>
       </div>
     </form>
@@ -636,7 +634,7 @@
   window.CONTACT = CONTACT;
   </script>
 
-  <script>
+ <script>
   /* ---------- I18N RU/FR + ?lang= / #fr ---------- */
   const i18n = {
     ru:{ htmlLang:'ru',
@@ -649,12 +647,8 @@
       btn_book:'Забронировать', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
       gal_title:'Как это выглядит', gal_sub:'Лагуна То (Étang de Thau), катамаран HC15/16, набережная и устрицы.',
       altHero:'Мез — парус и кайтинг',
-      altG1:'Катамаран HC16 — лагуна То',
-      altG2:'Лагуна То — панорама',
-      altG3:'Bouzigues — устрицы',
-      altCat:'Катамаран HC15/16 — фото',
-      altHansa:'Hansa 303 — фото',
-      altKite:'Kitesurf — фото',
+      altG1:'Катамаран HC16 — лагуна То', altG2:'Лагуна То — панорама', altG3:'Bouzigues — устрицы',
+      altCat:'Катамаран HC15/16 — фото', altHansa:'Hansa 303 — фото', altKite:'Kitesurf — фото',
       hero_title:'Мез — парус и кайтинг • Hôtel de la Pyramide (от 7 ночей)',
       hero_sub:'3 предложения: катамаран HC15/16, Hansa 303 или кайтинг. Пакет от 7 ночей: выберите сезон и отель — цена пересчитается автоматически.',
       price_note:'Цены за 2 гостей, от 7 ночей. Включены: проживание, 5 сессий выбранной активности; для паруса — лицензии; сопровождение.',
@@ -695,12 +689,8 @@
       btn_book:'Réserver', btn_whatsapp:"Écrire sur WhatsApp", btn_telegram:"Écrire sur Telegram",
       gal_title:'À quoi ça ressemble', gal_sub:'Lagune de Thau, catamaran HC15/16, promenade et huîtres.',
       altHero:'Mèze — voile & kitesurf',
-      altG1:'Catamaran HC16 — Étang de Thau',
-      altG2:'Lagune de Thau — panorama',
-      altG3:'Bouzigues — huîtres',
-      altCat:'Catamaran HC15/16 — photo',
-      altHansa:'Hansa 303 — photo',
-      altKite:'Kitesurf — photo',
+      altG1:'Catamaran HC16 — Étang de Thau', altG2:'Lagune de Thau — panorama', altG3:'Bouzigues — huîtres',
+      altCat:'Catamaran HC15/16 — photo', altHansa:'Hansa 303 — photo', altKite:'Kitesurf — photo',
       hero_title:"Mèze — voile & kitesurf • Hôtel de la Pyramide (dès 7 nuits)",
       hero_sub:"3 offres : catamaran HC15/16, Hansa 303 ou kitesurf. Forfait dès 7 nuits : la saison et l’hôtel ajustent le prix.",
       price_note:"Prix pour 2 pers., dès 7 nuits. Inclus : hébergement, 5 séances; pour la voile — licences; accompagnement.",
@@ -732,8 +722,60 @@
       nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
     }
   };
-</script>
 
+  // ---- helpers + init ----
+  const setAlt = (id, text) => { const el=document.getElementById(id); if(el) el.setAttribute('alt', text); };
+
+  function applyLang(lang){
+    const t=i18n[lang]; if(!t) return;
+    document.documentElement.lang=t.htmlLang;
+    document.title=t.title;
+
+    const md=document.querySelector('meta[name="description"]');
+    const ogt=document.querySelector('meta[property="og:title"]');
+    const ogd=document.querySelector('meta[property="og:description"]');
+    if(md) md.setAttribute('content',t.metaDesc);
+    if(ogt) ogt.setAttribute('content',t.ogTitle);
+    if(ogd) ogd.setAttribute('content',t.ogDesc);
+
+    document.querySelectorAll('[data-i18n]').forEach(n=>{
+      const k=n.getAttribute('data-i18n');
+      if(t[k]!==undefined){
+        if (/<[a-z][\s\S]*>/i.test(t[k])) n.innerHTML=t[k];
+        else n.textContent=t[k];
+      }
+    });
+
+    setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+    setAlt('img-cat', t.altCat); setAlt('img-hansa', t.altHansa); setAlt('img-kite', t.altKite);
+
+    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+
+    localStorage.setItem('site:lang', lang);
+    // чтобы цены/подписи подхватили текущие настройки
+    if (typeof recalc === 'function') recalc();
+  }
+
+  (function initLang(){
+    const params = new URLSearchParams(location.search);
+    let initial = params.get('lang');
+    const hash = (location.hash||'').replace('#','');
+    if(!initial && (hash==='ru'||hash==='fr')) initial = hash;
+
+    const saved = localStorage.getItem('site:lang');
+    if(!initial) initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+
+    if (params.get('lang')){
+      params.delete('lang');
+      history.replaceState(null,'',location.pathname+(params.toString()?`?${params}`:'')+location.hash);
+    }
+
+    document.getElementById('btn-ru').onclick=()=>applyLang('ru');
+    document.getElementById('btn-fr').onclick=()=>applyLang('fr');
+
+    applyLang(initial);
+  })();
 
   const setAlt = (id, text) => { const el=document.getElementById(id); if(el) el.setAttribute('alt', text); };
   function applyLang(lang){
