@@ -4,12 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (от 7 ночей) | Tours Languedoc by Irène</title>
+  <!-- Canonical + OG/Twitter (absolute) -->
+  <link rel="canonical" href="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html">
+  <title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей) | Tours Languedoc by Irène</title>
   <meta name="description" content="Неделя у лагуны Thau: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей. Готовые пакеты: Базовый 1 600 €, Comfort 2 300 €, Premium 2 600 €." />
   <meta property="og:title" content="Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)" />
   <meta property="og:description" content="5 дней терм (~1h30/3h/день) + винный день и Каркасон. Пакеты и бронь." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/Balaruc-Obalia.jpg" />
+  <meta property="og:url" content="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/Balaruc-Obalia.jpg" />
+  <meta property="og:image:alt" content="Thermes de Balaruc — Étang de Thau" />
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Balaruc-les-Bains — «Hydro relaxante» + Vin & Carcassonne (7 nuits)">
+  <meta name="twitter:description" content="Mini-cure 5 jours + 2 excursions. Privé dès 2 pers.">
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/Balaruc-Obalia.jpg">
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -144,7 +152,11 @@
         <span class="badge">Thermes • Étang de Thau</span>
         <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)</h2>
         <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/3h - день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
-        <div class="actions"><a class="btn primary" href="#book" data-i18n="nav_book">Забронировать</a></div>
+        <div class="actions">
+          <a class="btn primary" href="#book" data-i18n="nav_book">Забронировать</a>
+          <a class="btn" href="tel:+33759644813">+33 7 59 64 48 13</a>
+          <a class="btn" href="mailto:contact@goutvoyage.com">contact@goutvoyage.com</a>
+        </div>
       </div>
     </div>
   </section>
@@ -255,7 +267,7 @@
         <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
         <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a class="js-telegram" href="#" data-i18n="nav_contacts_f">Написать</a></p></div>
       </div>
-      <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
+      <div class="copy" style="color:#9fb3a9; margin-top:18px">© <span id="y"></span> — Languedoc, France</div>
     </div>
   </footer>
 
@@ -282,7 +294,7 @@
       whatsapp: '33759644813',        // очистится до цифр
       telegram_user: 'de_iren',       // без @
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
@@ -307,6 +319,8 @@
           document.head.appendChild(s);
         }
       }catch(e){ console.warn(e); }
+      // автогод
+      const y=document.getElementById('y'); if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
 
@@ -384,7 +398,6 @@
       }
       if(user) safeOpen(`https://t.me/${user}`);
       else if(bot) safeOpen(`https://t.me/${bot}`);
-      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
     }
 
     function openWhatsApp(){
@@ -421,6 +434,8 @@
         metaDesc:'Неделя у лагуны То: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей.',
         ogTitle:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
         ogDesc:'5 дней терм (≈1h30/3h в день) + винный день и Каркасон. Пакеты и бронь.',
+        twTitle:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
+        twDesc:'Мини-курс 5 дней + 2 экскурсии. Приватно от 2 гостей.',
         brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
         gal_title:'Как это выглядит', gal_sub:'Thermes Balaruc, лагуна То и тёплая вода круглый год.',
@@ -456,6 +471,8 @@
         metaDesc:"Semaine sur la lagune de Thau : mini-cure Escale « Hydro relaxante » 5 jours + 2 excursions — journée vins et Carcassonne. Privé dès 2 pers.",
         ogTitle:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
         ogDesc:"5 jours de thermes (≈1h30/3h/jour) + journée vins et Carcassonne. Forfaits & réservation.",
+        twTitle:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
+        twDesc:"Mini-cure 5 jours + 2 excursions. Privé dès 2 pers.",
         brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
         gal_title:'À quoi ça ressemble', gal_sub:'Thermes de Balaruc, lagune de Thau et eau chaude toute l’année.',
@@ -489,14 +506,18 @@
 
     function apply(t){
       document.documentElement.lang = t.htmlLang || 'ru';
-      // meta + title
+      // meta + title + twitter
       if (t.title) document.title = t.title;
       const md = document.querySelector('meta[name="description"]');
       const ogt= document.querySelector('meta[property="og:title"]');
       const ogd= document.querySelector('meta[property="og:description"]');
+      const twt= document.querySelector('meta[name="twitter:title"]');
+      const twd= document.querySelector('meta[name="twitter:description"]');
       if (md && t.metaDesc) md.setAttribute('content', t.metaDesc);
       if (ogt && t.ogTitle)  ogt.setAttribute('content', t.ogTitle);
       if (ogd && t.ogDesc)   ogd.setAttribute('content', t.ogDesc);
+      if (twt && t.twTitle)  twt.setAttribute('content', t.twTitle);
+      if (twd && t.twDesc)   twd.setAttribute('content', t.twDesc);
 
       // тексты
       document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -535,6 +556,65 @@
     document.getElementById('btn-ru')?.addEventListener('click', ()=>setLang('ru'));
     document.getElementById('btn-fr')?.addEventListener('click', ()=>setLang('fr'));
   })();
+  </script>
+
+  <!-- === JSON-LD: Organization, Website, Breadcrumb, Trip, FAQ === -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://goutvoyage.com/",
+    "logo":"https://goutvoyage.com/assets/logo.png",
+    "sameAs":["https://t.me/de_iren"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://goutvoyage.com/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Программы","item":"https://goutvoyage.com/index.html#tours"},
+      {"@type":"ListItem","position":2,"name":"Balaruc — Hydro relaxante (7 ночей)","item":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TouristTrip",
+    "name":"Balaruc-les-Bains — Hydro relaxante (7 ночей)",
+    "description":"Мини-курс терм «Hydro relaxante» (5 дней) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.",
+    "touristType":["Wellness","Thermal spa"],
+    "itinerary":"Balaruc-les-Bains — Étang de Thau — Picpoul de Pinet — Carcassonne",
+    "image":["https://goutvoyage.com/assets/Balaruc-Obalia.jpg"],
+    "offers":[
+      {"@type":"Offer","name":"Базовый","price":"1600","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"},
+      {"@type":"Offer","name":"Comfort","price":"2300","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"},
+      {"@type":"Offer","name":"Premium","price":"2600","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"}
+    ],
+    "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com/"},
+    "areaServed":{"@type":"AdministrativeArea","name":"Occitanie, France"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Что входит в пакет?","acceptedAnswer":{"@type":"Answer","text":"Организация/сопровождение RU/FR, мини-курс терм «Hydro relaxante» 5 дней, бронирование дегустаций и билеты в Каркасон."}},
+      {"@type":"Question","name":"Что не включено?","acceptedAnswer":{"@type":"Answer","text":"Проживание, транспорт, питание, авиабилеты и страховка."}},
+      {"@type":"Question","name":"Со скольки гостей доступно?","acceptedAnswer":{"@type":"Answer","text":"Формат приватный — от 2 человек."}}
+    ]
+  }
   </script>
 </body>
 </html>
