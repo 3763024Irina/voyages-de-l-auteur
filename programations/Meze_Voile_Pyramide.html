@@ -8,13 +8,13 @@
   <meta name="description" content="Лагуна Thau: проживание в Мезе (от 7 ночей) и 5 сессий активности — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и отелю." />
   <meta property="og:title" content="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" />
   <meta property="og:description" content="3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически." />
- <meta property="og:image" content="https://goutvoyage.com/assets/voiles/catama1.jpg" />
-
+  <meta property="og:image" content="https://goutvoyage.com/assets/voiles/catama1.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
-<link rel="canonical" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
-<link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
-<link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html#fr">
-<link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
+
+  <link rel="canonical" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html#fr">
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -147,18 +147,18 @@
           <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
         </div>
       </a>
-        <nav class="lang">
-          <ul>
-            <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-            <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-            <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
-          </ul>
-          <div aria-label="Language switch">
-            <button id="btn-ru" class="active">RU</button>
-            <button id="btn-fr">FR</button>
-          </div>
-        </nav>
-      </div>
+      <nav class="lang" aria-label="Навигация и язык">
+        <ul>
+          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+        </ul>
+        <div aria-label="Language switch">
+          <button id="btn-ru" class="active">RU</button>
+          <button id="btn-fr">FR</button>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <!-- HERO -->
@@ -182,7 +182,7 @@
           </div>
           <div class="select">
             <span data-i18n="lbl_hotel">Отель:</span>
-            <select id="hotelSel">
+            <select id="hotelSel" aria-label="Выбор отеля">
               <option value="budget" data-i18n="h_budget">Бюджет 2–3★</option>
               <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
               <option value="four" data-i18n="h_four">4★</option>
@@ -304,81 +304,79 @@
         <li><strong data-i18n="h_pyramide">Hôtel de la Pyramide 3★</strong> — ориентир низк. сезон: <strong>1 008 €</strong> / номер <em>(с завтраками)</em></li>
         <li><strong data-i18n="h_four">4★</strong> — ориентир низк. сезон: <strong>1 337 €</strong> / номер <em>(с завтраками)</em></li>
       </ul>
-      <p class="muted">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе. Дополнительные ночи — по запросу.</p>
+      <p class="muted" data-i18n="price_note">В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе. Дополнительные ночи — по запросу.</p>
     </div>
   </section>
 
-<!-- BOOKING -->
-<section class="container" id="book">
-  <h3 class="section-title">Быстрый запрос / бронирование</h3>
-  <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
+  <!-- BOOKING -->
+  <section class="container" id="book">
+    <h3 class="section-title" data-i18n="nav_book">Быстрый запрос / бронирование</h3>
+    <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
-  <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
-    <form data-contact-form data-channel="telegram" class="fields">
-      <div>
-        <label>Дата заезда</label>
-        <input type="date" id="in-when" name="date" required>
-      </div>
-      <div>
-        <label>Гостей</label>
-        <input type="number" id="in-guests" name="guests" min="1" value="2" required>
-      </div>
+    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
+      <form data-contact-form data-channel="telegram" class="fields">
+        <div>
+          <label data-i18n="lbl_date">Дата заезда</label>
+          <input type="date" id="in-when" name="date" required>
+        </div>
+        <div>
+          <label data-i18n="lbl_guests">Гостей</label>
+          <input type="number" id="in-guests" name="guests" min="1" value="2" required>
+        </div>
 
-      <div>
-        <label>Имя</label>
-        <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
-      </div>
-      <div>
-        <label>Контакт (WhatsApp/Telegram/email)</label>
-        <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
-      </div>
+        <div>
+          <label data-i18n="lbl_name">Имя</label>
+          <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
+        </div>
+        <div>
+          <label data-i18n="lbl_contact">Контакт (WhatsApp/Telegram/email)</label>
+          <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
+        </div>
 
-      <div>
-        <label>Вид спорта</label>
-        <select id="in-sport">
-          <option value="cat">Катамаран HC15/16</option>
-          <option value="hansa">Hansa 303</option>
-          <option value="kite">Kitesurf</option>
-        </select>
-      </div>
-      <div>
-        <label>Отель</label>
-        <select id="in-hotel">
-          <option value="budget">Бюджет 2–3★</option>
-          <option value="pyramide" selected>Hôtel de la Pyramide 3★</option>
-          <option value="four">4★</option>
-        </select>
-      </div>
+        <div>
+          <label data-i18n="lbl_sport">Вид спорта</label>
+          <select id="in-sport" aria-label="Вид спорта">
+            <option value="cat" data-i18n="choose_cat_t">Катамаран HC15/16</option>
+            <option value="hansa">Hansa 303</option>
+            <option value="kite">Kitesurf</option>
+          </select>
+        </div>
+        <div>
+          <label data-i18n="lbl_hotel">Отель</label>
+          <select id="in-hotel" aria-label="Отель">
+            <option value="budget" data-i18n="h_budget">Бюджет 2–3★</option>
+            <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
+            <option value="four" data-i18n="h_four">4★</option>
+          </select>
+        </div>
 
-      <div>
-        <label>Сезон</label>
-        <select id="in-season">
-          <option value="low">Низкий</option>
-          <option value="high">Высокий</option>
-        </select>
-      </div>
+        <div>
+          <label data-i18n="lbl_season">Сезон</label>
+          <select id="in-season" aria-label="Сезон">
+            <option value="low" data-i18n="low">Низкий</option>
+            <option value="high" data-i18n="high">Высокий</option>
+          </select>
+        </div>
 
-      <div class="full">
-        <label>Комментарий</label>
-        <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
-      </div>
+        <div class="full">
+          <label data-i18n="lbl_comment">Комментарий</label>
+          <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+        </div>
 
-      <div class="full">
-        <label>Итог</label>
-        <div class="price" id="bookTotal">—</div>
-        <p class="muted" id="bookNote">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
-      </div>
+        <div class="full">
+          <label data-i18n="lbl_total">Итог</label>
+          <div class="price" id="bookTotal">—</div>
+          <p class="muted" id="bookNote" data-i18n="price_note">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
+        </div>
 
-      <!-- Кнопки контакта -->
-      <div class="form-actions full">
-       <a class="btn primary" data-whatsapp ... data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-<a class="btn" data-telegram ... data-i18n="btn_telegram">Написать в Telegram</a>
-
-        </a>
-      </div>
-    </form>
-  </div>
-</section>
+        <!-- Кнопки контакта -->
+        <div class="form-actions full" style="display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn primary" data-whatsapp href="#" aria-label="Написать в WhatsApp" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" aria-label="Написать в Telegram" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -391,251 +389,490 @@
     </div>
   </footer>
 
-  <!-- === JS: калькулятор, i18n, контакт/бот === -->
+  <!-- === JS: калькулятор цен === -->
   <script>
-  /* ---------- PRICING CORE (BB включены) ---------- */
-  const roundTo5 = n => Math.round(n/5)*5;
-  const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+    /* ---------- PRICING CORE (BB включены) ---------- */
+    const roundTo5 = n => Math.round(n/5)*5;
+    const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
-  // База и завтраки (для вычисления итогов с BB)
-  const hotels = {
-    low:  { budget: 630, pyramide: 840,  four: 1085 },
-    high: { budget: 770, pyramide: 980,  four: 1280 }
-  };
-  const breakfast = {
-    low:  { budget: 140, pyramide: 168, four: 252 },
-    high: { budget: 140, pyramide: 168, four: 252 }
-  };
-  const rent = {
-    low:  { cat:{ noPass:300, license:28 }, hansa:{ noPass:225, license:28 } },
-    high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
-  };
-  const kite = { low2p:1490, high2p:1590 };
-
-  const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
-
-  const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
-  const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
-  const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
-
-  const hotelSel = document.getElementById('hotelSel');
-  const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
-
-  const outCat   = document.getElementById('price-cat');
-  const outHansa = document.getElementById('price-hansa');
-  const outKite  = document.getElementById('price-kite');
-
-  let selectedSport = 'cat';
-  const currentSeason = () => seasonInputs.find(r=>r.checked).value;
-
-  function pricesSnapshot(){
-    const hotel = hotelSel.value;
-    const season = currentSeason();
-    return {
-      hotel, season,
-      pCat:   priceCat(hotel, season),
-      pHansa: priceHansa(hotel, season),
-      pKite:  priceKite(hotel, season)
+    // База и завтраки (для вычисления итогов с BB)
+    const hotels = {
+      low:  { budget: 630, pyramide: 840,  four: 1085 },
+      high: { budget: 770, pyramide: 980,  four: 1280 }
     };
-  }
-  function recalc(){
-    const s = pricesSnapshot();
-    outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
-    outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
-    outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
-    CONTACT.syncBookingFromControls();
-  }
-  ['change','input'].forEach(evt=>{
-    hotelSel.addEventListener(evt,recalc);
-    seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
-  });
+    const breakfast = {
+      low:  { budget: 140, pyramide: 168, four: 252 },
+      high: { budget: 140, pyramide: 168, four: 252 }
+    };
+    const rent = {
+      low:  { cat:{ noPass:300, license:28 }, hansa:{ noPass:225, license:28 } },
+      high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
+    };
+    const kite = { low2p:1490, high2p:1590 };
 
-  const sportCards = [...document.querySelectorAll('.card.selectable')];
-  sportCards.forEach(card=>{
-    card.addEventListener('click', ()=>{
-      selectedSport = card.dataset.sport;
-      sportCards.forEach(c=>c.classList.toggle('selected', c===card));
-      recalc();
-    });
-  });
-  document.querySelectorAll('.bookBtn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const sp = btn.getAttribute('data-sport');
-      if (sp) selectedSport = sp;
-      sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
-    });
-  });
+    const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
 
-  /* ---------- BOOKING FORM (экспортируем как window.CONTACT) ---------- */
-  const CONTACT = (()=> {
-    const cfg = window.APP_CONFIG || {};
-    const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
-    const digits = s => String(s||'').replace(/\D/g,'');
+    const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
+    const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
+    const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
 
-    const inWhen    = document.getElementById('in-when');
-    const inGuests  = document.getElementById('in-guests');
-    const inName    = document.getElementById('in-name');
-    const inContact = document.getElementById('in-contact');
-    const inSport   = document.getElementById('in-sport');
-    const inHotel   = document.getElementById('in-hotel');
-    const inSeason  = document.getElementById('in-season');
-    const inMsg     = document.getElementById('in-msg');
-    const bookTotal = document.getElementById('bookTotal');
+    const hotelSel = document.getElementById('hotelSel');
+    const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
 
-    function getHotelName(key){ return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key; }
-    function getSportName(key){ return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key; }
-    function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
+    const outCat   = document.getElementById('price-cat');
+    const outHansa = document.getElementById('price-hansa');
+    const outKite  = document.getElementById('price-kite');
 
-    function priceForSelection(hotelKey, season, sport){
-      if (sport==='cat')   return priceCat(hotelKey, season);
-      if (sport==='hansa') return priceHansa(hotelKey, season);
-      return priceKite(hotelKey, season);
-    }
+    let selectedSport = 'cat';
+    const currentSeason = () => seasonInputs.find(r=>r.checked).value;
 
-    function buildAutoMessage(){
-      const hotel  = inHotel.value;
-      const season = inSeason.value;
-      const sport  = inSport.value;
-      const total  = priceForSelection(hotel, season, sport);
-      const lines = [
-        `Спорт: ${getSportName(sport)}`,
-        `Отель: ${getHotelName(hotel)} • Сезон: ${getSeasonName(season)}`,
-        `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (от 7 ночей)`
-      ];
-      return lines.join('\n');
-    }
-
-    function getCtx(){
+    function pricesSnapshot(){
+      const hotel = hotelSel.value;
+      const season = currentSeason();
       return {
-        date:    (inWhen.value||'').trim(),
-        guests:  (inGuests.value||'').trim(),
-        name:    (inName.value||'').trim(),
-        contact: (inContact.value||'').trim(),
-        message: (inMsg.value||'').trim(),
-        sport:   inSport.value,
-        hotel:   inHotel.value,
-        season:  inSeason.value
+        hotel, season,
+        pCat:   priceCat(hotel, season),
+        pHansa: priceHansa(hotel, season),
+        pKite:  priceKite(hotel, season)
       };
     }
-    function validateCtx(ctx){
-      const bad = [];
-      if(!ctx.date) bad.push('Дата');
-      const g = parseInt(ctx.guests||'0',10); if(!Number.isFinite(g)||g<1) bad.push('Гостей');
-      if(!ctx.name) bad.push('Имя');
-      if(!ctx.contact) bad.push('Контакт');
-      if(!ctx.message) bad.push('Комментарий');
-      return bad;
+    function recalc(){
+      const s = pricesSnapshot();
+      outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
+      outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
+      outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
+      if (window.CONTACT && typeof window.CONTACT.syncBookingFromControls==='function'){
+        window.CONTACT.syncBookingFromControls();
+      }
     }
-    function buildText(ctx){
-      const title = (document.querySelector('[data-program-title]')?.textContent||document.title).trim();
-      const pid   = document.body.getAttribute('data-program-id') || 'PAGE';
-      const price = priceForSelection(ctx.hotel, ctx.season, ctx.sport);
+    ['change','input'].forEach(evt=>{
+      hotelSel.addEventListener(evt,recalc);
+      seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
+    });
+
+    const sportCards = [...document.querySelectorAll('.card.selectable')];
+    sportCards.forEach(card=>{
+      card.addEventListener('click', ()=>{
+        selectedSport = card.dataset.sport;
+        sportCards.forEach(c=>c.classList.toggle('selected', c===card));
+        recalc();
+      });
+    });
+    document.querySelectorAll('.bookBtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const sp = btn.getAttribute('data-sport');
+        if (sp) selectedSport = sp;
+        sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
+      });
+    });
+  </script>
+
+  <!-- === JS: контакт/бот === -->
+  <script>
+    /* ---------- BOOKING FORM (экспортируем как window.CONTACT) ---------- */
+    const CONTACT = (()=> {
+      const cfg = window.APP_CONFIG || {};
+      const isMobile = /(iPad|iPhone|iPod|Android)/i.test(navigator.userAgent);
+      const digits = s => String(s||'').replace(/\D/g,'');
+
+      const inWhen    = document.getElementById('in-when');
+      const inGuests  = document.getElementById('in-guests');
+      const inName    = document.getElementById('in-name');
+      const inContact = document.getElementById('in-contact');
+      const inSport   = document.getElementById('in-sport');
+      const inHotel   = document.getElementById('in-hotel');
+      const inSeason  = document.getElementById('in-season');
+      const inMsg     = document.getElementById('in-msg');
+      const bookTotal = document.getElementById('bookTotal');
+
+      function getHotelName(key){ return {budget:'Бюджет 2–3★', pyramide:'Hôtel de la Pyramide 3★', four:'4★'}[key] || key; }
+      function getSportName(key){ return {cat:'Катамаран HC15/16', hansa:'Hansa 303', kite:'Kitesurf'}[key] || key; }
+      function getSeasonName(key){ return key==='low' ? 'Низкий' : 'Высокий'; }
+
+      function priceForSelection(hotelKey, season, sport){
+        if (sport==='cat')   return window.priceCat(hotelKey, season);
+        if (sport==='hansa') return window.priceHansa(hotelKey, season);
+        return window.priceKite(hotelKey, season);
+      }
+
+      function buildAutoMessage(){
+        const hotel  = inHotel.value;
+        const season = inSeason.value;
+        const sport  = inSport.value;
+        const total  = priceForSelection(hotel, season, sport);
+        const lines = [
+          `Спорт: ${getSportName(sport)}`,
+          `Отель: ${getHotelName(hotel)} • Сезон: ${getSeasonName(season)}`,
+          `Ориентировочная стоимость: ${fmtEUR(total)} / 2 (от 7 ночей)`
+        ];
+        return lines.join('\n');
+      }
+
+      function getCtx(){
+        return {
+          date:    (inWhen.value||'').trim(),
+          guests:  (inGuests.value||'').trim(),
+          name:    (inName.value||'').trim(),
+          contact: (inContact.value||'').trim(),
+          message: (inMsg.value||'').trim(),
+          sport:   inSport.value,
+          hotel:   inHotel.value,
+          season:  inSeason.value
+        };
+      }
+      function validateCtx(ctx){
+        const bad = [];
+        if(!ctx.date) bad.push('Дата');
+        const g = parseInt(ctx.guests||'0',10); if(!Number.isFinite(g)||g<1) bad.push('Гостей');
+        if(!ctx.name) bad.push('Имя');
+        if(!ctx.contact) bad.push('Контакт');
+        if(!ctx.message) bad.push('Комментарий');
+        return bad;
+      }
+      function buildText(ctx){
+        const title = (document.querySelector('[data-program-title]')?.textContent||document.title).trim();
+        const pid   = document.body.getAttribute('data-program-id') || 'PAGE';
+        const price = priceForSelection(ctx.hotel, ctx.season, ctx.sport);
+        return [
+          `Здравствуйте! Меня зовут ${ctx.name}.`,
+          ctx.message,
+          `Дата: ${ctx.date}`,
+          `Гостей: ${ctx.guests}`,
+          `Спорт: ${getSportName(ctx.sport)}`,
+          `Отель: ${getHotelName(ctx.hotel)} • Сезон: ${getSeasonName(ctx.season)}`,
+          `Ориентировочная стоимость: ${fmtEUR(price)} / 2 (от 7 ночей)`,
+          `Программа: ${title} (${pid})`,
+          `Страница: ${location.href}`,
+          `Контакт: ${ctx.contact}`
+        ].join('\n');
+      }
+
+      function updateBooking(){
+        const total = priceForSelection(inHotel.value, inSeason.value, inSport.value);
+        bookTotal.textContent = fmtEUR(total) + ' / 2';
+        if (!inMsg.value) inMsg.value = buildAutoMessage();
+      }
+      function syncBookingFromControls(){
+        const seasonRadio = [...document.querySelectorAll('input[name="season"]')].find(r=>r.checked);
+        inHotel.value  = document.getElementById('hotelSel').value;
+        inSeason.value = seasonRadio ? seasonRadio.value : inSeason.value;
+        // выбранный спорт ставится из внешнего обработчика (selectedSport)
+        updateBooking();
+      }
+      ['change','input'].forEach(evt=>{
+        [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
+      });
+
+      // copy helpers
+      function legacyCopy(text){ const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(_){} document.body.removeChild(ta); }
+      async function copyText(text){ try{ if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text);} else { legacyCopy(text);} } catch(_){ legacyCopy(text); } }
+      function toast(msg){ const el=document.createElement('div'); el.textContent=msg; el.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:#0D2B1E;color:#fff;padding:8px 12px;border-radius:10px;font:500 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:10000;opacity:0;transition:opacity .2s'; document.body.appendChild(el); requestAnimationFrame(()=>el.style.opacity='1'); setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),250); },1600); }
+
+      function openDeep(deep, web){
+        if (isMobile) { location.href = deep; setTimeout(()=>{ if (document.visibilityState==='visible') window.open(web,'_blank','noopener'); },600); }
+        else { let w; try{ w=window.open(deep,'_blank'); }catch(_){ } setTimeout(()=>{ try{ if(!w||w.closed) window.open(web,'_blank','noopener'); }catch(_){ window.open(web,'_blank','noopener'); } },250); }
+      }
+
+      function openWA(text){
+        const wa = digits(cfg.whatsapp||'');
+        if(!wa){ alert('Не указан номер WhatsApp'); return; }
+        const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+        window.open(url,'_blank','noopener');
+      }
+
+      async function openTG(text, ctx){
+        const bot = (cfg.telegram_bot||'').replace(/^@/,'');
+        const user= (cfg.telegram_user||'').replace(/^@/,'');
+
+        if (bot && cfg.bot_prestart_url){
+          const payload = {
+            name:ctx.name, contact:ctx.contact, date:ctx.date, guests:ctx.guests, message:ctx.message,
+            program:{ title:(document.querySelector('[data-program-title]')?.textContent||document.title).trim(), id:(document.body.getAttribute('data-program-id')||'PAGE'), url:location.href }
+          };
+          try{
+            const r = await fetch(cfg.bot_prestart_url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
+            const j = await r.json();
+            if (!j?.ok || !j?.token) throw new Error('bad token');
+            const deep = `tg://resolve?domain=${bot}&start=${encodeURIComponent(j.token)}`;
+            const web  = `https://t.me/${bot}?start=${encodeURIComponent(j.token)}`;
+            openDeep(deep, web);
+            return;
+          }catch(e){
+            console.warn('[prestart failed]', e);
+          }
+        }
+        await copyText(text); toast('Текст заявки скопирован — вставьте в Telegram');
+        const who = (cfg.telegram_bot||cfg.telegram_user||'de_iren').replace(/^@/,'');
+        openDeep(`tg://resolve?domain=${who}`, `https://t.me/${who}`);
+      }
+
+      // submit & quick links
+      document.addEventListener('submit',(e)=>{
+        const form = e.target;
+        if(!form.matches('[data-contact-form]')) return;
+        e.preventDefault();
+        const ctx = getCtx();
+        const bad = validateCtx(ctx);
+        if (bad.length){ alert('Заполните: '+bad.join(', ')); return; }
+        const text = buildText(ctx);
+        const channel = (form.elements['channel']?.value||'telegram').toLowerCase();
+        if (channel==='whatsapp') openWA(text); else openTG(text, ctx);
+      }, true);
+
+      document.addEventListener('click',(e)=>{
+        const a = e.target.closest('a[data-whatsapp],a[data-telegram]');
+        if(!a) return;
+        e.preventDefault();
+        const ctx = getCtx();
+        const bad = validateCtx(ctx);
+        if (bad.length){ alert('Заполните: '+bad.join(', ')); return; }
+        const text = buildText(ctx);
+        if (a.matches('[data-whatsapp]')) openWA(text); else openTG(text, ctx);
+      }, true);
+
+      // начальная подстановка цены/сообщения
+      syncBookingFromControls();
+
+      return {getCtx, validateCtx, buildText, openWA, openTG, syncBookingFromControls};
+    })();
+    window.CONTACT = CONTACT;
+  </script>
+
+  <!-- ======= APP_CONFIG (единственный) ======= -->
+  <script>
+    window.APP_CONFIG = {
+      whatsapp: '+33 7 59 64 48 13',
+      telegram_user: 'de_iren',
+      telegram_bot:  'de_iren_order_bot',
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
+    };
+  </script>
+
+  <!-- Подключение твоих внешних скриптов (если нужны) -->
+  <script src="assets/js/contact.js" defer></script>
+  <script src="assets/js/chat-widget.js" defer></script>
+
+  <!-- Фикс WA/TG: обработчики без перезагрузки + резервные FAB -->
+  <script>
+  ;(function(){
+    if (window.__QUICK_CONTACT_INIT__) return; window.__QUICK_CONTACT_INIT__ = true;
+
+    const CFG = window.APP_CONFIG || {};
+    const enc = s => encodeURIComponent(String(s||'').trim());
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const $  = (s,r=document)=>r.querySelector(s);
+    const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+
+    // --- валидация ---
+    const form = $('[data-contact-form]');
+    function isFilled(el){ return !!String(el.value||'').trim(); }
+
+    function validContact(value){
+      const v = String(value||'').trim();
+      const isPhone   = digits(v).length >= 7;
+      const isTgUser  = /^@?[a-zA-Z0-9_]{5,}$/.test(v);
+      const isEmail   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      return isPhone || isTgUser || isEmail;
+    }
+
+    function markInvalid(el){
+      el.classList.add('invalid');
+      el.setAttribute('aria-invalid','true');
+      el && el.focus({preventScroll:false});
+    }
+    function clearInvalidOnInput(){
+      if(!form) return;
+      $$('input, textarea, select', form).forEach(el=>{
+        el.addEventListener('input', ()=> el.classList.remove('invalid'));
+        el.addEventListener('change', ()=> el.classList.remove('invalid'));
+      });
+    }
+
+    function validateRequired(){
+      if (!form) return false;
+      const req = [
+        form.querySelector('[name="date"]'),
+        form.querySelector('[name="guests"]'),
+        form.querySelector('[name="name"]'),
+        form.querySelector('[name="contact"]')
+      ];
+      for (const el of req){
+        if (!el || !isFilled(el)){ markInvalid(el); alert('Пожалуйста, заполните все обязательные поля.'); return false; }
+      }
+      if (!validContact(req[3].value)){ markInvalid(req[3]); alert('Контакт должен быть телефоном, @username или email.'); return false; }
+      return true;
+    }
+
+    // --- контекст + текст заявки ---
+    function pageCtx(){
+      const html = document.documentElement;
+      return {
+        url: location.href,
+        title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
+               || document.title || '',
+        programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
+               || html.getAttribute('data-program-id') || ''
+      };
+    }
+    function buildText(){
+      const get = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const ctx = pageCtx();
       return [
-        `Здравствуйте! Меня зовут ${ctx.name}.`,
-        ctx.message,
-        `Дата: ${ctx.date}`,
-        `Гостей: ${ctx.guests}`,
-        `Спорт: ${getSportName(ctx.sport)}`,
-        `Отель: ${getHotelName(ctx.hotel)} • Сезон: ${getSeasonName(ctx.season)}`,
-        `Ориентировочная стоимость: ${fmtEUR(price)} / 2 (от 7 ночей)`,
-        `Программа: ${title} (${pid})`,
-        `Страница: ${location.href}`,
-        `Контакт: ${ctx.contact}`
+        'Заявка с сайта Tours Languedoc by Irène',
+        ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
+        `Дата: ${get('date')}`,
+        `Гостей: ${get('guests')}`,
+        `Имя: ${get('name')}`,
+        `Контакт: ${get('contact')}`,
+        `Сообщение: ${get('message')||''}`,
+        `Ссылка: ${ctx.url}`
+      ].join('\n');
+    }
+    function safeOpen(href){
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 50);
+    }
+
+    // --- открытия мессенджеров (теперь с валидацией) ---
+    async function openTelegram(){
+      if (!validateRequired()) return;
+      const bot = (CFG.telegram_bot||'').replace(/^@/,'');
+      const pre = String(CFG.bot_prestart_url||'')
+                    .replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+      const user= (CFG.telegram_user||'').replace(/^@/,'');
+
+      if (bot && pre && /^https?:\/\//i.test(pre)){
+        try{
+          const res = await fetch(pre, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ text: buildText(), ...pageCtx() })
+          });
+          const data = await res.json().catch(()=>({}));
+          const tme = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
+          if (tme){ safeOpen(tme); return; }
+        }catch(e){ console.warn('[prestart] fail', e); }
+      }
+      if (user) safeOpen(`https://t.me/${user}`);
+      else if (bot) safeOpen(`https://t.me/${bot}`);
+    }
+
+    function openWhatsApp(){
+      if (!validateRequired()) return;
+      const num = digits(CFG.whatsapp || '');
+      if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
+      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+    }
+
+    // --- привязка к кнопкам + вспомогательное ---
+    function wire(){
+      clearInvalidOnInput();
+      $$('[data-whatsapp]').forEach(el=>{
+        el.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+        el.setAttribute('href','javascript:void(0)');
+      });
+      $$('[data-telegram]').forEach(el=>{
+        el.addEventListener('click', (e)=>{ e.preventDefault(); openTelegram(); });
+        el.setAttribute('href','javascript:void(0)');
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', wire, {once:true});
+    } else {
+      wire();
+    }
+  })();
+  </script>
+
+  <style>
+  /* Резервные стили FAB (если виджет не инжектнул свои) */
+  .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
+    box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
+  .chat-fab svg{width:22px; height:22px; display:block}
+  .chat-fab.wa{bottom:76px}
+  .chat-fab.tg{bottom:26px}
+  </style>
+
+  <script>
+  ;(()=> {
+    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+
+    const CFG = window.APP_CONFIG || {};
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const enc = s => encodeURIComponent(String(s||''));
+
+    function buildText(){
+      const f = document.querySelector('[data-contact-form]');
+      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
+                 || document.title || '';
+      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
+                 || document.documentElement.getAttribute('data-program-id') || '';
+      return [
+        'Заявка с сайта Tours Languedoc by Irène',
+        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+        `Дата: ${get('date')||'-'}`,
+        `Гостей: ${get('guests')||'-'}`,
+        `Имя: ${get('name')||'-'}`,
+        `Контакт: ${get('contact')||'-'}`,
+        `Сообщение: ${get('message')||'-'}`,
+        `Ссылка: ${location.href}`
       ].join('\n');
     }
 
-    function updateBooking(){
-      const total = priceForSelection(inHotel.value, inSeason.value, inSport.value);
-      bookTotal.textContent = fmtEUR(total) + ' / 2';
-      if (!inMsg.value) inMsg.value = buildAutoMessage();
+    function safeOpen(href){
+      const a=document.createElement('a');
+      a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
+      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
     }
-    function syncBookingFromControls(){
-      inHotel.value  = document.getElementById('hotelSel').value;
-      inSeason.value = [...document.querySelectorAll('input[name="season"]')].find(r=>r.checked).value;
-      inSport.value  = selectedSport;
-      updateBooking();
-    }
-    ['change','input'].forEach(evt=>{
-      [inWhen,inGuests,inName,inContact,inSport,inHotel,inSeason,inMsg].forEach(el=>el.addEventListener(evt, updateBooking));
-    });
-
-    // copy helpers
-    function legacyCopy(text){ const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.top='-9999px'; document.body.appendChild(ta); ta.select(); try{document.execCommand('copy');}catch(_){} document.body.removeChild(ta); }
-    async function copyText(text){ try{ if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(text);} else { legacyCopy(text);} } catch(_){ legacyCopy(text); } }
-    function toast(msg){ const el=document.createElement('div'); el.textContent=msg; el.style.cssText='position:fixed;left:50%;transform:translateX(-50%);bottom:120px;background:#0D2B1E;color:#fff;padding:8px 12px;border-radius:10px;font:500 13px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 25px rgba(0,0,0,.2);z-index:10000;opacity:0;transition:opacity .2s'; document.body.appendChild(el); requestAnimationFrame(()=>el.style.opacity='1'); setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),250); },1600); }
-
-    function openDeep(deep, web){
-      if (isMobile) { location.href = deep; setTimeout(()=>{ if (document.visibilityState==='visible') window.open(web,'_blank','noopener'); },600); }
-      else { let w; try{ w=window.open(deep,'_blank'); }catch(_){ } setTimeout(()=>{ try{ if(!w||w.closed) window.open(web,'_blank','noopener'); }catch(_){ window.open(web,'_blank','noopener'); } },250); }
-    }
-
-    function openWA(text){
-      const wa = digits(cfg.whatsapp||'');
-      if(!wa){ alert('Не указан номер WhatsApp'); return; }
-      const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
-      window.open(url,'_blank','noopener');
-    }
-
-    async function openTG(text, ctx){
-      const bot = (cfg.telegram_bot||'').replace(/^@/,'');
-      const user= (cfg.telegram_user||'').replace(/^@/,'');
-
-      if (bot && cfg.bot_prestart_url){
-        const payload = {
-          name:ctx.name, contact:ctx.contact, date:ctx.date, guests:ctx.guests, message:ctx.message,
-          program:{ title:(document.querySelector('[data-program-title]')?.textContent||document.title).trim(), id:(document.body.getAttribute('data-program-id')||'PAGE'), url:location.href }
-        };
-        try{
-          const r = await fetch(cfg.bot_prestart_url, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)});
-          const j = await r.json();
-          if (!j?.ok || !j?.token) throw new Error('bad token');
-          const deep = `tg://resolve?domain=${bot}&start=${encodeURIComponent(j.token)}`;
-          const web  = `https://t.me/${bot}?start=${encodeURIComponent(j.token)}`;
-          openDeep(deep, web);
-          return;
-        }catch(e){
-          console.warn('[prestart failed]', e);
+    async function openTelegram(){
+      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+      const user = (CFG.telegram_user||'').replace(/^@/,'');
+      const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+      try{
+        if (bot && /^https?:\/\//i.test(pre)){
+          const r = await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ text: buildText() })});
+          const j = await r.json().catch(()=>({}));
+          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+          if (tme){ safeOpen(tme); return; }
         }
-      }
-      await copyText(text); toast('Текст заявки скопирован — вставьте в Telegram');
-      const who = (cfg.telegram_bot||cfg.telegram_user||'de_iren').replace(/^@/,'');
-      openDeep(`tg://resolve?domain=${who}`, `https://t.me/${who}`);
+      }catch(e){}
+      if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
+    }
+    function openWhatsApp(){
+      const num = digits(CFG.whatsapp || '');
+      if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
+      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
     }
 
-    // submit & quick links
-    document.addEventListener('submit',(e)=>{
-      const form = e.target;
-      if(!form.matches('[data-contact-form]')) return;
-      e.preventDefault();
-      const ctx = getCtx();
-      const bad = validateCtx(ctx);
-      if (bad.length){ alert('Заполните: '+bad.join(', ')); return; }
-      const text = buildText(ctx);
-      const channel = (form.elements['channel']?.value||'telegram').toLowerCase();
-      if (channel==='whatsapp') openWA(text); else openTG(text, ctx);
-    }, true);
+    function ensureFAB(){
+      if (document.querySelector('.chat-fab.tg') || document.querySelector('.chat-fab.wa')) return;
 
-    document.addEventListener('click',(e)=>{
-      const a = e.target.closest('a[data-whatsapp],a[data-telegram]');
-      if(!a) return;
-      e.preventDefault();
-      const ctx = getCtx();
-      const bad = validateCtx(ctx);
-      if (bad.length){ alert('Заполните: '+bad.join(', ')); return; }
-      const text = buildText(ctx);
-      if (a.matches('[data-whatsapp]')) openWA(text); else openTG(text, ctx);
-    }, true);
+      const btnWA = document.createElement('button');
+      btnWA.className = 'chat-fab wa';
+      btnWA.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>';
+      btnWA.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
+      document.body.appendChild(btnWA);
 
-    // начальная подстановка цены/сообщения
-    syncBookingFromControls();
+      const btnTG = document.createElement('button');
+      btnTG.className = 'chat-fab tg';
+      btnTG.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>';
+      btnTG.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
+      document.body.appendChild(btnTG);
+    }
 
-    return {getCtx, validateCtx, buildText, openWA, openTG, syncBookingFromControls};
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', ensureFAB, {once:true});
+    } else {
+      ensureFAB();
+    }
   })();
-  window.CONTACT = CONTACT;
   </script>
 
- <script>
-  /* ---------- I18N RU/FR + ?lang= / #fr ---------- */
+  <!-- ==== I18N RU/FR (единый блок) ==== -->
+  <script>
   const i18n = {
     ru:{ htmlLang:'ru',
       title:'Мез — парус и кайтинг во Франции: катамаран HC15/16, Hansa 303 и кайт | Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène',
@@ -678,6 +915,7 @@
       h_budget:'Бюджет 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
       lbl_season:'Сезон:', low:'Низкий', high:'Высокий', lbl_hotel:'Отель:',
       nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+      lbl_date:'Дата заезда', lbl_guests:'Гостей', lbl_name:'Имя', lbl_contact:'Контакт (WhatsApp/Telegram/email)', lbl_sport:'Вид спорта', lbl_total:'Итог', lbl_comment:'Комментарий'
     },
     fr:{ htmlLang:'fr',
       title:"Mèze — voile & kitesurf en France : catamaran HC15/16, Hansa 303 et kite | Hôtel de la Pyramide (dès 7 nuits) | Tours Languedoc by Irène",
@@ -701,350 +939,4 @@
       t_d3:"Séance ~2–3 h. Soirée promenade à Mèze / Bouzigues.",
       t_d4:"Séance ~2–3 h. En option : SUP/kayak.",
       t_d5:"Séance ~2–3 h. En option : kite/wing.",
-      t_d6:"Séance ~2–3 h. Soirée à Sète/Marseillan.",
-      t_d7:"Journée libre : marché, huîtres, plage.",
-      t_d8:"Petit-déj., check-out avant 11h.",
-      inc_title:'Inclus (BASE)', inc_hotel:"Hébergement dès 7 nuits (hôtel choisi) — petits déj. inclus",
-      inc_course:'Activité 5 jours (catamaran/Hansa — location 2 h/jour; kite — stage 4 h/jour)',
-      inc_license:'Pour la voile : licence FFVoile 14 € × 2',
-      choose_title:'Choisissez votre sport', choose_sub:'Les prix ci-dessous sont pour le forfait de base (dès 7 nuits) et dépendent de vos réglages. Montants pour 2 personnes.',
-      choose_cat_t:'Catamaran HC15/16', choose_cat_d:'Location 5× 2 h (2 pers.).',
-      choose_hansa_d:'Location 5× 2 h (1–2 pers.).',
-      choose_kite_d:"Stage 5 jours (4 h/jour) à l'école Fil d’Air. Tarif selon saison.",
-      where_title:'Où ça se passe', where_sub:'Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.',
-      tips_title:'À savoir', tip_gear:'Veste coupe-vent, chaussures fermées, casquette, SPF, eau.',
-      tip_slots:'Créneau adulte ~2–3 h. Horaire confirmé par le club (météo).',
-      tip_level:'Pour la location : niveau FFVoile 3; mineurs accompagnés.',
-      brief_title:'En bref', brief_sub:'Dès 7 nuits • 2–6 pers. • base : Mèze, Étang de Thau.',
-      brief_hotel_t:'🏨 Hôtels',
-      h_budget:'Économique 2–3★', h_pyramide:'Hôtel de la Pyramide 3★', h_four:'4★',
-      lbl_season:'Saison :', low:'Basse', high:'Haute', lbl_hotel:'Hôtel :',
-      nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
-    }
-  };
-
-  // ---- helpers + init ----
-  const setAlt = (id, text) => { const el=document.getElementById(id); if(el) el.setAttribute('alt', text); };
-
-  function applyLang(lang){
-    const t=i18n[lang]; if(!t) return;
-    document.documentElement.lang=t.htmlLang;
-    document.title=t.title;
-
-    const md=document.querySelector('meta[name="description"]');
-    const ogt=document.querySelector('meta[property="og:title"]');
-    const ogd=document.querySelector('meta[property="og:description"]');
-    if(md) md.setAttribute('content',t.metaDesc);
-    if(ogt) ogt.setAttribute('content',t.ogTitle);
-    if(ogd) ogd.setAttribute('content',t.ogDesc);
-
-    document.querySelectorAll('[data-i18n]').forEach(n=>{
-      const k=n.getAttribute('data-i18n');
-      if(t[k]!==undefined){
-        if (/<[a-z][\s\S]*>/i.test(t[k])) n.innerHTML=t[k];
-        else n.textContent=t[k];
-      }
-    });
-
-    setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
-    setAlt('img-cat', t.altCat); setAlt('img-hansa', t.altHansa); setAlt('img-kite', t.altKite);
-
-    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
-    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
-
-    localStorage.setItem('site:lang', lang);
-    // чтобы цены/подписи подхватили текущие настройки
-    if (typeof recalc === 'function') recalc();
-  }
-
-  (function initLang(){
-    const params = new URLSearchParams(location.search);
-    let initial = params.get('lang');
-    const hash = (location.hash||'').replace('#','');
-    if(!initial && (hash==='ru'||hash==='fr')) initial = hash;
-
-    const saved = localStorage.getItem('site:lang');
-    if(!initial) initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-
-    if (params.get('lang')){
-      params.delete('lang');
-      history.replaceState(null,'',location.pathname+(params.toString()?`?${params}`:'')+location.hash);
-    }
-
-    document.getElementById('btn-ru').onclick=()=>applyLang('ru');
-    document.getElementById('btn-fr').onclick=()=>applyLang('fr');
-
-    applyLang(initial);
-  })();
-
-  const setAlt = (id, text) => { const el=document.getElementById(id); if(el) el.setAttribute('alt', text); };
-  function applyLang(lang){
-    const t=i18n[lang]; if(!t) return;
-    document.documentElement.lang=t.htmlLang; document.title=t.title;
-    const md=document.querySelector('meta[name="description"]');
-    const ogt=document.querySelector('meta[property="og:title"]');
-    const ogd=document.querySelector('meta[property="og:description"]');
-    if(md) md.setAttribute('content',t.metaDesc);
-    if(ogt) ogt.setAttribute('content',t.ogTitle);
-    if(ogd) ogd.setAttribute('content',t.ogDesc);
-    document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!==undefined){ if (/<[a-z][\s\S]*>/i.test(t[k])) n.innerHTML=t[k]; else n.textContent=t[k]; }});
-    setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
-    setAlt('img-cat', t.altCat); setAlt('img-hansa', t.altHansa); setAlt('img-kite', t.altKite);
-    document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
-    document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
-    localStorage.setItem('site:lang', lang);
-    recalc();
-  }
-  (function initLang(){
-    const params = new URLSearchParams(location.search);
-    let initial = params.get('lang');
-    const hash = (location.hash||'').replace('#','');
-    if(!initial && (hash==='ru'||hash==='fr')) initial = hash;
-    const saved = localStorage.getItem('site:lang');
-    if(!initial) initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-    if (params.get('lang')){ params.delete('lang'); history.replaceState(null,'',location.pathname+(params.toString()?`?${params}`:'')+location.hash); }
-    document.getElementById('btn-ru').onclick=()=>applyLang('ru');
-    document.getElementById('btn-fr').onclick=()=>applyLang('fr');
-    applyLang(initial);
-  })();
-  </script>
-
-   <!-- ======= APP_CONFIG (единственный) ======= -->
-  <script>
-    window.APP_CONFIG = {
-      whatsapp: '+33 7 59 64 48 13',
-      
-      telegram_user: 'de_iren',
-      telegram_bot:  'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-    };
-  </script>
-
-  <!-- Подключение скриптов -->
-  <script src="assets/js/contact.js" defer></script>
-<script src="assets/js/chat-widget.js" defer></script>
-
-
-  <!-- Фикс WA/TG: обработчики без перезагрузки + резервные FAB -->
- <script>
-;(function(){
-  if (window.__QUICK_CONTACT_INIT__) return; window.__QUICK_CONTACT_INIT__ = true;
-
-  const CFG = window.APP_CONFIG || {};
-  const enc = s => encodeURIComponent(String(s||'').trim());
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const $  = (s,r=document)=>r.querySelector(s);
-  const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
-
-  // --- валидация ---
-  const form = $('[data-contact-form]');
-  function isFilled(el){ return !!String(el.value||'').trim(); }
-
-  function validContact(value){
-    const v = String(value||'').trim();
-    // допускаем: телефон, @username, email
-    const isPhone   = digits(v).length >= 7;
-    const isTgUser  = /^@?[a-zA-Z0-9_]{5,}$/.test(v);
-    const isEmail   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-    return isPhone || isTgUser || isEmail;
-  }
-
-  function markInvalid(el){
-    el.classList.add('invalid');
-    el.setAttribute('aria-invalid','true');
-    el.focus({preventScroll:false});
-  }
-  function clearInvalidOnInput(){
-    $$('input, textarea, select', form).forEach(el=>{
-      el.addEventListener('input', ()=> el.classList.remove('invalid'));
-      el.addEventListener('change', ()=> el.classList.remove('invalid'));
-    });
-  }
-
-  function validateRequired(){
-    if (!form) return false;
-    const req = [
-      form.querySelector('[name="date"]'),
-      form.querySelector('[name="guests"]'),
-      form.querySelector('[name="name"]'),
-      form.querySelector('[name="contact"]')
-    ];
-    for (const el of req){
-      if (!el || !isFilled(el)){ markInvalid(el); alert('Пожалуйста, заполните все обязательные поля.'); return false; }
-    }
-    if (!validContact(req[3].value)){ markInvalid(req[3]); alert('Контакт должен быть телефоном, @username или email.'); return false; }
-    return true;
-  }
-
-  // --- контекст + текст заявки ---
-  function pageCtx(){
-    const html = document.documentElement;
-    return {
-      url: location.href,
-      title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-             || document.title || '',
-      programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-             || html.getAttribute('data-program-id') || ''
-    };
-  }
-  function buildText(){
-    const get = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const ctx = pageCtx();
-    return [
-      'Заявка с сайта Tours Languedoc by Irène',
-      ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      `Дата: ${get('date')}`,
-      `Гостей: ${get('guests')}`,
-      `Имя: ${get('name')}`,
-      `Контакт: ${get('contact')}`,
-      `Сообщение: ${get('message')||''}`,
-      `Ссылка: ${ctx.url}`
-    ].join('\n');
-  }
-  function safeOpen(href){
-    const a = document.createElement('a');
-    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 50);
-  }
-
-  // --- открытия мессенджеров (теперь с валидацией) ---
-  async function openTelegram(){
-    if (!validateRequired()) return;                         // <-- главное
-    const bot = (CFG.telegram_bot||'').replace(/^@/,'');
-    const pre = String(CFG.bot_prestart_url||'')
-                  .replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-    const user= (CFG.telegram_user||'').replace(/^@/,'');
-
-    if (bot && pre && /^https?:\/\//i.test(pre)){
-      try{
-        const res = await fetch(pre, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ text: buildText(), ...pageCtx() })
-        });
-        const data = await res.json().catch(()=>({}));
-        const tme = data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
-        if (tme){ safeOpen(tme); return; }
-      }catch(e){ console.warn('[prestart] fail', e); }
-    }
-    if (user) safeOpen(`https://t.me/${user}`);
-    else if (bot) safeOpen(`https://t.me/${bot}`);
-  }
-
-  function openWhatsApp(){
-    if (!validateRequired()) return;                         // <-- и здесь
-    const num = digits(CFG.whatsapp || '');
-    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
-    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-  }
-
-  // --- привязка к кнопкам + вспомогательное ---
-  function wire(){
-    clearInvalidOnInput();
-    $$('[data-whatsapp]').forEach(el=>{
-      el.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
-      el.setAttribute('href','javascript:void(0)');
-    });
-    $$('[data-telegram]').forEach(el=>{
-      el.addEventListener('click', (e)=>{ e.preventDefault(); openTelegram(); });
-      el.setAttribute('href','javascript:void(0)');
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', wire, {once:true});
-  } else {
-    wire();
-  }
-})();
-</script>
-
-<style>
-/* Резервные стили FAB (если виджет не инжектнул свои) */
-.chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px;
-  box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; background:#fff; display:grid; place-items:center}
-.chat-fab svg{width:22px; height:22px; display:block}
-.chat-fab.wa{bottom:76px}
-.chat-fab.tg{bottom:26px}
-</style>
-
-<script>
-;(()=> {
-  if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
-
-  const CFG = window.APP_CONFIG || {};
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const enc = s => encodeURIComponent(String(s||''));
-
-  function buildText(){
-    const f = document.querySelector('[data-contact-form]');
-    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-               || document.title || '';
-    const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-               || document.documentElement.getAttribute('data-program-id') || '';
-    return [
-      'Заявка с сайта Tours Languedoc by Irène',
-      pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-      `Дата: ${get('date')||'-'}`,
-      `Гостей: ${get('guests')||'-'}`,
-      `Имя: ${get('name')||'-'}`,
-      `Контакт: ${get('contact')||'-'}`,
-      `Сообщение: ${get('message')||'-'}`,
-      `Ссылка: ${location.href}`
-    ].join('\n');
-  }
-
-  function safeOpen(href){
-    const a=document.createElement('a');
-    a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
-    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
-  }
-  async function openTelegram(){
-    const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-    const user = (CFG.telegram_user||'').replace(/^@/,'');
-    const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-    if (bot && /^https?:\/\//i.test(pre)){
-      try{
-        const r = await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ text: buildText() })});
-        const j = await r.json().catch(()=>({}));
-        const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-        if (tme){ safeOpen(tme); return; }
-      }catch(e){}
-    }
-    if (user) safeOpen(`https://t.me/${user}`); else if (bot) safeOpen(`https://t.me/${bot}`);
-  }
-  function openWhatsApp(){
-    const num = digits(CFG.whatsapp || '');
-    if (!num){ alert('Не задан номер WhatsApp в APP_CONFIG'); return; }
-    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-  }
-
-  function ensureFAB(){
-    // если виджет уже отрисовал свои кнопки — ничего не делаем
-    if (document.querySelector('.chat-fab.tg') || document.querySelector('.chat-fab.wa')) return;
-
-    const btnWA = document.createElement('button');
-    btnWA.className = 'chat-fab wa';
-    btnWA.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>';
-    btnWA.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
-    document.body.appendChild(btnWA);
-
-    const btnTG = document.createElement('button');
-    btnTG.className = 'chat-fab tg';
-    btnTG.innerHTML = '<svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>';
-    btnTG.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); });
-    document.body.appendChild(btnTG);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', ensureFAB, {once:true});
-  } else {
-    ensureFAB();
-  }
-})();
-</script>
-
-
-</body>
-</html>
+      t_d6:"Séance ~2–3 h. Soirée à Sète/
