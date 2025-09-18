@@ -36,7 +36,7 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* HERO (как в PSL) */
+    /* HERO */
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
@@ -115,14 +115,14 @@
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную" id="brandHome">
         <div class="logo" aria-hidden>Î</div>
-        <div><h1>Tours Languedoc by Irène <small>— Путешествия со вкусом</small></h1></div>
+        <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
 
       <nav class="lang">
         <ul>
-          <li><a href="../index.html#tours">← Все программы</a></li>
-          <li><a href="../index.html#why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
+          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
         </ul>
 
         <div aria-label="Language switch">
@@ -136,114 +136,113 @@
   <!-- HERO -->
   <section class="hero" data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
     <div class="bg">
-      <img src="../assets/Balaruc-Obalia.jpg" alt="Balaruc-les-Bains — термы" />
+      <img src="../assets/Balaruc-Obalia.jpg" data-i18n-attr="alt:altHero" alt="Balaruc-les-Bains — термы" />
       <div class="overlay"></div>
     </div>
     <div class="container inner">
       <div>
         <span class="badge">Thermes • Étang de Thau</span>
-        <h2 class="title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)</h2>
-        <p class="subtitle">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/3h - день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
-        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
+        <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)</h2>
+        <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/3h - день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
+        <div class="actions"><a class="btn primary" href="#book" data-i18n="nav_book">Забронировать</a></div>
       </div>
     </div>
   </section>
 
   <!-- GALLERY -->
   <section class="container">
-    <h3 class="section-title">Как это выглядит</h3>
-    <p class="section-sub">Thermes Balaruc, лагуна Thau и тёплая вода круглый год.</p>
+    <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
+    <p class="section-sub" data-i18n="gal_sub">Thermes Balaruc, лагуна Thau и тёплая вода круглый год.</p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/353A6169-1.jpg" alt="Thermes — интерьер" loading="lazy"></div>
-      <div class="ph"><img src="../assets/THERMES DE BALARUC LES BAINS ©E.JONDREVILLE_06.jpg" alt="Thermes — бассейн" loading="lazy"></div>
-      <div class="ph"><img src="../assets/je-prepare-ma-cure-a-balaruc-les-bains-10110660-11542930.jpg" alt="Подготовка к курсу" loading="lazy"></div>
+      <div class="ph"><img src="../assets/353A6169-1.jpg" loading="lazy" data-i18n-attr="alt:altG1" alt="Thermes — интерьер"></div>
+      <div class="ph"><img src="../assets/THERMES DE BALARUC LES BAINS ©E.JONDREVILLE_06.jpg" loading="lazy" data-i18n-attr="alt:altG2" alt="Thermes — бассейн"></div>
+      <div class="ph"><img src="../assets/je-prepare-ma-cure-a-balaruc-les-bains-10110660-11542930.jpg" loading="lazy" data-i18n-attr="alt:altG3" alt="Подготовка к курсу"></div>
     </div>
   </section>
 
   <!-- DETAILS + WHERE -->
   <section class="container info-grid">
     <article class="card">
-      <h3 class="section-title">Программа по дням</h3>
+      <h3 class="section-title" data-i18n="plan_title">Программа по дням</h3>
       <ul class="timeline">
-        <li><span class="time">День 1</span> — Прилет/заезд (MPL/Béziers/Sète), чек-ин. Вечер у лагуны Thau: устрицы + Picpoul.</li>
-        <li><span class="time">День 2</span> — Утро: Escale «Hydro relaxante» (≈1h30). После обеда — свободно.</li>
-        <li><span class="time">День 3</span> — Утро: Escale «Hydro relaxante». После обеда — свободно.</li>
-        <li><span class="time">День 4</span> — <strong>Винный день</strong>: Picpoul de Pinet (La Croix Gratiot) + grand domaine (Mas du Novi или Daumas Gassac). Ланч по желанию.</li>
-        <li><span class="time">День 5</span> — Утро: Escale «Hydro relaxante». Свободное время у лагуны.</li>
-        <li><span class="time">День 6</span> — <strong>Каркасон</strong> (полный день): Cité, Château Comtal, стены. При желании — кафе в Бастиде.</li>
-        <li><span class="time">День 7</span> — Утро: последний блок «Hydro relaxante». Чек-аут, выезд.</li>
+        <li><span class="time" data-i18n="d1">День 1</span> — <span data-i18n="t_d1">Прилет/заезд, чек-ин. Закат у лагуны То: устрицы + Picpoul.</span></li>
+        <li><span class="time" data-i18n="d2">День 2</span> — <span data-i18n="t_d2">Утро: Escale «Hydro relaxante» (≈1h30). После — свободно.</span></li>
+        <li><span class="time" data-i18n="d3">День 3</span> — <span data-i18n="t_d3">Утро: Escale «Hydro relaxante». После — свободно.</span></li>
+        <li><span class="time" data-i18n="d4">День 4</span> — <span data-i18n="t_d4">Винный день: Picpoul de Pinet + grand domaine. Ланч по желанию.</span></li>
+        <li><span class="time" data-i18n="d5">День 5</span> — <span data-i18n="t_d5">Утро: Escale «Hydro relaxante». Свободное время.</span></li>
+        <li><span class="time" data-i18n="d6">День 6</span> — <span data-i18n="t_d6">Каркасон на день: Cité, Château Comtal, стены; Бастида по желанию.</span></li>
+        <li><span class="time" data-i18n="d7">День 7</span> — <span data-i18n="t_d7">Утро: заключительный блок «Hydro relaxante». Чек-аут.</span></li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px">Что включено</h3>
+      <h3 class="section-title" style="margin-top:24px" data-i18n="inc_title">Что включено</h3>
       <div class="inc-grid">
-        <div class="pill">Организация и сопровождение RU/FR (2 дня экскурсий)</div>
-        <div class="pill">Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей</div>
-        <div class="pill">Экскурсии: Винный день и Каркасон (бронирования дегустаций и билеты)</div>
+        <div class="pill" data-i18n="inc1">Организация и сопровождение RU/FR (2 дня экскурсий)</div>
+        <div class="pill" data-i18n="inc2">Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей</div>
+        <div class="pill" data-i18n="inc3">Экскурсии: Винный день и Каркасон (бронь дегустаций/билеты)</div>
       </div>
 
-      <h3 class="section-title" style="margin-top:24px">Не включено</h3>
+      <h3 class="section-title" style="margin-top:24px" data-i18n="exc_title">Не включено</h3>
       <ul class="list">
-        <li>Проживание (см. пакеты ниже)</li>
-        <li>Транспорт (аренда авто/водитель)</li>
-        <li>Питание и личные расходы</li>
-        <li>Авиабилеты/страховка</li>
+        <li data-i18n="exc1">Проживание</li>
+        <li data-i18n="exc2">Транспорт (аренда авто/водитель)</li>
+        <li data-i18n="exc3">Питание и личные расходы</li>
+        <li data-i18n="exc4">Авиабилеты и страховка</li>
       </ul>
 
-      <h3 class="section-title" style="margin-top:24px">Опции</h3>
+      <h3 class="section-title" style="margin-top:24px" data-i18n="opt_title">Опции</h3>
       <ul class="list">
-        <li>Частные трансферы: MPL/BZR/MRS ↔ Balaruc — по запросу</li>
-        <li>Приватная лодка/устрицы на лагуне Thau — по запросу</li>
+        <li data-i18n="opt1">Частные трансферы MPL/BZR/MRS ↔ Balaruc</li>
+        <li data-i18n="opt2">Приватная лодка/устрицы на лагуне То</li>
       </ul>
     </article>
 
     <aside class="card">
-      <h3 class="section-title">Где это</h3>
-      <p class="section-sub">Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.</p>
+      <h3 class="section-title" data-i18n="where_title">Где это</h3>
+      <p class="section-sub" data-i18n="where_sub">Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.</p>
       <div class="ph" style="margin-bottom:10px">
-        <img src="../assets/Balaruc-Obalia.jpg" alt="Balaruc — панорама" loading="lazy" style="width:100%; border-radius:18px">
+        <img src="../assets/Balaruc-Obalia.jpg" loading="lazy" style="width:100%; border-radius:18px" data-i18n-attr="alt:altHero" alt="Balaruc-les-Bains — термы">
       </div>
 
       <div class="mapwrap" style="border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid #eee">
-        <iframe title="Карта: Balaruc-les-Bains" src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:380px; border:0"></iframe>
+        <iframe title="Карта: Balaruc-les-Bains" data-i18n-attr="title:map_title" src="https://www.google.com/maps?q=Balaruc-les-Bains%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:380px; border:0"></iframe>
       </div>
     </aside>
   </section>
 
-
   <!-- BOOK -->
   <section id="book" class="container">
     <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
-      <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
+      <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="book_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
 
       <form class="fields" data-contact-form novalidate onsubmit="return false;">
         <div>
-          <label for="when">Дата</label>
+          <label for="when" data-i18n="lbl_date">Дата</label>
           <input id="when" name="date" type="date" required>
         </div>
         <div>
-          <label for="guests">Гостей</label>
+          <label for="guests" data-i18n="lbl_guests">Гостей</label>
           <input id="guests" name="guests" type="number" min="2" value="2" required>
         </div>
 
         <div class="full">
-          <label for="name">Имя</label>
+          <label for="name" data-i18n="lbl_name">Имя</label>
           <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
 
         <div class="full">
-          <label for="contact">Контакт (WhatsApp/Telegram)</label>
+          <label for="contact" data-i18n="lbl_contact">Контакт (WhatsApp/Telegram)</label>
           <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
         </div>
 
         <div class="full">
-          <label for="msg">Сообщение</label>
+          <label for="msg" data-i18n="lbl_msg">Сообщение</label>
           <textarea id="msg" name="message" placeholder="Пакет (Базовый/Comfort/Premium), пожелания по датам, примечания"></textarea>
         </div>
 
         <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
+          <a class="btn" data-whatsapp href="#" data-i18n="btn_whatsapp">Отправить в WhatsApp</a>
+          <a class="btn primary" data-telegram href="#" data-i18n="btn_telegram">Отправить в Telegram</a>
         </div>
       </form>
     </div>
@@ -252,11 +251,11 @@
   <footer>
     <div class="container">
       <div class="footgrid">
-        <div><strong>Tours Languedoc by Irène</strong><p>Путешествия со вкусом</p></div>
-        <div><p><a href="../index.html#why">Почему с нами</a></p><p><a href="../index.html#tours">Программы</a></p></div>
-        <div><p><a href="../index.html#format">Формат</a></p><p><a class="js-telegram" href="#">Написать</a></p></div>
+        <div><strong>Tours Languedoc by Irène</strong><p data-i18n="brand_sub_footer">Путешествия со вкусом</p></div>
+        <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
+        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a class="js-telegram" href="#" data-i18n="nav_contacts_f">Написать</a></p></div>
       </div>
-      <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2023 — Languedoc, France</div>
+      <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
   </footer>
 
@@ -287,9 +286,6 @@
       ADMIN_SECRET: 'capion2025'
     };
   </script>
-
-  <!-- ВАЖНО: не подключаем внешние виджеты, которые создают свои FAB -->
-  <!-- <script src="../assets/js/chat-widget.js" defer></script> -->
 
   <!-- Admin gate -->
   <script>
@@ -412,6 +408,132 @@
     if (document.readyState === 'loading'){
       document.addEventListener('DOMContentLoaded', bind, {once:true});
     } else { bind(); }
+  })();
+  </script>
+
+  <!-- === I18N RU/FR (+ ?lang= & #fr) === -->
+  <script>
+  (() => {
+    const i18n = {
+      ru: {
+        htmlLang:'ru',
+        title:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей) | Tours Languedoc by Irène',
+        metaDesc:'Неделя у лагуны То: 5 дней мини-курса Escale «Hydro relaxante» + 2 экскурсии — винный день и Каркасон. Приватно от 2 гостей.',
+        ogTitle:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
+        ogDesc:'5 дней терм (≈1h30/3h в день) + винный день и Каркасон. Пакеты и бронь.',
+        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+        gal_title:'Как это выглядит', gal_sub:'Thermes Balaruc, лагуна То и тёплая вода круглый год.',
+        altHero:'Balaruc-les-Bains — термы',
+        altG1:'Thermes — интерьер', altG2:'Thermes — бассейн', altG3:'Подготовка к курсу',
+        hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
+        hero_sub:'5 дней Escale «Hydro relaxante» (≈1h30/3h/день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.',
+        plan_title:'Программа по дням', d1:'День 1', d2:'День 2', d3:'День 3', d4:'День 4', d5:'День 5', d6:'День 6', d7:'День 7',
+        t_d1:'Прилет/заезд, чек-ин. Закат у лагуны То: устрицы + Picpoul.',
+        t_d2:'Утро: Escale «Hydro relaxante» (≈1h30). После — свободно.',
+        t_d3:'Утро: Escale «Hydro relaxante». После — свободно.',
+        t_d4:'Винный день: Picpoul de Pinet + grand domaine. Ланч по желанию.',
+        t_d5:'Утро: Escale «Hydro relaxante». Свободное время.',
+        t_d6:'Каркасон на день: Cité, Château Comtal, стены; Бастида по желанию.',
+        t_d7:'Утро: заключительный блок «Hydro relaxante». Чек-аут.',
+        inc_title:'Что включено',
+        inc1:'Организация и сопровождение RU/FR (2 дня экскурсий)',
+        inc2:'Термы: мини-курс «Hydro relaxante» — 5 дней подряд (≈1h30/день) для 2 гостей',
+        inc3:'Экскурсии: Винный день и Каркасон (бронь дегустаций/билеты)',
+        exc_title:'Не включено', exc1:'Проживание', exc2:'Транспорт (аренда авто/водитель)',
+        exc3:'Питание и личные расходы', exc4:'Авиабилеты и страховка',
+        opt_title:'Опции', opt1:'Частные трансферы MPL/BZR/MRS ↔ Balaruc', opt2:'Приватная лодка/устрицы на лагуне То',
+        where_title:'Где это', where_sub:'Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.',
+        map_title:'Карта: Balaruc-les-Bains',
+        book_title:'Быстрый запрос / бронирование', book_sub:'Ответим в течение дня и подтвердим слоты терм и дегустаций.',
+        lbl_date:'Дата', lbl_guests:'Гостей', lbl_name:'Имя', lbl_contact:'Контакт (WhatsApp/Telegram)', lbl_msg:'Сообщение',
+        btn_whatsapp:'Отправить в WhatsApp', btn_telegram:'Отправить в Telegram',
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Написать',
+      },
+      fr: {
+        htmlLang:'fr',
+        title:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits) | Tours Languedoc by Irène",
+        metaDesc:"Semaine sur la lagune de Thau : mini-cure Escale « Hydro relaxante » 5 jours + 2 excursions — journée vins et Carcassonne. Privé dès 2 pers.",
+        ogTitle:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
+        ogDesc:"5 jours de thermes (≈1h30/3h/jour) + journée vins et Carcassonne. Forfaits & réservation.",
+        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        gal_title:'À quoi ça ressemble', gal_sub:'Thermes de Balaruc, lagune de Thau et eau chaude toute l’année.',
+        altHero:'Balaruc-les-Bains — thermes',
+        altG1:'Thermes — intérieur', altG2:'Thermes — bassin', altG3:'Préparer sa cure',
+        hero_title:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
+        hero_sub:"Mini-cure Escale « Hydro relaxante » 5 jours (≈1h30/3h/jour) + 2 excursions : journée vins et Carcassonne. Privé dès 2 pers.",
+        plan_title:'Programme jour par jour', d1:'Jour 1', d2:'Jour 2', d3:'Jour 3', d4:'Jour 4', d5:'Jour 5', d6:'Jour 6', d7:'Jour 7',
+        t_d1:"Arrivée, check-in. Coucher de soleil sur Thau : huîtres + Picpoul.",
+        t_d2:"Matin : Escale « Hydro relaxante » (≈1h30). Après-midi libre.",
+        t_d3:"Matin : Escale « Hydro relaxante ». Après-midi libre.",
+        t_d4:"Journée vins : Picpoul de Pinet + grand domaine. Déjeuner en option.",
+        t_d5:"Matin : Escale « Hydro relaxante ». Temps libre.",
+        t_d6:"Carcassonne toute la journée : Cité, Château Comtal, remparts; Bastide en option.",
+        t_d7:"Matin : dernier bloc « Hydro relaxante ». Check-out.",
+        inc_title:'Inclus',
+        inc1:'Organisation & accompagnement RU/FR (2 jours d’excursions)',
+        inc2:'Thermes : mini-cure « Hydro relaxante » — 5 jours (≈1h30/jour) pour 2 pers.',
+        inc3:'Excursions : Journée vins et Carcassonne (réservations/droits d’entrée)',
+        exc_title:'Non inclus', exc1:'Hébergement', exc2:'Transports (location/driver)',
+        exc3:'Repas & dépenses personnelles', exc4:'Vols & assurance',
+        opt_title:'En options', opt1:'Transferts privés MPL/BZR/MRS ↔ Balaruc', opt2:'Bateau privé/huîtres sur Thau',
+        where_title:'Où ça se passe', where_sub:'Balaruc-les-Bains • Thermes • Étang de Thau • Picpoul de Pinet • Carcassonne.',
+        map_title:'Carte : Balaruc-les-Bains',
+        book_title:'Demande / réservation', book_sub:'Réponse sous 24h et validation des créneaux thermes/dégustations.',
+        lbl_date:'Date', lbl_guests:'Personnes', lbl_name:'Nom', lbl_contact:'Contact (WhatsApp/Telegram)', lbl_msg:'Message',
+        btn_whatsapp:'Envoyer sur WhatsApp', btn_telegram:'Envoyer sur Telegram',
+        nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Écrire',
+      }
+    };
+
+    function apply(t){
+      document.documentElement.lang = t.htmlLang || 'ru';
+      // meta + title
+      if (t.title) document.title = t.title;
+      const md = document.querySelector('meta[name="description"]');
+      const ogt= document.querySelector('meta[property="og:title"]');
+      const ogd= document.querySelector('meta[property="og:description"]');
+      if (md && t.metaDesc) md.setAttribute('content', t.metaDesc);
+      if (ogt && t.ogTitle)  ogt.setAttribute('content', t.ogTitle);
+      if (ogd && t.ogDesc)   ogd.setAttribute('content', t.ogDesc);
+
+      // тексты
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const k = el.getAttribute('data-i18n');
+        if (k && t[k] !== undefined) el.textContent = t[k];
+      });
+      // атрибуты
+      document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
+        const map = el.getAttribute('data-i18n-attr').split(';');
+        map.forEach(pair=>{
+          const [attr,key] = pair.split(':').map(s=>s.trim());
+          if (attr && key && t[key] !== undefined) el.setAttribute(attr, t[key]);
+        });
+      });
+
+      document.getElementById('btn-ru')?.classList.toggle('active', t.htmlLang==='ru');
+      document.getElementById('btn-fr')?.classList.toggle('active', t.htmlLang==='fr');
+    }
+
+    function setLang(lang){
+      const t = i18n[lang] || i18n.ru;
+      localStorage.setItem('site:lang', lang);
+      apply(t);
+    }
+
+    // init
+    const qs = new URLSearchParams(location.search);
+    let initial = qs.get('lang') || (location.hash === '#fr' ? 'fr' : null) || localStorage.getItem('site:lang');
+    if (!initial){
+      initial = (navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+    }
+    if (qs.get('lang')){ qs.delete('lang'); history.replaceState(null,'', location.pathname + (qs.toString()?('?'+qs):'') + location.hash); }
+    setLang(initial);
+
+    // handlers
+    document.getElementById('btn-ru')?.addEventListener('click', ()=>setLang('ru'));
+    document.getElementById('btn-fr')?.addEventListener('click', ()=>setLang('fr'));
   })();
   </script>
 </body>
