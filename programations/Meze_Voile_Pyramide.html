@@ -389,83 +389,104 @@
     </div>
   </footer>
 
-  <!-- === JS: калькулятор цен === -->
-  <script>
-    /* ---------- PRICING CORE (BB включены) ---------- */
-    const roundTo5 = n => Math.round(n/5)*5;
-    const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+ <!-- === JS: калькулятор цен (fixed) === -->
+<script>
+  /* ---------- PRICING CORE (BB включены) ---------- */
+  const roundTo5 = n => Math.round(n/5)*5;
+  const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
-    // База и завтраки (для вычисления итогов с BB)
-    const hotels = {
-      low:  { budget: 630, pyramide: 840,  four: 1085 },
-      high: { budget: 770, pyramide: 980,  four: 1280 }
+  // База и завтраки (для вычисления итогов с BB)
+  const hotels = {
+    low:  { budget: 630, pyramide: 840,  four: 1085 },
+    high: { budget: 770, pyramide: 980,  four: 1280 }
+  };
+  const breakfast = {
+    low:  { budget: 140, pyramide: 168, four: 252 },
+    high: { budget: 140, pyramide: 168, four: 252 }
+  };
+  const rent = {
+    low:  { cat:{ noPass:300, license:28 }, hansa:{ noPass:225, license:28 } },
+    high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
+  };
+  const kite = { low2p:1490, high2p:1590 };
+
+  const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
+
+  const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
+  const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
+  const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
+
+  // 👉 Экспортируем в window, потому что CONTACT использует window.priceCat/…:
+  Object.assign(window, { priceCat, priceHansa, priceKite });
+
+  const hotelSel      = document.getElementById('hotelSel');
+  const seasonInputs  = [...document.querySelectorAll('input[name="season"]')];
+  const outCat        = document.getElementById('price-cat');
+  const outHansa      = document.getElementById('price-hansa');
+  const outKite       = document.getElementById('price-kite');
+
+  let selectedSport = 'cat';
+  const currentSeason = () => (seasonInputs.find(r=>r.checked) || {value:'low'}).value;
+
+  function pricesSnapshot(){
+    const hotel = hotelSel.value;
+    const season = currentSeason();
+    return {
+      hotel, season,
+      pCat:   priceCat(hotel, season),
+      pHansa: priceHansa(hotel, season),
+      pKite:  priceKite(hotel, season)
     };
-    const breakfast = {
-      low:  { budget: 140, pyramide: 168, four: 252 },
-      high: { budget: 140, pyramide: 168, four: 252 }
-    };
-    const rent = {
-      low:  { cat:{ noPass:300, license:28 }, hansa:{ noPass:225, license:28 } },
-      high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
-    };
-    const kite = { low2p:1490, high2p:1590 };
+  }
 
-    const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
-
-    const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
-    const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
-    const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
-
-    const hotelSel = document.getElementById('hotelSel');
-    const seasonInputs = [...document.querySelectorAll('input[name="season"]')];
-
-    const outCat   = document.getElementById('price-cat');
-    const outHansa = document.getElementById('price-hansa');
-    const outKite  = document.getElementById('price-kite');
-
-    let selectedSport = 'cat';
-    const currentSeason = () => seasonInputs.find(r=>r.checked).value;
-
-    function pricesSnapshot(){
-      const hotel = hotelSel.value;
-      const season = currentSeason();
-      return {
-        hotel, season,
-        pCat:   priceCat(hotel, season),
-        pHansa: priceHansa(hotel, season),
-        pKite:  priceKite(hotel, season)
-      };
+  function recalc(){
+    const s = pricesSnapshot();
+    if (outCat)   outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
+    if (outHansa) outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
+    if (outKite)  outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
+    // синхронизируем форму бронирования с верхними переключателями
+    if (window.CONTACT && typeof window.CONTACT.syncBookingFromControls==='function'){
+      window.CONTACT.syncBookingFromControls();
     }
-    function recalc(){
-      const s = pricesSnapshot();
-      outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
-      outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
-      outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
-      if (window.CONTACT && typeof window.CONTACT.syncBookingFromControls==='function'){
-        window.CONTACT.syncBookingFromControls();
-      }
-    }
-    ['change','input'].forEach(evt=>{
-      hotelSel.addEventListener(evt,recalc);
-      seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
-    });
+  }
+  // 👉 чтобы рантайм i18n мог дергать: 
+  window.recalc = recalc;
 
-    const sportCards = [...document.querySelectorAll('.card.selectable')];
-    sportCards.forEach(card=>{
-      card.addEventListener('click', ()=>{
-        selectedSport = card.dataset.sport;
-        sportCards.forEach(c=>c.classList.toggle('selected', c===card));
-        recalc();
-      });
+  ['change','input'].forEach(evt=>{
+    hotelSel?.addEventListener(evt,recalc);
+    seasonInputs.forEach(r=>r.addEventListener(evt,recalc));
+  });
+
+  // Карточки спорт-оферт — синхронизируем выбор с <select id="in-sport">
+  const sportCards = [...document.querySelectorAll('.card.selectable')];
+  function syncSportToForm(){
+    const spSel = document.getElementById('in-sport');
+    if (spSel) spSel.value = selectedSport;
+    if (window.CONTACT && typeof window.CONTACT.syncBookingFromControls==='function'){
+      window.CONTACT.syncBookingFromControls();
+    }
+  }
+  sportCards.forEach(card=>{
+    card.addEventListener('click', ()=>{
+      selectedSport = card.dataset.sport;
+      sportCards.forEach(c=>c.classList.toggle('selected', c===card));
+      syncSportToForm();
+      recalc();
     });
-    document.querySelectorAll('.bookBtn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const sp = btn.getAttribute('data-sport');
-        if (sp) selectedSport = sp;
-        sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
-      });
+  });
+  document.querySelectorAll('.bookBtn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const sp = btn.getAttribute('data-sport');
+      if (sp) selectedSport = sp;
+      sportCards.forEach(c=>c.classList.toggle('selected', c.dataset.sport===selectedSport));
+      syncSportToForm();
+      recalc();
     });
-  </script>
+  });
+
+  // 🌟 стартовый пересчёт, чтобы вместо «—» появились цены
+  recalc();
+</script>
 
   <!-- === JS: контакт/бот === -->
   <script>
