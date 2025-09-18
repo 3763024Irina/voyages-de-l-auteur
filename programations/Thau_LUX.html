@@ -6,24 +6,47 @@
 
   <title>LUX Étang de Thau — авторский день вокруг лагуны | Tours Languedoc by Irène</title>
   <meta name="description" content="LUX-программа вокруг лагуны Thau: приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat и винный финал. Без пеших прогулок." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://www.goutvoyage.com/programations/Thau_LUX.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://www.goutvoyage.com/programations/Thau_LUX.html?lang=ru" />
+  <link rel="alternate" hreflang="fr" href="https://www.goutvoyage.com/programations/Thau_LUX.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://www.goutvoyage.com/programations/Thau_LUX.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta property="og:title" content="LUX Étang de Thau — 1 день" />
   <meta property="og:description" content="Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/Etang-de-Thau.jpg" />
+  <meta property="og:url" content="https://www.goutvoyage.com/programations/Thau_LUX.html?lang=ru" />
+  <meta property="og:image" content="https://www.goutvoyage.com/assets/Etang-de-Thau.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LUX Étang de Thau — 1 день" />
+  <meta name="twitter:description" content="Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок." />
+  <meta name="twitter:image" content="https://www.goutvoyage.com/assets/Etang-de-Thau.jpg" />
+
   <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/icons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/icons/favicon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
-      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --radius:18px; --radius-lg:26px; --container:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    :root{ --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c; --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
+    *{box-sizing:border-box} html,body{height:100%}
     body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
@@ -42,7 +65,6 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* HERO */
     .hero{position:relative; isolation:isolate;}
     .hero .bg{position:absolute; inset:0; z-index:-1;}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.68)}
@@ -54,11 +76,9 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 16px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .btn:hover{filter:brightness(.98)}
-
     section{padding:52px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
     .section-sub{color:var(--muted); margin:0 0 22px}
-
     .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
     .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
     .gallery img{width:100%; height:100%; object-fit:cover}
@@ -67,11 +87,9 @@
     .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .list{margin:0; padding-left:18px}
     .list li{margin:8px 0}
-
     .timeline{border-left:3px solid var(--accent-2); padding-left:16px; margin:0}
     .timeline li{margin:12px 0}
     .time{font-weight:800; color:var(--brand);}
-
     .inc-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
     .pill{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; background:#fff; font-weight:600}
 
@@ -81,18 +99,12 @@
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
 
-    /* FORM */
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
-    /* BOOK */
     #book{ padding:32px 0 56px; }
-    #book .card{
-      max-width:720px; margin:0 auto;
-      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
-    }
+    #book .card{ max-width:720px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
     #book .section-title{ font-size:28px; margin:0 0 6px; }
     #book .section-sub{ margin:0 0 14px; color:var(--muted); }
     #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
@@ -104,43 +116,27 @@
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
 
-    /* admin gating */
     .admin-only{ display:none !important; }
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
 
-    @media (max-width: 1000px){
-      .info-grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns:repeat(2,1fr)}
-      #book .fields{grid-template-columns:1fr}
-    }
-    @media (max-width: 640px){
-      .gallery{grid-template-columns:1fr}
-      h2.title{font-size:36px}
-      nav ul{display:none}
-      .hero .inner{ min-height:auto; padding:28px 0 34px; }
-    }
+    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
+    @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    /* FAB */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999;
-      border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
-    }
+    .chat-fab{ position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center }
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* тосты — contact.js */
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{
-      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
-      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
-      font-size:14px; max-width:90vw; text-align:center;
-    }
+    .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
   </style>
+
+  <!-- GA4 (замените ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 
 <body data-program data-program-title="LUX Étang de Thau — 1 день" data-program-id="THAU-LUX-1D">
@@ -314,30 +310,182 @@
   <button class="chat-fab wa" type="button" aria-label="Написать в WhatsApp" title="WhatsApp" data-chat-open="whatsapp" data-whatsapp>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
-      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-21..."/>
+      <path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/>
     </svg>
   </button>
   <button class="chat-fab tg" type="button" aria-label="Написать в Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
     <svg viewBox="0 0 256 256" aria-hidden="true">
-      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4..."/>
+      <path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/>
     </svg>
   </button>
 
-  <!-- I18N + цены -->
+  <!-- I18N RU ⇄ FR + SEO-обновление мета -->
   <script>
-    const PRICES = { LS:{base2:1270, perExtra:75, max:6}, HS:{base2:1460, perExtra:86, max:6} };
-    const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+    const BASE_URL = 'https://www.goutvoyage.com';
+    const PAGE_PATH = '/programations/Thau_LUX.html';
 
-    const i18n = { /* ... как у тебя выше, без изменений ... */ };
-    function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
-    function applyLang(lang){ /* ... как у тебя выше, без изменений ... */ }
+    const I18N = {
+      ru: {
+        meta:{ title:'LUX Étang de Thau — авторский день вокруг лагуны | Tours Languedoc by Irène',
+               desc:'LUX-программа вокруг лагуны Thau: приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat и винный финал. Без пеших прогулок.',
+               ogTitle:'LUX Étang de Thau — 1 день',
+               ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
+               locale:'ru_RU' },
+        brand_sub:'— Путешествия со вкусом',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+        brand_sub_footer:'Путешествия со вкусом', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+        b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
+        hero_title:'LUX Étang de Thau — 1 день',
+        hero_sub:'Приватная лодка по лагуне с дегустацией устриц, обед в Tarbouriech, визит Noilly Prat и винный финал. Трансфер от/до отеля. Без пеших прогулок — «relax & taste».',
+        gal_title:'Как это выглядит', gal_sub:'Лагуна Thau, устричные столы, Tarbouriech и причалы Марсельяна.',
+        plan_title:'Программа дня',
+        t_1000:'Пикап у отеля (Cap d’Agde / Sète / Marseillan). Короткий бриф на понтоне.',
+        t_1030:'Приватная лодка: устричные плантации — маяк Les Onglous (вход Канала дю Миди) — возврат. Дегустация устриц с локальным белым.',
+        t_1315:'Обед в Tarbouriech (Maison / Le St Barth). Меню по сезону; возможен безмоллюсковый/безалк. pairing.',
+        t_1510:'Maison Noilly Prat (Марсельян): визит и премиум-дегустация.',
+        t_1645:'Винный финал: La Croix Gratiot (Picpoul) или Mas du Novi (Languedoc). Приватная дегустация.',
+        t_1830:'Возврат в отель. Возможен фотостоп.',
+        inc_title:'Что включено',
+        inc_transfer:'Частный трансфер на день',
+        inc_boat:'Приватная лодка 2,5–3 ч + дегустация устриц',
+        inc_noilly:'Noilly Prat — визит и дегустация (premium)',
+        inc_wine:'Приватная дегустация в La Croix Gratiot или Mas du Novi',
+        inc_guide:'Сопровождение RU/FR',
+        exc_title:'Не включено',
+        exc_lunch:'Обед в Tarbouriech (оплата на месте).',
+        exc_drinks:'Шампанское и особые напитки.',
+        exc_personal:'Личные расходы.',
+        opt_title:'Опции',
+        opt_sunset:'Продление до заката на воде с аперитивом.',
+        opt_second:'Добавить второй винный домен.',
+        opt_oyster:'Мастер-класс по устрицам.',
+        opt_vehicle:'Апгрейд транспорта (по запросу).',
+        where_title:'Где это',
+        where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
+        tips_title:'Полезно знать',
+        tip_nowalks:'Без пеших треков: короткие переходы авто ↔ понтон/залы.',
+        tip_wear:'Одежда: лёгкая ветровка, очки, SPF; обувь с нескользящей подошвой.',
+        tip_weather:'Погода/ветер: порядок точек и дегустации можем корректировать.',
+        tip_start:'Старт возможен из Cap d’Agde, Sète или Marseillan.',
+        form_title:'Быстрый запрос / бронирование',
+        form_sub:'Ответим в течение дня и предложим время старта и брони.',
+        label_date:'Дата', label_guests:'Гостей', label_name:'Имя', label_contact:'Контакт (WhatsApp/Email)', label_message:'Комментарий',
+        btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+        alt_hero:'Étang de Thau — панорама лагуны',
+        alt_g1:'Лагуна Thau — на воде', alt_g2:'Марсельян — устричные столы', alt_g3:'Причалы и лагуна'
+      },
+      fr: {
+        meta:{ title:'LUX Étang de Thau — journée signature autour de la lagune | Tours Languedoc by Irène',
+               desc:'Programme LUX autour de l’étang de Thau : bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat et final vins. Sans marche.',
+               ogTitle:'LUX Étang de Thau — 1 journée',
+               ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vins. Sans marche.',
+               locale:'fr_FR' },
+        brand_sub:'— Des voyages avec goût',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        brand_sub_footer:'Des voyages avec goût', nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
+        b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
+        hero_title:'LUX Étang de Thau — 1 journée',
+        hero_sub:'Bateau privé sur la lagune avec dégustation d’huîtres, déjeuner chez Tarbouriech, visite Noilly Prat et final vins. Transfert hôtel. Zéro randonnée — « relax & taste ».',
+        gal_title:'À quoi ça ressemble', gal_sub:'Étang de Thau, tables ostréicoles, Tarbouriech et pontons de Marseillan.',
+        plan_title:'Programme de la journée',
+        t_1000:'Pick-up à l’hôtel (Cap d’Agde / Sète / Marseillan). Brief sur le ponton.',
+        t_1030:'Bateau privé : parcs à huîtres — phare des Onglous (entrée du canal du Midi) — retour. Dégustation d’huîtres avec blanc local.',
+        t_1315:'Déjeuner chez Tarbouriech (Maison / Le St Barth). Menu de saison ; pairing sans coquillages/sans alcool possible.',
+        t_1510:'Maison Noilly Prat (Marseillan) : visite et dégustation premium.',
+        t_1645:'Final vins : La Croix Gratiot (Picpoul) ou Mas du Novi (Languedoc). Dégustation privée.',
+        t_1830:'Retour à l’hôtel. Photo-stop possible.',
+        inc_title:'Inclus',
+        inc_transfer:'Transfert privé à la journée',
+        inc_boat:'Bateau privé 2,5–3 h + dégustation d’huîtres',
+        inc_noilly:'Noilly Prat — visite & dégustation (premium)',
+        inc_wine:'Dégustation privée à La Croix Gratiot ou Mas du Novi',
+        inc_guide:'Accompagnement RU/FR',
+        exc_title:'Non inclus',
+        exc_lunch:'Déjeuner chez Tarbouriech (règlement sur place).',
+        exc_drinks:'Champagne et boissons spéciales.',
+        exc_personal:'Dépenses personnelles.',
+        opt_title:'Options',
+        opt_sunset:'Prolonger jusqu’au coucher de soleil avec apéritif.',
+        opt_second:'Ajouter un deuxième domaine.',
+        opt_oyster:'Atelier huîtres.',
+        opt_vehicle:'Upgrade véhicule (sur demande).',
+        where_title:'Où ça se passe',
+        where_sub:'Étang de Thau • Marseillan • Les Onglous • Maison Noilly Prat • Tarbouriech.',
+        tips_title:'À savoir',
+        tip_nowalks:'Sans marche : courtes distances voiture ↔ ponton/salles.',
+        tip_wear:'Tenue : coupe-vent léger, lunettes, SPF ; chaussures antidérapantes.',
+        tip_weather:'Météo/vent : l’ordre des arrêts peut être ajusté.',
+        tip_start:'Départ possible de Cap d’Agde, Sète ou Marseillan.',
+        form_title:'Demande / réservation rapide',
+        form_sub:'Réponse sous 24 h avec propositions d’horaire et réservations.',
+        label_date:'Date', label_guests:'Pers.', label_name:'Nom', label_contact:'Contact (WhatsApp/Email)', label_message:'Commentaire',
+        btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+        alt_hero:'Étang de Thau — panorama de la lagune',
+        alt_g1:'Étang de Thau — sur l’eau', alt_g2:'Marseillan — tables ostréicoles', alt_g3:'Pontons et lagune'
+      }
+    };
+
+    function setText(node, v){ if(node && typeof v==='string') node.textContent=v; }
+    function setMeta(name, content, prop=false){
+      const sel = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+      const el = document.querySelector(sel);
+      if(el && content) el.setAttribute('content', content);
+    }
+    function setLink(rel, href){
+      const el = document.querySelector(`link[rel="${rel}"]`);
+      if(el && href) el.setAttribute('href', href);
+    }
+
+    function applyLang(lang){
+      const L = I18N[lang] || I18N.ru;
+      const url = `${BASE_URL}${PAGE_PATH}?lang=${lang}`;
+      document.documentElement.lang = (lang==='fr') ? 'fr' : 'ru';
+
+      // Мета и OG/Twitter
+      document.title = L.meta.title;
+      setMeta('description', L.meta.desc);
+      setMeta('og:title', L.meta.ogTitle, true);
+      setMeta('og:description', L.meta.ogDesc, true);
+      setMeta('og:url', url, true);
+      setMeta('og:locale', L.meta.locale, true);
+      setMeta('twitter:title', L.meta.ogTitle);
+      setMeta('twitter:description', L.meta.ogDesc);
+      setLink('canonical', url);
+      // hreflang ссылки (фиксированные, но обновим на всякий)
+      setLink('alternate[hreflang="ru"]', `${BASE_URL}${PAGE_PATH}?lang=ru`);
+      setLink('alternate[hreflang="fr"]', `${BASE_URL}${PAGE_PATH}?lang=fr`);
+
+      // Тексты по data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if (L[key] !== undefined) setText(el, L[key]);
+      });
+
+      // ALT для изображений
+      const altMap = { 'alt-hero':'alt_hero', 'alt-g1':'alt_g1', 'alt-g2':'alt_g2', 'alt-g3':'alt_g3' };
+      Object.entries(altMap).forEach(([id, k])=>{
+        const el = document.getElementById(id);
+        if (el && L[k]) el.setAttribute('alt', L[k]);
+      });
+
+      // Кнопки RU/FR
+      document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+      document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+
+      // Сохраняем и чистим URL
+      localStorage.setItem('site:lang', lang);
+      const p = new URL(location.href);
+      p.searchParams.set('lang', lang);
+      history.replaceState({}, '', p.toString());
+    }
+
     (function initLang(){
-      const saved = localStorage.getItem('site:lang');
-      const initial = saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
-      applyLang(initial);
-      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
-      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+      const params = new URLSearchParams(location.search);
+      let lang = params.get('lang') || localStorage.getItem('site:lang') || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+      applyLang(lang);
+      document.getElementById('btn-ru')?.addEventListener('click', ()=>applyLang('ru'));
+      document.getElementById('btn-fr')?.addEventListener('click', ()=>applyLang('fr'));
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 80));
     })();
   </script>
 
@@ -352,7 +500,7 @@
     };
   </script>
 
-  <!-- Биндер формы и WA/TG (как на предыдущих страницах) -->
+  <!-- Биндер формы и WA/TG -->
   <script>
   ;(()=> {
     if (window.__CONTACT_BIND__) return; window.__CONTACT_BIND__ = true;
@@ -370,10 +518,8 @@
     function buildText(){
       const f = document.querySelector('[data-contact-form]');
       const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-                 || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-                 || document.documentElement.getAttribute('data-program-id') || '';
+      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
       return [
         'Заявка с сайта Tours Languedoc by Irène',
         pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
@@ -489,9 +635,66 @@
     })();
   </script>
 
-  <!-- Подключения (после APP_CONFIG и биндера) -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <!-- JSON-LD схемы: Organization, WebSite, BreadcrumbList, TouristTrip, FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://www.goutvoyage.com/",
+    "logo":"https://www.goutvoyage.com/icons/apple-touch-icon.png",
+    "areaServed":"Occitanie, France",
+    "contactPoint":[{"@type":"ContactPoint","contactType":"customer service","telephone":"+33 7 59 64 48 13","availableLanguage":["ru","fr","en"]}]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://www.goutvoyage.com/"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Accueil / Home","item":"https://www.goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Programations","item":"https://www.goutvoyage.com/programations/"},
+      {"@type":"ListItem","position":3,"name":"LUX Étang de Thau — 1 jour / 1 день","item":"https://www.goutvoyage.com/programations/Thau_LUX.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TouristTrip",
+    "name":"LUX Étang de Thau — 1 день",
+    "alternateName":"LUX Étang de Thau — 1 journée",
+    "description":"Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat et final vins (sans marche).",
+    "image":"https://www.goutvoyage.com/assets/Etang-de-Thau.jpg",
+    "touristType":["luxury travel","culinary tourism"],
+    "itinerary":[
+      {"@type":"Place","name":"Étang de Thau"},
+      {"@type":"Place","name":"Marseillan"},
+      {"@type":"Place","name":"Les Onglous"},
+      {"@type":"Place","name":"Maison Noilly Prat"}
+    ],
+    "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://www.goutvoyage.com/"}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Есть ли пешие треки?","acceptedAnswer":{"@type":"Answer","text":"Нет, программа «без треков»: короткие переходы авто ↔ понтон/залы."}},
+      {"@type":"Question","name":"Откуда старт и во сколько?","acceptedAnswer":{"@type":"Answer","text":"Пикап из Cap d’Agde, Sète или Marseillan. Стандартный старт — 10:00, можем сдвинуть по погоде."}},
+      {"@type":"Question","name":"Можно без устриц/без алкоголя?","acceptedAnswer":{"@type":"Answer","text":"Да, у Tarbouriech и на дегустациях есть альтернативы: безмоллюсковые блюда и безалкогольный pairing."}}
+    ]
+  }
+  </script>
 </body>
 </html>
 
