@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Карта сайта
 Sitemap: https://goutvoyage.com/sitemap.xml
