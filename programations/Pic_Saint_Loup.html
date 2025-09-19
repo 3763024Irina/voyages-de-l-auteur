@@ -137,6 +137,23 @@
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
 
+    /* ===== Admin dossier ===== */
+    .admin-card { 
+      border:1px dashed #cfd7d2; border-radius:14px; padding:10px 12px; margin:10px 0; background:#f9fbfa;
+    }
+    .admin-card > summary { cursor:pointer; font-weight:700; list-style:none; }
+    .admin-card > summary::-webkit-details-marker { display:none; }
+    .admin-card[open] > summary { margin-bottom:8px; }
+    .admin-grid {
+      display:grid; gap:10px; grid-template-columns:1fr 1fr; 
+    }
+    .admin-tag { 
+      display:inline-block; font-size:12px; font-weight:800; letter-spacing:.2px;
+      padding:4px 8px; border-radius:999px; border:1px solid #dfe7e2; background:#fff; margin-bottom:6px;
+    }
+    .admin-ul { margin:0; padding-left:18px; }
+    @media (max-width:800px){ .admin-grid { grid-template-columns:1fr; } }
+
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
   </style>
@@ -244,6 +261,122 @@
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Mas%20Brugui%C3%A8re%2C%20Valflaun%C3%A8s&output=classic">Mas Bruguière</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Domaine%20de%20l%E2%80%99Hortus%2C%20Valflaun%C3%A8s&output=classic">Domaine de l’Hortus</a>
       </div>
+
+      <!-- Admin dossier: PSL domains -->
+      <section class="admin-only" data-display="block" aria-label="Admin: dossiers" style="margin-top:14px">
+        <h4 class="section-title" style="margin-bottom:8px">ADMIN · Досье по доменам</h4>
+        <p class="section-sub" style="margin-top:-6px">Краткие шпаргалки: стиль, кюве, отличия, визиты, что брать.</p>
+
+        <!-- ===== PUECH-HAUT ===== -->
+        <details class="admin-card" open>
+          <summary><b>Château Puech-Haut (Saint-Drézéry)</b> — икона региона, мощный южный стиль, высокая стабильность.</summary>
+          <div class="admin-grid">
+            <div>
+              <div class="admin-tag">Стиль</div>
+              Плотные красные на Syrah/Grenache с выразным фруктом и специями; белые — ароматные, с объёмом; розе — эталонный «южник».
+            </div>
+            <div>
+              <div class="admin-tag">Ключевые кюве</div>
+              <ul class="admin-ul">
+                <li><i>Tête de Bélier</i> (R/B) — флагман, коллекционный потенциал.</li>
+                <li><i>Prestige</i> (R/W) — «золотая середина» по цене/качеству.</li>
+                <li><i>Argali Rosé</i> — популярное сухое розе.</li>
+              </ul>
+            </div>
+            <div>
+              <div class="admin-tag">Достижения</div>
+              Регулярные 90+ баллов у критиков, высокая узнаваемость бренда, коллаборации с художниками (баррели/этикетки).
+            </div>
+            <div>
+              <div class="admin-tag">Визит</div>
+              По записи, 60–75 мин, англ/фр; дегустация часто ~€10–15/чел (иногда вычитают при покупке). Парковка удобная.
+            </div>
+            <div>
+              <div class="admin-tag">Фокус покупок</div>
+              Prestige R/W для гостей; Tête de Bélier — коллекционерам; Rosé Argali — «быстрый восторг».
+            </div>
+          </div>
+        </details>
+
+        <!-- ===== CAZENEUVE ===== -->
+        <details class="admin-card">
+          <summary><b>Château de Cazeneuve (Lauret)</b> — элегантность PSL, известняк/доломит, тонкие таннины.</summary>
+          <div class="admin-grid">
+            <div><div class="admin-tag">Стиль</div> Больше свежести и пикантности, чем силы; акцент на пряность, графит, травы гаррига.</div>
+            <div><div class="admin-tag">Ключевые кюве</div>
+              <ul class="admin-ul">
+                <li>Серия PSL красных (Syrah-driven) — гастрономичность.</li>
+                <li>Белые — ограниченные тиражи, минеральность.</li>
+              </ul>
+            </div>
+            <div><div class="admin-tag">Достижения</div> Исторический замок, стабильные отзывы винных гидов; выдержанный стиль ценят сомелье.</div>
+            <div><div class="admin-tag">Визит</div> По записи; возможны прогулки по терруару при хорошей погоде.</div>
+            <div><div class="admin-tag">Фокус покупок</div> Красные PSL «середины» — оптимальны по цене/элегантности.</div>
+          </div>
+        </details>
+
+        <!-- ===== CLOS MARIE ===== -->
+        <details class="admin-card">
+          <summary><b>Clos Marie (Lauret)</b> — терруарная глубина, био/минимализм, sought-after кюве.</summary>
+          <div class="admin-grid">
+            <div><div class="admin-tag">Стиль</div> Слоистые, медитативные, с потенциалом; меньше «глянца», больше терруара.</div>
+            <div><div class="admin-tag">Ключевые кюве</div>
+              <ul class="admin-ul">
+                <li>Красные PSL (Syrah/Grenache) — выдержка приветствуется.</li>
+                <li>Белые — редкость, минеральные, с объёмом.</li>
+              </ul>
+            </div>
+            <div><div class="admin-tag">Достижения</div> Культовый статус среди ценителей PSL; лимитированные квоты.</div>
+            <div><div class="admin-tag">Визит</div> Строго по записи; небольшие группы.</div>
+            <div><div class="admin-tag">Фокус покупок</div> Брать «на полку»/в подвал; предупреждать о стиле гостя (не «сладко-фруктовый»).</div>
+          </div>
+        </details>
+
+        <!-- ===== MAS BRUGUIÈRE ===== -->
+        <details class="admin-card">
+          <summary><b>Mas Bruguière (Valflaunès)</b> — референс PSL: точность, чистота, баланс.</summary>
+          <div class="admin-grid">
+            <div><div class="admin-tag">Стиль</div> Чёткие, гармоничные вина: спелость без тяжести, графит/лавровый лист, свежая кислотность.</div>
+            <div><div class="admin-tag">Ключевые кюве</div>
+              <ul class="admin-ul">
+                <li><i>L’Arbouse</i> — доступный вход в стиль хозяйства.</li>
+                <li><i>La Grenadière</i> — шаг выше по сложности.</li>
+              </ul>
+            </div>
+            <div><div class="admin-tag">Достижения</div> Частые рекомендации гидами региона; стабильность по годам.</div>
+            <div><div class="admin-tag">Визит</div> По записи, гибкие окна; дружелюбная команда.</div>
+            <div><div class="admin-tag">Фокус покупок</div> L’Arbouse кейсами для «домашнего PSL»; La Grenadière на подарки.</div>
+          </div>
+        </details>
+
+        <!-- ===== DOMAINE DE L’HORTUS ===== -->
+        <details class="admin-card">
+          <summary><b>Domaine de l’Hortus (Valflaunès)</b> — пионеры долины, сильная линейка Bergerie/Grande Cuvée.</summary>
+          <div class="admin-grid">
+            <div><div class="admin-tag">Стиль</div> Солнечные, но собранные; красные с плотным ядром, белые зрелые, гастрономичные.</div>
+            <div><div class="admin-tag">Ключевые кюве</div>
+              <ul class="admin-ul">
+                <li><i>Bergerie de l’Hortus</i> (R/W) — «умная база».</li>
+                <li><i>Grande Cuvée</i> (R/W) — флагман, потенциал.</li>
+              </ul>
+            </div>
+            <div><div class="admin-tag">Достижения</div> Один из брендов-амбассадоров PSL; высокие оценки базовых серий.</div>
+            <div><div class="admin-tag">Визит</div> Часто возможно «добавить» в маршрут по ситуации днём.</div>
+            <div><div class="admin-tag">Фокус покупок</div> Bergerie кейсами; Grande Cuvée — в коллекцию/подарки.</div>
+          </div>
+        </details>
+
+        <!-- ===== ОБЩЕЕ ===== -->
+        <details class="admin-card">
+          <summary><b>Общее по маршруту</b> — тайминг, расстояния, напоминания.</summary>
+          <div class="admin-grid">
+            <div><div class="admin-tag">Тайминг</div> Между доменами 10–25 мин. Не затягивать первую дегустацию; обед бронировать заранее.</div>
+            <div><div class="admin-tag">Биллинги</div> Дегустации чаще оплачиваются на месте; иногда возвращаются при покупке.</div>
+            <div><div class="admin-tag">Безопасность</div> Водитель не дегустирует; воду держать в машине.</div>
+            <div><div class="admin-tag">Погода</div> В жару — теневые стоянки; на панораме PSL — шляпы/крем.</div>
+          </div>
+        </details>
+      </section>
     </aside>
   </section>
 
@@ -418,8 +551,7 @@
           const data=await res.json().catch(()=>({}));
           const tme=data.tme || (data.token ? `https://t.me/${bot}?start=${encodeURIComponent(data.token)}` : '');
           if(tme){ safeOpen(tme); return; }
-        }catch(_){}
-      }
+        }catch(_){}}
       if(user) safeOpen(`https://t.me/${user}`);
       else if(bot) safeOpen(`https://t.me/${bot}`);
       else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
