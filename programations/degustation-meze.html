@@ -348,107 +348,128 @@
     </svg>
   </button>
 
-  <!-- ===== I18N (как у тебя) ===== -->
-  <script>
-    const i18n = {
-      ru: {
-        htmlLang:'ru',
-        title:'Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène',
-        metaDesc:'Однодневный маршрут вокруг Mèze & Montagnac: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки, опция устрицы.',
-        ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
-        ogDesc:'Короткие переезды: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки, опция устрицы.',
-        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
-        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        hero_badge:'Wine • Mèze & Montagnac',
-        hero_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
-        hero_sub:'4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare).',
-        gal_title:'Как это выглядит',
-        gal_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (опция) Domaine de Belle Mare — компактный радиус вокруг Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO', altG1:'Saint-Martin de la Garrigue — шато и парк', altG2:'Saint Hilaire — усадьба и погреба', altG3:'La Croix Gratiot — Picpoul',
-        plan_title:'Маршрут и тайминг',
-        t_depart_meze:'выезд из Mèze (отель/порт). Короткий бриф.',
-        t_return_meze:'возврат в Mèze. Опция: добавить Domaine de Belle Mare в начале/конце.',
-        domains_title:'Домены и награды',
-        terms_title:'Условия и заметки',
-        note_radius:'Все локации в радиусе Mèze–Montagnac; короткие переезды.',
-        note_time:'Тайминг ориентировочный; подтверждается по записи в доменах.',
-        note_oysters:'Опционально: устрицы Tarbouriech (по времени/доступности).',
-        where_title:'Где это',
-        where_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (опция) Belle Mare — вокруг Mèze & Montagnac.',
-        tips_title:'Полезно знать',
-        tip_shoes:'Удобная обувь (камень/гравий у виноградников)',
-        tip_sun:'Лёгкая защита от солнца и воды — рекомендована',
-        tip_time:'Лучшее окно: 10:00–14:30 для компактного трека',
-        pricing_title:'Стоимость',
-        pricing_base:'По запросу — зависит от состава группы и выбранных опций',
-        pricing_note:'Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.',
-        form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.'
-      },
-      fr: {
-        htmlLang:'fr',
-        title:'Mèze — route de dégustation (Mèze & Montagnac) | Tours Languedoc by Irène',
-        metaDesc:'Journée compacte autour de Mèze & Montagnac : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare). 4–5 h, 3–4 arrêts, option huîtres.',
-        ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
-        ogDesc:'Courtes distances : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare). 4–5 h, 3–4 arrêts, option huîtres.',
-        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        hero_badge:'Vin • Mèze & Montagnac',
-        hero_title:'Mèze — route de dégustation (Mèze & Montagnac)',
-        hero_sub:'4–5 h · 3–4 arrêts · 10–15 min entre les étapes. Domaines : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare).',
-        gal_title:'À quoi ça ressemble',
-        gal_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (option) Domaine de Belle Mare — rayon compact autour de Mèze & Montagnac.',
-        altHero:'Mèze & Montagnac — HERO', altG1:'Saint-Martin de la Garrigue — château & parc', altG2:'Saint Hilaire — domaine & chais', altG3:'La Croix Gratiot — Picpoul',
-        plan_title:'Programme & timing',
-        t_depart_meze:'départ de Mèze (hôtel/port). Brief rapide.',
-        t_return_meze:'retour à Mèze. Option : ajouter Domaine de Belle Mare au début/à la fin.',
-        domains_title:'Domaines & distinctions',
-        terms_title:'Conditions & remarques',
-        note_radius:'Toutes les étapes dans le rayon Mèze–Montagnac ; trajets courts.',
-        note_time:'Horaires indicatifs ; confirmés selon les réservations.',
-        note_oysters:'Option : huîtres Tarbouriech (selon créneau/disponibilité).',
-        where_title:'Où ça se passe',
-        where_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (option) Belle Mare — autour de Mèze & Montagnac.',
-        tips_title:'À savoir',
-        tip_shoes:'Chaussures confortables (pierres/graviers)',
-        tip_sun:'Protection soleil & eau conseillées',
-        tip_time:'Plage idéale : 10:00–14:30 pour un circuit compact',
-        pricing_title:'Tarifs',
-        pricing_base:'Sur demande — selon votre groupe et options',
-        pricing_note:'Parcours : 4–5 h, 3–4 arrêts. Options : huîtres Tarbouriech.',
-        form_title:'Demande rapide / réservation',
-        form_sub:'Réponse sous 24 h et confirmation des visites.'
-      }
+<!-- ===== I18N (обновлено: поддержка ?lang=) ===== -->
+<script>
+  const i18n = {
+    ru: {
+      htmlLang:'ru',
+      title:'Mèze — дегустационный маршрут (Mèze & Montagnac) | Tours Languedoc by Irène',
+      metaDesc:'Однодневный маршрут вокруг Mèze & Montagnac: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки, опция устрицы.',
+      ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
+      ogDesc:'Короткие переезды: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки, опция устрицы.',
+      brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
+      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+      btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
+      hero_badge:'Wine • Mèze & Montagnac',
+      hero_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
+      hero_sub:'4–5 часов · 3–4 остановки · максимум 10–15 минут между локациями. Домены: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare).',
+      gal_title:'Как это выглядит',
+      gal_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (опция) Domaine de Belle Mare — компактный радиус вокруг Mèze & Montagnac.',
+      altHero:'Mèze & Montagnac — HERO', altG1:'Saint-Martin de la Garrigue — шато и парк', altG2:'Saint Hilaire — усадьба и погреба', altG3:'La Croix Gratiot — Picpoul',
+      plan_title:'Маршрут и тайминг',
+      t_depart_meze:'выезд из Mèze (отель/порт). Короткий бриф.',
+      t_return_meze:'возврат в Mèze. Опция: добавить Domaine de Belle Mare в начале/конце.',
+      domains_title:'Домены и награды',
+      terms_title:'Условия и заметки',
+      note_radius:'Все локации в радиусе Mèze–Montagnac; короткие переезды.',
+      note_time:'Тайминг ориентировочный; подтверждается по записи в доменах.',
+      note_oysters:'Опционально: устрицы Tarbouriech (по времени/доступности).',
+      where_title:'Где это',
+      where_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (опция) Belle Mare — вокруг Mèze & Montagnac.',
+      tips_title:'Полезно знать',
+      tip_shoes:'Удобная обувь (камень/гравий у виноградников)',
+      tip_sun:'Лёгкая защита от солнца и воды — рекомендована',
+      tip_time:'Лучшее окно: 10:00–14:30 для компактного трека',
+      pricing_title:'Стоимость',
+      pricing_base:'По запросу — зависит от состава группы и выбранных опций',
+      pricing_note:'Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.',
+      form_title:'Быстрый запрос / бронирование',
+      form_sub:'Ответим в течение дня и подтвердим записи в хозяйства.'
+    },
+    fr: {
+      htmlLang:'fr',
+      title:'Mèze — route de dégustation (Mèze & Montagnac) | Tours Languedoc by Irène',
+      metaDesc:'Journée compacte autour de Mèze & Montagnac : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare). 4–5 h, 3–4 arrêts, option huîtres.',
+      ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
+      ogDesc:'Courtes distances : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare). 4–5 h, 3–4 arrêts, option huîtres.',
+      brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+      hero_badge:'Vin • Mèze & Montagnac',
+      hero_title:'Mèze — route de dégustation (Mèze & Montagnac)',
+      hero_sub:'4–5 h · 3–4 arrêts · 10–15 min entre les étapes. Domaines : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare).',
+      gal_title:'À quoi ça ressemble',
+      gal_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (option) Domaine de Belle Mare — rayon compact autour de Mèze & Montagnac.',
+      altHero:'Mèze & Montagnac — HERO', altG1:'Saint-Martin de la Garrigue — château & parc', altG2:'Saint Hilaire — domaine & chais', altG3:'La Croix Gratiot — Picpoul',
+      plan_title:'Programme & timing',
+      t_depart_meze:'départ de Mèze (hôtel/port). Brief rapide.',
+      t_return_meze:'retour à Mèze. Option : ajouter Domaine de Belle Mare au début/à la fin.',
+      domains_title:'Domaines & distinctions',
+      terms_title:'Conditions & remarques',
+      note_radius:'Toutes les étapes dans le rayon Mèze–Montagnac ; trajets courts.',
+      note_time:'Horaires indicatifs ; confirmés selon les réservations.',
+      note_oysters:'Option : huîtres Tarbouriech (selon créneau/disponibilité).',
+      where_title:'Où ça se passe',
+      where_sub:'Château Saint-Martin de la Garrigue • Domaine Saint Hilaire • La Croix Gratiot • Mas du Novi • (option) Belle Mare — autour de Mèze & Montagnac.',
+      tips_title:'À savoir',
+      tip_shoes:'Chaussures confortables (pierres/graviers)',
+      tip_sun:'Protection soleil & eau conseillées',
+      tip_time:'Plage idéale : 10:00–14:30 pour un circuit compact',
+      pricing_title:'Tarifs',
+      pricing_base:'Sur demande — selon votre groupe et options',
+      pricing_note:'Parcours : 4–5 h, 3–4 arrêts. Options : huîtres Tarbouriech.',
+      form_title:'Demande rapide / réservation',
+      form_sub:'Réponse sous 24 h et confirmation des visites.'
+    }
+  };
+
+  function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
+  function applyLang(lang){
+    const t=i18n[lang];
+    document.documentElement.lang=t.htmlLang;
+    document.title=t.title;
+    const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
+    const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
+    const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+    document.querySelectorAll('[data-i18n]').forEach(n=>{
+      const k=n.getAttribute('data-i18n');
+      if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
+    });
+    setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
+    document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
+    document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
+    localStorage.setItem('site:lang', lang);
+  }
+
+  // === NEW: читаем ?lang= из URL и обновляем адрес при переключении ===
+  (function initLang(){
+    const params = new URLSearchParams(location.search);
+    const fromURL = (params.get('lang')||'').toLowerCase();     // 'ru' | 'fr' | ''
+    const saved   = localStorage.getItem('site:lang');
+    const auto    = ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
+    const initial = (fromURL === 'ru' || fromURL === 'fr') ? fromURL : (saved || auto);
+
+    applyLang(initial);
+
+    const updateURL = (lang) => {
+      const p = new URLSearchParams(location.search);
+      p.set('lang', lang);
+      history.replaceState({}, '', location.pathname + '?' + p.toString() + location.hash);
     };
 
-    function setAlt(id, text){ const el=document.getElementById(id); if(el) el.setAttribute('alt', text); }
-    function applyLang(lang){
-      const t=i18n[lang];
-      document.documentElement.lang=t.htmlLang;
-      document.title=t.title;
-      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      document.querySelectorAll('[data-i18n]').forEach(n=>{
-        const k=n.getAttribute('data-i18n');
-        if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
-      });
-      setAlt('alt-hero', t.altHero); setAlt('alt-g1', t.altG1); setAlt('alt-g2', t.altG2); setAlt('alt-g3', t.altG3);
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-      localStorage.setItem('site:lang', lang);
-    }
-    (function initLang(){
-      const saved=localStorage.getItem('site:lang');
-      const initial=saved || ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      applyLang(initial);
-      document.getElementById('btn-ru').addEventListener('click',()=>applyLang('ru'));
-      document.getElementById('btn-fr').addEventListener('click',()=>applyLang('fr'));
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
-    })();
-  </script>
+    document.getElementById('btn-ru').addEventListener('click',()=>{
+      applyLang('ru');
+      updateURL('ru');
+    });
+    document.getElementById('btn-fr').addEventListener('click',()=>{
+      applyLang('fr');
+      updateURL('fr');
+    });
+
+    document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+  })();
+</script>
+
 
   <!-- ==== CONFIG (единый) ==== -->
   <script>
