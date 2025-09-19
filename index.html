@@ -721,6 +721,17 @@
     e.preventDefault(); applyLang(a.dataset.lang);
   }));
 </script>
+<!-- Авто-детект языка: вставить после блока с getLang/applyLang -->
+<script>
+  (function initLangOnce(){
+    const u = new URL(location.href);
+    const stored = localStorage.getItem('site:lang');
+    if (!u.searchParams.get('lang') && !stored) {
+      const guess = (navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+      applyLang(guess);
+    }
+  })();
+</script>
 
 
 
