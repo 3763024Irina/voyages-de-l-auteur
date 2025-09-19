@@ -22,6 +22,30 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://goutvoyage.com/programations/sea.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://goutvoyage.com/programations/castles.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://goutvoyage.com/programations/wellness.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://goutvoyage.com/programations/canal.html</loc>
+    <lastmod>2025-09-19</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 
   <!-- Programations -->
   <url>
@@ -100,3 +124,4 @@
   </url>
 
 </urlset>
+
