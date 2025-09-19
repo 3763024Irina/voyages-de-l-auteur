@@ -69,15 +69,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Favicon / PWA -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-<link rel="alternate icon" href="/favicon.ico"> <!-- на всякий случай для старых браузеров -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-<link rel="manifest" href="/site.webmanifest" type="application/manifest+json" crossorigin="anonymous">
+<!-- Favicons (надёжный набор) -->
+<link rel="icon" href="/favicon.ico?v=3" sizes="any"> <!-- fallback для всего -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3"> <!-- современный -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3">
+<link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#0D2B1E"> <!-- Safari pinned -->
+<link rel="manifest" href="/site.webmanifest?v=3">
+<link rel="shortcut icon" href="/favicon.ico?v=3"> <!-- legacy -->
 <meta name="theme-color" content="#0D2B1E">
+
 
 
   <style>
