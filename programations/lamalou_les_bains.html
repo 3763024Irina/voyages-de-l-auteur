@@ -535,7 +535,7 @@
     }
 
     function bind(){
-      document.querySelectorAll('[data-whatsapp]')..forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); }); });
+      document.querySelectorAll('[data-whatsapp]').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); }); });
       document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); }); });
     }
 
