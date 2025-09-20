@@ -445,111 +445,120 @@
 
   <!-- ==== Unified contact logic (точно как на PSL) ==== -->
   <script>
-  ;(() => {
-    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+;(() => {
+  if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
-    const CFG = window.APP_CONFIG || {};
-    const digits = s => String(s||'').replace(/\D/g,'');
-    const enc = s => encodeURIComponent(String(s||''));
+  const CFG = window.APP_CONFIG || {};
+  const digits = s => String(s||'').replace(/\D/g,'');
+  const enc = s => encodeURIComponent(String(s||''));
 
-    function toast(msg, ms=2400){
-      const t = document.createElement('div');
-      t.className = 'form-toast'; t.textContent = msg;
-      document.body.appendChild(t);
-      setTimeout(()=>t.remove(), ms);
+  function toast(msg, ms=2400){
+    const t = document.createElement('div');
+    t.className = 'form-toast'; t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(), ms);
+  }
+
+  function buildText(){
+    const f = document.querySelector('[data-contact-form]');
+    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+    const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+    const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+    return [
+      'Заявка с сайта Tours Languedoc by Irène',
+      pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+      `Дата заезда: ${get('date')||'-'}`,
+      `Ночей: ${get('nights')||'14'}`,
+      `Гостей: ${get('guests')||'-'}`,
+      `Жильё: ${get('lodging')||'-'}`,
+      `Имя: ${get('name')||'-'}`,
+      `Контакт: ${get('contact')||'-'}`,
+      `Сообщение: ${get('message')||'-'}`,
+      `Ссылка: ${location.href}`
+    ].join('\n');
+  }
+
+  const REQUIRED = ['date','guests','name','contact'];
+  function validateForm({scroll=true}={}){
+    const f = document.querySelector('[data-contact-form]');
+    if(!f){ toast('Форма не найдена'); return false; }
+    let firstBad = null;
+    REQUIRED.forEach(n=>{
+      const el = f.querySelector(`[name="${n}"]`);
+      const val = el?.value?.trim();
+      const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
+      el?.classList.toggle('input-error', !ok);
+      if(!ok && !firstBad) firstBad = el;
+    });
+    if(firstBad){
+      if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+      firstBad.focus();
+      const lang = localStorage.getItem('site:lang')||'ru';
+      const msg = (lang==='fr') ? 'Renseignez la date, le nombre de personnes, le nom et le contact' : 'Заполните дату, гостей, имя и контакт';
+      toast(msg);
+      return false;
     }
+    return true;
+  }
 
-    function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата заезда: ${get('date')||'-'}`,
-        `Ночей: ${get('nights')||'14'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Жильё: ${get('lodging')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
+  function safeOpen(href){
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
+  }
 
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad = null;
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        // локализованное сообщение
-        const lang = localStorage.getItem('site:lang')||'ru';
-        const msg = (lang==='fr') ? 'Renseignez la date, le nombre de personnes, le nom et le contact' : 'Заполните дату, гостей, имя и контакт';
-        toast(msg);
-        return false;
-      }
-      return true;
-    }
+  function openWhatsApp(){
+    if(!validateForm()) return;
+    const num = digits(CFG.whatsapp || '');
+    if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+  }
 
-    function safeOpen(href){
-      const a = document.createElement('a');
-      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
-    }
+  // Открываем окно сразу (не блокируется), а затем подставляем целевой URL
+  async function openTelegram(){
+    if(!validateForm()) return;
 
-    async function openTelegram(){
-      if(!validateForm()) return;
-      const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-      const user = (CFG.telegram_user||'').replace(/^@/,'');
-      const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+    const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
+    const user = (CFG.telegram_user||'').replace(/^@/,'');
+    const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
 
+    // открываем пустое окно из клика — это сохраняет «user gesture»
+    const w = window.open('', '_blank', 'noopener,noreferrer');
+
+    const fallback = () => {
+      const url = bot ? `https://t.me/${bot}` : (user ? `https://t.me/${user}` : '');
+      if (!url) { toast('В APP_CONFIG не задан telegram_user / telegram_bot'); try{ w?.close(); }catch{} return; }
+      if (w) w.location = url; else safeOpen(url);
+    };
+
+    try{
       if (bot && /^https?:\/\//i.test(pre)){
-        try{
-          const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
-          const j = await r.json().catch(()=>({}));
-          const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-          if (tme){ safeOpen(tme); return; }
-        }catch(e){ /* fallback */ }
+        const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
+        const j = await r.json().catch(()=>({}));
+        const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
+        if (tme){ if (w) w.location = tme; else safeOpen(tme); return; }
       }
-      if (user) safeOpen(`https://t.me/${user}`);
-      else if (bot) safeOpen(`https://t.me/${bot}`);
-      else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
+      fallback();
+    }catch(e){
+      fallback();
     }
+  }
 
-    function openWhatsApp(){
-      if(!validateForm()) return;
-      const num = digits(CFG.whatsapp || '');
-      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
-      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-    }
+  function bind(){
+    // ВАЖНО: одна точка :)
+    document.querySelectorAll('[data-whatsapp]').forEach(el=>{
+      el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
+    });
+    document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
+      el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
+    });
+  }
 
-    function bind(){
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); }); });
-      document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{ el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); }); });
-    }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bind, {once:true});
+  } else { bind(); }
+})();
+</script>
 
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', bind, {once:true});
-    } else { bind(); }
-  })();
-  </script>
-
-  <!-- Фокус на дате при клике "Забронировать" -->
-  <script>
-    (function(){
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
-    })();
-  </script>
 </body>
 </html>
