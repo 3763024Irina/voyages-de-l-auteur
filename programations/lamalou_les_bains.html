@@ -515,50 +515,56 @@
   }
 
   // Открываем окно сразу (не блокируется), а затем подставляем целевой URL
-  async function openTelegram(){
-    if(!validateForm()) return;
+ <script>
+// Открываем чат с пользователем Telegram (без бота):
+// 1) из клика сразу открываем пустое окно (чтоб не заблочили попап),
+// 2) копируем текст в буфер,
+// 3) перекидываем вкладку на t.me/<username>,
+// 4) показываем тост с подсказкой "текст скопирован, вставьте в чат".
+async function openTelegram(){
+  if(!validateForm()) return;
 
-    const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
-    const user = (CFG.telegram_user||'').replace(/^@/,'');
-    const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+  const user = (CFG.telegram_user||'').replace(/^@/,'').trim();
+  if (!user){ toast('В APP_CONFIG не задан telegram_user'); return; }
 
-    // открываем пустое окно из клика — это сохраняет «user gesture»
-    const w = window.open('', '_blank', 'noopener,noreferrer');
+  // Открываем окно сразу из клика — сохраняем user gesture
+  const w = window.open('', '_blank', 'noopener,noreferrer');
 
-    const fallback = () => {
-      const url = bot ? `https://t.me/${bot}` : (user ? `https://t.me/${user}` : '');
-      if (!url) { toast('В APP_CONFIG не задан telegram_user / telegram_bot'); try{ w?.close(); }catch{} return; }
-      if (w) w.location = url; else safeOpen(url);
-    };
+  const text = buildText();
+  let copied = false;
 
-    try{
-      if (bot && /^https?:\/\//i.test(pre)){
-        const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
-        const j = await r.json().catch(()=>({}));
-        const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
-        if (tme){ if (w) w.location = tme; else safeOpen(tme); return; }
-      }
-      fallback();
-    }catch(e){
-      fallback();
-    }
+  try {
+    // Пытаемся в "новую" API
+    await navigator.clipboard.writeText(text);
+    copied = true;
+  } catch(e) {
+    // Фолбэк через скрытое textarea
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.opacity='0'; ta.style.pointerEvents='none';
+      document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy');
+      ta.remove(); copied = true;
+    } catch(_) { copied = false; }
   }
 
-  function bind(){
-    // ВАЖНО: одна точка :)
-    document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-      el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
-    });
-    document.querySelectorAll('[data-telegram], .js-telegram').forEach(el=>{
-      el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
-    });
-  }
+  // Ведём в чат пользователя
+  const url = `https://t.me/${encodeURIComponent(user)}`;
+  if (w) w.location = url; else location.href = url;
 
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bind, {once:true});
-  } else { bind(); }
-})();
+  // Подсказка для пользователя
+  const lang = localStorage.getItem('site:lang')||'ru';
+  const okMsg = lang==='fr'
+    ? 'Texte copié. Ouvrez le chat et collez-le.'
+    : 'Текст скопирован. Откройте чат и вставьте.';
+  const failMsg = lang==='fr'
+    ? 'Ouvrez le chat et collez manuellement le texte (copie automatique indisponible).'
+    : 'Откройте чат и вставьте текст вручную (автокопирование недоступно).';
+  toast(copied ? okMsg : failMsg, 3600);
+}
 </script>
+
 
 </body>
 </html>
