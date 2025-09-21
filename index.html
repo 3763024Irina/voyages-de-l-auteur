@@ -394,68 +394,94 @@
 
 </head>
 <body>
-<header>
-  <!-- Верхняя зелёная плашка -->
-  <div class="topbar">
-    <div class="inner">
-      <div class="left">
-        <div class="note" data-i18n="top.note">Авторские туры по Югу Франции</div>
+  <header>
+    <div class="topbar">
+      <div class="inner">
+        <div class="left">
+          <div class="note" data-i18n="top.note">Авторские туры по Югу Франции</div>
+          <!-- Соцсети в ТОПЕ (рядом с надписью) -->
+          <div class="social" aria-label="Социальные сети">
+            <a class="icon-btn" id="socVK" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1l1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
+              <span class="sr-only">VK</span>
+            </a>
+            <a class="icon-btn" id="socFB" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10h3V7h-3V6c0-.8.6-1 1-1h2V2h-3c-2.8 0-4 2-4 4v1H7v3h2v9h4v-9z"/></svg>
+              <span class="sr-only">Facebook</span>
+            </a>
+            <a class="icon-btn" id="socIG" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zM17.8 6.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span class="sr-only">Instagram</span>
+            </a>
+            <a class="icon-btn" id="socTG" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+              <!-- Исправленный path (латинская l) -->
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
+              <span class="sr-only">Telegram</span>
+            </a>
+          </div>
+        </div>
 
-        <!-- Соцсети -->
-        <div class="social" aria-label="Социальные сети">
-          <a class="icon-btn" id="socVK" href="#" target="_blank" rel="noopener" aria-label="VK" title="VK">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7c.1 4.7 2.5 8.6 6.6 10.5h2.3v-3.6c1 .1 1.8-.3 2.5-1l1.6 1.9h3.2c-.4-1.1-1.6-2.5-2.9-3.3 1.3-.7 2.2-2.1 2.6-3.5h-2.9c-.4 1.4-1.5 2.8-2.5 2.8V7h-2.4v6.8c-1.1 0-2.9-1.8-3.5-3.8H4.2c.3 1.1 1 2.3 1.9 3.4C5 12.6 3.7 10 3.6 7H3z"/></svg>
-            <span class="sr-only">VK</span>
-          </a>
-          <a class="icon-btn" id="socFB" href="#" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 10h3V7h-3V6c0-.8.6-1 1-1h2V2h-3c-2.8 0-4 2-4 4v1H7v3h2v9h4v-9z"/></svg>
-            <span class="sr-only">Facebook</span>
-          </a>
-          <a class="icon-btn" id="socIG" href="#" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm5.8-0.8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-            <span class="sr-only">Instagram</span>
-          </a>
-          <a class="icon-btn" id="socTG" href="#" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.7 15.6 9.4 19c.5 0 .7-.2 1-.5l2.4-2.3 5-3.7c.9-.6.4-1-.3-.8l-6.1 1.9-2.9-.9c-.6-.2-.6-.6.1-.9l11.2-4.3c.5-.2 1 .1.9.7l-1.9 12.3c-.1.7-.5.9-1.1.6l-3.9-2.8-2 1.6c-.1 0-.2.1-.3.1z"/></svg>
-            <span class="sr-only">Telegram</span>
-          </a>
+        <!-- Переключатель языков справа -->
+        <div class="lang" role="navigation" aria-label="Language switcher">
+          <a href="#" data-lang="ru" class="active">RU</a>
+          <span aria-hidden>•</span>
+          <a href="#" data-lang="fr">FR</a>
         </div>
       </div>
-
-      <!-- Языки -->
-      <nav class="lang" aria-label="Language switcher">
-        <a href="#" data-lang="ru" class="active">RU</a>
-        <span aria-hidden>•</span>
-        <a href="#" data-lang="fr">FR</a>
-      </nav>
     </div>
-  </div>
 
-  <!-- Основная белая полоса: логотип + меню в одной строке -->
-  <div class="container nav">
-    <a class="brand" href="/" aria-label="На главную">
-      <div class="logo" aria-hidden="true">Î</div>
-      <div>
-        <h1>
-          Tours Languedoc by Irène
-          <small>— Des voyages avec goût</small>
-        </h1>
-      </div>
-    </a>
+    <div class="container nav">
+      <a class="brand" href="/" ...> aria-label="На главную">
+        <div class="logo" aria-hidden>Î</div>
+        <div>
+          <h1>Tours Languedoc by Irène <small>— Des voyages avec goût</small></h1>
+        </div>
+      </a>
 
-    <nav aria-label="Главное меню">
-      <ul>
-        <li><a href="/" rel="home" data-i18n="nav.home">Главная</a></li>
-        <li><a href="/#why" data-i18n="nav.why">Почему с нами</a></li>
-        <li><a href="/#tours" data-i18n="nav.tours">Программы</a></li>
-        <li><a href="/#format" data-i18n="nav.format">Формат</a></li>
-        <li><a href="/#contactCard" data-i18n="nav.contacts">Контакты</a></li>
-      </ul>
-    </nav>
+      <nav>
+  <ul>
+    <li><a href="/" rel="home" data-i18n="nav.home">Главная</a></li>
+    <li><a href="/#why" data-i18n="nav.why">Почему с нами</a></li>
+    <li><a href="/#tours" data-i18n="nav.tours">Программы</a></li>
+    <li><a href="/#format" data-i18n="nav.format">Формат</a></li>
+    <li><a href="/#contactCard" data-i18n="nav.contacts">Контакты</a></li>
+  </ul>
+</nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg">
+    <img 
+  src="assets/wines/vinograd.jpg"
+  alt="Sud de la France — mer et vignobles"
+  fetchpriority="high"
+  decoding="async"
+  width="1920" height="1080"
+/>
+
+      <div class="overlay"></div>
+    </div>
+
+   <div class="container inner">
+  <div>
+    <h2 data-i18n="hero.title">
+      Юг Франции без шаблонов: вино, море, замки, wellness
+    </h2>
+    <p data-i18n="hero.text">
+      Авторские туры Лангедока: 10 готовых маршрутов + эксклюзивные VIP-программы. 
+      Дегустации вин и устриц на лагуне Тау, походы к Пику Сен-Лу, средневековый Каркасон, 
+      кайтинг и катамаран на Средиземном море и утончённый wellness-отдых 
+      в лучших термальных спа региона.
+    </p>
   </div>
-</header>
+</div>
+</section>
+
 
 
   <!-- WHY -->
