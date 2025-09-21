@@ -277,6 +277,28 @@
 .feature-more:after{ content:" →"; }
 
   </style>
+  <style>
+  /* Admin-only */
+  .admin-only{display:none}
+  html[data-admin="1"] .admin-only{display:block}
+
+  .admin-panel{
+    background:#fff; border:1px solid #eee; border-radius:18px; padding:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08); margin:24px 0
+  }
+  .admin-panel h3{
+    font-family:"Cormorant Garamond",serif; font-size:22px; margin:0 0 8px
+  }
+  .admin-actions{display:flex; gap:10px; flex-wrap:wrap}
+  .btn-admin{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700;
+    text-decoration:none
+  }
+  .btn-admin:hover{filter:brightness(.98)}
+  .pill-muted{font-size:12px; color:#6c6c6c}
+</style>
+
   <script type="application/ld+json">
 {
   "@context":"https://schema.org",
