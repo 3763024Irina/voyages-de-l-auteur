@@ -189,34 +189,26 @@
         <div class="ph"><img src="../assets/spa/lamalou-park.jpg" alt="Парк Lamalou" loading="lazy" data-i18n-attr="alt:gallery.park"></div>
         <div class="ph"><img src="../assets/spa/lamalou-thermes.jpg" alt="Термы Lamalou" loading="lazy" data-i18n-attr="alt:gallery.thermes"></div>
         <div class="ph"><img src="../assets/spa/lamalou-village.jpg" alt="Вилладж Lamalou" loading="lazy" data-i18n-attr="alt:gallery.village"></div>
-     <div class="ph"><img src="../<div class="ph"><img src="../assets/spa/lamalou-park.jpg" alt="Парк Lamalou" loading="lazy" data-i18n-attr="alt:gallery.park"></div>
-        <div class="ph"><img src="../assets/spa/lamalou-thermes.jpg" alt="Термы Lamalou" loading="lazy" data-i18n-attr="alt:gallery.thermes"></div>
-        <div class="ph"><img src="../assets/spa/lamalou-village.jpg" alt="Вилладж Lamalou" loading="lazy" data-i18n-attr="alt:gallery.village"></div>
- " alt="Парк Lamalou" loading="lazy" data-i18n-attr="alt:gallery.park"></div>
-        <div class="ph"><img src="../assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine.webp" alt="Термы Lamalou" loading="lazy" data-i18n-attr="alt:gallery.thermes"></div>
-        <div class="ph"><img src="../aassets/thermes/belle-balade-lamalou-les-aires-herepian-retour-voie-verte.webp" alt="Вилладж Lamalou" loading="lazy" data-i18n-attr="alt:gallery.village"></div>
- 
+        <div class="ph"><img src="../assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine.webp" alt="Бассейн CTS Lamalou" loading="lazy"></div>
+        <div class="ph"><img src="../assets/thermes/belle-balade-lamalou-les-aires-herepian-retour-voie-verte.webp" alt="Voie Verte — прогулки" loading="lazy"></div>
+        <div class="ph"><img src="../assets/thermes/Lamalou-foret-parc.webp" alt="Лес и парки Lamalou" loading="lazy"></div>
       </div>
     </article>
 
-   <div class="ph" style="margin-bottom:10px; aspect-ratio:16/10; border-radius:18px; overflow:hidden">
-  <iframe
-    title="Lamalou-les-Bains — карта"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    style="border:0; width:100%; height:100%;"
-    src="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil&output=embed">
-  </iframe>
-</div>
+    <aside class="card">
+      <h3 class="section-title" data-i18n="where.title">Где это</h3>
+      <p class="section-sub" data-i18n="where.sub">Lamalou-les-Bains • Chaîne Thermale du Soleil • Haut Orb.</p>
 
-<p class="section-sub" style="margin-top:8px">
-  <a class="btn" target="_blank" rel="noopener"
-     href="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil">
-    <span data-lang="ru">Открыть в Google Картах</span>
-    <span data-lang="fr">Ouvrir dans Google Maps</span>
-  </a>
-</p>
+      <div class="ph" style="margin-bottom:10px; aspect-ratio:16/10; border-radius:18px; overflow:hidden">
+        <iframe title="Lamalou-les-Bains — карта" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0; width:100%; height:100%;" src="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil&output=embed"></iframe>
+      </div>
 
+      <p class="section-sub" style="margin-top:8px">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil">
+          <span data-lang="ru">Открыть в Google Картах</span>
+          <span data-lang="fr">Ouvrir dans Google Maps</span>
+        </a>
+      </p>
 
       <!-- Админ-ссылки (включаются секретом) -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
@@ -225,12 +217,10 @@
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/checkout/reservation" data-i18n="admin.booking">Резервация процедур CTS</a>
       </div>
 
-     
-
       <div class="card" style="margin-top:14px">
         <h4 data-i18n="exclude.title">Не входит</h4>
         <ul class="list" style="margin-top:8px">
-          <li data-i18n="exclude.li1">Дополнительные процедуры CTS (оплата на сайте CTS).</li>
+          <li data-i18n="exclude.li1">Процедуры CTS (оплата на сайте CTS).</li>
           <li data-i18n="exclude.li2">Питание; в апартаментах — кухня.</li>
           <li data-i18n="exclude.li3">Страховка путешественника.</li>
         </ul>
@@ -368,7 +358,6 @@
           gallery: { park:'Парк Lamalou', thermes:'Термы Lamalou', village:'Вилладж Lamalou' },
           where: { title:'Где это', sub:'Lamalou-les-Bains • Chaîne Thermale du Soleil • Haut Orb.', mapalt:'Lamalou — карта/окрестности' },
           admin: { map:'Карта Lamalou', cts:'CTS — Lamalou', booking:'Резервация процедур CTS' },
-    
           exclude: { title:'Не входит', li1:'Процедуры CTS (оплата на сайте CTS).', li2:'Питание; в апартаментах — кухня.', li3:'Страховка путешественника.' },
           form: { title:'Быстрый запрос / бронирование', sub:'Сначала заполняете данные — потом увидите текст заявки и подтвердите отправку в WA/TG.', date:'Дата заезда', nights:'Ночей', guests:'Гостей', lodging:'Класс жилья', optStd:'Апартаменты Standard', optComf:'Комфорт', optComfPlus:'Комфорт+', name:'Имя', namePh:'Имя и фамилия', contact:'Контакт (WhatsApp/Telegram)', contactPh:'+33… или @username', msg:'Комментарий', msgPh:'Пожелания по жилью/времени процедур, трансфер…', sendWA:'Отправить в WhatsApp', sendTG:'Отправить в Telegram' },
           share: { sub:'Sharebar доступна через data attributes:' },
@@ -403,9 +392,7 @@
 
       function applyText(lang){
         const dict = I18N[lang] || I18N.ru;
-        // html lang
         document.documentElement.setAttribute('lang', dict.htmlLang);
-        // title & metas
         document.title = dict.title;
         const mDesc = document.querySelector('meta[name="description"]');
         if(mDesc) mDesc.setAttribute('content', dict.desc);
@@ -414,23 +401,19 @@
         const ogD = document.querySelector('meta[property="og:description"]');
         if(ogD) ogD.setAttribute('content', dict.ogDesc);
 
-        // text nodes
         document.querySelectorAll('[data-i18n]').forEach(el=>{
           const path = el.getAttribute('data-i18n');
           const val = path.split('.').reduce((acc,k)=>acc&&acc[k], dict);
           if (val != null) el.innerHTML = val;
         });
-        // attributes
         document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
           const spec = el.getAttribute('data-i18n-attr');
-          // format: "attr:key" or multiple separated by ","
           spec.split(',').forEach(pair=>{
             const [attr,key] = pair.split(':').map(s=>s.trim());
             const val = key.split('.').reduce((acc,k)=>acc&&acc[k], dict);
             if (val != null) el.setAttribute(attr, val);
           });
         });
-        // toggle active button
         document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
         document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
         localStorage.setItem('site:lang', lang);
@@ -452,126 +435,124 @@
 
   <!-- ==== Unified contact logic (точно как на PSL) ==== -->
   <script>
-;(() => {
-  if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
+  ;(() => {
+    if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
-  const CFG = window.APP_CONFIG || {};
-  const digits = s => String(s||'').replace(/\D/g,'');
-  const enc = s => encodeURIComponent(String(s||''));
+    const CFG = window.APP_CONFIG || {};
+    const digits = s => String(s||'').replace(/\D/g,'');
+    const enc = s => encodeURIComponent(String(s||''));
 
-  function toast(msg, ms=2400){
-    const t = document.createElement('div');
-    t.className = 'form-toast'; t.textContent = msg;
-    document.body.appendChild(t);
-    setTimeout(()=>t.remove(), ms);
-  }
-
-  function buildText(){
-    const f = document.querySelector('[data-contact-form]');
-    const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-    const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-    const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-    return [
-      'Заявка с сайта Tours Languedoc by Irène',
-      pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-      `Дата заезда: ${get('date')||'-'}`,
-      `Ночей: ${get('nights')||'14'}`,
-      `Гостей: ${get('guests')||'-'}`,
-      `Жильё: ${get('lodging')||'-'}`,
-      `Имя: ${get('name')||'-'}`,
-      `Контакт: ${get('contact')||'-'}`,
-      `Сообщение: ${get('message')||'-'}`,
-      `Ссылка: ${location.href}`
-    ].join('\n');
-  }
-
-  const REQUIRED = ['date','guests','name','contact'];
-  function validateForm({scroll=true}={}){
-    const f = document.querySelector('[data-contact-form]');
-    if(!f){ toast('Форма не найдена'); return false; }
-    let firstBad = null;
-    REQUIRED.forEach(n=>{
-      const el = f.querySelector(`[name="${n}"]`);
-      const val = el?.value?.trim();
-      const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-      el?.classList.toggle('input-error', !ok);
-      if(!ok && !firstBad) firstBad = el;
-    });
-    if(firstBad){
-      if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-      firstBad.focus();
-      const lang = localStorage.getItem('site:lang')||'ru';
-      const msg = (lang==='fr') ? 'Renseignez la date, le nombre de personnes, le nom et le contact' : 'Заполните дату, гостей, имя и контакт';
-      toast(msg);
-      return false;
+    function toast(msg, ms=2400){
+      const t = document.createElement('div');
+      t.className = 'form-toast'; t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(()=>t.remove(), ms);
     }
-    return true;
-  }
 
-  function safeOpen(href){
-    const a = document.createElement('a');
-    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
-    document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
-  }
+    function buildText(){
+      const f = document.querySelector('[data-contact-form]');
+      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
+      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+      return [
+        'Заявка с сайта Tours Languedoc by Irène',
+        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
+        `Дата заезда: ${get('date')||'-'}`,
+        `Ночей: ${get('nights')||'14'}`,
+        `Гостей: ${get('guests')||'-'}`,
+        `Жильё: ${get('lodging')||'-'}`,
+        `Имя: ${get('name')||'-'}`,
+        `Контакт: ${get('contact')||'-'}`,
+        `Сообщение: ${get('message')||'-'}`,
+        `Ссылка: ${location.href}`
+      ].join('\n');
+    }
 
-  function openWhatsApp(){
-    if(!validateForm()) return;
-    const num = digits(CFG.whatsapp || '');
-    if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
-    safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-  }
+    const REQUIRED = ['date','guests','name','contact'];
+    function validateForm({scroll=true}={}){
+      const f = document.querySelector('[data-contact-form]');
+      if(!f){ toast('Форма не найдена'); return false; }
+      let firstBad = null;
+      REQUIRED.forEach(n=>{
+        const el = f.querySelector(`[name="${n}"]`);
+        const val = el?.value?.trim();
+        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
+        el?.classList.toggle('input-error', !ok);
+        if(!ok && !firstBad) firstBad = el;
+      });
+      if(firstBad){
+        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
+        firstBad.focus();
+        const lang = localStorage.getItem('site:lang')||'ru';
+        const msg = (lang==='fr') ? 'Renseignez la date, le nombre de personnes, le nom et le contact' : 'Заполните дату, гостей, имя и контакт';
+        toast(msg);
+        return false;
+      }
+      return true;
+    }
 
-  // Открываем окно сразу (не блокируется), а затем подставляем целевой URL
- <script>
-// Открываем чат с пользователем Telegram (без бота):
-// 1) из клика сразу открываем пустое окно (чтоб не заблочили попап),
-// 2) копируем текст в буфер,
-// 3) перекидываем вкладку на t.me/<username>,
-// 4) показываем тост с подсказкой "текст скопирован, вставьте в чат".
-async function openTelegram(){
-  if(!validateForm()) return;
+    function safeOpen(href){
+      const a = document.createElement('a');
+      a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+      document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
+    }
 
-  const user = (CFG.telegram_user||'').replace(/^@/,'').trim();
-  if (!user){ toast('В APP_CONFIG не задан telegram_user'); return; }
+    function openWhatsApp(){
+      if(!validateForm()) return;
+      const num = digits(CFG.whatsapp || '');
+      if (!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; }
+      safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
+    }
 
-  // Открываем окно сразу из клика — сохраняем user gesture
-  const w = window.open('', '_blank', 'noopener,noreferrer');
+    // Открываем чат с пользователем Telegram (без бота):
+    async function openTelegram(){
+      if(!validateForm()) return;
 
-  const text = buildText();
-  let copied = false;
+      const user = (CFG.telegram_user||'').replace(/^@/,'').trim();
+      if (!user){ toast('В APP_CONFIG не задан telegram_user'); return; }
 
-  try {
-    // Пытаемся в "новую" API
-    await navigator.clipboard.writeText(text);
-    copied = true;
-  } catch(e) {
-    // Фолбэк через скрытое textarea
-    try {
-      const ta = document.createElement('textarea');
-      ta.value = text; ta.setAttribute('readonly','');
-      ta.style.position='fixed'; ta.style.opacity='0'; ta.style.pointerEvents='none';
-      document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy');
-      ta.remove(); copied = true;
-    } catch(_) { copied = false; }
-  }
+      // Открываем окно сразу из клика — сохраняем user gesture
+      const w = window.open('', '_blank', 'noopener,noreferrer');
 
-  // Ведём в чат пользователя
-  const url = `https://t.me/${encodeURIComponent(user)}`;
-  if (w) w.location = url; else location.href = url;
+      const text = buildText();
+      let copied = false;
 
-  // Подсказка для пользователя
-  const lang = localStorage.getItem('site:lang')||'ru';
-  const okMsg = lang==='fr'
-    ? 'Texte copié. Ouvrez le chat et collez-le.'
-    : 'Текст скопирован. Откройте чат и вставьте.';
-  const failMsg = lang==='fr'
-    ? 'Ouvrez le chat et collez manuellement le texte (copie automatique indisponible).'
-    : 'Откройте чат и вставьте текст вручную (автокопирование недоступно).';
-  toast(copied ? okMsg : failMsg, 3600);
-}
-</script>
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch(e) {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.setAttribute('readonly','');
+          ta.style.position='fixed'; ta.style.opacity='0'; ta.style.pointerEvents='none';
+          document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy');
+          ta.remove(); copied = true;
+        } catch(_) { copied = false; }
+      }
 
+      const url = `https://t.me/${encodeURIComponent(user)}`;
+      if (w) w.location = url; else location.href = url;
+
+      const lang = localStorage.getItem('site:lang')||'ru';
+      const okMsg = lang==='fr'
+        ? 'Texte copié. Ouvrez le chat et collez-le.'
+        : 'Текст скопирован. Откройте чат и вставьте.';
+      const failMsg = lang==='fr'
+        ? 'Ouvrez le chat et collez manuellement le texte (copie automatique indisponible).'
+        : 'Откройте чат и вставьте текст вручную (автокопирование недоступно).';
+      toast(copied ? okMsg : failMsg, 3600);
+    }
+
+    // Навешиваем клики на кнопки (+ FAB)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('[data-whatsapp]');
+      if (a){ e.preventDefault(); openWhatsApp(); return; }
+      const t = e.target.closest('[data-telegram]');
+      if (t){ e.preventDefault(); openTelegram(); return; }
+    });
+  })();
+  </script>
 
 </body>
 </html>
