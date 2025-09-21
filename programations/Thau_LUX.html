@@ -635,27 +635,65 @@
   </script>
 
   <!-- Admin gate -->
-  <script>
-    (function adminGate(){
-      try{
-        const params = new URLSearchParams(location.search);
-        const token = params.get('admin');
-        if (token !== null) {
-          if (token === 'off') localStorage.removeItem('site:admin');
-          else if (token === (window.APP_CONFIG?.ADMIN_SECRET || '')) localStorage.setItem('site:admin','1');
-          params.delete('admin');
-          history.replaceState({},'', location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash);
+<script>
+  (function adminGate(){
+    try{
+      const CFG = window.APP_CONFIG || {};
+      const ADMIN_SECRET = String(CFG.ADMIN_SECRET || '');
+      const params = new URLSearchParams(location.search);
+      const qAdmin = params.get('admin');
+
+      // toggle по query: ?admin=SECRET  /  ?admin=off
+      if (qAdmin !== null) {
+        if (qAdmin === 'off') {
+          localStorage.removeItem('site:admin');
+        } else if (ADMIN_SECRET && qAdmin === ADMIN_SECRET) {
+          localStorage.setItem('site:admin','1');
         }
-        const isAdmin = localStorage.getItem('site:admin') === '1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn('[adminGate]', e); }
-    })();
-  </script>
+        params.delete('admin');
+        history.replaceState({},'', location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash);
+      }
+
+      const isAdmin = localStorage.getItem('site:admin') === '1';
+      document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
+
+      // Усиленная защита ссылок
+      const adminLinks = Array.from(document.querySelectorAll('a[data-admin-link]'));
+
+      if (!isAdmin) {
+        // 1) полностью снимаем href
+        adminLinks.forEach(a=>{
+          a.setAttribute('data-preserve-href', a.getAttribute('href') || '');
+          a.removeAttribute('href');
+          a.setAttribute('role','link');
+          a.setAttribute('aria-disabled','true');
+          a.style.pointerEvents = 'none';
+          a.style.opacity = '.65';
+          a.title = 'Доступно только администратору';
+        });
+
+        // 2) на всякий случай блокируем клик
+        document.addEventListener('click', (e)=>{
+          const target = e.target.closest && e.target.closest('a[data-admin-link]');
+          if (target) e.preventDefault();
+        }, true);
+      } else {
+        // Восстановим href для админа (если скрывали ранее)
+        adminLinks.forEach(a=>{
+          const keep = a.getAttribute('data-preserve-href');
+          if (keep) a.setAttribute('href', keep);
+          a.removeAttribute('aria-disabled');
+          a.style.pointerEvents = '';
+          a.style.opacity = '';
+          a.title = a.title && a.title.includes('администратору') ? '' : a.title;
+        });
+      }
+
+    } catch(e){
+      console.warn('[adminGate]', e);
+    }
+  })();
+</script>
 
   <!-- JSON-LD схемы: Organization, WebSite, BreadcrumbList, TouristTrip, FAQ -->
   <script type="application/ld+json">
