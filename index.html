@@ -40,7 +40,35 @@
 <link rel="preload" as="image" fetchpriority="high" href="assets/wines/vinograd.jpg" imagesrcset="assets/wines/vinograd.jpg 1200w" imagesizes="100vw">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
- <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- === РАННИЙ BASE-инжектор (до любых относительных ресурсов) === -->
+  <script>
+  (function(){
+    var baseEl = document.querySelector('base');
+    if (!baseEl) {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var base = (parts.length && parts[0] !== 'index.html') ? ('/' + parts[0] + '/') : '/';
+      baseEl = document.createElement('base');
+      baseEl.setAttribute('href', base);
+      document.head.prepend(baseEl);
+    }
+    window.__SITE_BASE__ = baseEl.getAttribute('href');
+    window.resolveHref = function(href){
+      if (!href) return '#';
+      if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
+      var base = window.__SITE_BASE__ || '/';
+      if (href.startsWith(base)) return href;
+      var out;
+      if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
+      else out = (base.endsWith('/') ? base : base + '/') + href.replace(/^\//,'');
+      return out.replace(/([^:])\/{2,}/g, '$1/');
+    };
+  })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 
 
 <!-- Favicons -->
@@ -1232,7 +1260,40 @@ if (item.seasonal) {
       setTimeout(()=>{ location.href = https; }, 300);
       setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${domain}`; }, 900);
     }
+  <script>
+  async function openTelegram(){
+    const CFG = window.APP_CONFIG || {};
+    const user = (CFG.telegram_user || '').replace(/^@/, '');
+    const bot  = (CFG.telegram_bot  || '').replace(/^@/, '');
 
+    // 1) приоритет — живой пользовательский аккаунт
+    const handle = user || bot;
+    if (!handle) { alert('В APP_CONFIG не задан telegram_user или telegram_bot'); return; }
+
+    // делаем безопасное открытие с фоллбэками на всех платформах
+    const https  = `https://t.me/${handle}`;
+    const scheme = `tg://resolve?domain=${handle}`;
+    const intent = `intent://resolve?domain=${handle}#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+
+    const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    try {
+      if (isiOS) {
+        location.href = scheme; setTimeout(()=>{ location.href = https; }, 700);
+      } else if (isAndroid) {
+        location.href = intent; setTimeout(()=>{ location.href = https; }, 1100);
+      } else {
+        // desktop: попробуем схему, затем https, затем Web Telegram
+        location.href = scheme;
+        setTimeout(()=>{ location.href = https; }, 300);
+        setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${handle}`; }, 900);
+      }
+    } catch (_) {
+      location.href = https;
+    }
+  }
+</script>
 
 <!-- SVG sprite for feature icons -->
 <svg width="0" height="0" style="position:absolute;opacity:0" aria-hidden="true">
@@ -1295,121 +1356,6 @@ if (item.seasonal) {
   </script>
 </body>
 </html>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const CFG = window.APP_CONFIG || {};
-
-  // --- Соцсети из APP_CONFIG ---
-  const setHref = (id, url) => { const el = document.getElementById(id); if (el && url) el.href = url; };
-  setHref('socVK',  CFG.vk || '#');
-  setHref('socFB',  CFG.facebook || '#');
-  setHref('socIG',  CFG.instagram || '#');
-  setHref('socVKf', CFG.vk || '#');
-  setHref('socFBf', CFG.facebook || '#');
-  setHref('socIGf', CFG.instagram || '#');
-  (function(){
-    const handle = (CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/,'');
-    const tgUrl  = handle ? `https://t.me/${handle}` : '#';
-    setHref('socTG', tgUrl);
-    setHref('socTGf', tgUrl);
-  })();
-
-  // --- FAB ---
-  const $  = (s, r=document)=>r.querySelector(s);
-  const root   = $('.fab');
-  const bubble = $('#chatFab');
-  const btnWA  = $('#btn-whatsapp');
-  const btnTG  = $('#btn-telegram');
-  const goBtn  = $('#fabGo');
-
-  bubble?.addEventListener('click', () => root?.classList.toggle('open'));
-  document.addEventListener('click', e => { if (!e.target.closest('.fab')) root?.classList.remove('open'); });
-  goBtn?.addEventListener('click', () => {
-    document.querySelector('#contactCard')?.scrollIntoView({ behavior: 'smooth' });
-    root?.classList.remove('open');
-  });
-
-  const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
-  const isAndroid = /Android/i.test(navigator.userAgent);
-
-  const pageTitle = () => document.querySelector('meta[property="og:title"]')?.content || document.title;
-  const buildQuickText = () => `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${pageTitle()}`;
-
-  // --- WhatsApp ---
-  function openWhatsApp(){
-    const phone = String(CFG.whatsapp || '').replace(/\D/g,'');
-    if (!phone) { alert('В APP_CONFIG не указан номер WhatsApp'); return; }
-    location.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildQuickText())}`;
-  }
-
-  // --- Telegram prestart/token ---
-  function normalizePreUrl(u){
-    if(!u) return '';
-    try{
-      const url = new URL(u, location.origin);
-      if (/\/health\/?$/i.test(url.pathname)){ url.pathname = url.pathname.replace(/\/health\/?$/i,'/prestart'); }
-      if (!/\/prestart\/?$/i.test(url.pathname)){ url.pathname = (url.pathname.replace(/\/$/,'') + '/prestart'); }
-      return url.toString();
-    }catch{ return u; }
-  }
-  async function prestart(payload){
-    const PRE = normalizePreUrl(CFG.bot_prestart_url || '');
-    if(!PRE) return null;
-    try{
-      const r = await fetch(PRE, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(payload || { page: location.href, title: document.title })
-      });
-      const j = await r.json().catch(()=>null);
-      return j?.token || null;
-    }catch{ return null; }
-  }
-  function openTGDeep(handle, start){
-    if(!handle){ alert('В APP_CONFIG не задан telegram_user или telegram_bot'); return; }
-    const https  = start ? `https://t.me/${handle}?start=${encodeURIComponent(start)}` : `https://t.me/${handle}`;
-    const scheme = start ? `tg://resolve?domain=${handle}&start=${encodeURIComponent(start)}` : `tg://resolve?domain=${handle}`;
-    const intent = `intent://resolve?domain=${handle}${start?`&start=${encodeURIComponent(start)}`:''}` +
-                   `#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
-    try{
-      if (isiOS){ location.href = scheme; setTimeout(()=>{ location.href = https; }, 700); }
-      else if (isAndroid){ location.href = intent; setTimeout(()=>{ location.href = https; }, 1100); }
-      else { location.href = scheme; setTimeout(()=>{ location.href = https; }, 300); setTimeout(()=>{ location.href = 'https://web.telegram.org/k/#@' + handle; }, 900); }
-    }catch{ location.href = https; }
-  }
-
-  btnWA?.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
-  btnTG?.addEventListener('click', async (e)=>{
-    e.preventDefault();
-    const handle = (CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/,'');
-    const token  = await prestart({ page: location.href, title: document.title });
-    openTGDeep(handle, token || '');
-  });
-
-  // Горизонтальная прокрутка WHY-ленты
-  const row = document.querySelector('.row-scroll');
-  row?.addEventListener('wheel', (e)=>{
-    if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-      row.scrollLeft += e.deltaY;
-      e.preventDefault();
-    }
-  }, {passive:false});
-});
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-  (function(m,e,t,r,i,k,a){
-    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-  ym(104246057, "init", { webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/104246057" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 
 </body>
