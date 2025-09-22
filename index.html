@@ -301,6 +301,51 @@
   }
   .btn-admin:hover{filter:brightness(.98)}
   .pill-muted{font-size:12px; color:#6c6c6c}
+
+    /* Лента в одну строку */
+.row-scroll{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:16px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:4px 8px 12px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* Фиксируем ширину каждой карточки (не 100%) */
+.row-scroll .card,
+.row-scroll article.card{
+  flex:0 0 320px;           /* можно 360px на десктопе */
+  max-width:320px;
+  scroll-snap-align:start;
+}
+
+/* Картинка карточки не растягивается «во весь экран» */
+.row-scroll .card img,
+.row-scroll article.card img{
+  display:block;
+  width:100%;
+  height:200px;             /* или aspect-ratio: 16/9; */
+  object-fit:cover;
+  border-radius:12px 12px 0 0;
+}
+
+/* Сбрасываем наследованные «геройские» стили, если карточки внутри секции #why */
+#why .card, #why article.card{ margin:0; }
+
+/* Если где-то есть старая сетка, которая ломает ряд — отключаем её влияние */
+.grid.cards, .cards.grid{ display:contents !important; }
+
+/* На широких экранах можно чуть шире */
+@media (min-width:1024px){
+  .row-scroll .card,
+  .row-scroll article.card{
+    flex-basis:360px; max-width:360px;
+  }
+}
+
 </style>
 
   <script type="application/ld+json">
@@ -493,7 +538,7 @@
     Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.
   </p>
 
-  <div class="cards scroller" id="whyCards">
+ <div class="row-scroll" id="whyCards">
     <!-- Wellness -->
     <article class="card">
       <div class="cover">
@@ -1276,6 +1321,22 @@ if (item.seasonal) {
     }catch(e){ console.warn(e); }
   })();
 </script>
+  <!-- Весь ваш контент, футер и т.п. -->
+
+  <script>
+    (function(){
+      const el = document.querySelector('.row-scroll');
+      if(!el) return;
+      el.addEventListener('wheel', (e)=>{
+        if(Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+          el.scrollLeft += e.deltaY;
+          e.preventDefault();
+        }
+      }, {passive:false});
+    })();
+  </script>
+</body>
+</html>
 
 
 </body>
