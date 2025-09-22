@@ -290,14 +290,49 @@
         <img src="../assets/saint-guilhierm/IMG_9390 3.JPG" alt="Saint-Guilhem — видовая точка" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
-      <!-- Админ-ссылки (включаются ?admin=capion2025) -->
-      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Saint-Guilhem-le-D%C3%A9sert&output=classic">Saint-Guilhem</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grotte%20de%20Clamouse&output=classic">Grotte de Clamouse</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Pont%20du%20Diable%20(H%C3%A9rault)&output=classic">Pont du Diable</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20Capion&output=classic">Château Capion</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Saint-Guilhem-le-D%C3%A9sert&destination=Ch%C3%A2teau%20Capion&waypoints=Grotte%20de%20Clamouse|Pont%20du%20Diable%20(H%C3%A9rault)">Маршрут дня</a>
-      </div>
+   <!-- Админ-ссылки (включаются ?admin=capion2025) -->
+<div class="admin-only" data-display="block" style="margin-top:10px">
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+    <!-- Карты (быстрые) -->
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Saint-Guilhem-le-D%C3%A9sert&output=classic">Saint-Guilhem (GM)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grotte%20de%20Clamouse&output=classic">Clamouse (GM)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Pont%20du%20Diable%20(H%C3%A9rault)&output=classic">Pont du Diable (GM)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ch%C3%A2teau%20Capion&output=classic">Château Capion (GM)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://waze.com/ul?ll=43.73,3.56&navigate=yes">Waze (долина)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="http://maps.apple.com/?q=Saint-Guilhem-le-D%C3%A9sert">Apple Maps (SG)</a>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+    <!-- Официальные сайты / бронь (через поиск — всегда актуальные) -->
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Grotte+de+Clamouse+billets">Clamouse — билеты</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Ch%C3%A2teau+Capion+d%C3%A9gustation+r%C3%A9servation">Capion — дегустация</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=La+Table+du+Pont+du+Diable+Saint+Jean+de+Fos+reservation">Ресторан у Pont du Diable</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Office+de+Tourisme+Saint-Guilhem-le-D%C3%A9sert">Office de Tourisme</a>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+    <!-- Телефоны / контакты -->
+    <a class="btn" data-admin-link href="tel:+334**CLAMOUSE**" title="Clamouse — телефон">Clamouse — телефон</a>
+    <a class="btn" data-admin-link href="mailto:contact@clamo…">Clamouse — email</a>
+    <a class="btn" data-admin-link href="tel:+334**CAPION**" title="Capion — телефон">Capion — телефон</a>
+    <a class="btn" data-admin-link href="mailto:contact@chateaucapion…">Capion — email</a>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+    <!-- Маршруты дня (цепочка) -->
+    <a class="btn" data-admin-link target="_blank" rel="noopener"
+       href="https://www.google.com/maps/dir/?api=1&origin=Saint-Guilhem-le-D%C3%A9sert&destination=Ch%C3%A2teau%20Capion&waypoints=Grotte%20de%20Clamouse|Pont%20du%20Diable%20(H%C3%A9rault)">Маршрут дня (GM)</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener"
+       href="https://waze.com/ul?ll=43.74,3.55&navigate=yes">Старт Waze (SG)</a>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <!-- Доп. опции -->
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Mas+de+Daumas+Gassac+d%C3%A9gustation+r%C3%A9servation">+ Daumas Gassac</a>
+    <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/search?q=Belv%C3%A9d%C3%A8res+Saint-Guilhem+panorama">Видовые точки</a>
+  </div>
+</div>
+
 
       <h3 class="section-title" style="margin-top:20px">Полезно знать</h3>
       <ul class="list">
