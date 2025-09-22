@@ -1260,22 +1260,41 @@ if (item.seasonal) {
       setTimeout(()=>{ location.href = https; }, 300);
       setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${domain}`; }, 900);
     }
-    async function openTelegram(){
-      const bot  = (CFG.telegram_bot  || '').replace(/^@/,'');
-      const user = (CFG.telegram_user || '').replace(/^@/,'');
-      if (bot){
-        const token = await prestart();                 // пробуем /prestart токен
-        openTGDeep(bot, token || ''); return;
-      }
-      if (user){ openTGDeep(user); return; }            // личный чат
-      alert('В APP_CONFIG не задан telegram_bot или telegram_user');
-    }
+  <script>
+  async function openTelegram(){
+    const CFG = window.APP_CONFIG || {};
+    const user = (CFG.telegram_user || '').replace(/^@/, '');
+    const bot  = (CFG.telegram_bot  || '').replace(/^@/, '');
 
-    // Клики по кнопкам внутри FAB
-    btnWA?.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); root?.classList.remove('open'); });
-    btnTG?.addEventListener('click', async (e)=>{ e.preventDefault(); await openTelegram(); root?.classList.remove('open'); });
-  })();
-  </script>
+    // 1) приоритет — живой пользовательский аккаунт
+    const handle = user || bot;
+    if (!handle) { alert('В APP_CONFIG не задан telegram_user или telegram_bot'); return; }
+
+    // делаем безопасное открытие с фоллбэками на всех платформах
+    const https  = `https://t.me/${handle}`;
+    const scheme = `tg://resolve?domain=${handle}`;
+    const intent = `intent://resolve?domain=${handle}#Intent;scheme=tg;package=org.telegram.messenger;S.browser_fallback_url=${encodeURIComponent(https)};end`;
+
+    const isiOS = /iP(hone|ad|od)/i.test(navigator.userAgent);
+    const isAndroid = /Android/i.test(navigator.userAgent);
+
+    try {
+      if (isiOS) {
+        location.href = scheme; setTimeout(()=>{ location.href = https; }, 700);
+      } else if (isAndroid) {
+        location.href = intent; setTimeout(()=>{ location.href = https; }, 1100);
+      } else {
+        // desktop: попробуем схему, затем https, затем Web Telegram
+        location.href = scheme;
+        setTimeout(()=>{ location.href = https; }, 300);
+        setTimeout(()=>{ location.href = `https://web.telegram.org/k/#@${handle}`; }, 900);
+      }
+    } catch (_) {
+      location.href = https;
+    }
+  }
+</script>
+
 <!-- SVG sprite for feature icons -->
 <svg width="0" height="0" style="position:absolute;opacity:0" aria-hidden="true">
   <symbol id="i-car" viewBox="0 0 24 24">
