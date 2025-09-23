@@ -943,19 +943,50 @@
     const filters = document.querySelector('#filters');
     const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
 
-    const tags = ['🦪 Устрицы','🍷 Вино','🏰 Замки','⛰️ Горы','🌊 Море','🏄 Актив'];
-    if(filters && !filters.children.length){
-      tags.forEach(t=>{
-        const b=document.createElement('button');
-        b.className='chip';
-        b.textContent=t;
-        b.addEventListener('click',()=>{
-          document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-          b.classList.add('active');
-        });
-        filters.appendChild(b);
-      });
-    }
+   // === Хабы и теги, ведущие на страницы/якоря ===
+const HUBS = {
+  oysters:  'programations/oysters.html',      // 🦪 Устрицы — хаб
+  wine:     'programations/wine.html',         // 🍷 Вино — хаб
+  sea:      'programations/sea.html',          // 🌊 Море & актив — хаб
+  mountains:'programations/sea.html#mountains',// ⛰️ Горы (если хочешь выделить в sea-хабе якорь)
+  castles:  'programations/castles.html',      // 🏰 Замки & история — хаб
+  wellness: 'programations/wellness.html',     // 🧖 Wellness & термы — хаб
+  canal:    'programations/canal.html',        // 🚤 Канал дю Миди — хаб
+  kiting:   'programations/sea.html#kiting',   // 🪁 Кайтинг — якорь в море-хабе
+  boats:    'programations/sea.html#boats'     // ⛵ Лодки/яхты — якорь в море-хабе
+};
+
+// Какие чипы показывать в фильтрах
+const TAGS = [
+  { id:'oysters',  label:'🦪 Устрицы' },
+  { id:'wine',     label:'🍷 Вино' },
+  { id:'sea',      label:'🌊 Море' },
+  { id:'kiting',   label:'🪁 Кайтинг' },
+  { id:'boats',    label:'⛵ Лодки' },
+  { id:'mountains',label:'⛰️ Горы' },
+  { id:'castles',  label:'🏰 Замки' },
+  { id:'wellness', label:'🧖 Wellness' },
+  { id:'canal',    label:'🚤 Канал дю Миди' }
+];
+
+// Рендерим чипы: если у тега есть ссылка в HUBS — рисуем <a href>, иначе — локальный фильтр (не нужен сейчас)
+function renderTags(container, tags){
+  if (!container || container.children.length) return;
+  tags.forEach(t => {
+    const href = HUBS[t.id];
+    const el = document.createElement('a');
+    el.className = 'chip';
+    el.textContent = t.label;
+    el.setAttribute('data-id', t.id);
+    el.href = href || '#';
+    el.role = 'button';
+    container.appendChild(el);
+  });
+}
+
+// отрисуем в #filters
+renderTags(filters, TAGS);
+
 
     function cardHTML(item){
       const l = getLang();
