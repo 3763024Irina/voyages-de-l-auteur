@@ -7,6 +7,17 @@
   const VERSION  = String(CFG.consentVersion || "v1");
   const LS_KEY   = `cookieConsent.${VERSION}`;
 
+  // ====== Заглушка Consent Mode (v2): denied по умолчанию ======
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+
   // ====== Если выбор уже сохранён — применяем и выходим ======
   try {
     const saved = JSON.parse(localStorage.getItem(LS_KEY) || "null");
@@ -53,10 +64,12 @@
     </div>
   `;
 
-  // Показ баннера, когда DOM готов
+  // Показ баннера
   function show() {
-    if (document.body) document.body.appendChild(box);
-    else document.addEventListener("DOMContentLoaded", () => document.body.appendChild(box), {once:true});
+    if (!document.getElementById("ck-banner")) {
+      if (document.body) document.body.appendChild(box);
+      else document.addEventListener("DOMContentLoaded", () => document.body.appendChild(box), {once:true});
+    }
   }
 
   // Сохраняем выбор пользователя
@@ -76,12 +89,16 @@
     if (!GA_ID || window.__ga_enabled__) return;
     window.__ga_enabled__ = true;
 
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    window.gtag = gtag;
-
     gtag("js", new Date());
     gtag("config", GA_ID, { anonymize_ip: true });
+
+    // Разрешаем хранилища после согласия
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      analytics_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
 
     loadScript("https://www.googletagmanager.com/gtag/js?id="+encodeURIComponent(GA_ID));
     console.log("[cookies] GA4 enabled:", GA_ID);
@@ -112,9 +129,7 @@
     }
   }
 
-  // ====== Показ и обработчики ======
-  show();
-
+  // ====== Обработчики ======
   function acceptAll() {
     const c = { essential:true, analytics:true, ts:Date.now() };
     save(c); apply(c); box.remove();
@@ -124,7 +139,6 @@
     save(c); box.remove();
   }
 
-  // Навешиваем клики, когда баннер вставлен в DOM
   function bind() {
     const yes = document.getElementById("ck-accept");
     const no  = document.getElementById("ck-essential");
@@ -133,6 +147,15 @@
       no.addEventListener("click", essentialsOnly, {once:true});
     }
   }
+
+  // Показ при загрузке
+  show();
   if (document.readyState === "complete" || document.readyState === "interactive") bind();
   else document.addEventListener("DOMContentLoaded", bind, {once:true});
+
+  // ====== API для повторного открытия/сброса ======
+  window.cookieConsent = {
+    reset() { try { localStorage.removeItem(LS_KEY); } catch(_) {} location.reload(); },
+    open()  { show(); bind(); }
+  };
 })();
