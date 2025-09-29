@@ -91,6 +91,25 @@
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
     .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
+.photo-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.photo-stack .ph {
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.photo-stack img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
     /* four info blocks */
     .four-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
