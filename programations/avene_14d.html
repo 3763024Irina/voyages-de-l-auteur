@@ -199,16 +199,40 @@
         </div>
       </div>
 
-      <h3 class="section-title" style="margin-top:18px" data-i18n="price.title">Стоимость</h3>
-      <div class="card">
-        <p><b data-i18n="price.for2">Цена за 2 гостей:</b> <span data-i18n="price.from">от</span> <span class="price">€ 1 890</span> <span data-i18n="price.per14">за 14 ночей.</span></p>
-        <p class="section-sub" data-i18n="price.model">Включает подбор жилья, сопровождение и помощь с записью в Avène. <b>Процедуры</b> оплачиваются <b>напрямую</b> в Centre Thermal Avène (депозит при бронировании).</p>
-      </div>
+    <h3 class="section-title" data-i18n="price.title">Стоимость курсов (без страховки)</h3>
+<div class="card" data-i18n="price.table">
+  <table style="width:100%; border-collapse:collapse; font-size:15px">
+    <thead>
+      <tr style="background:#f9f9f9">
+        <th style="padding:8px; text-align:left" data-i18n="price.dur">Длительность</th>
+        <th style="padding:8px; text-align:left" data-i18n="price.cost">Цена / 1 чел</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:8px">6 <span data-i18n="price.days">дней</span></td>
+        <td style="padding:8px"><b>399 €</b></td>
+      </tr>
+      <tr>
+        <td style="padding:8px">12 <span data-i18n="price.days">дней</span></td>
+        <td style="padding:8px"><b>709 €</b></td>
+      </tr>
+      <tr>
+        <td style="padding:8px">18 <span data-i18n="price.days">дней</span></td>
+        <td style="padding:8px"><b>939 €</b></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="section-sub" style="margin-top:10px" data-i18n="price.note">
+    Цены указаны <b>без страховки</b>, оплачиваются напрямую в Centre Thermal Avène. 
+    Приём врача и проживание рассчитываются отдельно.
+  </p>
+</div>
 
       <div class="gallery" style="margin-top:14px">
-        <div class="ph"><img src="../assets/thermes/avene-centre-lobby.webp" alt="Центр Avène — холл" loading="lazy"></div>
-        <div class="ph"><img src="../assets/thermes/avene-hydro-pool.webp" alt="Бассейн и распыления Avène" loading="lazy"></div>
-        <div class="ph"><img src="../assets/thermes/avene-park-river.webp" alt="Долина Avène и река" loading="lazy"></div>
+        <div class="ph"><img src="/assets/thermes/avene-centre-lobby.webp" alt="Центр Avène — холл" loading="lazy"></div>
+        <div class="ph"><img src="/assets/thermes/avene-hydro-pool.webp" alt="Бассейн и распыления Avène" loading="lazy"></div>
+        <div class="ph"><img src="/assets/thermes/avene-park-river.webp" alt="Долина Avène и река" loading="lazy"></div>
       </div>
     </article>
 
@@ -375,8 +399,14 @@
         b2:{title:'2) Показания / профиль лечения', li1:'Атопический дерматит (с 3 мес.), экзема, псориаз.', li2:'Рубцы, ожоги, кожно-слизистые лишаи, ихтиоз, хронический зуд, кожа головы.', li3:'Пост-онко-уход: уменьшение зуда, сухости и эритемы.'},
         b3:{title:'3) Программы и процедуры', li1:'6/12/18 дней (wellness) и 18 дней (медкур, возможна оплата по соцстраху FR).', li2:'Ежедневно: душ/ванны, орошения, обёртывания, распыления, бассейн + назначения врача.', li3:'Врач центра формирует индивидуальный протокол; ~1–1.5 ч/день.'},
         b4:{title:'4) Практика: сезон, запись, безопасность', li1:'Сезон: ~конец марта — начало ноября; онлайн-бронь дат.', li2:'Aquacert HACCP Thermalisme — сертификация безопасности воды с 2010.', li3:'Обычные противопоказания к бальнео; нужна справка при хронических состояниях.'},
-        price:{title:'Стоимость', for2:'Цена за 2 гостей:', from:'от', per14:'за 14 ночей.', model:'Включает подбор жилья, сопровождение и помощь с записью в Avène. Процедуры оплачиваются напрямую в Centre Thermal Avène (депозит при брони).'},
-        gallery:{},
+       price:{
+  title:'Стоимость курсов (без страховки)',
+  dur:'Длительность',
+  cost:'Цена / 1 чел',
+  days:'дней',
+  note:'Цены указаны <b>без страховки</b>, оплачиваются напрямую в Centre Thermal Avène. Приём врача и проживание рассчитываются отдельно.'
+}
+      gallery:{},
         where:{title:'Где это', sub:'Avène • Chaîne Hydrotherapy • Haut-Languedoc', mapalt:'Avène — карта'},
         admin:{cts:'Avène — оф. сайт', booking:'Бронь процедур', rates:'Тарифы'},
         exclude:{title:'Не входит', li1:'Процедуры Avène (оплата на сайте центра).', li2:'Питание; в апартаментах — кухня.', li3:'Страховка.'},
@@ -405,8 +435,14 @@
         b2:{title:'2) Indications', li1:"Dermatite atopique (dès 3 mois), eczémas, psoriasis.", li2:"Cicatrices/brûlures, lichens cutanéo-muqueux, ichtyoses, prurit, cuir chevelu.", li3:"Post-cancer : réduction du prurit, sécheresse et rougeurs."},
         b3:{title:'3) Programmes & soins', li1:'6/12/18 jours (bien-être) et 18 jours (cure conventionnée).', li2:"Quotidien : douches/bains, pulvérisations, irrigations locales, enveloppements, piscine + actes complémentaires selon le médecin.", li3:'Consultation médicale initiale; ~1–1.5 h/jour.'},
         b4:{title:'4) Pratique : saison, réservation, sécurité', li1:'Saison : ~fin mars — début novembre; réservation en ligne.', li2:'Aquacert HACCP Thermalisme depuis 2010.', li3:'Contre-indications générales de balnéo; certificat médical recommandé si pathologies.'},
-        price:{title:'Tarifs', for2:'Prix pour 2 :', from:'dès', per14:'/ 14 nuits.', model:'Inclut la sélection du logement, l’accompagnement et l’aide à la réservation au Centre Thermal Avène. Les soins sont payés directement (acompte à la réservation).'},
-        where:{title:"Où c’est", sub:'Avène • Centre Thermal Avène • Haut-Languedoc', mapalt:'Avène — carte'},
+   price:{
+  title:'Tarifs des cures (sans assurance)',
+  dur:'Durée',
+  cost:'Prix / 1 pers.',
+  days:'jours',
+  note:'Tarifs indiqués <b>hors assurance</b>, à régler directement au Centre Thermal Avène. La consultation médicale et l’hébergement sont en supplément.'
+}
+      where:{title:"Où c’est", sub:'Avène • Centre Thermal Avène • Haut-Languedoc', mapalt:'Avène — carte'},
         admin:{cts:'Site officiel Avène', booking:'Réserver les soins', rates:'Tarifs'},
         exclude:{title:'Non compris', li1:'Soins Avène (paiement sur le site).', li2:'Restauration; cuisine dans l’appartement.', li3:'Assurance voyage.'},
         form:{title:'Demande rapide / réservation', sub:'Remplissez — puis confirmez l’envoi vers WA/TG.', date:"Date d'arrivée", nights:'Nuits', guests:'Personnes', lodging:'Catégorie de logement', optStd:'Appartement Standard', optComf:'Confort', optComfPlus:'Confort+', name:'Nom', namePh:'Nom et prénom', contact:'Contact (WhatsApp/Telegram)', contactPh:'+33… ou @username', msg:'Commentaire', msgPh:'Souhaits pour le logement/créneaux, transfert…', sendWA:'Envoyer sur WhatsApp', sendTG:'Envoyer sur Telegram'},
