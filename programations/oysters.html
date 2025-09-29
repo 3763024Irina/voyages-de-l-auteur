@@ -6,7 +6,12 @@
 
   <title>Étang de Thau — устрицы, лагуна и море | Хабы программ | Tours Languedoc by Irène</title>
   <meta name="description" content="Подборка программ вокруг лагуны Thau: LUX-день на воде (Tarbouriech, Noilly Prat), парус/кайт Mèze — Hôtel de la Pyramide, круиз по Каналу дю Миди (закат). Приватные форматы." />
-  <meta name="robots" content="index,follow" />
+  <!-- Robots: расширенные подсказки -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="bingbot" content="index,follow" />
+  <meta http-equiv="content-language" content="ru, fr">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://goutvoyage.com/programations/oysters.html" />
@@ -16,6 +21,7 @@
   <meta property="og:url" content="https://goutvoyage.com/programations/oysters.html" />
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Étang de Thau — устрицы, лагуна и море" />
   <meta property="og:description" content="Tarbouriech, dégustations sur l’eau, Noilly Prat, voile/kite à Mèze, croisière Canal du Midi (coucher de soleil)." />
   <meta property="og:type" content="website" />
@@ -23,6 +29,8 @@
   <meta property="og:image:alt" content="Huîtres sur l’étang de Thau près de Mèze" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
@@ -118,15 +126,15 @@ window.ANALYTICS_CONFIG = {
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
-      <nav class="lang">
+      <nav class="lang" aria-label="Основная навигация">
         <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
+          <li><a href="../index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a></li>
+          <li><a href="../index.html#why" data-i18n="nav_why" title="Почему с нами">Почему с нами</a></li>
+          <li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрая заявка">Забронировать</a></li>
         </ul>
-        <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
+        <div aria-label="Переключение языка">
+          <button id="btn-ru" class="active" aria-pressed="true">RU</button>
+          <button id="btn-fr" aria-pressed="false">FR</button>
         </div>
       </nav>
     </div>
@@ -172,7 +180,7 @@ window.ANALYTICS_CONFIG = {
           <p data-i18n="thau_text">Приватная лодка, устрицы на воде (Tarbouriech), Noilly Prat, винный финал. Без пеших переходов.</p>
           <div class="meta"><span>Étang de Thau</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="Thau_LUX.html" data-i18n="btn_more" title="Подробнее о LUX Étang de Thau">Подробнее</a>
           </div>
         </div>
       </article>
@@ -189,7 +197,7 @@ window.ANALYTICS_CONFIG = {
           <p data-i18n="voile_text">Катамаран HC15/16, Hansa 303 или кайтинг • 5 сессий • лагуна Thau. Цена зависит от сезона и отеля.</p>
           <div class="meta"><span>Mèze • Étang de Thau</span><span>7+ ночей</span></div>
           <div class="actions">
-            <a class="btn primary" href="Meze_Voile_Pyramide.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="Meze_Voile_Pyramide.html" data-i18n="btn_more" title="Подробнее о пакете с отелем Pyramide">Подробнее</a>
           </div>
         </div>
       </article>
@@ -206,7 +214,7 @@ window.ANALYTICS_CONFIG = {
           <p data-i18n="canal_text">Фонсераны — Grand Bief — тоннель Малпас. Дневные и закатные рейсы. Ужин на борту — опция.</p>
           <div class="meta"><span>Béziers • Canal du Midi</span><span>полдня/вечер</span></div>
           <div class="actions">
-            <a class="btn primary" href="bezier_sunset.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="bezier_sunset.html" data-i18n="btn_more" title="Подробнее о круизе">Подробнее</a>
           </div>
         </div>
       </article>
@@ -214,11 +222,11 @@ window.ANALYTICS_CONFIG = {
   </section>
 
   <!-- FAQ -->
-  <section class="container">
+  <section class="container" itemscope itemtype="https://schema.org/FAQPage">
     <h3 class="section-title" data-i18n="faq_title">FAQ</h3>
-    <details><summary data-i18n="q1">Можно совместить устрицы и Picpoul?</summary><p data-i18n="a1">Да, добавим визит в домен Picpoul de Pinet по дороге.</p></details>
-    <details><summary data-i18n="q2">С какого города удобнее старт?</summary><p data-i18n="a2">Mèze / Sète / Montpellier — по договорённости.</p></details>
-    <details><summary data-i18n="q3">Как бронируются лодки/круизы?</summary><p data-i18n="a3">Мы подтверждаем слоты у партнёров, время зависит от сезона и погоды.</p></details>
+    <details><summary data-i18n="q1" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><span itemprop="name">Можно совместить устрицы и Picpoul?</span></summary><p data-i18n="a1" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Да, добавим визит в домен Picpoul de Pinet по дороге.</span></p></details>
+    <details><summary data-i18n="q2" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><span itemprop="name">С какого города удобнее старт?</span></summary><p data-i18n="a2" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Mèze / Sète / Montpellier — по договорённости.</span></p></details>
+    <details><summary data-i18n="q3" itemprop="mainEntity" itemscope itemtype="https://schema.org/Question"><span itemprop="name">Как бронируются лодки/круизы?</span></summary><p data-i18n="a3" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><span itemprop="text">Мы подтверждаем слоты у партнёров, время зависит от сезона и погоды.</span></p></details>
   </section>
 
   <!-- CTA -->
@@ -245,31 +253,84 @@ window.ANALYTICS_CONFIG = {
     <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/><path fill="#05a884" d="M188.5 152.7c-2.9 8.4-13.9 15.6-22.6 17.6c-6 1.4-13.7 2.6-44.7-9.3c-37.5-14.9-61.7-53.4-63.5-55.8s-15.1-20.1-15.1-38.5s9.4-27.4 13-31.1s7.1-4.6 9.5-4.6s4.7 0 6.7.1s5.2-.8 8.1 6.2c2.9 7 9.9 24.2 10.7 26s1.2 3.6.2 5.8s-1.5 3.7-3 5.7c-1.5 2-3.1 4.5-4.5 6s-3 3.2-1.3 6.2s7.2 11.8 15.5 19.1c10.7 9.5 19.7 12.5 22.7 13.9s5 .9 6.9-.5s4-4.5 6.3-7.5s4.1-6.3 6.2-7.1s3.9-.4 6.5.4s16.9 8 19.8 9.4s4.9 2.2 5.6 3.4s.6 8.9-2.3 17.3"/></svg>
   </button>
   <button class="chat-fab tg" aria-label="Telegram" title="Telegram" data-chat-open="telegram" data-telegram>
-    <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0  0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
+    <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
   </button>
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://goutvoyage.com",
+    "logo":"https://goutvoyage.com/favicon-32.png",
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Программы","item":"https://goutvoyage.com/index.html#tours"},
+      {"@type":"ListItem","position":3,"name":"Étang de Thau — устрицы, лагуна и море","item":"https://goutvoyage.com/programations/oysters.html"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: ItemList (хаб) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"CollectionPage",
     "name":"Étang de Thau — устрицы, лагуна и море",
     "url":"https://goutvoyage.com/programations/oysters.html",
-    "inLanguage": ["ru","fr"],
+    "inLanguage":["ru","fr"],
     "mainEntity":{
       "@type":"ItemList",
       "itemListElement":[
-        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Thau_LUX.html","name":"LUX Étang de Thau"},
+        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Thau_LUX.html","name":"LUX Étang de Thau — journée signature"},
         {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/Meze_Voile_Pyramide.html","name":"Mèze — Voile/Kite • Hôtel de la Pyramide"},
-        {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Béziers — Canal du Midi (sunset)"}
+        {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Béziers — Canal du Midi (coucher de soleil)"}
       ]
     }
   }
   </script>
 
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Можно совместить устрицы и Picpoul?",
+        "acceptedAnswer":{"@type":"Answer","text":"Да, добавим визит в домен Picpoul de Pinet по дороге."}
+      },
+      {
+        "@type":"Question",
+        "name":"С какого города удобнее старт?",
+        "acceptedAnswer":{"@type":"Answer","text":"Mèze / Sète / Montpellier — по договорённости."}
+      },
+      {
+        "@type":"Question",
+        "name":"Как бронируются лодки/круизы?",
+        "acceptedAnswer":{"@type":"Answer","text":"Мы подтверждаем слоты у партнёров, время зависит от сезона и погоды."}
+      }
+    ]
+  }
+  </script>
+
   <!-- I18N -->
   <script>
-    const i18nOy = { /* … твои переводы без изменений … */ };
+    const i18nOy = {
+      ru:{ /* … как у тебя … */ },
+      fr:{ /* … как у тебя … */ }
+    };
     function applyLangOy(lang){
       const t=i18nOy[lang];
       document.documentElement.lang=t.htmlLang;
@@ -277,6 +338,9 @@ window.ANALYTICS_CONFIG = {
       const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
       const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
       const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+      // обновим og:locale
+      const loc=document.querySelector('meta[property="og:locale"]');
+      if(loc) loc.setAttribute('content', lang==='fr'?'fr_FR':'ru_RU');
       document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; } });
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
@@ -358,7 +422,6 @@ window.ANALYTICS_CONFIG = {
       test.onerror = tryNext;
       test.src = url + (url.includes('?')?'&':'?') + 'v=' + Date.now();
     }
-    // если не загрузилось — подбираем
     img.addEventListener('error', tryNext);
     setTimeout(() => {
       if (!img.complete || img.naturalWidth === 0) tryNext();
