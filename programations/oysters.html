@@ -326,38 +326,84 @@ window.ANALYTICS_CONFIG = {
   </script>
 
   <!-- I18N -->
-  <script>
-    const i18nOy = {
-      ru:{ /* … как у тебя … */ },
-      fr:{ /* … как у тебя … */ }
-    };
-    function applyLangOy(lang){
-      const t=i18nOy[lang];
-      document.documentElement.lang=t.htmlLang;
-      document.title=t.title;
-      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      // обновим og:locale
-      const loc=document.querySelector('meta[property="og:locale"]');
-      if(loc) loc.setAttribute('content', lang==='fr'?'fr_FR':'ru_RU');
-      document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; } });
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-      localStorage.setItem('site:lang', lang);
+<script>
+  // !!! Убедись, что в i18nOy реально есть ключи ru и fr с title/metaDesc/ogTitle/ogDesc.
+  const i18nOy = {
+    ru: { /* твои переводы RU */ },
+    fr: { /* твои переводы FR */ }
+  };
+
+  // helpers
+  const has = (obj, k) => obj && Object.prototype.hasOwnProperty.call(obj, k);
+  const setAttrIf = (el, attr, val) => { if (el && typeof val === 'string' && val.trim()!=='') el.setAttribute(attr, val); };
+  const setNodeText = (node, val) => {
+    if (!node || typeof val !== 'string') return;
+    /<[a-z][\s\S]*>/i.test(val) ? node.innerHTML = val : node.textContent = val;
+  };
+
+  function applyLangOy(lang){
+    const fallback = 'ru';
+    const pack = i18nOy[lang] || i18nOy[fallback];
+
+    // <html lang>
+    if (has(pack, 'htmlLang')) document.documentElement.lang = pack.htmlLang;
+
+    // <title> — только если задан
+    if (has(pack, 'title') && typeof pack.title === 'string' && pack.title.trim()!=='') {
+      document.title = pack.title;
     }
-    (function initLang(){
-      const p=new URLSearchParams(location.search);
-      const fromURL=(p.get('lang')||'').toLowerCase();
-      const saved=localStorage.getItem('site:lang');
-      const auto=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved||auto);
-      applyLangOy(initial);
-      const upd=(lang)=>{ const q=new URLSearchParams(location.search); q.set('lang',lang); history.replaceState({},'', location.pathname+'?'+q.toString()+location.hash); };
-      document.getElementById('btn-ru').addEventListener('click',()=>{applyLangOy('ru');upd('ru')});
-      document.getElementById('btn-fr').addEventListener('click',()=>{applyLangOy('fr');upd('fr')});
-    })();
-  </script>
+
+    // meta description / OG
+    setAttrIf(document.querySelector('meta[name="description"]'), 'content', pack.metaDesc);
+    setAttrIf(document.querySelector('meta[property="og:title"]'), 'content', pack.ogTitle);
+    setAttrIf(document.querySelector('meta[property="og:description"]'), 'content', pack.ogDesc);
+
+    // og:locale
+    const loc = document.querySelector('meta[property="og:locale"]');
+    if (loc) loc.setAttribute('content', (lang==='fr' ? 'fr_FR' : 'ru_RU'));
+
+    // тексты по data-i18n (меняем только существующие ключи)
+    document.querySelectorAll('[data-i18n]').forEach(n=>{
+      const k = n.getAttribute('data-i18n');
+      if (has(pack, k) && typeof pack[k] === 'string') setNodeText(n, pack[k]);
+    });
+
+    // переключатели языка (и aria-pressed)
+    const ruBtn = document.getElementById('btn-ru');
+    const frBtn = document.getElementById('btn-fr');
+    if (ruBtn) { ruBtn.classList.toggle('active', pack===i18nOy.ru); ruBtn.setAttribute('aria-pressed', pack===i18nOy.ru); }
+    if (frBtn) { frBtn.classList.toggle('active', pack===i18nOy.fr); frBtn.setAttribute('aria-pressed', pack===i18nOy.fr); }
+
+    try { localStorage.setItem('site:lang', (lang in i18nOy ? lang : fallback)); } catch(e){}
+  }
+
+  (function initLang(){
+    const p = new URLSearchParams(location.search);
+    const fromURL = (p.get('lang')||'').toLowerCase();
+    let lang = (fromURL==='ru'||fromURL==='fr') ? fromURL : null;
+
+    if (!lang){
+      try {
+        const saved = localStorage.getItem('site:lang');
+        if (saved==='ru' || saved==='fr') lang = saved;
+      } catch(e){}
+    }
+    if (!lang){
+      lang = ((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru');
+    }
+
+    applyLangOy(lang);
+
+    // обновление URL без перезагрузки
+    const upd=(l)=>{ const q=new URLSearchParams(location.search); q.set('lang',l); history.replaceState({},'', location.pathname+'?'+q.toString()+location.hash); };
+
+    const ruBtn = document.getElementById('btn-ru');
+    const frBtn = document.getElementById('btn-fr');
+    if (ruBtn) ruBtn.addEventListener('click',()=>{applyLangOy('ru');upd('ru')});
+    if (frBtn) frBtn.addEventListener('click',()=>{applyLangOy('fr');upd('fr')});
+  })();
+</script>
+
 
   <!-- CONFIG & FAB binding -->
   <script>
