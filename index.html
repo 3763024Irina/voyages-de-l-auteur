@@ -304,19 +304,27 @@ window.ANALYTICS_CONFIG = {
 
 .about .portrait.circle{
   justify-self:end;
-  width: 320px;           /* можно 360px на десктопе */
+  /* ключ: ширина теперь «резиновая» */
+  width: clamp(160px, 28vw, 320px);
   max-width: 100%;
   aspect-ratio: 1;
-  border-radius: 999px;   /* круг */
+  border-radius: 999px;
   overflow: hidden;
   background: #fff;
-  /* тонкая «фоторамка»: светлая окантовка + акцентное кольцо */
   box-shadow:
     0 0 0 6px #fff,
     0 0 0 8px var(--accent),
     var(--shadow);
   border: 1px solid #eee;
 }
+
+/* дополнительно ужимаем на очень маленьких телефонах */
+@media (max-width: 480px){
+  .about .portrait.circle{
+    width: clamp(140px, 45vw, 220px);
+  }
+}
+
 
 .about .portrait.circle img{
   width:100%;
