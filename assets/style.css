@@ -111,6 +111,12 @@ nav a.wa:hover{ background:#21be5a; }
 }
 .cover{ height:220px; background:#ddd; position:relative; overflow:hidden; }
 .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+/* Минимизируем CLS: фиксируем соотношение сторон */
+.cover{ aspect-ratio: 16/9; }  /* на десктопе */
+@media (max-width:640px){
+  .cover{ aspect-ratio: 3/2; } /* на мобилке */
+}
+
 .badge{
   position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94);
   border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px
@@ -130,6 +136,21 @@ nav a.wa:hover{ background:#21be5a; }
 .card.link > a.stretched{
   position:absolute; top:0; left:0; right:0; bottom:64px; z-index:5; border-radius:inherit; text-indent:-9999px;
 }
+/* Доработка: безопасная растянутая ссылка */
+.card.link{ position:relative; }
+.card.link > a.stretched{
+  position:absolute;
+  top:0; left:0; right:0; bottom:64px;
+  z-index:5;
+  border-radius:inherit;
+  text-indent:-9999px;
+  pointer-events:auto; /* добавлено: ссылка кликабельна только на контенте */
+}
+.card .foot{
+  position:relative;
+  z-index:10; /* футер всегда поверх */
+}
+
 
 /* ========== GALLERY MOSAIC ========== */
 .gallery-mosaic{
