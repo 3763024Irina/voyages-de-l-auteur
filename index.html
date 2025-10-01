@@ -304,8 +304,8 @@ window.ANALYTICS_CONFIG = {
 
 .about .portrait.circle{
   justify-self:end;
-  /* ключ: ширина теперь «резиновая» */
-  width: clamp(160px, 28vw, 320px);
+  /* МЕНЬШЕ на всех экранах + адаптив: максимум 240px */
+  width: clamp(140px, 22vw, 240px);
   max-width: 100%;
   aspect-ratio: 1;
   border-radius: 999px;
@@ -317,6 +317,7 @@ window.ANALYTICS_CONFIG = {
     var(--shadow);
   border: 1px solid #eee;
 }
+
 
 /* дополнительно ужимаем на очень маленьких телефонах */
 @media (max-width: 480px){
