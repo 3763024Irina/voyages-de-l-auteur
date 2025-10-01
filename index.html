@@ -330,6 +330,36 @@ window.ANALYTICS_CONFIG = {
 }
 .feature-more{ margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none; }
 .feature-more:after{ content:" →"; }
+/* === Burger + mobile panel === */
+.burger{
+  display:none; position:relative; width:42px; height:42px;
+  border-radius:10px; border:1px solid rgba(13,43,30,.14); background:#fff;
+}
+.burger span{position:absolute; left:10px; right:10px; height:2px; background:var(--brand);
+  transition:transform .25s ease,opacity .2s ease,top .25s ease}
+.burger span:nth-child(1){top:13px}
+.burger span:nth-child(2){top:20px}
+.burger span:nth-child(3){top:27px}
+.burger[aria-expanded="true"] span:nth-child(1){top:20px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){top:20px;transform:rotate(-45deg)}
+
+#mobile-panel{display:none}
+#mobile-panel.open{display:block}
+@media (max-width: 960px){
+  /* чтобы элементы шапки не налезали друг на друга */
+  .nav{flex-wrap:wrap; gap:10px}
+  header .nav > nav ul{display:none}
+  .burger{display:inline-block; margin-left:auto}
+  #mobile-panel{
+    position:fixed; inset:calc(72px + env(safe-area-inset-top)) 0 0 0;
+    background:rgba(255,255,255,.98); backdrop-filter:blur(8px);
+    border-top:1px solid #eee; z-index:60;
+  }
+  #mobile-panel .menu-col{padding:14px 16px}
+  #mobile-panel a{display:block; padding:14px 12px; border-radius:12px; font-weight:600}
+  #mobile-panel a:hover{background:#f5f5f5}
+}
 
   </style>
   <style>
