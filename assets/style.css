@@ -45,6 +45,12 @@ header{
   backdrop-filter:saturate(140%) blur(8px);
   background:rgba(255,255,255,.7); border-bottom:1px solid #eee
 }
+@supports not ((backdrop-filter: saturate(140%) blur(8px)) or (-webkit-backdrop-filter: saturate(140%) blur(8px))){
+  header{
+    background:#ffffffee; /* чуть более плотный фон для браузеров без blur */
+  }
+}
+
 .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
 .brand{display:flex; align-items:center; gap:14px}
 .logo{
@@ -157,8 +163,6 @@ nav a.wa:hover{ background:#21be5a; }
 .badge-oak{ display:inline-block; padding:4px 8px; border-radius:999px; font-size:11px; font-weight:800; border:1px solid #e4d7b6; background:#E9DFC5 }
 @media (max-width:1000px){ .wines .wine{ grid-template-columns:1fr; } }
 
-/* ========== FOOTER ========== */
-footer.container{ padding-top:24px; margin-bottom:28px; color:var(--muted) }
 
 /* ========== SPECIALS ==========
    Пример локального фона героя: добавь data-hero="whatsapp" на блок .page-hero */
@@ -344,44 +348,39 @@ footer.container{ color:var(--muted); }
 
 /* === MOBILE FIX (без бургера) === */
 @media (max-width: 640px){
-  header .nav > nav ul{
-    display: flex !important;
-    gap: 10px;
-    margin: 0;
-    padding: 8px 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    scrollbar-width: none;
+  /* переопределяем скрытие меню */
+  header .nav nav ul{
+    display:flex !important;
+    gap:10px;
+    margin:0;
+    padding:8px 0;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    white-space:nowrap;
+    scrollbar-width:none;
   }
-  header .nav > nav ul::-webkit-scrollbar{ display:none }
-
-  header .nav > nav li{ flex: 0 0 auto; }
-  header .nav > nav a{
-    padding: 8px 10px;
-    border-radius: 10px;
-    border: 1px solid #e6e6e6;
-    background: #fff;
-    font-weight: 600;
+  header .nav nav ul::-webkit-scrollbar{ display:none; }
+  header .nav nav li{ flex:0 0 auto; }
+  header .nav nav a{
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid #e6e6e6;
+    background:#fff;
+    font-weight:600;
   }
 
   header .nav{
-    height: 64px;
-    align-items: center;
-    gap: 10px;
+    height:64px;
+    align-items:center;
+    gap:10px;
   }
 
   .logo{ width:40px; height:40px; }
   .brand h1{ font-size:18px; }
   .brand small{ font-size:11px; }
 
-  .container{ padding: 0 14px; }
+  .container{ padding:0 14px; }
 
-  .hero h2{ font-size: 30px; line-height: 1.12; }
-  .hero p{ font-size: 15px; }
+  .hero h2{ font-size:30px; line-height:1.12; }
+  .hero p{ font-size:15px; }
 }
-
-@media (max-width: 360px){
-  .brand small{ display:none; }
-}
-
