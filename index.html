@@ -582,6 +582,11 @@ window.ANALYTICS_CONFIG = {
     </a>
 
       <nav>
+         <!-- ДОБАВЬ КНОПКУ-БУРГЕР -->
+  <button class="burger" aria-label="Открыть меню" aria-controls="mobile-panel" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</div>
   <ul>
     <li><a href="/" rel="home" data-i18n="nav.home">Главная</a></li>
     <li><a href="/#why" data-i18n="nav.why">Почему с нами</a></li>
@@ -593,6 +598,15 @@ window.ANALYTICS_CONFIG = {
 
     </div>
   </header>
+  <div id="mobile-panel" hidden>
+  <div class="menu-col container">
+    <a href="/" data-i18n="nav.home">Главная</a>
+    <a href="/#why" data-i18n="nav.why">Почему с нами</a>
+    <a href="/#tours" data-i18n="nav.tours">Программы</a>
+    <a href="/#format" data-i18n="nav.format">Формат</a>
+    <a href="/#contactCard" data-i18n="nav.contacts">Контакты</a>
+  </div>
+</div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1577,5 +1591,30 @@ render();
       }, {passive:false});
     })();
   </script>
+  <script>
+(function(){
+  const burger = document.querySelector('.burger');
+  const panel  = document.getElementById('mobile-panel');
+
+  function openPanel(){
+    burger.setAttribute('aria-expanded','true');
+    panel.hidden = false;
+    requestAnimationFrame(()=> panel.classList.add('open'));
+    document.documentElement.style.overflow='hidden';
+  }
+  function closePanel(){
+    burger.setAttribute('aria-expanded','false');
+    panel.classList.remove('open');
+    setTimeout(()=>{ panel.hidden = true; }, 180);
+    document.documentElement.style.overflow='';
+  }
+  function toggle(){ (burger.getAttribute('aria-expanded')==='true') ? closePanel() : openPanel(); }
+
+  burger?.addEventListener('click', toggle);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePanel(); });
+  panel?.addEventListener('click', e=>{ if(e.target===panel) closePanel(); });
+})();
+</script>
+
 </body>
 </html>
