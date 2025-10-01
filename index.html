@@ -595,8 +595,19 @@ window.ANALYTICS_CONFIG = {
     <!-- Вино -->
     <article class="card">
       <div class="cover">
-        <img src="assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" alt="Виноград и терруары" loading="lazy" decoding="async">
-      </div>
+      <img
+  src="assets/wines/vinograd-1200.jpg"
+  srcset="
+    assets/wines/vinograd-768.jpg 768w,
+    assets/wines/vinograd-1200.jpg 1200w,
+    assets/wines/vinograd-1920.jpg 1920w
+  "
+  sizes="100vw"
+  alt="Sud de la France — mer et vignobles"
+  fetchpriority="high"
+  decoding="async"
+  width="1920" height="1080"
+    </div>
       <div class="body">
         <h3>Вино и терруары Лангедока</h3>
         <div class="meta"><span>Посещение хозяйств, терруары и панорамы — Пик Сен-Лу, Минервуа, побережье.</span></div>
@@ -1041,7 +1052,24 @@ if (item.seasonal) {
       return `
         <article class="card">
           ${overlayLink}
-          <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
+         <div class="cover">
+  ${badge}
+  <img
+    src="${item.c}"
+    alt="${title}"
+    loading="lazy"
+    decoding="async"
+    width="1200" height="750"
+    srcset="
+      ${item.c.replace(/\.jpg$/i, '-480w.jpg')} 480w,
+      ${item.c.replace(/\.jpg$/i, '-768w.jpg')} 768w,
+      ${item.c.replace(/\.jpg$/i, '-1200w.jpg')} 1200w
+    "
+    sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw"
+    onerror="this.removeAttribute('srcset')"
+  >
+</div>
+
           <div class="body">
             <h3>${title}</h3>
             <div class="meta"><span>${desc}</span></div>
