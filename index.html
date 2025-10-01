@@ -103,6 +103,42 @@ window.ANALYTICS_CONFIG = {
 
 
   <style>
+    /* ABOUT: круглая рамка для фото + аккуратная сетка */
+.about{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr; /* текст шире, фото уже */
+  gap:28px;
+  align-items:center;
+}
+
+.about .portrait.circle{
+  justify-self:end;
+  width: 320px;           /* можно 360px на десктопе */
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 999px;   /* круг */
+  overflow: hidden;
+  background: #fff;
+  /* тонкая «фоторамка»: светлая окантовка + акцентное кольцо */
+  box-shadow:
+    0 0 0 6px #fff,
+    0 0 0 8px var(--accent),
+    var(--shadow);
+  border: 1px solid #eee;
+}
+
+.about .portrait.circle img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+@media (max-width: 1000px){
+  .about{ grid-template-columns: 1fr; }
+  .about .portrait.circle{ justify-self:center; }
+}
+
     :root{
       --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
       --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
@@ -294,50 +330,6 @@ window.ANALYTICS_CONFIG = {
 }
 .feature-more{ margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none; }
 .feature-more:after{ content:" →"; }
-/* ABOUT: круглая рамка для фото + аккуратная сетка */
-.about{
-  display:grid;
-  grid-template-columns: 1.2fr 0.8fr; /* текст шире, фото уже */
-  gap:28px;
-  align-items:center;
-}
-
-.about .portrait.circle{
-  justify-self:end;
-  /* МЕНЬШЕ на всех экранах + адаптив: максимум 240px */
-  width: clamp(140px, 22vw, 240px);
-  max-width: 100%;
-  aspect-ratio: 1;
-  border-radius: 999px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow:
-    0 0 0 6px #fff,
-    0 0 0 8px var(--accent),
-    var(--shadow);
-  border: 1px solid #eee;
-}
-
-
-/* дополнительно ужимаем на очень маленьких телефонах */
-@media (max-width: 480px){
-  .about .portrait.circle{
-    width: clamp(140px, 45vw, 220px);
-  }
-}
-
-
-.about .portrait.circle img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  display:block;
-}
-
-@media (max-width: 1000px){
-  .about{ grid-template-columns: 1fr; }
-  .about .portrait.circle{ justify-self:center; }
-}
 
   </style>
   <style>
@@ -500,7 +492,7 @@ window.ANALYTICS_CONFIG = {
 },
   {
   "@type":"ListItem",
-  "position":12,
+  "position":X,
   "url":"https://www.goutvoyage.com/programations/avene_14d.html",
   "name":"Avène — термальное восстановление + 3 экскурсии (14 дней)"
 }
@@ -612,16 +604,15 @@ window.ANALYTICS_CONFIG = {
  <div class="row-scroll" id="whyCards">
     <!-- Wellness -->
     <article class="card">
-    <div class="cover">
-  ${badge}
-  <img
-    src="${item.c}"
-    alt="${title}"
-    loading="lazy"
-    decoding="async"
-    width="1200" height="750">
-</div>
-
+      <div class="cover">
+        <img src="assets/thermes/PISCINE-GRX-037-BRUNO-FERT-edited-scaled.jpg" alt="Wellness и санатории Лангедока" loading="lazy" decoding="async">
+      </div>
+      <div class="body">
+        <h3>Wellness & Санатории</h3>
+        <div class="meta">
+          <span>Оздоровительные программы, термальные курорты, спа. Помощь в получении приглашения из санатория для прохождения процедур.</span>
+        </div>
+      </div>
       <div class="foot"><a class="btn" href="#tours">Смотреть программы</a><span class="price">—</span></div>
     </article>
 
@@ -640,12 +631,8 @@ window.ANALYTICS_CONFIG = {
     <!-- Вино -->
     <article class="card">
       <div class="cover">
-     <img
-  src="assets/wines/vinograd.jpg"
-  alt="Sud de la France — mer et vignobles"
-  loading="lazy" decoding="async">
-</div>
-
+        <img src="assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" alt="Виноград и терруары" loading="lazy" decoding="async">
+      </div>
       <div class="body">
         <h3>Вино и терруары Лангедока</h3>
         <div class="meta"><span>Посещение хозяйств, терруары и панорамы — Пик Сен-Лу, Минервуа, побережье.</span></div>
@@ -738,7 +725,7 @@ window.ANALYTICS_CONFIG = {
 </section>
 
 
-<!-- ABOUT -->
+ <!-- ABOUT -->
 <section id="about" class="container">
   <h3 class="section-title" data-i18n="about.title">О нас</h3>
   <div class="about">
@@ -753,18 +740,16 @@ window.ANALYTICS_CONFIG = {
     </div>
 
     <!-- Круглое фото справа -->
-<figure class="portrait circle" aria-label="Irène" style="width:clamp(140px,22vw,240px);">
-
+    <figure class="portrait circle" aria-label="Irène">
       <!-- Замените путь к фото на свой -->
       <img 
-        src="assets/carcasson/IMG_5709.jpg" 
+        src="assets/about/irene.jpg" 
         alt="Irène — авторские туры в Лангедоке" 
         loading="lazy" decoding="async"
         width="520" height="520">
     </figure>
   </div>
 </section>
-
 
   <footer>
     <div class="container">
@@ -846,6 +831,8 @@ window.ANALYTICS_CONFIG = {
       'format.3.title':'Море и актив', 'format.3.text':'SUP, каяк, снорклинг — по погоде и желанию группы.',
 
       'about.title':'О нас', 'about.text': 'Я — Ирэн. Живу в небольшом городке на юге Франции — море рядом, виноградники через дорогу. Делаю камерные поездки «со вкусом»: устрицы на лагуне Thau, честные винодельни, тихие средневековые городки и мягкое Средиземное море без суеты. Отдельное направление — wellness и термальные курорты Лангедока (Avène, Lamalou-les-Bains, Balaruc): помогаю с записью, проживанием и добавляю лёгкие экскурсии. Всегда организую частные трансферы door-to-door. Общаюсь на русском и французском.',
+
+
       'hubs.wine':'Винные туры — хаб','hubs.oysters':'Лагуна Thau & устрицы — хаб','hubs.castles':'Замки & Каркасон — хаб',
       'hubs.sea':'Море & актив — хаб','hubs.wellness':'Wellness & термы — хаб','hubs.canal':'Канал дю Миди — хаб'
     },
@@ -875,6 +862,7 @@ window.ANALYTICS_CONFIG = {
       'format.3.title':'Mer & activités', 'format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
 
       'about.title':'À propos', 'about.text': 'Je suis Irène. J’habite une petite ville du sud de la France — la mer tout près, les vignes à deux pas. J’organise des voyages intimistes «avec goût» : huîtres sur la lagune de Thau, domaines sincères, villages médiévaux et Méditerranée sans stress. Axe séparé — bien-être et stations thermales du Languedoc (Avène, Lamalou-les-Bains, Balaruc) : aide à la réservation, au logement et petites sorties les jours libres. Transferts privés door-to-door. FR/RU.',
+
 
       'hubs.wine':'Circuits vins — hub','hubs.oysters':'Lagune de Thau & huîtres — hub','hubs.castles':'Châteaux & Carcassonne — hub',
       'hubs.sea':'Mer & activités — hub','hubs.wellness':'Bien-être & thermes — hub','hubs.canal':'Canal du Midi — hub'
@@ -1107,24 +1095,7 @@ if (item.seasonal) {
       return `
         <article class="card">
           ${overlayLink}
-         <div class="cover">
-  ${badge}
-  <img
-    src="${item.c}"
-    alt="${title}"
-    loading="lazy"
-    decoding="async"
-    width="1200" height="750"
-    srcset="
-      ${item.c.replace(/\.jpg$/i, '-480w.jpg')} 480w,
-      ${item.c.replace(/\.jpg$/i, '-768w.jpg')} 768w,
-      ${item.c.replace(/\.jpg$/i, '-1200w.jpg')} 1200w
-    "
-    sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw"
-    onerror="this.removeAttribute('srcset')"
-  >
-</div>
-
+          <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
           <div class="body">
             <h3>${title}</h3>
             <div class="meta"><span>${desc}</span></div>
