@@ -340,4 +340,48 @@ footer.container{ color:var(--muted); }
 .chat-fab svg{width:22px; height:22px; display:block}
 .chat-fab.wa{bottom:76px}
 .chat-fab.tg{bottom:26px}
+/* ... здесь твои существующие стили ... */
+
+/* === MOBILE FIX (без бургера) === */
+@media (max-width: 640px){
+  header .nav > nav ul{
+    display: flex !important;
+    gap: 10px;
+    margin: 0;
+    padding: 8px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  header .nav > nav ul::-webkit-scrollbar{ display:none }
+
+  header .nav > nav li{ flex: 0 0 auto; }
+  header .nav > nav a{
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    font-weight: 600;
+  }
+
+  header .nav{
+    height: 64px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo{ width:40px; height:40px; }
+  .brand h1{ font-size:18px; }
+  .brand small{ font-size:11px; }
+
+  .container{ padding: 0 14px; }
+
+  .hero h2{ font-size: 30px; line-height: 1.12; }
+  .hero p{ font-size: 15px; }
+}
+
+@media (max-width: 360px){
+  .brand small{ display:none; }
+}
 
