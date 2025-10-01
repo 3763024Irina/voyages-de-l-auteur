@@ -330,36 +330,6 @@ window.ANALYTICS_CONFIG = {
 }
 .feature-more{ margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none; }
 .feature-more:after{ content:" →"; }
-/* === Burger + mobile panel === */
-.burger{
-  display:none; position:relative; width:42px; height:42px;
-  border-radius:10px; border:1px solid rgba(13,43,30,.14); background:#fff;
-}
-.burger span{position:absolute; left:10px; right:10px; height:2px; background:var(--brand);
-  transition:transform .25s ease,opacity .2s ease,top .25s ease}
-.burger span:nth-child(1){top:13px}
-.burger span:nth-child(2){top:20px}
-.burger span:nth-child(3){top:27px}
-.burger[aria-expanded="true"] span:nth-child(1){top:20px;transform:rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] span:nth-child(3){top:20px;transform:rotate(-45deg)}
-
-#mobile-panel{display:none}
-#mobile-panel.open{display:block}
-@media (max-width: 960px){
-  /* чтобы элементы шапки не налезали друг на друга */
-  .nav{flex-wrap:wrap; gap:10px}
-  header .nav > nav ul{display:none}
-  .burger{display:inline-block; margin-left:auto}
-  #mobile-panel{
-    position:fixed; inset:calc(72px + env(safe-area-inset-top)) 0 0 0;
-    background:rgba(255,255,255,.98); backdrop-filter:blur(8px);
-    border-top:1px solid #eee; z-index:60;
-  }
-  #mobile-panel .menu-col{padding:14px 16px}
-  #mobile-panel a{display:block; padding:14px 12px; border-radius:12px; font-weight:600}
-  #mobile-panel a:hover{background:#f5f5f5}
-}
 
   </style>
   <style>
@@ -582,11 +552,6 @@ window.ANALYTICS_CONFIG = {
     </a>
 
       <nav>
-         <!-- ДОБАВЬ КНОПКУ-БУРГЕР -->
-  <button class="burger" aria-label="Открыть меню" aria-controls="mobile-panel" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</div>
   <ul>
     <li><a href="/" rel="home" data-i18n="nav.home">Главная</a></li>
     <li><a href="/#why" data-i18n="nav.why">Почему с нами</a></li>
@@ -598,15 +563,6 @@ window.ANALYTICS_CONFIG = {
 
     </div>
   </header>
-  <div id="mobile-panel" hidden>
-  <div class="menu-col container">
-    <a href="/" data-i18n="nav.home">Главная</a>
-    <a href="/#why" data-i18n="nav.why">Почему с нами</a>
-    <a href="/#tours" data-i18n="nav.tours">Программы</a>
-    <a href="/#format" data-i18n="nav.format">Формат</a>
-    <a href="/#contactCard" data-i18n="nav.contacts">Контакты</a>
-  </div>
-</div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1591,30 +1547,5 @@ render();
       }, {passive:false});
     })();
   </script>
-  <script>
-(function(){
-  const burger = document.querySelector('.burger');
-  const panel  = document.getElementById('mobile-panel');
-
-  function openPanel(){
-    burger.setAttribute('aria-expanded','true');
-    panel.hidden = false;
-    requestAnimationFrame(()=> panel.classList.add('open'));
-    document.documentElement.style.overflow='hidden';
-  }
-  function closePanel(){
-    burger.setAttribute('aria-expanded','false');
-    panel.classList.remove('open');
-    setTimeout(()=>{ panel.hidden = true; }, 180);
-    document.documentElement.style.overflow='';
-  }
-  function toggle(){ (burger.getAttribute('aria-expanded')==='true') ? closePanel() : openPanel(); }
-
-  burger?.addEventListener('click', toggle);
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closePanel(); });
-  panel?.addEventListener('click', e=>{ if(e.target===panel) closePanel(); });
-})();
-</script>
-
 </body>
 </html>
