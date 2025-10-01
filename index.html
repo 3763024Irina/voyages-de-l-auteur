@@ -294,6 +294,41 @@ window.ANALYTICS_CONFIG = {
 }
 .feature-more{ margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none; }
 .feature-more:after{ content:" →"; }
+/* ABOUT: круглая рамка для фото + аккуратная сетка */
+.about{
+  display:grid;
+  grid-template-columns: 1.2fr 0.8fr; /* текст шире, фото уже */
+  gap:28px;
+  align-items:center;
+}
+
+.about .portrait.circle{
+  justify-self:end;
+  width: 320px;           /* можно 360px на десктопе */
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 999px;   /* круг */
+  overflow: hidden;
+  background: #fff;
+  /* тонкая «фоторамка»: светлая окантовка + акцентное кольцо */
+  box-shadow:
+    0 0 0 6px #fff,
+    0 0 0 8px var(--accent),
+    var(--shadow);
+  border: 1px solid #eee;
+}
+
+.about .portrait.circle img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  display:block;
+}
+
+@media (max-width: 1000px){
+  .about{ grid-template-columns: 1fr; }
+  .about .portrait.circle{ justify-self:center; }
+}
 
   </style>
   <style>
@@ -700,15 +735,32 @@ window.ANALYTICS_CONFIG = {
 </section>
 
 
-  <!-- ABOUT -->
-  <section id="about" class="container">
-    <h3 class="section-title" data-i18n="about.title">О нас</h3>
-    <div class="about">
-      <div>
-        <p data-i18n="about.text">Я — Ирэн, живу в Лангедоке и делаю камерные поездки со вкусом. Помогаю почувствовать регион через гастрономию, море, горы и историю. Работаю на русском и французском языках.</p>
-      </div>
+<!-- ABOUT -->
+<section id="about" class="container">
+  <h3 class="section-title" data-i18n="about.title">О нас</h3>
+  <div class="about">
+    <div class="about-text">
+      <p data-i18n="about.text">
+        Я — Ирэн. Живу в небольшом городке на юге Франции — море рядом, виноградники через дорогу. 
+        Делаю камерные поездки «со вкусом»: устрицы на лагуне Thau, честные винодельни, тихие средневековые городки 
+        и мягкое Средиземное море без суеты. Отдельное направление — wellness и термальные курорты Лангедока 
+        (Avène, Lamalou-les-Bains, Balaruc): помогаю с записью, проживанием и добавляю лёгкие экскурсии. 
+        Всегда организую частные трансферы door-to-door. Общаюсь на русском и французском.
+      </p>
     </div>
-  </section>
+
+    <!-- Круглое фото справа -->
+    <figure class="portrait circle" aria-label="Irène">
+      <!-- Замените путь к фото на свой -->
+      <img 
+        src="assets/about/irene.jpg" 
+        alt="Irène — авторские туры в Лангедоке" 
+        loading="lazy" decoding="async"
+        width="520" height="520">
+    </figure>
+  </div>
+</section>
+
 
   <footer>
     <div class="container">
