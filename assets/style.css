@@ -131,11 +131,6 @@ nav a.wa:hover{ background:#21be5a; }
   margin-top:auto; display:flex; justify-content:space-between; align-items:center;
   padding:14px 16px; border-top:1px solid #f0f0f0; position:relative; z-index:10;
 }
-/* Стретч-ссылка не перекрывает футер */
-.card.link{ position:relative; }
-.card.link > a.stretched{
-  position:absolute; top:0; left:0; right:0; bottom:64px; z-index:5; border-radius:inherit; text-indent:-9999px;
-}
 /* Доработка: безопасная растянутая ссылка */
 .card.link{ position:relative; }
 .card.link > a.stretched{
