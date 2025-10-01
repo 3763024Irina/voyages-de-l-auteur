@@ -1168,7 +1168,24 @@ if (item.seasonal) {
       return `
         <article class="card">
           ${overlayLink}
-          <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
+     <div class="cover">
+  ${badge}
+  <img
+    src="${item.c}"
+    alt="${title}"
+    loading="lazy"
+    decoding="async"
+    width="1200" height="750"
+    srcset="
+      ${item.c.replace(/\.jpg$/i, '-480w.jpg')} 480w,
+      ${item.c.replace(/\.jpg$/i, '-768w.jpg')} 768w,
+      ${item.c.replace(/\.jpg$/i, '-1200w.jpg')} 1200w
+    "
+    sizes="(max-width:640px) 100vw, (max-width:1000px) 50vw, 33vw"
+    onerror="this.removeAttribute('srcset')"
+  >
+</div>
+
           <div class="body">
             <h3>${title}</h3>
             <div class="meta"><span>${desc}</span></div>
