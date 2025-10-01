@@ -28,7 +28,6 @@ window.ANALYTICS_CONFIG = {
   <meta property="og:title" content="Авторские туры по Югу Франции — Лангедок" />
   <meta property="og:description" content="Устрицы, вино, горы, замки, море и морские виды спорта. 10 готовых программ + VIP." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 <!-- Canonical + hreflang (двуязычие через параметр ?lang= ) -->
 <link rel="canonical" href="https://www.goutvoyage.com/">
@@ -56,7 +55,6 @@ window.ANALYTICS_CONFIG = {
 
 <!-- Preload шрифтов и LCP-изображения -->
 <link rel="preload" as="image" fetchpriority="high" href="assets/wines/vinograd.jpg" imagesrcset="assets/wines/vinograd.jpg 1200w" imagesizes="100vw">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 
   <!-- === РАННИЙ BASE-инжектор (до любых относительных ресурсов) === -->
@@ -98,7 +96,7 @@ window.ANALYTICS_CONFIG = {
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
-<meta name="theme-color" content="#0D2B1E">
+
 
 
 
@@ -818,38 +816,108 @@ window.ANALYTICS_CONFIG = {
 
 
 <script>
-  function getLang(){
-    const u = new URL(location.href);
-    return (u.searchParams.get('lang') || localStorage.getItem('site:lang') || 'ru');
-  }
-  const langLinks = document.querySelectorAll('.lang a');
+(function(){
+  'use strict';
 
-  function setUrlLang(l){
-    const u = new URL(location.href);
-    u.searchParams.set('lang', l);
-    history.replaceState(null, '', u.toString());
+  // ----- helpers -----
+  function readStoredLang(){
+    try{ return localStorage.getItem('site:lang') || null; }catch{ return null; }
+  }
+  function storeLang(l){
+    try{ localStorage.setItem('site:lang', l); }catch{}
   }
 
-  function applyLang(l){
+  // Доступно глобально (если где-то вызываете)
+  window.getLang = function getLang(){
+    const u = new URL(location.href);
+    // 1) ?lang=  2) localStorage  3) fallback 'ru'
+    return (u.searchParams.get('lang') || readStoredLang() || 'ru');
+  };
+
+  window.setUrlLang = function setUrlLang(l){
+    try{
+      const u = new URL(location.href);
+      u.searchParams.set('lang', l);
+      history.replaceState(null, '', u.toString());
+    }catch{}
+  };
+
+  window.applyLang = function applyLang(l){
     document.documentElement.lang = l;
-    const d = (dict && dict[l]) || {};
+
+    const dictAll = (window.dict || {});
+    const d = dictAll[l] || {};
+
+    // Текстовые узлы
     document.querySelectorAll('[data-i18n]').forEach(el=>{
       const k = el.dataset.i18n;
-      if (d[k] != null) el.textContent = d[k];
+      if (k != null && d[k] != null) el.textContent = d[k];
     });
+
+    // Placeholder'ы
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
       const k = el.dataset.i18nPlaceholder;
-      if (d[k] != null) el.setAttribute('placeholder', d[k]);
+      if (k != null && d[k] != null) el.setAttribute('placeholder', d[k]);
     });
-    langLinks.forEach(a=>a.classList.toggle('active', a.dataset.lang===l));
-    localStorage.setItem('site:lang', l);
-    setUrlLang(l);
-    if (typeof render === 'function') render();
-  }
-  langLinks.forEach(a=>a.addEventListener('click', e=>{
-    e.preventDefault(); applyLang(a.dataset.lang);
-  }));
+
+    // og:locale (если есть)
+    const ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale){
+      ogLocale.setAttribute('content', l === 'fr' ? 'fr_FR' : 'ru_RU');
+    }
+
+    // Подсветка активной кнопки
+    document.querySelectorAll('.lang a').forEach(a=>{
+      a.classList.toggle('active', a.dataset.lang === l);
+    });
+
+    storeLang(l);
+    window.setUrlLang(l);
+
+    if (typeof window.render === 'function') window.render();
+  };
+
+  // ----- инициализация после DOM -----
+  document.addEventListener('DOMContentLoaded', function(){
+    // Навесить клики на RU/FR
+    function bindLangClicks(){
+      document.querySelectorAll('.lang a').forEach(a=>{
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          const l = a.dataset.lang || 'ru';
+          window.applyLang(l);
+        }, {passive:false});
+      });
+    }
+    bindLangClicks();
+
+    // ----- автодетект на ПЕРВЫЙ визит -----
+    (function initLangOnce(){
+      const u = new URL(location.href);
+      const hasUrlLang = !!u.searchParams.get('lang');
+      const stored = readStoredLang();
+
+      // Если в URL уже есть lang — ничего не делаем (приоритет URL)
+      if (hasUrlLang){
+        window.applyLang(window.getLang());
+        return;
+      }
+
+      // Если в localStorage уже есть язык — применяем его и выходим
+      if (stored){
+        window.applyLang(stored);
+        return;
+      }
+
+      // Иначе — первый визит: autodetect по navigator.language
+      const guess = (navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+      window.applyLang(guess);
+    })();
+  });
+
+})();
 </script>
+
 <!-- Авто-детект языка: вставить после блока с getLang/applyLang -->
 <script>
   (function initLangOnce(){
