@@ -1004,134 +1004,131 @@ window.ANALYTICS_CONFIG = {
 </script>
 
 
-    const grid = document.querySelector('#grid');
-    const filters = document.querySelector('#filters');
-    const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
+<script>
+  // Подстраховка: если tours не подключён отдельным файлом
+  window.tours = window.tours || [];
 
-   // === Хабы и теги, ведущие на страницы/якоря ===
-const HUBS = {
-  oysters:  'programations/oysters.html',      // 🦪 Устрицы — хаб
-  wine:     'programations/wine.html',         // 🍷 Вино — хаб
-  sea:      'programations/sea.html',          // 🌊 Море & актив — хаб
-  mountains:'programations/sea.html#mountains',// ⛰️ Горы (если хочешь выделить в sea-хабе якорь)
-  castles:  'programations/castles.html',      // 🏰 Замки & история — хаб
-  wellness: 'programations/wellness.html',     // 🧖 Wellness & термы — хаб
-  canal:    'programations/canal.html',        // 🚤 Канал дю Миди — хаб
-  kiting:   'programations/sea.html#kiting',   // 🪁 Кайтинг — якорь в море-хабе
-  boats:    'programations/sea.html#boats'     // ⛵ Лодки/яхты — якорь в море-хабе
-};
+  const grid = document.querySelector('#grid');
+  const filters = document.querySelector('#filters');
+  const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
 
-// Какие чипы показывать в фильтрах
-const TAGS = [
-  { id:'oysters',  label:'🦪 Устрицы' },
-  { id:'wine',     label:'🍷 Вино' },
-  { id:'sea',      label:'🌊 Море' },
-  { id:'kiting',   label:'🪁 Кайтинг' },
-  { id:'boats',    label:'⛵ Лодки' },
-  { id:'mountains',label:'⛰️ Горы' },
-  { id:'castles',  label:'🏰 Замки' },
-  { id:'wellness', label:'🧖 Wellness' },
-  { id:'canal',    label:'🚤 Канал дю Миди' }
-];
+  const HUBS = {
+    oysters:'programations/oysters.html',
+    wine:'programations/wine.html',
+    sea:'programations/sea.html',
+    mountains:'programations/sea.html#mountains',
+    castles:'programations/castles.html',
+    wellness:'programations/wellness.html',
+    canal:'programations/canal.html',
+    kiting:'programations/sea.html#kiting',
+    boats:'programations/sea.html#boats'
+  };
 
-// Рендерим чипы: если у тега есть ссылка в HUBS — рисуем <a href>, иначе — локальный фильтр (не нужен сейчас)
-function renderTags(container, tags){
-  if (!container || container.children.length) return;
-  tags.forEach(t => {
-    const href = HUBS[t.id];
-    const el = document.createElement('a');
-    el.className = 'chip';
-    el.textContent = t.label;
-    el.setAttribute('data-id', t.id);
-    el.href = href || '#';
-    el.role = 'button';
-    container.appendChild(el);
-  });
-}
+  const TAGS = [
+    { id:'oysters',  label:'🦪 Устрицы' },
+    { id:'wine',     label:'🍷 Вино' },
+    { id:'sea',      label:'🌊 Море' },
+    { id:'kiting',   label:'🪁 Кайтинг' },
+    { id:'boats',    label:'⛵ Лодки' },
+    { id:'mountains',label:'⛰️ Горы' },
+    { id:'castles',  label:'🏰 Замки' },
+    { id:'wellness', label:'🧖 Wellness' },
+    { id:'canal',    label:'🚤 Канал дю Миди' }
+  ];
 
-// отрисуем в #filters
-renderTags(filters, TAGS);
+  function renderTags(container, tags){
+    if (!container || container.children.length) return;
+    tags.forEach(t => {
+      const href = HUBS[t.id];
+      const el = document.createElement('a');
+      el.className = 'chip';
+      el.textContent = t.label;
+      el.setAttribute('data-id', t.id);
+      el.href = href || '#';
+      el.role = 'button';
+      container.appendChild(el);
+    });
+  }
+  renderTags(filters, TAGS);
 
-
-    function cardHTML(item){
-      const l = getLang();
-      const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
-      const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-     let price;
-if (item.seasonal) {
-  price = (l === 'fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
-} else {
-  price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
-}
-
-      const url   = item.href ? resolveHref(item.href) : '';
-      const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
-      const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
-      const openBtn = url
-        ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
-        : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:item.c,d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
-      return `
-        <article class="card">
-          ${overlayLink}
-          <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
-          <div class="body">
-            <h3>${title}</h3>
-            <div class="meta"><span>${desc}</span></div>
-          </div>
-          <div class="foot">
-            <div class="price">${price||''}</div>
-            ${openBtn}
-          </div>
-        </article>`;
+  function cardHTML(item){
+    const l = getLang();
+    const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
+    const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
+    let price;
+    if (item.seasonal) {
+      price = (l==='fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
+    } else {
+      price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
     }
+    const url = item.href ? resolveHref(item.href) : '';
+    const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
+    const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
+    const openBtn = url
+      ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
+      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:item.c,d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
+    return `
+      <article class="card">
+        ${overlayLink}
+        <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
+        <div class="body">
+          <h3>${title}</h3>
+          <div class="meta"><span>${desc}</span></div>
+        </div>
+        <div class="foot">
+          <div class="price">${price||''}</div>
+          ${openBtn}
+        </div>
+      </article>`;
+  }
 
-    function render(){
-      if(!grid) return;
-      let html = '';
-      for (const it of tours){
-        try { html += cardHTML(it); }
-        catch(e){ console.error('Ошибка карточки', it, e); }
-      }
-      grid.innerHTML = html;
-      if(typeof equalizeAll==='function') equalizeAll();
+  function render(){
+    if(!grid) return;
+    let html = '';
+    for (const it of window.tours){
+      try { html += cardHTML(it); }
+      catch(e){ console.error('Ошибка карточки', it, e); }
     }
+    grid.innerHTML = html;
+    if(typeof equalizeAll==='function') equalizeAll();
+  }
 
-    function openTour(item){
-      const m = document.getElementById('tourModal');
-      if(!m) return;
-      document.getElementById('modalTitle').textContent = item.t;
-      document.getElementById('modalImg').src = item.c;
-      document.getElementById('modalText').textContent = item.d;
-      const inc = document.getElementById('modalInc');
-      if(inc) inc.innerHTML = [
-        'Частный трансфер / Transfert privé',
-        'Дегустации / Dégustations',
-        'Фотостопы / Spots photo',
-        'Гибкий темп / Rythme flexible'
-      ].map(x=>`<div>${x}</div>`).join('');
-      m.showModal();
-    }
-    window.openTour = openTour;
+  function openTour(item){
+    const m = document.getElementById('tourModal');
+    if(!m) return;
+    document.getElementById('modalTitle').textContent = item.t;
+    document.getElementById('modalImg').src = item.c;
+    document.getElementById('modalText').textContent = item.d;
+    const inc = document.getElementById('modalInc');
+    if(inc) inc.innerHTML = [
+      'Частный трансфер / Transfert privé',
+      'Дегустации / Dégustations',
+      'Фотостопы / Spots photo',
+      'Гибкий темп / Rythme flexible'
+    ].map(x=>`<div>${x}</div>`).join('');
+    m.showModal();
+  }
+  window.openTour = openTour;
 
-    function equalize(selector){
-      const els = [...document.querySelectorAll(selector)];
-      if(!els.length) return;
-      els.forEach(el=>el.style.height='auto');
-      const h = Math.max(...els.map(el => el.getBoundingClientRect().height));
-      els.forEach(el=>el.style.height = Math.ceil(h) + 'px');
-    }
-    function equalizeAll(){
-      equalize('#grid .card');
-      equalize('#why .card');
-      equalize('#format .card');
-    }
-    let eqTimer;
-    window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
-    window.addEventListener('load', equalizeAll);
+  function equalize(selector){
+    const els = [...document.querySelectorAll(selector)];
+    if(!els.length) return;
+    els.forEach(el=>el.style.height='auto');
+    const h = Math.max(...els.map(el => el.getBoundingClientRect().height));
+    els.forEach(el=>el.style.height = Math.ceil(h) + 'px');
+  }
+  function equalizeAll(){
+    equalize('#grid .card');
+    equalize('#why .card');
+    equalize('#format .card');
+  }
+  let eqTimer;
+  window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
+  window.addEventListener('load', equalizeAll);
 
-    render();
-    applyLang(getLang());
-  </script>
+  render();
+  applyLang(getLang());
+</script>
 
   <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] (если появятся в формах/ссылках) -->
  <!-- Универсальные обработчики для [data-whatsapp] / [data-telegram] — FIX -->
