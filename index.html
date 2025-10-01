@@ -42,9 +42,6 @@ window.ANALYTICS_CONFIG = {
 <!-- Open Graph -->
 <meta property="og:site_name" content="Tours Languedoc by Irène"/>
 <meta property="og:url" content="https://www.goutvoyage.com/"/>
-<meta property="og:title" content="Авторские туры по Югу Франции — Лангедок" />
-<meta property="og:description" content="Устрицы, вино, горы, замки, море и морские виды спорта. 10 готовых программ + VIP." />
-<meta property="og:type" content="website" />
 <meta property="og:image" content="https://www.goutvoyage.com/assets/wines/43759c1c37f30c1596868d12e888a94c.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
@@ -366,154 +363,106 @@ window.ANALYTICS_CONFIG = {
 
 </style>
 
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Программы туров",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1,  "url": "https://www.goutvoyage.com/programations/Meze_Voile_Pyramide.html",   "name": "Mèze Voile — Hôtel de la Pyramide" },
-    { "@type": "ListItem", "position": 2,  "url": "https://www.goutvoyage.com/programations/Balaruc_SPA.html",            "name": "Balaruc-les-Bains — SPA & Languedoc" },
-    { "@type": "ListItem", "position": 3,  "url": "https://www.goutvoyage.com/programations/CARCASSONNE-1D.html",         "name": "Carcassonne — средневековый город & цитадель (1 день)" },
-    { "@type": "ListItem", "position": 4,  "url": "https://www.goutvoyage.com/programations/capdagde-naturiste-7n.html",  "name": "Cap d’Agde — Village Naturiste + 2 экскурсии" },
-    { "@type": "ListItem", "position": 5,  "url": "https://www.goutvoyage.com/programations/lamalou_les_bains.html",      "name": "Lamalou-les-Bains — термальное восстановление" },
-    { "@type": "ListItem", "position": 6,  "url": "https://www.goutvoyage.com/programations/degustation-meze.html",       "name": "Mèze — дегустация (Mèze & Montagnac)" },
-    { "@type": "ListItem", "position": 7,  "url": "https://www.goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html","name": "Saint-Guilhem-le-Désert: аббатство и панорамы — 1 день" },
-    { "@type": "ListItem", "position": 8,  "url": "https://www.goutvoyage.com/programations/Thau_LUX.html",               "name": "LUX Étang de Thau — 1 день" },
-    { "@type": "ListItem", "position": 9,  "url": "https://www.goutvoyage.com/programations/Pic_Saint_Loup.html",         "name": "Grand Vin du Pic Saint-Loup — 1 день" },
-    { "@type": "ListItem", "position": 10, "url": "https://www.goutvoyage.com/programations/bezier_sunset.html",          "name": "Béziers — круиз по Каналу дю Миди" },
-    { "@type": "ListItem", "position": 11, "url": "https://www.goutvoyage.com/programations/Pezenas_Abbaye_Wine.html",    "name": "Pézenas & Abbaye — винный BIO-день из Меза" },
-    { "@type": "ListItem", "position": 12, "url": "https://www.goutvoyage.com/programations/avene_14d.html",              "name": "Avène — термальное восстановление + 3 экскурсии (14 дней)" },
-    { "@type": "ListItem", "position": 13, "url": "https://www.goutvoyage.com/programations/thermes.html",                "name": "SPA & Thermes — гид по курортам" }
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Tours Languedoc by Irène",
+  "url":"https://www.goutvoyage.com/",
+  "logo":"https://www.goutvoyage.com/favicon-32.png",
+  "sameAs":[
+    "https://www.instagram.com/gout.languedoc",
+    "https://vk.com/id611989815",
+    "https://t.me/de_iren"
   ]
 }
 </script>
-<script>
-  // Подстраховка: если tours не подключён отдельным файлом
-  window.tours = window.tours || [];
 
-  const grid = document.querySelector('#grid');
-  const filters = document.querySelector('#filters');
-  const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
-
-  const HUBS = {
-    oysters:'programations/oysters.html',
-    wine:'programations/wine.html',
-    sea:'programations/sea.html',
-    mountains:'programations/sea.html#mountains',
-    castles:'programations/castles.html',
-    wellness:'programations/wellness.html',
-    canal:'programations/canal.html',
-    kiting:'programations/sea.html#kiting',
-    boats:'programations/sea.html#boats'
-  };
-
-  const TAGS = [
-    { id:'oysters',  label:'🦪 Устрицы' },
-    { id:'wine',     label:'🍷 Вино' },
-    { id:'sea',      label:'🌊 Море' },
-    { id:'kiting',   label:'🪁 Кайтинг' },
-    { id:'boats',    label:'⛵ Лодки' },
-    { id:'mountains',label:'⛰️ Горы' },
-    { id:'castles',  label:'🏰 Замки' },
-    { id:'wellness', label:'🧖 Wellness' },
-    { id:'canal',    label:'🚤 Канал дю Миди' }
-  ];
-
-  function renderTags(container, tags){
-    if (!container || container.children.length) return;
-    tags.forEach(t => {
-      const href = HUBS[t.id];
-      const el = document.createElement('a');
-      el.className = 'chip';
-      el.textContent = t.label;
-      el.setAttribute('data-id', t.id);
-      el.href = href || '#';
-      el.role = 'button';
-      container.appendChild(el);
-    });
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "url":"https://www.goutvoyage.com/",
+  "name":"Tours Languedoc by Irène",
+  "potentialAction":{
+    "@type":"SearchAction",
+    "target":"https://www.goutvoyage.com/?q={search_term_string}",
+    "query-input":"required name=search_term_string"
   }
-  renderTags(filters, TAGS);
-
-  function cardHTML(item){
-    const l = getLang();
-    const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
-    const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-    let price;
-    if (item.seasonal) {
-      price = (l==='fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
-    } else {
-      price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
-    }
-    const url = item.href ? resolveHref(item.href) : '';
-    const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
-    const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
-    const openBtn = url
-      ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
-      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:item.c,d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
-    return `
-      <article class="card">
-        ${overlayLink}
-        <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
-        <div class="body">
-          <h3>${title}</h3>
-          <div class="meta"><span>${desc}</span></div>
-        </div>
-        <div class="foot">
-          <div class="price">${price||''}</div>
-          ${openBtn}
-        </div>
-      </article>`;
-  }
-
-  function render(){
-    if(!grid) return;
-    let html = '';
-    for (const it of window.tours){
-      try { html += cardHTML(it); }
-      catch(e){ console.error('Ошибка карточки', it, e); }
-    }
-    grid.innerHTML = html;
-    if(typeof equalizeAll==='function') equalizeAll();
-  }
-
-  function openTour(item){
-    const m = document.getElementById('tourModal');
-    if(!m) return;
-    document.getElementById('modalTitle').textContent = item.t;
-    document.getElementById('modalImg').src = item.c;
-    document.getElementById('modalText').textContent = item.d;
-    const inc = document.getElementById('modalInc');
-    if(inc) inc.innerHTML = [
-      'Частный трансфер / Transfert privé',
-      'Дегустации / Dégustations',
-      'Фотостопы / Spots photo',
-      'Гибкий темп / Rythme flexible'
-    ].map(x=>`<div>${x}</div>`).join('');
-    m.showModal();
-  }
-  window.openTour = openTour;
-
-  function equalize(selector){
-    const els = [...document.querySelectorAll(selector)];
-    if(!els.length) return;
-    els.forEach(el=>el.style.height='auto');
-    const h = Math.max(...els.map(el => el.getBoundingClientRect().height));
-    els.forEach(el=>el.style.height = Math.ceil(h) + 'px');
-  }
-  function equalizeAll(){
-    equalize('#grid .card');
-    equalize('#why .card');
-    equalize('#format .card');
-  }
-  let eqTimer;
-  window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
-  window.addEventListener('load', equalizeAll);
-
-  render();
-  applyLang(getLang());
+}
 </script>
 
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Программы туров",
+  "itemListElement":[
+    {
+      "@type":"ListItem","position":1,
+      "url":"https://www.goutvoyage.com/programations/Meze_Voile_Pyramide.html",
+      "name":"Mèze Voile — Hôtel de la Pyramide"
+    },
+    {
+      "@type":"ListItem","position":2,
+      "url":"https://www.goutvoyage.com/programations/Balaruc_SPA.html",
+      "name":"Balaruc-les-Bains — SPA & Languedoc"
+    },
+    {
+      "@type":"ListItem","position":3,
+      "url":"https://www.goutvoyage.com/programations/thermes.html",
+      "name":"SPA & Thermes — гид по курортам"
+    },
+    {
+      "@type":"ListItem","position":4,
+      "url":"https://www.goutvoyage.com/programations/capdagde-naturiste-7n.html",
+      "name":"Cap d’Agde — Village Naturiste + 2 экскурсии"
+    },
+    {
+      "@type":"ListItem","position":5,
+      "url":"https://www.goutvoyage.com/programations/lamalou_les_bains.html",
+      "name":"Lamalou-les-Bains — термальное восстановление"
+    },
+    {
+      "@type":"ListItem","position":6,
+      "url":"https://www.goutvoyage.com/programations/degustation-meze.html",
+      "name":"Mèze — дегустация (Mèze & Montagnac)"
+    },
+    {
+      "@type":"ListItem","position":7,
+      "url":"https://www.goutvoyage.com/programations/Saint_Guilhem.html",
+      "name":"Saint-Guilhem-le-Désert — 1 день"
+    },
+    {
+      "@type":"ListItem","position":8,
+      "url":"https://www.goutvoyage.com/programations/Thau_LUX.html",
+      "name":"LUX Étang de Thau — 1 день"
+    },
+    {
+      "@type":"ListItem","position":9,
+      "url":"https://www.goutvoyage.com/programations/Pic_Saint_Loup.html",
+      "name":"Grand Vin du Pic Saint-Loup — 1 день"
+    },
+    {
+      "@type":"ListItem","position":10,
+      "url":"https://www.goutvoyage.com/programations/bezier_sunset.html",
+      "name":"Béziers — круиз по Каналу дю Миди"
+    },
+  {
+  "@type":"ListItem",
+  "position":11,
+  "url":"https://www.goutvoyage.com/programations/Pezenas_Abbaye_Wine.html",
+  "name":"Pézenas & Abbaye — винный BIO-день из Меза"
+},
+  {
+  "@type":"ListItem",
+  "position":X,
+  "url":"https://www.goutvoyage.com/programations/avene_14d.html",
+  "name":"Avène — термальное восстановление + 3 экскурсии (14 дней)"
+}
+  ]
+}
+</script>
 
 </head>
 <body>
@@ -915,220 +864,242 @@ window.ANALYTICS_CONFIG = {
 
 
 
- <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Программы туров",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "url": "https://www.goutvoyage.com/programations/Meze_Voile_Pyramide.html",
-      "name": "Mèze Voile — Hôtel de la Pyramide"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "url": "https://www.goutvoyage.com/programations/Balaruc_SPA.html",
-      "name": "Balaruc-les-Bains — SPA & Languedoc"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "url": "https://www.goutvoyage.com/programations/CARCASSONNE-1D.html",
-      "name": "Carcassonne — средневековый город & цитадель (1 день)"
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "url": "https://www.goutvoyage.com/programations/capdagde-naturiste-7n.html",
-      "name": "Cap d’Agde — Village Naturiste + 2 экскурсии"
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "url": "https://www.goutvoyage.com/programations/lamalou_les_bains.html",
-      "name": "Lamalou-les-Bains — термальное восстановление"
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "url": "https://www.goutvoyage.com/programations/degustation-meze.html",
-      "name": "Mèze — дегустация (Mèze & Montagnac)"
-    },
-    {
-      "@type": "ListItem",
-      "position": 7,
-      "url": "https://www.goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html",
-      "name": "Saint-Guilhem-le-Désert: аббатство и панорамы — 1 день"
-    },
-    {
-      "@type": "ListItem",
-      "position": 8,
-      "url": "https://www.goutvoyage.com/programations/Thau_LUX.html",
-      "name": "LUX Étang de Thau — 1 день"
-    },
-    {
-      "@type": "ListItem",
-      "position": 9,
-      "url": "https://www.goutvoyage.com/programations/Pic_Saint_Loup.html",
-      "name": "Grand Vin du Pic Saint-Loup — 1 день"
-    },
-    {
-      "@type": "ListItem",
-      "position": 10,
-      "url": "https://www.goutvoyage.com/programations/bezier_sunset.html",
-      "name": "Béziers — круиз по Каналу дю Миди"
-    },
-    {
-      "@type": "ListItem",
-      "position": 11,
-      "url": "https://www.goutvoyage.com/programations/Pezenas_Abbaye_Wine.html",
-      "name": "Pézenas & Abbaye — винный BIO-день из Меза"
-    },
-    {
-      "@type": "ListItem",
-      "position": 12,
-      "url": "https://www.goutvoyage.com/programations/avene_14d.html",
-      "name": "Avène — термальное восстановление + 3 экскурсии (14 дней)"
-    },
-    {
-      "@type": "ListItem",
-      "position": 13,
-      "url": "https://www.goutvoyage.com/programations/thermes.html",
-      "name": "SPA & Thermes — гид по курортам"
-    }
-  ]
+  <!-- Программы (карточки) -->
+  <script>
+    const tours = [
+      { tr:'Mèze Voile — Hôtel de la Pyramide (от 7 ночей)', tf:'Mèze Voile — Hôtel de la Pyramide (7 nuits)',
+        c:'assets/voiles/catamaran.jpg',
+        dr:'Неделя на Étang de Thau: курс HC15/16 (5×~3 ч), устрицы Bouzigues, Sète.',
+        df:'Semaine sur l’étang de Thau : stage HC15/16 (5×~3 h), huîtres à Bouzigues, Sète.',
+        pr:'пример: 1 800 € / 2 гостя', pf:'exemple : от 1 800 € / 2 pers.',
+        href:'programations/Meze_Voile_Pyramide.html', b:'new'
+      },
+      { tr:'Balaruc-les-Bains — SPA & Languedoc (от 7 дней)', tf:'Balaruc-les-Bains — SPA & Languedoc (des 7 jours)',
+        c:'assets/Balaruc-Obalia.jpg',
+        dr:'Неделя терм O’balia + Сет, Пезенас, Каркасон, лагуна Thau и винные домены.',
+        df:'Semaine aux thermes O’balia + Sète, Pézenas, Carcassonne, étang de Thau et domaines viticoles.',
+        pr:'от 1 700€ / чел', pf:'dès 1 700€ / pers', href:'programations/Balaruc_SPA.html', b:'new'
+      },
+      { 
+  tr: 'Carcassonne — средневековый город & цитадель (1 день)',
+  tf: 'Carcassonne — cité médiévale & fortifications (1 jour)',
+  c:  'assets/carcasson/IMG_2998.JPG',
+  dr: '1 день • Cité: ворота Нарбоннез, стены и башни, базилика Сен-Назер; Bastide Saint-Louis.',
+  df: '1 jour • Cité : porte Narbonnaise, remparts et tours, basilique Saint-Nazaire ; Bastide Saint-Louis.',
+  pr: 'от 400 € / 2 гостя',
+  pf: 'dès 400 € / 2 pers.',
+  href: 'programations/CARCASSONNE-1D.html',
+  b: 'new'
+},
+           {
+  tr: 'Cap d’Agde — Village Naturiste + 2 экскурсии (от 7 ночей) 18+',
+  tf: 'Cap d’Agde — Village Naturiste + 2 excursions (des 7 nuits)',
+  c:  'assets/capdag/304308906.jpg',
+  dr: 'Неделя у моря в закрытом Village Naturiste + 2 приватных выезда: Pic Saint-Loup и Каркасон. Трансфер по запросу.',
+  df: 'Semaine en bord de mer au Village Naturiste + 2 sorties privées : Pic Saint-Loup et Carcassonne. Transfert sur demande.',
+  href: 'programations/capdagde-naturiste-7n.html',
+  b: '18+',
+  seasonal: true // ← флаг «сезонная цена по запросу»
+}, 
+        { 
+  tr: 'Lamalou-les-Bains — термальное восстановление (14+ ночей)',
+  tf: 'Lamalou-les-Bains — cure thermale (14+ nuits)',
+  c:  'assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine2.webp', // картинка обложки
+  dr: 'Курорт CTS Lamalou: проживание 14–21 ночь, трансферы и сопровождение Ирэн.',
+  df: 'Station thermale CTS Lamalou: séjour 14–21 nuits, transferts et organisation Irène.',
+  pr: 'от ~2000 € / 2 гостя',
+  pf: 'dès ~2000 € / 2 pers.',
+  href: 'programations/lamalou_les_bains.html'
+ },
+      { tr:'Mèze — дегустация (Mèze & Montagnac)', tf:'Mèze — dégustation (Mèze & Montagnac)',
+        c:'assets/meze/2-1-5-VignesEtangParcsMer.jpg',
+        dr:'Полдня/день • только близкие домены: Mèze & Montagnac. Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi.',
+        df:'Demi/journée • domaines proches : Mèze & Montagnac. Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi.',
+        pr:'от 210€ / чел', pf:'dès 210€ / pers', href:'programations/degustation-meze.html', b:'new'
+      },
+   
+        { tr:'Saint-Guilhem-le-Désert: аббатство и панорамы - 1 день',
+        tf:'Saint-Guilhem-le-Désert : abbaye et panoramas - 1 jour',
+        c:'assets/IMG_4003.JPG',
+        dr:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
+        df:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
+        pr:'400 € за 2 гостя', pf:'400 € pour 2 personnes',
+        href:'programations/GUILHEM_CLAMOUSE_CAPION.html'
+      },
+      { tr:'LUX Étang de Thau — 1 день', tf:'LUX Étang de Thau — 1 jour',
+        c:'assets/Etang-de-Thau.jpg',
+        dr:'День • приватная лодка, Tarbouriech, Noilly Prat, винный финал. Трансфер от/до отеля. Без пеших прогулок.',
+        df:'Jour • bateau privé, Tarbouriech, Noilly Prat, final vin. Transfert hôtel A/R. Sans marche.',
+        pr:'по запросу € / 1–6 гостей', pf:'по запросу € / 1–6 pers.',
+        href:'programations/Thau_LUX.html', b:'vip'
+      },
+      { tr:'Grand Vin du Pic Saint-Loup — 1 день', tf:'Grand Vin du Pic Saint-Loup — 1 jour',
+        c:'assets/wines/43759c1c37f30c1596868d12e888a94c.jpg',
+        dr:'День • VIP-дегустации: Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 км.',
+        df:'Journée • dégustations VIP : Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 km.',
+        pr:'430 € за двоих • +100 €/доп. гость', pf:'430 € pour 2 • +100 €/pers',
+        href:'programations/Pic_Saint_Loup.html', b:'hit'
+      },
+      { tr:'Бéзье: круиз  по Каналу дю Миди - пол дня', tf:'Béziers : croisière — Canal du Midi',
+        c:'assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg',
+        dr:'Вечер/день • Фонсераны, Grand Bief, тоннель Малпас. Возможен ужин на борту. Трансфер от/до отеля включён.',
+        df:'Soirée • Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord. Transfert hôtel inclus.',
+        pr:'по договоренности', pf:'по договоренности',
+        href:'programations/bezier_sunset.html', b:'hit'
+      },
+  {
+  tr:'Pézenas & Abbaye — винный BIO-день из Меза',
+  tf:'Pézenas & Abbaye — journée vin BIO au départ de Mèze',
+  c:'assets/pezenas/unnamed (3).webp', // обложка
+  dr:'Pézenas, аббатство XII века с био-садами, дегустация на домене, обед по желанию. ~6–7 ч, ~55–65 км.',
+  df:'Pézenas, abbaye cistercienne (XIIe), jardins bio, dégustation au domaine, déjeuner en option. ~6–7 h, ~55–65 km.',
+  pr:'420 € за двоих • +100 €/гость (до 4)',
+  pf:'420 € pour 2 • +100 €/pers (jusqu’à 4)',
+  href:'programations/Pezenas_Abbaye_Wine.html',
+  b:'new'
+},
+      {
+  tr:'Avène — термальное восстановление + 3 экскурсии (14 дней)',
+  tf:'Avène — cure thermale + 3 excursions (14 jours)',
+  c:'assets/avene/16_OK-StationThermale-GF.webp',
+  dr:'14 ночей Avène (CTS): курс процедур + трансфер + 3 авторские экскурсии.',
+  df:'14 nuits Avène (CTS): cure + transfert privé + 3 excursions signature.',
+  pr:'от ~3 800 € за двоих',
+  pf:'dès ~3 800 € pour 2 pers.',
+  href:'programations/avene_14d.html',
+  b:'wellness'
+},
+
+    ];
+
+    const grid = document.querySelector('#grid');
+    const filters = document.querySelector('#filters');
+    const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
+
+   // === Хабы и теги, ведущие на страницы/якоря ===
+const HUBS = {
+  oysters:  'programations/oysters.html',      // 🦪 Устрицы — хаб
+  wine:     'programations/wine.html',         // 🍷 Вино — хаб
+  sea:      'programations/sea.html',          // 🌊 Море & актив — хаб
+  mountains:'programations/sea.html#mountains',// ⛰️ Горы (если хочешь выделить в sea-хабе якорь)
+  castles:  'programations/castles.html',      // 🏰 Замки & история — хаб
+  wellness: 'programations/wellness.html',     // 🧖 Wellness & термы — хаб
+  canal:    'programations/canal.html',        // 🚤 Канал дю Миди — хаб
+  kiting:   'programations/sea.html#kiting',   // 🪁 Кайтинг — якорь в море-хабе
+  boats:    'programations/sea.html#boats'     // ⛵ Лодки/яхты — якорь в море-хабе
+};
+
+// Какие чипы показывать в фильтрах
+const TAGS = [
+  { id:'oysters',  label:'🦪 Устрицы' },
+  { id:'wine',     label:'🍷 Вино' },
+  { id:'sea',      label:'🌊 Море' },
+  { id:'kiting',   label:'🪁 Кайтинг' },
+  { id:'boats',    label:'⛵ Лодки' },
+  { id:'mountains',label:'⛰️ Горы' },
+  { id:'castles',  label:'🏰 Замки' },
+  { id:'wellness', label:'🧖 Wellness' },
+  { id:'canal',    label:'🚤 Канал дю Миди' }
+];
+
+// Рендерим чипы: если у тега есть ссылка в HUBS — рисуем <a href>, иначе — локальный фильтр (не нужен сейчас)
+function renderTags(container, tags){
+  if (!container || container.children.length) return;
+  tags.forEach(t => {
+    const href = HUBS[t.id];
+    const el = document.createElement('a');
+    el.className = 'chip';
+    el.textContent = t.label;
+    el.setAttribute('data-id', t.id);
+    el.href = href || '#';
+    el.role = 'button';
+    container.appendChild(el);
+  });
 }
-</script>
+
+// отрисуем в #filters
+renderTags(filters, TAGS);
 
 
-<script>
-  // Подстраховка: если tours не подключён отдельным файлом
-  window.tours = window.tours || [];
+    function cardHTML(item){
+      const l = getLang();
+      const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
+      const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
+     let price;
+if (item.seasonal) {
+  price = (l === 'fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
+} else {
+  price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
+}
 
-  const grid = document.querySelector('#grid');
-  const filters = document.querySelector('#filters');
-  const badges = { hit:'HIT', vip:'VIP', new:'NEW' };
-
-  const HUBS = {
-    oysters:'programations/oysters.html',
-    wine:'programations/wine.html',
-    sea:'programations/sea.html',
-    mountains:'programations/sea.html#mountains',
-    castles:'programations/castles.html',
-    wellness:'programations/wellness.html',
-    canal:'programations/canal.html',
-    kiting:'programations/sea.html#kiting',
-    boats:'programations/sea.html#boats'
-  };
-
-  const TAGS = [
-    { id:'oysters',  label:'🦪 Устрицы' },
-    { id:'wine',     label:'🍷 Вино' },
-    { id:'sea',      label:'🌊 Море' },
-    { id:'kiting',   label:'🪁 Кайтинг' },
-    { id:'boats',    label:'⛵ Лодки' },
-    { id:'mountains',label:'⛰️ Горы' },
-    { id:'castles',  label:'🏰 Замки' },
-    { id:'wellness', label:'🧖 Wellness' },
-    { id:'canal',    label:'🚤 Канал дю Миди' }
-  ];
-
-  function renderTags(container, tags){
-    if (!container || container.children.length) return;
-    tags.forEach(t => {
-      const href = HUBS[t.id];
-      const el = document.createElement('a');
-      el.className = 'chip';
-      el.textContent = t.label;
-      el.setAttribute('data-id', t.id);
-      el.href = href || '#';
-      el.role = 'button';
-      container.appendChild(el);
-    });
-  }
-  renderTags(filters, TAGS);
-
-  function cardHTML(item){
-    const l = getLang();
-    const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
-    const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-    let price;
-    if (item.seasonal) {
-      price = (l==='fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
-    } else {
-      price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
+      const url   = item.href ? resolveHref(item.href) : '';
+      const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
+      const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
+      const openBtn = url
+        ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
+        : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:item.c,d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
+      return `
+        <article class="card">
+          ${overlayLink}
+          <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
+          <div class="body">
+            <h3>${title}</h3>
+            <div class="meta"><span>${desc}</span></div>
+          </div>
+          <div class="foot">
+            <div class="price">${price||''}</div>
+            ${openBtn}
+          </div>
+        </article>`;
     }
-    const url = item.href ? resolveHref(item.href) : '';
-    const badge = item.b ? `<span class="badge">${badges[item.b]||item.b}</span>` : '';
-    const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
-    const openBtn = url
-      ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
-      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:item.c,d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
-    return `
-      <article class="card">
-        ${overlayLink}
-        <div class="cover">${badge}<img src="${item.c}" alt="${title}"></div>
-        <div class="body">
-          <h3>${title}</h3>
-          <div class="meta"><span>${desc}</span></div>
-        </div>
-        <div class="foot">
-          <div class="price">${price||''}</div>
-          ${openBtn}
-        </div>
-      </article>`;
-  }
 
-  function render(){
-    if(!grid) return;
-    let html = '';
-    for (const it of window.tours){
-      try { html += cardHTML(it); }
-      catch(e){ console.error('Ошибка карточки', it, e); }
+    function render(){
+      if(!grid) return;
+      let html = '';
+      for (const it of tours){
+        try { html += cardHTML(it); }
+        catch(e){ console.error('Ошибка карточки', it, e); }
+      }
+      grid.innerHTML = html;
+      if(typeof equalizeAll==='function') equalizeAll();
     }
-    grid.innerHTML = html;
-    if(typeof equalizeAll==='function') equalizeAll();
-  }
 
-  function openTour(item){
-    const m = document.getElementById('tourModal');
-    if(!m) return;
-    document.getElementById('modalTitle').textContent = item.t;
-    document.getElementById('modalImg').src = item.c;
-    document.getElementById('modalText').textContent = item.d;
-    const inc = document.getElementById('modalInc');
-    if(inc) inc.innerHTML = [
-      'Частный трансфер / Transfert privé',
-      'Дегустации / Dégustations',
-      'Фотостопы / Spots photo',
-      'Гибкий темп / Rythme flexible'
-    ].map(x=>`<div>${x}</div>`).join('');
-    m.showModal();
-  }
-  window.openTour = openTour;
+    function openTour(item){
+      const m = document.getElementById('tourModal');
+      if(!m) return;
+      document.getElementById('modalTitle').textContent = item.t;
+      document.getElementById('modalImg').src = item.c;
+      document.getElementById('modalText').textContent = item.d;
+      const inc = document.getElementById('modalInc');
+      if(inc) inc.innerHTML = [
+        'Частный трансфер / Transfert privé',
+        'Дегустации / Dégustations',
+        'Фотостопы / Spots photo',
+        'Гибкий темп / Rythme flexible'
+      ].map(x=>`<div>${x}</div>`).join('');
+      m.showModal();
+    }
+    window.openTour = openTour;
 
-  function equalize(selector){
-    const els = [...document.querySelectorAll(selector)];
-    if(!els.length) return;
-    els.forEach(el=>el.style.height='auto');
-    const h = Math.max(...els.map(el => el.getBoundingClientRect().height));
-    els.forEach(el=>el.style.height = Math.ceil(h) + 'px');
-  }
-  function equalizeAll(){
-    equalize('#grid .card');
-    equalize('#why .card');
-    equalize('#format .card');
-  }
-  let eqTimer;
-  window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
-  window.addEventListener('load', equalizeAll);
+    function equalize(selector){
+      const els = [...document.querySelectorAll(selector)];
+      if(!els.length) return;
+      els.forEach(el=>el.style.height='auto');
+      const h = Math.max(...els.map(el => el.getBoundingClientRect().height));
+      els.forEach(el=>el.style.height = Math.ceil(h) + 'px');
+    }
+    function equalizeAll(){
+      equalize('#grid .card');
+      equalize('#why .card');
+      equalize('#format .card');
+    }
+    let eqTimer;
+    window.addEventListener('resize', ()=>{ clearTimeout(eqTimer); eqTimer = setTimeout(equalizeAll, 120); });
+    window.addEventListener('load', equalizeAll);
 
-  render();
-  applyLang(getLang());
-</script>
+    render();
+    applyLang(getLang());
+  </script>
 
   <!-- Универсальные обработчики для ссылок [data-whatsapp] и [data-telegram] (если появятся в формах/ссылках) -->
  <!-- Универсальные обработчики для [data-whatsapp] / [data-telegram] — FIX -->
@@ -1441,4 +1412,3 @@ window.ANALYTICS_CONFIG = {
   </script>
 </body>
 </html>
-
