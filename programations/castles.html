@@ -7,23 +7,33 @@
   <title>Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène</title>
   <meta name="description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон (по запросу). 3–6 часов, 2–3 остановки, гастро-паузы." />
 
-  <!-- Open Graph base -->
-  <meta property="og:title" content="Замки & средневековые города — хаб" />
-  <meta property="og:description" content="Saint-Guilhem, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
-  <meta name="theme-color" content="#0D2B1E" />
+  <!-- Robots / языки / карта -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="bingbot" content="index,follow" />
+  <meta http-equiv="content-language" content="ru, fr">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
   <!-- === SEO base === -->
   <link rel="canonical" href="https://goutvoyage.com/programations/castles.html" />
   <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=ru" hreflang="ru" />
   <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=fr" hreflang="fr" />
   <link rel="alternate" href="https://goutvoyage.com/programations/castles.html" hreflang="x-default" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta property="og:url" content="https://goutvoyage.com/programations/castles.html" />
+
+  <!-- Open Graph -->
   <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:title" content="Замки & средневековые города — хаб" />
+  <meta property="og:description" content="Saint-Guilhem, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
+  <meta property="og:image:alt" content="Saint-Guilhem-le-Désert — панорама, каменные улочки" />
   <meta property="og:image:width" content="1600" />
   <meta property="og:image:height" content="1067" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
+  <meta name="theme-color" content="#0D2B1E" />
+  <meta name="format-detection" content="telephone=no" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -33,19 +43,23 @@
 
   <!-- LCP image preload -->
   <link rel="preload" as="image" href="/assets/IMG_4003.JPG" imagesrcset="/assets/IMG_4003.JPG 1600w" fetchpriority="high" />
-  <!-- WA/TG hints -->
+  <!-- WA/TG perf hints -->
   <link rel="dns-prefetch" href="//wa.me" />
   <link rel="dns-prefetch" href="//t.me" />
   <link rel="preconnect" href="https://wa.me" crossorigin>
   <link rel="preconnect" href="https://t.me" crossorigin>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest" type="application/manifest+json" crossorigin="anonymous">
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png?v=3">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#0D2B1E">
+  <meta name="theme-color" content="#0D2B1E">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -115,6 +129,18 @@
   }
   </script>
 
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://goutvoyage.com",
+    "logo":"https://goutvoyage.com/favicon-32.png",
+    "sameAs":[]
+  }
+  </script>
+
   <script>
   window.ANALYTICS_CONFIG = {
     GA_ID: "G-L9TR2VTDX2",
@@ -139,9 +165,9 @@
         <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
       </ul>
     </nav>
-    <div class="lang">
-      <button id="btn-ru" class="active">RU</button>
-      <button id="btn-fr">FR</button>
+    <div class="lang" aria-label="Переключение языка">
+      <button id="btn-ru" class="active" aria-pressed="true">RU</button>
+      <button id="btn-fr" aria-pressed="false">FR</button>
     </div>
   </div>
 </header>
@@ -197,6 +223,7 @@
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос</h3>
     <p class="section-sub" data-i18n="form_sub">Напишите в WhatsApp/Telegram — ответим в течение дня.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <!-- Реальные ссылки — работают и без JS -->
       <a class="btn" data-whatsapp href="https://wa.me/33759644813" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn primary" data-telegram href="https://t.me/de_iren" target="_blank" rel="noopener">Telegram</a>
       <a class="btn" href="../index.html#tours" data-i18n="back_tours">← К программам</a>
@@ -253,27 +280,39 @@ const i18n = {
     back_tours:'← Voir les programmes'
   }
 };
+const setAttrIf=(el,a,v)=>{ if(el && typeof v==='string' && v.trim()!=='') el.setAttribute(a,v); };
+
 function applyLang(lang){
   const t=i18n[lang]||i18n.ru;
   document.documentElement.lang=t.htmlLang;
-  document.title=t.title;
-  const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-  const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-  const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+  if (t.title) document.title=t.title;
+  setAttrIf(document.querySelector('meta[name="description"]'),'content',t.metaDesc);
+  setAttrIf(document.querySelector('meta[property="og:title"]'),'content',t.ogTitle);
+  setAttrIf(document.querySelector('meta[property="og:description"]'),'content',t.ogDesc);
+  const loc=document.querySelector('meta[property="og:locale"]');
+  if(loc) loc.setAttribute('content', (lang==='fr'?'fr_FR':'ru_RU'));
   document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!=null) n.textContent=t[k]; });
   document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
   document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-  localStorage.setItem('site:lang', lang);
+  document.getElementById('btn-ru').setAttribute('aria-pressed', lang==='ru');
+  document.getElementById('btn-fr').setAttribute('aria-pressed', lang==='fr');
+  try{ localStorage.setItem('site:lang', lang); }catch(e){}
 }
 (function init(){
-  const saved=localStorage.getItem('site:lang')||'ru'; applyLang(saved);
-  document.getElementById('btn-ru').onclick=()=>applyLang('ru');
-  document.getElementById('btn-fr').onclick=()=>applyLang('fr');
+  const p=new URLSearchParams(location.search);
+  const fromURL=(p.get('lang')||'').toLowerCase();
+  let lang=(fromURL==='ru'||fromURL==='fr')?fromURL:null;
+  if(!lang){ try{ const saved=localStorage.getItem('site:lang'); if(saved==='ru'||saved==='fr') lang=saved; }catch(e){} }
+  if(!lang){ lang=((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'ru'); }
+  applyLang(lang);
+  const upd=(l)=>{ const q=new URLSearchParams(location.search); q.set('lang',l); history.replaceState({},'',location.pathname+'?'+q.toString()+location.hash); };
+  document.getElementById('btn-ru').onclick=()=>{applyLang('ru');upd('ru')};
+  document.getElementById('btn-fr').onclick=()=>{applyLang('fr');upd('fr')};
 })();
 </script>
 
 <script>
-  // Мини-биндинг WA/TG: формирует текст заявки, но ссылки работают и без JS
+  // WA/TG: формирует текст заявки (но ссылки уже рабочие без JS)
   (function(){
     const CFG = Object.assign({
       whatsapp: '33759644813',
@@ -283,16 +322,19 @@ function applyLang(lang){
     }, window.APP_CONFIG||{});
 
     function buildText(){
-      const title = document.title;
-      return `Запрос по хабу: ${title}\nСтраница: ${location.href}`;
+      const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
+      return isFr
+        ? `Demande hub: ${document.title}\nPage: ${location.href}`
+        : `Запрос по хабу: ${document.title}\nСтраница: ${location.href}`;
     }
+    const enc = s => encodeURIComponent(String(s||''));
 
     document.querySelectorAll('[data-whatsapp]').forEach(a=>{
       a.addEventListener('click',e=>{
         e.preventDefault();
         const num = String(CFG.whatsapp||'').replace(/\D/g,'');
         if(!num) return alert('В APP_CONFIG не задан WhatsApp');
-        location.href = `https://wa.me/${num}?text=${encodeURIComponent(buildText())}`;
+        location.href = `https://wa.me/${num}?text=${enc(buildText())}`;
       });
     });
 
@@ -303,13 +345,10 @@ function applyLang(lang){
         const user=(CFG.telegram_user||'').replace(/^@/,'');
         if(bot){
           try{
-            const r=await fetch((CFG.bot_prestart_url||'').replace(/\/$/,'')+'/prestart',{
-              method:'POST',
-              headers:{'Content-Type':'application/json'},
-              body:JSON.stringify({text:buildText()})
-            });
+            const pre=(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'')+'/prestart';
+            const r=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
             const j=await r.json().catch(()=>({}));
-            const tme=j?.tme || (j?.token?`https://t.me/${bot}?start=${encodeURIComponent(j.token)}`:'');
+            const tme=j?.tme || (j?.token?`https://t.me/${bot}?start=${enc(j.token)}`:'');
             location.href = tme || `https://t.me/${bot}`;
           }catch{
             location.href=`https://t.me/${bot}`;
