@@ -39,10 +39,11 @@
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
-    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .nav{display:flex; align-items:center; justify-content:space-between; min-height:72px; padding:8px 0}
     .brand{display:flex; align-items:center; gap:14px}
     .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
-    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+    .brand-text{display:flex; flex-direction:column; line-height:1.15}
+    .brand-text small{margin-top:2px; color:#6c6c6c}
     nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     nav a{font-weight:600; padding:10px 12px; border-radius:12px}
     nav a:hover{background:#f0f0f0}
@@ -50,6 +51,12 @@
     .lang{display:flex; align-items:center; gap:10px}
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+
+    /* back link under header */
+    .back-link{display:block;border-bottom:1px solid #eee;background:#fff}
+    .back-link .inner{display:flex;align-items:center;gap:8px;height:44px}
+    .back-link a{font-weight:600}
+    .back-link a:hover{text-decoration:underline}
 
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
@@ -80,16 +87,16 @@
     .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
   </style>
 
- <script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
+  <script>
+    window.ANALYTICS_CONFIG = {
+      GA_ID: "G-L9TR2VTDX2",
+      YM_ID: 104246057,
+      consentVersion: "v2"
+    };
+  </script>
 
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 
 </head>
 <body data-program data-program-id="HUB-CANAL" data-program-title="Канал дю Миди — хаб">
@@ -97,21 +104,31 @@ window.ANALYTICS_CONFIG = {
     <div class="container nav">
       <a class="brand" href="../index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
-        <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
+        <div class="brand-text">
+          <strong>Tours Languedoc by Irène</strong>
+          <small data-i18n="brand_sub">— Путешествия со вкусом</small>
+        </div>
       </a>
-      <nav class="lang">
+
+      <nav>
         <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
-        <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
-        </div>
       </nav>
+
+      <div class="lang" aria-label="Language switch">
+        <button id="btn-ru" class="active">RU</button>
+        <button id="btn-fr">FR</button>
+      </div>
     </div>
   </header>
+
+  <!-- Строка назад -->
+  <div class="back-link">
+    <div class="container inner">
+      <a href="../index.html#tours" data-i18n="nav_all">← Все программы</a>
+    </div>
+  </div>
 
   <section class="hero">
     <div class="bg"><img src="../assets/canal/canal_sunset.jpg" onerror="this.src='../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="Canal du Midi à Béziers"><div class="overlay"></div></div>
@@ -124,6 +141,7 @@ window.ANALYTICS_CONFIG = {
     </div>
   </section>
 
+  <!-- …дальше код секций (карточки, CTA, футер, скрипты) остаётся без изменений … -->
   <section class="container">
     <h3 class="section-title" data-i18n="cn_list_title">Выберите программу</h3>
     <p class="section-sub" data-i18n="cn_list_sub">Индивидуально / мини-группы. Возможны дневные и закатные рейсы.</p>
