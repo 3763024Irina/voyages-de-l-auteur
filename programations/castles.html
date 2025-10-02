@@ -71,7 +71,23 @@
     .container{max-width:var(--container);margin:auto;padding:0 20px}
 
     header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #eee}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  /* Хедер подстраивается под высоту логотипа+слогана */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:70px;         /* вместо фиксированной height */
+  padding:8px 0;           /* даём “воздух” */
+}
+
+/* Стекуем название и слоган в колонку */
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+}
+.brand-text small{ margin-top:2px; color:#6c6c6c }
+
     .brand{display:flex;align-items:center;gap:14px}
     .logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,var(--brand),#123c2c);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow)}
     nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
@@ -199,10 +215,14 @@
 <body>
 <header>
   <div class="container nav">
-    <a class="brand" href="../index.html" aria-label="На главную">
-      <div class="logo">Î</div>
-      <div><strong>Tours Languedoc by Irène</strong><br><small style="color:#6c6c6c">— Des voyages avec goût</small></div>
-    </a>
+   <a class="brand" href="../index.html" aria-label="На главную">
+  <div class="logo">Î</div>
+  <div class="brand-text">
+    <strong>Tours Languedoc by Irène</strong>
+    <small>— Des voyages avec goût</small>
+  </div>
+</a>
+
     <nav>
       <ul>
         <!-- В шапке оставляем только CTA -->
