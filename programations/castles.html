@@ -9,8 +9,31 @@
   <meta property="og:title" content="Замки & средневековые города — хаб" />
   <meta property="og:description" content="Saint-Guilhem, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/IMG_4003.JPG" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
   <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- === SEO base === -->
+  <link rel="canonical" href="https://goutvoyage.com/programations/castles.html" />
+  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=ru" hreflang="ru" />
+  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=fr" hreflang="fr" />
+  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html" hreflang="x-default" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta property="og:url" content="https://goutvoyage.com/programations/castles.html" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1067" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène" />
+  <meta name="twitter:description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон (по запросу). 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
+
+  <!-- LCP image preload -->
+  <link rel="preload" as="image" href="/assets/IMG_4003.JPG" imagesrcset="/assets/IMG_4003.JPG 1600w" fetchpriority="high" />
+  <!-- WA/TG hints -->
+  <link rel="dns-prefetch" href="//wa.me" />
+  <link rel="dns-prefetch" href="//t.me" />
+  <link rel="preconnect" href="https://wa.me" crossorigin>
+  <link rel="preconnect" href="https://t.me" crossorigin>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -47,17 +70,58 @@
     @media (max-width:900px){.gallery{grid-template-columns:1fr 1fr}h2.title{font-size:34px}}@media (max-width:600px){.gallery{grid-template-columns:1fr}}
   </style>
 
-<script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",
-  YM_ID: 104246057,
-  consentVersion: "v2"
-};
-</script>
+  <!-- JSON-LD: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Замки & средневековые города — хаб",
+    "inLanguage":["ru","fr"],
+    "url":"https://goutvoyage.com/programations/castles.html",
+    "isPartOf":{"@type":"Website","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"},
+    "description":"Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон (по запросу). 3–6 часов, 2–3 остановки, гастро-паузы.",
+    "primaryImageOfPage":{"@type":"ImageObject","url":"https://goutvoyage.com/assets/IMG_4003.JPG","width":1600,"height":1067}
+  }
+  </script>
 
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
+  <!-- JSON-LD: ItemList (рекомендуемые программы) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Рекомендуемые программы — Culture hub",
+    "itemListOrder":"http://schema.org/ItemListOrderAscending",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Saint_Guilhem.html","name":"Saint-Guilhem-le-Désert: аббатство и панорамы"},
+      {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/bezier_sunset.html","name":"Бéзье: круиз по Каналу дю Миди (вечер)"}
+    ]
+  }
+  </script>
 
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Программы","item":"https://goutvoyage.com/index.html#tours"},
+      {"@type":"ListItem","position":3,"name":"Замки & средневековые города — хаб","item":"https://goutvoyage.com/programations/castles.html"}
+    ]
+  }
+  </script>
+
+  <script>
+  window.ANALYTICS_CONFIG = {
+    GA_ID: "G-L9TR2VTDX2",
+    YM_ID: 104246057,
+    consentVersion: "v2"
+  };
+  </script>
+
+  <!-- Баннер куки -->
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
 <body>
 <header>
@@ -81,7 +145,10 @@ window.ANALYTICS_CONFIG = {
 
 <section class="hero">
   <div class="bg">
-    <img id="alt-hero" src="/assets/IMG_4003.JPG" alt="Saint-Guilhem-le-Désert — Languedoc">
+    <img id="alt-hero" src="/assets/IMG_4003.JPG"
+         alt="Saint-Guilhem-le-Désert — Languedoc"
+         width="1600" height="1067"
+         fetchpriority="high" loading="eager" decoding="async">
     <div class="overlay"></div>
   </div>
   <div class="container inner">
@@ -97,17 +164,17 @@ window.ANALYTICS_CONFIG = {
   <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
   <p class="section-sub" data-i18n="gal_sub">Saint-Guilhem-le-Désert • Béziers (Fonseranes) • Carcassonne (опция).</p>
   <div class="gallery">
-    <div class="ph"><img id="alt-g1" src="/assets/IMG_4003.JPG" alt="" loading="lazy"></div>
-    <div class="ph"><img id="alt-g2" src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="" loading="lazy"></div>
-    <div class="ph"><img id="alt-g3" src="/assets/IMG_2998.JPG" alt="" loading="lazy"></div>
+    <div class="ph"><img id="alt-g1" src="/assets/IMG_4003.JPG" alt="" loading="lazy" decoding="async"></div>
+    <div class="ph"><img id="alt-g2" src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" alt="" loading="lazy" decoding="async"></div>
+    <div class="ph"><img id="alt-g3" src="/assets/IMG_2998.JPG" alt="" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
 <section class="container card">
   <h3 class="section-title" data-i18n="inc_title">Рекомендуем из программ</h3>
   <ul class="list">
-    <li><a href="Saint_Guilhem.html">Saint-Guilhem-le-Désert: аббатство и панорамы</a></li>
-    <li><a href="bezier_sunset.html">Бéзье: круиз по Каналу дю Миди (вечер)</a></li>
+    <li><a href="/programations/Saint_Guilhem.html">Saint-Guilhem-le-Désert: аббатство и панорамы</a></li>
+    <li><a href="/bezier_sunset.html">Бéзье: круиз по Каналу дю Миди (вечер)</a></li>
     <li>
       <a href="https://t.me/de_iren" target="_blank" rel="noopener" data-telegram>
         VIP-день Каркасон (по запросу в Telegram)
