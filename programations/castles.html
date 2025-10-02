@@ -49,9 +49,9 @@
 
 <script>
 window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
+  GA_ID: "G-L9TR2VTDX2",
+  YM_ID: 104246057,
+  consentVersion: "v2"
 };
 </script>
 
@@ -108,7 +108,11 @@ window.ANALYTICS_CONFIG = {
   <ul class="list">
     <li><a href="Saint_Guilhem.html">Saint-Guilhem-le-Désert: аббатство и панорамы</a></li>
     <li><a href="bezier_sunset.html">Бéзье: круиз по Каналу дю Миди (вечер)</a></li>
-    <li><a href="#" data-telegram>VIP-день Каркасон (по запросу в Telegram)</a></li>
+    <li>
+      <a href="https://t.me/de_iren" target="_blank" rel="noopener" data-telegram>
+        VIP-день Каркасон (по запросу в Telegram)
+      </a>
+    </li>
   </ul>
 
   <h3 class="section-title" style="margin-top:18px" data-i18n="tips_title">Полезно знать</h3>
@@ -123,8 +127,8 @@ window.ANALYTICS_CONFIG = {
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос</h3>
     <p class="section-sub" data-i18n="form_sub">Напишите в WhatsApp/Telegram — ответим в течение дня.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn" data-whatsapp href="#">WhatsApp</a>
-      <a class="btn primary" data-telegram href="#">Telegram</a>
+      <a class="btn" data-whatsapp href="https://wa.me/33759644813" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn primary" data-telegram href="https://t.me/de_iren" target="_blank" rel="noopener">Telegram</a>
       <a class="btn" href="../index.html#tours" data-i18n="back_tours">← К программам</a>
     </div>
   </div>
@@ -199,7 +203,7 @@ function applyLang(lang){
 </script>
 
 <script>
-  // Мини-биндинг кнопок WhatsApp/Telegram
+  // Мини-биндинг кнопок WhatsApp/Telegram — динамически добавляет текст заявки
   (function(){
     const CFG = Object.assign({
       whatsapp: '33759644813',
@@ -207,9 +211,12 @@ function applyLang(lang){
       telegram_bot: 'de_iren_order_bot',
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     }, window.APP_CONFIG||{});
+
     function buildText(){
-      const title = document.title; return `Запрос по хабу: ${title}\nСтраница: ${location.href}`;
+      const title = document.title;
+      return `Запрос по хабу: ${title}\nСтраница: ${location.href}`;
     }
+
     document.querySelectorAll('[data-whatsapp]').forEach(a=>{
       a.addEventListener('click',e=>{
         e.preventDefault();
@@ -218,18 +225,30 @@ function applyLang(lang){
         location.href = `https://wa.me/${num}?text=${encodeURIComponent(buildText())}`;
       });
     });
+
     document.querySelectorAll('[data-telegram]').forEach(a=>{
       a.addEventListener('click',async e=>{
         e.preventDefault();
-        const bot=(CFG.telegram_bot||'').replace(/^@/,''); const user=(CFG.telegram_user||'').replace(/^@/,'');
+        const bot=(CFG.telegram_bot||'').replace(/^@/,'');
+        const user=(CFG.telegram_user||'').replace(/^@/,'');
         if(bot){
           try{
-            const r=await fetch((CFG.bot_prestart_url||'').replace(/\/$/,'')+'/prestart',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
-            const j=await r.json().catch(()=>({})); const tme=j?.tme || (j?.token?`https://t.me/${bot}?start=${encodeURIComponent(j.token)}`:'');
+            const r=await fetch((CFG.bot_prestart_url||'').replace(/\/$/,'')+'/prestart',{
+              method:'POST',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({text:buildText()})
+            });
+            const j=await r.json().catch(()=>({}));
+            const tme=j?.tme || (j?.token?`https://t.me/${bot}?start=${encodeURIComponent(j.token)}`:'');
             location.href = tme || `https://t.me/${bot}`;
-          }catch{ location.href=`https://t.me/${bot}`; }
-        } else if(user){ location.href=`https://t.me/${user}`; }
-        else alert('В APP_CONFIG не задан Telegram');
+          }catch{
+            location.href=`https://t.me/${bot}`;
+          }
+        } else if(user){
+          location.href=`https://t.me/${user}`;
+        } else {
+          alert('В APP_CONFIG не задан Telegram');
+        }
       });
     });
   })();
@@ -237,3 +256,4 @@ function applyLang(lang){
 
 </body>
 </html>
+
