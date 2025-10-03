@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>Tours Languedoc by Irène — Wellness & Wine</title>
+    <link>https://goutvoyage.com/</link>
+    <description>Авторские велнесс- и винные туры по Лангедоку: термальные курорты, винодельни, гастрономия, море.</description>
+    <language>ru</language>
+    <lastBuildDate>Fri, 03 Oct 2025 17:00:00 +0200</lastBuildDate>
+
+    <!-- Wellness -->
+    <item>
+      <title>Avène — 14 дней велнесс и термальная вода</title>
+      <link>https://goutvoyage.com/programations/avene_14days.html</link>
+      <description>Классический велнесс-тур в Avène: термальные процедуры, питание, экскурсии по Лангедоку.</description>
+      <pubDate>Mon, 22 Sep 2025 10:00:00 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Balaruc-les-Bains — Hydro Relaxante (7+ ночей)</title>
+      <link>https://goutvoyage.com/programations/balaruc_hydro.html</link>
+      <description>Термальный курорт Balaruc O’balia, СПА, экскурсии по региону, морские прогулки.</description>
+      <pubDate>Tue, 16 Sep 2025 09:30:00 +0200</pubDate>
+    </item>
+
+    <!-- Wine -->
+    <item>
+      <title>Grand Vin du Pic Saint-Loup — VIP день</title>
+      <link>https://goutvoyage.com/programations/pic_saint_loup.html</link>
+      <description>Дегустации лучших вин Pic Saint-Loup, визит в Château Puech-Haut, Château Capion, гастро-паузы.</description>
+      <pubDate>Wed, 25 Sep 2025 12:00:00 +0200</pubDate>
+    </item>
+
+    <item>
+      <title>Pézenas & Abbaye BIO Wine Day</title>
+      <link>https://goutvoyage.com/programations/pezenas_bio.html</link>
+      <description>Программа с Pézenas, винодельней BIO, исторической аббатией и гастрономическим обедом.</description>
+      <pubDate>Fri, 20 Sep 2025 11:00:00 +0200</pubDate>
+    </item>
+
+    <!-- Sea & Oysters (вставка для разнообразия) -->
+    <item>
+      <title>LUX Étang de Thau — устрицы Tarbouriech & Noilly Prat</title>
+      <link>https://goutvoyage.com/programations/lux_thau.html</link>
+      <description>День на воде: частный катамаран, устрицы Tarbouriech, аперитив в Noilly Prat и винный финал.</description>
+      <pubDate>Sat, 28 Sep 2025 14:00:00 +0200</pubDate>
+    </item>
+
+  </channel>
+</rss>
