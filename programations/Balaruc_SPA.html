@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- SEO/LCP boost -->
+  <link rel="preload" as="image"
+        href="https://goutvoyage.com/assets/Balaruc-Obalia.jpg"
+        imagesrcset="https://goutvoyage.com/assets/Balaruc-Obalia.jpg"
+        fetchpriority="high" />
+
   <!-- Canonical + OG/Twitter (absolute) -->
   <link rel="canonical" href="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html">
   <title>Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей) | Tours Languedoc by Irène</title>
@@ -14,11 +20,18 @@
   <meta property="og:url" content="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html" />
   <meta property="og:image" content="https://goutvoyage.com/assets/Balaruc-Obalia.jpg" />
   <meta property="og:image:alt" content="Thermes de Balaruc — Étang de Thau" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:locale" content="ru_RU" />
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Balaruc-les-Bains — «Hydro relaxante» + Vin & Carcassonne (7 nuits)">
   <meta name="twitter:description" content="Mini-cure 5 jours + 2 excursions. Privé dès 2 pers.">
   <meta name="twitter:image" content="https://goutvoyage.com/assets/Balaruc-Obalia.jpg">
   <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- hreflang -->
+  <link rel="alternate" href="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html" hreflang="x-default" />
+  <link rel="alternate" href="https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html" hreflang="ru" />
+  <!-- <link rel="alternate" href="https://goutvoyage.com/fr/programations/Balaruc_Hydro_relaxante.html" hreflang="fr" /> -->
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -157,9 +170,9 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
   <!-- HERO -->
   <section class="hero" data-program-title="Balaruc — Hydro relaxante (7 дней)" data-program-id="BALARUC-HYDRO-7D">
     <div class="bg">
-      <img src="/assets/Balaruc-Obalia.jpg" data-i18n-attr="alt:altHero" alt="Balaruc-les-Bains — термы" />
+      <img src="/assets/Balaruc-Obalia.jpg" fetchpriority="high" data-i18n-attr="alt:altHero" alt="Balaruc-les-Bains — термы" />
       <div class="overlay"></div>
-    </div>
+  
     <div class="container inner">
       <div>
         <span class="badge">Thermes • Étang de Thau</span>
