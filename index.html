@@ -507,29 +507,31 @@
   </section>
 
 <!-- ABOUT -->
-<section id="about" class="container" style="padding:60px 0; display:grid; grid-template-columns:160px 1fr; gap:32px; align-items:center;">
-  <div style="text-align:center">
-    <img src="/assets/irene-profile.jpg"
-         data-i18n-attr="alt:altAboutPhoto"
+<section id="about" class="container" style="padding:60px 0; display:flex; align-items:center; gap:40px; flex-wrap:wrap">
+  <!-- Фото слева -->
+  <div class="about-photo" style="flex:0 0 220px; text-align:center">
+    <img src="/assets/irene.jpg"
          alt="Irène — Tours Languedoc"
-         style="width:140px; height:140px; border-radius:50%; object-fit:cover; box-shadow:0 6px 16px rgba(0,0,0,.15); border:4px solid #fff">
+         data-i18n-attr="alt:about.photo.alt"
+         style="width:220px; height:220px; object-fit:cover; border-radius:50%; box-shadow:0 8px 22px rgba(0,0,0,.15)">
   </div>
-  <div>
-    <h3 class="section-title" data-i18n="about_title" style="margin-bottom:8px">О проекте</h3>
-    <p data-i18n="about_text" style="color:#444; line-height:1.6; max-width:720px">
-      <strong>Tours Languedoc by Irène</strong> — авторский проект, родившийся из любви к югу Франции.  
-      Я живу в Лангедоке и создаю камерные путешествия со вкусом: устрицы и вина лагуны Thau, термальные источники, винные долины и средневековые города.  
-      Все маршруты я собираю лично — с акцентом на гастрономию, природу и культуру региона.  
-      Тур — это не экскурсия, а погружение в атмосферу Лангедока. Работаю на русском и французском языках.
+
+  <!-- Текст справа -->
+  <div class="about-text" style="flex:1; min-width:280px">
+    <h2 class="section-title" data-i18n="about.title">О проекте</h2>
+    <p class="section-sub" data-i18n="about.text">
+      Tours Languedoc by Irène — авторский проект, родившийся из любви к югу Франции. Я живу в Лангедоке и создаю камерные путешествия со вкусом: устрицы и вина лагуны Thau, термальные источники, винные долины и средневековые города. Каждый маршрут собираю лично — с акцентом на гастрономию, природу и культуру региона. Тур — это не «экскурсия на час», а погружение в атмосферу Лангедока. Работаю на русском и французском языках.
     </p>
 
-    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-      <a href="https://t.me/de_iren" target="_blank" rel="noopener" class="btn" style="background:#0D2B1E; color:#fff">Telegram</a>
-      <a href="https://wa.me/33759644813" target="_blank" rel="noopener" class="btn">WhatsApp</a>
-      <a href="https://www.instagram.com/voyage_france_languedoc" target="_blank" rel="noopener" class="btn">Instagram</a>
+    <!-- Кнопки -->
+    <div style="margin-top:22px; display:flex; flex-wrap:wrap; gap:12px">
+      <a href="https://t.me/de_iren" target="_blank" class="btn primary">Telegram</a>
+      <a href="https://wa.me/33759644813" target="_blank" class="btn">WhatsApp</a>
+      <a href="https://www.instagram.com/voyage_france_languedoc" target="_blank" class="btn">Instagram</a>
     </div>
   </div>
 </section>
+
 
 
   <footer>
