@@ -4,7 +4,7 @@
   <!-- Главная -->
   <url>
     <loc>https://goutvoyage.com/</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
@@ -12,37 +12,37 @@
   <!-- Хабы -->
   <url>
     <loc>https://goutvoyage.com/programations/wine.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/oysters.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/sea.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/castles.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/wellness.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/canal.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -50,77 +50,63 @@
   <!-- Programations -->
   <url>
     <loc>https://goutvoyage.com/programations/Balaruc_SPA.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/Meze_Voile_Pyramide.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/Pic_Saint_Loup.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/Thau_LUX.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/bezier_sunset.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/capdagde-naturiste-7n.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/degustation-meze.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/lamalou_les_bains.html</loc>
-    <lastmod>2025-09-21</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/thermes.html</loc>
-    <lastmod>2025-09-19</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- Языковые версии главной -->
-  <url>
-    <loc>https://goutvoyage.com/?lang=ru</loc>
-    <lastmod>2025-09-19</lastmod>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://goutvoyage.com/?lang=fr</loc>
-    <lastmod>2025-09-19</lastmod>
-    <priority>0.6</priority>
-    <changefreq>weekly</changefreq>
   </url>
 
 </urlset>
