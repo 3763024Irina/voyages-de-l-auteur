@@ -4,6 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="yandex-verification" content="91319536d8235947" />
+  <script>
+(function(){
+  try{
+    const p = new URLSearchParams(location.search);
+    const t = p.get('admin');
+    if (t !== null){
+      if (t === 'off') localStorage.removeItem('site:admin');
+      else if (t === 'capion2025') localStorage.setItem('site:admin','1');
+      p.delete('admin');
+      history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
+    }
+    document.documentElement.setAttribute(
+      'data-admin',
+      localStorage.getItem('site:admin')==='1' ? '1' : '0'
+    );
+  }catch(e){}
+})();
+</script>
+  <style>
+  .admin-only{ display:none; }               /* по умолчанию скрыто */
+  [data-admin="1"] .admin-only{ display:block; } /* у админа показываем */
+</style>
+<noscript><style>.admin-only{ display:none !important; }</style></noscript>
+
+
 
   <title>Авторские туры по Югу Франции — Лангедок и побережье | Oysters • Wine • Sea • Castles</title>
   <meta name="description" content="Авторские туры по Лангедоку и югу Франции: устрицы и винные дегустации, горы и замки, море и водные виды спорта. Индивидуально и для мини-групп." />
@@ -1134,11 +1159,17 @@ const dict = {
   </svg>
 
   <!-- Админ-панель -->
-  <section class="admin-only">
+   <!-- Админ-панель -->
+  <section class="admin-only" hidden>
     <div class="container admin-panel">
       <h3>Админ-панель</h3>
       <div class="admin-actions">
-        <a class="btn-admin" href="admin/capdagde_wine_admin.html" target="_blank">Cap d’Agde — винные домены (админ)</a>
+        <a class="btn-admin"
+           href="admin/capdagde_wine_admin.html"
+           target="_blank"
+           rel="noopener">
+           Cap d’Agde — винные домены (админ)
+        </a>
       </div>
     </div>
   </section>
@@ -1146,19 +1177,15 @@ const dict = {
   <script>
   (function(){
     try{
-      const p = new URLSearchParams(location.search);
-      const t = p.get('admin');
-      if (t !== null){
-        if (t === 'off') localStorage.removeItem('site:admin');
-        else if (t === 'capion2025') localStorage.setItem('site:admin','1');
-        p.delete('admin');
-        history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-      }
-      const isAdmin = localStorage.getItem('site:admin')==='1';
-      document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-    }catch(e){ console.warn(e); }
+      const isAdmin = document.documentElement.getAttribute('data-admin') === '1';
+      const el = document.querySelector('.admin-only');
+      if (!el) return;
+      if (isAdmin) el.hidden = false;  // админ → показываем
+      else el.remove();                // гость → удаляем
+    }catch(e){}
   })();
   </script>
+
 
   <a href="/privacy.html">Политика конфиденциальности</a>
 </body>
