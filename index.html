@@ -4,57 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="yandex-verification" content="91319536d8235947" />
+
+  <!-- Admin-toggle + data-admin атрибут -->
   <script>
-(function(){
-  try{
-    const p = new URLSearchParams(location.search);
-    const t = p.get('admin');
-    if (t !== null){
-      if (t === 'off') localStorage.removeItem('site:admin');
-      else if (t === 'capion2025') localStorage.setItem('site:admin','1');
-      p.delete('admin');
-      history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-    }
-    document.documentElement.setAttribute(
-      'data-admin',
-      localStorage.getItem('site:admin')==='1' ? '1' : '0'
-    );
-  }catch(e){}
-})();
-</script>
+  (function(){
+    try{
+      const p = new URLSearchParams(location.search);
+      const t = p.get('admin');
+      if (t !== null){
+        if (t === 'off') localStorage.removeItem('site:admin');
+        else if (t === 'capion2025') localStorage.setItem('site:admin','1');
+        p.delete('admin');
+        history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
+      }
+      document.documentElement.setAttribute(
+        'data-admin',
+        localStorage.getItem('site:admin')==='1' ? '1' : '0'
+      );
+    }catch(e){}
+  })();
+  </script>
   <style>
-  .admin-only{ display:none; }               /* по умолчанию скрыто */
-  [data-admin="1"] .admin-only{ display:block; } /* у админа показываем */
-</style>
-<noscript><style>.admin-only{ display:none !important; }</style></noscript>
+    .admin-only{ display:none; }
+    [data-admin="1"] .admin-only{ display:block; }
+  </style>
+  <noscript><style>.admin-only{ display:none !important; }</style></noscript>
 
-
-
-  <title>Авторские туры по Югу Франции — Лангедок и побережье | Oysters • Wine • Sea • Castles</title>
-  <meta name="description" content="Авторские туры по Лангедоку и югу Франции: устрицы и винные дегустации, горы и замки, море и водные виды спорта. Индивидуально и для мини-групп." />
+  <!-- Базовые SEO -->
+  <title>Туры во Францию — Лангедок и побережье | Авторские программы | Tours Languedoc by Irène</title>
+  <meta name="description" content="Авторские туры во Францию: Лангедок, Средиземное море, устрицы Étang de Thau, винные дегустации, замки и средневековые города. Индивидуально 1–6 гостей, уик-энды и недельные программы. Гид — Irène.">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://goutvoyage.com/">
+  <link rel="alternate" href="https://goutvoyage.com/" hreflang="ru" />
+  <link rel="alternate" href="https://goutvoyage.com/fr/" hreflang="fr" />
+  <link rel="alternate" href="https://goutvoyage.com/" hreflang="x-default" />
 
   <!-- Open Graph + Twitter -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Авторские туры по Югу Франции — Лангедок" />
-  <meta property="og:description" content="Устрицы, вино, горы, замки, море и морские виды спорта. 10 готовых программ + VIP." />
-  <meta property="og:url" content="https://goutvoyage.com/"/>
-  <meta property="og:image" content="https://goutvoyage.com/assets/wines/43759c1c37f30c1596868d12e888a94c.jpg"/>
   <meta property="og:site_name" content="Tours Languedoc by Irène"/>
+  <meta property="og:url" content="https://goutvoyage.com/"/>
+  <meta property="og:title" content="Туры во Францию — Лангедок и побережье | Авторские программы" />
+  <meta property="og:description" content="Гастрономия, вино, море и замки Юга Франции. Индивидуальные туры, уик-энды и недельные программы." />
+  <meta property="og:image" content="https://goutvoyage.com/assets/og-hero.jpg"/>
   <meta property="og:locale" content="ru_RU"/>
   <meta property="og:locale:alternate" content="fr_FR"/>
+
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Авторские туры по Югу Франции — Лангедок"/>
-  <meta name="twitter:description" content="Устрицы, вино, море, замки, wellness. 10 программ + VIP."/>
-  <meta name="twitter:image" content="https://goutvoyage.com/assets/wines/43759c1c37f30c1596868d12e888a94c.jpg"/>
+  <meta name="twitter:title" content="Туры во Францию — Лангедок и побережье | Авторские программы">
+  <meta name="twitter:description" content="Авторские туры по Югу Франции: устрицы Thau, винные домены, Каркасон, Канал дю Миди.">
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/og-hero.jpg"/>
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://goutvoyage.com/">
-
-  <!-- Theme color -->
+  <!-- Тема браузера -->
   <meta name="theme-color" content="#0D2B1E" />
 
-  <!-- Analytics (конфиг) -->
+  <!-- Конфиг аналитики -->
   <script>
   window.ANALYTICS_CONFIG = {
     GA_ID: "G-L9TR2VTDX2",
@@ -67,23 +72,26 @@
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
 
-  <!-- Fonts + LCP image -->
+  <!-- Шрифты + LCP-изображение -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" fetchpriority="high" href="assets/wines/vinograd.jpg" imagesrcset="assets/wines/vinograd.jpg 1200w" imagesizes="100vw">
+  <link rel="preload" as="image" fetchpriority="high"
+        href="https://goutvoyage.com/assets/wines/vinograd.jpg"
+        imagesrcset="https://goutvoyage.com/assets/wines/vinograd.jpg 1200w"
+        imagesizes="100vw">
 
   <!-- Favicons -->
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
-  <link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" href="https://goutvoyage.com/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://goutvoyage.com/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://goutvoyage.com/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://goutvoyage.com/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://goutvoyage.com/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="https://goutvoyage.com/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://goutvoyage.com/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://goutvoyage.com/favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://goutvoyage.com/favicon-180.png">
 
-  <!-- === Ранний BASE-инжектор (до любых относительных ресурсов) === -->
+  <!-- === Ранний BASE-инжектор (оставляем) === -->
   <script>
   (function(){
     var baseEl = document.querySelector('base');
@@ -108,6 +116,7 @@
   })();
   </script>
 
+  <!-- Стили сайта -->
   <style>
     :root{
       --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
@@ -184,7 +193,6 @@
     .about .portrait{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)}
     .about p{line-height:1.6}
 
-    /* Контакты компактно */
     .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
     .contact .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
     .stack{display:grid; gap:10px}
@@ -273,7 +281,6 @@
     .feature-more{margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none}
     .feature-more:after{content:" →"}
 
-    /* Горизонтальная лента карточек why */
     .row-scroll{display:flex; flex-wrap:nowrap; gap:16px; overflow-x:auto; overflow-y:hidden; padding:4px 8px 12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
     .row-scroll .card, .row-scroll article.card{flex:0 0 320px; max-width:320px; scroll-snap-align:start}
     .row-scroll .card img, .row-scroll article.card img{display:block; width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0}
@@ -284,38 +291,26 @@
     }
   </style>
 
-  <!-- JSON-LD -->
+  <!-- JSON-LD: Organization (объединённый) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"Tours Languedoc by Irène",
     "url":"https://goutvoyage.com/",
-    "logo":"https://goutvoyage.com/favicon-32.png",
+    "logo":"https://goutvoyage.com/assets/logo.png",
+    "description":"Авторские туры по Югу Франции: вино, море, устрицы, замки, wellness.",
     "sameAs":[
       "https://www.instagram.com/gout.languedoc",
       "https://vk.com/id611989815",
-      "https://t.me/de_iren"
+      "https://t.me/de_iren",
+      "https://www.instagram.com/voyage_france_languedoc",
+      "https://t.me/voyage_languedoc"
     ]
   }
   </script>
 
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Tours Languedoc by Irène",
-  "url": "https://goutvoyage.com",
-  "logo": "https://goutvoyage.com/assets/logo.png",
-  "description": "Авторские туры по Югу Франции: вино, море, устрицы, замки, велнес.",
-  "sameAs": [
-    "https://www.instagram.com/voyage_france_languedoc",
-    "https://t.me/voyage_languedoc"
-  ]
-}
-</script>
-
-
+  <!-- JSON-LD: WebSite -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -330,28 +325,31 @@
   }
   </script>
 
+  <!-- JSON-LD: Каталог программ (ItemList) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"ItemList",
-    "name":"Программы туров",
+    "name":"Туры во Францию — Лангедок (подборка программ)",
+    "itemListOrder":"http://schema.org/ItemListOrderAscending",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Meze_Voile_Pyramide.html","name":"Mèze Voile — Hôtel de la Pyramide"},
-      {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/Balaruc_SPA.html","name":"Balaruc-les-Bains — SPA & Languedoc"},
-      {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/thermes.html","name":"SPA & Thermes — гид по курортам"},
-      {"@type":"ListItem","position":4,"url":"https://goutvoyage.com/programations/capdagde-naturiste-7n.html","name":"Cap d’Agde — Village Naturiste + 2 экскурсии"},
-      {"@type":"ListItem","position":5,"url":"https://goutvoyage.com/programations/lamalou_les_bains.html","name":"Lamalou-les-Bains — термальное восстановление"},
-      {"@type":"ListItem","position":6,"url":"https://goutvoyage.com/programations/degustation-meze.html","name":"Mèze — дегустация (Mèze & Montagnac)"},
-      {"@type":"ListItem","position":7,"url":"https://goutvoyage.com/programations/Saint_Guilhem.html","name":"Saint-Guilhem-le-Désert — 1 день"},
-      {"@type":"ListItem","position":8,"url":"https://goutvoyage.com/programations/Thau_LUX.html","name":"LUX Étang de Thau — 1 день"},
-      {"@type":"ListItem","position":9,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html","name":"Grand Vin du Pic Saint-Loup — 1 день"},
-      {"@type":"ListItem","position":10,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Béziers — круиз по Каналу дю Миди"},
-      {"@type":"ListItem","position":11,"url":"https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html","name":"Pézenas & Abbaye — винный BIO-день из Меза"},
-      {"@type":"ListItem","position":12,"url":"https://goutvoyage.com/programations/avene_14d.html","name":"Avène — термальное восстановление + 3 экскурсии (14 дней)"}
+      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/wine.html","name":"Винные туры — Pic Saint-Loup и Étang de Thau"},
+      {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/oysters.html","name":"Лагуна Thau — устрицы, море, лодки"},
+      {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/sea.html","name":"Средиземное море — пляжи, спорт, променады"},
+      {"@type":"ListItem","position":4,"url":"https://goutvoyage.com/programations/castles.html","name":"Замки и средневековые города — Carcassonne, Saint-Guilhem, Béziers"},
+      {"@type":"ListItem","position":5,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Béziers — круиз по Каналу дю Миди (закат)"},
+      {"@type":"ListItem","position":6,"url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html","name":"Balaruc-les-Bains — «Hydro relaxante» (7 ночей) + экскурсии"},
+      {"@type":"ListItem","position":7,"url":"https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html","name":"Pézenas & Abbaye — винный BIO-день из Меза"},
+      {"@type":"ListItem","position":8,"url":"https://goutvoyage.com/programations/avene_14d.html","name":"Avène — термальное восстановление + 3 экскурсии (14 дней)"},
+      {"@type":"ListItem","position":9,"url":"https://goutvoyage.com/programations/lamalou_les_bains.html","name":"Lamalou-les-Bains — термальное восстановление"},
+      {"@type":"ListItem","position":10,"url":"https://goutvoyage.com/programations/capdagde-naturiste-7n.html","name":"Cap d’Agde — Village Naturiste + 2 экскурсии"},
+      {"@type":"ListItem","position":11,"url":"https://goutvoyage.com/programations/degustation-meze.html","name":"Mèze — дегустация (Mèze & Montagnac)"},
+      {"@type":"ListItem","position":12,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html","name":"Grand Vin du Pic Saint-Loup — 1 день"}
     ]
   }
   </script>
 </head>
+
 
 <body>
  <header>
