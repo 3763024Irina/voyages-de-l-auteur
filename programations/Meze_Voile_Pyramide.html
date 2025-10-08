@@ -392,78 +392,75 @@ window.ANALYTICS_CONFIG = {
     </div>
   </section>
 
-<!-- BOOKING -->
-<section class="container" id="book">
-  <h3 class="section-title" data-i18n="nav_book">Быстрый запрос / бронирование</h3>
-  <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
+  <!-- BOOKING -->
+  <section class="container" id="book">
+    <h3 class="section-title" data-i18n="nav_book">Быстрый запрос / бронирование</h3>
+    <p class="section-sub">Заполните дату, гостей и контакт — текст заявки сформируется автоматически.</p>
 
-  <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
-    <form data-contact-form data-channel="telegram" class="fields">
-      <div>
-        <label data-i18n="lbl_date">Дата заезда</label>
-        <input type="date" id="in-when" name="date" required>
-      </div>
-      <div>
-        <label data-i18n="lbl_guests">Гостей</label>
-        <input type="number" id="in-guests" name="guests" min="1" value="2" required>
-      </div>
+    <div class="card" data-program data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)" data-program-id="MEZE-VOILE-7N">
+      <form data-contact-form data-channel="telegram" class="fields">
+        <div>
+          <label data-i18n="lbl_date">Дата заезда</label>
+          <input type="date" id="in-when" name="date" required>
+        </div>
+        <div>
+          <label data-i18n="lbl_guests">Гостей</label>
+          <input type="number" id="in-guests" name="guests" min="1" value="2" required>
+        </div>
 
-      <div>
-        <label data-i18n="lbl_name">Имя</label>
-        <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
-      </div>
-      <div>
-        <label data-i18n="lbl_contact">Контакт (WhatsApp/Telegram/email)</label>
-        <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
-      </div>
+        <div>
+          <label data-i18n="lbl_name">Имя</label>
+          <input type="text" id="in-name" name="name" placeholder="Имя и фамилия" required>
+        </div>
+        <div>
+          <label data-i18n="lbl_contact">Контакт (WhatsApp/Telegram/email)</label>
+          <input type="text" id="in-contact" name="contact" placeholder="+33… / @user / email" required>
+        </div>
 
-      <div>
-        <label data-i18n="lbl_sport">Вид спорта</label>
-        <select id="in-sport" aria-label="Вид спорта">
-          <option value="cat" data-i18n="choose_cat_t">Катамаран HC15/16</option>
-          <option value="hansa">Hansa 303</option>
-          <option value="kite">Kitesurf</option>
-        </select>
-      </div>
-      <div>
-        <label data-i18n="lbl_hotel">Отель</label>
-        <select id="in-hotel" aria-label="Отель">
-          <option value="budget" data-i18n="h_budget">Бюджет 2–3★</option>
-          <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
-          <option value="four" data-i18n="h_four">4★</option>
-        </select>
-      </div>
+        <div>
+          <label data-i18n="lbl_sport">Вид спорта</label>
+          <select id="in-sport" aria-label="Вид спорта">
+            <option value="cat" data-i18n="choose_cat_t">Катамаран HC15/16</option>
+            <option value="hansa">Hansa 303</option>
+            <option value="kite">Kitesurf</option>
+          </select>
+        </div>
+        <div>
+          <label data-i18n="lbl_hotel">Отель</label>
+          <select id="in-hotel" aria-label="Отель">
+            <option value="budget" data-i18n="h_budget">Бюджет 2–3★</option>
+            <option value="pyramide" selected data-i18n="h_pyramide">Hôtel de la Pyramide 3★</option>
+            <option value="four" data-i18n="h_four">4★</option>
+          </select>
+        </div>
 
-      <div>
-        <label data-i18n="lbl_season">Сезон</label>
-        <select id="in-season" aria-label="Сезон">
-          <option value="low" data-i18n="low">Низкий</option>
-          <option value="high" data-i18n="high">Высокий</option>
-        </select>
-      </div>
+        <div>
+          <label data-i18n="lbl_season">Сезон</label>
+          <select id="in-season" aria-label="Сезон">
+            <option value="low" data-i18n="low">Низкий</option>
+            <option value="high" data-i18n="high">Высокий</option>
+          </select>
+        </div>
 
-      <div class="full">
-        <label data-i18n="lbl_comment">Комментарий</label>
-        <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
-      </div>
+        <div class="full">
+          <label data-i18n="lbl_comment">Комментарий</label>
+          <textarea id="in-msg" name="message" placeholder="Пожелания по времени занятий, тип кровати и т.п."></textarea>
+        </div>
 
-      <div class="full">
-        <label data-i18n="lbl_total">Итог</label>
-        <div class="price" id="bookTotal">—</div>
-        <!-- 👇 новая строка разбивки -->
-        <div id="bookBreakdown" class="muted" style="margin-top:6px; line-height:1.5"></div>
-        <p class="muted" id="bookNote" data-i18n="price_note">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
-      </div>
+        <div class="full">
+          <label data-i18n="lbl_total">Итог</label>
+          <div class="price" id="bookTotal">—</div>
+          <p class="muted" id="bookNote" data-i18n="price_note">Цена за 2 гостей / от 7 ночей. Уточнённый расчёт за дополнительные ночи — по запросу.</p>
+        </div>
 
-      <!-- Кнопки контакта -->
-      <div class="form-actions full" style="display:flex; gap:10px; flex-wrap:wrap">
-        <a class="btn primary" data-whatsapp href="#" aria-label="Написать в WhatsApp" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-        <a class="btn" data-telegram href="#" aria-label="Написать в Telegram" data-i18n="btn_telegram">Написать в Telegram</a>
-      </div>
-    </form>
-  </div>
-</section>
-
+        <!-- Кнопки контакта -->
+        <div class="form-actions full" style="display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn primary" data-whatsapp href="#" aria-label="Написать в WhatsApp" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+          <a class="btn" data-telegram href="#" aria-label="Написать в Telegram" data-i18n="btn_telegram">Написать в Telegram</a>
+        </div>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <div class="container">
@@ -496,27 +493,6 @@ window.ANALYTICS_CONFIG = {
     high: { cat:{ noPass:330, license:28 }, hansa:{ noPass:245, license:28 } }
   };
   const kite = { low2p:1490, high2p:1590 };
-  // === Разбивка цены (отель+BB, активность, сервис 15%) ===
-function hotelBB(season, h){
-  const hb = (hotels?.[season]?.[h] || 0) + (breakfast?.[season]?.[h] || 0);
-  return hb;
-}
-function activityCost(season, sport){
-  if (sport === 'cat')   return (rent?.[season]?.cat?.noPass || 0) + (rent?.[season]?.cat?.license || 0);
-  if (sport === 'hansa') return (rent?.[season]?.hansa?.noPass || 0) + (rent?.[season]?.hansa?.license || 0);
-  return (season === 'low' ? kite.low2p : kite.high2p) || 0; // kite на 2 перс.
-}
-function partsFor(hotelKey, season, sport){
-  const hotel = hotelBB(season, hotelKey);
-  const act   = activityCost(season, sport);
-  const base  = hotel + act;
-  const fee   = Math.round(base * 0.15);
-  const total = roundTo5(base + fee);
-  return { hotel, act, fee, total };
-}
-// пригодится и снаружи
-Object.assign(window, { hotelBB, activityCost, partsFor });
-
 
   const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
 
@@ -676,31 +652,11 @@ Object.assign(window, { hotelBB, activityCost, partsFor });
         ].join('\n');
       }
 
-     function updateBooking(){
-  const sport  = inSport.value;
-  const hotelK = inHotel.value;
-  const season = inSeason.value;
-
-  // итог как раньше
-  const total = priceForSelection(hotelK, season, sport);
-  bookTotal.textContent = fmtEUR(total) + ' / 2';
-
-  // новая разбивка
-  const br = document.getElementById('bookBreakdown');
-  if (br && typeof window.partsFor === 'function'){
-    const p = window.partsFor(hotelK, season, sport);
-    const perNight = Math.round((p.hotel / 7)); // ориентир за ночь
-    br.innerHTML = [
-      `Отель + завтраки (7 ночей): <strong>${fmtEUR(p.hotel)}</strong> <span class="muted">≈ ${fmtEUR(perNight)} / ночь</span>`,
-      `Активность: <strong>${fmtEUR(p.act)}</strong>`,
-      `Сервис/организация (15%): <strong>${fmtEUR(p.fee)}</strong>`
-    ].join('<br>');
-  }
-
-  // автосообщение в комментарий
-  if (!inMsg.value) inMsg.value = buildAutoMessage();
-}
-
+      function updateBooking(){
+        const total = priceForSelection(inHotel.value, inSeason.value, inSport.value);
+        bookTotal.textContent = fmtEUR(total) + ' / 2';
+        if (!inMsg.value) inMsg.value = buildAutoMessage();
+      }
       function syncBookingFromControls(){
         const seasonRadio = [...document.querySelectorAll('input[name="season"]')].find(r=>r.checked);
         inHotel.value  = document.getElementById('hotelSel').value;
