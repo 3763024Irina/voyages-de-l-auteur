@@ -12,9 +12,6 @@
   <meta name="theme-color" content="#0D2B1E" />
 
   <link rel="canonical" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
-  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html#fr">
-  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/Meze_Voile_Pyramide.html">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -988,12 +985,20 @@ window.ANALYTICS_CONFIG = {
     }
   })();
   </script>
-<script>window.i18n = window.i18n || { ru:{}, fr:{} };</script>
-
- <!-- ==== I18N RU/FR (единый блок) ==== -->
 <script>
-// ➜ RU: дополняем существующий объект i18n.ru
+// === i18n: RU + FR (добавлены SEO-ключи и for_two) ===
 Object.assign(i18n.ru, {
+  /* SEO */
+  title:   "Mèze Voile — Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène",
+  metaDesc:"Лагуна Thau: проживание в Мезе (от 7 ночей) и 5 сессий активности — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и отелю.",
+  ogTitle: "Mèze Voile — Hôtel de la Pyramide (от 7 ночей)",
+  ogDesc:  "3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически.",
+  htmlLang:"ru",
+
+  /* calc helper */
+  for_two: "/ 2",
+
+  /* UI */
   schools_title: "О школе / Écoles partenaires",
   schools_sub: "Безопасные занятия с сертифицированными инструкторами RU/FR на лагуне Thau.",
   yc_spot: "Спот: защищённая лагуна, 0–1,5 м глубина, песчаное дно.",
@@ -1014,11 +1019,30 @@ Object.assign(i18n.ru, {
   pack_shoes: "Закрытая обувь/аква-тапки, ветровка, защитные очки с ремешком.",
   pack_sun: "Крем SPF 50, кепка/баф, вода в мягкой фляге.",
   pack_docs: "Документы: удостоверение личности, медицинская страховка (при наличии).",
-  pack_note: "Гидрокостюм/жилет/шлем предоставляет школа при кайте и по запросу при парусе."
+  pack_note: "Гидрокостюм/жилет/шлем предоставляет школа при кайте и по запросу при парусе.",
+
+  /* (опционально) alt-тексты для изображений */
+  altHero:"Étang de Thau — voile & kite",
+  altG1:"Catamaran HC16 — Étang de Thau",
+  altG2:"Lagune de Thau — panorama",
+  altG3:"Bouzigues — huîtres",
+  altCat:"Catamaran HC15/16 — Étang de Thau",
+  altHansa:"Hansa 303 — Étang de Thau",
+  altKite:"Kitesurf — Fil d’Air, Étang de Thau"
 });
 
-// ➜ FR: дополняем существующий объект i18n.fr
 Object.assign(i18n.fr, {
+  /* SEO */
+  title:   "Mèze Voile — Hôtel de la Pyramide (7+ nuits) | Tours Languedoc by Irène",
+  metaDesc:"Étang de Thau : séjour à Mèze (à partir de 7 nuits) + 5 séances d’activité — catamaran HC15/16, Hansa 303 ou kitesurf. Tarifs recalculés selon saison et hôtel.",
+  ogTitle: "Mèze Voile — Hôtel de la Pyramide (7+ nuits)",
+  ogDesc:  "3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix se met à jour automatiquement.",
+  htmlLang:"fr",
+
+  /* calc helper */
+  for_two: "/ 2",
+
+  /* UI */
   schools_title: "À propos des écoles partenaires",
   schools_sub: "Cours en toute sécurité avec des moniteurs certifiés RU/FR sur l’Étang de Thau.",
   yc_spot: "Spot : lagune abritée, 0–1,5 m de profondeur, fond sablonneux.",
@@ -1039,22 +1063,44 @@ Object.assign(i18n.fr, {
   pack_shoes: "Chaussures fermées/aqua, coupe-vent, lunettes avec sangle.",
   pack_sun: "Crème SPF 50, casquette/buff, eau.",
   pack_docs: "Papiers : identité, assurance santé (si disponible).",
-  pack_note: "Combinaison/gilet/casque fournis pour le kite et sur demande pour la voile."
+  pack_note: "Combinaison/gilet/casque fournis pour le kite et sur demande pour la voile.",
+
+  /* (optionnel) alt images */
+  altHero:"Étang de Thau — voile & kite",
+  altG1:"Catamaran HC16 — Étang de Thau",
+  altG2:"Lagune de Thau — panorama",
+  altG3:"Bouzigues — huîtres",
+  altCat:"Catamaran HC15/16 — Étang de Thau",
+  altHansa:"Hansa 303 — Étang de Thau",
+  altKite:"Kitesurf — Fil d’Air, Étang de Thau"
 });
 
-// — FR: добавляем ключи подвала/формы (если вдруг их не оказалось)
+// — FR: дополняем ключи подвала/формы (если вдруг их не оказалось)
 (() => {
   const F = i18n.fr;
   Object.assign(F, {
-    nav_why_f:"Pourquoi nous", nav_all_f:"Offres", nav_format_f:"Format", nav_contacts_f:"Contacts",
-    lbl_season:"Saison:", low:"Basse", high:"Haute", lbl_hotel:"Hôtel:",
-    h_budget:"Budget 2–3★", h_pyramide:"Hôtel de la Pyramide 3★", h_four:"4★",
-    lbl_date:"Date d’arrivée", lbl_guests:"Personnes", lbl_name:"Nom",
-    lbl_contact:"Contact (WhatsApp/Telegram/email)", lbl_sport:"Discipline",
-    lbl_total:"Total", lbl_comment:"Commentaire"
+    nav_why_f:"Pourquoi nous",
+    nav_all_f:"Offres",
+    nav_format_f:"Format",
+    nav_contacts_f:"Contacts",
+    lbl_season:"Saison:",
+    low:"Basse",
+    high:"Haute",
+    lbl_hotel:"Hôtel:",
+    h_budget:"Budget 2–3★",
+    h_pyramide:"Hôtel de la Pyramide 3★",
+    h_four:"4★",
+    lbl_date:"Date d’arrivée",
+    lbl_guests:"Personnes",
+    lbl_name:"Nom",
+    lbl_contact:"Contact (WhatsApp/Telegram/email)",
+    lbl_sport:"Discipline",
+    lbl_total:"Total",
+    lbl_comment:"Commentaire"
   });
 })();
 </script>
+
 
 <!-- ===== I18N RUNTIME (переключатель + тексты + SEO/OG/Twitter) ===== -->
 <script>
