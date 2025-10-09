@@ -479,6 +479,9 @@ window.ANALYTICS_CONFIG = {
   const roundTo5 = n => Math.round(n/5)*5;
   const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
 
+  // +100 € к любой цене за 7 ночей
+  const SURCHARGE_7N = 100;
+
   // === i18n helpers (FR par défaut) ===
   function curLang(){
     const l = (localStorage.getItem('site.lang')||'').toLowerCase();
@@ -508,9 +511,10 @@ window.ANALYTICS_CONFIG = {
 
   const withBB = (season, h) => hotels[season][h] + breakfast[season][h];
 
-  const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15);
-  const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15);
-  const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15);
+  // Наценка прибавляется после округления, чтобы итог был ровно +100 €
+  const priceCat   = (h, season) => roundTo5((withBB(season,h) + rent[season].cat.noPass   + rent[season].cat.license) * 1.15) + SURCHARGE_7N;
+  const priceHansa = (h, season) => roundTo5((withBB(season,h) + rent[season].hansa.noPass + rent[season].hansa.license) * 1.15) + SURCHARGE_7N;
+  const priceKite  = (h, season) => roundTo5((withBB(season,h) + (season==='low'?kite.low2p:kite.high2p)) * 1.15) + SURCHARGE_7N;
 
   // 👉 Экспортируем в window, потому что CONTACT использует window.priceCat/…:
   Object.assign(window, { priceCat, priceHansa, priceKite });
@@ -583,6 +587,7 @@ window.ANALYTICS_CONFIG = {
   // 🌟 стартовый пересчёт, чтобы вместо «—» появились цены
   recalc();
 </script>
+
 
 
   <!-- === JS: контакт/бот === -->
