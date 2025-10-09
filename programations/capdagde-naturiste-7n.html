@@ -4,16 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<title>Cap d’Agde — Village Naturiste • Вино, море и экскурсии | Tours Languedoc by Irène</title>
-<meta name="description" content="Отдых у моря в Village Naturiste (Cap d’Agde) + винные дегустации Лангедока и приватные экскурсии (Pic Saint-Loup, Каркасон). Индивидуальные туры от Irène." />
-<meta property="og:title" content="Cap d’Agde — Village Naturiste • Вино, море и экскурсии" />
-<meta property="og:description" content="Проживание в Village Naturiste у моря + винные туры и экскурсии: Grand Vin du Pic Saint-Loup и Каркасон. Индивидуально, от 7 ночей." />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="../assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg" />
-<meta name="theme-color" content="#0D2B1E" />
+  <!-- SEO -->
+  <title>Cap d’Agde — Village Naturiste • Вино, море и экскурсии | Tours Languedoc by Irène</title>
+  <meta name="description" content="Отдых у моря в Village Naturiste (Cap d’Agde) + винные дегустации Лангедока и приватные экскурсии (Pic Saint-Loup, Каркасон). Проживание от 7 ночей, трансфер по запросу. Индивидуальные туры от Irène.">
+  <link rel="canonical" href="https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html">
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html">
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/fr/programmes/Cap_dAgde_Village_Naturiste.html">
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cap d’Agde — Village Naturiste • Вино, море и экскурсии" />
+  <meta property="og:description" content="Пляжи, вино, море и экскурсии на юге Франции. Village Naturiste — уникальный курорт у Средиземного моря. Проживание от 7 ночей." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
+  <meta property="og:url" content="https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="theme-color" content="#0D2B1E" />
 
+  <!-- LCP preload -->
+  <link rel="preload" as="image"
+        href="https://goutvoyage.com/assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg"
+        imagesrcset="https://goutvoyage.com/assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg"
+        fetchpriority="high" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -101,42 +118,28 @@
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
-    /* === FAB внизу справа === */
-    .chat-fab{
-      position:fixed; right:16px; z-index:9999;
-      border:0; padding:14px; border-radius:999px; background:#fff;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center
-    }
+    /* FAB */
+    .chat-fab{ position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center }
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
     .chat-fab.tg{bottom:26px}
     .chat-fab:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.22) }
 
-    /* валидация */
-    .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
-    .form-toast{
-      position:fixed; left:50%; transform:translateX(-50%); bottom:16px;
-      background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000;
-      font-size:14px; max-width:90vw; text-align:center;
-    }
-
-   /* RU/FR toggle — правильная версия */
-html:not([data-lang="fr"]) [data-lang="fr"] { display: none; } /* по умолчанию скрыт FR */
-html[data-lang="fr"] [data-lang="ru"]       { display: none; }  /* при fr скрыт RU */
-
+    /* RU/FR toggle — RU по умолчанию */
+    html:not([data-lang="fr"]) [data-lang="fr"] { display: none; }
+    html[data-lang="fr"] [data-lang="ru"]       { display: none; }
   </style>
 
-<script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
-
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
-
+  <!-- Analytics -->
+  <script>
+    window.ANALYTICS_CONFIG = {
+      GA_ID: "G-L9TR2VTDX2",
+      YM_ID: 104246057,
+      consentVersion: "v2"
+    };
+  </script>
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
 
 <body>
@@ -171,7 +174,7 @@ window.ANALYTICS_CONFIG = {
   </header>
 
   <!-- HERO -->
-  <section class="hero" data-program-title="Cap d’Agde — Village Naturiste вино, море и экскурсии (от 7 ночей)" data-program-id="CAPDAGDE-NATURISTE-7N-2EXC">
+  <section class="hero" data-program-title="Cap d’Agde — Village Naturiste + вино, море и экскурсии (от 7 ночей)" data-program-id="CAPDAGDE-NATURISTE-7N-2EXC">
     <div class="bg">
       <img src="../assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg" onerror="this.src='../assets/hortus.jpg'" alt="Cap d’Agde — Village Naturiste" />
       <div class="overlay"></div>
@@ -184,28 +187,57 @@ window.ANALYTICS_CONFIG = {
           <span data-lang="fr">Cap d’Agde — Village Naturiste + vin, mer et excursions (à partir de 7 nuits)</span>
         </h2>
         <p class="subtitle">
-          <span data-lang="ru">от 7 ночей в закрытом Village Naturiste + вино, море и экскурсии. При необходимости трансфер.</span>
-          <span data-lang="fr">des 7 nuits au Village Naturiste + vin, mer et excursions. Transfert si nécessaire. Transfert sur demande.</span>
+          <span data-lang="ru">от 7 ночей в закрытом Village Naturiste + вино, море и экскурсии. Трансфер по запросу.</span>
+          <span data-lang="fr">dès 7 nuits au Village Naturiste + vin, mer et excursions. Transfert sur demande.</span>
         </p>
         <div class="actions"><a class="btn primary" href="#book"><span data-lang="ru">Забронировать</span><span data-lang="fr">Réserver</span></a></div>
       </div>
     </div>
   </section>
+  <!-- PLACE DESCRIPTION -->
+<section class="container">
+  <h3 class="section-title">
+    <span data-lang="ru">Описание места</span>
+    <span data-lang="fr">Description du lieu</span>
+  </h3>
+  <p class="section-sub">
+    <span data-lang="ru">Средиземное море • Village Naturiste • лагуна Thau • винные маршруты Лангедока</span>
+    <span data-lang="fr">Méditerranée • Village Naturiste • lagune de Thau • routes des vins du Languedoc</span>
+  </p>
+
+  <article class="card">
+    <p data-lang="ru" style="margin:0 0 10px">
+      <strong>Cap d’Agde — Village Naturiste</strong> — закрытый курорт на берегу Средиземного моря с частными апартаментами,
+      протяжённым песчаным пляжем naturiste, набережной и мариной. Днём — море, бассейны и террасы у воды; по желанию —
+      <em>устрицы и вино лагуны Thau</em>, прогулка по набережной, SUP/катер. Рядом — города и винные домены Лангедока:
+      <strong>Sète</strong>, <strong>Pézenas</strong>, <strong>Béziers</strong>, <strong>Carcassonne</strong> — всё в радиусе ~1 часа.
+      Атмосфера места — свобода, солнце и южный art de vivre.
+    </p>
+    <p data-lang="fr" style="margin:0">
+      <strong>Cap d’Agde — Village Naturiste</strong> est une destination fermée en bord de Méditerranée : appartements privés,
+      longue plage naturiste, promenade et marina. Journées mer, piscines et terrasses ; à la carte — <em>huîtres et vins de la
+      lagune de Thau</em>, balade sur le front de mer, SUP/bateau. À proximité : <strong>Sète</strong>, <strong>Pézenas</strong>,
+      <strong>Béziers</strong>, <strong>Carcassonne</strong> — tout à moins d’environ une heure. Une ambiance de liberté, de soleil
+      et d’art de vivre languedocien.
+    </p>
+  </article>
+</section>
+
 
   <!-- GALLERY -->
   <section class="container">
     <h3 class="section-title"><span data-lang="ru">Как это выглядит</span><span data-lang="fr">À quoi ça ressemble</span></h3>
     <p class="section-sub">
-      <span data-lang="ru">Village Naturiste • пляж • марина Cap d’Agde • Carcassonne • Sete</span>
-      <span data-lang="fr">Village Naturiste • plage • marina du Cap d’Agde • Cité de Carcassonne • Sete</span>
+      <span data-lang="ru">Village Naturiste • пляж • марина Cap d’Agde • Carcassonne • Sète</span>
+      <span data-lang="fr">Village Naturiste • plage • marina du Cap d’Agde • Cité de Carcassonne • Sète</span>
     </p>
     <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img src="../assets/capdag/descarga.jpeg" alt="Cap d’Agde plage" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
-      <div class="ph"><img src="../assets/capdag/maxresdefault.jpg" alt="Marina Cap d’Agde" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
-      <div class="ph"><img src="../assets/capdag/scarga.jpeg" alt="Puech-Haut" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
-      <div class="ph"><img src="../assets/capdag/troquet_001.jpg" alt="Mas Bruguière" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
-      <div class="ph"><img src="../assets/capdag/villageNaturiste.jpeg" alt="Village naturiste vue" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
-      <div class="ph"><img src="../assets/capdag/IMG_0277.JPG" alt="Carcassonne" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/descarga.jpeg" alt="Cap d’Agde — plage" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/maxresdefault.jpg" alt="Cap d’Agde — marina" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/scarga.jpeg" alt="Dégustation Languedoc" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/troquet_001.jpg" alt="Bar à vin" loading="lazy" onerror="this.src='../assets/wines/vinograd.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/villageNaturiste.jpeg" alt="Village Naturiste — vue" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
+      <div class="ph"><img src="../assets/capdag/IMG_0277.JPG" alt="Cité de Carcassonne" loading="lazy" onerror="this.src='../assets/hortus.jpg'"></div>
     </div>
   </section>
 
@@ -215,7 +247,7 @@ window.ANALYTICS_CONFIG = {
       <h3 class="section-title"><span data-lang="ru">Маршрут и тайминг</span><span data-lang="fr">Itinéraire et timing</span></h3>
       <ul class="timeline">
         <li><span class="time">Jour 1–7</span> — <span data-lang="ru">Village Naturiste: пляж, бассейны, рестораны, марина.</span><span data-lang="fr">Village Naturiste : plage, piscines, restaurants, marina.</span></li>
-        <li><span class="time">Jour vin</span> — <span data-lang="ru">Thau Gourmet — устрицы, вино, море ~7 ч.</span><span data-lang="fr">Thau Gourmet — huîtres, vin, mer~7 h.</span></li>
+        <li><span class="time">Jour vin</span> — <span data-lang="ru">Thau Gourmet — устрицы, вино, море ~7 ч.</span><span data-lang="fr">Thau Gourmet — huîtres, vin, mer ~7 h.</span></li>
         <li><span class="time">Jour culture</span> — <span data-lang="ru">Каркасон (Cité) + дегустация в домене, ~7–8 ч.</span><span data-lang="fr">Cité de Carcassonne + dégustation dans un domaine, ~7–8 h.</span></li>
       </ul>
 
@@ -251,7 +283,7 @@ window.ANALYTICS_CONFIG = {
         <img src="../assets/capdag/slide_nateve0.jpg" alt="Cap d’Agde — marina" loading="lazy" style="width:100%; border-radius:18px" onerror="this.src='../assets/hortus.jpg'">
       </div>
 
-      <!-- Админ-ссылки (включаются ?admin=capion2025) -->
+      <!-- Админ-ссылки -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Village%20Naturiste%20Cap%20d%27Agde&output=classic">Village Naturiste</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Cit%C3%A9%20de%20Carcassonne&output=classic">Carcassonne</a>
@@ -323,7 +355,7 @@ window.ANALYTICS_CONFIG = {
     </div>
   </footer>
 
-  <!-- === FAB: плавающие кнопки внизу справа === -->
+  <!-- FAB -->
   <button class="chat-fab wa" aria-label="Написать в WhatsApp" data-chat-open="whatsapp" data-whatsapp>
     <svg viewBox="0 0 256 256" aria-hidden="true">
       <path fill="#05a884" d="M128 24a104 104 0 0 0-89.7 156.2L24 232l52.8-13.6A104 104 0 1 0 128 24m0 192a88 88 0 0 1-44.9-12.5l-3-1.8l-31.8 8.2l8.5-31l-1.9-3.1A88 88 0 1 1 128 216"/>
@@ -337,23 +369,22 @@ window.ANALYTICS_CONFIG = {
     </svg>
   </button>
 
-  <!-- ==== CONFIG (для отправки) ==== -->
+  <!-- CONFIG -->
   <script>
     window.APP_CONFIG = {
-      whatsapp: '33759644813',        // номер для wa.me (любой формат; в коде очистится до цифр)
-      telegram_user: 'de_iren',       // резервный профиль @user (без @)
-      // если добавишь ниже два поля, будет режим через бота/сервер:
+      whatsapp: '33759644813',
+      telegram_user: 'de_iren',
       telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/health', // заменим на /prestart автоматически
+      bot_prestart_url: 'https://iren-order-bot.onrender.com/health',
       ADMIN_SECRET: 'capion2025'
     };
   </script>
 
-  <!-- Подключение внешних скриптов (если нужны глобально) -->
-  <script src="..assets/js/contact.js" defer></script>
-  <script src="..assets/js/chat-widget.js" defer></script>
+  <!-- Scripts (fix: правильные пути) -->
+  <script src="../assets/js/contact.js" defer></script>
+  <script src="../assets/js/chat-widget.js" defer></script>
 
-  <!-- ==== Admin gate ==== -->
+  <!-- Admin gate -->
   <script>
     (function(){
       try{
@@ -376,62 +407,58 @@ window.ANALYTICS_CONFIG = {
     })();
   </script>
 
-  <!-- ==== ЕДИНЫЙ скрипт: языки, валидация, сбор текста, WA/TG ==== -->
+  <!-- RU/FR toggle + WA/TG form (единый скрипт) -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
 
-    // --- RU/FR toggle ---
-   // --- RU/FR toggle (with memory + URL + html[lang]) ---
-  (function(){
-    const html = document.documentElement;
-    const btnRu = document.getElementById('btn-ru');
-    const btnFr = document.getElementById('btn-fr');
+    // RU/FR (RU по умолчанию, память + URL)
+    (function(){
+      const html = document.documentElement;
+      const btnRu = document.getElementById('btn-ru');
+      const btnFr = document.getElementById('btn-fr');
 
-    const url = new URL(location.href);
-    const urlLang = (url.searchParams.get('lang') || location.hash.replace('#','') || '').toLowerCase();
-    const memLang = localStorage.getItem('site:lang');
-    const navLang = (navigator.language || 'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
-    let current = (urlLang === 'ru' || urlLang === 'fr') ? urlLang : (memLang || navLang || 'ru');
+      const url = new URL(location.href);
+      const urlLang = (url.searchParams.get('lang') || location.hash.replace('#','') || '').toLowerCase();
+      const memLang = localStorage.getItem('site:lang');
+      const navLang = (navigator.language || 'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+      let current = (urlLang === 'ru' || urlLang === 'fr') ? urlLang : (memLang || 'ru' || navLang);
 
-    function applyLang(l){
-      current = (l === 'fr') ? 'fr' : 'ru';
-      html.setAttribute('data-lang', current);
-      html.setAttribute('lang', current);
-      btnRu?.classList.toggle('active', current === 'ru');
-      btnFr?.classList.toggle('active', current === 'fr');
-      localStorage.setItem('site:lang', current);
+      function applyLang(l){
+        current = (l === 'fr') ? 'fr' : 'ru';
+        html.setAttribute('data-lang', current);
+        html.setAttribute('lang', current);
+        btnRu?.classList.toggle('active', current === 'ru');
+        btnFr?.classList.toggle('active', current === 'fr');
+        localStorage.setItem('site:lang', current);
 
-      const u = new URL(location.href);
-      u.searchParams.set('lang', current);
-      history.replaceState({}, '', u.toString());
-    }
-
-    btnRu?.addEventListener('click', ()=>applyLang('ru'));
-    btnFr?.addEventListener('click', ()=>applyLang('fr'));
-
-    applyLang(current);
-
-    document.addEventListener('click', (e)=>{
-      const a = e.target.closest('a');
-      if(!a) return;
-      const href = a.getAttribute('href') || '';
-      const isInternal = href && !/^https?:\/\//i.test(href) && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
-      if(isInternal){
-        const u = new URL(href, location.origin);
+        const u = new URL(location.href);
         u.searchParams.set('lang', current);
-        a.setAttribute('href', u.pathname + (u.search||'') + (u.hash||''));
+        history.replaceState({}, '', u.toString());
       }
-    });
-  })();
+      btnRu?.addEventListener('click', ()=>applyLang('ru'));
+      btnFr?.addEventListener('click', ()=>applyLang('fr'));
 
+      applyLang(current);
 
-    // --- config/helpers ---
+      document.addEventListener('click', (e)=>{
+        const a = e.target.closest('a');
+        if(!a) return;
+        const href = a.getAttribute('href') || '';
+        const isInternal = href && !/^https?:\/\//i.test(href) && !href.startsWith('mailto:') && !href.startsWith('tel:') && !href.startsWith('#');
+        if(isInternal){
+          const u = new URL(href, location.origin);
+          u.searchParams.set('lang', current);
+          a.setAttribute('href', u.pathname + (u.search||'') + (u.hash||''));
+        }
+      });
+    })();
+
+    // helpers
     const CFG = window.APP_CONFIG || {};
     const digits = s => String(s||'').replace(/\D/g,'');
     const enc = s => encodeURIComponent(String(s||''));
 
-    // --- UI toast ---
     function toast(msg, ms=2400){
       const t = document.createElement('div');
       t.className = 'form-toast'; t.textContent = msg;
@@ -439,7 +466,6 @@ window.ANALYTICS_CONFIG = {
       setTimeout(()=>t.remove(), ms);
     }
 
-    // --- build booking text from form ---
     function buildText(){
       const f = document.querySelector('[data-contact-form]');
       const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
@@ -459,7 +485,6 @@ window.ANALYTICS_CONFIG = {
       ].join('\n');
     }
 
-    // --- validation ---
     const REQUIRED = ['date','guests','name','contact'];
     function validateForm({scroll=true}={}){
       const f = document.querySelector('[data-contact-form]');
@@ -481,37 +506,26 @@ window.ANALYTICS_CONFIG = {
       return true;
     }
 
-    // --- safe open ---
     function safeOpen(href){
       const a = document.createElement('a');
       a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
       document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
     }
 
-    // --- openers ---
     async function openTelegram(){
       if(!validateForm()) return;
-
       const bot  = (CFG.telegram_bot||'').replace(/^@/,'');
       const user = (CFG.telegram_user||'').replace(/^@/,'');
-      const pre  = String(CFG.bot_prestart_url||'')
-                    .replace(/\/health\/?$/,'/prestart')
-                    .replace(/\/$/,'/prestart');
+      const pre  = String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
 
-      // если настроен сервер /prestart — шлём туда текст, открываем t.me/<bot>?start=<token>
       if (bot && /^https?:\/\//i.test(pre)){
         try{
-          const r = await fetch(pre, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ text: buildText() })
-          });
+          const r = await fetch(pre, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ text: buildText() }) });
           const j = await r.json().catch(()=>({}));
           const tme = j.tme || (j.token ? `https://t.me/${bot}?start=${encodeURIComponent(j.token)}` : '');
           if (tme){ safeOpen(tme); return; }
-        }catch(e){ /* fallback ниже */ }
+        }catch(e){ /* fallback */ }
       }
-      // иначе — профиль/бот напрямую
       if (user) safeOpen(`https://t.me/${user}`);
       else if (bot) safeOpen(`https://t.me/${bot}`);
       else toast('В APP_CONFIG не задан telegram_user / telegram_bot');
@@ -524,7 +538,6 @@ window.ANALYTICS_CONFIG = {
       safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
     }
 
-    // --- bind ALL buttons (и в форме, и FAB, и футер) ---
     function bind(){
       document.querySelectorAll('[data-whatsapp]').forEach(el=>{
         el.addEventListener('click',(e)=>{ e.preventDefault(); openWhatsApp(); });
@@ -533,21 +546,16 @@ window.ANALYTICS_CONFIG = {
         el.addEventListener('click',(e)=>{ e.preventDefault(); openTelegram(); });
       });
     }
-
-    if (document.readyState === 'loading'){
-      document.addEventListener('DOMContentLoaded', bind, {once:true});
-    } else {
-      bind();
-    }
+    if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); } else { bind(); }
   })();
   </script>
 
-  <!-- ==== Калькулятор суммы (от 2 270€ + 100€/гость > 2) ==== -->
+  <!-- Калькулятор суммы -->
   <script>
     (function(){
       const guests = document.getElementById('guests');
-      const totalOut = document.getElementById('totalOut'); // опционально: элемент для вывода суммы
-      const BASE = 2270; // Standard от, уже с маржой 15% и трансфером A/R
+      const totalOut = document.getElementById('totalOut');
+      const BASE = 2270;
       const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
       function refresh(){
         const g = Math.max(2, Math.min(4, Number(guests?.value||2)));
@@ -560,7 +568,33 @@ window.ANALYTICS_CONFIG = {
     })();
   </script>
 
-
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Cap d’Agde — Village Naturiste + вино, море и экскурсии (от 7 ночей)",
+    "description": "Отдых во Франции: Cap d’Agde, Village Naturiste, песчаные пляжи, дегустации вин, экскурсии в Carcassonne и Sète. Проживание от 7 ночей, трансфер по запросу.",
+    "touristType": "Взрослые путешественники, пары, любители моря и гастрономии",
+    "image": "https://goutvoyage.com/assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg",
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "1600",
+      "availability": "https://schema.org/InStock",
+      "url": "https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html"
+    },
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Tours Languedoc by Irène",
+      "url": "https://goutvoyage.com"
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Cap d’Agde, Occitanie, France"
+    }
+  }
+  </script>
 </body>
 </html>
 
