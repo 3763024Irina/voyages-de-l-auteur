@@ -473,11 +473,23 @@ window.ANALYTICS_CONFIG = {
     </div>
   </footer>
 
- <!-- === JS: калькулятор цен (fixed) === -->
+<!-- === JS: калькулятор цен (fixed) === -->
 <script>
   /* ---------- PRICING CORE (BB включены) ---------- */
   const roundTo5 = n => Math.round(n/5)*5;
   const fmtEUR = v => new Intl.NumberFormat(undefined,{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+
+  // === i18n helpers (FR par défaut) ===
+  function curLang(){
+    const l = (localStorage.getItem('site.lang')||'').toLowerCase();
+    return (l==='fr') ? 'fr' : 'fr'; // принудительно FR по умолчанию
+  }
+  function tr(key, fallback){
+    try{
+      const dict = (window.i18n && i18n[curLang()]) || {};
+      return (key in dict) ? dict[key] : (fallback ?? key);
+    }catch(_){ return fallback ?? key; }
+  }
 
   // База и завтраки (для вычисления итогов с BB)
   const hotels = {
@@ -525,9 +537,9 @@ window.ANALYTICS_CONFIG = {
 
   function recalc(){
     const s = pricesSnapshot();
-    if (outCat)   outCat.textContent   = fmtEUR(s.pCat)   + ' / 2';
-    if (outHansa) outHansa.textContent = fmtEUR(s.pHansa) + ' / 2';
-    if (outKite)  outKite.textContent  = fmtEUR(s.pKite)  + ' / 2';
+    if (outCat)   outCat.textContent   = fmtEUR(s.pCat)   + ' ' + tr('for_two','— pour deux');
+    if (outHansa) outHansa.textContent = fmtEUR(s.pHansa) + ' ' + tr('for_two','— pour deux');
+    if (outKite)  outKite.textContent  = fmtEUR(s.pKite)  + ' ' + tr('for_two','— pour deux');
     // синхронизируем форму бронирования с верхними переключателями
     if (window.CONTACT && typeof window.CONTACT.syncBookingFromControls==='function'){
       window.CONTACT.syncBookingFromControls();
@@ -571,6 +583,7 @@ window.ANALYTICS_CONFIG = {
   // 🌟 стартовый пересчёт, чтобы вместо «—» появились цены
   recalc();
 </script>
+
 
   <!-- === JS: контакт/бот === -->
   <script>
