@@ -135,6 +135,13 @@
 
     .input-error{ outline:2px solid #d33; outline-offset:2px; border-color:#d33!important }
     .form-toast{ position:fixed; left:50%; transform:translateX(-50%); bottom:16px; background:rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius:10px; z-index:10000; font-size:14px; max-width:90vw; text-align:center; }
+    /* PLACES */
+.place-list{ display:grid; gap:14px; }
+.place{ padding:14px; border:1px solid #eee; border-radius:14px; background:#fff; }
+.place h4{ margin:0 0 6px; font-size:18px; }
+.tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.tag{ padding:6px 10px; border:1px solid #e6e6e6; border-radius:999px; background:#fafafa; font-weight:600; font-size:13px; }
+
   </style>
 
   <!-- ==== JSON-LD (Organization / Website / Breadcrumb / TouristTrip / FAQ) ==== -->
@@ -261,6 +268,54 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
       <div class="ph"><img id="g6" src="../assets/saint-guilhierm/IMG_9353 4.JPG" onerror="this.src='../assets/IMG_6643.JPG'" alt="Склоны и каменные лестницы" loading="lazy"></div>
     </div>
   </section>
+  <!-- PLACES (краткие описания + SEO-слова) -->
+<section class="container" id="places">
+  <h3 class="section-title" id="places_title">Места в программе</h3>
+  <p class="section-sub" id="places_sub">Коротко о каждой точке маршрута (RU/FR переключается кнопкой вверху).</p>
+
+  <div class="place-list">
+    <div class="place">
+      <h4 id="p1_t">Saint-Guilhem-le-Désert — Аббатство Жилон (UNESCO)</h4>
+      <p id="p1_d">Один из самых красивых средневековых посёлков Франции. Романское аббатство Жилон, клуатр и каменные фасады среди гор ущелья Эро.</p>
+    </div>
+    <div class="place">
+      <h4 id="p2_t">Castrum / Панорамы</h4>
+      <p id="p2_d">Подъём к руинам castrum над деревней открывает панорамы долины и карстовых утёсов. Короткий трек по исторической тропе.</p>
+    </div>
+    <div class="place">
+      <h4 id="p3_t">Grotte de Clamouse (Грот Кламуз)</h4>
+      <p id="p3_d">Известняковая пещера с уникальными кристаллами арагонита и впечатляющими залами. Подсветка подчёркивает редкие формы.</p>
+    </div>
+    <div class="place">
+      <h4 id="p4_t">Pont du Diable (обед у “Чёртова моста”)</h4>
+      <p id="p4_d">Старейший каменный мост на реке Эро рядом с купальными зонами каньона. Обед с видом на бирюзовую воду.</p>
+    </div>
+    <div class="place">
+      <h4 id="p5_t">Château Capion (дегустация)</h4>
+      <p id="p5_d">Домен у Аньяна: белые, розовые и красные AOP Languedoc/IGP. Прогулка по парку и дегустация терруара.</p>
+    </div>
+    <div class="place">
+      <h4 id="p6_t">Старт из Mèze (Étang de Thau)</h4>
+      <p id="p6_d">Удобный выезд с лагуны То. Индивидуально 1–6 гостей.</p>
+    </div>
+  </div>
+
+  <!-- Тематики / SEO-слова (видимые «теги») -->
+  <div class="card" style="margin-top:16px">
+    <h4 id="seo_t">Тематики / SEO</h4>
+    <div class="tags" id="seo_tags">
+      <span class="tag">Saint-Guilhem-le-Désert тур</span>
+      <span class="tag">Аббатство Жилон UNESCO</span>
+      <span class="tag">Grotte de Clamouse</span>
+      <span class="tag">Pont du Diable</span>
+      <span class="tag">Château Capion дегустация</span>
+      <span class="tag">винный тур Лангедок</span>
+      <span class="tag">ущелья Эро</span>
+      <span class="tag">экскурсия из Mèze</span>
+    </div>
+  </div>
+</section>
+
 
   <!-- DETAILS + WHERE -->
   <section class="container info-grid">
@@ -491,7 +546,7 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
   </script>
 
   <!-- ==== I18N RU ⇄ FR (скан DOM → RU baseline; FR переводы заданы явно) ==== -->
-  <script>
+ <script>
   (function(){
     const N = {
       brand_sub:  document.querySelector('.brand small'),
@@ -524,9 +579,23 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
       f_format:   document.querySelector('footer a[href*="#format"]'),
       f_write:    document.querySelector('footer .js-telegram'),
       price_line1: document.querySelector('#pricing .list li:nth-child(1)'),
-      price_line2: document.querySelector('#pricing .list li:nth-child(2)')
+      price_line2: document.querySelector('#pricing .list li:nth-child(2)'),
+
+      /* === NEW: PLACES + SEO tags === */
+      places_t:  document.getElementById('places_title'),
+      places_s:  document.getElementById('places_sub'),
+      p1_t: document.getElementById('p1_t'), p1_d: document.getElementById('p1_d'),
+      p2_t: document.getElementById('p2_t'), p2_d: document.getElementById('p2_d'),
+      p3_t: document.getElementById('p3_t'), p3_d: document.getElementById('p3_d'),
+      p4_t: document.getElementById('p4_t'), p4_d: document.getElementById('p4_d'),
+      p5_t: document.getElementById('p5_t'), p5_d: document.getElementById('p5_d'),
+      p6_t: document.getElementById('p6_t'), p6_d: document.getElementById('p6_d'),
+      seo_t: document.getElementById('seo_t'),
+      seo_tags: document.getElementById('seo_tags')
     };
+
     const TL = Array.from(document.querySelectorAll('.timeline li'));
+
     const RU = {
       brand_sub:N.brand_sub?.textContent, nav_all:N.nav_all?.textContent, nav_why:N.nav_why?.textContent, nav_book:N.nav_book?.textContent,
       hero_title:N.hero_title?.textContent, hero_sub:N.hero_sub?.textContent,
@@ -548,7 +617,19 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
       inc_list: Array.from(document.querySelectorAll('.inc-grid .pill')).map(x=>x.textContent),
       notinc_list: Array.from(document.querySelectorAll('.info-grid article .list'))[0]?.innerHTML||'',
       opts_list: Array.from(document.querySelectorAll('.info-grid article .list'))[1]?.innerHTML||'',
-      tips_list: Array.from(document.querySelectorAll('.info-grid aside .list'))[0]?.innerHTML||''
+      tips_list: Array.from(document.querySelectorAll('.info-grid aside .list'))[0]?.innerHTML||'',
+
+      /* === NEW: RU baseline for PLACES + SEO (берём из DOM, если есть) === */
+      places_t: N.places_t?.textContent || '',
+      places_s: N.places_s?.textContent || '',
+      p1_t: N.p1_t?.textContent || '', p1_d: N.p1_d?.textContent || '',
+      p2_t: N.p2_t?.textContent || '', p2_d: N.p2_d?.textContent || '',
+      p3_t: N.p3_t?.textContent || '', p3_d: N.p3_d?.textContent || '',
+      p4_t: N.p4_t?.textContent || '', p4_d: N.p4_d?.textContent || '',
+      p5_t: N.p5_t?.textContent || '', p5_d: N.p5_d?.textContent || '',
+      p6_t: N.p6_t?.textContent || '', p6_d: N.p6_d?.textContent || '',
+      seo_t: N.seo_t?.textContent || '',
+      seo_tags_html: N.seo_tags?.innerHTML || ''
     };
 
     const FR = {
@@ -606,6 +687,33 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
         'Chaussures à semelle adhérente (sentiers caillouteux).',
         'Protection légère contre soleil et eau.',
         'Dans la grotte ≈ +15 °C toute l’année — prenez une veste.'
+      ],
+
+      /* === NEW: PLACES + SEO (FR) === */
+      places_t:'Les lieux du programme',
+      places_s:'Descriptions courtes de chaque étape (bascule RU/FR via le bouton).',
+      p1_t:'Saint-Guilhem-le-Désert — Abbaye de Gellone (UNESCO)',
+      p1_d:"L’un des plus beaux villages médiévaux de France. Abbaye romane de Gellone, cloître et façades en pierre au cœur des gorges de l’Hérault.",
+      p2_t:'Castrum / Panoramas',
+      p2_d:"Montée vers les ruines du castrum pour des panoramas sur la vallée et les falaises calcaires. Petite rando sur un sentier historique.",
+      p3_t:'Grotte de Clamouse',
+      p3_d:"Grotte calcaire aux cristaux d’aragonite et salles spectaculaires. Mise en lumière scénographiée.",
+      p4_t:'Pont du Diable (déjeuner)',
+      p4_d:"Vieux pont roman sur l’Hérault, près des zones de baignade du canyon. Déjeuner avec vue sur l’eau turquoise.",
+      p5_t:'Château Capion (dégustation)',
+      p5_d:"Domaine près d’Aniane : blancs, rosés, rouges AOP Languedoc/IGP. Promenade dans le parc et dégustation.",
+      p6_t:'Départ de Mèze (Étang de Thau)',
+      p6_d:'Départ pratique depuis la lagune. Privatif 1–6 personnes.',
+      seo_t:'Thèmes / SEO',
+      seo_tags:[
+        'Saint-Guilhem-le-Désert visite',
+        'Abbaye de Gellone UNESCO',
+        'Grotte de Clamouse',
+        'Pont du Diable',
+        'Dégustation Château Capion',
+        'Œnotourisme Languedoc',
+        'Gorges de l’Hérault',
+        'Excursion au départ de Mèze'
       ]
     };
 
@@ -667,6 +775,33 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
         if (tipsUl) tipsUl.innerHTML = RU.tips_list;
       }
 
+      /* === NEW: PLACES + SEO tags === */
+      // Заголовки/подзаголовки секции PLACES
+      if (N.places_t || N.places_s){
+        setText(N.places_t, L.places_t || RU.places_t);
+        setText(N.places_s, L.places_s || RU.places_s);
+      }
+      // Пункты PLACES
+      const mapPairs = [
+        ['p1_t','p1_d'], ['p2_t','p2_d'], ['p3_t','p3_d'],
+        ['p4_t','p4_d'], ['p5_t','p5_d'], ['p6_t','p6_d']
+      ];
+      mapPairs.forEach(([tKey,dKey])=>{
+        const tEl = N[tKey], dEl = N[dKey];
+        if (tEl) setText(tEl, L[tKey] || RU[tKey] || tEl.textContent);
+        if (dEl) setText(dEl, L[dKey] || RU[dKey] || dEl.textContent);
+      });
+
+      // SEO tags: во FR — массив, в RU — оставляем исходную разметку
+      if (N.seo_t) setText(N.seo_t, L.seo_t || RU.seo_t || N.seo_t.textContent);
+      if (N.seo_tags){
+        if (lang==='fr' && Array.isArray(FR.seo_tags)){
+          N.seo_tags.innerHTML = FR.seo_tags.map(x=>`<span class="tag">${x}</span>`).join('');
+        } else if (lang==='ru'){
+          if (RU.seo_tags_html) N.seo_tags.innerHTML = RU.seo_tags_html;
+        }
+      }
+
       document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
       localStorage.setItem('site:lang', lang);
@@ -685,7 +820,8 @@ consentVersion: "v1" // ↑ меняйте при обновлении поли�
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
     else init();
   })();
-  </script>
+</script>
+
 
   <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, открытие WA/TG, биндинг кнопок ==== -->
   <script>
