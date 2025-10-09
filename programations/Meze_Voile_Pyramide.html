@@ -668,7 +668,10 @@ window.ANALYTICS_CONFIG = {
       function updateBooking(){
         const total = priceForSelection(inHotel.value, inSeason.value, inSport.value);
         bookTotal.textContent = fmtEUR(total) + ' / 2';
-        if (!inMsg.value) inMsg.value = buildAutoMessage();
+      if (!inMsg.value || inMsg.dataset.autofill === '1') {
+  setAutoMsg(buildAutoMessage());
+}
+
       }
       function syncBookingFromControls(){
         const seasonRadio = [...document.querySelectorAll('input[name="season"]')].find(r=>r.checked);
@@ -748,8 +751,10 @@ window.ANALYTICS_CONFIG = {
         if (a.matches('[data-whatsapp]')) openWA(text); else openTG(text, ctx);
       }, true);
 
+  
       // начальная подстановка цены/сообщения
-      syncBookingFromControls();
+syncBookingFromControls();
+setAutoMsg(buildAutoMessage());
 
       return {getCtx, validateCtx, buildText, openWA, openTG, syncBookingFromControls};
     })();
