@@ -149,6 +149,8 @@ window.ANALYTICS_CONFIG = {
 <script defer src="/assets/js/cookies.js"></script>
 
 </head>
+  <script>window.i18n = window.i18n || { ru:{}, fr:{} };</script>
+
 <body data-program-id="MEZE-VOILE-7N" data-program-title="Mèze Voile — Hôtel de la Pyramide (от 7 ночей)">
   <header>
     <div class="container nav">
@@ -272,16 +274,15 @@ window.ANALYTICS_CONFIG = {
   <section class="container">
     <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
     <p class="section-sub" data-i18n="gal_sub">Лагуна Thau, катамаран HC15/16, набережная и устрицы.</p>
-    <div class="gallery" aria-label="Галерея">
-      <div class="ph"><img id="alt-g1" src="/assets/voiles/catama1.jpg" alt="Catamaran HC16 — Étang de Thau" loading="lazy"></div>
-      <div class="ph"><img id="alt-g2" src="/assets/voiles/PXL_20230306_104154954-768x1019.jpg" alt="Lagune de Thau — panorama" loading="lazy"></div>
-      <div class="ph"><img id="alt-g3" src="/assets/voiles/kite.jpg" alt="Bouzigues — huîtres" loading="lazy"></div>
-        <div class="ph"><img id="alt-g1" src="/assets/voiles/hansa3031.jpg" alt="Catamaran HC16 — Étang de Thau" loading="lazy"></div>
-      <div class="ph"><img id="alt-g2" src="/assets/voiles/IMG02851.jpg" alt="Lagune de Thau — panorama" loading="lazy"></div>
-      <div class="ph"><img id="alt-g3" src="/assets/voiles/IMG_9304.jpeg" alt="Bouzigues — huîtres" loading="lazy"></div>
+   <div class="gallery" aria-label="Галерея">
+  <div class="ph"><img id="alt-g1" src="/assets/voiles/catama1.jpg"    alt="" loading="lazy"></div>
+  <div class="ph"><img id="alt-g2" src="/assets/voiles/PXL_20230306_104154954-768x1019.jpg" alt="" loading="lazy"></div>
+  <div class="ph"><img id="alt-g3" src="/assets/voiles/kite.jpg"        alt="" loading="lazy"></div>
+  <div class="ph"><img id="alt-g4" src="/assets/voiles/hansa3031.jpg"   alt="" loading="lazy"></div>
+  <div class="ph"><img id="alt-g5" src="/assets/voiles/IMG02851.jpg"    alt="" loading="lazy"></div>
+  <div class="ph"><img id="alt-g6" src="/assets/voiles/IMG_9304.jpeg"   alt="" loading="lazy"></div>
+</div>
 
-    
-    </div>
   </section>
 
   <!-- DETAILS -->
@@ -987,119 +988,258 @@ window.ANALYTICS_CONFIG = {
   </script>
 <script>
 // === i18n: RU + FR (добавлены SEO-ключи и for_two) ===
+<script>
+// ====== RU ======
 Object.assign(i18n.ru, {
   /* SEO */
-  title:   "Mèze Voile — Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène",
+  title:"Mèze Voile — Hôtel de la Pyramide (от 7 ночей) | Tours Languedoc by Irène",
   metaDesc:"Лагуна Thau: проживание в Мезе (от 7 ночей) и 5 сессий активности — катамаран HC15/16, Hansa 303 или кайтинг. Пересчёт цен по сезону и отелю.",
-  ogTitle: "Mèze Voile — Hôtel de la Pyramide (от 7 ночей)",
-  ogDesc:  "3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически.",
+  ogTitle:"Mèze Voile — Hôtel de la Pyramide (от 7 ночей)",
+  ogDesc:"3 предложения: Катамаран, Hansa 303, Кайтинг. Выберите сезон и отель — цена обновится автоматически.",
   htmlLang:"ru",
 
-  /* calc helper */
-  for_two: "/ 2",
+  /* Общие/кнопки */
+  brand_sub:"— Путешествия со вкусом",
+  nav_all:"← Все программы",
+  nav_why:"Почему с нами",
+  nav_book:"Забронировать",
+  nav_why_f:"Почему с нами",
+  nav_all_f:"Программы",
+  nav_format_f:"Формат",
+  nav_contacts_f:"Контакты",
+  btn_book:"Забронировать",
+  btn_whatsapp:"Написать в WhatsApp",
+  btn_telegram:"Написать в Telegram",
 
-  /* UI */
-  schools_title: "О школе / Écoles partenaires",
-  schools_sub: "Безопасные занятия с сертифицированными инструкторами RU/FR на лагуне Thau.",
-  yc_spot: "Спот: защищённая лагуна, 0–1,5 м глубина, песчаное дно.",
-  yc_fleet: "Флот: катамараны HC15/16, швертботы Hansa 303, SUP/каяк.",
-  yc_instructors: "Инструкторы: FFVoile, брифинг по безопасности, сопровождение на воде.",
-  yc_levels: "Уровни: от новичка до уверенного (FFVoile уровни 1–4).",
-  yc_license: "Лицензия FFVoile: 14 € на персону (страхование).",
-  yc_langs: "Языки: FR/EN, при необходимости — поддержка RU.",
-  yc_note: "Занятия переносятся по ветру/погоде для безопасности.",
-  fa_format: "Формат: 5 дней по ~4 ч/день, группы 2–4 чел. или индивидуально.",
-  fa_gear: "Снаряжение: кайты/планки/гидрокостюмы включены, шлемы и жилеты.",
-  fa_spot: "Спот: мелководье лагуны, лодка сопровождения, радиосвязь.",
-  fa_levels: "Уровни: от нуля до апвинда/jibe; возможны wingfoil/доп.сессии.",
-  fa_safety: "Безопасность: брифинг, отработка самоспасения, чек-листы ветра.",
-  fa_langs: "Языки: FR/EN, при необходимости — поддержка RU.",
-  fa_note: "Точные часы назначает школа по ветровому окну.",
-  pack_title: "Что взять с собой",
-  pack_shoes: "Закрытая обувь/аква-тапки, ветровка, защитные очки с ремешком.",
-  pack_sun: "Крем SPF 50, кепка/баф, вода в мягкой фляге.",
-  pack_docs: "Документы: удостоверение личности, медицинская страховка (при наличии).",
-  pack_note: "Гидрокостюм/жилет/шлем предоставляет школа при кайте и по запросу при парусе.",
+  /* Хелпер для калькулятора */
+  for_two:"/ 2",
 
-  /* (опционально) alt-тексты для изображений */
-  altHero:"Étang de Thau — voile & kite",
+  /* Hero */
+  hero_title:"Mèze Voile — Hôtel de la Pyramide (от 7 ночей)",
+  hero_sub:"3 предложения: Катамаран, Hansa 303, Кайтинг. Пакет от 7 ночей: выберите сезон и отель — цена пересчитается автоматически.",
+  lbl_season:"Сезон:",
+  low:"Низкий",
+  high:"Высокий",
+  lbl_hotel:"Отель:",
+  h_budget:"Бюджет 2–3★",
+  h_pyramide:"Hôtel de la Pyramide 3★",
+  h_four:"4★",
+
+  /* Школы */
+  schools_title:"О школе / Écoles partenaires",
+  schools_sub:"Безопасные занятия с сертифицированными инструкторами RU/FR на лагуне Thau.",
+  yc_spot:"Спот: защищённая лагуна, 0–1,5 м глубина, песчаное дно.",
+  yc_fleet:"Флот: катамараны HC15/16, швертботы Hansa 303, SUP/каяк.",
+  yc_instructors:"Инструкторы: FFVoile, брифинг по безопасности, сопровождение на воде.",
+  yc_levels:"Уровни: от новичка до уверенного (FFVoile уровни 1–4).",
+  yc_license:"Лицензия FFVoile: 14 € на персону (страхование).",
+  yc_langs:"Языки: FR/EN, при необходимости — поддержка RU.",
+  yc_note:"Занятия переносятся по ветру/погоде для безопасности.",
+  fa_format:"Формат: 5 дней по ~4 ч/день, группы 2–4 чел. или индивидуально.",
+  fa_gear:"Снаряжение: кайты/планки/гидрокостюмы включены, шлемы и жилеты.",
+  fa_spot:"Спот: мелководье лагуны, лодка сопровождения, радиосвязь.",
+  fa_levels:"Уровни: от нуля до апвинда/jibe; возможны wingfoil/доп.сессии.",
+  fa_safety:"Безопасность: брифинг, отработка самоспасения, чек-листы ветра.",
+  fa_langs:"Языки: FR/EN, при необходимости — поддержка RU.",
+  fa_note:"Точные часы назначает школа по ветровому окну.",
+  pack_title:"Что взять с собой",
+  pack_shoes:"Закрытая обувь/аква-тапки, ветровка, защитные очки с ремешком.",
+  pack_sun:"Крем SPF 50, кепка/баф, вода в мягкой фляге.",
+  pack_docs:"Документы: удостоверение личности, медицинская страховка (при наличии).",
+  pack_note:"Гидрокостюм/жилет/шлем предоставляет школа при кайте и по запросу при парусе.",
+
+  /* Галерея */
+  gal_title:"Как это выглядит",
+  gal_sub:"Лагуна Thau, катамаран HC15/16, набережная и устрицы.",
+
+  /* Детали — программа */
+  plan_title:"Программа по дням",
+  d1:"День 1", d2:"День 2", d3:"День 3", d4:"День 4", d5:"День 5", d6:"День 6", d7:"День 7", d8:"День 8",
+  t_d1:"Заезд в Hôtel de la Pyramide (после 15:00). Закат у лагуны Thau. Ужин с устрицами.",
+  t_d2:"Сессия ~2–3 часа (утро или день). Свободное время.",
+  t_d3:"Сессия ~2–3 часа. Вечером — набережная Мезе / Bouzigues.",
+  t_d4:"Сессия ~2–3 часа. По желанию: SUP/каяк.",
+  t_d5:"Сессия ~2–3 часа. По желанию: кайт/винг.",
+  t_d6:"Сессия ~2–3 часа. Вечером — Sète/Marseillan.",
+  t_d7:"Свободный день: рынок, устрицы, пляж.",
+  t_d8:"Завтрак, чек-аут до 11:00.",
+
+  /* Что входит */
+  inc_title:"Что входит (БАЗА)",
+  inc_hotel:"Проживание от 7 ночей (выбранный тип отеля) — с завтраками",
+  inc_course:"Активность 5 дней (катамаран/Hansa — аренда 2 ч/день; кайт — курс 4 ч/день)",
+  inc_license:"Для паруса: лицензия FFVoile 14 € × 2",
+
+  /* Выбор спорта */
+  choose_title:"Выберите вид спорта",
+  choose_sub:"Цены ниже считаются для базового пакета (от 7 ночей) и зависят от настроек выше. Все суммы — за 2 гостей.",
+  choose_cat_t:"Катамаран HC15/16",
+  choose_cat_d:"5× аренда по 2 часа (2 перс.).",
+  choose_hansa_d:"5× аренда по 2 часа (1–2 перс.).",
+  choose_kite_d:"Стаж 5 дней (4 ч/день) в школе Fil d’Air. Цена зависит от сезона.",
+
+  /* Где это / Полезно знать */
+  where_title:"Где это",
+  where_sub:"Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.",
+  tips_title:"Полезно знать",
+  tip_gear:"Нужны ветровка, закрытая обувь, кепка, SPF, вода.",
+  tip_slots:"Слот для взрослых — ~2–3 часа. Время подтверждает клуб (по ветру).",
+  tip_level:"Для проката — уровень FFVoile 3. Несовершеннолетние — с взрослым.",
+
+  /* Кратко о туре / цены */
+  brief_title:"Кратко о туре",
+  brief_sub:"От 7 ночей • 2–6 гостей • база: Mèze, Étang de Thau.",
+  brief_hotel_t:"🏨 Отели",
+  price_note:"В высокий сезон отели дороже — надбавка учитывается автоматически в калькуляторе. Дополнительные ночи — по запросу.",
+
+  /* Форма */
+  lbl_date:"Дата заезда",
+  lbl_guests:"Гостей",
+  lbl_name:"Имя",
+  lbl_contact:"Контакт (WhatsApp/Telegram/email)",
+  lbl_sport:"Вид спорта",
+  lbl_total:"Итог",
+  lbl_comment:"Комментарий",
+
+  /* ALT-тексты */
+  altHero:"Étang de Thau — парус и кайт",
   altG1:"Catamaran HC16 — Étang de Thau",
   altG2:"Lagune de Thau — panorama",
-  altG3:"Bouzigues — huîtres",
+  altG3:"Kitesurf — Étang de Thau",
+  altG4:"Hansa 303 — Étang de Thau",
+  altG5:"Équipement — check-list",
+  altG6:"Bouzigues — huîtres",
   altCat:"Catamaran HC15/16 — Étang de Thau",
   altHansa:"Hansa 303 — Étang de Thau",
   altKite:"Kitesurf — Fil d’Air, Étang de Thau"
 });
 
+// ====== FR ======
 Object.assign(i18n.fr, {
   /* SEO */
-  title:   "Mèze Voile — Hôtel de la Pyramide (7+ nuits) | Tours Languedoc by Irène",
+  title:"Mèze Voile — Hôtel de la Pyramide (7+ nuits) | Tours Languedoc by Irène",
   metaDesc:"Étang de Thau : séjour à Mèze (à partir de 7 nuits) + 5 séances d’activité — catamaran HC15/16, Hansa 303 ou kitesurf. Tarifs recalculés selon saison et hôtel.",
-  ogTitle: "Mèze Voile — Hôtel de la Pyramide (7+ nuits)",
-  ogDesc:  "3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix se met à jour automatiquement.",
+  ogTitle:"Mèze Voile — Hôtel de la Pyramide (7+ nuits)",
+  ogDesc:"3 offres : Catamaran, Hansa 303, Kitesurf. Choisissez saison et hôtel — le prix se met à jour automatiquement.",
   htmlLang:"fr",
 
-  /* calc helper */
-  for_two: "/ 2",
+  /* Boutons / nav */
+  brand_sub:"— Voyages avec goût",
+  nav_all:"← Tous les programmes",
+  nav_why:"Pourquoi nous",
+  nav_book:"Réserver",
+  nav_why_f:"Pourquoi nous",
+  nav_all_f:"Offres",
+  nav_format_f:"Format",
+  nav_contacts_f:"Contacts",
+  btn_book:"Réserver",
+  btn_whatsapp:"Écrire sur WhatsApp",
+  btn_telegram:"Écrire sur Telegram",
 
-  /* UI */
-  schools_title: "À propos des écoles partenaires",
-  schools_sub: "Cours en toute sécurité avec des moniteurs certifiés RU/FR sur l’Étang de Thau.",
-  yc_spot: "Spot : lagune abritée, 0–1,5 m de profondeur, fond sablonneux.",
-  yc_fleet: "Flotte : catamarans HC15/16, dériveurs Hansa 303, SUP/kayak.",
-  yc_instructors: "Moniteurs : FFVoile, briefing sécurité, accompagnement sur l’eau.",
-  yc_levels: "Niveaux : du débutant à confirmé (FFVoile 1–4).",
-  yc_license: "Licence FFVoile : 14 € / pers. (assurance).",
-  yc_langs: "Langues : FR/EN, support RU si besoin.",
-  yc_note: "Les séances peuvent être décalées selon le vent/météo pour la sécurité.",
-  fa_format: "Format : 5 jours ~4 h/jour, groupes 2–4 pers. ou cours privé.",
-  fa_gear: "Matériel : ailes/barres/combinaisons incluses, casques et gilets.",
-  fa_spot: "Spot : eau peu profonde, bateau sécu, radio.",
-  fa_levels: "Niveaux : de zéro à upwind/jibe ; options wingfoil/sessions sup.",
-  fa_safety: "Sécurité : briefing, self-rescue, check-lists vent.",
-  fa_langs: "Langues : FR/EN, support RU si besoin.",
-  fa_note: "Les horaires sont fixés par l’école selon la fenêtre de vent.",
-  pack_title: "À emporter",
-  pack_shoes: "Chaussures fermées/aqua, coupe-vent, lunettes avec sangle.",
-  pack_sun: "Crème SPF 50, casquette/buff, eau.",
-  pack_docs: "Papiers : identité, assurance santé (si disponible).",
-  pack_note: "Combinaison/gilet/casque fournis pour le kite et sur demande pour la voile.",
+  /* Aide calcule */
+  for_two:"/ 2",
 
-  /* (optionnel) alt images */
+  /* Hero */
+  hero_title:"Mèze Voile — Hôtel de la Pyramide (7+ nuits)",
+  hero_sub:"3 offres : Catamaran, Hansa 303, Kitesurf. Séjour à partir de 7 nuits : choisissez saison et hôtel — le prix se met à jour automatiquement.",
+  lbl_season:"Saison:",
+  low:"Basse",
+  high:"Haute",
+  lbl_hotel:"Hôtel:",
+  h_budget:"Budget 2–3★",
+  h_pyramide:"Hôtel de la Pyramide 3★",
+  h_four:"4★",
+
+  /* Écoles */
+  schools_title:"À propos des écoles partenaires",
+  schools_sub:"Cours en toute sécurité avec des moniteurs certifiés RU/FR sur l’Étang de Thau.",
+  yc_spot:"Spot : lagune abritée, 0–1,5 m de profondeur, fond sablonneux.",
+  yc_fleet:"Flotte : catamarans HC15/16, dériveurs Hansa 303, SUP/kayak.",
+  yc_instructors:"Moniteurs : FFVoile, briefing sécurité, accompagnement sur l’eau.",
+  yc_levels:"Niveaux : du débutant à confirmé (FFVoile 1–4).",
+  yc_license:"Licence FFVoile : 14 € / pers. (assurance).",
+  yc_langs:"Langues : FR/EN, support RU si besoin.",
+  yc_note:"Les séances peuvent être décalées selon le vent/météo pour la sécurité.",
+  fa_format:"Format : 5 jours ~4 h/jour, groupes 2–4 pers. ou cours privé.",
+  fa_gear:"Matériel : ailes/barres/combinaisons incluses, casques et gilets.",
+  fa_spot:"Spot : eau peu profonde, bateau sécu, radio.",
+  fa_levels:"Niveaux : de zéro à upwind/jibe ; options wingfoil/sessions sup.",
+  fa_safety:"Sécurité : briefing, self-rescue, check-lists vent.",
+  fa_langs:"Langues : FR/EN, support RU si besoin.",
+  fa_note:"Les horaires sont fixés par l’école selon la fenêtre de vent.",
+  pack_title:"À emporter",
+  pack_shoes:"Chaussures fermées/aqua, coupe-vent, lunettes avec sangle.",
+  pack_sun:"Crème SPF 50, casquette/buff, eau.",
+  pack_docs:"Papiers : identité, assurance santé (si disponible).",
+  pack_note:"Combinaison/gilet/casque fournis pour le kite et sur demande pour la voile.",
+
+  /* Galerie */
+  gal_title:"À quoi ça ressemble",
+  gal_sub:"Lagune de Thau, catamaran HC15/16, promenade et huîtres.",
+
+  /* Détails — programme */
+  plan_title:"Programme par jour",
+  d1:"Jour 1", d2:"Jour 2", d3:"Jour 3", d4:"Jour 4", d5:"Jour 5", d6:"Jour 6", d7:"Jour 7", d8:"Jour 8",
+  t_d1:"Arrivée à l’Hôtel de la Pyramide (après 15h00). Coucher de soleil sur la lagune de Thau. Dîner aux huîtres.",
+  t_d2:"Séance ~2–3 h (matin ou journée). Temps libre.",
+  t_d3:"Séance ~2–3 h. Soirée — promenade à Mèze / Bouzigues.",
+  t_d4:"Séance ~2–3 h. En option : SUP/kayak.",
+  t_d5:"Séance ~2–3 h. En option : kite/wing.",
+  t_d6:"Séance ~2–3 h. Soirée — Sète/Marseillan.",
+  t_d7:"Jour libre : marché, huîtres, plage.",
+  t_d8:"Petit-déjeuner, check-out jusqu’à 11h00.",
+
+  /* Inclus */
+  inc_title:"Ce qui est inclus (BASE)",
+  inc_hotel:"Hébergement à partir de 7 nuits (type d’hôtel choisi) — avec petits-déjeuners",
+  inc_course:"Activité 5 jours (catamaran/Hansa — location 2 h/jour ; kite — cours 4 h/jour)",
+  inc_license:"Pour la voile : licence FFVoile 14 € × 2",
+
+  /* Choix du sport */
+  choose_title:"Choisissez votre sport",
+  choose_sub:"Les prix ci-dessous sont pour un forfait de base (à partir de 7 nuits) et dépendent des réglages ci-dessus. Montants — pour 2 personnes.",
+  choose_cat_t:"Catamaran HC15/16",
+  choose_cat_d:"5× location de 2 h (2 pers.).",
+  choose_hansa_d:"5× location de 2 h (1–2 pers.).",
+  choose_kite_d:"Stage 5 jours (4 h/jour) à l’école Fil d’Air. Prix selon saison.",
+
+  /* Où / conseils */
+  where_title:"Où c’est",
+  where_sub:"Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.",
+  tips_title:"Bon à savoir",
+  tip_gear:"Coupe-vent, chaussures fermées, casquette, SPF, eau.",
+  tip_slots:"Créneau adultes ~2–3 h. L’horaire est confirmé par le club (selon le vent).",
+  tip_level:"Pour la location — niveau FFVoile 3. Mineurs — avec un adulte.",
+
+  /* Bref */
+  brief_title:"En bref",
+  brief_sub:"À partir de 7 nuits • 2–6 personnes • base : Mèze, Étang de Thau.",
+  brief_hotel_t:"🏨 Hôtels",
+  price_note:"En haute saison les hôtels sont plus chers — la majoration est prise en compte automatiquement. Nuits supplémentaires — sur demande.",
+
+  /* Formulaire */
+  lbl_date:"Date d’arrivée",
+  lbl_guests:"Personnes",
+  lbl_name:"Nom",
+  lbl_contact:"Contact (WhatsApp/Telegram/email)",
+  lbl_sport:"Discipline",
+  lbl_total:"Total",
+  lbl_comment:"Commentaire",
+
+  /* ALT */
   altHero:"Étang de Thau — voile & kite",
   altG1:"Catamaran HC16 — Étang de Thau",
   altG2:"Lagune de Thau — panorama",
-  altG3:"Bouzigues — huîtres",
+  altG3:"Kitesurf — Étang de Thau",
+  altG4:"Hansa 303 — Étang de Thau",
+  altG5:"Équipement — check-list",
+  altG6:"Bouzigues — huîtres",
   altCat:"Catamaran HC15/16 — Étang de Thau",
   altHansa:"Hansa 303 — Étang de Thau",
   altKite:"Kitesurf — Fil d’Air, Étang de Thau"
 });
-
-// — FR: дополняем ключи подвала/формы (если вдруг их не оказалось)
-(() => {
-  const F = i18n.fr;
-  Object.assign(F, {
-    nav_why_f:"Pourquoi nous",
-    nav_all_f:"Offres",
-    nav_format_f:"Format",
-    nav_contacts_f:"Contacts",
-    lbl_season:"Saison:",
-    low:"Basse",
-    high:"Haute",
-    lbl_hotel:"Hôtel:",
-    h_budget:"Budget 2–3★",
-    h_pyramide:"Hôtel de la Pyramide 3★",
-    h_four:"4★",
-    lbl_date:"Date d’arrivée",
-    lbl_guests:"Personnes",
-    lbl_name:"Nom",
-    lbl_contact:"Contact (WhatsApp/Telegram/email)",
-    lbl_sport:"Discipline",
-    lbl_total:"Total",
-    lbl_comment:"Commentaire"
-  });
-})();
 </script>
+
 
 
 <!-- ===== I18N RUNTIME (переключатель + тексты + SEO/OG/Twitter) ===== -->
@@ -1169,10 +1309,13 @@ Object.assign(i18n.fr, {
       if (key in d) el.textContent = d[key];
     });
     // alt для ключевых картинок
-    const mapAlt = {
-      '#alt-hero':'altHero', '#alt-g1':'altG1', '#alt-g2':'altG2', '#alt-g3':'altG3',
-      '#img-cat':'altCat', '#img-hansa':'altHansa', '#img-kite':'altKite'
-    };
+   const mapAlt = {
+  '#alt-hero':'altHero',
+  '#alt-g1':'altG1','#alt-g2':'altG2','#alt-g3':'altG3',
+  '#alt-g4':'altG4','#alt-g5':'altG5','#alt-g6':'altG6',
+  '#img-cat':'altCat', '#img-hansa':'altHansa', '#img-kite':'altKite'
+};
+
     Object.entries(mapAlt).forEach(([sel,key])=>{
       const img = $(sel); if (img && (key in d)) img.alt = d[key];
     });
