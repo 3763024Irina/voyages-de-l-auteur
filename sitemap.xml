@@ -10,28 +10,28 @@
   </url>
 
   <!-- Хабы -->
-  <url><loc>https://goutvoyage.com/wine.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/oysters.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/sea.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/castles.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/wellness.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/canal.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://goutvoyage.com/wine.html</loc></url>
+  <url><loc>https://goutvoyage.com/oysters.html</loc></url>
+  <url><loc>https://goutvoyage.com/sea.html</loc></url>
+  <url><loc>https://goutvoyage.com/castles.html</loc></url>
+  <url><loc>https://goutvoyage.com/wellness.html</loc></url>
+  <url><loc>https://goutvoyage.com/canal.html</loc></url>
 
   <!-- Программы -->
-  <url><loc>https://goutvoyage.com/Balaruc_SPA.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/Meze_Voile_Pyramide.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/Pic_Saint_Loup.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/GUILHEM_CLAMOUSE_CAPION.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/Thau_LUX.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/bezier_sunset.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/capdagde-naturiste-7n.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/degustation-meze.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/lamalou_les_bains.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/thermes.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/CARCASSONNE-1D.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/Pezenas_Abbaye_Wine.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/avene_14d.html</loc><lastmod>2025-10-06</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goutvoyage.com/Vins_Languedoc.html</loc><lastmod>2025-10-06</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://goutvoyage.com/programations/Balaruc_SPA.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/Meze_Voile_Pyramide.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/Pic_Saint_Loup.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/Thau_LUX.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/bezier_sunset.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/capdagde-naturiste-7n.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/degustation-meze.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/lamalou_les_bains.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/thermes.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/CARCASSONNE-1D.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/avene_14d.html</loc></url>
+  <url><loc>https://goutvoyage.com/programations/Vins_Languedoc.html</loc></url>
 
 </urlset>
 
