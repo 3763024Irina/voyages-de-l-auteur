@@ -9,13 +9,14 @@
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- Хабы -->
-  <url><loc>https://goutvoyage.com/wine.html</loc></url>
-  <url><loc>https://goutvoyage.com/oysters.html</loc></url>
-  <url><loc>https://goutvoyage.com/sea.html</loc></url>
-  <url><loc>https://goutvoyage.com/castles.html</loc></url>
-  <url><loc>https://goutvoyage.com/wellness.html</loc></url>
-  <url><loc>https://goutvoyage.com/canal.html</loc></url>
+<!-- Хабы -->
+<url><loc>https://goutvoyage.com/programations/wine.html</loc></url>
+<url><loc>https://goutvoyage.com/programations/oysters.html</loc></url>
+<url><loc>https://goutvoyage.com/programations/sea.html</loc></url>
+<url><loc>https://goutvoyage.com/programations/castles.html</loc></url>
+<url><loc>https://goutvoyage.com/programations/wellness.html</loc></url>
+<url><loc>https://goutvoyage.com/programations/canal.html</loc></url>
+
 
   <!-- Программы -->
   <url><loc>https://goutvoyage.com/programations/Balaruc_SPA.html</loc></url>
