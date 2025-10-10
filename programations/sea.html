@@ -19,21 +19,20 @@
   <meta property="og:title" content="Море, парус и актив — хаб" />
   <meta property="og:description" content="Voile/kite à Mèze (Hôtel de la Pyramide), journée LUX sur l’étang de Thau, Cap d’Agde — Village Naturiste (7 nuits) + 2 excursions." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/voile/meze_voile.jpg" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/voile/meze_voile.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-<!-- Favicons -->
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="favicon-96.png">
-<link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
-<meta name="theme-color" content="#0D2B1E">
+  <!-- Favicons (из корня сайта) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 
   <style>
     :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#667; --brand:#0D2B1E; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
@@ -53,7 +52,6 @@
     .lang{display:flex; align-items:center; gap:10px}
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
-
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
@@ -62,11 +60,9 @@
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
     .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
-
     section{padding:48px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
     .section-sub{color:var(--muted); margin:0 0 22px}
-
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
     .card{grid-column:span 6; background:var(--paper); border:1px solid #eee; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
     .card img{width:100%; height:220px; object-fit:cover}
@@ -78,34 +74,31 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     @media(max-width:900px){ .card{grid-column:span 12} }
-    .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
-    .chat-fab svg{width:22px;height:22px}
-    .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
   </style>
 
-<script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
+  <script>
+    window.ANALYTICS_CONFIG = {
+      GA_ID: "G-L9TR2VTDX2",
+      YM_ID: 104246057,
+      consentVersion: "v2"
+    };
+  </script>
 
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
-
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
+
 <body data-program data-program-id="HUB-SEA" data-program-title="Море, парус и актив">
   <header>
     <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="На главную">
+      <a class="brand" href="/index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
       <nav class="lang">
         <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a href="/index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="/index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
@@ -117,7 +110,10 @@ window.ANALYTICS_CONFIG = {
   </header>
 
   <section class="hero">
-    <div class="bg"><img src="../assets/voile/meze_voile.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Mèze — voile & kite"><div class="overlay"></div></div>
+    <div class="bg">
+      <img src="/assets/voile/meze_voile.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Mèze — voile & kite">
+      <div class="overlay"></div>
+    </div>
     <div class="container inner">
       <div>
         <span class="badge" data-i18n="sea_badge">Sea • Voile & Kite</span>
@@ -134,39 +130,39 @@ window.ANALYTICS_CONFIG = {
     <div class="cards">
       <!-- Voile/Kite Mèze -->
       <article class="card">
-        <img src="../assets/voiles/catamaran.jpg" onerror="this.src='../assets/meze/_I7A0026.webp'" alt="Catamaran sur l’étang de Thau">
+        <img src="/assets/voiles/catamaran.jpg" onerror="this.src='/assets/meze/_I7A0026.webp'" alt="Catamaran sur l’étang de Thau">
         <div class="pad">
           <h4 data-i18n="voile_title">Mèze — парус и кайт: Hôtel de la Pyramide (от 7 ночей)</h4>
           <p data-i18n="voile_text">Катамаран HC15/16, Hansa 303 или кайтинг • 5 сессий • лагуна Thau. Цена зависит от сезона и отеля.</p>
           <div class="meta"><span>Mèze • Étang de Thau</span><span>7+ ночей</span></div>
           <div class="actions">
-            <a class="btn primary" href="Meze_Voile_Pyramide.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/Meze_Voile_Pyramide.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- LUX Thau -->
       <article class="card">
-        <img src="../assets/thau/lux_thau.jpg" onerror="this.src='../assets/wines2/IMG_0118.JPG'" alt="Journée LUX sur l’étang de Thau">
+        <img src="/assets/thau/lux_thau.jpg" onerror="this.src='/assets/wines2/IMG_0118.JPG'" alt="Journée LUX sur l’étang de Thau">
         <div class="pad">
           <h4 data-i18n="thau_title">LUX Étang de Thau — авторский день на лагуне</h4>
           <p data-i18n="thau_text">Приватная лодка, устрицы на воде (Tarbouriech), Noilly Prat, винный финал. Без пеших переходов.</p>
           <div class="meta"><span>Étang de Thau</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- Cap d’Agde Naturiste -->
       <article class="card">
-        <img src="../assets/capdag/304308906.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Cap d’Agde — Village Naturiste">
+        <img src="/assets/capdag/304308906.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Cap d’Agde — Village Naturiste">
         <div class="pad">
           <h4 data-i18n="cap_title">Cap d’Agde — Village Naturiste + 2 экскурсии (18+)</h4>
           <p data-i18n="cap_text">Неделя у моря в закрытом Village Naturiste + 2 приватных выезда: Pic Saint-Loup и Каркасон. Трансфер — по запросу.</p>
           <div class="meta"><span>Cap d’Agde</span><span>7+ ночей</span></div>
           <div class="actions">
-            <a class="btn primary" href="capdagde-naturiste-7n.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/capdagde-naturiste-7n.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
@@ -186,8 +182,8 @@ window.ANALYTICS_CONFIG = {
   <footer style="background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px">
     <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
       <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
-      <div><p><a href="../index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
-      <div><p><a href="../index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
+      <div><p><a href="/index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="/index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
+      <div><p><a href="/index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
     </div>
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
   </footer>
@@ -277,6 +273,7 @@ window.ANALYTICS_CONFIG = {
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
       localStorage.setItem('site:lang', lang);
     }
+
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
@@ -290,7 +287,7 @@ window.ANALYTICS_CONFIG = {
     })();
   </script>
 
-  <!-- CONFIG & WhatsApp/Telegram binding -->
+  <!-- WA / TG -->
   <script>
     window.APP_CONFIG = window.APP_CONFIG || {
       whatsapp:'+33 7 59 64 48 13',
@@ -348,8 +345,6 @@ window.ANALYTICS_CONFIG = {
       });
     })();
   </script>
-
-
 </body>
 </html>
 
