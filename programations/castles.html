@@ -38,7 +38,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène" />
-  <meta name="twitter:description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Дésert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta name="twitter:description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
   <meta name="twitter:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
 
   <!-- LCP image preload -->
@@ -71,24 +71,10 @@
     .container{max-width:var(--container);margin:auto;padding:0 20px}
 
     header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.7);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #eee}
-  /* Хедер подстраивается под высоту логотипа+слогана */
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  min-height:70px;         /* вместо фиксированной height */
-  padding:8px 0;           /* даём “воздух” */
-}
-
-/* Стекуем название и слоган в колонку */
-.brand-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.15;
-}
-.brand-text small{ margin-top:2px; color:#6c6c6c }
-
+    .nav{display:flex;align-items:center;justify-content:space-between;min-height:70px;padding:8px 0}
     .brand{display:flex;align-items:center;gap:14px}
+    .brand-text{display:flex;flex-direction:column;line-height:1.15}
+    .brand-text small{margin-top:2px;color:#6c6c6c}
     .logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,var(--brand),#123c2c);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow)}
     nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
     nav a{font-weight:600;padding:8px 12px;border-radius:12px}
@@ -97,7 +83,6 @@
     .lang button{border:1px solid #e6e6e6;background:#fff;padding:6px 10px;border-radius:999px;font-weight:700;cursor:pointer}
     .lang button.active{background:var(--brand);color:#fff;border-color:var(--brand)}
 
-    /* back link block under header */
     .back-link{display:block;border-bottom:1px solid #eee;background:#fff}
     .back-link .inner{display:flex;align-items:center;gap:8px;height:44px}
     .back-link a{font-weight:600}
@@ -116,11 +101,9 @@
     .section-title{font-family:"Cormorant Garamond",serif;font-size:30px;margin:0 0 8px}
     .section-sub{color:var(--muted);margin:0 0 18px}
 
-    /* gallery */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .ph{aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}
 
-    /* cards */
     .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
     .program-card{grid-column:span 6;background:var(--paper);border:1px solid #eee;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
     .program-card img{width:100%;height:220px;object-fit:cover}
@@ -130,7 +113,6 @@
     .program-card .meta{display:flex;gap:10px;flex-wrap:wrap;color:#667;font-size:13px}
     .program-card .actions{margin-top:auto;display:flex;gap:10px}
 
-    /* basics */
     .card{background:var(--paper);border:1px solid #eee;border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
     .list{margin:0;padding-left:18px}.list li{margin:8px 0}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #e6e6e6;border-radius:12px;background:#fff;font-weight:700;cursor:pointer}
@@ -161,7 +143,7 @@
   }
   </script>
 
-  <!-- JSON-LD: ItemList (рекомендуемые программы) -->
+  <!-- JSON-LD: ItemList -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -169,9 +151,9 @@
     "name":"Рекомендуемые программы — Culture hub",
     "itemListOrder":"http://schema.org/ItemListOrderAscending",
     "itemListElement":[
-      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Saint_Guilhem.html","name":"Saint-Guilhem-le-Désert: аббатство и панорамы"},
+      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html","name":"Saint-Guilhem-le-Désert: аббатство и панорамы"},
       {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Бéзье: круиз по Каналу дю Миди (вечер)"},
-      {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/Carcassonne_1D.html","name":"Carcassonne — средневековый город и цитадель (1 день)"}
+      {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/CARCASSONNE-1D.html","name":"Carcassonne — средневековый город и цитадель (1 день)"}
     ]
   }
   </script>
@@ -202,33 +184,27 @@
   </script>
 
   <script>
-  window.ANALYTICS_CONFIG = {
-    GA_ID: "G-L9TR2VTDX2",
-    YM_ID: 104246057,
-    consentVersion: "v2"
-  };
+    window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v2" };
   </script>
-
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
 </head>
-<body>
+
+<body data-program data-program-id="HUB-CASTLES" data-program-title="Замки & средневековые города — хаб">
 <header>
   <div class="container nav">
-   <a class="brand" href="../index.html" aria-label="На главную">
-  <div class="logo">Î</div>
-  <div class="brand-text">
-    <strong>Tours Languedoc by Irène</strong>
-    <small>— Des voyages avec goût</small>
-  </div>
-</a>
+    <a class="brand" href="/index.html" aria-label="На главную">
+      <div class="logo">Î</div>
+      <div class="brand-text">
+        <strong>Tours Languedoc by Irène</strong>
+        <small>— Des voyages avec goût</small>
+      </div>
+    </a>
 
     <nav>
-      <ul>
-        <!-- В шапке оставляем только CTA -->
-        <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
-      </ul>
+      <ul><li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li></ul>
     </nav>
+
     <div class="lang" aria-label="Переключение языка">
       <button id="btn-ru" class="active" aria-pressed="true">RU</button>
       <button id="btn-fr" aria-pressed="false">FR</button>
@@ -236,19 +212,16 @@
   </div>
 </header>
 
-<!-- Стрелка «назад» под шапкой -->
+<!-- Стрелка «назад» -->
 <div class="back-link">
   <div class="container inner">
-    <a href="../index.html#tours" data-i18n="nav_all">← Все программы</a>
+    <a href="/index.html#tours" data-i18n="nav_all">← Все программы</a>
   </div>
 </div>
 
 <section class="hero">
   <div class="bg">
-    <img id="alt-hero" src="/assets/IMG_4003.JPG"
-         alt="Saint-Guilhem-le-Désert — Languedoc"
-         width="1600" height="1067"
-         fetchpriority="high" loading="eager" decoding="async">
+    <img id="alt-hero" src="/assets/IMG_4003.JPG" alt="Saint-Guilhem-le-Désert — Languedoc" width="1600" height="1067" fetchpriority="high" loading="eager" decoding="async">
     <div class="overlay"></div>
   </div>
   <div class="container inner">
@@ -260,7 +233,7 @@
   </div>
 </section>
 
-<!-- КАРТОЧКИ С ПРОГРАММАМИ -->
+<!-- КАРТОЧКИ -->
 <section class="container">
   <h3 class="section-title" data-i18n="inc_title2">Выберите программу</h3>
   <p class="section-sub" data-i18n="inc_sub2">Все маршруты — индивидуально/мини-группы. Экскурсии на русском/французском.</p>
@@ -274,7 +247,7 @@
         <p>Средневековый городок, аббатство и смотровые. Комфортный темп, гастро-паузы.</p>
         <div class="meta"><span>Saint-Guilhem</span><span>полдня/день</span></div>
         <div class="actions">
-          <a class="btn primary" href="/programations/Saint_Guilhem.html" title="Подробнее">Подробнее</a>
+          <a class="btn primary" href="/programations/GUILHEM_CLAMOUSE_CAPION.html" title="Подробнее" data-i18n="btn_more">Подробнее</a>
         </div>
       </div>
     </article>
@@ -284,10 +257,10 @@
       <img src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" width="1200" height="700" loading="lazy" decoding="async" alt="Бéзье — круиз по Каналу дю Миди (день/закат)">
       <div class="pad">
         <h4>Бéзье: круиз по Каналу дю Миди (день/закат)</h4>
-        <p>Фонсераны → Grand Bief → тоннель Малпас. Подъём к кафедральному собору Сен-Назер и смотровые над Орбом. Дневные и закатные рейсы.</p>
+        <p>Фонсераны → Grand Bief → тоннель Малпас. Подъём к собору Сен-Назер и смотровые над Орбом. Дневные и закатные рейсы.</p>
         <div class="meta"><span>Béziers</span><span>полдня/вечер</span></div>
         <div class="actions">
-          <a class="btn primary" href="/programations/bezier_sunset.html" title="Подробнее">Подробнее</a>
+          <a class="btn primary" href="/programations/bezier_sunset.html" title="Подробнее" data-i18n="btn_more">Подробнее</a>
         </div>
       </div>
     </article>
@@ -300,7 +273,7 @@
         <p>ЮНЕСКО: стены, бастионы, базилика. Классика без спешки, с панорамами.</p>
         <div class="meta"><span>Carcassonne</span><span>1 день</span></div>
         <div class="actions">
-          <a class="btn primary" href="/programations/Carcassonne_1D.html" title="Подробнее">Подробнее</a>
+          <a class="btn primary" href="/programations/CARCASSONNE-1D.html" title="Подробнее" data-i18n="btn_more">Подробнее</a>
         </div>
       </div>
     </article>
@@ -318,27 +291,21 @@
   </div>
 </section>
 
-<!-- Краткие описания + полезно знать -->
+<!-- Кратко + полезно -->
 <section class="container card" id="program-summaries">
   <h3 class="section-title" data-i18n="inc_title_desc">Кратко о программах</h3>
   <ul class="list">
     <li>
-      <a href="/programations/Saint_Guilhem.html">Saint-Guilhem-le-Désert: аббатство и панорамы</a><br>
-      <small data-i18n="desc_sg">
-        Аббатство Гелон, мощёные улочки и панорамы ущелья Эрроу. Комфортный темп, гастро-паузы.
-      </small>
+      <a href="/programations/GUILHEM_CLAMOUSE_CAPION.html">Saint-Guilhem-le-Désert: аббатство и панорамы</a><br>
+      <small data-i18n="desc_sg">Аббатство Гелон, мощёные улочки и панорамы ущелья Эрроу. Комфортный темп, гастро-паузы.</small>
     </li>
     <li>
       <a href="/programations/bezier_sunset.html">Бéзье: круиз по Каналу дю Миди (день/закат)</a><br>
-      <small data-i18n="desc_bez">
-        Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Кафедральный собор Сен-Назер и панорамы над Орбом. Дневные/закатные рейсы, ужин на борту — опция.
-      </small>
+      <small data-i18n="desc_bez">Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Кафедральный собор Сен-Назер и панорамы над Орбом. Дневные/закатные рейсы, ужин на борту — опция.</small>
     </li>
     <li>
-      <a href="/programations/Carcassonne_1D.html">Carcassonne — средневековый город и цитадель (1 день)</a><br>
-      <small data-i18n="desc_car">
-        ЮНЕСКО: двойной пояс стен, базилика Сен-Назер, бастионы. Лучшие виды с Pont Vieux; можно добавить дегустацию.
-      </small>
+      <a href="/programations/CARCASSONNE-1D.html">Carcassonne — средневековый город и цитадель (1 день)</a><br>
+      <small data-i18n="desc_car">ЮНЕСКО: двойной пояс стен, базилика Сен-Назер, бастионы. Лучшие виды с Pont Vieux; можно добавить дегустацию.</small>
     </li>
   </ul>
 
@@ -357,7 +324,7 @@
     <div style="display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn" data-whatsapp href="https://wa.me/33759644813" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn primary" data-telegram href="https://t.me/de_iren" target="_blank" rel="noopener">Telegram</a>
-      <a class="btn" href="../index.html#tours" data-i18n="back_tours">← К программам</a>
+      <a class="btn" href="/index.html#tours" data-i18n="back_tours">← К программам</a>
     </div>
   </div>
 </section>
@@ -453,7 +420,7 @@ function applyLang(lang){
 </script>
 
 <script>
-  // WA/TG: формирует текст заявки (ссылки и без JS работают)
+  // WA/TG: быстрые ссылки (работают и без JS, но добавляем формирование текста)
   (function(){
     const CFG = Object.assign({
       whatsapp: '33759644813',
@@ -483,7 +450,7 @@ function applyLang(lang){
       a.addEventListener('click',async e=>{
         e.preventDefault();
         const bot=(CFG.telegram_bot||'').replace(/^@/,'');
-        const user=(CFG.telegram_user||'').replace(/^@/,''); /* исправлено */
+        const user=(CFG.telegram_user||'').replace(/^@/,'');
         if(bot){
           try{
             const pre=(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'')+'/prestart';
