@@ -19,15 +19,15 @@
   <meta property="og:title" content="Винные туры Лангедока — подборка программ" />
   <meta property="og:description" content="Grand Vin du Pic Saint-Loup и компактная петля Mèze & Montagnac: Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/wines/vinograd.jpg" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/wines/vinograd.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons (пути корректны для /programations/) -->
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="alternate icon" sizes="32x32" href="../favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-  <link rel="manifest" href="../site.webmanifest">
+  <!-- Favicons (из корня сайта) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -74,7 +74,6 @@
     .card .actions{margin-top:auto; display:flex; gap:10px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-
     @media(max-width:900px){ .card{grid-column:span 12} }
 
     .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
@@ -82,29 +81,29 @@
     .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
   </style>
 
-<script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
+  <script>
+  window.ANALYTICS_CONFIG = {
+    GA_ID: "G-L9TR2VTDX2",
+    YM_ID: 104246057,
+    consentVersion: "v2"
+  };
+  </script>
 
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
-
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
+
 <body data-program data-program-id="HUB-WINE" data-program-title="Вино Лангедока — подборка программ">
   <header>
     <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="На главную">
+      <a class="brand" href="/index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
       <nav class="lang">
         <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
+          <li><a href="/index.html#tours" data-i18n="nav_all">← Все программы</a></li>
+          <li><a href="/index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
@@ -116,7 +115,7 @@ window.ANALYTICS_CONFIG = {
   </header>
 
   <section class="hero">
-    <div class="bg"><img src="../assets/wines/vinograd.jpg" alt="" id="alt-hero-wine"><div class="overlay"></div></div>
+    <div class="bg"><img src="/assets/wines/vinograd.jpg" onerror="this.src='/favicon-512.png'" alt="Вины Лангедока — виноградники"><div class="overlay"></div></div>
     <div class="container inner">
       <div>
         <span class="badge" data-i18n="wine_badge">Wine • Languedoc</span>
@@ -133,26 +132,26 @@ window.ANALYTICS_CONFIG = {
     <div class="cards">
       <!-- PSL -->
       <article class="card">
-        <img src="../assets/psl/psl_hero.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" id="alt-psl">
+        <img src="/assets/psl/psl_hero.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Pic Saint-Loup — винный день">
         <div class="pad">
           <h4 data-i18n="psl_title">Grand Vin du Pic Saint-Loup — премиальный винный день</h4>
           <p data-i18n="psl_text">VIP-дегустации: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (возможен Hortus). ~7 часов, база: Монпелье.</p>
           <div class="meta"><span>Pic Saint-Loup</span><span>≈7 ч</span></div>
           <div class="actions">
-            <a class="btn primary" href="Pic_Saint_Loup.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/Pic_Saint_Loup.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- Mèze degust -->
       <article class="card">
-        <img src="../assets/wines2/IMG_0177.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="" id="alt-deg">
+        <img src="/assets/wines2/IMG_0177.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Mèze & Montagnac — дегустации">
         <div class="pad">
           <h4 data-i18n="deg_title">Mèze — дегустационный маршрут (Mèze & Montagnac)</h4>
           <p data-i18n="deg_text">Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.</p>
           <div class="meta"><span>Mèze & Montagnac</span><span>4–5 ч</span></div>
           <div class="actions">
-            <a class="btn primary" href="degustation-meze.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/degustation-meze.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
@@ -180,8 +179,8 @@ window.ANALYTICS_CONFIG = {
   <footer style="background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px">
     <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
       <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
-      <div><p><a href="../index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
-      <div><p><a href="../index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
+      <div><p><a href="/index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="/index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
+      <div><p><a href="/index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
     </div>
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
   </footer>
@@ -289,16 +288,28 @@ window.ANALYTICS_CONFIG = {
 
   <!-- CONFIG & FAB binding -->
   <script>
-    window.APP_CONFIG = { whatsapp:'33759644813', telegram_user:'de_iren', telegram_bot:'de_iren_order_bot', bot_prestart_url:'https://iren-order-bot.onrender.com/prestart', ADMIN_SECRET:'capion2025' };
+    window.APP_CONFIG = {
+      whatsapp:'33759644813',
+      telegram_user:'de_iren',
+      telegram_bot:'de_iren_order_bot',
+      bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
+    };
     ;(()=>{ if (window.__FAB_WINE__) return; window.__FAB_WINE__=true;
       const CFG=window.APP_CONFIG||{}; const digits=s=>String(s||'').replace(/\D/g,''); const enc=s=>encodeURIComponent(String(s||''));
       function buildText(){ return ['Заявка с сайта Tours Languedoc by Irène','Страница: Винные туры — хаб','URL: '+location.href].join('\n'); }
-      function toast(msg){ const t=document.createElement('div'); t.className='form-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+      function toast(msg){ const t=document.createElement('div'); t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0D2B1E;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:99999;font:600 14px/1.2 Inter,system-ui'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
       function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
       async function openTG(){
         const bot=(CFG.telegram_bot||'').replace(/^@/,''); const user=(CFG.telegram_user||'').replace(/^@/,'');
         const pre=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-        if(bot && /^https?:\/\//i.test(pre)){ try{ const r=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})}); const j=await r.json().catch(()=>({})); const tme=j.tme||(j.token?`https://t.me/${bot}?start=${encodeURIComponent(j.token)}`:''); if(tme){ safeOpen(tme); return; } }catch(e){} }
+        if(bot && /^https?:\/\//i.test(pre)){
+          try{
+            const r=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
+            const j=await r.json().catch(()=>({}));
+            const tme=j.tme||(j.token?`https://t.me/${bot}?start=${encodeURIComponent(j.token)}`:'');
+            if(tme){ safeOpen(tme); return; }
+          }catch(e){}
+        }
         if(user) safeOpen(`https://t.me/${user}`); else if(bot) safeOpen(`https://t.me/${bot}`); else toast('Не задан telegram_user/telegram_bot');
       }
       function openWA(){ const num=digits(CFG.whatsapp||''); if(!num){ toast('Не задан номер WhatsApp'); return;} safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`); }
