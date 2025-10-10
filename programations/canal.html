@@ -19,15 +19,15 @@
   <meta property="og:title" content="Canal du Midi — hub" />
   <meta property="og:description" content="Croisière à Béziers (écluses de Fonséranes), Saint-Guilhem-le-Désert, journée LUX Thau (Marseillan, Noilly Prat). Formats privés." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/canal/canal_sunset.jpg" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/canal/canal_sunset.jpg" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="alternate icon" sizes="32x32" href="../favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-  <link rel="manifest" href="../site.webmanifest">
+  <!-- Favicons (из корня) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -82,6 +82,7 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     @media(max-width:900px){ .card{grid-column:span 12} }
+
     .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
     .chat-fab svg{width:22px;height:22px}
     .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
@@ -102,7 +103,7 @@
 <body data-program data-program-id="HUB-CANAL" data-program-title="Канал дю Миди — хаб">
   <header>
     <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="На главную">
+      <a class="brand" href="/index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
         <div class="brand-text">
           <strong>Tours Languedoc by Irène</strong>
@@ -126,12 +127,15 @@
   <!-- Строка назад -->
   <div class="back-link">
     <div class="container inner">
-      <a href="../index.html#tours" data-i18n="nav_all">← Все программы</a>
+      <a href="/index.html#tours" data-i18n="nav_all">← Все программы</a>
     </div>
   </div>
 
   <section class="hero">
-    <div class="bg"><img src="../assets/canal/canal_sunset.jpg" onerror="this.src='../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="Canal du Midi à Béziers"><div class="overlay"></div></div>
+    <div class="bg">
+      <img src="/assets/canal/canal_sunset.jpg" onerror="this.src='/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="Canal du Midi à Béziers">
+      <div class="overlay"></div>
+    </div>
     <div class="container inner">
       <div>
         <span class="badge" data-i18n="cn_badge">Canal du Midi</span>
@@ -141,7 +145,6 @@
     </div>
   </section>
 
-  <!-- …дальше код секций (карточки, CTA, футер, скрипты) остаётся без изменений … -->
   <section class="container">
     <h3 class="section-title" data-i18n="cn_list_title">Выберите программу</h3>
     <p class="section-sub" data-i18n="cn_list_sub">Индивидуально / мини-группы. Возможны дневные и закатные рейсы.</p>
@@ -149,39 +152,39 @@
     <div class="cards">
       <!-- Béziers cruise -->
       <article class="card">
-        <img src="../assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='../assets/canal/canal_sunset.jpg'" alt="Béziers — écluses de Fonséranes">
+        <img src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='/assets/canal/canal_sunset.jpg'" alt="Béziers — écluses de Fonséranes">
         <div class="pad">
           <h4 data-i18n="beziers_title">Бéзье — круиз по Каналу дю Миди (день/закат)</h4>
           <p data-i18n="beziers_text">Фонсераны — Grand Bief — тоннель Малпас. Дневные и закатные рейсы. Ужин на борту — опция.</p>
           <div class="meta"><span>Béziers • Canal du Midi</span><span>полдня/вечер</span></div>
           <div class="actions">
-            <a class="btn primary" href="bezier_sunset.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/bezier_sunset.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- Saint-Guilhem -->
       <article class="card">
-        <img src="../assets/IMG_4003.JPG" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Saint-Guilhem-le-Désert">
+        <img src="/assets/IMG_4003.JPG" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Saint-Guilhem-le-Désert">
         <div class="pad">
           <h4 data-i18n="sg_title">Saint-Guilhem-le-Désert — аббатство и панорамы (1 день)</h4>
           <p data-i18n="sg_text">Аббатство Жилон, музей, обед на площади, обзорная площадка. Маршрут возле долины Эро, недалеко от канала.</p>
           <div class="meta"><span>Vallée de l’Hérault</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="Saint_Guilhem.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/GUILHEM_CLAMOUSE_CAPION.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- LUX Thau -->
       <article class="card">
-        <img src="../assets/thau/lux_thau.jpg" onerror="this.src='../assets/wines2/IMG_0118.JPG'" alt="Marseillan — Noilly Prat">
+        <img src="/assets/thau/lux_thau.jpg" onerror="this.src='/assets/wines2/IMG_0118.JPG'" alt="Marseillan — Noilly Prat">
         <div class="pad">
           <h4 data-i18n="thau_title">LUX Étang de Thau — авторский день у воды</h4>
           <p data-i18n="thau_text">Приватная лодка, устрицы Tarbouriech, Noilly Prat в Марсельяне, винный финал. Уютный день без пеших переходов.</p>
           <div class="meta"><span>Marseillan • Étang de Thau</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
           </div>
         </div>
       </article>
@@ -201,8 +204,8 @@
   <footer style="background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px">
     <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
       <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
-      <div><p><a href="../index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
-      <div><p><a href="../index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
+      <div><p><a href="/index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="/index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
+      <div><p><a href="/index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
     </div>
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
   </footer>
@@ -218,7 +221,7 @@
       "@type":"ItemList",
       "itemListElement":[
         {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/bezier_sunset.html"},
-        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/Saint_Guilhem.html"},
+        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html"},
         {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/Thau_LUX.html"}
       ]
     }
@@ -265,7 +268,6 @@
         cn_list_sub:'Privé / mini-groupes. Départs en journée et au coucher du soleil.',
         brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
         nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        nav_why_f:'Pourquoi nous', nav_all_f:'Programmes', nav_format_f:'Format', nav_contacts_f:'Contacts',
         btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         beziers_title:'Béziers — croisière Canal du Midi (jour/coucher de soleil)',
         beziers_text:'Fonséranes — Grand Bief — tunnel du Malpas. Dîner à bord en option.',
