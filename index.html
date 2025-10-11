@@ -622,7 +622,9 @@
         <div><p><a href="#why" data-i18n="nav.why">Почему с нами</a></p><p><a href="#tours" data-i18n="nav.tours">Программы</a></p></div>
         <div><p><a href="#format" data-i18n="nav.format">Формат</a></p><p><a href="#contactCard" data-i18n="nav.contacts">Контакты</a></p></div>
       </div>
-      <div class="copy">© 2023 — Languedoc, France</div>
+     <div class="copy">© <span id="y"></span> — Languedoc, France</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+
     </div>
   </footer>
 
