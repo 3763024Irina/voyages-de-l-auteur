@@ -340,7 +340,7 @@
           <article class="card" style="margin:0">
             <h3 class="section-title" data-i18n="notinc_title">Что не включено</h3>
             <ul class="clean" data-lang="ru">
-              <li>Питание, кроме завтрака (BB)</li>
+              <li>Питание, кроме завтрака BB</li>
               <li>Аренда педало/лодки, мастер-классы, дегустации</li>
               <li>Страховка, личные расходы</li>
             </ul>
@@ -419,7 +419,9 @@
       if (wa) wa.href = `https://wa.me/${waPhone}?text=${msg}`;
       if (tg) tg.href = `https://t.me/${tgUser}?text=${msg}`;
       if (em){ em.href=`mailto:${email}?subject=${encodeURIComponent(id+' — бронирование')}&body=${msg}`; em.setAttribute('target','_blank'); em.setAttribute('rel','noopener'); }
+      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('waLink')?.focus(), 60));
     })();
   </script>
 </body>
 </html>
+>
