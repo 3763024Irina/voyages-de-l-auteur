@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- CHANGE: уточнённые title/description -->
   <title>Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène</title>
-  <meta name="description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta name="description" content="Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы. Приватные культурные маршруты Лангедока." />
 
   <!-- Robots / языки / карта -->
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
@@ -15,16 +16,17 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
   <!-- === SEO base === -->
+  <!-- CHANGE: canonical RU без query; hreflang=fr указывает на ?lang=fr -->
   <link rel="canonical" href="https://goutvoyage.com/programations/castles.html" />
-  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=ru" hreflang="ru" />
-  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html?lang=fr" hreflang="fr" />
-  <link rel="alternate" href="https://goutvoyage.com/programations/castles.html" hreflang="x-default" />
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/castles.html" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/castles.html" />
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/castles.html?lang=fr" />
   <meta property="og:url" content="https://goutvoyage.com/programations/castles.html" />
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Замки & средневековые города — хаб" />
-  <meta property="og:description" content="Saint-Guilhem, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta property="og:description" content="Saint-Guilhem, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
   <meta property="og:image:alt" content="Saint-Guilhem-le-Désert — панорама, каменные улочки" />
@@ -38,11 +40,11 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène" />
-  <meta name="twitter:description" content="Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
+  <meta name="twitter:description" content="Культурные маршруты Лангедока: Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы." />
   <meta name="twitter:image" content="https://goutvoyage.com/assets/IMG_4003.JPG" />
 
   <!-- LCP image preload -->
-  <link rel="preload" as="image" href="/assets/IMG_4003.JPG" imagesrcset="/assets/IMG_4003.JPG 1600w" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/IMG_4003.JPG" imagesrcset="/assets/IMG_4003.JPG 1600w" imagesizes="100vw" fetchpriority="high" />
   <!-- WA/TG perf hints -->
   <link rel="dns-prefetch" href="//wa.me" />
   <link rel="dns-prefetch" href="//t.me" />
@@ -78,6 +80,7 @@
     .logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,var(--brand),#123c2c);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow)}
     nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
     nav a{font-weight:600;padding:8px 12px;border-radius:12px}
+    nav a:hover{background:#f0f0f0}
     .cta{background:var(--brand);color:#fff;border-radius:12px}
     .lang{display:flex;gap:8px}
     .lang button{border:1px solid #e6e6e6;background:#fff;padding:6px 10px;border-radius:999px;font-weight:700;cursor:pointer}
@@ -103,6 +106,7 @@
 
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .ph{aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block}
 
     .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
     .program-card{grid-column:span 6;background:var(--paper);border:1px solid #eee;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
@@ -138,7 +142,7 @@
     "inLanguage":["ru","fr"],
     "url":"https://goutvoyage.com/programations/castles.html",
     "isPartOf":{"@type":"Website","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"},
-    "description":"Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы.",
+    "description":"Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы.",
     "primaryImageOfPage":{"@type":"ImageObject","url":"https://goutvoyage.com/assets/IMG_4003.JPG","width":1600,"height":1067}
   }
   </script>
@@ -194,20 +198,20 @@
 <header>
   <div class="container nav">
     <a class="brand" href="/index.html" aria-label="На главную">
-      <div class="logo">Î</div>
+      <div class="logo" aria-hidden="true">Î</div>
       <div class="brand-text">
         <strong>Tours Languedoc by Irène</strong>
-        <small>— Des voyages avec goût</small>
+        <small data-i18n="brand_sub">— Путешествия со вкусом</small>
       </div>
     </a>
 
-    <nav>
-      <ul><li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li></ul>
+    <nav aria-label="Основная навигация">
+      <ul><li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрая заявка">Забронировать</a></li></ul>
     </nav>
 
     <div class="lang" aria-label="Переключение языка">
-      <button id="btn-ru" class="active" aria-pressed="true">RU</button>
-      <button id="btn-fr" aria-pressed="false">FR</button>
+      <button id="btn-ru" class="active" type="button" aria-pressed="true">RU</button>
+      <button id="btn-fr" type="button" aria-pressed="false">FR</button>
     </div>
   </div>
 </header>
@@ -215,9 +219,20 @@
 <!-- Стрелка «назад» -->
 <div class="back-link">
   <div class="container inner">
-    <a href="/index.html#tours" data-i18n="nav_all">← Все программы</a>
+    <a href="/index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a>
   </div>
 </div>
+
+<!-- BREADCRUMBS (видимые) -->
+<nav class="container" aria-label="breadcrumb" style="padding-top:14px">
+  <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+    <li><a href="/index.html">Главная</a></li>
+    <li aria-hidden="true">/</li>
+    <li><a href="/castles.html">Замки</a></li>
+    <li aria-hidden="true">/</li>
+    <li aria-current="page">Хаб программ</li>
+  </ol>
+</nav>
 
 <section class="hero">
   <div class="bg">
@@ -228,7 +243,7 @@
     <div>
       <span class="badge" data-i18n="hero_badge">Culture • Castles & Villages</span>
       <h2 class="title" data-i18n="hero_title">Замки & средневековые города — хаб</h2>
-      <p class="subtitle" data-i18n="hero_sub">3–6 часов · 2–3 остановки: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон.</p>
+      <p class="subtitle" data-i18n="hero_sub">3–6 часов · 2–3 остановки: Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон.</p>
     </div>
   </div>
 </section>
@@ -301,7 +316,7 @@
     </li>
     <li>
       <a href="/programations/bezier_sunset.html">Бéзье: круиз по Каналу дю Миди (день/закат)</a><br>
-      <small data-i18n="desc_bez">Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Кафедральный собор Сен-Назер и панорамы над Орбом. Дневные/закатные рейсы, ужин на борту — опция.</small>
+      <small data-i18n="desc_bez">Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Собор Сен-Назер и панорамы над Орбом. Ужин на борту — опция.</small>
     </li>
     <li>
       <a href="/programations/CARCASSONNE-1D.html">Carcassonne — средневековый город и цитадель (1 день)</a><br>
@@ -322,8 +337,9 @@
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос</h3>
     <p class="section-sub" data-i18n="form_sub">Напишите в WhatsApp/Telegram — ответим в течение дня.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a class="btn" data-whatsapp href="https://wa.me/33759644813" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn primary" data-telegram href="https://t.me/de_iren" target="_blank" rel="noopener">Telegram</a>
+      <!-- CHANGE: data-атрибуты для скрипта и чистые номера/ники -->
+      <a class="btn" data-whatsapp href="#" rel="noopener">WhatsApp</a>
+      <a class="btn primary" data-telegram href="#" rel="noopener">Telegram</a>
       <a class="btn" href="/index.html#tours" data-i18n="back_tours">← К программам</a>
     </div>
   </div>
@@ -333,24 +349,26 @@
   <div class="container">© 2025 — Languedoc, France</div>
 </footer>
 
+<!-- I18N -->
 <script>
 const i18n = {
   ru:{
     htmlLang:'ru',
     title:'Замки & средневековые города — хаб (Carcassonne, Saint-Guilhem, Béziers) | Tours Languedoc by Irène',
-    metaDesc:'Хаб по культурным маршрутам Лангедока: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы.',
+    metaDesc:'Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки, гастро-паузы. Приватные культурные маршруты Лангедока.',
     ogTitle:'Замки & средневековые города — хаб',
-    ogDesc:'Saint-Guilhem, Бéзье (канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки.',
+    ogDesc:'Saint-Guilhem, Бéзье (Канал дю Миди), Каркасон. 3–6 часов, 2–3 остановки.',
+    brand_sub:'— Путешествия со вкусом',
     hero_badge:'Culture • Castles & Villages',
     hero_title:'Замки & средневековые города — хаб',
-    hero_sub:'3–6 часов · 2–3 остановки: Saint-Guilhem-le-Désert, Бéзье (канал дю Миди), Каркасон.',
+    hero_sub:'3–6 часов · 2–3 остановки: Saint-Guilhem-le-Désert, Бéзье (Канал дю Миди), Каркасон.',
     gal_title:'Как это выглядит',
     gal_sub:'Saint-Guilhem-le-Désert • Béziers (Fonseranes) • Carcassonne.',
     inc_title2:'Выберите программу',
     inc_sub2:'Все маршруты — индивидуально/мини-группы. Экскурсии на русском/французском.',
     inc_title_desc:'Кратко о программах',
     desc_sg:'Аббатство Гелон, мощёные улочки и панорамы ущелья Эрроу. Комфортный темп, гастро-паузы.',
-    desc_bez:'Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Кафедральный собор Сен-Назер и панорамы над Орбом. Дневные/закатные рейсы, ужин на борту — опция.',
+    desc_bez:'Этажерки шлюзов Фонсераны → Grand Bief → тоннель Малпас. Собор Сен-Назер и панорамы над Орбом. Ужин на борту — опция.',
     desc_car:'ЮНЕСКО: двойной пояс стен, базилика Сен-Назер, бастионы. Лучшие виды с Pont Vieux; можно добавить дегустацию.',
     tips_title:'Полезно знать',
     tip_shoes:'Удобная обувь для мощёных улочек',
@@ -367,6 +385,7 @@ const i18n = {
     metaDesc:'Hub culture Languedoc : Saint-Guilhem-le-Désert, Béziers (Canal du Midi), Carcassonne. 3–6 h, 2–3 arrêts.',
     ogTitle:'Châteaux & villages médiévaux — hub',
     ogDesc:'Saint-Guilhem, Béziers (Canal du Midi), Carcassonne. 3–6 h, 2–3 arrêts.',
+    brand_sub:'— Des voyages avec goût',
     hero_badge:'Culture • Châteaux & Villages',
     hero_title:'Châteaux & villages médiévaux — hub',
     hero_sub:'3–6 h · 2–3 arrêts : Saint-Guilhem-le-Désert, Béziers (Canal du Midi), Carcassonne.',
@@ -376,11 +395,11 @@ const i18n = {
     inc_sub2:'Tous les itinéraires — privé / mini-groupes. Accompagnement FR/RU.',
     inc_title_desc:'En bref sur les programmes',
     desc_sg:"Abbaye de Gellone, ruelles pavées et belvédères des gorges de l'Hérault. Rythme confortable, pauses gourmandes.",
-    desc_bez:"Écluses de Fonseranes → Grand Bief → tunnel du Malpas. Cathédrale Saint-Nazaire et belvédères sur l'Orb. Croisières de jour/coucher de soleil; dîner à bord en option.",
+    desc_bez:"Écluses de Fonseranes → Grand Bief → tunnel du Malpas. Cathédrale Saint-Nazaire et belvédères sur l’Orb. Dîner à bord en option.",
     desc_car:"UNESCO : double enceinte, basilique Saint-Nazaire, bastions. Superbes vues depuis le Pont Vieux; dégustation en option.",
     tips_title:'À savoir',
     tip_shoes:'Chaussures confortables (ruelles pavées)',
-    tip_time:"Départ idéal avant 10h30 pour l’abbaye/la croisière",
+    tip_time:"Départ idéal avant 10h30 pour l’abbaye / la croisière",
     form_title:'Demande rapide',
     form_sub:'Écrivez sur WhatsApp/Telegram — réponse sous 24 h.',
     nav_all:'← Toutes les offres',
@@ -392,7 +411,7 @@ const setAttrIf=(el,a,v)=>{ if(el && typeof v==='string' && v.trim()!=='') el.se
 
 function applyLang(lang){
   const t=i18n[lang]||i18n.ru;
-  document.documentElement.lang=t.htmlLang;
+  document.documentElement.lang=t.htmlLang||'ru';
   if (t.title) document.title=t.title;
   setAttrIf(document.querySelector('meta[name="description"]'),'content',t.metaDesc);
   setAttrIf(document.querySelector('meta[property="og:title"]'),'content',t.ogTitle);
@@ -400,10 +419,9 @@ function applyLang(lang){
   const loc=document.querySelector('meta[property="og:locale"]');
   if(loc) loc.setAttribute('content', (lang==='fr'?'fr_FR':'ru_RU'));
   document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!=null) n.textContent=t[k]; });
-  document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-  document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-  document.getElementById('btn-ru').setAttribute('aria-pressed', lang==='ru');
-  document.getElementById('btn-fr').setAttribute('aria-pressed', lang==='fr');
+  const ruBtn=document.getElementById('btn-ru'); const frBtn=document.getElementById('btn-fr');
+  ruBtn?.classList.toggle('active', lang==='ru'); frBtn?.classList.toggle('active', lang==='fr');
+  ruBtn?.setAttribute('aria-pressed', String(lang==='ru')); frBtn?.setAttribute('aria-pressed', String(lang==='fr'));
   try{ localStorage.setItem('site:lang', lang); }catch(e){}
 }
 (function init(){
@@ -413,59 +431,65 @@ function applyLang(lang){
   if(!lang){ try{ const saved=localStorage.getItem('site:lang'); if(saved==='ru'||saved==='fr') lang=saved; }catch(e){} }
   if(!lang){ lang=((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'ru'); }
   applyLang(lang);
-  const upd=(l)=>{ const q=new URLSearchParams(location.search); q.set('lang',l); history.replaceState({},'',location.pathname+'?'+q.toString()+location.hash); };
+  // CHANGE: RU — без параметра; FR — оставляем ?lang=fr
+  const upd=(l)=>{
+    const q=new URLSearchParams(location.search);
+    if(l==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
+    history.replaceState({},'',location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+  };
   document.getElementById('btn-ru').onclick=()=>{applyLang('ru');upd('ru')};
   document.getElementById('btn-fr').onclick=()=>{applyLang('fr');upd('fr')};
 })();
 </script>
 
+<!-- WA / TG -->
 <script>
-  // WA/TG: быстрые ссылки (работают и без JS, но добавляем формирование текста)
-  (function(){
-    const CFG = Object.assign({
-      whatsapp: '33759644813',
-      telegram_user: 'de_iren',
-      telegram_bot: 'de_iren_order_bot',
-      bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
-    }, window.APP_CONFIG||{});
+  const APP_CONFIG = {
+    whatsapp:'33759644813',
+    telegram_user:'de_iren',
+    telegram_bot:'de_iren_order_bot',
+    bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
+  };
 
+  (function(){
+    const CFG=APP_CONFIG;
+    const digits=s=>String(s||'').replace(/\D/g,'');
+    const enc=s=>encodeURIComponent(String(s||''));
     function buildText(){
       const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
       return isFr
-        ? `Demande hub: ${document.title}\nPage: ${location.href}`
-        : `Запрос по хабу: ${document.title}\nСтраница: ${location.href}`;
+        ? ['Demande du site Tours Languedoc by Irène','Page : Hub Châteaux','URL : '+location.href].join('\n')
+        : ['Заявка с сайта Tours Languedoc by Irène','Страница: Хаб Замки/Средневековые города','URL: '+location.href].join('\n');
     }
-    const enc = s => encodeURIComponent(String(s||''));
+    function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
+
+    async function prestart(){
+      const u=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+      try{
+        const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
+        const j=await r.json().catch(()=>null);
+        return j?.tme || (j?.token ? `https://t.me/${(CFG.telegram_bot||'').replace(/^@/,'')}?start=${enc(j.token)}` : '');
+      }catch{ return ''; }
+    }
 
     document.querySelectorAll('[data-whatsapp]').forEach(a=>{
       a.addEventListener('click',e=>{
         e.preventDefault();
-        const num = String(CFG.whatsapp||'').replace(/\D/g,'');
-        if(!num) return alert('В APP_CONFIG не задан WhatsApp');
-        location.href = `https://wa.me/${num}?text=${enc(buildText())}`;
+        const num=digits(CFG.whatsapp||'');
+        if(!num) return alert('Не задан номер WhatsApp');
+        safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
       });
     });
-
     document.querySelectorAll('[data-telegram]').forEach(a=>{
-      a.addEventListener('click',async e=>{
+      a.addEventListener('click', async e=>{
         e.preventDefault();
         const bot=(CFG.telegram_bot||'').replace(/^@/,'');
         const user=(CFG.telegram_user||'').replace(/^@/,'');
-        if(bot){
-          try{
-            const pre=(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'')+'/prestart';
-            const r=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
-            const j=await r.json().catch(()=>({}));
-            const tme=j?.tme || (j?.token?`https://t.me/${bot}?start=${enc(j.token)}`:'');
-            location.href = tme || `https://t.me/${bot}`;
-          }catch{
-            location.href=`https://t.me/${bot}`;
-          }
-        } else if(user){
-          location.href=`https://t.me/${user}`;
-        } else {
-          alert('В APP_CONFIG не задан Telegram');
-        }
+        let url='';
+        if(bot){ url = await prestart(); if(!url) url=`https://t.me/${bot}`; }
+        else if(user){ url=`https://t.me/${user}`; }
+        else{ return alert('Не задан telegram_user/telegram_bot'); }
+        safeOpen(url);
       });
     });
   })();
