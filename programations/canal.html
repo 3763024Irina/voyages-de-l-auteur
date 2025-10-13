@@ -5,30 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Канал дю Миди — хаб программ | Tours Languedoc by Irène</title>
-  <meta name="description" content="Круиз по Каналу дю Миди (Фонсераны — Grand Bief — туннель Малпас), Saint-Guilhem-le-Désert на день, LUX Thau (Marseillan — Noilly Prat). Приватные форматы, мини-группы." />
-  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Круиз по Каналу дю Миди (Фонсераны — Grand Bief — тоннель Малпас), Saint-Guilhem-le-Désert на день, LUX Thau (Marseillan — Noilly Prat). Приватные форматы, мини-группы." />
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta name="bingbot" content="index,follow" />
+  <meta http-equiv="content-language" content="ru, fr">
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://goutvoyage.com/programations/canal.html" />
   <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/canal.html" />
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/canal.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/canal.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/canal.html?lang=fr" />
   <meta property="og:url" content="https://goutvoyage.com/programations/canal.html" />
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Canal du Midi — hub" />
   <meta property="og:description" content="Croisière à Béziers (écluses de Fonséranes), Saint-Guilhem-le-Désert, journée LUX Thau (Marseillan, Noilly Prat). Formats privés." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://goutvoyage.com/assets/canal/canal_sunset.jpg" />
+  <meta property="og:image:alt" content="Canal du Midi à Béziers au coucher du soleil" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1067" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons (из корня) -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" sizes="32x32" href="/favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Канал дю Миди — хаб программ | Tours Languedoc by Irène" />
+  <meta name="twitter:description" content="Круиз по Каналу дю Миди, Saint-Guilhem-le-Désert, LUX Thau (Marseillan — Noilly Prat). Приватные форматы." />
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/canal/canal_sunset.jpg" />
 
+  <!-- LCP preload -->
+  <link rel="preload" as="image" href="/assets/canal/canal_sunset.jpg" imagesrcset="/assets/canal/canal_sunset.jpg 1600w" imagesizes="100vw" fetchpriority="high" />
+  <!-- Perf hints for messengers -->
+  <link rel="dns-prefetch" href="//wa.me" />
+  <link rel="dns-prefetch" href="//t.me" />
+  <link rel="preconnect" href="https://wa.me" crossorigin>
+  <link rel="preconnect" href="https://t.me" crossorigin>
+
+  <!-- Favicons (root) -->
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png?v=3">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#0D2B1E">
+  <meta name="theme-color" content="#0D2B1E">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -38,6 +68,7 @@
     body{margin:0; color:var(--ink); background:var(--bg); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; padding-bottom:120px}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
+
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
     .nav{display:flex; align-items:center; justify-content:space-between; min-height:72px; padding:8px 0}
     .brand{display:flex; align-items:center; gap:14px}
@@ -52,7 +83,6 @@
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
-    /* back link under header */
     .back-link{display:block;border-bottom:1px solid #eee;background:#fff}
     .back-link .inner{display:flex;align-items:center;gap:8px;height:44px}
     .back-link a{font-weight:600}
@@ -89,17 +119,56 @@
   </style>
 
   <script>
-    window.ANALYTICS_CONFIG = {
-      GA_ID: "G-L9TR2VTDX2",
-      YM_ID: 104246057,
-      consentVersion: "v2"
-    };
+    window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v2" };
   </script>
-
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
 
+  <!-- JSON-LD: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Canal du Midi — hub",
+    "inLanguage":["ru","fr"],
+    "url":"https://goutvoyage.com/programations/canal.html",
+    "isPartOf":{"@type":"Website","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"},
+    "description":"Круиз по Каналу дю Миди (Фонсераны — Grand Bief — Малпас), Saint-Guilhem-le-Désert, LUX Thau. Приватные форматы."
+  }
+  </script>
+
+  <!-- JSON-LD: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Программы","item":"https://goutvoyage.com/index.html#tours"},
+      {"@type":"ListItem","position":3,"name":"Canal du Midi — hub","item":"https://goutvoyage.com/programations/canal.html"}
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: CollectionPage + ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"CollectionPage",
+    "name":"Canal du Midi — hub",
+    "url":"https://goutvoyage.com/programations/canal.html",
+    "mainEntity":{
+      "@type":"ItemList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/bezier_sunset.html","name":"Béziers — croisière Canal du Midi"},
+        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html","name":"Saint-Guilhem-le-Désert — abbaye & panoramas"},
+        {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/Thau_LUX.html","name":"LUX Étang de Thau — journée signature"}
+      ]
+    }
+  }
+  </script>
 </head>
+
 <body data-program data-program-id="HUB-CANAL" data-program-title="Канал дю Миди — хаб">
   <header>
     <div class="container nav">
@@ -111,29 +180,41 @@
         </div>
       </a>
 
-      <nav>
+      <nav aria-label="Основная навигация">
         <ul>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
+          <li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрая заявка">Забронировать</a></li>
         </ul>
       </nav>
 
-      <div class="lang" aria-label="Language switch">
-        <button id="btn-ru" class="active">RU</button>
-        <button id="btn-fr">FR</button>
+      <div class="lang" aria-label="Переключение языка">
+        <button id="btn-ru" class="active" aria-pressed="true" type="button">RU</button>
+        <button id="btn-fr" aria-pressed="false" type="button">FR</button>
       </div>
     </div>
   </header>
 
-  <!-- Строка назад -->
+  <!-- Back link -->
   <div class="back-link">
     <div class="container inner">
-      <a href="/index.html#tours" data-i18n="nav_all">← Все программы</a>
+      <a href="/index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a>
     </div>
   </div>
 
+  <!-- Visible breadcrumbs -->
+  <nav class="container" aria-label="breadcrumb" style="padding-top:12px">
+    <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+      <li><a href="/index.html">Главная</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/index.html#tours">Программы</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">Канал дю Миди — хаб</li>
+    </ol>
+  </nav>
+
   <section class="hero">
     <div class="bg">
-      <img src="/assets/canal/canal_sunset.jpg" onerror="this.src='/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="Canal du Midi à Béziers">
+      <img id="hero-canal" src="/assets/canal/canal_sunset.jpg" width="1600" height="1067" fetchpriority="high" loading="eager" decoding="async"
+           onerror="this.src='/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg'" alt="Canal du Midi à Béziers">
       <div class="overlay"></div>
     </div>
     <div class="container inner">
@@ -152,39 +233,42 @@
     <div class="cards">
       <!-- Béziers cruise -->
       <article class="card">
-        <img src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" onerror="this.src='/assets/canal/canal_sunset.jpg'" alt="Béziers — écluses de Fonséranes">
+        <img src="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg" width="1200" height="700" loading="lazy" decoding="async"
+             onerror="this.src='/assets/canal/canal_sunset.jpg'" alt="Béziers — écluses de Fonséranes">
         <div class="pad">
           <h4 data-i18n="beziers_title">Бéзье — круиз по Каналу дю Миди (день/закат)</h4>
           <p data-i18n="beziers_text">Фонсераны — Grand Bief — тоннель Малпас. Дневные и закатные рейсы. Ужин на борту — опция.</p>
           <div class="meta"><span>Béziers • Canal du Midi</span><span>полдня/вечер</span></div>
           <div class="actions">
-            <a class="btn primary" href="/programations/bezier_sunset.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/bezier_sunset.html" data-i18n="btn_more" title="Подробнее о круизе">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- Saint-Guilhem -->
       <article class="card">
-        <img src="/assets/IMG_4003.JPG" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Saint-Guilhem-le-Désert">
+        <img src="/assets/IMG_4003.JPG" width="1200" height="700" loading="lazy" decoding="async"
+             onerror="this.src='/assets/wines/vinograd.jpg'" alt="Saint-Guilhem-le-Désert">
         <div class="pad">
           <h4 data-i18n="sg_title">Saint-Guilhem-le-Désert — аббатство и панорамы (1 день)</h4>
           <p data-i18n="sg_text">Аббатство Жилон, музей, обед на площади, обзорная площадка. Маршрут возле долины Эро, недалеко от канала.</p>
           <div class="meta"><span>Vallée de l’Hérault</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="/programations/GUILHEM_CLAMOUSE_CAPION.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/GUILHEM_CLAMOUSE_CAPION.html" data-i18n="btn_more" title="Подробнее о Saint-Guilhem">Подробнее</a>
           </div>
         </div>
       </article>
 
       <!-- LUX Thau -->
       <article class="card">
-        <img src="/assets/thau/lux_thau.jpg" onerror="this.src='/assets/wines2/IMG_0118.JPG'" alt="Marseillan — Noilly Prat">
+        <img src="/assets/thau/lux_thau.jpg" width="1200" height="700" loading="lazy" decoding="async"
+             onerror="this.src='/assets/wines2/IMG_0118.JPG'" alt="Marseillan — Noilly Prat">
         <div class="pad">
           <h4 data-i18n="thau_title">LUX Étang de Thau — авторский день у воды</h4>
           <p data-i18n="thau_text">Приватная лодка, устрицы Tarbouriech, Noilly Prat в Марсельяне, винный финал. Уютный день без пеших переходов.</p>
           <div class="meta"><span>Marseillan • Étang de Thau</span><span>1 день</span></div>
           <div class="actions">
-            <a class="btn primary" href="/programations/Thau_LUX.html" data-i18n="btn_more">Подробнее</a>
+            <a class="btn primary" href="/programations/Thau_LUX.html" data-i18n="btn_more" title="Подробнее о LUX Thau">Подробнее</a>
           </div>
         </div>
       </article>
@@ -196,8 +280,8 @@
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
     <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим слоты на круиз/лодку.</p>
     <div class="actions" style="display:flex; gap:10px; flex-wrap:wrap">
-      <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-      <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+      <a class="btn" data-whatsapp href="#" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
+      <a class="btn primary" data-telegram href="#" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
     </div>
   </section>
 
@@ -210,48 +294,30 @@
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
   </footer>
 
-  <!-- JSON-LD: CollectionPage + ItemList -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"Canal du Midi — hub",
-    "url":"https://goutvoyage.com/programations/canal.html",
-    "mainEntity":{
-      "@type":"ItemList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/bezier_sunset.html"},
-        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/GUILHEM_CLAMOUSE_CAPION.html"},
-        {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/Thau_LUX.html"}
-      ]
-    }
-  }
-  </script>
-
   <!-- I18N -->
   <script>
     const i18nCanal = {
       ru: {
         htmlLang:'ru',
         title:'Канал дю Миди — хаб программ | Tours Languedoc by Irène',
-        metaDesc:'Круиз по Каналу дю Миди (Фонсераны, Grand Bief, Малпас), Saint-Guilhem-le-Désert, LUX Thau (Marseillan — Noilly Prat).',
+        metaDesc:'Круиз по Каналу дю Миди (Фонсераны, Grand Bief, Малпас), Saint-Guilhem-le-Désert, LUX Thau (Marseillan — Noilly Prat). Приватные форматы, мини-группы.',
         ogTitle:'Canal du Midi — хаб',
-        ogDesc:'Круизы, монастырь Saint-Guilhem, Noilly Prat в Марсельяне.',
+        ogDesc:'Круизы, Saint-Guilhem, Noilly Prat в Марсельяне.',
+        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
+        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
+        btn_more:'Подробнее', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         cn_badge:'Canal du Midi',
         cn_title:'Канал дю Миди — хаб',
         cn_sub:'Круиз по Каналу дю Миди (Фонсераны, Grand Bief, Малпас) • Saint-Guilhem-le-Désert (1 день) • LUX Thau (Marseillan — Noilly Prat).',
         cn_list_title:'Выберите программу',
         cn_list_sub:'Индивидуально / мини-группы. Возможны дневные и закатные рейсы.',
-        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
-        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        btn_more:'Подробнее', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
         beziers_title:'Бéзье — круиз по Каналу дю Миди (день/закат)',
         beziers_text:'Фонсераны — Grand Bief — тоннель Малпас. Дневные и закатные рейсы. Ужин на борту — опция.',
         sg_title:'Saint-Guilhem-le-Désert — аббатство и панорамы (1 день)',
         sg_text:'Аббатство Жилон, музей, обед на площади, обзорная площадка. Маршрут возле долины Эро, недалеко от канала.',
         thau_title:'LUX Étang de Thau — авторский день у воды',
-        thau_text:'Приватная лодка, устрицы Tarbouriech, Noilly Prat в Марсельяне, винный финал. Уютный день без пеших переходов.',
+        thau_text:'Приватная лодка, устрицы Tarbouriech, Noilly Prat в Марсельяне, винный финал. Без пеших переходов.',
         form_title:'Быстрый запрос / бронирование',
         form_sub:'Ответим в течение дня и подтвердим слоты на круиз/лодку.'
       },
@@ -261,81 +327,88 @@
         metaDesc:"Croisière (Béziers — écluses de Fonséranes, Grand Bief, tunnel du Malpas), Saint-Guilhem-le-Désert, journée LUX Thau (Marseillan — Noilly Prat).",
         ogTitle:'Canal du Midi — hub',
         ogDesc:"Croisières, abbaye de Saint-Guilhem, Noilly Prat à Marseillan.",
+        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
+        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         cn_badge:'Canal du Midi',
         cn_title:'Canal du Midi — hub',
         cn_sub:"Croisière Canal du Midi (Fonséranes, Grand Bief, Malpas) • Saint-Guilhem-le-Désert (1 jour) • LUX Thau (Marseillan — Noilly Prat).",
         cn_list_title:'Choisissez un programme',
-        cn_list_sub:'Privé / mini-groupes. Départs en journée et au coucher du soleil.',
-        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
+        cn_list_sub:'Privé / mini-groupes. Départs de jour et au coucher du soleil.',
         beziers_title:'Béziers — croisière Canal du Midi (jour/coucher de soleil)',
         beziers_text:'Fonséranes — Grand Bief — tunnel du Malpas. Dîner à bord en option.',
         sg_title:'Saint-Guilhem-le-Désert — abbaye & panoramas (1 jour)',
-        sg_text:"Abbaye de Gellone, musée, déjeuner sur la place, belvédère. Itinéraire proche de la vallée de l’Hérault et du canal.",
+        sg_text:"Abbaye de Gellone, musée, déjeuner sur la place, belvédère. Près de la vallée de l’Hérault et du canal.",
         thau_title:"LUX Étang de Thau — journée signature",
         thau_text:"Bateau privé, huîtres Tarbouriech, Noilly Prat à Marseillan, final vins. Sans marche.",
         form_title:'Demande / réservation rapide',
-        form_sub:'Réponse sous 24h et confirmation des créneaux croisière/bateau.'
+        form_sub:'Réponse sous 24 h et confirmation des créneaux croisière/bateau.'
       }
     };
 
+    const setAttrIf=(el,a,v)=>{ if(el && typeof v==='string' && v.trim()!=='') el.setAttribute(a,v); };
+
     function applyLangCanal(lang){
-      const t=i18nCanal[lang];
-      document.documentElement.lang=t.htmlLang;
-      document.title=t.title;
-      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      document.querySelectorAll('[data-i18n]').forEach(n=>{
-        const k=n.getAttribute('data-i18n');
-        if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
-      });
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-      localStorage.setItem('site:lang', lang);
+      const t=i18nCanal[lang]||i18nCanal.ru;
+      document.documentElement.lang=t.htmlLang||'ru';
+      if(t.title) document.title=t.title;
+      setAttrIf(document.querySelector('meta[name="description"]'),'content',t.metaDesc);
+      setAttrIf(document.querySelector('meta[property="og:title"]'),'content',t.ogTitle);
+      setAttrIf(document.querySelector('meta[property="og:description"]'),'content',t.ogDesc);
+      const loc=document.querySelector('meta[property="og:locale"]'); if(loc) loc.setAttribute('content',(lang==='fr'?'fr_FR':'ru_RU'));
+      document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); const v=t[k]; if(typeof v==='string'){ /<[a-z][\s\S]*>/i.test(v) ? n.innerHTML=v : n.textContent=v; } });
+      const ruBtn=document.getElementById('btn-ru'); const frBtn=document.getElementById('btn-fr');
+      ruBtn?.classList.toggle('active', lang==='ru'); frBtn?.classList.toggle('active', lang==='fr');
+      ruBtn?.setAttribute('aria-pressed', String(lang==='ru')); frBtn?.setAttribute('aria-pressed', String(lang==='fr'));
+      try{ localStorage.setItem('site:lang', lang); }catch(e){}
     }
+
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
-      const saved=localStorage.getItem('site:lang');
-      const auto=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved||auto);
-      applyLangCanal(initial);
-      const upd=(lang)=>{ const q=new URLSearchParams(location.search); q.set('lang',lang); history.replaceState({},'', location.pathname+'?'+q.toString()+location.hash); };
-      document.getElementById('btn-ru').addEventListener('click',()=>{applyLangCanal('ru');upd('ru')});
-      document.getElementById('btn-fr').addEventListener('click',()=>{applyLangCanal('fr');upd('fr')});
+      let lang=(fromURL==='ru'||fromURL==='fr')?fromURL:null;
+      if(!lang){ try{ const saved=localStorage.getItem('site:lang'); if(saved==='ru'||saved==='fr') lang=saved; }catch(e){} }
+      if(!lang){ lang=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr' : 'ru'); }
+      applyLangCanal(lang);
+      // RU — без ?lang, FR — с ?lang=fr
+      const upd=(l)=>{
+        const q=new URLSearchParams(location.search);
+        if(l==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
+        history.replaceState({},'', location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+      };
+      document.getElementById('btn-ru')?.addEventListener('click',()=>{applyLangCanal('ru');upd('ru')});
+      document.getElementById('btn-fr')?.addEventListener('click',()=>{applyLangCanal('fr');upd('fr')});
     })();
   </script>
 
   <!-- CONFIG & WhatsApp/Telegram binding -->
   <script>
-    window.APP_CONFIG = window.APP_CONFIG || {
-      whatsapp:'+33 7 59 64 48 13',
+    const APP_CONFIG = {
+      whatsapp:'33759644813',
       telegram_user:'de_iren',
       telegram_bot:'de_iren_order_bot',
       bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
     };
 
     (function(){
-      const CFG=window.APP_CONFIG||{};
+      const CFG=APP_CONFIG;
       const digits=s=>String(s||'').replace(/\D/g,'');
       const enc=s=>encodeURIComponent(String(s||''));
       function buildText(){
-        return [
-          'Заявка с сайта Tours Languedoc by Irène',
-          'Страница: Канал дю Миди — хаб',
-          'URL: '+location.href
-        ].join('\n');
+        const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
+        return isFr
+          ? ['Demande du site Tours Languedoc by Irène','Page : Hub Canal du Midi','URL : '+location.href].join('\n')
+          : ['Заявка с сайта Tours Languedoc by Irène','Страница: Хаб Канал дю Миди','URL: '+location.href].join('\n');
       }
-      function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),50); }
+      function toast(msg){ const t=document.createElement('div'); t.style.cssText='position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#0D2B1E;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.18);font-weight:700;z-index:10000'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
+      function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
 
       async function prestart(){
+        const pre=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
         try{
-          const u=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-          const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
-          const j=await r.json().catch(()=>null);
-          return j?.token||'';
+          const r=await fetch(pre,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
+          const j=await r.json().catch(()=>({}));
+          return j.tme || (j.token ? `https://t.me/${(CFG.telegram_bot||'').replace(/^@/,'')}?start=${enc(j.token)}` : '');
         }catch{ return ''; }
       }
 
@@ -343,7 +416,7 @@
         el.addEventListener('click',e=>{
           e.preventDefault();
           const num=digits(CFG.whatsapp||'');
-          if(!num) return alert('Не задан номер WhatsApp');
+          if(!num) return toast('Не задан номер WhatsApp');
           safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
         });
       });
@@ -354,18 +427,24 @@
           const bot=(CFG.telegram_bot||'').replace(/^@/,'');
           const user=(CFG.telegram_user||'').replace(/^@/,'');
           let url='';
-          if(bot){
-            const tok=await prestart();
-            url=`https://t.me/${bot}${tok?`?start=${enc(tok)}`:''}`;
-          }else if(user){
-            url=`https://t.me/${user}`;
-          }
-          if(!url) return alert('Не задан telegram_user/telegram_bot');
+          if(bot){ url=await prestart(); if(!url) url=`https://t.me/${bot}`; }
+          else if(user){ url=`https://t.me/${user}`; }
+          if(!url) return toast('Не задан telegram_user/telegram_bot');
           safeOpen(url);
         });
       });
     })();
   </script>
 
+  <!-- HERO SMART FALLBACK (на случай ошибки LCP) -->
+  <script>
+    (function(){
+      const img=document.getElementById('hero-canal');
+      if(!img) return;
+      const fallback="/assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg";
+      if(img.complete && img.naturalWidth===0){ img.src=fallback; }
+      img.addEventListener('error', ()=>{ if(!img.src.includes(fallback)) img.src=fallback; });
+    })();
+  </script>
 </body>
 </html>
