@@ -4,30 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Винные туры Лангедока — подборка программ | Tours Languedoc by Irène</title>
-  <meta name="description" content="Подборка винных программ Лангедока: Grand Vin du Pic Saint-Loup и Mèze & Montagnac (Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi). 4–7 часов, приватно." />
+  <!-- CHANGE: уточнила Title под ключи -->
+  <title>Винные туры Лангедока — дегустации и маршруты | Tours Languedoc by Irène</title>
+
+  <!-- CHANGE: description короче и «ключевее» -->
+  <meta name="description" content="Винные туры по Лангедоку: Grand Vin du Pic Saint-Loup и дегустационная петля Mèze & Montagnac (Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi). Приватно, 4–7 ч." />
   <meta name="robots" content="index,follow" />
 
   <!-- Canonical & hreflang -->
+  <!-- CHANGE: canonical без query; hreflang с RU как основным, FR — через ?lang=fr -->
   <link rel="canonical" href="https://goutvoyage.com/programations/wine.html" />
   <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/wine.html" />
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/wine.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/wine.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/wine.html?lang=fr" />
-  <meta property="og:url" content="https://goutvoyage.com/programations/wine.html" />
 
   <!-- Open Graph -->
+  <!-- CHANGE: дополнила OG и добавила размеры -->
+  <meta property="og:url" content="https://goutvoyage.com/programations/wine.html" />
   <meta property="og:title" content="Винные туры Лангедока — подборка программ" />
-  <meta property="og:description" content="Grand Vin du Pic Saint-Loup и компактная петля Mèze & Montagnac: Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
+  <meta property="og:description" content="Grand Vin du Pic Saint-Loup и компактная петля Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://goutvoyage.com/assets/wines/vinograd.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- CHANGE: добавила Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Винные туры Лангедока — подборка программ" />
+  <meta name="twitter:description" content="PSL (VIP) и Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/wines/vinograd.jpg" />
+
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons (из корня сайта) -->
+  <!-- Favicons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" sizes="32x32" href="/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <!-- CHANGE: Preload LCP изображения героя -->
+  <link rel="preload" as="image" href="/assets/wines/vinograd.jpg" imagesrcset="/assets/wines/vinograd.jpg 1200w" imagesizes="100vw" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -100,30 +117,44 @@
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
-      <nav class="lang">
+      <nav class="lang" aria-label="Главная навигация">
         <ul>
           <li><a href="/index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="/index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
         <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
+          <button id="btn-ru" class="active" type="button">RU</button>
+          <button id="btn-fr" type="button">FR</button>
         </div>
       </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="bg"><img src="/assets/wines/vinograd.jpg" onerror="this.src='/favicon-512.png'" alt="Вины Лангедока — виноградники"><div class="overlay"></div></div>
+    <div class="bg">
+      <img src="/assets/wines/vinograd.jpg" onerror="this.src='/favicon-512.png'" alt="Винные туры Лангедока — виноградники и дегустации">
+      <div class="overlay"></div>
+    </div>
     <div class="container inner">
       <div>
         <span class="badge" data-i18n="wine_badge">Wine • Languedoc</span>
         <h2 class="title" data-i18n="wine_title">Винные туры Лангедока — подборка программ</h2>
-        <p class="subtitle" data-i18n="wine_sub">Два формата: Grand Vin du Pic Saint-Loup (VIP-день) и компактная дегустационная петля Mèze & Montagnac: Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.</p>
+        <p class="subtitle" data-i18n="wine_sub">Два формата: Grand Vin du Pic Saint-Loup (VIP-день) и компактная дегустационная петля Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.</p>
       </div>
     </div>
   </section>
+
+  <!-- CHANGE: добавил внутренние хлебные крошки (улучшают навигацию и CTR в выдаче) -->
+  <nav class="container" aria-label="breadcrumb" style="padding-top:18px">
+    <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+      <li><a href="/index.html">Главная</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/wine.html">Вино</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">Подборка программ</li>
+    </ol>
+  </nav>
 
   <section class="container">
     <h3 class="section-title" data-i18n="wine_list_title">Выберите программу</h3>
@@ -132,7 +163,7 @@
     <div class="cards">
       <!-- PSL -->
       <article class="card">
-        <img src="/assets/psl/psl_hero.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Pic Saint-Loup — винный день">
+        <img src="/assets/psl/psl_hero.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Pic Saint-Loup — премиальные винные дегустации">
         <div class="pad">
           <h4 data-i18n="psl_title">Grand Vin du Pic Saint-Loup — премиальный винный день</h4>
           <p data-i18n="psl_text">VIP-дегустации: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (возможен Hortus). ~7 часов, база: Монпелье.</p>
@@ -145,10 +176,10 @@
 
       <!-- Mèze degust -->
       <article class="card">
-        <img src="/assets/wines2/IMG_0177.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Mèze & Montagnac — дегустации">
+        <img src="/assets/wines2/IMG_0177.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Mèze & Montagnac — дегустационная петля">
         <div class="pad">
           <h4 data-i18n="deg_title">Mèze — дегустационный маршрут (Mèze & Montagnac)</h4>
-          <p data-i18n="deg_text">Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.</p>
+          <p data-i18n="deg_text">Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.</p>
           <div class="meta"><span>Mèze & Montagnac</span><span>4–5 ч</span></div>
           <div class="actions">
             <a class="btn primary" href="/programations/degustation-meze.html" data-i18n="btn_more">Подробнее</a>
@@ -193,20 +224,33 @@
     <svg viewBox="0 0 256 256" aria-hidden="true"><path fill="#008ad6" d="M232.6 25.3a12 12 0 0 0-12.2-2.3L17.9 99.1A12 12 0 0 0 20 121l43.6 15.5l21 68.2a12 12 0 0 0 19.5 5.4l30.8-27.8l47.6 36.4a12 12 0 0 0 18.7-7.2l36.8-176a12 12 0 0 0-5.4-12.2M188.1 202.6l-40.1-30.7a12 12 0 0 0-15.4.6l-26 23.5l-16.2-52.7l99.4-62.1z"/></svg>
   </button>
 
-  <!-- JSON-LD: CollectionPage + ItemList -->
+  <!-- JSON-LD -->
+  <!-- CHANGE: добавлен BreadcrumbList + уточнённая CollectionPage -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"Винные туры Лангедока — подборка программ",
-    "url":"https://goutvoyage.com/programations/wine.html",
-    "mainEntity":{
-      "@type":"ItemList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html"},
-        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/degustation-meze.html"}
-      ]
-    }
+    "@graph": [
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+          {"@type":"ListItem","position":2,"name":"Вино","item":"https://goutvoyage.com/wine.html"},
+          {"@type":"ListItem","position":3,"name":"Подборка программ","item":"https://goutvoyage.com/programations/wine.html"}
+        ]
+      },
+      {
+        "@type":"CollectionPage",
+        "name":"Винные туры Лангедока — подборка программ",
+        "url":"https://goutvoyage.com/programations/wine.html",
+        "mainEntity":{
+          "@type":"ItemList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html"},
+            {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/degustation-meze.html"}
+          ]
+        }
+      }
+    ]
   }
   </script>
 
@@ -215,13 +259,13 @@
     const i18nWine = {
       ru: {
         htmlLang:'ru',
-        title:'Винные туры Лангедока — подборка программ | Tours Languedoc by Irène',
-        metaDesc:'Подборка винных программ Лангедока: Grand Vin du Pic Saint-Loup и Mèze & Montagnac. Приватно, 4–7 часов.',
+        title:'Винные туры Лангедока — дегустации и маршруты | Tours Languedoc by Irène',
+        metaDesc:'Винные туры по Лангедоку: PSL и Mèze & Montagnac. Приватно, 4–7 часов.',
         ogTitle:'Винные туры Лангедока — подборка программ',
-        ogDesc:'PSL (VIP) и Mèze & Montagnac: Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
+        ogDesc:'PSL (VIP) и Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
         wine_badge:'Wine • Languedoc',
         wine_title:'Винные туры Лангедока — подборка программ',
-        wine_sub:'Два формата: Grand Vin du Pic Saint-Loup (VIP-день) и компактная дегустационная петля Mèze & Montagnac: Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
+        wine_sub:'Два формата: Grand Vin du Pic Saint-Loup (VIP-день) и компактная дегустационная петля Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
         wine_list_title:'Выберите программу',
         wine_list_sub:'Обе программы — индивидуально, можно адаптировать под ваши интересы (белые/красные, Picpoul, Grès de Montpellier).',
         brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
@@ -230,7 +274,7 @@
         psl_title:'Grand Vin du Pic Saint-Loup — премиальный винный день',
         psl_text:'VIP-дегустации: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (возможен Hortus). ~7 часов, база: Монпелье.',
         deg_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
-        deg_text:'Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.',
+        deg_text:'Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.',
         faq_title:'FAQ',
         q1:'Можно адаптировать домены под белые/красные?', a1:'Да, подбираем линейку по вкусу: Picpoul, Grès de Montpellier, экспериментальные кюве.',
         q2:'Откуда старт?', a2:'Монпелье / Mèze / по договорённости. Возможен пикап из отеля.',
@@ -241,10 +285,10 @@
         title:'Languedoc — sélection de circuits œnologiques | Tours Languedoc by Irène',
         metaDesc:"Sélection des circuits vins : Grand Vin du Pic Saint-Loup et boucle Mèze & Montagnac. Privé, 4–7 h.",
         ogTitle:'Languedoc — sélection de circuits œnologiques',
-        ogDesc:"PSL (VIP) et Mèze & Montagnac : Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
+        ogDesc:"PSL (VIP) et Mèze & Montagnac : Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
         wine_badge:'Vin • Languedoc',
         wine_title:'Languedoc — sélection de circuits œnologiques',
-        wine_sub:"Deux formats : Grand Vin du Pic Saint-Loup (journée VIP) et boucle dégustation Mèze & Montagnac : Château Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
+        wine_sub:"Deux formats : Grand Vin du Pic Saint-Loup (journée VIP) et boucle dégustation Mèze & Montagnac : Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
         wine_list_title:'Choisissez un programme',
         wine_list_sub:'Deux circuits privés — personnalisation selon vos goûts (blanc/rouge, Picpoul, Grès de Montpellier).',
         brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
@@ -253,7 +297,7 @@
         psl_title:'Grand Vin du Pic Saint-Loup — journée premium',
         psl_text:'Dégustations VIP : Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (Hortus possible). ~7 h, base : Montpellier.',
         deg_title:'Mèze — route de dégustation (Mèze & Montagnac)',
-        deg_text:'Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (option Belle Mare). 4–5 h, 3–4 arrêts.',
+        deg_text:'Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (option Belle Mare). 4–5 h, 3–4 arrêts.',
         faq_title:'FAQ',
         q1:'Peut-on adapter les domaines (blanc/rouge) ?', a1:'Oui, selon vos goûts : Picpoul, Grès de Montpellier, cuvées expérimentales.',
         q2:'Point de départ ?', a2:'Montpellier / Mèze / à convenir. Pickup hôtel possible.',
@@ -261,6 +305,7 @@
       }
     };
 
+    // CHANGE: принудительно RU по умолчанию (без авто-детекта браузера)
     function applyLangWine(lang){
       const t=i18nWine[lang];
       document.documentElement.lang=t.htmlLang;
@@ -268,7 +313,10 @@
       const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
       const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
       const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; } });
+      document.querySelectorAll('[data-i18n]').forEach(n=>{
+        const k=n.getAttribute('data-i18n');
+        if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
+      });
       document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
       document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
       localStorage.setItem('site:lang', lang);
@@ -276,11 +324,16 @@
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
-      const saved=localStorage.getItem('site:lang');
-      const auto=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved||auto);
+      const saved=(localStorage.getItem('site:lang')||'').toLowerCase();
+      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved==='fr' ? 'fr' : 'ru'); // RU по умолчанию
       applyLangWine(initial);
-      const upd=(lang)=>{ const q=new URLSearchParams(location.search); q.set('lang',lang); history.replaceState({},'', location.pathname+'?'+q.toString()+location.hash); };
+      const upd=(lang)=>{
+        const q=new URLSearchParams(location.search);
+        // CHANGE: сохраняем ?lang только если FR, чтобы каноникалом оставался RU-URL
+        if(lang==='fr'){ q.set('lang','fr'); }
+        else{ q.delete('lang'); }
+        history.replaceState({},'', location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+      };
       document.getElementById('btn-ru').addEventListener('click',()=>{applyLangWine('ru');upd('ru')});
       document.getElementById('btn-fr').addEventListener('click',()=>{applyLangWine('fr');upd('fr')});
     })();
