@@ -4,26 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <!-- CHANGE: уточнили title под ключи -->
   <title>Море, парус и актив — хаб программ | Tours Languedoc by Irène</title>
-  <meta name="description" content="Парус и кайт в Mèze — Hôtel de la Pyramide (7+ ночей), LUX-день на воде в лагуне Thau, Cap d’Agde (Village Naturiste) + 2 экскурсии. Индивидуальные форматы." />
-  <meta name="robots" content="index,follow" />
+
+  <!-- CHANGE: короче и «ключевее» description -->
+  <meta name="description" content="Парус/кайт в Mèze (Hôtel de la Pyramide, 7+ ночей), LUX-день на воде в лагуне Thau, Cap d’Agde (Village Naturiste) + 2 экскурсии. Индивидуальные форматы." />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
   <!-- Canonical & hreflang -->
+  <!-- CHANGE: canonical без query; RU — базовый; FR — ?lang=fr -->
   <link rel="canonical" href="https://goutvoyage.com/programations/sea.html" />
   <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/sea.html" />
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/sea.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/sea.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/sea.html?lang=fr" />
   <meta property="og:url" content="https://goutvoyage.com/programations/sea.html" />
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Море, парус и актив — хаб" />
-  <meta property="og:description" content="Voile/kite à Mèze (Hôtel de la Pyramide), journée LUX sur l’étang de Thau, Cap d’Agde — Village Naturiste (7 nuits) + 2 excursions." />
+  <meta property="og:description" content="Voile/kite à Mèze (Hôtel de la Pyramide), journée LUX sur l’étang de Thau, Cap d’Agde — Village Naturiste + 2 excursions." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://goutvoyage.com/assets/voile/meze_voile.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons (из корня сайта) -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Море, парус и актив — хаб" />
+  <meta name="twitter:description" content="Voile/kite à Mèze, LUX Thau, Cap d’Agde — Village Naturiste + 2 excursions." />
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/voile/meze_voile.jpg" />
+
+  <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -33,6 +48,9 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+
+  <!-- CHANGE: Preload LCP изображения героя -->
+  <link rel="preload" as="image" href="/assets/voile/meze_voile.jpg" imagesrcset="/assets/voile/meze_voile.jpg 1200w" imagesizes="100vw" fetchpriority="high" />
 
   <style>
     :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#667; --brand:#0D2B1E; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
@@ -77,11 +95,7 @@
   </style>
 
   <script>
-    window.ANALYTICS_CONFIG = {
-      GA_ID: "G-L9TR2VTDX2",
-      YM_ID: 104246057,
-      consentVersion: "v2"
-    };
+    window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v2" };
   </script>
 
   <link rel="preload" as="script" href="/assets/js/cookies.js">
@@ -95,19 +109,30 @@
         <div class="logo" aria-hidden>Î</div>
         <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
       </a>
-      <nav class="lang">
+      <nav class="lang" aria-label="Основная навигация">
         <ul>
           <li><a href="/index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="/index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
-        <div aria-label="Language switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
+        <div aria-label="Переключение языка">
+          <button id="btn-ru" class="active" type="button">RU</button>
+          <button id="btn-fr" type="button">FR</button>
         </div>
       </nav>
     </div>
   </header>
+
+  <!-- CHANGE: видимые «крошки» -->
+  <nav class="container" aria-label="breadcrumb" style="padding-top:18px">
+    <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+      <li><a href="/index.html">Главная</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/sea.html">Море</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">Хаб программ</li>
+    </ol>
+  </nav>
 
   <section class="hero">
     <div class="bg">
@@ -188,21 +213,33 @@
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
   </footer>
 
-  <!-- JSON-LD: CollectionPage + ItemList -->
+  <!-- JSON-LD: Breadcrumbs + CollectionPage -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"CollectionPage",
-    "name":"Море, парус и актив — хаб",
-    "url":"https://goutvoyage.com/programations/sea.html",
-    "mainEntity":{
-      "@type":"ItemList",
-      "itemListElement":[
-        {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Meze_Voile_Pyramide.html"},
-        {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/Thau_LUX.html"},
-        {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/capdagde-naturiste-7n.html"}
-      ]
-    }
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+          {"@type":"ListItem","position":2,"name":"Море","item":"https://goutvoyage.com/sea.html"},
+          {"@type":"ListItem","position":3,"name":"Хаб программ","item":"https://goutvoyage.com/programations/sea.html"}
+        ]
+      },
+      {
+        "@type":"CollectionPage",
+        "name":"Море, парус и актив — хаб",
+        "url":"https://goutvoyage.com/programations/sea.html",
+        "mainEntity":{
+          "@type":"ItemList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Meze_Voile_Pyramide.html"},
+            {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/Thau_LUX.html"},
+            {"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/capdagde-naturiste-7n.html"}
+          ]
+        }
+      }
+    ]
   }
   </script>
 
@@ -212,7 +249,7 @@
       ru: {
         htmlLang:'ru',
         title:'Море, парус и актив — хаб программ | Tours Languedoc by Irène',
-        metaDesc:'Парус и кайт в Mèze — Hôtel de la Pyramide (7+ ночей), LUX-день на воде в лагуне Thau, Cap d’Agde (Village Naturiste) + 2 экскурсии. Индивидуальные форматы.',
+        metaDesc:'Парус/кайт в Mèze (Hôtel de la Pyramide, 7+ ночей), LUX-день на воде в лагуне Thau, Cap d’Agde (Village Naturiste) + 2 экскурсии. Индивидуальные форматы.',
         ogTitle:'Море, парус и актив — хаб',
         ogDesc:'Voile/kite, LUX Thau, Cap d’Agde 7+ ночей.',
         sea_badge:'Sea • Voile & Kite',
@@ -244,7 +281,7 @@
         sea_list_title:'Choisissez un programme',
         sea_list_sub:'Privé / mini-groupes. Matériel & assurance sur demande.',
         brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+        nav_all:'← Tous les programmes', nav_why:'Pourquoi nous', nav_book:'Réserver',
         nav_why_f:'Pourquoi nous', nav_all_f:'Programmes', nav_format_f:'Format', nav_contacts_f:'Contacts',
         btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
         voile_title:'Mèze — voile & kite : Hôtel de la Pyramide (7 nuits+)',
@@ -259,12 +296,13 @@
     };
 
     function applyLangSea(lang){
-      const t=i18nSea[lang];
-      document.documentElement.lang=t.htmlLang;
+      const t=i18nSea[lang]||i18nSea.ru;
+      document.documentElement.lang=t.htmlLang||'ru';
       document.title=t.title;
       const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
       const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
       const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
+      const loc=document.querySelector('meta[property="og:locale"]'); if(loc) loc.setAttribute('content', (lang==='fr'?'fr_FR':'ru_RU'));
       document.querySelectorAll('[data-i18n]').forEach(n=>{
         const k=n.getAttribute('data-i18n');
         if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
@@ -277,11 +315,15 @@
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
-      const saved=localStorage.getItem('site:lang');
-      const auto=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved||auto);
+      const saved=(localStorage.getItem('site:lang')||'').toLowerCase();
+      // CHANGE: RU по умолчанию; в URL оставляем ?lang только для FR
+      const initial=(fromURL==='fr'||fromURL==='ru') ? fromURL : (saved==='fr' ? 'fr' : 'ru');
       applyLangSea(initial);
-      const upd=(lang)=>{ const q=new URLSearchParams(location.search); q.set('lang',lang); history.replaceState({},'', location.pathname+'?'+q.toString()+location.hash); };
+      const upd=(lang)=>{
+        const q=new URLSearchParams(location.search);
+        if(lang==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
+        history.replaceState({},'', location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+      };
       document.getElementById('btn-ru').addEventListener('click',()=>{applyLangSea('ru');upd('ru')});
       document.getElementById('btn-fr').addEventListener('click',()=>{applyLangSea('fr');upd('fr')});
     })();
@@ -290,7 +332,7 @@
   <!-- WA / TG -->
   <script>
     window.APP_CONFIG = window.APP_CONFIG || {
-      whatsapp:'+33 7 59 64 48 13',
+      whatsapp:'33759644813', /* CHANGE: без пробелов, чтобы wa.me работал надёжно */
       telegram_user:'de_iren',
       telegram_bot:'de_iren_order_bot',
       bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
@@ -307,8 +349,7 @@
           'URL: '+location.href
         ].join('\n');
       }
-      function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),50); }
-
+      function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
       async function prestart(){
         try{
           const u=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
@@ -317,7 +358,6 @@
           return j?.token||'';
         }catch{ return ''; }
       }
-
       document.querySelectorAll('[data-whatsapp]').forEach(el=>{
         el.addEventListener('click',e=>{
           e.preventDefault();
@@ -326,7 +366,6 @@
           safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
         });
       });
-
       document.querySelectorAll('[data-telegram]').forEach(el=>{
         el.addEventListener('click', async e=>{
           e.preventDefault();
