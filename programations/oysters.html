@@ -4,9 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Étang de Thau — устрицы, лагуна и море | Хабы программ | Tours Languedoc by Irène</title>
-  <meta name="description" content="Подборка программ вокруг лагуны Thau: LUX-день на воде (Tarbouriech, Noilly Prat), парус/кайт Mèze — Hôtel de la Pyramide, круиз по Каналу дю Миди (закат). Приватные форматы." />
-  <!-- Robots: расширенные подсказки -->
+  <!-- CHANGE: уточнённый title под ключи -->
+  <title>Étang de Thau — устрицы, лагуна и море | Хаб программ | Tours Languedoc by Irène</title>
+
+  <!-- CHANGE: description короче и «ключевее» -->
+  <meta name="description" content="Устрицы Étang de Thau, Tarbouriech на воде, Noilly Prat, парус/кайт в Mèze (Hôtel de la Pyramide), закатный круиз по Каналу дю Миди. Приватные форматы." />
+
+  <!-- Robots -->
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="googlebot" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <meta name="bingbot" content="index,follow" />
@@ -14,16 +18,17 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
 
   <!-- Canonical & hreflang -->
+  <!-- CHANGE: чистый RU-URL в canonical и hreflang=ru; FR указывает на ?lang=fr -->
   <link rel="canonical" href="https://goutvoyage.com/programations/oysters.html" />
   <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/oysters.html" />
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/oysters.html?lang=ru" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/oysters.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/oysters.html?lang=fr" />
   <meta property="og:url" content="https://goutvoyage.com/programations/oysters.html" />
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Étang de Thau — устрицы, лагуна и море" />
-  <meta property="og:description" content="Tarbouriech, dégustations sur l’eau, Noilly Prat, voile/kite à Mèze, croisière Canal du Midi (coucher de soleil)." />
+  <meta property="og:description" content="Tarbouriech на воде, Noilly Prat, парус/кайт из Mèze, закатный круиз по Каналу дю Миди." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://goutvoyage.com/assets/oysters/thau_oysters.jpg" />
   <meta property="og:image:alt" content="Huîtres sur l’étang de Thau près de Mèze" />
@@ -37,7 +42,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Étang de Thau — устрицы, лагуна и море" />
-  <meta name="twitter:description" content="Tarbouriech, dégustation sur l’eau, Noilly Prat, voile/kite à Mèze, croisière Canal du Midi (sunset)." />
+  <meta name="twitter:description" content="Tarbouriech sur l’eau, Noilly Prat, voile/kite à Mèze, croisière Canal du Midi (sunset)." />
   <meta name="twitter:image" content="https://goutvoyage.com/assets/oysters/thau_oysters.jpg" />
 
   <!-- Favicons (root) -->
@@ -46,8 +51,10 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=3">
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png?v=3">
   <link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#0D2B1E">
-  <meta name="theme-color" content="#0D2B1E">
   <link rel="shortcut icon" href="/favicon.ico?v=3">
+
+  <!-- CHANGE: Preload LCP изображения героя -->
+  <link rel="preload" as="image" href="/assets/oysters/thau_oysters.jpg" imagesrcset="/assets/oysters/thau_oysters.jpg 1200w" imagesizes="100vw" fetchpriority="high" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,15 +67,12 @@
     body{margin:0; color:var(--ink); background:var(--bg); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; padding-bottom:120px}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
-
-    /* HEADER */
     header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
-    .nav{display:flex; align-items:center; justify-content:space-between; min-height:72px; padding:8px 0} /* min-height вместо фиксированной */
+    .nav{display:flex; align-items:center; justify-content:space-between; min-height:72px; padding:8px 0}
     .brand{display:flex; align-items:center; gap:14px}
     .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
     .brand-text{display:flex; flex-direction:column; line-height:1.15}
     .brand-text small{margin-top:2px; color:#6c6c6c}
-
     nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     nav a{font-weight:600; padding:10px 12px; border-radius:12px}
     nav a:hover{background:#f0f0f0}
@@ -76,14 +80,10 @@
     .lang{display:flex; align-items:center; gap:10px}
     .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
-
-    /* back link under header */
     .back-link{display:block;border-bottom:1px solid #eee;background:#fff}
     .back-link .inner{display:flex;align-items:center;gap:8px;height:44px}
     .back-link a{font-weight:600}
     .back-link a:hover{text-decoration:underline}
-
-    /* HERO */
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
@@ -92,11 +92,9 @@
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
     .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
-
     section{padding:48px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
     .section-sub{color:var(--muted); margin:0 0 22px}
-
     .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
     .card{grid-column:span 6; background:var(--paper); border:1px solid #eee; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
     .card img{width:100%; height:220px; object-fit:cover}
@@ -108,35 +106,26 @@
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     @media(max-width:900px){ .card{grid-column:span 12} }
-
     .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
     .chat-fab svg{width:22px;height:22px}
     .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
-
-    .form-toast{
-      position:fixed; left:50%; bottom:22px; transform:translateX(-50%);
-      background:#0D2B1E; color:#fff; padding:10px 14px; border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,.18); font-weight:700; z-index:10000
-    }
+    .form-toast{position:fixed; left:50%; bottom:22px; transform:translateX(-50%); background:#0D2B1E; color:#fff; padding:10px 14px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.18); font-weight:700; z-index:10000}
   </style>
 
   <script>
-    window.ANALYTICS_CONFIG = {
-      GA_ID: "G-L9TR2VTDX2",
-      YM_ID: 104246057,
-      consentVersion: "v2"
-    };
+    window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v2" };
   </script>
 
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
-
 </head>
+
 <body data-program data-program-id="HUB-OYSTERS" data-program-title="Лагуна Thau — устрицы и море">
   <!-- HEADER -->
   <header>
     <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="На главную">
+      <!-- CHANGE: абсолютная ссылка на главную -->
+      <a class="brand" href="/index.html" aria-label="На главную">
         <div class="logo" aria-hidden>Î</div>
         <div class="brand-text">
           <strong>Tours Languedoc by Irène</strong>
@@ -144,24 +133,24 @@
         </div>
       </a>
 
-      <nav>
+      <nav aria-label="Основная навигация">
         <ul>
-          <!-- в шапке оставляем только CTA -->
           <li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрая заявка">Забронировать</a></li>
         </ul>
       </nav>
 
       <div class="lang" aria-label="Переключение языка">
-        <button id="btn-ru" class="active" aria-pressed="true">RU</button>
-        <button id="btn-fr" aria-pressed="false">FR</button>
+        <button id="btn-ru" class="active" type="button" aria-pressed="true">RU</button>
+        <button id="btn-fr" type="button" aria-pressed="false">FR</button>
       </div>
     </div>
   </header>
 
-  <!-- Строка "назад" под шапкой -->
+  <!-- КНОПКА НАЗАД -->
   <div class="back-link">
     <div class="container inner">
-      <a href="../index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a>
+      <!-- CHANGE: абсолютная ссылка -->
+      <a href="/index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a>
     </div>
   </div>
 
@@ -183,10 +172,22 @@
       <div>
         <span class="badge" data-i18n="oy_badge">Oysters • Étang de Thau</span>
         <h2 class="title" data-i18n="oy_title">Étang de Thau — устрицы, лагуна и море</h2>
-        <p class="subtitle" data-i18n="oy_sub">LUX-день на воде (Tarbouriech, dégustation sur l’eau, Noilly Prat) • Парус/кайт из Mèze (Hôtel de la Pyramide, 7 ночей) • Закатный круиз по Каналу дю Миди.</p>
+        <p class="subtitle" data-i18n="oy_sub">LUX-день на воде (Tarbouriech, дегустация на воде, Noilly Prat) • Парус/кайт из Mèze (Hôtel de la Pyramide, 7 ночей) • Закатный круиз по Каналу дю Миди.</p>
       </div>
     </div>
   </section>
+
+  <!-- BREADCRUMBS (визуально) -->
+  <!-- CHANGE: видимые «крошки» -->
+  <nav class="container" aria-label="breadcrumb" style="padding-top:18px">
+    <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+      <li><a href="/index.html">Главная</a></li>
+      <li aria-hidden="true">/</li>
+      <li><a href="/oysters.html">Устрицы</a></li>
+      <li aria-hidden="true">/</li>
+      <li aria-current="page">Хаб программ</li>
+    </ol>
+  </nav>
 
   <section class="container">
     <h3 class="section-title" data-i18n="oy_list_title">Выберите программу</h3>
@@ -267,7 +268,7 @@
   <footer style="background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px">
     <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
       <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
-      <div><p><a href="../index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
+      <div><p><a href="/index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="/index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
       <div><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
     </div>
     <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
@@ -340,39 +341,93 @@
 
   <!-- I18N -->
   <script>
-    // !!! заполни i18nOy своими RU/FR текстами
-    const i18nOy = { ru:{}, fr:{} };
+    // CHANGE: заполнен RU/FR пакет и RU по умолчанию; ?lang сохраняем только для FR
+    const i18nOy = {
+      ru: {
+        htmlLang:'ru',
+        title:'Étang de Thau — устрицы, лагуна и море | Хаб программ | Tours Languedoc by Irène',
+        metaDesc:'Устрицы Étang de Thau, Tarbouriech на воде, Noilly Prat, парус/кайт в Mèze (Hôtel de la Pyramide), закатный круиз по Каналу дю Миди. Приватные форматы.',
+        ogTitle:'Étang de Thau — устрицы, лагуна и море',
+        ogDesc:'Tarbouriech на воде, Noilly Prat, парус/кайт из Mèze, закатный круиз по Каналу дю Миди.',
+        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
+        nav_all:'← Все программы', nav_book:'Забронировать', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_contacts_f:'Контакты',
+        oy_badge:'Oysters • Étang de Thau',
+        oy_title:'Étang de Thau — устрицы, лагуна и море',
+        oy_sub:'LUX-день на воде (Tarbouriech, дегустация на воде, Noilly Prat) • Парус/кайт из Mèze (Hôtel de la Pyramide, 7 ночей) • Закатный круиз по Каналу дю Миди.',
+        oy_list_title:'Выберите программу',
+        oy_list_sub:'Все программы — индивидуально/мини-группы. Можно добавить дегустации Picpoul de Pinet.',
+        thau_title:'LUX Étang de Thau — авторский день на лагуне',
+        thau_text:'Приватная лодка, устрицы на воде (Tarbouriech), Noilly Prat, винный финал. Без пеших переходов.',
+        voile_title:'Mèze — парус и кайт: Hôtel de la Pyramide (от 7 ночей)',
+        voile_text:'Катамаран HC15/16, Hansa 303 или кайтинг • 5 сессий • лагуна Thau. Цена зависит от сезона и отеля.',
+        canal_title:'Бéзье — круиз по Каналу дю Миди (день/закат)',
+        canal_text:'Фонсераны — Grand Bief — тоннель Малпас. Дневные и закатные рейсы. Ужин на борту — опция.',
+        faq_title:'FAQ',
+        q1:'Можно совместить устрицы и Picpoul?', a1:'Да, добавим визит в домен Picpoul de Pinet по дороге.',
+        q2:'С какого города удобнее старт?', a2:'Mèze / Sète / Montpellier — по договорённости.',
+        q3:'Как бронируются лодки/круизы?', a3:'Мы подтверждаем слоты у партнёров, время зависит от сезона и погоды.',
+        btn_more:'Подробнее', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram'
+      },
+      fr: {
+        htmlLang:'fr',
+        title:'Étang de Thau — huîtres, lagune et mer | Hub | Tours Languedoc by Irène',
+        metaDesc:"Huîtres de l’étang de Thau, Tarbouriech sur l’eau, Noilly Prat, voile/kite à Mèze (Hôtel de la Pyramide), croisière Canal du Midi (coucher du soleil). Formats privés.",
+        ogTitle:'Étang de Thau — huîtres, lagune et mer',
+        ogDesc:"Tarbouriech sur l’eau, Noilly Prat, voile/kite à Mèze, croisière Canal du Midi (sunset).",
+        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
+        nav_all:'← Tous les programmes', nav_book:'Réserver', nav_why_f:'Pourquoi nous', nav_all_f:'Programmes', nav_contacts_f:'Contacts',
+        oy_badge:'Huîtres • Étang de Thau',
+        oy_title:'Étang de Thau — huîtres, lagune et mer',
+        oy_sub:"Journée LUX sur l’eau (Tarbouriech, dégustation sur l’eau, Noilly Prat) • Voile/kite à Mèze (Hôtel de la Pyramide, 7 nuits) • Croisière Canal du Midi au coucher du soleil.",
+        oy_list_title:'Choisissez un programme',
+        oy_list_sub:'Privé / mini-groupes. Option Picpoul de Pinet.',
+        thau_title:'LUX Étang de Thau — journée signature',
+        thau_text:"Bateau privé, huîtres sur l’eau (Tarbouriech), Noilly Prat, final vins. Sans marche.",
+        voile_title:'Mèze — voile/kite : Hôtel de la Pyramide (dès 7 nuits)',
+        voile_text:"Catamaran HC15/16, Hansa 303 ou kite • 5 sessions • lagune de Thau. Prix selon saison & hôtel.",
+        canal_title:'Béziers — croisière Canal du Midi (jour/coucher du soleil)',
+        canal_text:"Écluses de Fonserannes — Grand Bief — tunnel du Malpas. Départs jour & sunset. Dîner à bord — option.",
+        faq_title:'FAQ',
+        q1:'Peut-on combiner huîtres et Picpoul ?', a1:'Oui, ajout d’un domaine Picpoul de Pinet en route.',
+        q2:'Ville de départ la plus pratique ?', a2:'Mèze / Sète / Montpellier — à convenir.',
+        q3:'Comment réserver bateaux/croisières ?', a3:'Nous confirmons les créneaux chez les partenaires; dépend de la saison & météo.',
+        btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram'
+      }
+    };
 
-    const has = (o,k)=>o&&Object.prototype.hasOwnProperty.call(o,k);
+    const has=(o,k)=>o&&Object.prototype.hasOwnProperty.call(o,k);
     const setAttrIf=(el,a,v)=>{ if(el && typeof v==='string' && v.trim()!=='') el.setAttribute(a,v); };
     const setNodeText=(n,v)=>{ if(!n||typeof v!=='string')return; /<[a-z][\s\S]*>/i.test(v)?n.innerHTML=v:n.textContent=v; };
 
     function applyLangOy(lang){
-      const fallback='ru';
-      const pack=i18nOy[lang]||i18nOy[fallback];
-      if(has(pack,'htmlLang')) document.documentElement.lang=pack.htmlLang;
-      if(has(pack,'title') && pack.title.trim()!=='') document.title=pack.title;
+      const pack=i18nOy[lang]||i18nOy.ru;
+      document.documentElement.lang=pack.htmlLang||'ru';
+      if(has(pack,'title')) document.title=pack.title;
       setAttrIf(document.querySelector('meta[name="description"]'),'content',pack.metaDesc);
       setAttrIf(document.querySelector('meta[property="og:title"]'),'content',pack.ogTitle);
       setAttrIf(document.querySelector('meta[property="og:description"]'),'content',pack.ogDesc);
       const loc=document.querySelector('meta[property="og:locale"]'); if(loc) loc.setAttribute('content',(lang==='fr'?'fr_FR':'ru_RU'));
-      document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(has(pack,k) && typeof pack[k]==='string') setNodeText(n,pack[k]); });
+      document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(has(pack,k)) setNodeText(n,pack[k]); });
       const ruBtn=document.getElementById('btn-ru'); const frBtn=document.getElementById('btn-fr');
       if(ruBtn){ ruBtn.classList.toggle('active', lang==='ru'); ruBtn.setAttribute('aria-pressed', lang==='ru'); }
       if(frBtn){ frBtn.classList.toggle('active', lang==='fr'); frBtn.setAttribute('aria-pressed', lang==='fr'); }
-      try{ localStorage.setItem('site:lang', (lang in i18nOy ? lang : fallback)); }catch(e){}
+      try{ localStorage.setItem('site:lang', lang); }catch(e){}
     }
+
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
-      let lang=(fromURL==='ru'||fromURL==='fr')?fromURL:null;
-      if(!lang){ try{ const saved=localStorage.getItem('site:lang'); if(saved==='ru'||saved==='fr') lang=saved; }catch(e){} }
-      if(!lang){ lang=((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'ru'); }
-      applyLangOy(lang);
-      const upd=(l)=>{ const q=new URLSearchParams(location.search); q.set('lang',l); history.replaceState({},'',location.pathname+'?'+q.toString()+location.hash); };
-      const ruBtn=document.getElementById('btn-ru'); const frBtn=document.getElementById('btn-fr');
-      if(ruBtn) ruBtn.addEventListener('click',()=>{applyLangOy('ru');upd('ru')});
-      if(frBtn) frBtn.addEventListener('click',()=>{applyLangOy('fr');upd('fr')});
+      const saved=(localStorage.getItem('site:lang')||'').toLowerCase();
+      // CHANGE: RU по умолчанию; ?lang оставляем только для FR, чтобы canonical был чистым
+      const initial=(fromURL==='fr'||fromURL==='ru')?fromURL:(saved==='fr'?'fr':'ru');
+      applyLangOy(initial);
+      const upd=(l)=>{
+        const q=new URLSearchParams(location.search);
+        if(l==='fr') q.set('lang','fr'); else q.delete('lang');
+        history.replaceState({},'',location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+      };
+      document.getElementById('btn-ru')?.addEventListener('click',()=>{applyLangOy('ru');upd('ru')});
+      document.getElementById('btn-fr')?.addEventListener('click',()=>{applyLangOy('fr');upd('fr')});
     })();
   </script>
 
@@ -416,7 +471,7 @@
     })();
   </script>
 
-  <!-- HERO SMART FALLBACK -->
+  <!-- HERO SMART FALLBACK (оставила) -->
   <script>
   (function smartHero(){
     const img = document.getElementById('hero-oysters');
@@ -446,4 +501,3 @@
 
 </body>
 </html>
-
