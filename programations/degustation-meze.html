@@ -643,27 +643,40 @@ window.ANALYTICS_CONFIG = {
   })();
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Mèze — дегустационный маршрут (Mèze & Montagnac)",
-  "description": "Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки.",
-  "brand": { "@type": "Brand", "name": "Tours Languedoc by Irène" },
-  "image": "https://goutvoyage.com/assets/wines/vinograd.jpg",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/InStock",
-    "url": "https://goutvoyage.com/programations/degustation-meze.html",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-      "applicableCountry": "FR",
-      "merchantReturnLink": "https://goutvoyage.com/policy/returns.html"
+  "@context":"https://schema.org",
+  "@type":"Product",
+  "name":"Mèze — дегустационный маршрут (Mèze & Montagnac)",
+  "description":"Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки.",
+  "brand":{"@type":"Brand","name":"Tours Languedoc by Irène"},
+  "image":"https://goutvoyage.com/assets/wines/vinograd.jpg",
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"EUR",
+    "availability":"https://schema.org/InStock",
+    "url":"https://goutvoyage.com/programations/degustation-meze.html",
+
+    "hasMerchantReturnPolicy":{
+      "@type":"MerchantReturnPolicy",
+      "returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted",
+      "applicableCountry":"FR",
+      "merchantReturnLink":"https://goutvoyage.com/policy/returns.html"
+    },
+
+    "shippingDetails":{
+      "@type":"OfferShippingDetails",
+      "doesNotShip": true,
+      "shippingSettingsLink": "https://goutvoyage.com/policy/shipping.html",
+      "shippingDestination": {
+        "@type":"DefinedRegion",
+        "addressCountry":"FR"
+      },
+      "availableDeliveryMethod":"https://schema.org/OnSitePickup"
     }
   }
 }
 </script>
+
 
 
   <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
