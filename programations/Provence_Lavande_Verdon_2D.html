@@ -139,7 +139,18 @@
 
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:34px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
-  </style>
+      /* === Rounded controls inside booking card === */
+    #book input, #book select, #book textarea{ border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; background-clip:padding-box; }
+    #book select{ appearance:none; -webkit-appearance:none; -moz-appearance:none; padding:12px; width:100%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c6c6c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 12px center; background-size:16px; }
+    #book input[type="date"]{ padding:12px; height:44px; }
+    #book input:focus, #book select:focus, #book textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
+    #book .fields > div, #book .fields .full{ min-width:0; }
+    /* карта поменьше */
+  .mapwrap{ max-width:520px; margin:0 auto; }
+  .mapwrap iframe{ height:260px !important; }
+</style>
 
   <!-- Analytics + Cookies -->
   <script>
@@ -287,44 +298,37 @@
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" data-program data-program-title="Прованс — Лаванда, Мюстье и Вердон (2 дня)" data-program-id="PROVENCE-LAVANDE-VERDON-2D">
-      <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим визиты.</p>
+    <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 ночей)" data-program-id="BALARUC-HYDRO-7D">
+      <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
+      <p class="section-sub" data-i18n="book_sub">Пришлю свободные даты, варианты отелей и точный расчёт.</p>
 
-      <form class="fields" data-contact-form novalidate>
+      <form class="fields" data-contact-form novalidate onsubmit="return false;">
         <div>
-          <label for="when">Дата</label>
+          <label for="when" data-i18n="lbl_date">Даты (7 ночей)</label>
           <input id="when" name="date" type="date" placeholder="dd/mm/aaaa" required>
         </div>
         <div>
-          <label for="guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name">Имя</label>
+          <label for="guests" data-i18n="lbl_guests">Гостей</label>
+          <input id="guests" name="guests" type="number" min="2" value="2" required>
+        </div><div class="full">
+          <label for="name" data-i18n="lbl_name">Имя</label>
           <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
         </div>
 
         <div class="full">
-          <label for="contact">Контакт (WhatsApp/Telegram)</label>
+          <label for="contact" data-i18n="lbl_contact">Контакт (WhatsApp/Telegram)</label>
           <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
         </div>
 
         <div class="full">
-          <label for="msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пикап (отель/адрес), пожелания по обеду/активностям…"></textarea>
-        </div>
-
-        <div class="full">
-          <label>Итог</label>
-          <div class="price" id="totalOut">€430</div>
-          <p class="section-sub" style="margin-top:6px">430 € за двоих; +100 € за каждого дополнительного гостя (макс. 4).</p>
+          <label for="msg" data-i18n="lbl_msg">Комментарий</label>
+          <textarea id="msg" name="message" placeholder="Пожелания по датам, пакет (Базовый/Comfort/Premium), примечания"></textarea>
+        </div><p class="section-sub" style="margin-top:6px">Цена — ориентир за 7 ночей для 2 гостей (по выбранному пакету). Точный расчёт зависит от дат/отелей/состава группы.</p>
         </div>
 
         <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
+          <a class="btn" data-whatsapp href="#" data-i18n="btn_whatsapp">Отправить в WhatsApp</a>
+          <a class="btn primary" data-telegram href="#" data-i18n="btn_telegram">Отправить в Telegram</a>
         </div>
       </form>
     </div>
@@ -711,6 +715,28 @@
       }
       guests?.addEventListener('input', refresh);
       refresh();
+    })();
+  </script>
+  <!-- Фокус на дате при клике и калькулятор пакетов -->
+  <script>
+    (function(){
+      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=> document.getElementById('when')?.focus(),60));
+      const pack=document.getElementById('pack');
+      const totalOut=document.getElementById('totalOut');
+      const fmtEUR=v=> new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
+      function refresh(){
+        const sel=pack?.selectedOptions?.[0];
+        const p = Number(sel?.dataset?.price||1600);
+        if(totalOut) totalOut.textContent = fmtEUR(p);
+      }
+      pack?.addEventListener('change', refresh);
+      refresh();
+    })();
+  </script>
+    <!-- Фокус на поле даты при клике в шапке -->
+  <script>
+    (function(){
+      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=> document.getElementById('when')?.focus(),60));
     })();
   </script>
 </body>
