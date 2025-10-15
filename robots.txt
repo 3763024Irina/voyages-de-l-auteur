@@ -3,3 +3,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://goutvoyage.com/sitemap.xml
+Host: goutvoyage.com
