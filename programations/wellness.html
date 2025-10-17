@@ -6,7 +6,8 @@
 
   <title>Wellness & термы — хаб программ | Tours Languedoc by Irène</title>
   <meta name="description" content="Balaruc-les-Bains — SPA & Languedoc (7+ дней), Lamalou-les-Bains — термальное восстановление (14–21 ночь), Avène — термальная кура (14 дней), гид по термальным курортам Лангедока. Индивидуальные форматы." />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <meta http-equiv="content-language" content="ru, fr">
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://goutvoyage.com/programations/wellness.html" />
@@ -16,105 +17,107 @@
   <meta property="og:url" content="https://goutvoyage.com/programations/wellness.html" />
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Tours Languedoc by Irène" />
   <meta property="og:title" content="Wellness & термы — хаб" />
-  <meta property="og:description" content="Balaruc-les-Bains, Lamalou-les-Bains, Avène, guide des stations thermales en Languedoc. Formats privés." />
+  <meta property="og:description" content="Balaruc-les-Bains, Lamalou-les-Bains, Avène — гид по термальным курортам Лангедока. Приватные форматы." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="../assets/thermes/2023-03-30.jpg" />
+  <meta property="og:image" content="https://goutvoyage.com/assets/thermes/2023-03-30.jpg" />
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="1067" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:locale:alternate" content="fr_FR" />
   <meta name="theme-color" content="#0D2B1E" />
   <meta name="format-detection" content="telephone=no" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <link rel="alternate icon" sizes="32x32" href="../favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-  <link rel="manifest" href="../site.webmanifest">
+  <!-- LCP preload -->
+  <link rel="preload" as="image" href="/assets/thermes/2023-03-30.jpg" imagesrcset="/assets/thermes/2023-03-30.jpg 1600w" imagesizes="100vw" fetchpriority="high" />
 
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico?v=3" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png?v=3">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg?v=3" color="#0D2B1E">
+  <link rel="shortcut icon" href="/favicon.ico?v=3">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{ --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#667; --brand:#0D2B1E; --shadow:0 10px 30px rgba(0,0,0,.08); --radius:18px; --container:1100px; }
+    :root{--bg:#f7f6f4;--paper:#fff;--ink:#1b1b1b;--muted:#6c6c6c;--brand:#0D2B1E;--shadow:0 10px 30px rgba(0,0,0,.08);--radius:18px;--container:1100px}
     *{box-sizing:border-box}
-    body{margin:0; color:var(--ink); background:var(--bg); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; padding-bottom:120px}
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--container); margin:auto; padding:0 20px}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--ink);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--container);margin:auto;padding:0 20px}
 
-    /* ---- HEADER (mobile-safe) ---- */
-    header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(140%) blur(8px);
-      background:rgba(255,255,255,.82);
-      border-bottom:1px solid #eee;
-      padding-left:max(0px,env(safe-area-inset-left));
-      padding-right:max(0px,env(safe-area-inset-right));
-    }
-    .nav{display:flex; align-items:center; justify-content:space-between; gap:10px; height:auto}
-    .brand{display:flex; align-items:center; gap:12px; min-width:0}
-    .logo{width:42px; height:42px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow); flex:0 0 42px}
-    .brand h1{
-      font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; margin:0;
-      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-      font-size:clamp(16px,4.4vw,22px); line-height:1.1;
-    }
-    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
-    nav a{font-weight:600; padding:10px 12px; border-radius:12px}
+    /* Header (мобайл-safe как в castles) */
+    header{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.82);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #eee}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:70px;padding:8px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .logo{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,var(--brand),#123c2c);display:grid;place-items:center;color:#fff;font-weight:800;box-shadow:var(--shadow);flex:0 0 44px}
+    .brand h1{font-family:"Cormorant Garamond",serif;font-weight:700;letter-spacing:.2px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(16px,4.4vw,22px);line-height:1.1}
+    nav ul{display:flex;gap:16px;list-style:none;margin:0;padding:0}
+    nav a{font-weight:600;padding:8px 12px;border-radius:12px}
     nav a:hover{background:#f0f0f0}
-    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:9px 12px; box-shadow:var(--shadow); font-size:14px}
-    .lang{display:flex; align-items:center; gap:10px}
-    .lang button{border:1px solid #e6e6e6; background:#fff; padding:6px 10px; border-radius:999px; font-weight:700; cursor:pointer; font-size:12px; line-height:1}
-    .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .cta{background:var(--brand);color:#fff;border-radius:12px}
+    .lang{display:flex;gap:8px}
+    .lang button{border:1px solid #e6e6e6;background:#fff;padding:6px 10px;border-radius:999px;font-weight:700;cursor:pointer;font-size:12px;line-height:1}
+    .lang button.active{background:var(--brand);color:#fff;border-color:var(--brand)}
 
-    /* мобайл ≤640px: шапка в две строки; меню скрыто, RU/FR на второй строке */
-    @media (max-width:640px){
-      .nav{
-        display:grid;
-        grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        row-gap:8px; align-items:center;
-      }
-      .brand{grid-column:1/2; grid-row:1/2}
-      nav ul{display:none}
-      .cta{grid-column:2/3; grid-row:1/2; justify-self:end}
-      .lang{grid-column:1/-1; grid-row:2/3; justify-self:end; gap:8px}
-    }
+    /* back link */
+    .back-link{display:block;border-bottom:1px solid #eee;background:#fff}
+    .back-link .inner{display:flex;align-items:center;gap:8px;height:44px}
+    .back-link a{font-weight:600}
+    .back-link a:hover{text-decoration:underline}
 
-    /* ---- HERO ---- */
-    .hero{position:relative; isolation:isolate}
-    .hero .bg{position:absolute; inset:0; z-index:-1}
-    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
-    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25))}
-    .hero .inner{min-height:48vh; display:grid; align-items:end; padding:38px 0 46px}
-    .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
-    h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
-    .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero .bg{position:absolute;inset:0;z-index:-1}
+    .hero .bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.72)}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,43,30,.45),rgba(13,43,30,.2))}
+    .hero .inner{min-height:46vh;display:grid;align-items:end;padding:36px 0}
+    .badge{display:inline-block;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid #eee;font-weight:800;font-size:12px}
+    h2.title{font-family:"Cormorant Garamond",serif;font-size:42px;color:#fff;margin:10px 0 12px}
+    .subtitle{color:#f7f7f7;max-width:760px}
 
-    section{padding:48px 0}
-    .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
-    .section-sub{color:var(--muted); margin:0 0 22px}
+    section{padding:52px 0}
+    .section-title{font-family:"Cormorant Garamond",serif;font-size:30px;margin:0 0 8px}
+    .section-sub{color:var(--muted);margin:0 0 18px}
 
-    .cards{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
-    .card{grid-column:span 6; background:var(--paper); border:1px solid #eee; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
-    .card img{width:100%; height:220px; object-fit:cover}
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 6;background:var(--paper);border:1px solid #eee;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .card img{width:100%;height:220px;object-fit:cover}
     .card .pad{padding:14px}
-    .card h4{margin:0 0 6px; font-size:20px}
-    .card p{margin:0 0 10px; color:#5b5b5b}
-    .card .meta{display:flex; gap:10px; flex-wrap:wrap; color:#667; font-size:13px}
-    .card .actions{margin-top:auto; display:flex; gap:10px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
-    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    @media(max-width:900px){ .card{grid-column:1 / -1} .card img{height:200px} }
+    .card h4{margin:0 0 6px;font-size:20px}
+    .card p{margin:0 0 10px;color:#5b5b5b}
+    .card .meta{display:flex;gap:10px;flex-wrap:wrap;color:#667;font-size:13px}
+    .card .actions{margin-top:auto;display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid #e6e6e6;border-radius:12px;background:#fff;font-weight:700;cursor:pointer}
+    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .btn:hover{filter:brightness(.98)}
 
-    /* чат-кнопки */
-    .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
-    .chat-fab svg{width:22px;height:22px}
-    .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .ph{aspect-ratio:16/10;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#ddd}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* доп. мобайл поджатия */
-    @media (max-width:420px){
+    /* Responsive */
+    @media (max-width:900px){
       h2.title{font-size:34px}
-      .subtitle{font-size:15px}
-      .badge{font-size:11px; padding:6px 10px}
-      .hero .inner{min-height:40vh; padding:28px 0 36px}
+      .card{grid-column:span 12}
+      .gallery{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .nav{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;row-gap:8px}
+      .brand{grid-column:1/2;grid-row:1/2}
+      nav ul{display:none}
+      nav[aria-label="Основная навигация"] ul{display:none}
+      nav[aria-label="Основная навигация"]{grid-column:2/3;grid-row:1/2;justify-self:end}
+      .lang{grid-column:1/-1;grid-row:2/3;justify-self:end}
+      .gallery{grid-template-columns:1fr}
     }
   </style>
 
@@ -123,270 +126,251 @@
   </script>
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
-
 </head>
+
 <body data-program data-program-id="HUB-WELLNESS" data-program-title="Wellness & термы — хаб">
-  <header>
-    <div class="container nav">
-      <a class="brand" href="../index.html" aria-label="На главную">
-        <div class="logo" aria-hidden>Î</div>
-        <div><h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1></div>
-      </a>
-      <nav class="lang" aria-label="Навигация">
-        <ul>
-          <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
-          <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
-        </ul>
-        <div aria-label="Переключение языка" class="lang-switch">
-          <button id="btn-ru" class="active">RU</button>
-          <button id="btn-fr">FR</button>
-        </div>
-      </nav>
-    </div>
-  </header>
+<header>
+  <div class="container nav">
+    <a class="brand" href="/index.html" aria-label="На главную">
+      <div class="logo" aria-hidden="true">Î</div>
+      <h1>Tours Languedoc by Irène <small data-i18n="brand_sub">— Путешествия со вкусом</small></h1>
+    </a>
 
-  <section class="hero">
-    <div class="bg"><img src="../assets/thermes/2023-03-30.jpg" onerror="this.src='../assets/Balaruc-Obalia.jpg'" alt="Thermes & bien-être Languedoc"><div class="overlay"></div></div>
-    <div class="container inner">
-      <div>
-        <span class="badge" data-i18n="wl_badge">Wellness • Thermes</span>
-        <h2 class="title" data-i18n="wl_title">Wellness & термы — хаб</h2>
-        <p class="subtitle" data-i18n="wl_sub">Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 ночей) • Avène (14 дней) • Гид по термальным курортам региона.</p>
+    <nav aria-label="Основная навигация">
+      <ul><li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрый запрос">Забронировать</a></li></ul>
+    </nav>
+
+    <div class="lang" aria-label="Переключение языка">
+      <button id="btn-ru" class="active" type="button" aria-pressed="true">RU</button>
+      <button id="btn-fr" type="button" aria-pressed="false">FR</button>
+    </div>
+  </div>
+</header>
+
+<!-- back under header -->
+<div class="back-link">
+  <div class="container inner">
+    <a href="/index.html#tours" data-i18n="nav_all" title="Все программы">← Все программы</a>
+  </div>
+</div>
+
+<!-- Breadcrumbs -->
+<nav class="container" aria-label="breadcrumb" style="padding-top:14px">
+  <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
+    <li><a href="/index.html">Главная</a></li>
+    <li aria-hidden="true">/</li>
+    <li><a href="/thermes.html">Термы</a></li>
+    <li aria-hidden="true">/</li>
+    <li aria-current="page">Хаб программ</li>
+  </ol>
+</nav>
+
+<section class="hero">
+  <div class="bg">
+    <img src="/assets/thermes/2023-03-30.jpg" alt="Thermes & bien-être — Languedoc" width="1600" height="1067" fetchpriority="high" loading="eager" decoding="async" onerror="this.src='/assets/Balaruc-Obalia.jpg'">
+    <div class="overlay"></div>
+  </div>
+  <div class="container inner">
+    <div>
+      <span class="badge" data-i18n="wl_badge">Wellness • Thermes</span>
+      <h2 class="title" data-i18n="wl_title">Wellness & термы — хаб</h2>
+      <p class="subtitle" data-i18n="wl_sub">Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 ночей) • Avène (14 дней) • Гид по термальным курортам региона.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h3 class="section-title" data-i18n="wl_list_title">Выберите программу</h3>
+  <p class="section-sub" data-i18n="wl_list_sub">Индивидуально / мини-группы. Трансферы, сопровождение, запись в термы.</p>
+
+  <div class="cards">
+    <!-- Balaruc SPA -->
+    <article class="card">
+      <img src="/assets/Balaruc-Obalia.jpg" alt="Balaruc-les-Bains — O’balia" loading="lazy" decoding="async" onerror="this.src='/assets/thermes/2023-03-30.jpg'">
+      <div class="pad">
+        <h4 data-i18n="bal_title">Balaruc-les-Bains — SPA & Languedoc (от 7 дней)</h4>
+        <p data-i18n="bal_text">Термы O’balia + выезды: Sète, Pézenas, Carcassonne, лагуна Thau, домены. Размещение и логистика.</p>
+        <div class="meta"><span>Balaruc-les-Bains</span><span>7+ дней</span></div>
+        <div class="actions">
+          <a class="btn primary" href="/programations/Balaruc_SPA.html" data-i18n="btn_more">Подробнее</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </article>
 
-  <section class="container">
-    <h3 class="section-title" data-i18n="wl_list_title">Выберите программу</h3>
-    <p class="section-sub" data-i18n="wl_list_sub">Индивидуально / мини-группы. Трансферы, сопровождение, запись в термы.</p>
-
-    <div class="cards">
-      <!-- Balaruc SPA -->
-      <article class="card">
-        <img src="../assets/Balaruc-Obalia.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Balaruc-les-Bains — O’balia">
-        <div class="pad">
-          <h4 data-i18n="bal_title">Balaruc-les-Bains — SPA & Languedoc (от 7 дней)</h4>
-          <p data-i18n="bal_text">Термы O’balia + выезды: Sète, Pézenas, Carcassonne, лагуна Thau, домены. Размещение и логистика.</p>
-          <div class="meta"><span>Balaruc-les-Bains</span><span>7+ дней</span></div>
-          <div class="actions">
-            <a class="btn primary" href="Balaruc_SPA.html" data-i18n="btn_more">Подробнее</a>
-          </div>
+    <!-- Lamalou -->
+    <article class="card">
+      <img src="/assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine2.webp" alt="Lamalou-les-Bains" loading="lazy" decoding="async" onerror="this.src='/assets/thermes/2023-03-30.jpg'">
+      <div class="pad">
+        <h4 data-i18n="lam_title">Lamalou-les-Bains — термальное восстановление (14–21 ночь)</h4>
+        <p data-i18n="lam_text">Классическая термальная программа CTS, проживание, трансферы, сопровождение рус/фр.</p>
+        <div class="meta"><span>Lamalou-les-Bains</span><span>14–21 ночей</span></div>
+        <div class="actions">
+          <a class="btn primary" href="/programations/lamalou_les_bains.html" data-i18n="btn_more">Подробнее</a>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <!-- Lamalou -->
-      <article class="card">
-        <img src="../assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine2.webp" onerror="this.src='../assets/thermes/2023-03-30.jpg'" alt="Lamalou-les-Bains">
-        <div class="pad">
-          <h4 data-i18n="lam_title">Lamalou-les-Bains — термальное восстановление (14–21 ночь)</h4>
-          <p data-i18n="lam_text">Классическая термальная программа CTS, проживание, трансферы, сопровождение рус/фр.</p>
-          <div class="meta"><span>Lamalou-les-Bains</span><span>14–21 ночей</span></div>
-          <div class="actions">
-            <a class="btn primary" href="lamalou_les_bains.html" data-i18n="btn_more">Подробнее</a>
-          </div>
+    <!-- Avène -->
+    <article class="card">
+      <img src="/assets/thermes/avene.jpg" alt="Avène — Station Thermale" loading="lazy" decoding="async" onerror="this.src='/assets/thermes/2023-03-30.jpg'">
+      <div class="pad">
+        <h4 data-i18n="av_title">Avène — термальная кура (14 дней)</h4>
+        <p data-i18n="av_text">Дерматологическая кура на источниках Avène: консультации, процедуры, сопровождение, проживание и трансферы.</p>
+        <div class="meta"><span>Avène</span><span>≈14 ночей</span></div>
+        <div class="actions">
+          <a class="btn primary" href="/programations/avene_14d.html" data-i18n="btn_more">Подробнее</a>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <!-- Avène -->
-      <article class="card">
-        <img src="../assets/thermes/avene.jpg" onerror="this.src='../assets/thermes/2023-03-30.jpg'" alt="Avène — Station Thermale">
-        <div class="pad">
-          <h4 data-i18n="av_title">Avène — термальная кура (14 дней)</h4>
-          <p data-i18n="av_text">Дерматологическая кура на источниках Avène: консультации, процедуры, сопровождение, проживание и трансферы.</p>
-          <div class="meta"><span>Avène</span><span>≈14 ночей</span></div>
-          <div class="actions">
-            <a class="btn primary" href="avene_14d.html" data-i18n="btn_more">Подробнее</a>
-          </div>
+    <!-- Guide -->
+    <article class="card">
+      <img src="/assets/thermes/2023-03-30.jpg" alt="Guide des thermes" loading="lazy" decoding="async" onerror="this.src='/assets/Balaruc-Obalia.jpg'">
+      <div class="pad">
+        <h4 data-i18n="guide_title">SPA & Thermes — гид по курортам</h4>
+        <p data-i18n="guide_text">Подбор курорта под задачу (Medical / Spa / naturel), карта, описания, размещение и трансферы.</p>
+        <div class="meta"><span>Languedoc</span><span>индивидуально</span></div>
+        <div class="actions">
+          <a class="btn primary" href="/programations/thermes.html" data-i18n="btn_more">Подробнее</a>
         </div>
-      </article>
+      </div>
+    </article>
+  </div>
+</section>
 
-      <!-- Guide Thermes -->
-      <article class="card">
-        <img src="../assets/thermes/2023-03-30.jpg" onerror="this.src='../assets/wines/vinograd.jpg'" alt="Guide des thermes">
-        <div class="pad">
-          <h4 data-i18n="guide_title">SPA & Thermes — гид по курортам</h4>
-          <p data-i18n="guide_text">Подбор курорта под задачу (Medical / Spa / naturel), карта, описания, размещение и трансферы.</p>
-          <div class="meta"><span>Languedoc</span><span>индивидуально</span></div>
-          <div class="actions">
-            <a class="btn primary" href="thermes.html" data-i18n="btn_more">Подробнее</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+<!-- Галерея (опционально оставил как в castles) -->
+<section class="container">
+  <h3 class="section-title" data-i18n="gal_title">Как это выглядит</h3>
+  <p class="section-sub" data-i18n="gal_sub">Thermes de Balaruc • Lamalou • Avène.</p>
+  <div class="gallery">
+    <div class="ph"><img src="/assets/Balaruc-Obalia.jpg" alt="Balaruc — O’balia" loading="lazy" decoding="async"></div>
+    <div class="ph"><img src="/assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine2.webp" alt="Lamalou — piscine" loading="lazy" decoding="async"></div>
+    <div class="ph"><img src="/assets/thermes/avene.jpg" alt="Avène — station" loading="lazy" decoding="async"></div>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section id="book" class="container">
+<!-- CTA -->
+<section id="book" class="container" style="padding-top:18px">
+  <div class="card">
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
     <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и проверим доступность в термах/отелях.</p>
-    <div class="actions" style="display:flex; gap:10px; flex-wrap:wrap">
-      <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-      <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn" data-whatsapp href="#" rel="noopener" data-i18n="btn_whatsapp">WhatsApp</a>
+      <a class="btn primary" data-telegram href="#" rel="noopener" data-i18n="btn_telegram">Telegram</a>
+      <a class="btn" href="/index.html#tours" data-i18n="nav_all">← Все программы</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer style="background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px">
-    <div class="container" style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px">
-      <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
-      <div><p><a href="../index.html#why" style="color:#cfd8d3" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" style="color:#cfd8d3" data-i18n="nav_all_f">Программы</a></p></div>
-      <div><p><a href="../index.html#format" style="color:#cfd8d3" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" style="color:#cfd8d3" data-i18n="nav_contacts_f">Контакты</a></p></div>
-    </div>
-    <div class="container" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
-  </footer>
+<footer style="margin-top:30px;padding:26px 0;background:#0f1f19;color:#e7e7e7">
+  <div class="container">© 2025 — Languedoc, France</div>
+</footer>
 
-  <!-- JSON-LD: CollectionPage + ItemList -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"CollectionPage","name":"Wellness & термы — хаб","url":"https://goutvoyage.com/programations/wellness.html","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Balaruc_SPA.html"},{"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/lamalou_les_bains.html"},{"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/avene_14d.html"},{"@type":"ListItem","position":4,"url":"https://goutvoyage.com/programations/thermes.html"}]}}
-  </script>
+<!-- JSON-LD: WebPage -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Wellness & термы — хаб","inLanguage":["ru","fr"],"url":"https://goutvoyage.com/programations/wellness.html","isPartOf":{"@type":"Website","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"},"description":"Хаб wellness & thermes: Balaruc, Lamalou, Avène. Индивидуальные форматы.","primaryImageOfPage":{"@type":"ImageObject","url":"https://goutvoyage.com/assets/thermes/2023-03-30.jpg","width":1600,"height":1067}}
+</script>
+<!-- JSON-LD: ItemList -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ItemList","name":"Wellness & термы — подборка","itemListElement":[
+{"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Balaruc_SPA.html","name":"Balaruc-les-Bains — SPA & Languedoc"},
+{"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/lamalou_les_bains.html","name":"Lamalou-les-Bains — термальная программа"},
+{"@type":"ListItem","position":3,"url":"https://goutvoyage.com/programations/avene_14d.html","name":"Avène — термальная кура"},
+{"@type":"ListItem","position":4,"url":"https://goutvoyage.com/programations/thermes.html","name":"Гид по курортам"}
+]}
+</script>
+<!-- JSON-LD: Breadcrumbs -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+{"@type":"ListItem","position":2,"name":"Термы","item":"https://goutvoyage.com/thermes.html"},
+{"@type":"ListItem","position":3,"name":"Wellness & термы — хаб","item":"https://goutvoyage.com/programations/wellness.html"}
+]}
+</script>
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com","logo":"https://goutvoyage.com/favicon-32.png"}
+</script>
 
-  <!-- I18N -->
-  <script>
-    const i18nWellness = {
-      ru: {
-        htmlLang:'ru',
-        title:'Wellness & термы — хаб программ | Tours Languedoc by Irène',
-        metaDesc:'Balaruc-les-Bains (7+ дней), Lamalou (14–21 ночь), Avène (14 дней), гид по термальным курортам Лангедока. Индивидуальные форматы.',
-        ogTitle:'Wellness & термы — хаб',
-        ogDesc:'Balaruc, Lamalou, Avène, гид по курортам. Форматы приват/мини-группа.',
-        wl_badge:'Wellness • Thermes',
-        wl_title:'Wellness & термы — хаб',
-        wl_sub:'Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 ночей) • Avène (14 дней) • Гид по термальным курортам региона.',
-        wl_list_title:'Выберите программу',
-        wl_list_sub:'Индивидуально / мини-группы. Трансферы, сопровождение, запись в термы.',
-        brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
-        nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-        nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
-        btn_more:'Подробнее', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
-        bal_title:'Balaruc-les-Bains — SPA & Languedoc (от 7 дней)',
-        bal_text:'Термы O’balia + выезды: Sète, Pézenas, Carcassonne, лагуна Thau, домены. Размещение и логистика.',
-        lam_title:'Lamalou-les-Bains — термальное восстановление (14–21 ночь)',
-        lam_text:'Классическая термальная программа CTS, проживание, трансферы, сопровождение рус/фр.',
-        av_title:'Avène — термальная кура (14 дней)',
-        av_text:'Дерматологическая кура на источниках Avène: консультации, процедуры, сопровождение, проживание и трансферы.',
-        guide_title:'SPA & Thermes — гид по курортам',
-        guide_text:'Подбор курорта под задачу (Medical / Spa / naturel), карта, описания, размещение и трансферы.',
-        form_title:'Быстрый запрос / бронирование',
-        form_sub:'Ответим в течение дня и проверим доступность в термах/отелях.'
-      },
-      fr: {
-        htmlLang:'fr',
-        title:'Bien-être & thermes — hub | Tours Languedoc by Irène',
-        metaDesc:"Balaruc-les-Bains (7 nuits+), Lamalou-les-Bains (14–21 nuits), Avène (14 nuits), guide des stations thermales du Languedoc. Formats privés.",
-        ogTitle:'Bien-être & thermes — hub',
-        ogDesc:"Balaruc, Lamalou, Avène, guide des stations. Privé / mini-groupes.",
-        wl_badge:'Bien-être • Thermes',
-        wl_title:'Bien-être & thermes — hub',
-        wl_sub:"Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 nuits) • Avène (14 nuits) • Guide des stations thermales régionales.",
-        wl_list_title:'Choisissez un programme',
-        wl_list_sub:'Privé / mini-groupes. Transferts, accompagnement, prise de rendez-vous.',
-        brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-        nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
-        nav_why_f:'Pourquoi nous', nav_all_f:'Programmes', nav_format_f:'Format', nav_contacts_f:'Contacts',
-        btn_more:'En savoir plus', btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
-        bal_title:'Balaruc-les-Bains — SPA & Languedoc (dès 7 jours)',
-        bal_text:"Thermes O’balia + sorties : Sète, Pézenas, Carcassonne, étang de Thau, domaines. Hébergement & logistique.",
-        lam_title:'Lamalou-les-Bains — cure thermale (14–21 nuits)',
-        lam_text:"Programme thermal CTS, hébergement, transferts, accompagnement FR/RU.",
-        av_title:'Avène — cure thermale (14 nuits)',
-        av_text:"Cure dermatologique à la Station Thermale d’Avène : consultations, soins, accompagnement, hébergement et transferts.",
-        guide_title:'SPA & Thermes — guide des stations',
-        guide_text:"Choix de station (Médical / Spa / naturel), carte, fiches, hébergement & transferts.",
-        form_title:'Demande / réservation rapide',
-        form_sub:'Réponse sous 24h et vérification des disponibilités thermo/hôtels.'
-      }
-    };
+<!-- I18N -->
+<script>
+  const i18nWellness={ru:{htmlLang:'ru',title:'Wellness & термы — хаб программ | Tours Languedoc by Irène',metaDesc:'Balaruc-les-Bains (7+ дней), Lamalou (14–21 ночь), Avène (14 дней), гид по термальным курортам Лангедока. Индивидуальные форматы.',ogTitle:'Wellness & термы — хаб',ogDesc:'Balaruc, Lamalou, Avène, гид по курортам. Форматы приват/мини-группа.',wl_badge:'Wellness • Thermes',wl_title:'Wellness & термы — хаб',wl_sub:'Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 ночей) • Avène (14 дней) • Гид по термальным курортам региона.',wl_list_title:'Выберите программу',wl_list_sub:'Индивидуально / мини-группы. Трансферы, сопровождение, запись в термы.',brand_sub:'— Путешествия со вкусом',nav_all:'← Все программы',nav_book:'Забронировать',btn_more:'Подробнее',btn_whatsapp:'Написать в WhatsApp',btn_telegram:'Написать в Telegram',gal_title:'Как это выглядит',gal_sub:'Thermes de Balaruc • Lamalou • Avène.'},
+  fr:{htmlLang:'fr',title:'Bien-être & thermes — hub | Tours Languedoc by Irène',metaDesc:"Balaruc-les-Bains (7 nuits+), Lamalou (14–21 nuits), Avène (14 nuits), guide des stations thermales du Languedoc. Formats privés.",ogTitle:'Bien-être & thermes — hub',ogDesc:"Balaruc, Lamalou, Avène, guide des stations. Privé / mini-groupes.",wl_badge:'Bien-être • Thermes',wl_title:'Bien-être & thermes — hub',wl_sub:"Balaruc-les-Bains (SPA & Languedoc) • Lamalou-les-Bains (14–21 nuits) • Avène (14 nuits) • Guide des stations thermales régionales.",wl_list_title:'Choisissez un programme',wl_list_sub:'Privé / mini-groupes. Transferts, accompagnement, prise de rendez-vous.',brand_sub:'— Des voyages avec goût',nav_all:'← Toutes les offres',nav_book:'Réserver',btn_more:'En savoir plus',btn_whatsapp:'Écrire sur WhatsApp',btn_telegram:'Écrire sur Telegram',gal_title:"À quoi ça ressemble",gal_sub:'Thermes de Balaruc • Lamalou • Avène.'}};
+  const setAttrIf=(el,a,v)=>{ if(el&&typeof v==='string'&&v.trim()!=='') el.setAttribute(a,v); };
+  function applyLang(lang){
+    const t=i18nWellness[lang]||i18nWellness.ru;
+    document.documentElement.lang=t.htmlLang||'ru';
+    if(t.title) document.title=t.title;
+    setAttrIf(document.querySelector('meta[name="description"]'),'content',t.metaDesc);
+    setAttrIf(document.querySelector('meta[property="og:title"]'),'content',t.ogTitle);
+    setAttrIf(document.querySelector('meta[property="og:description"]'),'content',t.ogDesc);
+    document.querySelectorAll('[data-i18n]').forEach(n=>{ const k=n.getAttribute('data-i18n'); if(t[k]!=null) n.textContent=t[k]; });
+    document.getElementById('btn-ru')?.classList.toggle('active',lang==='ru');
+    document.getElementById('btn-fr')?.classList.toggle('active',lang==='fr');
+    try{ localStorage.setItem('site:lang',lang); }catch(e){}
+    // RU — без параметра, FR — с ?lang=fr
+    const q=new URLSearchParams(location.search);
+    if(lang==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
+    history.replaceState({},'',location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
+  }
+  (function init(){
+    const p=new URLSearchParams(location.search);
+    const fromURL=(p.get('lang')||'').toLowerCase();
+    let lang=(fromURL==='ru'||fromURL==='fr')?fromURL:(localStorage.getItem('site:lang')||'').toLowerCase();
+    if(lang!=='ru'&&lang!=='fr'){ lang=((navigator.language||'').toLowerCase().startsWith('fr')?'fr':'ru'); }
+    applyLang(lang);
+    document.getElementById('btn-ru')?.addEventListener('click',()=>applyLang('ru'));
+    document.getElementById('btn-fr')?.addEventListener('click',()=>applyLang('fr'));
+  })();
+</script>
 
-    function applyLangWellness(lang){
-      const t=i18nWellness[lang]||i18nWellness.ru;
-      document.documentElement.lang=t.htmlLang||'ru';
-      document.title=t.title;
-      const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
-      const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
-      const ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content', t.ogDesc);
-      document.querySelectorAll('[data-i18n]').forEach(n=>{
-        const k=n.getAttribute('data-i18n');
-        if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
-      });
-      document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
-      try{ localStorage.setItem('site:lang', lang); }catch(e){}
+<!-- WA / TG -->
+<script>
+  window.APP_CONFIG = window.APP_CONFIG || {
+    whatsapp:'33759644813',
+    telegram_user:'de_iren',
+    telegram_bot:'de_iren_order_bot',
+    bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
+  };
+  (function(){
+    const CFG=window.APP_CONFIG||{};
+    const digits=s=>String(s||'').replace(/\D/g,'');
+    const enc=s=>encodeURIComponent(String(s||''));
+    function buildText(){
+      const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
+      return isFr ? ['Demande du site Tours Languedoc by Irène','Page : Hub Thermes','URL : '+location.href].join('\n')
+                  : ['Заявка с сайта Tours Languedoc by Irène','Страница: Wellness & термы — хаб','URL: '+location.href].join('\n');
     }
-
-    (function initLang(){
-      const p=new URLSearchParams(location.search);
-      const fromURL=(p.get('lang')||'').toLowerCase();
-      const saved=(localStorage.getItem('site:lang')||'').toLowerCase();
-      const auto=((navigator.language||'').toLowerCase().startsWith('fr') ? 'fr':'ru');
-      const initial=(fromURL==='fr'||fromURL==='ru') ? fromURL : (saved||auto||'ru');
-      applyLangWellness(initial);
-      const upd=(lang)=>{
-        const q=new URLSearchParams(location.search);
-        if(lang==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
-        history.replaceState({},'', location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
-      };
-      document.getElementById('btn-ru')?.addEventListener('click',()=>{applyLangWellness('ru');upd('ru')});
-      document.getElementById('btn-fr')?.addEventListener('click',()=>{applyLangWellness('fr');upd('fr')});
-    })();
-  </script>
-
-  <!-- CONFIG & WhatsApp/Telegram binding -->
-  <script>
-    window.APP_CONFIG = window.APP_CONFIG || {
-      whatsapp:'+33 7 59 64 48 13',
-      telegram_user:'de_iren',
-      telegram_bot:'de_iren_order_bot',
-      bot_prestart_url:'https://iren-order-bot.onrender.com/prestart'
-    };
-
-    (function(){
-      const CFG=window.APP_CONFIG||{};
-      const digits=s=>String(s||'').replace(/\D/g,'');
-      const enc=s=>encodeURIComponent(String(s||''));
-      function buildText(){
-        return [
-          'Заявка с сайта Tours Languedoc by Irène',
-          'Страница: Wellness & термы — хаб',
-          'URL: '+location.href
-        ].join('\n');
-      }
-      function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),50); }
-
-      async function prestart(){
-        try{
-          const u=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
-          const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
-          const j=await r.json().catch(()=>null);
-          return j?.token||'';
-        }catch{ return ''; }
-      }
-
-      document.querySelectorAll('[data-whatsapp]').forEach(el=>{
-        el.addEventListener('click',e=>{
-          e.preventDefault();
-          const num=digits(CFG.whatsapp||'');
-          if(!num) return alert('Не задан номер WhatsApp');
-          safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
-        });
+    function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
+    async function prestart(){
+      try{
+        const u=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
+        const r=await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:buildText()})});
+        const j=await r.json().catch(()=>null);
+        return j?.tme || (j?.token ? `https://t.me/${(CFG.telegram_bot||'').replace(/^@/,'')}?start=${enc(j.token)}` : '');
+      }catch{ return ''; }
+    }
+    document.querySelectorAll('[data-whatsapp]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        const num=digits(CFG.whatsapp||'');
+        if(!num) return alert('Не задан номер WhatsApp');
+        safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`);
       });
-
-      document.querySelectorAll('[data-telegram]').forEach(el=>{
-        el.addEventListener('click', async e=>{
-          e.preventDefault();
-          const bot=(CFG.telegram_bot||'').replace(/^@/,'');
-          const user=(CFG.telegram_user||'').replace(/^@/,'');
-          let url='';
-          if(bot){
-            const tok=await prestart();
-            url=`https://t.me/${bot}${tok?`?start=${enc(tok)}`:''}`;
-          }else if(user){
-            url=`https://t.me/${user}`;
-          }
-          if(!url) return alert('Не задан telegram_user/telegram_bot');
-          safeOpen(url);
-        });
+    });
+    document.querySelectorAll('[data-telegram]').forEach(a=>{
+      a.addEventListener('click', async e=>{
+        e.preventDefault();
+        const bot=(CFG.telegram_bot||'').replace(/^@/,'');
+        const user=(CFG.telegram_user||'').replace(/^@/,'');
+        let url='';
+        if(bot){ url=await prestart(); if(!url) url=`https://t.me/${bot}`; }
+        else if(user){ url=`https://t.me/${user}`; }
+        else{ return alert('Не задан telegram_user/telegram_bot'); }
+        safeOpen(url);
       });
-    })();
-  </script>
+    });
+  })();
+</script>
 </body>
 </html>
