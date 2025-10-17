@@ -4,22 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- CHANGE: уточнила Title под ключи -->
   <title>Винные туры Лангедока — дегустации и маршруты | Tours Languedoc by Irène</title>
-
-  <!-- CHANGE: description короче и «ключевее» -->
   <meta name="description" content="Винные туры по Лангедоку: Grand Vin du Pic Saint-Loup и дегустационная петля Mèze & Montagnac (Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi). Приватно, 4–7 ч." />
   <meta name="robots" content="index,follow" />
 
   <!-- Canonical & hreflang -->
-  <!-- CHANGE: canonical без query; hreflang с RU как основным, FR — через ?lang=fr -->
   <link rel="canonical" href="https://goutvoyage.com/programations/wine.html" />
   <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/wine.html" />
   <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/wine.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/wine.html?lang=fr" />
 
   <!-- Open Graph -->
-  <!-- CHANGE: дополнила OG и добавила размеры -->
   <meta property="og:url" content="https://goutvoyage.com/programations/wine.html" />
   <meta property="og:title" content="Винные туры Лангедока — подборка программ" />
   <meta property="og:description" content="Grand Vin du Pic Saint-Loup и компактная петля Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
@@ -28,7 +23,7 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <!-- CHANGE: добавила Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Винные туры Лангедока — подборка программ" />
   <meta name="twitter:description" content="PSL (VIP) и Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi." />
@@ -43,7 +38,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- CHANGE: Preload LCP изображения героя -->
+  <!-- LCP preload -->
   <link rel="preload" as="image" href="/assets/wines/vinograd.jpg" imagesrcset="/assets/wines/vinograd.jpg 1200w" imagesizes="100vw" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,19 +50,47 @@
     body{margin:0; color:var(--ink); background:var(--bg); font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; padding-bottom:120px}
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin:auto; padding:0 20px}
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
-    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
-    .brand{display:flex; align-items:center; gap:14px}
-    .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
-    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+
+    /* HEADER — mobile-safe */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(255,255,255,.82);
+      border-bottom:1px solid #eee;
+      padding-left:max(0px,env(safe-area-inset-left));
+      padding-right:max(0px,env(safe-area-inset-right));
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .brand{display:flex; align-items:center; gap:12px; min-width:0}
+    .logo{width:42px; height:42px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow); flex:0 0 42px}
+    .brand h1{
+      font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; margin:0;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      font-size:clamp(16px,4.4vw,22px); line-height:1.1;
+    }
     nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
     nav a{font-weight:600; padding:10px 12px; border-radius:12px}
     nav a:hover{background:#f0f0f0}
-    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:10px 16px; box-shadow:var(--shadow)}
+    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:9px 12px; box-shadow:var(--shadow); font-size:14px}
     .lang{display:flex; align-items:center; gap:10px}
-    .lang button{border:1px solid #e6e6e6; background:#fff; padding:8px 12px; border-radius:999px; font-weight:700; cursor:pointer}
+    .lang button{border:1px solid #e6e6e6; background:#fff; padding:6px 10px; border-radius:999px; font-weight:700; cursor:pointer; font-size:12px; line-height:1}
     .lang button.active{background:var(--brand); color:#fff; border-color:var(--brand)}
 
+    /* ≤640px: header to 2 rows; hide menu; RU/FR second row */
+    @media (max-width:640px){
+      .nav{
+        display:grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        row-gap:8px; align-items:center;
+      }
+      .brand{grid-column:1/2; grid-row:1/2}
+      nav ul{display:none}
+      .cta{grid-column:2/3; grid-row:1/2; justify-self:end}
+      .lang{grid-column:1/-1; grid-row:2/3; justify-self:end}
+    }
+
+    /* HERO */
     .hero{position:relative; isolation:isolate}
     .hero .bg{position:absolute; inset:0; z-index:-1}
     .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.75)}
@@ -76,6 +99,7 @@
     .badge{display:inline-block; padding:8px 12px; border:1px solid #eee; background:#fff; border-radius:999px; font-weight:800; font-size:12px}
     h2.title{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.05; color:#fff; margin:8px 0 10px}
     .subtitle{color:#f7f7f7; font-size:18px; max-width:720px}
+    @media (max-width:420px){ h2.title{font-size:34px} .subtitle{font-size:15px} .badge{font-size:11px; padding:6px 10px} .hero .inner{min-height:40vh; padding:28px 0 36px} }
 
     section{padding:48px 0}
     .section-title{font-family:"Cormorant Garamond",serif; font-size:32px; margin:0 0 10px}
@@ -91,21 +115,17 @@
     .card .actions{margin-top:auto; display:flex; gap:10px}
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
-    @media(max-width:900px){ .card{grid-column:span 12} }
+    @media(max-width:900px){ .card{grid-column:1/-1} .card img{height:200px} }
 
+    /* FABs */
     .chat-fab{ position:fixed; right:16px; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center; z-index:9999 }
     .chat-fab svg{width:22px;height:22px}
     .chat-fab.wa{bottom:76px} .chat-fab.tg{bottom:26px}
   </style>
 
   <script>
-  window.ANALYTICS_CONFIG = {
-    GA_ID: "G-L9TR2VTDX2",
-    YM_ID: 104246057,
-    consentVersion: "v2"
-  };
+    window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v2" };
   </script>
-
   <link rel="preload" as="script" href="/assets/js/cookies.js">
   <script defer src="/assets/js/cookies.js"></script>
 </head>
@@ -123,7 +143,7 @@
           <li><a href="/index.html#why" data-i18n="nav_why">Почему с нами</a></li>
           <li><a class="cta" href="#book" data-i18n="nav_book">Забронировать</a></li>
         </ul>
-        <div aria-label="Language switch">
+        <div aria-label="Переключение языка">
           <button id="btn-ru" class="active" type="button">RU</button>
           <button id="btn-fr" type="button">FR</button>
         </div>
@@ -145,7 +165,6 @@
     </div>
   </section>
 
-  <!-- CHANGE: добавил внутренние хлебные крошки (улучшают навигацию и CTR в выдаче) -->
   <nav class="container" aria-label="breadcrumb" style="padding-top:18px">
     <ol style="display:flex;gap:8px;list-style:none;margin:0;padding:0;color:#667;font-size:14px">
       <li><a href="/index.html">Главная</a></li>
@@ -161,35 +180,28 @@
     <p class="section-sub" data-i18n="wine_list_sub">Обе программы — индивидуально, можно адаптировать под ваши интересы (белые/красные, Picpoul, Grès de Montpellier).</p>
 
     <div class="cards">
-      <!-- PSL -->
       <article class="card">
         <img src="/assets/psl/psl_hero.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Pic Saint-Loup — премиальные винные дегустации">
         <div class="pad">
           <h4 data-i18n="psl_title">Grand Vin du Pic Saint-Loup — премиальный винный день</h4>
           <p data-i18n="psl_text">VIP-дегустации: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (возможен Hortus). ~7 часов, база: Монпелье.</p>
           <div class="meta"><span>Pic Saint-Loup</span><span>≈7 ч</span></div>
-          <div class="actions">
-            <a class="btn primary" href="/programations/Pic_Saint_Loup.html" data-i18n="btn_more">Подробнее</a>
-          </div>
+          <div class="actions"><a class="btn primary" href="/programations/Pic_Saint_Loup.html" data-i18n="btn_more">Подробнее</a></div>
         </div>
       </article>
 
-      <!-- Mèze degust -->
       <article class="card">
         <img src="/assets/wines2/IMG_0177.jpg" onerror="this.src='/assets/wines/vinograd.jpg'" alt="Mèze & Montagnac — дегустационная петля">
         <div class="pad">
           <h4 data-i18n="deg_title">Mèze — дегустационный маршрут (Mèze & Montagnac)</h4>
           <p data-i18n="deg_text">Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.</p>
           <div class="meta"><span>Mèze & Montagnac</span><span>4–5 ч</span></div>
-          <div class="actions">
-            <a class="btn primary" href="/programations/degustation-meze.html" data-i18n="btn_more">Подробнее</a>
-          </div>
+          <div class="actions"><a class="btn primary" href="/programations/degustation-meze.html" data-i18n="btn_more">Подробнее</a></div>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="container">
     <h3 class="section-title" data-i18n="faq_title">FAQ</h3>
     <details><summary data-i18n="q1">Можно адаптировать домены под белые/красные?</summary><p data-i18n="a1">Да, подбираем линейку по вкусу: Picpoul, Grès de Montpellier, экспериментальные кюве.</p></details>
@@ -197,7 +209,6 @@
     <details><summary data-i18n="q3">Сколько дегустаций за день?</summary><p data-i18n="a3">Обычно 3–4 домена за 4–5 часов (Mèze), либо 3–4 премиальных визита за ~7 часов (PSL).</p></details>
   </section>
 
-  <!-- CTA -->
   <section id="book" class="container">
     <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
     <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подберём домены под ваши вкусы.</p>
@@ -225,49 +236,27 @@
   </button>
 
   <!-- JSON-LD -->
-  <!-- CHANGE: добавлен BreadcrumbList + уточнённая CollectionPage -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph": [
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
-          {"@type":"ListItem","position":2,"name":"Вино","item":"https://goutvoyage.com/wine.html"},
-          {"@type":"ListItem","position":3,"name":"Подборка программ","item":"https://goutvoyage.com/programations/wine.html"}
-        ]
-      },
-      {
-        "@type":"CollectionPage",
-        "name":"Винные туры Лангедока — подборка программ",
-        "url":"https://goutvoyage.com/programations/wine.html",
-        "mainEntity":{
-          "@type":"ItemList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html"},
-            {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/degustation-meze.html"}
-          ]
-        }
-      }
-    ]
-  }
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"BreadcrumbList","itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Главная","item":"https://goutvoyage.com/"},
+      {"@type":"ListItem","position":2,"name":"Вино","item":"https://goutvoyage.com/wine.html"},
+      {"@type":"ListItem","position":3,"name":"Подборка программ","item":"https://goutvoyage.com/programations/wine.html"}]},
+    {"@type":"CollectionPage","name":"Винные туры Лангедока — подборка программ","url":"https://goutvoyage.com/programations/wine.html","mainEntity":{"@type":"ItemList","itemListElement":[
+      {"@type":"ListItem","position":1,"url":"https://goutvoyage.com/programations/Pic_Saint_Loup.html"},
+      {"@type":"ListItem","position":2,"url":"https://goutvoyage.com/programations/degustation-meze.html"}]}}]}
   </script>
 
   <!-- I18N -->
   <script>
     const i18nWine = {
-      ru: {
-        htmlLang:'ru',
-        title:'Винные туры Лангедока — дегустации и маршруты | Tours Languedoc by Irène',
+      ru:{ htmlLang:'ru', title:'Винные туры Лангедока — дегустации и маршруты | Tours Languedoc by Irène',
         metaDesc:'Винные туры по Лангедоку: PSL и Mèze & Montagnac. Приватно, 4–7 часов.',
         ogTitle:'Винные туры Лангедока — подборка программ',
         ogDesc:'PSL (VIP) и Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
-        wine_badge:'Wine • Languedoc',
-        wine_title:'Винные туры Лангедока — подборка программ',
+        wine_badge:'Wine • Languedoc', wine_title:'Винные туры Лангедока — подборка программ',
         wine_sub:'Два формата: Grand Vin du Pic Saint-Loup (VIP-день) и компактная дегустационная петля Mèze & Montagnac: Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.',
-        wine_list_title:'Выберите программу',
-        wine_list_sub:'Обе программы — индивидуально, можно адаптировать под ваши интересы (белые/красные, Picpoul, Grès de Montpellier).',
+        wine_list_title:'Выберите программу', wine_list_sub:'Обе программы — индивидуально, можно адаптировать под ваши интересы (белые/красные, Picpoul, Grès de Montpellier).',
         brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
         nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
         btn_more:'Подробнее', btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
@@ -275,19 +264,15 @@
         psl_text:'VIP-дегустации: Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (возможен Hortus). ~7 часов, база: Монпелье.',
         deg_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
         deg_text:'Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (опция Belle Mare). 4–5 часов, 3–4 остановки.',
-        faq_title:'FAQ',
-        q1:'Можно адаптировать домены под белые/красные?', a1:'Да, подбираем линейку по вкусу: Picpoul, Grès de Montpellier, экспериментальные кюве.',
+        faq_title:'FAQ', q1:'Можно адаптировать домены под белые/красные?', a1:'Да, подбираем линейку по вкусу: Picpoul, Grès de Montpellier, экспериментальные кюве.',
         q2:'Откуда старт?', a2:'Монпелье / Mèze / по договорённости. Возможен пикап из отеля.',
         q3:'Сколько дегустаций за день?', a3:'Обычно 3–4 домена за 4–5 часов (Mèze), либо 3–4 премиальных визита за ~7 часов (PSL).'
       },
-      fr: {
-        htmlLang:'fr',
-        title:'Languedoc — sélection de circuits œnologiques | Tours Languedoc by Irène',
+      fr:{ htmlLang:'fr', title:'Languedoc — sélection de circuits œnologiques | Tours Languedoc by Irène',
         metaDesc:"Sélection des circuits vins : Grand Vin du Pic Saint-Loup et boucle Mèze & Montagnac. Privé, 4–7 h.",
         ogTitle:'Languedoc — sélection de circuits œnologiques',
         ogDesc:"PSL (VIP) et Mèze & Montagnac : Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
-        wine_badge:'Vin • Languedoc',
-        wine_title:'Languedoc — sélection de circuits œnologiques',
+        wine_badge:'Vin • Languedoc', wine_title:'Languedoc — sélection de circuits œnologiques',
         wine_sub:"Deux formats : Grand Vin du Pic Saint-Loup (journée VIP) et boucle dégustation Mèze & Montagnac : Saint-Martin de la Garrigue, Saint Hilaire, La Croix Gratiot, Mas du Novi.",
         wine_list_title:'Choisissez un programme',
         wine_list_sub:'Deux circuits privés — personnalisation selon vos goûts (blanc/rouge, Picpoul, Grès de Montpellier).',
@@ -298,17 +283,15 @@
         psl_text:'Dégustations VIP : Puech-Haut, Cazeneuve, Clos Marie, Mas Bruguière (Hortus possible). ~7 h, base : Montpellier.',
         deg_title:'Mèze — route de dégustation (Mèze & Montagnac)',
         deg_text:'Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (option Belle Mare). 4–5 h, 3–4 arrêts.',
-        faq_title:'FAQ',
-        q1:'Peut-on adapter les domaines (blanc/rouge) ?', a1:'Oui, selon vos goûts : Picpoul, Grès de Montpellier, cuvées expérimentales.',
+        faq_title:'FAQ', q1:'Peut-on adapter les domaines (blanc/rouge) ?', a1:'Oui, selon vos goûts : Picpoul, Grès de Montpellier, cuvées expérimentales.',
         q2:'Point de départ ?', a2:'Montpellier / Mèze / à convenir. Pickup hôtel possible.',
         q3:'Combien de dégustations ?', a3:'En général 3–4 domaines en 4–5 h (Mèze) ou 3–4 visites premium ~7 h (PSL).'
       }
     };
 
-    // CHANGE: принудительно RU по умолчанию (без авто-детекта браузера)
     function applyLangWine(lang){
-      const t=i18nWine[lang];
-      document.documentElement.lang=t.htmlLang;
+      const t=i18nWine[lang]||i18nWine.ru;
+      document.documentElement.lang=t.htmlLang||'ru';
       document.title=t.title;
       const md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content', t.metaDesc);
       const ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content', t.ogTitle);
@@ -317,25 +300,23 @@
         const k=n.getAttribute('data-i18n');
         if(t[k]!==undefined){ /<[a-z][\s\S]*>/i.test(t[k]) ? n.innerHTML=t[k] : n.textContent=t[k]; }
       });
-      document.getElementById('btn-ru').classList.toggle('active', lang==='ru');
-      document.getElementById('btn-fr').classList.toggle('active', lang==='fr');
-      localStorage.setItem('site:lang', lang);
+      document.getElementById('btn-ru')?.classList.toggle('active', lang==='ru');
+      document.getElementById('btn-fr')?.classList.toggle('active', lang==='fr');
+      try{ localStorage.setItem('site:lang', lang); }catch(e){}
     }
     (function initLang(){
       const p=new URLSearchParams(location.search);
       const fromURL=(p.get('lang')||'').toLowerCase();
       const saved=(localStorage.getItem('site:lang')||'').toLowerCase();
-      const initial=(fromURL==='ru'||fromURL==='fr') ? fromURL : (saved==='fr' ? 'fr' : 'ru'); // RU по умолчанию
+      const initial=(fromURL==='fr'||fromURL==='ru') ? fromURL : (saved==='fr' ? 'fr' : 'ru');
       applyLangWine(initial);
       const upd=(lang)=>{
         const q=new URLSearchParams(location.search);
-        // CHANGE: сохраняем ?lang только если FR, чтобы каноникалом оставался RU-URL
-        if(lang==='fr'){ q.set('lang','fr'); }
-        else{ q.delete('lang'); }
+        if(lang==='fr'){ q.set('lang','fr'); } else { q.delete('lang'); }
         history.replaceState({},'', location.pathname+(q.toString()?('?'+q.toString()):'')+location.hash);
       };
-      document.getElementById('btn-ru').addEventListener('click',()=>{applyLangWine('ru');upd('ru')});
-      document.getElementById('btn-fr').addEventListener('click',()=>{applyLangWine('fr');upd('fr')});
+      document.getElementById('btn-ru')?.addEventListener('click',()=>{applyLangWine('ru');upd('ru')});
+      document.getElementById('btn-fr')?.addEventListener('click',()=>{applyLangWine('fr');upd('fr')});
     })();
   </script>
 
