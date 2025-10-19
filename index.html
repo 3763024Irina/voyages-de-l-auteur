@@ -606,6 +606,9 @@
 </section>
 
 <!-- FORMAT -->
+<!-- (необязательно) можно подсказать браузеру заранее подтянуть спрайт -->
+<link rel="preload" as="image" href="/assets/icons.svg" imagesrcset="/assets/icons.svg" />
+
 <!-- FORMAT -->
 <section id="format" class="container">
   <h3 class="section-title" data-i18n="format.title">Форматы сервиса</h3>
@@ -615,7 +618,9 @@
     <article class="feature-card">
       <div class="feature-head">
         <span class="feature-icon" aria-hidden="true">
-          <svg width="22" height="22"><use href="#i-car"/></svg>
+          <svg width="22" height="22" role="img" focusable="false">
+            <use href="/assets/icons.svg#i-car"></use>
+          </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.1.title">Трансферы</h3>
       </div>
@@ -629,7 +634,9 @@
     <article class="feature-card">
       <div class="feature-head">
         <span class="feature-icon" aria-hidden="true">
-          <svg width="22" height="22"><use href="#i-info"/></svg>
+          <svg width="22" height="22" role="img" focusable="false">
+            <use href="/assets/icons.svg#i-info"></use>
+          </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.2.title">Как это работает</h3>
       </div>
@@ -643,7 +650,9 @@
     <article class="feature-card">
       <div class="feature-head">
         <span class="feature-icon" aria-hidden="true">
-          <svg width="22" height="22"><use href="#i-hospital"/></svg>
+          <svg width="22" height="22" role="img" focusable="false">
+            <use href="/assets/icons.svg#i-hospital"></use>
+          </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.3.title">Визы для посещения санатория</h3>
       </div>
@@ -663,27 +672,13 @@
   "name": "Форматы сервиса — Tours Languedoc by Irène",
   "itemListOrder": "https://schema.org/ItemListOrderAscending",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Трансферы",
-      "url": "https://goutvoyage.com/services/transfers.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Как это работает",
-      "url": "https://goutvoyage.com/how-it-works.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Визы для посещения санатория",
-      "url": "https://goutvoyage.com/visa-medical-invitation.html"
-    }
+    { "@type": "ListItem", "position": 1, "name": "Трансферы", "url": "https://goutvoyage.com/services/transfers.html" },
+    { "@type": "ListItem", "position": 2, "name": "Как это работает", "url": "https://goutvoyage.com/how-it-works.html" },
+    { "@type": "ListItem", "position": 3, "name": "Визы для посещения санатория", "url": "https://goutvoyage.com/visa-medical-invitation.html" }
   ]
 }
 </script>
+
 
 
 <!-- ABOUT -->
