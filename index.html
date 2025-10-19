@@ -605,39 +605,49 @@
   </div>
 </section>
 
-  <!-- FORMAT -->
-  <section id="format" class="container">
-    <h3 class="section-title" data-i18n="format.title">Формат путешествий</h3>
+ <!-- FORMAT -->
+<section id="format" class="container">
+  <h3 class="section-title" data-i18n="format.title">Форматы сервиса</h3>
 
-    <section class="features" aria-label="Формат путешествий">
-      <article class="feature-card">
-        <div class="feature-head">
-          <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-car"/></svg></span>
-          <h3 class="feature-title" data-i18n="format.1.title">Приватно и удобно</h3>
-        </div>
-        <p class="feature-text" data-i18n="format.1.text">Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.</p>
-        <a class="feature-more" href="#contactCard" data-i18n="format.more">Подробнее</a>
-      </article>
+  <section class="features" aria-label="Форматы сервиса">
+    <!-- Трансферы -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-car"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.1.title">Трансферы</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.1.text">
+        Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), фиксированные цены, детские кресла по запросу.
+      </p>
+      <a class="feature-more" href="/services/transfers.html" data-i18n="format.more">Подробнее</a>
+    </article>
 
-      <article class="feature-card">
-        <div class="feature-head">
-          <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-wine"/></svg></span>
-          <h3 class="feature-title" data-i18n="format.2.title">Без посредников</h3>
-        </div>
-        <p class="feature-text" data-i18n="format.2.text">Работаем напрямую с доменами и фермерами — честный продукт и цены.</p>
-        <a class="feature-more" href="#tours" data-i18n="format.more">Подробнее</a>
-      </article>
+    <!-- Как это работает -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-info"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.2.title">Как это работает</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.2.text">
+        Заявка → подбор маршрута и цены → подтверждение → предоплата → поездка. Прозрачно и без посредников.
+      </p>
+      <a class="feature-more" href="/how-it-works.html" data-i18n="format.more">Подробнее</a>
+    </article>
 
-      <article class="feature-card">
-        <div class="feature-head">
-          <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-wave"/></svg></span>
-          <h3 class="feature-title" data-i18n="format.3.title">Море и актив</h3>
-        </div>
-        <p class="feature-text" data-i18n="format.3.text">SUP, каяк, снорклинг — по погоде и желанию группы.</p>
-        <a class="feature-more" href="#tours" data-i18n="format.more">Подробнее</a>
-      </article>
-    </section>
+    <!-- Визы для посещения санатория -->
+    <article class="feature-card">
+      <div class="feature-head">
+        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-hospital"/></svg></span>
+        <h3 class="feature-title" data-i18n="format.3.title">Визы для посещения санатория</h3>
+      </div>
+      <p class="feature-text" data-i18n="format.3.text">
+        Помощь с письмом-приглашением от санатория, бронями, маршрутом и страховкой для медицинской визы.
+      </p>
+      <a class="feature-more" href="/visa-medical-invitation.html" data-i18n="format.more">Подробнее</a>
+    </article>
   </section>
+</section>
+
 
 <!-- ABOUT -->
 <section id="about" class="container" style="padding:60px 0; display:flex; align-items:center; gap:40px; flex-wrap:wrap">
@@ -728,10 +738,17 @@ const dict = {
 'tours.title':'Лучшие программы на юге Франции',
 'tours.sub':'Куда поехать во Франции: авторские маршруты по Франции — однодневные, уик-энд и недельные. Индивидуально 1–6 гостей или мини-группа.',
     'btn.view':'Смотреть программы','btn.open':'Открыть программу','btn.more':'Подробнее',
-    'format.title':'Формат путешествий',
-    'format.1.title':'Приватно и удобно','format.1.text':'Частный транспорт, гибкий темп, остановки по запросу, лучшие ракурсы.',
-    'format.2.title':'Без посредников','format.2.text':'Работаем напрямую с доменами и фермерами — честный продукт и цены.',
-    'format.3.title':'Море и актив','format.3.text':'SUP, каяк, снорклинг — по погоде и желанию группы.',
+  // ru
+
+  "format.title": "Форматы сервиса",
+  "format.more": "Подробнее",
+  "format.1.title": "Трансферы",
+  "format.1.text": "Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), фиксированные цены, детские кресла по запросу.",
+  "format.2.title": "Как это работает",
+  "format.2.text": "Заявка → подбор маршрута и цены → подтверждение → предоплата → поездка. Прозрачно и без посредников.",
+  "format.3.title": "Визы для посещения санатория",
+  "format.3.text": "Помощь с письмом-приглашением от санатория, бронями, маршрутом и страховкой для медицинской визы."
+}
 
     /* === ОБНОВЛЁННЫЙ БЛОК "О ПРОЕКТЕ" === */
     'about.title':'О проекте',
@@ -754,10 +771,17 @@ const dict = {
 'tours.title':'Nos meilleurs programmes dans le sud de la France',
 'tours.sub':'Où aller en France : itinéraires sur mesure — demi-journée, journée, week-end, semaine. Privé 1–6 pers. ou mini-groupe.',
     'btn.view':'Voir les programmes','btn.open':'Ouvrir le programme','btn.more':'En savoir plus',
-    'format.title':'Format des voyages',
-    'format.1.title':'Privé & confortable','format.1.text':'Transport privé, rythme flexible, meilleurs points de vue.',
-    'format.2.title':'Sans intermédiaires','format.2.text':'Direct avec les domaines et producteurs — produits et prix honnêtes.',
-    'format.3.title':'Mer & activités','format.3.text':'Paddle, kayak, snorkeling — selon la météo et vos envies.',
+ // fr
+
+  "format.title": "Nos formats de service",
+  "format.more": "En savoir plus",
+  "format.1.title": "Transferts",
+  "format.1.text": "Accueil aéro/gares (MPL, BZR, MRS, BCN…), tarifs fixes, sièges enfants sur demande.",
+  "format.2.title": "Comment ça marche",
+  "format.2.text": "Demande → proposition trajet/prix → confirmation → acompte → voyage. Simple et transparent.",
+  "format.3.title": "Visas pour cure thermale",
+  "format.3.text": "Aide avec l’attestation du centre, réservations, itinéraire et assurance pour le visa médical."
+}
 
     /* === BLOС "À PROPOS DU PROJET" === */
     'about.title':'À propos du projet',
