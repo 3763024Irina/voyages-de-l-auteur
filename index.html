@@ -605,11 +605,10 @@
   </div>
 </section>
 
-<!-- FORMAT -->
-<!-- (необязательно) можно подсказать браузеру заранее подтянуть спрайт -->
+<!-- ПРЕДЗАГРУЗКА СПРАЙТА (опц.) -->
 <link rel="preload" as="image" href="/assets/icons.svg" imagesrcset="/assets/icons.svg" />
 
-<!-- FORMAT -->
+<!-- БЛОК ФОРМАТОВ -->
 <section id="format" class="container">
   <h3 class="section-title" data-i18n="format.title">Форматы сервиса</h3>
 
@@ -617,9 +616,9 @@
     <!-- Трансферы -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true">
+        <span class="feature-icon" data-fallback="car" aria-hidden="true">
           <svg width="22" height="22" role="img" focusable="false">
-            <use href="/assets/icons.svg#i-car"></use>
+            <use href="#i-car" xlink:href="#i-car"></use>
           </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.1.title">Трансферы</h3>
@@ -633,9 +632,9 @@
     <!-- Как это работает -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true">
+        <span class="feature-icon" data-fallback="info" aria-hidden="true">
           <svg width="22" height="22" role="img" focusable="false">
-            <use href="/assets/icons.svg#i-info"></use>
+            <use href="#i-info" xlink:href="#i-info"></use>
           </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.2.title">Как это работает</h3>
@@ -649,9 +648,9 @@
     <!-- Визы для посещения санатория -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true">
+        <span class="feature-icon" data-fallback="hospital" aria-hidden="true">
           <svg width="22" height="22" role="img" focusable="false">
-            <use href="/assets/icons.svg#i-hospital"></use>
+            <use href="#i-hospital" xlink:href="#i-hospital"></use>
           </svg>
         </span>
         <h3 class="feature-title" data-i18n="format.3.title">Визы для посещения санатория</h3>
@@ -679,6 +678,44 @@
 }
 </script>
 
+<!-- CSS: фолбэк, если спрайт не загрузился -->
+<style>
+  .svg-sprite-failed .feature-icon svg{ display:none; }
+  .svg-sprite-failed .feature-icon[data-fallback="car"]::before{ content:"🚗"; }
+  .svg-sprite-failed .feature-icon[data-fallback="info"]::before{ content:"ℹ️"; }
+  .svg-sprite-failed .feature-icon[data-fallback="hospital"]::before{ content:"🏥"; }
+</style>
+
+<!-- JS: загружаем и инлайним спрайт один раз -->
+<script>
+  (function loadSvgSprite(){
+    var SPRITE_URL = '/assets/icons.svg';
+    var KEY = 'svg-sprite:v1:'+SPRITE_URL;
+
+    function inject(txt){
+      var host = document.createElement('div');
+      host.style.display='none';
+      host.setAttribute('data-sprite', SPRITE_URL);
+      host.innerHTML = txt;
+      document.body.prepend(host);
+    }
+
+    try {
+      var cached = localStorage.getItem(KEY);
+      if (cached) inject(cached);
+    } catch(e){}
+
+    fetch(SPRITE_URL, {credentials:'same-origin'})
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function(txt){
+        if (!document.querySelector('[data-sprite="'+SPRITE_URL+'"]')) inject(txt);
+        try { localStorage.setItem(KEY, txt); } catch(e){}
+      })
+      .catch(function(){
+        document.documentElement.classList.add('svg-sprite-failed');
+      });
+  })();
+</script>
 
 
 <!-- ABOUT -->
