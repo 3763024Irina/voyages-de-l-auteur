@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Письмо-приглашение санатория • Медицинская виза (RU/FR)</title>
+  <meta name="description" content="Генератор письма-приглашения от санатория/термального центра для оформления медицинской визы. Билингв RU/FR, печать, автоподстановка полей." />
+  <style>
+    :root{
+      --brand:#0b6bff; --ink:#111; --muted:#666;
+      --bg:#fff; --card:#fafafa; --border:#e6e6e6; --radius:14px; --w:980px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", sans-serif}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--border);z-index:10}
+    .bar{max-width:var(--w);margin:0 auto;display:flex;gap:10px;align-items:center;padding:10px 16px}
+    .title{font-weight:700}
+    .wrap{max-width:var(--w);margin:20px auto;padding:0 16px 60px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+    .card h3{margin:0 0 10px}
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
+    input, textarea, select{
+      width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit
+    }
+    textarea{min-height:86px;resize:vertical}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    button{
+      border:1px solid var(--border);background:#fff;border-radius:999px;padding:10px 14px;cursor:pointer
+    }
+    button.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .doc{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+    .doc header{border:0;position:static}
+    .doc h1{font-size:20px;margin:0 0 8px}
+    .doc .meta{color:var(--muted);font-size:13px;margin-bottom:14px}
+    .doc .sign{margin-top:22px}
+    .doc .stamp{margin-top:8px;color:var(--muted);font-size:13px}
+    .lang-tabs{display:flex;gap:6px;margin-bottom:10px}
+    .lang-tabs button{padding:8px 12px;border-radius:999px}
+    .note{font-size:12px;color:var(--muted);margin-top:6px}
+    .small{font-size:12px;color:var(--muted)}
+    .flex{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .mt{margin-top:14px}
+    .muted{color:var(--muted)}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    @media print{
+      body{background:#fff}
+      header,.card.controls{display:none}
+      .wrap{padding:0;margin:0}
+      .doc{border:0;padding:0}
+      @page{size:A4;margin:18mm}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <div class="title">Письмо-приглашение санатория • Медвиза</div>
+    <div class="flex" style="margin-left:auto">
+      <button onclick="fillDemo()">Заполнить пример</button>
+      <button onclick="window.print()">Печать / PDF</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="grid">
+    <!-- Формы ввода -->
+    <div class="card controls">
+      <h3>Данные учреждения</h3>
+      <div class="row">
+        <div>
+          <label>Название санатория / термального центра</label>
+          <input id="clinic_name" placeholder="Thermes de … / Centre de rééducation …" />
+        </div>
+        <div>
+          <label>Подразделение / Отдел (опц.)</label>
+          <input id="clinic_unit" placeholder="Service international / Admissions" />
+        </div>
+      </div>
+      <label>Адрес (строкой)</label>
+      <input id="clinic_address" placeholder="Адрес, индекс, город, страна" />
+      <div class="row">
+        <div>
+          <label>Телефон</label>
+          <input id="clinic_phone" placeholder="+33 …" />
+        </div>
+        <div>
+          <label>E-mail</label>
+          <input id="clinic_email" placeholder="admissions@…"/>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Ответственное лицо (ФИО)</label>
+          <input id="sign_name" placeholder="Dr/ Mme/ M. …" />
+        </div>
+        <div>
+          <label>Должность</label>
+          <input id="sign_role" placeholder="Directeur médical / Responsable admissions" />
+        </div>
+      </div>
+
+      <h3 class="mt">Данные пациента</h3>
+      <div class="row">
+        <div>
+          <label>ФИО (как в загранпаспорте)</label>
+          <input id="patient_name" placeholder="IVANOVA IRINA" />
+        </div>
+        <div>
+          <label>Дата рождения</label>
+          <input id="patient_dob" type="date" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Паспорт №</label>
+          <input id="patient_passport" placeholder="№ …" />
+        </div>
+        <div>
+          <label>Гражданство</label>
+          <input id="patient_nationality" placeholder="RU / KZ / …" />
+        </div>
+      </div>
+
+      <h3 class="mt">Лечение / курс</h3>
+      <div class="row">
+        <div>
+          <label>Название программы / диагноз (кратко)</label>
+          <input id="program_name" placeholder="Traitement thermal – rééducation fonctionnelle" />
+        </div>
+        <div>
+          <label>Тип визы</label>
+          <select id="visa_type">
+            <option value="C">Краткосрочная (тип C, медицинская цель)</option>
+            <option value="D">Долгосрочная (тип D, лечение &gt; 90 дней)</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Дата начала</label>
+          <input id="start_date" type="date" />
+        </div>
+        <div>
+          <label>Дата окончания</label>
+          <input id="end_date" type="date" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Длительность (дней/ночей)</label>
+          <input id="duration" placeholder="например: 14 ночей / 15 дней" />
+        </div>
+        <div>
+          <label>Проживание</label>
+          <input id="accommodation" placeholder="Résidence du centre / Hôtel partenaire …" />
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Стоимость лечения (€)</label>
+          <input id="price_total" type="number" placeholder="например: 1850" />
+        </div>
+        <div>
+          <label>Аванс / депозит (€)</label>
+          <input id="price_deposit" type="number" placeholder="например: 300" />
+        </div>
+      </div>
+      <label>Условия оплаты / возврата (кратко)</label>
+      <textarea id="payment_terms" placeholder="Acompte non remboursable sauf cas de force majeure; solde à l’arrivée; annulation &lt; 7 j — …"></textarea>
+      <label>Сопровождающий (опц.)</label>
+      <input id="companion" placeholder="ФИО, степень родства (если требуется)" />
+      <label>Доп. сведения для консульства (опц.)</label>
+      <textarea id="consulate_extra" placeholder="При необходимости указать: необходимость сопровождения; отсутствие противопоказаний; наличие места проживания на территории центра и т.п."></textarea>
+
+      <div class="actions">
+        <button class="primary" onclick="renderDoc()">Сформировать письмо</button>
+        <button onclick="clearAll()">Очистить</button>
+        <button onclick="downloadHTML()">Скачать HTML</button>
+      </div>
+      <div class="note">Все поля можно отредактировать прямо в документе после генерации (они становятся текстом).</div>
+    </div>
+
+    <!-- Документ RU/FR -->
+    <div class="doc card">
+      <div class="lang-tabs">
+        <button id="tab-ru" class="primary" onclick="setLang('ru')">Русский</button>
+        <button id="tab-fr" onclick="setLang('fr')">Français</button>
+      </div>
+
+      <!-- RU -->
+      <section id="doc-ru">
+        <h1>Письмо-приглашение для оформления медицинской визы</h1>
+        <div class="meta" id="meta-ru"></div>
+
+        <p id="address-ru" class="small muted"></p>
+
+        <p>Уважаемые сотрудники консульства,</p>
+        <p id="p1-ru"></p>
+        <p id="p2-ru"></p>
+        <p id="p3-ru"></p>
+        <p id="p4-ru"></p>
+        <p id="p5-ru"></p>
+
+        <p>Просим принять настоящее письмо-приглашение как документальное подтверждение цели поездки — прохождение медицинского лечения в нашем учреждении. При необходимости мы готовы предоставить дополнительные справки (включая подтверждение проживания на базе центра и медицинские отчеты по итогам курса).</p>
+
+        <div class="sign">
+          С уважением,<br>
+          <span id="sign-ru"></span>
+          <div class="stamp">Печать учреждения / Cachet de l’établissement</div>
+        </div>
+      </section>
+
+      <!-- FR -->
+      <section id="doc-fr" style="display:none">
+        <h1>Lettre d’invitation — Visa médical</h1>
+        <div class="meta" id="meta-fr"></div>
+
+        <p id="address-fr" class="small muted"></p>
+
+        <p>Madame, Monsieur,</p>
+        <p id="p1-fr"></p>
+        <p id="p2-fr"></p>
+        <p id="p3-fr"></p>
+        <p id="p4-fr"></p>
+        <p id="p5-fr"></p>
+
+        <p>Nous vous prions d’accepter la présente comme confirmation officielle de l’objet du voyage — un traitement médical au sein de notre établissement. Sur demande, nous pouvons fournir des attestations complémentaires (hébergement sur site, rapports médicaux de fin de cure, etc.).</p>
+
+        <div class="sign">
+          Cordialement,<br>
+          <span id="sign-fr"></span>
+          <div class="stamp">Cachet de l’établissement</div>
+        </div>
+      </section>
+
+      <div class="note mt">Подсказка: после генерации кликните по тексту и при необходимости отредактируйте формулировки перед печатью.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentLang = 'ru';
+  function setLang(lang){
+    currentLang = lang;
+    document.getElementById('doc-ru').style.display = lang==='ru'?'block':'none';
+    document.getElementById('doc-fr').style.display = lang==='fr'?'block':'none';
+    document.getElementById('tab-ru').classList.toggle('primary', lang==='ru');
+    document.getElementById('tab-fr').classList.toggle('primary', lang==='fr');
+  }
+
+  function get(id){ return document.getElementById(id).value.trim(); }
+
+  function renderDoc(){
+    const data = {
+      clinic_name:get('clinic_name'),
+      clinic_unit:get('clinic_unit'),
+      clinic_address:get('clinic_address'),
+      clinic_phone:get('clinic_phone'),
+      clinic_email:get('clinic_email'),
+      sign_name:get('sign_name'),
+      sign_role:get('sign_role'),
+      patient_name:get('patient_name'),
+      patient_dob:get('patient_dob'),
+      patient_passport:get('patient_passport'),
+      patient_nationality:get('patient_nationality'),
+      program_name:get('program_name'),
+      visa_type:get('visa_type'),
+      start_date:get('start_date'),
+      end_date:get('end_date'),
+      duration:get('duration'),
+      accommodation:get('accommodation'),
+      price_total:get('price_total'),
+      price_deposit:get('price_deposit'),
+      payment_terms:get('payment_terms'),
+      companion:get('companion'),
+      consulate_extra:get('consulate_extra')
+    };
+
+    // Метаданные / шапка
+    const headerRU = `${data.clinic_name}${data.clinic_unit? ' — ' + data.clinic_unit : ''}`;
+    const headerFR = headerRU;
+    const contactRU = `${data.clinic_address || ''} • T: ${data.clinic_phone || '—'} • E: ${data.clinic_email || '—'}`;
+    const contactFR = contactRU;
+
+    document.getElementById('meta-ru').innerText = headerRU;
+    document.getElementById('address-ru').innerText = contactRU;
+    document.getElementById('meta-fr').innerText = headerFR;
+    document.getElementById('address-fr').innerText = contactFR;
+
+    // Основные абзацы RU
+    document.getElementById('p1-ru').innerText =
+      `Настоящим подтверждаем, что ${data.patient_name} (${data.patient_nationality}, дата рождения ${fmtDate(data.patient_dob)}, паспорт ${data.patient_passport}) принят(а) в ${data.clinic_name} на курс: «${data.program_name}».`;
+    document.getElementById('p2-ru').innerText =
+      `Планируемые сроки лечения: с ${fmtDate(data.start_date)} по ${fmtDate(data.end_date)} (${data.duration || 'уточняется'}).`;
+    document.getElementById('p3-ru').innerText =
+      `Проживание: ${data.accommodation || 'на базе учреждения / партнёрского отеля'}. Стоимость курса: €${num(data.price_total)}; аванс/депозит: €${num(data.price_deposit)}. Условия оплаты: ${data.payment_terms || 'будут доведены дополнительно'}.`;
+    document.getElementById('p4-ru').innerText =
+      `Цель поездки — медицинское лечение. Просим рассмотреть оформление визы типа ${data.visa_type==='D'?'D (долгосрочная)':'C (краткосрочная, медицинская цель)'} в соответствии со сроками курса.`;
+    document.getElementById('p5-ru').innerText =
+      `${data.companion ? 'С пациентом следует сопровождающий: ' + data.companion + '. ' : ''}${data.consulate_extra || ''}`;
+
+    // Подпись RU
+    document.getElementById('sign-ru').innerText =
+      `${data.sign_name} — ${data.sign_role}\n${data.clinic_name}`;
+
+    // FR
+    document.getElementById('p1-fr').innerText =
+      `Nous confirmons que ${data.patient_name} (${data.patient_nationality}, né(e) le ${fmtDateFR(data.patient_dob)}, passeport ${data.patient_passport}) est admis(e) au sein de ${data.clinic_name} pour le programme «${data.program_name}».`;
+    document.getElementById('p2-fr').innerText =
+      `Période prévue du traitement : du ${fmtDateFR(data.start_date)} au ${fmtDateFR(data.end_date)} (${data.duration || 'à préciser'}).`;
+    document.getElementById('p3-fr').innerText =
+      `Hébergement : ${data.accommodation || "sur site / hôtel partenaire"}. Coût du programme : €${num(data.price_total)} ; acompte/dépôt : €${num(data.price_deposit)}. Modalités de paiement : ${data.payment_terms || "communiquées ultérieurement"}.`;
+    document.getElementById('p4-fr').innerText =
+      `Objet du voyage — traitement médical. Nous recommandons la délivrance d’un visa ${data.visa_type==='D'?'de type D (long séjour)':'de type C (court séjour, motif médical)'} conformément à la durée du séjour.`;
+    document.getElementById('p5-fr').innerText =
+      `${data.companion ? 'Le patient sera accompagné de : ' + data.companion + '. ' : ''}${data.consulate_extra || ''}`;
+
+    document.getElementById('sign-fr').innerText =
+      `${data.sign_name} — ${data.sign_role}\n${data.clinic_name}`;
+
+    // Сделать документ редактируемым (легкая правка формулировок)
+    makeEditable(['meta-ru','address-ru','p1-ru','p2-ru','p3-ru','p4-ru','p5-ru','sign-ru','meta-fr','address-fr','p1-fr','p2-fr','p3-fr','p4-fr','p5-fr','sign-fr']);
+  }
+
+  function fmtDate(iso){
+    if(!iso) return '—';
+    const d = new Date(iso+'T12:00:00');
+    return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric'});
+  }
+  function fmtDateFR(iso){
+    if(!iso) return '—';
+    const d = new Date(iso+'T12:00:00');
+    return d.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'});
+  }
+  function num(v){ if(!v) return '0'; return Number(v).toLocaleString('fr-FR'); }
+  function makeEditable(ids){ ids.forEach(id=>{ const el=document.getElementById(id); if(el){ el.setAttribute('contenteditable','true'); } }); }
+  function clearAll(){ document.querySelectorAll('input, textarea, select').forEach(el=>{ if(el.tagName==='SELECT'){ el.selectedIndex=0 } else { el.value=''} }); }
+  function downloadHTML(){
+    const blob = new Blob([document.documentElement.outerHTML], {type:'text/html;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'visa-medical-invitation.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+  function fillDemo(){
+    document.getElementById('clinic_name').value = 'Thermes de Balaruc-les-Bains';
+    document.getElementById('clinic_unit').value = 'Service International';
+    document.getElementById('clinic_address').value = '1 Rue du Mont Saint-Clair, 34540 Balaruc-les-Bains, France';
+    document.getElementById('clinic_phone').value = '+33 4 67 46 16 00';
+    document.getElementById('clinic_email').value = 'international@thermes-balaruc.fr';
+    document.getElementById('sign_name').value = 'Dr Marie Dupont';
+    document.getElementById('sign_role').value = 'Responsable des admissions';
+    document.getElementById('patient_name').value = 'IRINA IVANOVA';
+    document.getElementById('patient_dob').value = '1987-05-12';
+    document.getElementById('patient_passport').value = '75XXXXXXX';
+    document.getElementById('patient_nationality').value = 'RU';
+    document.getElementById('program_name').value = 'Traitement thermal – rééducation fonctionnelle';
+    document.getElementById('visa_type').value = 'C';
+    document.getElementById('start_date').value = isoAfterDays(30);
+    document.getElementById('end_date').value = isoAfterDays(44);
+    document.getElementById('duration').value = '14 nuits / 15 jours';
+    document.getElementById('accommodation').value = 'Résidence Thermale — bâtiment A';
+    document.getElementById('price_total').value = '1850';
+    document.getElementById('price_deposit').value = '300';
+    document.getElementById('payment_terms').value = 'Acompte non remboursable sauf cas de force majeure; solde à l’arrivée; annulation &lt; 7 j — frais 30%.';
+    document.getElementById('companion').value = 'PETROV ALEXEY (mari), passeport 72XXXXXXX';
+    document.getElementById('consulate_extra').value = 'Le patient dispose d’un hébergement sur site; les soins sont planifiés quotidiennement selon ordonnance médicale; aucune contre-indication connue à ce jour.';
+    renderDoc();
+    setLang('ru');
+  }
+  function isoAfterDays(n){
+    const d = new Date(); d.setDate(d.getDate()+n);
+    const y = d.getFullYear(), m = String(d.getMonth()+1).padStart(2,'0'), day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
+</script>
+</body>
+</html>
