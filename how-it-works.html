@@ -53,14 +53,16 @@
     ym(104246057, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
   </script>
 
-  <!-- Page styles (isolated) -->
+  <!-- Styles -->
   <style>
     :root{
       --brand:#1b6d83; --accent:#f2c94c; --text:#222; --muted:#5f6b73;
       --surface:#fff; --bg:#fafbfc; --radius:16px; --shadow:0 6px 24px rgba(0,0,0,.06); --maxw:1100px;
     }
+    *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;}
-    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
     .page-wrap{width:min(var(--maxw),92vw);margin:0 auto;padding:20px 0 44px}
 
     /* Header + Back */
@@ -68,12 +70,17 @@
     .brand{display:flex;gap:10px;align-items:center}
     .brand__logo{width:40px;height:40px;border-radius:50%;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
     .brand__title{font-size:1.25rem;margin:0}
-    .crumbs{margin:8px 0 0;color:var(--muted);font-size:.9rem} .crumbs a{color:inherit}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;border-radius:12px;border:1px solid color-mix(in oklab, var(--brand) 30%, transparent);background:#fff;color:var(--brand);font-weight:600;text-decoration:none;box-shadow:var(--shadow);transition:.25s;}
+    .crumbs{margin:8px 0 0;color:var(--muted);font-size:.9rem}
+    .crumbs a{color:inherit}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:8px 14px;border-radius:12px;border:1px solid color-mix(in oklab, var(--brand) 30%, transparent);
+      background:#fff;color:var(--brand);font-weight:600;text-decoration:none;box-shadow:var(--shadow);transition:.25s;
+    }
     .btn:hover{transform:translateY(-1px);filter:saturate(1.05)}
     @media(max-width:640px){header.hiw-head{flex-direction:column;align-items:flex-start;gap:8px}}
 
-    /* Hero (picture) */
+    /* Hero */
     .hero{margin:16px 0 22px;position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
     .hero picture,.hero img{display:block;width:100%;height:auto;object-fit:cover}
     .hero::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,0));}
@@ -133,19 +140,22 @@
         <article class="card"><div class="icon">💶</div><h3>3. Оплата на месте</h3><p>Вы оплачиваете <strong>напрямую</strong> на месте: отели, спа/термы, рестораны, дегустации, экскурсии, катамаран.</p><p class="muted">Я бронирую и координирую — без комиссий и посредников.</p></article>
       </section>
 
-      <section class="fee" id="fee"><h3>💼 Оплата моих услуг (гид-организатор)</h3><p>Моя услуга оплачивается <strong>отдельно</strong> и включает: разработку программы, организацию/координацию бронирований и сопровождение.</p><p class="muted">Стоимость — по формату: однодневное сопровождение (фикс), организация без сопровождения (индивидуально), тур «под ключ» (под бюджет).</p></section>
+      <section class="fee" id="fee">
+        <h3>💼 Оплата моих услуг (гид-организатор)</h3>
+        <p>Моя услуга оплачивается <strong>отдельно</strong> и включает: разработку программы, организацию/координацию бронирований и сопровождение.</p>
+        <p class="muted">Стоимость — по формату: однодневное сопровождение (фикс), организация без сопровождения (индивидуально), тур «под ключ» (под бюджет).</p>
+      </section>
 
-      <section class="faq">
+      <section class="faq" aria-label="FAQ">
         <details><summary>Кто принимает оплату за отели, спа и экскурсии?</summary><p>Оплата происходит <strong>напрямую</strong> поставщикам: отели, спа-центры, винодельни, капитаны катамаранов, гиды-партнёры. Вы оплачиваете на месте или по их официальным ссылкам/реквизитам.</p></details>
         <details><summary>Вы туроператор?</summary><p>Нет. Я — независимый <strong>гид-организатор</strong>: создаю программу, делаю бронирования, координирую и сопровождаю. Продажей пакетных туров не занимаюсь.</p></details>
         <details><summary>Есть ли скрытые комиссии?</summary><p>Нет. Цены у партнёров — официальные. Вы платите только за свои услуги у них и за мою работу по организации/сопровождению — отдельно.</p></details>
       </section>
 
-  <section class="cta">
-  <a class="btn" href="/contact.html">Связаться</a>
-  <a class="btn" style="background:var(--brand);color:#fff" href="/">Посмотреть программы</a>
-</section>
-
+      <section class="cta">
+        <a class="btn" href="/contact.html">Связаться</a>
+        <a class="btn" style="background:var(--brand);color:#fff" href="/">Посмотреть программы</a>
+      </section>
     </main>
 
     <footer class="hiw-foot">
@@ -153,5 +163,19 @@
       <div class="muted">© Tours Languedoc by Irène. Art de vivre: Лангедок и Прованс.</div>
     </footer>
   </div>
+
+  <!-- (Необязательно) Подгрузка SVG-спрайта, если используешь <use href="#icon"> -->
+  <script>
+    (function loadSvgSprite(){
+      fetch('/assets/icons.svg').then(r=>r.ok?r.text():null).then(txt=>{
+        if(!txt) return;
+        const holder=document.createElement('div');
+        holder.style.display='none';
+        holder.innerHTML=txt;
+        document.body.prepend(holder);
+      }).catch(()=>{});
+    })();
+  </script>
 </body>
 </html>
+ml>
