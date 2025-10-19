@@ -27,21 +27,13 @@
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Как это работает — организация и оплата",
-    "url":"https://goutvoyage.com/how-it-works.html",
-    "description":"Вы оплачиваете услуги на месте напрямую партнёрам, а я оказываю услуги организации и сопровождения.",
-    "inLanguage":"ru",
-    "publisher":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"}
-  }
+  {"@context":"https://schema.org","@type":"WebPage","name":"Как это работает — организация и оплата","url":"https://goutvoyage.com/how-it-works.html","description":"Вы оплачиваете услуги на месте напрямую партнёрам, а я оказываю услуги организации и сопровождения.","inLanguage":"ru","publisher":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com"}}
   </script>
 
   <!-- LCP preload -->
   <link rel="preload" as="image" href="/assets/meze/IMG_0317.JPG" fetchpriority="high">
 
-  <!-- GA4 (Google Analytics) -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L9TR2VTDX2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -51,41 +43,37 @@
   </script>
 
   <!-- Yandex.Metrika -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) };
-      m[i].l=1*new Date(); k=e.createElement(t), a=e.getElementsByTagName(t)[0];
-      k.async=1; k.src=r; a.parentNode.insertBefore(k,a) })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(104246057, "init", {
-      clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true
-    });
+  <script>
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments) };
+      m[i].l=1*new Date();
+      k=e.createElement(t), a=e.getElementsByTagName(t)[0];
+      k.async=1; k.src=r; a.parentNode.insertBefore(k,a)
+    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    ym(104246057, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104246057" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
 
   <!-- Page styles (isolated) -->
   <style>
     :root{
       --brand:#1b6d83; --accent:#f2c94c; --text:#222; --muted:#5f6b73;
-      --surface:#fff; --bg:#fafbfc; --radius:16px; --shadow:0 6px 24px rgba(0,0,0,.06);
-      --maxw:1100px;
+      --surface:#fff; --bg:#fafbfc; --radius:16px; --shadow:0 6px 24px rgba(0,0,0,.06); --maxw:1100px;
     }
     body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;}
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
+    a{color:var(--brand);text-decoration:none} a:hover{text-decoration:underline}
     .page-wrap{width:min(var(--maxw),92vw);margin:0 auto;padding:20px 0 44px}
 
-    /* Header + Back button */
+    /* Header + Back */
     header.hiw-head{padding:28px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
     .brand{display:flex;gap:10px;align-items:center}
     .brand__logo{width:40px;height:40px;border-radius:50%;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
     .brand__title{font-size:1.25rem;margin:0}
-    .crumbs{margin:8px 0 0;color:var(--muted);font-size:.9rem}
-    .crumbs a{color:inherit}
+    .crumbs{margin:8px 0 0;color:var(--muted);font-size:.9rem} .crumbs a{color:inherit}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;border-radius:12px;border:1px solid color-mix(in oklab, var(--brand) 30%, transparent);background:#fff;color:var(--brand);font-weight:600;text-decoration:none;box-shadow:var(--shadow);transition:.25s;}
     .btn:hover{transform:translateY(-1px);filter:saturate(1.05)}
     @media(max-width:640px){header.hiw-head{flex-direction:column;align-items:flex-start;gap:8px}}
 
-    /* Hero (picture как в программах) */
+    /* Hero (picture) */
     .hero{margin:16px 0 22px;position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
     .hero picture,.hero img{display:block;width:100%;height:auto;object-fit:cover}
     .hero::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,0));}
@@ -102,7 +90,6 @@
     .icon{font-size:1.6rem;width:44px;height:44px;border-radius:50%;background:color-mix(in oklab, var(--accent) 28%, white);border:1px solid color-mix(in oklab, var(--brand) 18%, transparent);display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
     .card h3{margin:6px 0;font-size:1.05rem}
     .muted{color:var(--muted)}
-
     .fee{margin-top:16px;border-left:4px solid var(--brand);background:color-mix(in oklab, var(--brand) 6%, transparent);border-radius:12px;padding:14px 16px;}
     .faq{margin-top:18px;display:grid;gap:10px}
     details{background:#fff;border:1px solid color-mix(in oklab, var(--brand) 12%, transparent);border-radius:12px;padding:10px 12px;box-shadow:var(--shadow)}
@@ -113,6 +100,9 @@
   </style>
 </head>
 <body>
+  <!-- YM noscript -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/104246057" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+
   <div class="page-wrap">
     <header class="hiw-head">
       <div class="brand">
@@ -122,7 +112,7 @@
           <div class="crumbs"><a href="/">Главная</a> · Как это работает</div>
         </div>
       </div>
-      <a class="btn" href="/" onclick="if (history.length>1){history.back();return false;}">← Назад</a>
+      <a class="btn" href="/" onclick="if(history.length>1){history.back();return false;}">← Назад</a>
     </header>
 
     <section class="hero" role="banner" aria-label="Как это работает">
@@ -138,47 +128,17 @@
 
     <main class="howitworks" id="how-it-works">
       <section class="howitworks__grid" aria-label="Три шага">
-        <article class="card">
-          <div class="icon">💬</div>
-          <h3>1. Заявка</h3>
-          <p>Вы рассказываете, чего хотите от отдыха: море, вино, термы, гастрономия, прогулки.</p>
-          <p class="muted">Я уточняю детали и подбираю формат под ваш стиль и бюджет.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon">📜</div>
-          <h3>2. Программа</h3>
-          <p>Готовлю <strong>индивидуальный план</strong> с рекомендациями отелей, спа/терм, дегустаций и экскурсий, с контактами партнёров.</p>
-          <p class="muted">Каждый пункт можно адаптировать под ваши предпочтения.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon">💶</div>
-          <h3>3. Оплата на месте</h3>
-          <p>Вы оплачиваете <strong>напрямую</strong> на месте: отели, спа/термы, рестораны, дегустации, экскурсии, катамаран.</p>
-          <p class="muted">Я бронирую и координирую — без комиссий и посредников.</p>
-        </article>
+        <article class="card"><div class="icon">💬</div><h3>1. Заявка</h3><p>Вы рассказываете, чего хотите от отдыха: море, вино, термы, гастрономия, прогулки.</p><p class="muted">Я уточняю детали и подбираю формат под ваш стиль и бюджет.</p></article>
+        <article class="card"><div class="icon">📜</div><h3>2. Программа</h3><p>Готовлю <strong>индивидуальный план</strong> с рекомендациями отелей, спа/терм, дегустаций и экскурсий, с контактами партнёров.</p><p class="muted">Каждый пункт можно адаптировать под ваши предпочтения.</p></article>
+        <article class="card"><div class="icon">💶</div><h3>3. Оплата на месте</h3><p>Вы оплачиваете <strong>напрямую</strong> на месте: отели, спа/термы, рестораны, дегустации, экскурсии, катамаран.</p><p class="muted">Я бронирую и координирую — без комиссий и посредников.</p></article>
       </section>
 
-      <section class="fee" id="fee">
-        <h3>💼 Оплата моих услуг (гид-организатор)</h3>
-        <p>Моя услуга оплачивается <strong>отдельно</strong> и включает: разработку программы, организацию/координацию бронирований и сопровождение.</p>
-        <p class="muted">Стоимость — по формату: однодневное сопровождение (фикс), организация без сопровождения (индивидуально), тур «под ключ» (под бюджет).</p>
-      </section>
+      <section class="fee" id="fee"><h3>💼 Оплата моих услуг (гид-организатор)</h3><p>Моя услуга оплачивается <strong>отдельно</strong> и включает: разработку программы, организацию/координацию бронирований и сопровождение.</p><p class="muted">Стоимость — по формату: однодневное сопровождение (фикс), организация без сопровождения (индивидуально), тур «под ключ» (под бюджет).</p></section>
 
       <section class="faq">
-        <details>
-          <summary>Кто принимает оплату за отели, спа и экскурсии?</summary>
-          <p>Оплата происходит <strong>напрямую</strong> поставщикам: отели, спа-центры, винодельни, капитаны катамаранов, гиды-партнёры. Вы оплачиваете на месте или по их официальным ссылкам/реквизитам.</p>
-        </details>
-        <details>
-          <summary>Вы туроператор?</summary>
-          <p>Нет. Я — независимый <strong>гид-организатор</strong>: создаю программу, делаю бронирования, координирую и сопровождаю. Продажей пакетных туров не занимаюсь.</p>
-        </details>
-        <details>
-          <summary>Есть ли скрытые комиссии?</summary>
-          <p>Нет. Цены у партнёров — официальные. Вы платите только за свои услуги у них и за мою работу по организации/сопровождению — отдельно.</p>
-        </details>
+        <details><summary>Кто принимает оплату за отели, спа и экскурсии?</summary><p>Оплата происходит <strong>напрямую</strong> поставщикам: отели, спа-центры, винодельни, капитаны катамаранов, гиды-партнёры. Вы оплачиваете на месте или по их официальным ссылкам/реквизитам.</p></details>
+        <details><summary>Вы туроператор?</summary><p>Нет. Я — независимый <strong>гид-организатор</strong>: создаю программу, делаю бронирования, координирую и сопровождаю. Продажей пакетных туров не занимаюсь.</p></details>
+        <details><summary>Есть ли скрытые комиссии?</summary><p>Нет. Цены у партнёров — официальные. Вы платите только за свои услуги у них и за мою работу по организации/сопровождению — отдельно.</p></details>
       </section>
 
       <section class="cta">
