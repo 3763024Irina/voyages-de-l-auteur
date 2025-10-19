@@ -614,7 +614,9 @@
     <!-- Трансферы -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-car"/></svg></span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22"><use href="#i-car"/></svg>
+        </span>
         <h3 class="feature-title" data-i18n="format.1.title">Трансферы</h3>
       </div>
       <p class="feature-text" data-i18n="format.1.text">
@@ -626,19 +628,23 @@
     <!-- Как это работает -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-info"/></svg></span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22"><use href="#i-info"/></svg>
+        </span>
         <h3 class="feature-title" data-i18n="format.2.title">Как это работает</h3>
       </div>
       <p class="feature-text" data-i18n="format.2.text">
-        Заявка → индивидуальная программа → <strong>оплата на месте</strong> (отели, спа, экскурсии) → сопровождение.
+        Заявка → подбор маршрута и цены → подтверждение → предоплата → поездка. Прозрачно и без посредников.
       </p>
-      <a class="feature-more" href="/how-it-works.html#how-it-works" data-i18n="format.more">Подробнее</a>
+      <a class="feature-more" href="/how-it-works.html" data-i18n="format.more">Подробнее</a>
     </article>
 
     <!-- Визы для посещения санатория -->
     <article class="feature-card">
       <div class="feature-head">
-        <span class="feature-icon" aria-hidden="true"><svg width="22" height="22"><use href="#i-hospital"/></svg></span>
+        <span class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22"><use href="#i-hospital"/></svg>
+        </span>
         <h3 class="feature-title" data-i18n="format.3.title">Визы для посещения санатория</h3>
       </div>
       <p class="feature-text" data-i18n="format.3.text">
@@ -649,6 +655,35 @@
   </section>
 </section>
 
+<!-- JSON-LD: ItemList из 3 форматов -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Форматы сервиса — Tours Languedoc by Irène",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Трансферы",
+      "url": "https://goutvoyage.com/services/transfers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Как это работает",
+      "url": "https://goutvoyage.com/how-it-works.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Визы для посещения санатория",
+      "url": "https://goutvoyage.com/visa-medical-invitation.html"
+    }
+  ]
+}
+</script>
 
 
 <!-- ABOUT -->
