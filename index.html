@@ -505,6 +505,7 @@
         <li><a href="/#tours" data-i18n="nav.tours">Программы</a></li>
         <li><a href="/#format" data-i18n="nav.format">Формат</a></li>
         <li><a href="/#contactCard" data-i18n="nav.contacts">Контакты</a></li>
+        
       </ul>
     </nav>
   </div>
@@ -729,12 +730,26 @@
   </div>
 
   <!-- Текст справа -->
-  <div class="about-text" style="flex:1; min-width:280px">
-    <h2 class="section-title" data-i18n="about.title">О проекте</h2>
-    <p class="section-sub" data-i18n="about.text">
-      Tours Languedoc by Irène — авторский проект, родившийся из любви к югу Франции. Я живу в Лангедоке и создаю камерные путешествия со вкусом: устрицы и вина лагуны Thau, термальные источники, винные долины и средневековые города. Каждый маршрут собираю лично — с акцентом на гастрономию, природу и культуру региона. Тур — это не «экскурсия на час», а погружение в атмосферу Лангедока. Работаю на русском и французском языках.
+<div class="about-text" style="flex:1; min-width:280px">
+  <h2 class="section-title" data-i18n="about.title">О проекте</h2>
+  <p class="section-sub" data-i18n="about.text">
+    Tours Languedoc by Irène — авторский проект, родившийся из любви к югу Франции. Я живу в Лангедоке и создаю камерные путешествия со вкусом: устрицы и вина лагуны Thau, термальные источники, винные долины и средневековые города. Каждый маршрут собираю лично — с акцентом на гастрономию, природу и культуру региона. Тур — это не «экскурсия на час», а погружение в атмосферу Лангедока. Работаю на русском и французском языках.
     </p>
+</div>
 
+<!-- Добавлена секция с фото для якоря -->
+<section id="contactCard" style="margin-top:50px; text-align:center;">
+  <h2>Контакты</h2>
+  <img src="path-to-your-photo.jpg" alt="Irène" style="max-width:200px; border-radius:50%;">
+  <p>Irène — Tours Languedoc</p>
+</section>
+
+<!-- Плавный скролл через CSS -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
     <!-- Кнопки -->
     <div style="margin-top:22px; display:flex; flex-wrap:wrap; gap:12px">
       <a href="https://t.me/de_iren" target="_blank" class="btn primary">Telegram</a>
