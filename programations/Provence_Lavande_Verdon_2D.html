@@ -8,9 +8,6 @@
   <title>Прованс — Лаванда, Мюстье и Вердон (2 дня) | Tours Languedoc by Irène</title>
   <meta name="description" content="Маршрут на 2 дня: лавандовые поля Валенсоль, Мюстье-Сент-Мари (фаянс) и Вердонское ущелье с озером Сент-Круа. Приватно, RU/FR. Старт из Montpellier/Nîmes/Marseille/Aix." />
   <link rel="canonical" href="https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html" />
-  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html" />
-  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html#fr" />
-  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html" />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
@@ -26,13 +23,13 @@
   <meta name="twitter:image" content="https://goutvoyage.com/assets/gorgedeverDON/caption(1).jpg" />
   <meta name="theme-color" content="#0D2B1E" />
 
-  <!-- Performance -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/assets/gorgedeverDON/caption(1).jpg" imagesrcset="/assets/provence/lavande-hero.jpg 1600w, /assets/provence/lavande-hero.jpg 1200w, /assets/provence/lavande-hero.jpg 800w" imagesizes="100vw" fetchpriority="high" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://goutvoyage.com/assets/favicon.png" type="image/png" />
+  <!-- Leaflet CSS (OpenStreetMap) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2H0FJw3gqTj4V7wJ7pZB2v1sNn8fFf4hP0t0hYg=" crossorigin=""/>
 
   <style>
     :root{
@@ -111,7 +108,7 @@
     #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
     #book .btn.primary:hover{ filter:brightness(.96); }
 
-    /* FAB (наши, без сторонних виджетов) */
+    /* FAB */
     .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center}
     .chat-fab svg{width:22px; height:22px; display:block}
     .chat-fab.wa{bottom:76px}
@@ -139,7 +136,8 @@
 
     @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:34px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
-      /* === Rounded controls inside booking card === */
+
+    /* === Rounded controls inside booking card === */
     #book input, #book select, #book textarea{ border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit; background-clip:padding-box; }
     #book select{ appearance:none; -webkit-appearance:none; -moz-appearance:none; padding:12px; width:100%;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c6c6c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -148,11 +146,11 @@
     #book input:focus, #book select:focus, #book textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
     #book .fields > div, #book .fields .full{ min-width:0; }
     /* карта поменьше */
-  .mapwrap{ max-width:520px; margin:0 auto; }
-  .mapwrap iframe{ height:260px !important; }
-</style>
+    .mapwrap{ max-width:520px; margin:0 auto; }
+    .mapwrap .leaflet-container{ height:320px; border-radius:14px; box-shadow:var(--shadow); }
+  </style>
 
-  <!-- Analytics + Cookies -->
+  <!-- Analytics + Cookies (kept) -->
   <script>
   window.ANALYTICS_CONFIG = {
     GA_ID: "G-L9TR2VTDX2",
@@ -160,8 +158,6 @@
     consentVersion: "v2"
   };
   </script>
-  <link rel="preload" as="script" href="/assets/js/cookies.js">
-  <script defer src="/assets/js/cookies.js"></script>
 </head>
 
 <body>
@@ -259,15 +255,17 @@
     <aside class="card">
       <h3 class="section-title">Где это</h3>
       <p class="section-sub">Valensole • Moustiers-Sainte-Marie • Belvédères des Gorges du Verdon • Lac de Sainte-Croix.</p>
-      <div class="ph" style="margin-bottom:10px">
-        <img src="/assets/provence/verdon-map-placeholder.jpg" alt="Прованс — карта района маршрута" loading="lazy" width="1200" height="800" style="width:100%; border-radius:18px">
+
+      <!-- Leaflet map -->
+      <div class="mapwrap" aria-hidden="false" aria-label="Карта маршрута">
+        <div id="map" style="width:100%; height:320px; border-radius:14px;"></div>
       </div>
 
       <!-- Admin quick links -->
-      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
+      <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; margin-top:10px">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Plateau+de+Valensole&output=classic">Valensole</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Moustiers-Sainte-Marie&output=classic">Moustiers</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Gorges+du+Verdon+belvedere&output=classic">Belvédères Verdon</a>
+        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Point+Sublime+Verdon&output=classic">Point Sublime</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lac+de+Sainte-Croix&output=classic">Lac de Sainte-Croix</a>
       </div>
 
@@ -298,13 +296,13 @@
 
   <!-- BOOK -->
   <section id="book" class="container">
-    <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 ночей)" data-program-id="BALARUC-HYDRO-7D">
+    <div class="card" data-program data-program-title="Provence — Lavande, Moustiers & Verdon (2 jours)" data-program-id="PROVENCE-LAVANDE-VERDON-2D">
       <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
       <p class="section-sub" data-i18n="book_sub">Пришлю свободные даты, варианты отелей и точный расчёт.</p>
 
       <form class="fields" data-contact-form novalidate onsubmit="return false;">
         <div>
-          <label for="when" data-i18n="lbl_date">Даты (7 ночей)</label>
+          <label for="when" data-i18n="lbl_date">Даты (2 дня)</label>
           <input id="when" name="date" type="date" placeholder="dd/mm/aaaa" required>
         </div>
         <div>
@@ -323,8 +321,8 @@
         <div class="full">
           <label for="msg" data-i18n="lbl_msg">Комментарий</label>
           <textarea id="msg" name="message" placeholder="Пожелания по датам, пакет (Базовый/Comfort/Premium), примечания"></textarea>
-        </div><p class="section-sub" style="margin-top:6px">Точный расчёт зависит от дат/отелей/состава группы.</p>
         </div>
+        <p class="section-sub" style="margin-top:6px">Точный расчёт зависит от дат/отелей/состава группы.</p>
 
         <div class="form-actions full">
           <a class="btn" data-whatsapp href="#" data-i18n="btn_whatsapp">Отправить в WhatsApp</a>
@@ -394,7 +392,7 @@
     })();
   </script>
 
-  <!-- ==== Форма: валидация/открытия WA/TG ==== -->
+  <!-- ==== Форма: валидация/открытия WA/TG (используется ниже) ==== -->
   <script>
   ;(() => {
     if (window.__FAB_CONTACT_INIT__) return; window.__FAB_CONTACT_INIT__ = true;
@@ -632,7 +630,7 @@
   })();
   </script>
 
-  <!-- === JSON-LD: Organization, Website, Breadcrumb, TouristTrip, FAQ === -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -650,94 +648,122 @@
     }]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Tours Languedoc by Irène",
-    "url":"https://goutvoyage.com/",
-    "inLanguage":["ru","fr"]
-  }
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-xwE/6rR0HfwL6v3gqXnX8eN3s4sS3m9dI6s+7U0M2Is=" crossorigin=""></script>
+
+  <!-- Map initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      // Координаты точек (источники: общественные геоданные)
+      const points = [
+        {
+          id: 'valensole',
+          title: 'Valensole — Plateau de Valensole',
+          coords: [43.8370640, 5.9832420],
+          desc: 'Плато Валенсоль — лавандовые поля.'
+        },
+        {
+          id: 'moustiers',
+          title: 'Moustiers-Sainte-Marie',
+          coords: [43.846000, 6.221800],
+          desc: 'Мюстье-Сент-Мари — фаянс и улочки.'
+        },
+        {
+          id: 'point_sublime',
+          title: 'Point Sublime (Belvédère) — Gorges du Verdon',
+          coords: [43.793749, 6.398208],
+          desc: 'Один из классических смотровых в Verdon.'
+        },
+        {
+          id: 'lac_sainte_croix',
+          title: 'Lac de Sainte-Croix',
+          coords: [43.7715417, 6.1898262],
+          desc: 'Озеро Сент-Круа — пляж, педало, лодки.'
+        }
+      ];
+
+      // Инициализация карты
+      const map = L.map('map', {scrollWheelZoom: false});
+      // Подложка OSM
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Добавляем маркеры
+      const markers = [];
+      points.forEach(p => {
+        const m = L.marker(p.coords).addTo(map)
+          .bindPopup('<strong>' + p.title + '</strong><br>' + p.desc);
+        markers.push(m);
+      });
+
+      // Масштаб и центр: подогнать под все точки
+      const group = L.featureGroup(markers);
+      map.fitBounds(group.getBounds().pad(0.12));
+
+      // Линия маршрута (простая визуализация)
+      const polyline = L.polyline(points.map(p=>p.coords), {color:'#0D2B1E', weight:4, opacity:0.85, dashArray: '8 6'}).addTo(map);
+
+      // Кнопка "включить скролл" (чтобы пользователь мог включить колесо прокрутки)
+      const control = L.control({position: 'topright'});
+      control.onAdd = function(){
+        const div = L.DomUtil.create('div','leaflet-control-enable-scroll');
+        div.innerHTML = '<button title="Включить прокрутку карты" style="background:#fff;border-radius:6px;padding:6px 8px;border:1px solid #ddd;cursor:pointer;font-weight:600;">Открыть карту</button>';
+        L.DomEvent.disableClickPropagation(div);
+        div.addEventListener('click', function(){
+          map.scrollWheelZoom.enable();
+          div.style.display='none';
+        });
+        return div;
+      };
+      control.addTo(map);
+
+      // Показываем попап при клике на полосу маршрута
+      polyline.on('click', function(){ L.popup().setLatLng(polyline.getBounds().getCenter()).setContent('Предлагаемый порядок точек маршрута').openOn(map); });
+    });
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Программы","item":"https://goutvoyage.com/index.html#tours"},
-      {"@type":"ListItem","position":2,"name":"Прованс — Лаванда, Мюстье и Вердон (2 дня)","item":"https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html"}
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"TouristTrip",
-    "name":"Прованс — Лаванда, Мюстье и Вердон (2 дня)",
-    "description":"Индивидуальный маршрут: Valensole (лаванда), Moustiers-Sainte-Marie (фаянс), Gorges du Verdon и Lac de Sainte-Croix. Приватно, RU/FR.",
-    "image":["https://goutvoyage.com/assets/provence/lavande-hero.jpg"],
-    "touristType":["Couples","Familles","Photographes","Gourmets"],
-    "itinerary":"Montpellier/Nîmes/Marseille/Aix — Valensole — Moustiers — Belvédères du Verdon — Lac de Sainte-Croix",
-    "offers":{
-      "@type":"Offer",
-      "priceCurrency":"EUR",
-      "availability":"https://schema.org/InStock",
-      "url":"https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html#book"
-    },
-    "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com/"},
-    "areaServed":{"@type":"AdministrativeArea","name":"Provence & Occitanie, France"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Когда лучше ехать на лаванду?","acceptedAnswer":{"@type":"Answer","text":"Обычно ~25 июня — 15 июля, но сроки меняются по годам и локальным полям."}},
-      {"@type":"Question","name":"Откуда возможен старт?","acceptedAnswer":{"@type":"Answer","text":"Montpellier / Nîmes / Marseille / Aix-en-Provence (другие города по запросу)."}},
-      {"@type":"Question","name":"Что включено?","acceptedAnswer":{"@type":"Answer","text":"Частный транспорт и сопровождение 2 дня (RU/FR), оптимизация под свет/цветение, 1 ночь (BB) 2-мест., фото-стопы."}},
-      {"@type":"Question","name":"Что не включено?","acceptedAnswer":{"@type":"Answer","text":"Питание (кроме BB), аренда педало/лодки, мастер-классы, дегустации, страховка и личные расходы."}}
-    ]
-  }
-  </script>
-  <script>(function(){document.getElementById('goBook')?.addEventListener('click',()=>setTimeout(()=>document.getElementById('when')?.focus(),60));})();</script>
-  <!-- Фокус на дате при клике в шапке + калькулятор суммы -->
+
+  <!-- Калькулятор и фокус на дате при клике в шапке -->
   <script>
     (function(){
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
+      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=>document.getElementById('when')?.focus(),60));
       const guests = document.getElementById('guests');
-      const totalOut = document.getElementById('totalOut');
       const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
       function refresh(){
         const g = Math.max(2, Math.min(4, Number(guests?.value||2)));
         const total = 430 + Math.max(0, g - 2) * 100;
-        if (totalOut) totalOut.textContent = fmtEUR(total);
+        // можно показать где-то сумму, но по умолчанию просто логируем (или расширим по желанию)
+        // console.log('Примерная цена: ', fmtEUR(total));
       }
       guests?.addEventListener('input', refresh);
       refresh();
     })();
   </script>
-  <!-- Фокус на дате при клике и калькулятор пакетов -->
+
+  <!-- Фокус + алерт при отправке (fallback) -->
   <script>
     (function(){
-      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=> document.getElementById('when')?.focus(),60));
-      const pack=document.getElementById('pack');
-      const totalOut=document.getElementById('totalOut');
-      const fmtEUR=v=> new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-      function refresh(){
-        const sel=pack?.selectedOptions?.[0];
-        const p = Number(sel?.dataset?.price||1600);
-        if(totalOut) totalOut.textContent = fmtEUR(p);
-      }
-      pack?.addEventListener('change', refresh);
-      refresh();
+      const form = document.querySelector('[data-contact-form]');
+      if (!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // используем встроенные WA/TG кнопки — положимся на их обработчик
+        alert('Пожалуйста используйте кнопки "Отправить в WhatsApp" или "Отправить в Telegram" справа в форме. Если нужно, можно подключить серверную отправку.');
+      });
+
+      // Чтобы Enter не сабмитил случайно (UX)
+      form.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
+      });
     })();
   </script>
-    <!-- Фокус на поле даты при клике в шапке -->
-  <script>
-    (function(){
-      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=> document.getElementById('when')?.focus(),60));
-    })();
-  </script>
+
+  <!-- Футер скрипты (оставляем как есть) -->
+  <script>(function(){document.getElementById('goBook')?.addEventListener('click',()=>setTimeout(()=>document.getElementById('when')?.focus(),60));})();</script>
+
 </body>
 </html>
+
