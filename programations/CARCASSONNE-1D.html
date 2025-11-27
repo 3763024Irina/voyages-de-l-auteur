@@ -57,10 +57,26 @@
     .list li{margin:8px 0}
     .facts{display:flex; gap:14px; flex-wrap:wrap; list-style:none; padding:0; margin:0}
     .facts li{background:#fff; border:1px solid #eee; border-radius:999px; padding:8px 12px; box-shadow:var(--shadow)}
-    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-    .gallery .ph{aspect-ratio:16/10; border-radius:18px; overflow:hidden; box-shadow:var(--shadow); background:#ddd}
-    .gallery img{width:100%; height:100%; object-fit:cover}
-    footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* вместо 3 → фото шире */
+  gap: 14px;
+}
+
+.gallery .ph {
+  aspect-ratio: 4/3; /* раньше 16/10 → фото выше и крупнее */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #ddd;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+  footer{background:#0f1f19; color:#e7e7e7; padding:34px 0 20px; margin-top:40px}
     .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
     .footgrid a{color:#cfd8d3}
     label{display:block; font-weight:700; margin-bottom:6px}
