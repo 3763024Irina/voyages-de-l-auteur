@@ -83,21 +83,31 @@ html[data-lang="fr"] [data-lang="ru"]       { display: none; }  /* при fr с�
     </div>
   </header>
 
-  <!-- Баннер блокировки -->
-  <section class="lock">
-    <div class="container">
-      <div class="card warn">
-        <h2 class="title"><span data-lang="ru">Доступ закрыт</span><span data-lang="fr">Accès restreint</span></h2>
-        <p class="section-sub">
-          <span data-lang="ru">Это внутренняя страница. Откройте с параметром <code>?admin=capion2025</code> или вернитесь на главную.</span>
-          <span data-lang="fr">Page interne. Ouvrez-la avec le paramètre <code>?admin=capion2025</code> ou revenez à l’accueil.</span>
-        </p>
-        <div class="row">
-          <a class="btn" href="../index.html"><span data-lang="ru">На главную</span><span data-lang="fr">Accueil</span></a>
-        </div>
+ <!-- Баннер блокировки -->
+<section class="lock">
+  <div class="container">
+    <div class="card warn">
+      <h2 class="title">
+        <span data-lang="ru">Доступ закрыт</span>
+        <span data-lang="fr">Accès restreint</span>
+      </h2>
+      <p class="section-sub">
+        <span data-lang="ru">Это внутренняя страница. Введите пароль администратора, чтобы продолжить.</span>
+        <span data-lang="fr">Page interne. Entrez le mot de passe administrateur pour continuer.</span>
+      </p>
+      <div class="row">
+        <button class="btn" id="loginBtn">
+          <span data-lang="ru">Войти</span>
+          <span data-lang="fr">Se connecter</span>
+        </button>
+        <a class="btn" href="../index.html">
+          <span data-lang="ru">На главную</span>
+          <span data-lang="fr">Accueil</span>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Основное содержимое для админа -->
   <section class="admin-content">
