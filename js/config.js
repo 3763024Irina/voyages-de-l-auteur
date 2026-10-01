@@ -6,7 +6,7 @@
 */
 window.APP_CONFIG = Object.assign({
   whatsapp: '33759644813',   // можно с +, всё равно очистим до цифр
-  telegram_user: 'de_iren',  // ваш @юзер без @ (для fallback-а в других скриптах)
+  telegram_user: 'de_irene',  // ваш @юзер без @ (для fallback-а в других скриптах)
   // ADMIN_SECRET: 'your-secret' // при желании раскомментируйте и задайте
 }, window.APP_CONFIG || {});
 
