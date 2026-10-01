@@ -728,7 +728,7 @@ window.ANALYTICS_CONFIG = {
           }
         }
         await copyText(text); toast('Текст заявки скопирован — вставьте в Telegram');
-        const who = (cfg.telegram_bot||cfg.telegram_user||'de_iren').replace(/^@/,'');
+        const who = (cfg.telegram_bot||cfg.telegram_user||'de_irene').replace(/^@/,'');
         openDeep(`tg://resolve?domain=${who}`, `https://t.me/${who}`);
       }
 
@@ -770,8 +770,8 @@ setAutoMsg(buildAutoMessage());
   <script>
     window.APP_CONFIG = {
       whatsapp: '+33 7 59 64 48 13',
-      telegram_user: 'de_iren',
-      telegram_bot:  'de_iren_order_bot',
+      telegram_user: 'de_irene',
+      telegram_bot:  'de_irene_order_bot',
       bot_prestart_url: 'https://iren-order-bot.onrender.com/prestart'
     };
   </script>
