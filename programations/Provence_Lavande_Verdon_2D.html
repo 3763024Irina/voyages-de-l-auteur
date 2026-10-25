@@ -638,30 +638,6 @@ function validateForm(){ return true; }
     });
   </script>
 
-  <!-- Калькулятор и фокус на дате при клике в шапке -->
-  
-
-  <!-- Фокус + алерт при отправке (fallback) -->
-  <script>
-    (function(){
-      const form = document.querySelector('[data-contact-form]');
-      if (!form) return;
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        // используем встроенные WA/TG кнопки — положимся на их обработчик
-        alert('Пожалуйста используйте кнопки "Отправить в WhatsApp" или "Отправить в Telegram" справа в форме. Если нужно, можно подключить серверную отправку.');
-      });
-
-      // Чтобы Enter не сабмитил случайно (UX)
-      form.addEventListener('keydown', function(e){
-        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
-      });
-    })();
-  </script>
-
-  <!-- Футер скрипты (оставляем как есть) -->
-  <script>(function(){document.getElementById('goBook')?.addEventListener('click',()=>setTimeout(()=>document.getElementById('when')?.focus(),60));})();</script>
-
-</body>
+  </body>
 </html>
 
