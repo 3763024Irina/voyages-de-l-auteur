@@ -181,7 +181,7 @@
     .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
     .meta span{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
     .card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
-    .price{font-weight:800}
+    
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .card > a.stretched{position:absolute; inset:0; z-index:1; text-indent:-9999px}
@@ -557,7 +557,7 @@
           <h3>Wellness & Санатории</h3>
           <div class="meta"><span>Оздоровительные программы, термальные курорты, спа. Помощь в получении приглашения из санатория для прохождения процедур.</span></div>
         </div>
-        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a><span class="price">—</span></div>
+        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
 
       <article class="card">
@@ -566,7 +566,7 @@
           <h3 data-i18n="why.1.title">Гастрономия у истоков</h3>
           <div class="meta"><span data-i18n="why.1.text">Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.</span></div>
         </div>
-        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a><span class="price">—</span></div>
+        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
 
       <article class="card">
@@ -575,7 +575,7 @@
           <h3>Вино и терруары Лангедока</h3>
           <div class="meta"><span>Посещение хозяйств, терруары и панорамы — Пик Сен-Лу, Минервуа, побережье.</span></div>
         </div>
-        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a><span class="price">—</span></div>
+        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
 
       <article class="card">
@@ -584,7 +584,7 @@
           <h3 data-i18n="why.3.title">История и стиль</h3>
           <div class="meta"><span data-i18n="why.3.text">Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.</span></div>
         </div>
-        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a><span class="price">—</span></div>
+        <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
     </div>
   </section>
@@ -625,7 +625,7 @@
         <h3 class="feature-title" data-i18n="format.1.title">Трансферы</h3>
       </div>
       <p class="feature-text" data-i18n="format.1.text">
-        Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), фиксированные цены, детские кресла по запросу.
+        Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), условия встречи согласуем заранее, детские кресла по запросу.
       </p>
       <a class="feature-more" href="/services/transfers.html" data-i18n="format.more">Подробнее</a>
     </article>
@@ -641,7 +641,7 @@
         <h3 class="feature-title" data-i18n="format.2.title">Как это работает</h3>
       </div>
       <p class="feature-text" data-i18n="format.2.text">
-        Заявка → подбор маршрута и цены → подтверждение → предоплата → поездка. Прозрачно и без посредников.
+        Заявка → подбор маршрута → согласование → поездка. Прозрачно и без посредников.
       </p>
       <a class="feature-more" href="/how-it-works.html" data-i18n="format.more">Подробнее</a>
     </article>
@@ -802,7 +802,7 @@
       <div class="inc" id="modalInc"></div>
       <p id="modalText"></p>
       <div style="display:flex; gap:10px; padding:10px 0 16px 0">
-        <button class="btn primary" onclick="document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'})" data-i18n="nav.book">Забронировать</button>
+        <button class="btn primary" onclick="document.querySelector('#contactCard')?.scrollIntoView({behavior:'smooth'})" data-i18n="nav.book">Связаться</button>
       </div>
     </div>
   </dialog>
@@ -812,10 +812,10 @@
 const dict = {
   ru: {
     'top.note':'Авторские туры по Югу Франции',
-    'nav.home':'Главная','nav.why':'Почему с нами','nav.tours':'Программы','nav.format':'Формат','nav.contacts':'Контакты','nav.book':'Забронировать',
+    'nav.home':'Главная','nav.why':'Почему с нами','nav.tours':'Программы','nav.format':'Формат','nav.contacts':'Контакты','nav.book':'Связаться',
     'hero.title':'Юг Франции без шаблонов: вино, море, замки, wellness',
     'hero.text':'Авторские туры Лангедока: 10 готовых маршрутов + эксклюзивные VIP-программы. Дегустации вин и устриц на лагуне Тау, походы к Пику Сен-Лу, средневековый Каркасон, кайтинг и катамаран на Средиземном море и утончённый wellness-отдых в лучших термальных спа региона.',
-    'form.fast':'Быстрый запрос','form.sub':'Отправьте пожелания — подберу маршрут и даты в течение дня.','form.name':'Имя','form.contact':'Контакт (WhatsApp/Telegram)','form.msg':'Сообщение','form.send':'Отправить','form.whatsapp':'Написать в WhatsApp','form.date':'Дата','form.guests':'Гостей','form.name.ph':'Ваше имя','form.contact.ph':'+…','form.msg.ph':'Какие даты и интересы?',
+
     'why.title':'Почему с нами','why.sub':'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
     'why.1.title':'Гастрономия у истоков','why.1.text':'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
     'why.3.title':'История и стиль','why.3.text':'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
@@ -826,9 +826,9 @@ const dict = {
     "format.title": "Форматы сервиса",
     "format.more": "Подробнее",
     "format.1.title": "Трансферы",
-    "format.1.text": "Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), фиксированные цены, детские кресла по запросу.",
+    "format.1.text": "Встреча в аэропортах/вокзалах (MPL, BZR, MRS, BCN и др.), условия встречи согласуем заранее, детские кресла по запросу.",
     "format.2.title": "Как это работает",
-    "format.2.text": "Заявка → подбор маршрута и цены → подтверждение → предоплата → поездка. Прозрачно и без посредников.",
+    "format.2.text": "Заявка → подбор маршрута → согласование → поездка. Прозрачно и без посредников.",
     "format.3.title": "Визы для посещения санатория",
     "format.3.text": "Помощь с письмом-приглашением от санатория, бронями, маршрутом и страховкой для медицинской визы.",
 
@@ -844,10 +844,10 @@ const dict = {
 
   fr: {
     'top.note':'Voyages sur mesure dans le Sud de la France',
-    'nav.home':'Accueil','nav.why':'Pourquoi nous','nav.tours':'Programmes','nav.format':'Format','nav.contacts':'Contacts','nav.book':'Réserver',
+    'nav.home':'Accueil','nav.why':'Pourquoi nous','nav.tours':'Programmes','nav.format':'Format','nav.contacts':'Contacts','nav.book':'Contacter',
     'hero.title':'Sud de la France sans clichés : vin, mer, châteaux, bien-être',
     'hero.text':'Circuits d’auteur en Languedoc : 10 itinéraires prêts + programmes VIP exclusifs. Dégustations de vins et d’huîtres à l’étang de Thau, randonnées vers le Pic Saint-Loup, Carcassonne médiévale, kitesurf et catamaran en Méditerranée, détente bien-être dans les meilleurs thermes et spas de la région.',
-    'form.fast':'Demande rapide','form.sub':'Envoyez vos souhaits — je propose un itinéraire et des dates dans la journée.','form.name':'Nom','form.contact':'Contact (WhatsApp/Telegram)','form.msg':'Message','form.send':'Envoyer','form.whatsapp':'Écrire sur WhatsApp','form.date':'Date','form.guests':'Personnes','form.name.ph':'Votre nom','form.contact.ph':'+33…','form.msg.ph':'Dates et centres d’intérêt ?',
+
     'why.title':'Pourquoi nous','why.sub':'Expertise locale, transport privé, focus gastronomie et nature.',
     'why.1.title':'Gastronomie à la source','why.1.text':'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
     'why.3.title':'Histoire & style','why.3.text':'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
@@ -858,9 +858,9 @@ const dict = {
     "format.title": "Nos formats de service",
     "format.more": "En savoir plus",
     "format.1.title": "Transferts",
-    "format.1.text": "Accueil aéro/gares (MPL, BZR, MRS, BCN…), tarifs fixes, sièges enfants sur demande.",
+    "format.1.text": "Accueil aéro/gares (MPL, BZR, MRS, BCN…), modalités convenues à l’avance, sièges enfants sur demande.",
     "format.2.title": "Comment ça marche",
-    "format.2.text": "Demande → proposition trajet/prix → confirmation → acompte → voyage. Simple et transparent.",
+    "format.2.text": "Demande → proposition itinéraire → confirmation → voyage. Simple et transparent.",
     "format.3.title": "Visas pour cure thermale",
     "format.3.text": "Aide avec l’attestation du centre, réservations, itinéraire et assurance pour le visa médical.",
 
@@ -937,8 +937,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       c:'assets/gorgedeverDON/one_of_summer-s_more.jpg',
       dr:'2 дня: плато Валенсоль (лаванда), деревня фаянса Мюстье, ущелье Вердон и озеро Сент-Круа. Индивидуально, RU/FR.',
       df:'2 jours : Valensole (lavande), Moustiers (faïence), gorges du Verdon et lac de Sainte-Croix. Privé, RU/FR.',
-      pr:'Base: от 390 € / чел (4) • от 560 € / чел (2)',
-      pf:'Base : dès 390 € / pers (4) • dès 560 € / pers (2)',
+      
+      
       href:'programations/Provence_Lavande_Verdon_2D.html',
       b:'new'
     },
@@ -947,20 +947,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
       c:'assets/voiles/catamaran.jpg',
       dr:'Неделя на Étang de Thau: курс HC15/16 (5×~3 ч), устрицы Bouzigues, Sète.',
       df:'Semaine sur l’étang de Thau : stage HC15/16 (5×~3 h), huîtres à Bouzigues, Sète.',
-      pr:'пример: 1 800 € / 2 гостя', pf:'exemple : 1 800 € / 2 pers.',
+       
       href:'programations/Meze_Voile_Pyramide.html', b:'new'
     },
     { tr:'Balaruc-les-Bains — SPA & Languedoc (от 7 дней)', tf:'Balaruc-les-Bains — SPA & Languedoc (des 7 jours)',
       c:'assets/Balaruc-Obalia.jpg',
       dr:'Неделя терм O’balia + Сет, Пезенас, Каркасон, лагуна Thau и винные домены.',
       df:'Semaine aux thermes O’balia + Sète, Pézenas, Carcassonne, étang de Thau et domaines viticoles.',
-      pr:'от 1 700€ / чел', pf:'dès 1 700€ / pers', href:'programations/Balaruc_SPA.html', b:'new'
+        href:'programations/Balaruc_SPA.html', b:'new'
     },
     { tr:'Carcassonne — средневековый город & цитадель (1 день)', tf:'Carcassonne — cité médiévale & fortifications (1 jour)',
       c:'assets/carcasson/IMG_2998.JPG',
       dr:'1 день • Cité: ворота Нарбоннез, стены и башни, базилика Сен-Назер; Bastide Saint-Louis.',
       df:'1 jour • Cité : porte Narbonnaise, remparts et tours, basilique Saint-Nazaire ; Bastide Saint-Louis.',
-      pr:'от 400 € / 2 гостя', pf:'dès 400 € / 2 pers.', href:'programations/CARCASSONNE-1D.html', b:'new'
+        href:'programations/CARCASSONNE-1D.html', b:'new'
     },
     { tr:'Cap d’Agde — Village Naturiste + 2 экскурсии (от 7 ночей) 18+', tf:'Cap d’Agde — Village Naturiste + 2 excursions (des 7 nuits)',
       c:'assets/capdag/304308906.jpg',
@@ -972,49 +972,49 @@ document.addEventListener('DOMContentLoaded', ()=>{
       c:'assets/thermes/Lamalou-ChaineThermaleduSoleil-Piscine2.webp',
       dr:'Курорт CTS Lamalou: проживание 14–21 ночь, трансферы и сопровождение Ирэн.',
       df:'Station thermale CTS Lamalou: séjour 14–21 nuits, transferts et organisation Irène.',
-      pr:'от ~2000 € / 2 гостя', pf:'dès ~2000 € / 2 pers.', href:'programations/lamalou_les_bains.html'
+        href:'programations/lamalou_les_bains.html'
     },
     { tr:'Mèze — дегустация (Mèze & Montagnac)', tf:'Mèze — dégustation (Mèze & Montagnac)',
       c:'assets/meze/2-1-5-VignesEtangParcsMer.jpg',
       dr:'Полдня/день • только близкие домены: Mèze & Montagnac. Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi.',
       df:'Demi/journée • domaines proches : Mèze & Montagnac. Belle Mare, Saint-André, La Croix Gratiot, Mas du Novi.',
-      pr:'от 210€ / чел', pf:'dès 210€ / pers', href:'programations/degustation-meze.html', b:'new'
+        href:'programations/degustation-meze.html', b:'new'
     },
     { tr:'Saint-Guilhem-le-Désert: аббатство и панорамы - 1 день', tf:'Saint-Guilhem-le-Désert : abbaye et panoramas - 1 jour',
       c:'assets/IMG_4003.JPG',
       dr:'1 день • аббатство Жилон, музей, обед на площади, обзорная площадка.',
       df:'1 journée • abbaye de Gellone, musée, déjeuner sur la place, belvédère panoramique.',
-      pr:'400 € за 2 гостя', pf:'400 € pour 2 personnes', href:'programations/GUILHEM_CLAMOUSE_CAPION.html'
+        href:'programations/GUILHEM_CLAMOUSE_CAPION.html'
     },
     { tr:'LUX Étang de Thau — 1 день', tf:'LUX Étang de Thau — 1 jour',
       c:'assets/Etang-de-Thau.jpg',
       dr:'День • приватная лодка, Tarbouriech, Noilly Prat, финал — винодельня. Трансфер от/до отеля. Без пеших прогулок.',
       df:'Jour • bateau privé, Tarbouriech, Noilly Prat, final vin. Transfert hôtel A/R. Sans marche.',
-      pr:'по запросу € / 1–6 гостей', pf:'sur demande € / 1–6 pers.', href:'programations/Thau_LUX.html', b:'vip'
+        href:'programations/Thau_LUX.html', b:'vip'
     },
     { tr:'Grand Vin du Pic Saint-Loup — 1 день', tf:'Grand Vin du Pic Saint-Loup — 1 jour',
       c:'assets/wines/43759c1c37f30c1596868d12e888a94c.jpg',
       dr:'День • VIP-дегустации: Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 км.',
       df:'Journée • dégustations VIP : Château Puech-Haut, Clos Marie + Domaine de l’Hortus. ~86 km.',
-      pr:'430 € за двоих • +100 €/доп. гость', pf:'430 € pour 2 • +100 €/pers', href:'programations/Pic_Saint_Loup.html', b:'hit'
+        href:'programations/Pic_Saint_Loup.html', b:'hit'
     },
     { tr:'Бéзье: круиз по Каналу дю Миди — полдня', tf:'Béziers : croisière — Canal du Midi',
       c:'assets/fonseranes-beziers-pente-eau-echelle-ecluses-vnf-victor-tonelli.jpg',
       dr:'Вечер/день • Фонсераны, Grand Bief, тоннель Малпас. Возможен ужин на борту. Трансфер от/до отеля включён.',
       df:'Soirée • Fonseranes, Grand Bief, tunnel du Malpas. Dîner à bord. Transfert hôtel inclus.',
-      pr:'по договоренности', pf:'à convenir', href:'programations/bezier_sunset.html', b:'hit'
+        href:'programations/bezier_sunset.html', b:'hit'
     },
     { tr:'Pézenas & Abbaye — винный BIO-день из Меза', tf:'Pézenas & Abbaye — journée vin BIO au départ de Mèze',
       c:'assets/pezenas/unnamed (3).webp',
       dr:'Pézenas, аббатство XII века с био-садами, дегустация на домене, обед по желанию. ~6–7 ч, ~55–65 км.',
       df:'Pézenas, abbaye cistercienne (XIIe), jardins bio, dégustation au domaine, déjeuner en option. ~6–7 h, ~55–65 km.',
-      pr:'420 € за двоих • +100 €/гость (до 4)', pf:'420 € pour 2 • +100 €/pers (jusqu’à 4)', href:'programations/Pezenas_Abbaye_Wine.html', b:'new'
+        href:'programations/Pezenas_Abbaye_Wine.html', b:'new'
     },
     { tr:'Avène — термальное восстановление + 3 экскурсии (14 дней)', tf:'Avène — cure thermale + 3 excursions (14 jours)',
       c:'assets/avene/16_OK-StationThermale-GF.webp',
       dr:'14 ночей Avène (CTS): курс процедур + трансфер + 3 авторские экскурсии.',
       df:'14 nuits Avène (CTS): cure + transfert privé + 3 excursions signature.',
-      pr:'от ~3 800 € за двоих', pf:'dès ~3 800 € pour 2 pers.', href:'programations/avene_14d.html', b:'wellness'
+        href:'programations/avene_14d.html', b:'wellness'
     }
   ];
 
@@ -1066,18 +1066,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const l = getLang();
     const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
     const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-    let price = '';
-    if (item.seasonal) {
-      price = (l === 'fr') ? 'sur demande (saisonnier)' : 'по запросу (сезонно)';
-    } else {
-      price = l==='fr' ? (item.pf||item.pr||'') : (item.pr||item.pf||'');
-    }
     const url   = item.href ? resolveHref(item.href) : '';
     const badge = item.b ? `<span class="badge" aria-label="${badges[item.b]||item.b}">${badges[item.b]||item.b}</span>` : '';
     const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
     const openBtn = url
       ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
-      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:safeImg(item.c),d:desc,p:price}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
+      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:safeImg(item.c),d:desc}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
 
     const img = safeImg(item.c);
 
@@ -1094,7 +1088,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
           <div class="meta"><span>${desc}</span></div>
         </div>
         <div class="foot">
-          <div class="price">${price||''}</div>
           ${openBtn}
         </div>
       </article>`;
@@ -1173,105 +1166,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 
-  <!-- Контакты (universal handlers) -->
+  <!-- Contact handlers: direct contact only, no order-form payload -->
   <script>
   (function () {
     const CFG = window.APP_CONFIG || {};
-    const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-    const normalizePreUrl = (u)=>{
-      if(!u) return '';
-      try{
-        let url = new URL(u, location.origin);
-        if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
-        if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
-        if (!/\/prestart\/?$/i.test(url.pathname)) {
-          if (!url.pathname.endsWith('/')) url.pathname += '/';
-          url.pathname += 'prestart';
-        }
-        return url.toString();
-      }catch{ return u; }
-    };
-    const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
-
-    const getForm = (btn) =>
-      btn?.closest?.('form[data-contact-form]') ||
-      document.querySelector('form[data-contact-form]') || null;
-
-    const buildPayload = (form)=>{
-      const q = (sel)=> form ? (form.querySelector(sel)?.value || '').trim() : '';
-      const program = {
-        title: form?.dataset?.programTitle
-            || document.documentElement.getAttribute('data-program-title')
-            || document.querySelector('meta[property="og:title"]')?.content
-            || document.title,
-        id: form?.dataset?.programId || document.documentElement.getAttribute('data-program-id') || '',
-        url: location.href
-      };
-      return {
-        name: q('[name="name"]'),
-        contact: q('[name="contact"]'),
-        date: q('[name="date"]'),
-        guests: q('[name="guests"]') || '1',
-        message: q('[name="message"]'),
-        program
-      };
-    };
-
-    const prestart = async (payload)=>{
-      if (!PRE_URL) return null;
-      try{
-        const r = await fetch(PRE_URL, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-        const j = await r.json().catch(()=>null);
-        return j?.token || null;
-      }catch{ return null; }
-    };
-
-    const openTelegram = (token)=>{
-      const handle = (CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
-      if (!handle) { alert('В APP_CONFIG не задан telegram_user/telegram_bot'); return; }
-      const url = token
-        ? `https://t.me/${handle}?start=${encodeURIComponent(token)}`
-        : `https://t.me/${handle}`;
-      window.location.href = url;
-    };
-
-    // WhatsApp — любые элементы с data-whatsapp
-    $all('[data-whatsapp]').forEach((el)=>{
-      el.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const form = getForm(el);
-        const p = buildPayload(form);
-        const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
-        if (!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
-
-        const lines = [
-          p.name ? `Имя: ${p.name}` : '',
-          p.contact ? `Контакт: ${p.contact}` : '',
-          p.date ? `Дата: ${p.date}` : '',
-          p.guests ? `Гостей: ${p.guests}` : '',
-          `Программа: ${p.program.title}${p.program.id ? ` (${p.program.id})` : ''}`,
-          `Страница: ${p.program.url}`,
-          p.message ? `Сообщение: ${p.message}` : ''
-        ].filter(Boolean);
-
-        window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
-      }, {passive:false});
+    const $all = (selector) => Array.from(document.querySelectorAll(selector));
+    const isFr = String(document.documentElement.lang || '').toLowerCase().startsWith('fr');
+    function buildMessage(){
+      const title = document.documentElement.getAttribute('data-program-title')
+        || document.querySelector('meta[property="og:title"]')?.content
+        || document.title;
+      const id = document.documentElement.getAttribute('data-program-id') || '';
+      return [
+        isFr ? 'Message depuis le site Tours Languedoc by Irène' : 'Сообщение с сайта Tours Languedoc by Irène',
+        (isFr ? 'Programme : ' : 'Программа: ') + title + (id ? ' [' + id + ']' : ''),
+        (isFr ? 'Lien : ' : 'Ссылка: ') + location.href
+      ].join('\n');
+    }
+    $all('[data-whatsapp]').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
+        if (!phone) { alert('В APP_CONFIG не указан номер WhatsApp'); return; }
+        location.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(buildMessage());
+      }, { passive: false });
     });
-
-    // Telegram — любые элементы с data-telegram (и .js-telegram)
-    $all('[data-telegram], .js-telegram').forEach((el)=>{
-      el.addEventListener('click', async (e)=>{
-        e.preventDefault();
-        const form = getForm(el);
-        const payload = buildPayload(form);
-        const token = await prestart(payload);
-        openTelegram(token);
-      }, {passive:false});
+    $all('[data-telegram], .js-telegram').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const handle = String(CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
+        if (!handle) { alert('В APP_CONFIG не задан telegram_user/telegram_bot'); return; }
+        location.href = 'https://t.me/' + handle;
+      }, { passive: false });
     });
   })();
   </script>
@@ -1282,7 +1208,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const el   = document.getElementById('emailLink');
     const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
     if (el && mail) {
-      const sub = encodeURIComponent('Запрос с сайта');
+      const sub = encodeURIComponent('Сообщение с сайта');
       el.href = `mailto:${mail}?subject=${sub}`;
       el.textContent = mail;
     }
@@ -1358,7 +1284,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function buildText(){
       const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
-      return `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
+      return `Сообщение с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
     }
     function openWhatsApp(){
       const phone = String(CFG.whatsapp||'').replace(/\D/g,'');

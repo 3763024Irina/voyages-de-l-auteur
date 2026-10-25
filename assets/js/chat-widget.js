@@ -30,45 +30,18 @@
     };
   }
 
-  function pickField(form, names){
-    for (const n of names){
-      const v = form?.querySelector(`[name="${n}"]`)?.value?.trim();
-      if (v) return v;
-    }
-    return '';
-  }
-
   function buildQuickText(){
-    const form = qs('[data-contact-form], [data-order-form]');
-    const ctx  = pageContext();
-
-    const base = [
-      `Заявка с сайта Tours Languedoc by Irène`,
-      ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      `URL: ${ctx.url}`
-    ];
-
-    if (form){
-      const date    = pickField(form, ['date']);
-      const guests  = pickField(form, ['guests','persons','count']);
-      const name    = pickField(form, ['name']);
-      const contact = pickField(form, ['contact']);
-      const message = pickField(form, ['message','notes']);
-
-      const tail = [
-        '—',
-        date    && `Дата: ${date}`,
-        guests  && `Гостей: ${guests}`,
-        name    && `Имя: ${name}`,
-        contact && `Контакт: ${contact}`,
-        message && `Сообщение: ${message}`
-      ].filter(Boolean);
-      return base.concat(tail).join('\n');
-    }
-    return base.join('\n');
+    const ctx = pageContext();
+    const isFr = String(document.documentElement.lang || '').toLowerCase().startsWith('fr');
+    const title = ctx.title || document.title || '';
+    return [
+      isFr ? 'Message depuis le site Tours Languedoc by Irène' : 'Сообщение с сайта Tours Languedoc by Irène',
+      ctx.programId ? (isFr ? 'Programme : ' : 'Программа: ') + title + ' [' + ctx.programId + ']' : (isFr ? 'Page : ' : 'Страница: ') + title,
+      (isFr ? 'Lien : ' : 'Ссылка: ') + ctx.url
+    ].join('\n');
   }
 
-  // ---------- навигация без window.open ----------
+    // ---------- навигация без window.open ----------
   function navigateSafely(href){
     const a = document.createElement('a');
     a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';

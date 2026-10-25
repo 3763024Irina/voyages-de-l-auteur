@@ -175,7 +175,7 @@
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+          <li></li>
         </ul>
         <div aria-label="Переключение языка">
           <button id="btn-ru" class="active" aria-pressed="true" type="button">RU</button>
@@ -207,7 +207,7 @@
         <h2 class="title" data-i18n="hero_title">Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)</h2>
         <p class="subtitle" data-i18n="hero_sub">5 дней мини-курса Escale «Hydro relaxante» (≈1h30/3h - день) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.</p>
         <div class="actions">
-          <a class="btn primary" href="#book" data-i18n="nav_book">Забронировать</a>
+          
         </div>
       </div>
     </div>
@@ -294,44 +294,6 @@
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Balaruc — Hydro relaxante (7 ночей)" data-program-id="BALARUC-HYDRO-7D">
-      <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="book_sub">Ответим в течение дня и подтвердим слоты терм и дегустаций.</p>
-
-      <form class="fields" data-contact-form novalidate onsubmit="return false;">
-        <div>
-          <label for="when" data-i18n="lbl_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="lbl_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name" data-i18n="lbl_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact" data-i18n="lbl_contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
-        </div>
-
-        <div class="full">
-          <label for="msg" data-i18n="lbl_msg">Сообщение</label>
-          <textarea id="msg" name="message" placeholder="Пожелания по датам, пакет (Базовый/Comfort/Premium), примечания"></textarea>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" data-i18n="btn_whatsapp">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" data-i18n="btn_telegram">Отправить в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -394,29 +356,16 @@
     function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
 
     function buildText(){
-      const f=document.querySelector('[data-contact-form]');
-      const get=n=>f?.querySelector(`[name="${n}"]`)?.value?.trim()||'';
-      const title=document.querySelector('[data-program-title]')?.getAttribute('data-program-title')||document.title||'';
-      const pid=document.querySelector('[data-program-id]')?.getAttribute('data-program-id')||document.documentElement.getAttribute('data-program-id')||'';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid?`Программа: ${title} [${pid}]`:`Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
-    const REQUIRED=['date','guests','name','contact'];
-    function validate(){ const f=document.querySelector('[data-contact-form]'); if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad=null; for(const n of REQUIRED){ const el=f.querySelector(`[name="${n}"]`); const v=el?.value?.trim(); const ok=Boolean(v && (n!=='guests'||Number(v)>0));
-        el?.classList.toggle('input-error',!ok); if(!ok && !firstBad) firstBad=el; }
-      if(firstBad){ firstBad.scrollIntoView({behavior:'smooth',block:'center'}); firstBad.focus(); toast('Заполните дату, гостей, имя и контакт'); return false; }
-      return true;
-    }
-    async function openTG(){ if(!validate())return;
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.querySelector('h1, h2')?.textContent?.trim() || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validate(){ return true; }
+async function openTG(){ if(!validate())return;
       const bot=(CFG.telegram_bot||'').replace(/^@/,''); const user=(CFG.telegram_user||'').replace(/^@/,'');
       const pre=String(CFG.bot_prestart_url||'').replace(/\/health\/?$/,'/prestart').replace(/\/$/,'/prestart');
       if(bot && /^https?:\/\//i.test(pre)){
@@ -445,7 +394,7 @@
       ogTitle:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
       ogDesc:'5 дней терм (≈1h30/3h в день) + винный день и Каркасон. Пакеты и бронь.',
       brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
-      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Контакты',
       gal_title:'Как это выглядит', gal_sub:'Thermes Balaruc, лагуна То и тёплая вода круглый год.',
       altHero:'Balaruc-les-Bains — термы', altG1:'Thermes — интерьер', altG2:'Thermes — бассейн', altG3:'Подготовка к курсу',
       hero_title:'Balaruc-les-Bains — «Hydro relaxante» + Вино & Каркасон (7 ночей)',
@@ -474,7 +423,7 @@
       ogTitle:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
       ogDesc:"5 jours de thermes (≈1h30/3h/jour) + journée vins et Carcassonne. Forfaits & réservation.",
       brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Contact',
       gal_title:'À quoi ça ressemble', gal_sub:'Thermes de Balaruc, lagune de Thau et eau chaude toute l’année.',
       altHero:'Balaruc-les-Bains — thermes', altG1:'Thermes — intérieur', altG2:'Thermes — bassin', altG3:'Préparer sa cure',
       hero_title:"Balaruc-les-Bains — « Hydro relaxante » + Vin & Carcassonne (7 nuits)",
@@ -552,22 +501,7 @@
     {"@type":"ListItem","position":2,"name":"Balaruc — Hydro relaxante (7 ночей)","item":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html"}
   ]}
   </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"TouristTrip",
-   "name":"Balaruc-les-Bains — Hydro relaxante (7 ночей)",
-   "description":"Мини-курс терм «Hydro relaxante» (5 дней) + 2 экскурсии: винный день и Каркасон. Приватно от 2 гостей.",
-   "touristType":["Wellness","Thermal spa"],
-   "itinerary":"Balaruc-les-Bains — Étang de Thau — Picpoul de Pinet — Carcassonne",
-   "image":["https://goutvoyage.com/assets/Balaruc-Obalia.jpg"],
-   "offers":[
-     {"@type":"Offer","name":"Базовый","price":"1600","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"},
-     {"@type":"Offer","name":"Comfort","price":"2300","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"},
-     {"@type":"Offer","name":"Premium","price":"2600","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html#book"}
-   ],
-   "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com/"},
-   "areaServed":{"@type":"AdministrativeArea","name":"Occitanie, France"}
-  }
-  </script>
+  
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"Что входит в пакет?","acceptedAnswer":{"@type":"Answer","text":"Организация/сопровождение RU/FR, мини-курс терм «Hydro relaxante» 5 дней, бронирование дегустаций и билеты в Каркасон."}},

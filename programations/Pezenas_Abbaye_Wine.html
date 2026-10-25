@@ -6,7 +6,7 @@
 
   <!-- Primary Meta -->
   <title>Pézenas & Abbaye — винный BIO-день из Меза | Tours Languedoc by Irène</title>
-  <meta name="description" content="Однодневный частный тур: Pézenas, аббатство XII века с био-садами и дегустацией (домен при аббатстве), обед. База: Мез/окрестности. ~6–7 часов, ~55–65 км. 420 € за двоих, +100 € за гостя (до 4)." />
+  <meta name="description" content="Однодневный частный тур: Pézenas, аббатство XII века с био-садами и дегустацией (домен при аббатстве), обед. База: Мез/окрестности. ~6–7 часов, ~55–65 км. , за гостя (до 4)." />
   <link rel="canonical" href="https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html" />
   <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html" />
   <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html#fr" />
@@ -175,7 +175,7 @@ window.ANALYTICS_CONFIG = {
         <ul>
           <li><a href="../index.html#tours">← Все программы</a></li>
           <li><a href="../index.html#why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
+          <li></li>
         </ul>
 
         <div aria-label="Language switch">
@@ -197,7 +197,7 @@ window.ANALYTICS_CONFIG = {
         <span class="badge">Wine • Pézenas & Abbaye</span>
         <h2 class="title">Pézenas & Abbaye — винный BIO-день из Меза</h2>
         <p class="subtitle">Pézenas, аббатство XII века с био-садами и дегустацией (домен при аббатстве), обед — по желанию. Приватно, 2–4 гостя.</p>
-        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
+        <div class="actions"></div>
       </div>
     </div>
   </section>
@@ -273,7 +273,7 @@ window.ANALYTICS_CONFIG = {
           <summary><b>Abbaye (Villeveyrac)</b> — готический неф с бочками; сады; билеты/расписание сезонные.</summary>
           <div class="admin-grid">
             <div><div class="admin-tag">Визит</div> 60–90 мин; учесть перерывы; язык FR/EN; фото разрешены без вспышки.</div>
-            <div><div class="admin-tag">Билеты</div> Взрослый ~€— (по сезону); дети — скидки; группы — заранее.</div>
+            
             <div><div class="admin-tag">Auberge</div> Обед 12:30–13:45 (буфер); сезонное меню; бронировать за сутки.</div>
             <div><div class="admin-tag">Caveau</div> Дегустация 45–60 мин; AB/экологичный подход; скидка при покупке возможна.</div>
           </div>
@@ -291,50 +291,6 @@ window.ANALYTICS_CONFIG = {
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Pézenas & Abbaye — винный BIO-день из Меза" data-program-id="PEZENAS-ABBAYE-1D">
-      <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим визиты.</p>
-
-      <form class="fields" data-contact-form novalidate>
-        <div>
-          <label for="when">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
-        </div>
-
-        <div class="full">
-          <label for="msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пикап (отель/адрес), пожелания по обеду/винам…"></textarea>
-        </div>
-
-        <div class="full">
-          <label>Итог</label>
-          <div class="price" id="totalOut">€420</div>
-          <p class="section-sub" style="margin-top:6px">420 € за двоих; +100 € за каждого дополнительного гостя (макс. 4).</p>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#">Отправить в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -403,41 +359,16 @@ window.ANALYTICS_CONFIG = {
     const toast = (msg,ms=2400)=>{ const t=document.createElement('div'); t.className='form-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),ms); };
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validateForm(){ return true; }
 
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad=null;
-      for (const n of REQUIRED){
-        const el=f.querySelector(`[name="${n}"]`);
-        const val=el?.value?.trim();
-        const ok=Boolean(val && (n!=='guests' || Number(val)>0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad=el;
-      }
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-        firstBad.focus(); toast('Заполните дату, гостей, имя и контакт');
-        return false;
-      }
-      return true;
-    }
 
     function safeOpen(href){
       const a=document.createElement('a');
@@ -484,22 +415,8 @@ window.ANALYTICS_CONFIG = {
   })();
   </script>
 
-  <!-- ==== Калькулятор суммы (420€ за 2; +100€ за гостя до 4) ==== -->
-  <script>
-    (function(){
-      const guests = document.getElementById('guests');
-      const totalOut = document.getElementById('totalOut');
-      const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-      function refresh(){
-        const g = Math.max(2, Math.min(4, Number(guests?.value||2)));
-        const total = 420 + Math.max(0, g - 2) * 100;
-        if (totalOut) totalOut.textContent = fmtEUR(total);
-      }
-      guests?.addEventListener('input', refresh);
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
-      refresh();
-    })();
-  </script>
+  <!-- ==== Калькулятор суммы ( за 2; за гостя до 4) ==== -->
+  
 
   <!-- ==== I18N капсула RU ⇄ FR ==== -->
   <script>
@@ -508,7 +425,7 @@ window.ANALYTICS_CONFIG = {
       brand_sub: document.querySelector('.brand small'),
       nav_all:   document.querySelector('nav ul li:nth-child(1) a'),
       nav_why:   document.querySelector('nav ul li:nth-child(2) a'),
-      nav_book:  document.getElementById('goBook'),
+      nav_contacts:  document.getElementById('goBook'),
       hero_title:document.querySelector('.hero h2.title'),
       hero_sub:  document.querySelector('.hero .subtitle'),
       gal_title: document.querySelectorAll('h3.section-title')[0],
@@ -536,7 +453,7 @@ window.ANALYTICS_CONFIG = {
     const TL = Array.from(document.querySelectorAll('.timeline li'));
 
     const RU = {
-      brand_sub: N.brand_sub?.textContent, nav_all:N.nav_all?.textContent, nav_why:N.nav_why?.textContent, nav_book:N.nav_book?.textContent,
+      brand_sub: N.brand_sub?.textContent, nav_all:N.nav_all?.textContent, nav_why:N.nav_why?.textContent, nav_contacts:N.nav_contacts?.textContent,
       hero_title:N.hero_title?.textContent, hero_sub:N.hero_sub?.textContent,
       gal_title:N.gal_title?.textContent, gal_sub:N.gal_sub?.textContent,
       route_title:N.route_title?.textContent, inc_title:N.inc_title?.textContent, notinc_title:N.notinc_title?.textContent, cond_title:N.cond_title?.textContent,
@@ -554,7 +471,7 @@ window.ANALYTICS_CONFIG = {
 
     const FR = {
       brand_sub:'— Des voyages avec goût',
-      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_contacts:'Contact',
       hero_title:'Pézenas & Abbaye — journée vin BIO au départ de Mèze',
       hero_sub:'Pézenas, abbaye cistercienne du XIIe avec jardins bio et dégustation (domaine lié à l’abbaye), déjeuner en option. Privé, 2–4 pers.',
       gal_title:'À quoi ça ressemble',
@@ -571,7 +488,7 @@ window.ANALYTICS_CONFIG = {
       btn_wa:'Envoyer sur WhatsApp', btn_tg:'Envoyer sur Telegram',
       f_why:'Pourquoi nous', f_tours:'Offres', f_format:'Format', f_write:'Écrire',
       title:'Pézenas & Abbaye — journée vin BIO au départ de Mèze | Tours Languedoc by Irène',
-      metaDesc:'Journée privée : Pézenas, abbaye cistercienne du XIIe avec jardins bio et dégustation (domaine lié à l’abbaye), déjeuner. Base : Mèze/alentours. ~6–7 h, ~55–65 km. 420 € pour deux, +100 €/pers. (jusqu’à 4).',
+      metaDesc:'Journée privée : Pézenas, abbaye cistercienne du XIIe avec jardins bio et dégustation (domaine lié à l’abbaye), déjeuner. Base : Mèze/alentours. ~6–7 h, ~55–65 km. , /pers. (jusqu’à 4).',
       ogTitle:'Pézenas & Abbaye — journée vin BIO',
       ogDesc:'Pézenas, abbaye (XIIe) et dégustation de vins bio. Privé, rythme doux, déjeuner en option.',
       tl:[
@@ -600,7 +517,7 @@ window.ANALYTICS_CONFIG = {
       setMeta('og:description', L.ogDesc, true);
 
       setText(N.brand_sub, L.brand_sub);
-      setText(N.nav_all, L.nav_all); setText(N.nav_why, L.nav_why); setText(N.nav_book, L.nav_book);
+      setText(N.nav_all, L.nav_all); setText(N.nav_why, L.nav_why); setText(N.nav_contacts, L.nav_contacts);
       setText(N.hero_title, L.hero_title); setText(N.hero_sub, L.hero_sub);
       setText(N.gal_title, L.gal_title); setText(N.gal_sub, L.gal_sub);
       setText(N.route_title, L.route_title); setText(N.inc_title, L.inc_title); setText(N.notinc_title, L.notinc_title); setText(N.cond_title, L.cond_title);
@@ -674,43 +591,8 @@ window.ANALYTICS_CONFIG = {
     ]
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"TouristTrip",
-    "name":"Pézenas & Abbaye — винный BIO-день из Меза",
-    "description":"Частная программа: Pézenas, аббатство XII века с био-садами, дегустация на домене при аббатстве, обед по желанию. ~6–7 ч, ~55–65 км. База: Мез.",
-    "image":["https://goutvoyage.com/assets/img/pezenas_valmagne_hero.jpg"],
-    "touristType":["Wine tourism","Private tour"],
-    "itinerary":"Mèze — Pézenas — Abbaye (XIIe) — Dégustation — Mèze",
-    "offers":{
-      "@type":"Offer",
-      "priceCurrency":"EUR",
-      "price":"420",
-      "priceSpecification": {
-        "@type":"PriceSpecification",
-        "priceCurrency":"EUR",
-        "minPrice":"420",
-        "maxPrice":"620"
-      },
-      "availability":"https://schema.org/InStock",
-      "url":"https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html#book"
-    },
-    "provider":{"@type":"Organization","name":"Tours Languedoc by Irène","url":"https://goutvoyage.com/"},
-    "areaServed":{"@type":"AdministrativeArea","name":"Occitanie, France"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Что входит в тур?","acceptedAnswer":{"@type":"Answer","text":"Частный транспорт (кроссовер), сопровождение RU/FR, организация визитов и дегустации по записи."}},
-      {"@type":"Question","name":"Что не включено?","acceptedAnswer":{"@type":"Answer","text":"Билеты в аббатство, дегустации, обед и личные расходы."}},
-      {"@type":"Question","name":"Сколько гостей и цена?","acceptedAnswer":{"@type":"Answer","text":"Приватно 2–4 гостя. Цена: 420 € за двоих, +100 € за каждого дополнительного (до 4)."}}
-    ]
-  }
-  </script>
+  
+  
 
 
 </body>

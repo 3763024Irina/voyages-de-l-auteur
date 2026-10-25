@@ -66,23 +66,23 @@
     label{display:block; font-weight:700; margin-bottom:6px}
     input, textarea, select{width:100%; padding:12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
-    #book{ padding:32px 0 56px; }
-    #book .card{ max-width:820px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
-    #book .section-title{ font-size:28px; margin:0 0 6px; }
-    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
-    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    #book .fields .full{ grid-column:1 / -1; }
+    
+    
+    
+    
+    
+    
     #book input, #book textarea{ height:44px; }
     #book textarea{ height:auto; }
-    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; justify-content:flex-end; }
-    #book .btn{ padding:10px 12px; border-radius:12px; }
-    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
-    #book .btn.primary:hover{ filter:brightness(.96); }
+    
+    
+    
+    
     .admin-only{ display:none !important; }
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
-    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
+    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)}  }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
     .chat-fab{ position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center }
     .chat-fab svg{width:22px; height:22px; display:block}
@@ -134,7 +134,7 @@
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav.all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav.why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav.book">Забронировать</a></li>
+          <li></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
@@ -154,8 +154,8 @@
       <div>
         <span class="badge" data-i18n="hero.badge">Hydrotherapy • Avène</span>
         <h2 class="title"><span data-i18n="hero.title">Avène — термальная дерматология</span> <span style="font-size:.6em; font-weight:800" data-i18n="hero.from">от 14 дней</span></h2>
-        <p class="subtitle" data-i18n="hero.subtitle">Единственный центр во Франции, полностью посвящённый дерматологии: вода с низкой минерализацией, нейтральным pH и богатством кремнезёма; программы 6/12/18 дней, пост-онко и атопический дерматит. <b>Цена за двоих от € 1 890 / 14 ночей</b>.</p>
-        <div class="actions"><a class="btn primary" href="#book" data-i18n="hero.cta">Забронировать</a></div>
+        <p class="subtitle" data-i18n="hero.subtitle">Единственный центр во Франции, полностью посвящённый дерматологии: вода с низкой минерализацией, нейтральным pH и богатством кремнезёма; программы 6/12/18 дней, пост-онко и атопический дерматит. <b>Цена за двоих от 1 890 / 14 ночей</b>.</p>
+        <div class="actions"></div>
       </div>
     </div>
   </section>
@@ -218,34 +218,7 @@
         </div>
       </div>
 
-    <h3 class="section-title" data-i18n="price.title">Стоимость курсов (без страховки)</h3>
-<div class="card" data-i18n="price.table">
-  <table style="width:100%; border-collapse:collapse; font-size:15px">
-    <thead>
-      <tr style="background:#f9f9f9">
-        <th style="padding:8px; text-align:left" data-i18n="price.dur">Длительность</th>
-        <th style="padding:8px; text-align:left" data-i18n="price.cost">Цена / 1 чел</th>
-      </tr>
-    </thead>
-   <tbody>
-  <tr>
-    <td style="padding:8px">12 <span data-i18n="price.days">дней</span></td>
-    <td style="padding:8px"><b>1000 €</b></td>
-  </tr>
-  <tr>
-    <td style="padding:8px">18 <span data-i18n="price.days">дней</span></td>
-    <td style="padding:8px"><b>1300 €</b></td>
-  </tr>
-</tbody>
-
-  </table>
-  <p class="section-sub" style="margin-top:10px" data-i18n="price.note">
-    Цены указаны <b>без страховки</b>, оплачиваются напрямую в Centre Thermal Avène. 
-    Приём врача и проживание рассчитываются отдельно.
-  </p>
-</div>
-
-      <div class="gallery" style="margin-top:14px">
+    <div class="gallery" style="margin-top:14px">
         <div class="ph"><img src="/assets/avene/environs-2.jpg" alt="Центр Avène — холл" loading="lazy"></div>
         <div class="ph"><img src="/assets/avene/IMG_0599.JPG" alt="Бассейн и распыления Avène" loading="lazy"></div>
         <div class="ph"><img src="/assets/avene/2269592581_WxH.jpg" alt="Долина Avène и река" loading="lazy"></div>
@@ -310,60 +283,6 @@
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Avène — термальная дерматология и wellness (от 14 дней)" data-program-id="AVENE-THERMES-14D">
-      <h3 class="section-title" data-i18n="form.title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form.sub">Сначала заполняете данные — потом увидите текст заявки и подтвердите отправку в WA/TG.</p>
-
-      <form class="fields" data-contact-form>
-        <div>
-          <label for="when" data-i18n="form.date">Дата заезда</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="nights" data-i18n="form.nights">Ночей</label>
-          <input id="nights" name="nights" type="number" min="14" value="14">
-        </div>
-        <div>
-          <label for="guests" data-i18n="form.guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="1" value="2" required>
-        </div>
-        <div>
-          <label for="lodging" data-i18n="form.lodging">Класс жилья</label>
-          <select id="lodging" name="lodging">
-            <option data-i18n="form.optStd">Апартаменты Standard</option>
-            <option data-i18n="form.optComf">Комфорт</option>
-            <option data-i18n="form.optComfPlus">Комфорт+</option>
-          </select>
-        </div>
-        <div class="full">
-          <label for="name" data-i18n="form.name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required data-i18n-attr="placeholder:form.namePh">
-        </div>
-        <div class="full">
-          <label for="contact" data-i18n="form.contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required data-i18n-attr="placeholder:form.contactPh">
-        </div>
-        <div class="full">
-          <label for="msg" data-i18n="form.msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пожелания по жилью/времени процедур, трансфер…" data-i18n-attr="placeholder:form.msgPh"></textarea>
-        </div>
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" data-i18n="form.sendWA">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" data-i18n="form.sendTG">Отправить в Telegram</a>
-        </div>
-      </form>
-    </div>
-
-    <div class="admin-only" data-display="block" style="margin-top:10px">
-      <div class="section-sub" data-i18n="share.sub">Sharebar доступна через data attributes:</div>
-      <div class="sharebar" data-sharebar>
-        <a data-wa class="ic ic--wa" aria-label="WhatsApp" rel="noopener" target="_blank"></a>
-        <a data-tg class="ic ic--tg" aria-label="Telegram" rel="noopener" target="_blank"></a>
-      </div>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -426,8 +345,8 @@
         ogTitle:'Avène — термальная дерматология & wellness',
         ogDesc:'Атопический дерматит, псориаз, пост-онко; вода с pH ~7.5 и кремнезёмом; пакеты 6/12/18 дней.',
         brand:{slogan:'— Путешествия со вкусом'},
-        nav:{all:'← Все программы', why:'Почему с нами', book:'Забронировать'},
-        hero:{badge:'Hydrotherapy • Avène', title:'Avène — термальная дерматология', from:'от 14 дней', subtitle:'Единственный центр во Франции, посвящённый дерматологии: вода с низкой минерализацией и нейтральным pH; программы 6/12/18 дней, пост-онко и атопический дерматит. <b>Цена за двоих от € 1 890 / 14 ночей</b>.', cta:'Забронировать', alt:'Avène — долина и центр термальной дерматологии'},
+        nav:{all:'← Все программы', why:'Почему с нами', book:'Контакты'},
+        hero:{badge:'Hydrotherapy • Avène', title:'Avène — термальная дерматология', from:'от 14 дней', subtitle:'Единственный центр во Франции, посвящённый дерматологии: вода с низкой минерализацией и нейтральным pH; программы 6/12/18 дней, пост-онко и атопический дерматит. <b>Цена за двоих от 1 890 / 14 ночей</b>.', cta:'Контакты', alt:'Avène — долина и центр термальной дерматологии'},
         facts:{duration:{label:'Длительность:', val:'6 / 12 / 18 дней (wellness) • 18 дней (мед.кур)'},
                base:{label:'База:', val:'Avène (Hérault), Parc du Haut-Languedoc'},
                season:{label:'Сезон:', val:'конец марта — начало ноября'},
@@ -438,18 +357,12 @@
         b2:{title:'2) Показания / профиль лечения', li1:'Атопический дерматит (с 3 мес.), экзема, псориаз.', li2:'Рубцы, ожоги, кожно-слизистые лишаи, ихтиоз, хронический зуд, кожа головы.', li3:'Пост-онко-уход: уменьшение зуда, сухости и эритемы.'},
         b3:{title:'3) Программы и процедуры', li1:'6/12/18 дней (wellness) и 18 дней (медкур, возможна оплата по соцстраху FR).', li2:'Ежедневно: душ/ванны, орошения, обёртывания, распыления, бассейн + назначения врача.', li3:'Врач центра формирует индивидуальный протокол; ~1–1.5 ч/день.'},
         b4:{title:'4) Практика: сезон, запись, безопасность', li1:'Сезон: ~конец марта — начало ноября; онлайн-бронь дат.', li2:'Aquacert HACCP Thermalisme — сертификация безопасности воды с 2010.', li3:'Обычные противопоказания к бальнео; нужна справка при хронических состояниях.'},
-       price:{
-  title:'Стоимость курсов (без страховки)',
-  dur:'Длительность',
-  cost:'Цена / 1 чел',
-  days:'дней',
-  note:'Цены указаны <b>без страховки</b>, оплачиваются напрямую в Centre Thermal Avène. Приём врача и проживание рассчитываются отдельно.'
-}
+
       gallery:{},
         where:{title:'Где это', sub:'Avène • Chaîne Hydrotherapy • Haut-Languedoc', mapalt:'Avène — карта'},
-        admin:{cts:'Avène — оф. сайт', booking:'Бронь процедур', rates:'Тарифы'},
+        admin:{cts:'Avène — оф. сайт', booking:'', rates:''},
         exclude:{title:'Не входит', li1:'Процедуры Avène (оплата на сайте центра).', li2:'Питание; в апартаментах — кухня.', li3:'Страховка.'},
-        form:{title:'Быстрый запрос / бронирование', sub:'Заполните данные — затем подтвердите отправку в WA/TG.', date:'Дата заезда', nights:'Ночей', guests:'Гостей', lodging:'Класс жилья', optStd:'Апартаменты Standard', optComf:'Комфорт', optComfPlus:'Комфорт+', name:'Имя', namePh:'Имя и фамилия', contact:'Контакт (WhatsApp/Telegram)', contactPh:'+33… или @username', msg:'Комментарий', msgPh:'Пожелания по жилью/времени процедур, трансфер…', sendWA:'Отправить в WhatsApp', sendTG:'Отправить в Telegram'},
+
         share:{sub:'Sharebar доступна через data-атрибуты:'},
         foot:{brand:'Путешествия со вкусом', why:'Почему с нами', tours:'Программы', format:'Формат', write:'Написать'},
         fabs:{wa:'Написать в WhatsApp', tg:'Написать в Telegram'},
@@ -462,8 +375,8 @@
         ogTitle:'Avène — dermatologie thermale & bien-être',
         ogDesc:'Eczéma/psoriasis, post-cancer; eau riche en silice; cures 6/12/18 j.',
         brand:{slogan:'— Des voyages avec goût'},
-        nav:{all:'← Tous les programmes', why:'Pourquoi nous', book:'Réserver'},
-        hero:{badge:'Hydrotherapy • Avène', title:'Avène — dermatologie thermale', from:'dès 14 nuits', subtitle:"Centre 100% dédié à la dermatologie : eau faiblement minéralisée au pH neutre; programmes 6/12/18 jours, post-cancer et dermatite atopique. <b>Prix pour 2 dès 1 890 € / 14 nuits</b>.", cta:'Réserver', alt:'Avène — vallée et centre de dermatologie thermale'},
+        nav:{all:'← Tous les programmes', why:'Pourquoi nous', book:'Contact'},
+        hero:{badge:'Hydrotherapy • Avène', title:'Avène — dermatologie thermale', from:'dès 14 nuits', subtitle:"Centre 100% dédié à la dermatologie : eau faiblement minéralisée au pH neutre; programmes 6/12/18 jours, post-cancer et dermatite atopique. <b>Prix pour 2 dès / 14 nuits</b>.", cta:'Contact', alt:'Avène — vallée et centre de dermatologie thermale'},
         facts:{duration:{label:'Durée :', val:'6 / 12 / 18 jours (bien-être) • 18 jours (cure conventionnée)'},
                base:{label:'Base :', val:'Avène (Hérault), Parc du Haut-Languedoc'},
                season:{label:'Saison :', val:'fin mars — début novembre'},
@@ -474,17 +387,11 @@
         b2:{title:'2) Indications', li1:"Dermatite atopique (dès 3 mois), eczémas, psoriasis.", li2:"Cicatrices/brûlures, lichens cutanéo-muqueux, ichtyoses, prurit, cuir chevelu.", li3:"Post-cancer : réduction du prurit, sécheresse et rougeurs."},
         b3:{title:'3) Programmes & soins', li1:'6/12/18 jours (bien-être) et 18 jours (cure conventionnée).', li2:"Quotidien : douches/bains, pulvérisations, irrigations locales, enveloppements, piscine + actes complémentaires selon le médecin.", li3:'Consultation médicale initiale; ~1–1.5 h/jour.'},
         b4:{title:'4) Pratique : saison, réservation, sécurité', li1:'Saison : ~fin mars — début novembre; réservation en ligne.', li2:'Aquacert HACCP Thermalisme depuis 2010.', li3:'Contre-indications générales de balnéo; certificat médical recommandé si pathologies.'},
-   price:{
-  title:'Tarifs des cures (sans assurance)',
-  dur:'Durée',
-  cost:'Prix / 1 pers.',
-  days:'jours',
-  note:'Tarifs indiqués <b>hors assurance</b>, à régler directement au Centre Thermal Avène. La consultation médicale et l’hébergement sont en supplément.'
-}
+
       where:{title:"Où c’est", sub:'Avène • Centre Thermal Avène • Haut-Languedoc', mapalt:'Avène — carte'},
-        admin:{cts:'Site officiel Avène', booking:'Réserver les soins', rates:'Tarifs'},
+        admin:{cts:'Site officiel Avène', booking:'Contact les soins', rates:''},
         exclude:{title:'Non compris', li1:'Soins Avène (paiement sur le site).', li2:'Restauration; cuisine dans l’appartement.', li3:'Assurance voyage.'},
-        form:{title:'Demande rapide / réservation', sub:'Remplissez — puis confirmez l’envoi vers WA/TG.', date:"Date d'arrivée", nights:'Nuits', guests:'Personnes', lodging:'Catégorie de logement', optStd:'Appartement Standard', optComf:'Confort', optComfPlus:'Confort+', name:'Nom', namePh:'Nom et prénom', contact:'Contact (WhatsApp/Telegram)', contactPh:'+33… ou @username', msg:'Commentaire', msgPh:'Souhaits pour le logement/créneaux, transfert…', sendWA:'Envoyer sur WhatsApp', sendTG:'Envoyer sur Telegram'},
+
         share:{sub:'La barre de partage est disponible via les data-attributs :'},
         foot:{brand:'Des voyages avec goût', why:'Pourquoi nous', tours:'Programmes', format:'Format', write:'Écrire'},
         fabs:{wa:"Écrire sur WhatsApp", tg:"Écrire sur Telegram"},
@@ -538,31 +445,16 @@
     const enc = s => encodeURIComponent(String(s||''));
     function toast(msg, ms=2400){ const t=document.createElement('div'); t.className='form-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(), ms); }
     function buildText(){
-      const f=document.querySelector('[data-contact-form]'); const get=n=>f?.querySelector(`[name="${n}"]`)?.value?.trim()||'';
-      const title=document.querySelector('[data-program-title]')?.getAttribute('data-program-title')||document.title||'';
-      const pid=document.querySelector('[data-program-id]')?.getAttribute('data-program-id')||document.documentElement.getAttribute('data-program-id')||'';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid?`Программа: ${title} [${pid}]`:`Страница: ${title}`,
-        `Дата заезда: ${get('date')||'-'}`,
-        `Ночей: ${get('nights')||'14'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Жильё: ${get('lodging')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
-    const REQUIRED=['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f=document.querySelector('[data-contact-form]'); if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad=null;
-      REQUIRED.forEach(n=>{ const el=f.querySelector(`[name="${n}"]`); const val=el?.value?.trim(); const ok=Boolean(val&&(n!=='guests'||Number(val)>0)); el?.classList.toggle('input-error',!ok); if(!ok && !firstBad) firstBad=el; });
-      if(firstBad){ if(scroll) firstBad.scrollIntoView({behavior:'smooth',block:'center'}); firstBad.focus(); const lang=localStorage.getItem('site:lang')||'ru';
-        toast(lang==='fr'?'Renseignez la date, le nombre de personnes, le nom et le contact':'Заполните дату, гостей, имя и контакт'); return false; }
-      return true;
-    }
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validateForm(){ return true; }
+
     function safeOpen(href){ const a=document.createElement('a'); a.href=href; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
     function openWhatsApp(){ if(!validateForm()) return; const num=digits(CFG.whatsapp||''); if(!num){ toast('В APP_CONFIG не задан номер WhatsApp'); return; } safeOpen(`https://wa.me/${num}?text=${enc(buildText())}`); }
     async function openTelegram(){

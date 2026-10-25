@@ -104,25 +104,25 @@
     textarea{min-height:110px; resize:vertical}
 
     /* BOOK */
-    #book{ padding:32px 0 56px; }
-    #book .card{ max-width:720px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
-    #book .section-title{ font-size:28px; margin:0 0 6px; }
-    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
-    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    #book .fields .full{ grid-column:1 / -1; }
+    
+    
+    
+    
+    
+    
     #book input, #book textarea{ height:44px; }
     #book textarea{ height:auto; }
-    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; justify-content:flex-end; }
-    #book .btn{ padding:10px 12px; border-radius:12px; }
-    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
-    #book .btn.primary:hover{ filter:brightness(.96); }
+    
+    
+    
+    
 
     .admin-only{ display:none !important; }
     html[data-admin="1"] .admin-only[data-display="flex"]{ display:flex !important; }
     html[data-admin="1"] .admin-only[data-display="block"]{ display:block !important; }
     html[data-admin="1"] .admin-only:not([data-display]){ display:block !important; }
 
-    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
+    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)}  }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
     /* FAB */
@@ -169,7 +169,7 @@
         <ul>
           <li><a href="../index.html#tours">← <span data-lang="ru">Все программы</span><span data-lang="fr">Tous les programmes</span></a></li>
           <li><a href="../index.html#why"><span data-lang="ru">Почему с нами</span><span data-lang="fr">Pourquoi nous</span></a></li>
-          <li><a class="cta" href="#book" id="goBook"><span data-lang="ru">Забронировать</span><span data-lang="fr">Réserver</span></a></li>
+          <li></li>
         </ul>
 
         <div aria-label="Language switch">
@@ -197,7 +197,7 @@
           <span data-lang="ru">от 7 ночей в закрытом Village Naturiste + вино, море и экскурсии. Трансфер по запросу.</span>
           <span data-lang="fr">dès 7 nuits au Village Naturiste + vin, mer et excursions. Transfert sur demande.</span>
         </p>
-        <div class="actions"><a class="btn primary" href="#book"><span data-lang="ru">Забронировать</span><span data-lang="fr">Réserver</span></a></div>
+        <div class="actions"></div>
       </div>
     </div>
   </section>
@@ -301,44 +301,6 @@
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Cap d’Agde — Village Naturiste + 2 экскурсии (от 7 ночей)" data-program-id="CAPDAGDE-NATURISTE-7N-2EXC">
-      <h3 class="section-title"><span data-lang="ru">Быстрый запрос / бронирование</span><span data-lang="fr">Demande / réservation rapide</span></h3>
-      <p class="section-sub"><span data-lang="ru">Ответим в течение дня и подтвердим размещение и визиты.</span><span data-lang="fr">Réponse dans la journée : confirmation du logement et des visites.</span></p>
-
-      <form class="fields" data-contact-form>
-        <div>
-          <label for="when"><span data-lang="ru">Дата</span><span data-lang="fr">Date</span></label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests"><span data-lang="ru">Гостей</span><span data-lang="fr">Personnes</span></label>
-          <input id="guests" name="guests" type="number" min="2" max="4" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name"><span data-lang="ru">Имя</span><span data-lang="fr">Nom</span></label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия / Nom et prénom" required>
-        </div>
-
-        <div class="full">
-          <label for="contact"><span data-lang="ru">Контакт (WhatsApp/Telegram)</span><span data-lang="fr">Contact (WhatsApp/Telegram)</span></label>
-          <input id="contact" name="contact" type="text" placeholder="+33… ou @username" required>
-        </div>
-
-        <div class="full">
-          <label for="msg"><span data-lang="ru">Комментарий</span><span data-lang="fr">Message</span></label>
-          <textarea id="msg" name="message" placeholder="Категория апартаментов / horaires vols / souhaits… / préférences…"></textarea>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#"><span data-lang="ru">Отправить в WhatsApp</span><span data-lang="fr">Envoyer sur WhatsApp</span></a>
-          <a class="btn primary" data-telegram href="#"><span data-lang="ru">Отправить в Telegram</span><span data-lang="fr">Envoyer sur Telegram</span></a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
@@ -473,46 +435,16 @@
     }
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-                 || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-                 || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
-
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad = null;
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        toast('Заполните дату, гостей, имя и контакт');
-        return false;
-      }
-      return true;
-    }
-
-    function safeOpen(href){
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.querySelector('h1, h2')?.textContent?.trim() || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validateForm(){ return true; }
+function safeOpen(href){
       const a = document.createElement('a');
       a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
       document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 60);
@@ -557,50 +489,10 @@
   </script>
 
   <!-- Калькулятор суммы -->
-  <script>
-    (function(){
-      const guests = document.getElementById('guests');
-      const totalOut = document.getElementById('totalOut');
-      const BASE = 2270;
-      const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-      function refresh(){
-        const g = Math.max(2, Math.min(4, Number(guests?.value||2)));
-        const total = BASE + Math.max(0, g - 2) * 100;
-        if (totalOut) totalOut.textContent = fmtEUR(total);
-      }
-      guests?.addEventListener('input', refresh);
-      document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
-      refresh();
-    })();
-  </script>
+  
 
   <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    "name": "Cap d’Agde — Village Naturiste + вино, море и экскурсии (от 7 ночей)",
-    "description": "Отдых во Франции: Cap d’Agde, Village Naturiste, песчаные пляжи, дегустации вин, экскурсии в Carcassonne и Sète. Проживание от 7 ночей, трансфер по запросу.",
-    "touristType": "Взрослые путешественники, пары, любители моря и гастрономии",
-    "image": "https://goutvoyage.com/assets/capdag/AdobeStock_380475902-scaled-e1718197157390.jpeg",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "1600",
-      "availability": "https://schema.org/InStock",
-      "url": "https://goutvoyage.com/programations/Cap_dAgde_Village_Naturiste.html"
-    },
-    "provider": {
-      "@type": "TravelAgency",
-      "name": "Tours Languedoc by Irène",
-      "url": "https://goutvoyage.com"
-    },
-    "areaServed": {
-      "@type": "Place",
-      "name": "Cap d’Agde, Occitanie, France"
-    }
-  }
-  </script>
+  
 </body>
 </html>
 

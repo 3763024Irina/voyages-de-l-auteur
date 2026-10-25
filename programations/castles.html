@@ -206,7 +206,7 @@
     </a>
 
     <nav aria-label="Основная навигация">
-      <ul><li><a class="cta" href="#book" data-i18n="nav_book" title="Быстрая заявка">Забронировать</a></li></ul>
+      <ul><li></li></ul>
     </nav>
 
     <div class="lang" aria-label="Переключение языка">
@@ -332,19 +332,6 @@
 </section>
 
 <!-- CTA -->
-<section id="book" class="container" style="padding-top:18px">
-  <div class="card">
-    <h3 class="section-title" data-i18n="form_title">Быстрый запрос</h3>
-    <p class="section-sub" data-i18n="form_sub">Напишите в WhatsApp/Telegram — ответим в течение дня.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <!-- CHANGE: data-атрибуты для скрипта и чистые номера/ники -->
-      <a class="btn" data-whatsapp href="#" rel="noopener">WhatsApp</a>
-      <a class="btn primary" data-telegram href="#" rel="noopener">Telegram</a>
-      <a class="btn" href="/index.html#tours" data-i18n="back_tours">← К программам</a>
-    </div>
-  </div>
-</section>
-
 <footer style="margin-top:30px;padding:26px 0;background:#0f1f19;color:#e7e7e7">
   <div class="container">© 2025 — Languedoc, France</div>
 </footer>
@@ -376,7 +363,7 @@ const i18n = {
     form_title:'Быстрый запрос',
     form_sub:'Напишите в WhatsApp/Telegram — ответим в течение дня.',
     nav_all:'← Все программы',
-    nav_book:'Забронировать',
+    nav_contacts:'Контакты',
     back_tours:'← К программам'
   },
   fr:{
@@ -403,7 +390,7 @@ const i18n = {
     form_title:'Demande rapide',
     form_sub:'Écrivez sur WhatsApp/Telegram — réponse sous 24 h.',
     nav_all:'← Toutes les offres',
-    nav_book:'Réserver',
+    nav_contacts:'Contact',
     back_tours:'← Voir les programmes'
   }
 };
@@ -456,8 +443,8 @@ function applyLang(lang){
     function buildText(){
       const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
       return isFr
-        ? ['Demande du site Tours Languedoc by Irène','Page : Hub Châteaux','URL : '+location.href].join('\n')
-        : ['Заявка с сайта Tours Languedoc by Irène','Страница: Хаб Замки/Средневековые города','URL: '+location.href].join('\n');
+        ? ['Message depuis le site Tours Languedoc by Irène','Page : Hub Châteaux','URL : '+location.href].join('\n')
+        : ['Сообщение с сайта Tours Languedoc by Irène','Страница: Хаб Замки/Средневековые города','URL: '+location.href].join('\n');
     }
     function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
 

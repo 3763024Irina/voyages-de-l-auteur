@@ -162,7 +162,7 @@ window.ANALYTICS_CONFIG = {
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+          <li></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active" type="button">RU</button>
@@ -273,50 +273,12 @@ window.ANALYTICS_CONFIG = {
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="LUX Étang de Thau — 1 день" data-program-id="THAU-LUX-1D">
-      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и предложим время старта и брони.</p>
-
-      <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
-        <div>
-          <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-        </div>
-
-        <div class="full">
-          <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Желаемые даты, состав, старт (Cap d’Agde / Sète / Marseillan)…"></textarea>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="javascript:void(0)" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn primary" data-telegram href="javascript:void(0)" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
         <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
         <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
-        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" data-i18n="nav_contacts_f">Контакты</a></p></div>
+        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p></p></div>
       </div>
       <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
@@ -349,7 +311,7 @@ window.ANALYTICS_CONFIG = {
              ogDesc:'Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок.',
              locale:'ru_RU' },
       brand_sub:'— Путешествия со вкусом',
-      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+      nav_all:'← Все программы', nav_why:'Почему с нами', nav_contacts:'Контакты',
       brand_sub_footer:'Путешествия со вкусом', nav_why_f:'Почему с нами', nav_all_f:'Программы', nav_format_f:'Формат', nav_contacts_f:'Контакты',
       b_oysters:'🦪 Устрицы', b_onwater:'🌊 С воды', b_tastings:'🍷 Дегустации', b_nowalks:'🕊 Без треков', b_transfer:'🚐 Трансфер',
       hero_title:'LUX Étang de Thau — 1 день',
@@ -398,7 +360,7 @@ window.ANALYTICS_CONFIG = {
              ogDesc:'Bateau privé, huîtres sur l’eau, Tarbouriech, Noilly Prat, final vins. Sans marche.',
              locale:'fr_FR' },
       brand_sub:'— Des voyages avec goût',
-      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_contacts:'Contact',
       brand_sub_footer:'Des voyages avec goût', nav_why_f:'Pourquoi nous', nav_all_f:'Offres', nav_format_f:'Format', nav_contacts_f:'Contacts',
       b_oysters:'🦪 Huîtres', b_onwater:'🌊 Sur l’eau', b_tastings:'🍷 Dégustations', b_nowalks:'🕊 Sans marche', b_transfer:'🚐 Transfert',
       hero_title:'LUX Étang de Thau — 1 journée',
@@ -548,42 +510,16 @@ window.ANALYTICS_CONFIG = {
     }
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validateForm(){ return true; }
 
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad = null;
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        const ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        toast('Заполните дату, гостей, имя и контакт');
-        return false;
-      }
-      return true;
-    }
 
     function safeOpen(href){
       const a = document.createElement('a');

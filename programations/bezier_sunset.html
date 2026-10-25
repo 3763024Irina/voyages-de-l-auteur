@@ -219,7 +219,7 @@ window.ANALYTICS_CONFIG = {
         <ul>
           <li><a href="../index.html#tours">← Все программы</a></li>
           <li><a href="../index.html#why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
+          <li></li>
         </ul>
 
         <div aria-label="Language switch">
@@ -244,7 +244,7 @@ window.ANALYTICS_CONFIG = {
         <span class="badge">Canal du Midi • День / Закат</span>
         <h2 class="title">Бéзье — круиз по Каналу дю Миди (днём или на закате)</h2>
         <p class="subtitle">Фонсераны — Grand Bief — тоннель Малпас + прогулка по центру и собору Сен-Назер. Ужин на борту — опция. Приватно 2–6 гостей.</p>
-        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
+        <div class="actions"></div>
       </div>
     </div>
   </section>
@@ -313,44 +313,6 @@ window.ANALYTICS_CONFIG = {
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Бéзье — круиз по Каналу дю Миди (днём или на закате)" data-program-id="CRUISE-BEZIERS">
-      <h3 class="section-title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub">Ответим в течение дня и подтвердим визиты.</p>
-
-      <form class="fields" data-contact-form>
-        <div>
-          <label for="when">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact">Контакт (WhatsApp/Telegram/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / @username / email" required>
-        </div>
-
-        <div class="full">
-          <label for="msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="День или закат? Ужин/аперитив? Пикап-адрес…"></textarea>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener">Отправить в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <!-- RELATED (внутренняя перелинковка для SEO) -->
   <section class="container" style="padding-top:0">
     <h3 class="section-title">Похожие программы</h3>
@@ -473,7 +435,7 @@ window.ANALYTICS_CONFIG = {
 
     const FR = {
       brand_sub:'— Des voyages avec goût',
-      nav_all:'← Tous les programmes', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Tous les programmes', nav_why:'Pourquoi nous', nav_book:'Contact',
       hero_title:'Béziers — croisière sur le Canal du Midi (journée ou coucher de soleil)',
       hero_sub:'Fonseranes — Grand Bief — tunnel du Malpas + balade centre & cathédrale Saint-Nazaire. Dîner à bord en option. Privé 2–6 pers.',
       gal_title:'À quoi ça ressemble',
@@ -578,7 +540,7 @@ window.ANALYTICS_CONFIG = {
       if (p.get('lang')){ p.delete('lang'); history.replaceState(null,'', location.pathname + (p.toString()?`?${p}`:'') + location.hash); }
       applyLang(lang==='fr'?'fr':'ru');
 
-      // Фокус на дате при клике "Забронировать"
+      // Фокус на дате при клике "Контакты"
       document.getElementById('goBook')?.addEventListener('click', ()=> setTimeout(()=>document.getElementById('when')?.focus(), 60));
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
@@ -602,55 +564,16 @@ window.ANALYTICS_CONFIG = {
     }
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\n');
+}
+function validateForm(){ return true; }
 
-    const REQUIRED = ['date','guests','name','contact'];
-    const contactOk = v => {
-      const digitsOnly = String(v||'').replace(/\D/g,'');
-      const isPhone = digitsOnly.length >= 7;
-      const isTG    = /^@?[a-zA-Z0-9_]{5,}$/.test(v||'');
-      const isMail  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v||'');
-      return isPhone || isTG || isMail;
-    };
-
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad = null;
-      f.querySelectorAll('input, textarea, select').forEach(el=>{
-        el.addEventListener('input', ()=> el.classList.remove('input-error'), {once:true});
-        el.addEventListener('change', ()=> el.classList.remove('input-error'), {once:true});
-      });
-      REQUIRED.forEach(n=>{
-        const el = f.querySelector(`[name="${n}"]`);
-        const val = el?.value?.trim();
-        let ok = Boolean(val && (n!=='guests' || Number(val) > 0));
-        if (n==='contact') ok = ok && contactOk(val);
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad = el;
-      });
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-        firstBad.focus();
-        toast('Заполните дату, гостей, имя и корректный контакт');
-        return false;
-      }
-      return true;
-    }
 
     function safeOpen(href){
       const a = document.createElement('a');
