@@ -443,8 +443,8 @@ function applyLang(lang){
     function buildText(){
       const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
       return isFr
-        ? ['Demande du site Tours Languedoc by Irène','Page : Hub Châteaux','URL : '+location.href].join('\n')
-        : ['Заявка с сайта Tours Languedoc by Irène','Страница: Хаб Замки/Средневековые города','URL: '+location.href].join('\n');
+        ? ['Message depuis le site Tours Languedoc by Irène','Page : Hub Châteaux','URL : '+location.href].join('\n')
+        : ['Сообщение с сайта Tours Languedoc by Irène','Страница: Хаб Замки/Средневековые города','URL: '+location.href].join('\n');
     }
     function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
 
