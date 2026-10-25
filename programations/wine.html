@@ -319,7 +319,7 @@
     };
     ;(()=>{ if (window.__FAB_WINE__) return; window.__FAB_WINE__=true;
       const CFG=window.APP_CONFIG||{}; const digits=s=>String(s||'').replace(/\D/g,''); const enc=s=>encodeURIComponent(String(s||''));
-      function buildText(){ return ['Заявка с сайта Tours Languedoc by Irène','Страница: Винные туры — хаб','URL: '+location.href].join('\n'); }
+      function buildText(){ return ['Сообщение с сайта Tours Languedoc by Irène','Страница: Винные туры — хаб','URL: '+location.href].join('\n'); }
       function toast(msg){ const t=document.createElement('div'); t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0D2B1E;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.18);z-index:99999;font:600 14px/1.2 Inter,system-ui'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
       function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
       async function openTG(){
