@@ -181,7 +181,7 @@
     .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
     .meta span{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
     .card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
-    .price{font-weight:800}
+    
     .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
     .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
     .card > a.stretched{position:absolute; inset:0; z-index:1; text-indent:-9999px}
@@ -1066,14 +1066,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const l = getLang();
     const title = l==='fr' ? (item.tf||item.tr) : (item.tr||item.tf);
     const desc  = l==='fr' ? (item.df||item.dr||'') : (item.dr||item.df||'');
-    const price = '';
-
     const url   = item.href ? resolveHref(item.href) : '';
     const badge = item.b ? `<span class="badge" aria-label="${badges[item.b]||item.b}">${badges[item.b]||item.b}</span>` : '';
     const overlayLink = url ? `<a class="stretched" href="${url}" aria-label="${title}"></a>` : '';
     const openBtn = url
       ? `<a class="btn" href="${url}">${l==='fr'?'Ouvrir le programme':'Открыть программу'}</a>`
-      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:safeImg(item.c),d:desc,}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
+      : `<button class="btn" onclick='openTour(${JSON.stringify({t:title,c:safeImg(item.c),d:desc}).replace(/'/g,"&#39;")})'>${l==='fr'?'Détails':'Подробнее'}</button>`;
 
     const img = safeImg(item.c);
 
