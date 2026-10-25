@@ -1,0 +1,1010 @@
+{
+  "version": 1,
+  "images": {
+    "IMG_9386 4.JPG": {
+      "original_size_bytes": 5923242,
+      "optimized_size_bytes": 1164514,
+      "saved_bytes": 4758728,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        2400,
+        1800
+      ],
+      "original_sha256": "d63e830386ea65160342163dbafb945a16612cab7361aa84b196354b80bdaf86",
+      "optimized_sha256": "0e6f07a263733de9ab380377a9ae0cbeea9dd253a5c12a7a5651f7e4ee900922"
+    },
+    "IMG_9390 3.JPG": {
+      "original_size_bytes": 2969553,
+      "optimized_size_bytes": 705756,
+      "saved_bytes": 2263797,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "b47af8207ff74c8d34c159bee1346ba58e4b02ec2079f793fcd458255eb9b2ce",
+      "optimized_sha256": "795a50869a0d1be2636ec9278b142bf0d1cbeb9fc581fe1b2f130da8d7d53eeb"
+    },
+    "IMG_9433 4.JPG": {
+      "original_size_bytes": 5761735,
+      "optimized_size_bytes": 1164739,
+      "saved_bytes": 4596996,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        2400,
+        1800
+      ],
+      "original_sha256": "0a484e263bbc1f08cc5f263b782e8eee7a6dac95d63191fe197f1e23ec492725",
+      "optimized_sha256": "2c3448af647783f53e3f0a23ee2fb170949ff88fd84329275a2a472cbbd4fc2c"
+    },
+    "assets/89621188_803100600179364_6086176174071873536_n.jpg": {
+      "original_size_bytes": 464408,
+      "optimized_size_bytes": 464408,
+      "saved_bytes": 0,
+      "original_dimensions": [
+        1440,
+        1800
+      ],
+      "optimized_dimensions": [
+        1440,
+        1800
+      ],
+      "original_sha256": "5e2af2a7042d19f74673e9e2f7dd502ec0258a7ad870ac2b30320f5d64c7a54e",
+      "optimized_sha256": "5e2af2a7042d19f74673e9e2f7dd502ec0258a7ad870ac2b30320f5d64c7a54e"
+    },
+    "assets/Balaruc-Obalia.jpg": {
+      "original_size_bytes": 504252,
+      "optimized_size_bytes": 293876,
+      "saved_bytes": 210376,
+      "original_dimensions": [
+        1440,
+        710
+      ],
+      "optimized_dimensions": [
+        1440,
+        710
+      ],
+      "original_sha256": "86cc6601b511d40606c3fad639c07ac1e42dca8b429c9a04c2c484083cb1bc85",
+      "optimized_sha256": "809105920f7b3b54dfbce58cb401a21cd64c66da4dcf0d38086dc34d0443a95f"
+    },
+    "assets/Fonseranes-Locks_history_tourism_holidays-min.jpg": {
+      "original_size_bytes": 609909,
+      "optimized_size_bytes": 291608,
+      "saved_bytes": 318301,
+      "original_dimensions": [
+        900,
+        1545
+      ],
+      "optimized_dimensions": [
+        900,
+        1545
+      ],
+      "original_sha256": "16017f875342c676154c8643afa1e282d74224dfb4ad126df9d2dfb2d3244156",
+      "optimized_sha256": "b1febc343248b7c6b8c3656e4c9fbed90f449349e36a5ffcda0034d2a5215aa0"
+    },
+    "assets/IMG_2998.JPG": {
+      "original_size_bytes": 4768266,
+      "optimized_size_bytes": 1134434,
+      "saved_bytes": 3633832,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "5618ef0eb77a9e63dfd84498a1f927bf0084056ab0619941177d183b6fce5d7d",
+      "optimized_sha256": "a611b1e1edf94f05607ec7e72a6bac0abbc4ce91eab1bba300c4a7863e12e4e9"
+    },
+    "assets/IMG_4003.JPG": {
+      "original_size_bytes": 6007166,
+      "optimized_size_bytes": 1157031,
+      "saved_bytes": 4850135,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "60ce4241c5e1031a5d0cd059ae90ced755ef952d4da0dc92b4c0e90ceb0c6a7d",
+      "optimized_sha256": "ccb5b0597ab1114afd0c04f2f837c0028cb4ba00d7fef6a0785acfad5103a065"
+    },
+    "assets/IMG_5709.jpg": {
+      "original_size_bytes": 798152,
+      "optimized_size_bytes": 360306,
+      "saved_bytes": 437846,
+      "original_dimensions": [
+        1200,
+        1597
+      ],
+      "optimized_dimensions": [
+        1200,
+        1597
+      ],
+      "original_sha256": "c3f573d8da2d39e420a35fc1a9d7b763882f615fc7982c877b43585c92df858e",
+      "optimized_sha256": "c44eee3c22b746d2b718449441eefef904be9a8668cc97fa3a6d26f3503ad8ef"
+    },
+    "assets/IMG_6643.JPG": {
+      "original_size_bytes": 4787978,
+      "optimized_size_bytes": 891926,
+      "saved_bytes": 3896052,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "aae92568bf25c667087afccb59b0001e9c8bd20a9bf2edd3d82879347fbb892e",
+      "optimized_sha256": "9c8f5dff039819b0e7a92991c3ec3cdf9f5c8a2de7c01ff242bdd17ae4eb4777"
+    },
+    "assets/IMG_6705.JPG": {
+      "original_size_bytes": 6062767,
+      "optimized_size_bytes": 1215703,
+      "saved_bytes": 4847064,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "bcb7b53d6101bc2ed3cedb992ab0fa7c3fe6809fab01cac0d4cf0abd8a929750",
+      "optimized_sha256": "baf8798df1f03eb155ca5c08cec40bfdc8b1abd748dd18ed2215d06f7b963c79"
+    },
+    "assets/avene/Hydrotherapy-Center-7.png": {
+      "original_size_bytes": 722848,
+      "optimized_size_bytes": 636818,
+      "saved_bytes": 86030,
+      "original_dimensions": [
+        731,
+        472
+      ],
+      "optimized_dimensions": [
+        731,
+        472
+      ],
+      "original_sha256": "046e1d457299ab1f5742fdd683c0f4c437d901788ab332f46ef003d472168a3f",
+      "optimized_sha256": "dbc7d6e383a7e12d2cebca00990ae44fd7b46f845118487fe97cb7623cbbcfb2"
+    },
+    "assets/avene/IMG_0568.JPG": {
+      "original_size_bytes": 4891521,
+      "optimized_size_bytes": 951137,
+      "saved_bytes": 3940384,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "87878f8679c751b8b69af24bc16143f7cc19cf304dd9afcb7d0f02be1db06562",
+      "optimized_sha256": "346d6e3270674c375656be9f62f517cfebc2c983069ba200315368b4e8de38ec"
+    },
+    "assets/avene/IMG_0599.JPG": {
+      "original_size_bytes": 4887468,
+      "optimized_size_bytes": 903496,
+      "saved_bytes": 3983972,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "0a7f5c65e717b5d2d3c85eb1e6dae5563dd7117becab6b69499f1793e8357a18",
+      "optimized_sha256": "b77ef510209ff138b34dc4cf59d67dbe8b0fa3930e6e811537afb255bb3bc0bb"
+    },
+    "assets/avene/station-avene-hotel-jardin-1.jpg": {
+      "original_size_bytes": 645887,
+      "optimized_size_bytes": 645887,
+      "saved_bytes": 0,
+      "original_dimensions": [
+        2005,
+        1339
+      ],
+      "optimized_dimensions": [
+        2005,
+        1339
+      ],
+      "original_sha256": "dc3da83c71d242c6f6d44b10570d0c1be560ad3b0b8c6642ef64207ded4dade2",
+      "optimized_sha256": "dc3da83c71d242c6f6d44b10570d0c1be560ad3b0b8c6642ef64207ded4dade2"
+    },
+    "assets/beziers/IMG_0311.jpg": {
+      "original_size_bytes": 971114,
+      "optimized_size_bytes": 506655,
+      "saved_bytes": 464459,
+      "original_dimensions": [
+        1242,
+        1957
+      ],
+      "optimized_dimensions": [
+        1242,
+        1957
+      ],
+      "original_sha256": "cc02c02df2a60ce3c946c2ae335b4b132342b31076ee4b25d0640483f79ea9b5",
+      "optimized_sha256": "94c83e70d44b2ab768f95213942b73f8dd2c893571f4a19658afe4a555cbb4fb"
+    },
+    "assets/beziers/IMG_0312.jpg": {
+      "original_size_bytes": 692309,
+      "optimized_size_bytes": 358371,
+      "saved_bytes": 333938,
+      "original_dimensions": [
+        1242,
+        1809
+      ],
+      "optimized_dimensions": [
+        1242,
+        1809
+      ],
+      "original_sha256": "f04ca1144785d5d378b7d5836797aa9ff2614f84ab61adaf724018bb22b1a743",
+      "optimized_sha256": "5040d49f2fb055a089245474c7125ec661a3c6debe8e1bcfef8840876f6c772e"
+    },
+    "assets/beziers/IMG_0314.jpg": {
+      "original_size_bytes": 864132,
+      "optimized_size_bytes": 449473,
+      "saved_bytes": 414659,
+      "original_dimensions": [
+        1242,
+        1883
+      ],
+      "optimized_dimensions": [
+        1242,
+        1883
+      ],
+      "original_sha256": "916e844a48dfe854a077666bbca2107e396733057d5da903bae240db7730d89f",
+      "optimized_sha256": "f3f0ce778dd2ed3fa6c726d3899219536c39b36556c912fe4ef725fd0138c3be"
+    },
+    "assets/beziers/IMG_0315.jpg": {
+      "original_size_bytes": 787337,
+      "optimized_size_bytes": 408131,
+      "saved_bytes": 379206,
+      "original_dimensions": [
+        1242,
+        1889
+      ],
+      "optimized_dimensions": [
+        1242,
+        1889
+      ],
+      "original_sha256": "8ab7566d984b655ce9564b9f89dd94a6e657b8b791ec18e531379d2a8ba7c41d",
+      "optimized_sha256": "b40ca7689c83e72d1b9c992a3df86d6538fb37e110221404e8630ef3fd25c0f8"
+    },
+    "assets/beziers/IMG_9487.JPG": {
+      "original_size_bytes": 3937783,
+      "optimized_size_bytes": 755920,
+      "saved_bytes": 3181863,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "3d45d5f5f7425380e22884ecd0bc0003c4d72c3619baa80eee470a0be3ebd130",
+      "optimized_sha256": "39c61277daf0a9371faa4d324bda1c984985cb52c4f5406d4b390324a124ad57"
+    },
+    "assets/capdag/toutes.jpg": {
+      "original_size_bytes": 603575,
+      "optimized_size_bytes": 478206,
+      "saved_bytes": 125369,
+      "original_dimensions": [
+        1600,
+        1000
+      ],
+      "optimized_dimensions": [
+        1600,
+        1000
+      ],
+      "original_sha256": "adca031578d2a9464c2ed91123ab3d131eaff8f583c600186d43a23103a1a62a",
+      "optimized_sha256": "29152225f741ffdee80e40d21780e5ddda43f8a261f4a71aa785471ce2ded41f"
+    },
+    "assets/capdag/troquet_001.jpg": {
+      "original_size_bytes": 483668,
+      "optimized_size_bytes": 483668,
+      "saved_bytes": 0,
+      "original_dimensions": [
+        2016,
+        908
+      ],
+      "optimized_dimensions": [
+        2016,
+        908
+      ],
+      "original_sha256": "b9003795ceff34cd0701687f1f7844cab2b06ff89eab3a0f7f6d242d87c2402c",
+      "optimized_sha256": "b9003795ceff34cd0701687f1f7844cab2b06ff89eab3a0f7f6d242d87c2402c"
+    },
+    "assets/carcasson/IMG_2996.JPG": {
+      "original_size_bytes": 4257756,
+      "optimized_size_bytes": 734586,
+      "saved_bytes": 3523170,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        2400,
+        1800
+      ],
+      "original_sha256": "02b616eb5d5347e0cb79c66e0bcb05cb660aa30115572487095811680c40a199",
+      "optimized_sha256": "b8f230e922d65ca7dbf7eb57842b9ff962c9b0bc9a1d099e52933441fe6e866c"
+    },
+    "assets/carcasson/IMG_2997 2.JPG": {
+      "original_size_bytes": 4762967,
+      "optimized_size_bytes": 1132064,
+      "saved_bytes": 3630903,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "ea9d854e64dc864ec738f4777e252d11211bbadab46c53262891a912354f99b3",
+      "optimized_sha256": "bd2459dbe94a9d68bca268fc6ada6f2d1a6449f20f271e116bc31dc762c1e721"
+    },
+    "assets/carcasson/IMG_2998.JPG": {
+      "original_size_bytes": 4768266,
+      "optimized_size_bytes": 1134434,
+      "saved_bytes": 3633832,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "5618ef0eb77a9e63dfd84498a1f927bf0084056ab0619941177d183b6fce5d7d",
+      "optimized_sha256": "a611b1e1edf94f05607ec7e72a6bac0abbc4ce91eab1bba300c4a7863e12e4e9"
+    },
+    "assets/carcasson/IMG_3003.JPG": {
+      "original_size_bytes": 4590879,
+      "optimized_size_bytes": 885319,
+      "saved_bytes": 3705560,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "f5ab77a5ec1dcbc9c695aea0e29f8f49ddf97fb08520fc2d94f7228211edae31",
+      "optimized_sha256": "9371c5196a81e5196ab52a8dc3df29b15ae764191d1d39dfa44c3ec35038bfdc"
+    },
+    "assets/carcasson/IMG_3004.JPG": {
+      "original_size_bytes": 4593810,
+      "optimized_size_bytes": 1197863,
+      "saved_bytes": 3395947,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "81f9268b8ed92b23c28739b0c00c4d76e8c98e53813f5655df429166cc97e599",
+      "optimized_sha256": "524747f55e1d0057d8635a02d38dadf12b21bc714d8607b1a49742307a375f29"
+    },
+    "assets/carcasson/IMG_3006 2.JPG": {
+      "original_size_bytes": 4839489,
+      "optimized_size_bytes": 946463,
+      "saved_bytes": 3893026,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "c261afcddffaf9498176bc258f52e754b632b0f99f06a14c6cb1bf99afaf6cd8",
+      "optimized_sha256": "b084cc7b63a83b09db4df50eabc245671984594ee3ea8d901892b0b03b1fde08"
+    },
+    "assets/carcasson/IMG_3007.JPG": {
+      "original_size_bytes": 5835635,
+      "optimized_size_bytes": 1126792,
+      "saved_bytes": 4708843,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "11ff8a7e081fc53d710aba57fb299132f31d0458652f9977726e88f4da374a5f",
+      "optimized_sha256": "ca3803ce11c3b3d1b434ff68f05ab62f921fe6217c60540f7baa0e19a80664fc"
+    },
+    "assets/carcasson/IMG_3012.JPG": {
+      "original_size_bytes": 1383717,
+      "optimized_size_bytes": 465054,
+      "saved_bytes": 918663,
+      "original_dimensions": [
+        3520,
+        1980
+      ],
+      "optimized_dimensions": [
+        1350,
+        2400
+      ],
+      "original_sha256": "35923e57c4ff07bb11b52e41c1f83da11e938c4900a5a19f2bd518220aa32e27",
+      "optimized_sha256": "b555d37351c24fde2d16cbc37035ceb48d12376a7cdaec6e8279deee11d85c80"
+    },
+    "assets/carcasson/IMG_3028.JPG": {
+      "original_size_bytes": 4349614,
+      "optimized_size_bytes": 818122,
+      "saved_bytes": 3531492,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "60223e3b9a0e7fdf7bf4d484c5e3d98722b6a43d014a08813a988c11f5412f83",
+      "optimized_sha256": "f82ef00544d67bdb9187447167a14d1552afd6daf92eace2204723c87a95419e"
+    },
+    "assets/carcasson/caption.jpg": {
+      "original_size_bytes": 472004,
+      "optimized_size_bytes": 452863,
+      "saved_bytes": 19141,
+      "original_dimensions": [
+        1100,
+        1467
+      ],
+      "optimized_dimensions": [
+        1100,
+        1467
+      ],
+      "original_sha256": "3515d4d362abea027297e035d671fc4a3965aa101bb58935d64b753a38b6d0a0",
+      "optimized_sha256": "d3946ff3635a779b14599b42f2f92476a97b1de1867fc2bbf4801e10b70f3700"
+    },
+    "assets/ecluse-ronde-ouvrage-agde-ciel-1.jpg": {
+      "original_size_bytes": 461641,
+      "optimized_size_bytes": 461641,
+      "saved_bytes": 0,
+      "original_dimensions": [
+        1920,
+        1079
+      ],
+      "optimized_dimensions": [
+        1920,
+        1079
+      ],
+      "original_sha256": "9d539a70b303ef0de48df04666648fce462fc0786dfbf831b8f602c1197c09c1",
+      "optimized_sha256": "9d539a70b303ef0de48df04666648fce462fc0786dfbf831b8f602c1197c09c1"
+    },
+    "assets/hortus.jpg": {
+      "original_size_bytes": 1045471,
+      "optimized_size_bytes": 270315,
+      "saved_bytes": 775156,
+      "original_dimensions": [
+        1242,
+        879
+      ],
+      "optimized_dimensions": [
+        1242,
+        879
+      ],
+      "original_sha256": "fc6e8c8f54dc5484148518c67eb71e5b5945d50bdcdc936501d707b1c2db1868",
+      "optimized_sha256": "4d6c37d782ded8ec6afeea78b34e1ce97a8b461c4ef1c88f35fdd321942dbf03"
+    },
+    "assets/huitres/IMG_1438.JPG": {
+      "original_size_bytes": 3825865,
+      "optimized_size_bytes": 692826,
+      "saved_bytes": 3133039,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "2c2a9783d1b5fc87c7b49d04e298406c4c47497ff47782eba27f7a80502ad704",
+      "optimized_sha256": "0448f2d0563cba4db637f161ef63560b726258840dec08899941569807023649"
+    },
+    "assets/huitres/IMG_9487.JPG": {
+      "original_size_bytes": 3937783,
+      "optimized_size_bytes": 755920,
+      "saved_bytes": 3181863,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "3d45d5f5f7425380e22884ecd0bc0003c4d72c3619baa80eee470a0be3ebd130",
+      "optimized_sha256": "39c61277daf0a9371faa4d324bda1c984985cb52c4f5406d4b390324a124ad57"
+    },
+    "assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg": {
+      "original_size_bytes": 1084713,
+      "optimized_size_bytes": 580422,
+      "saved_bytes": 504291,
+      "original_dimensions": [
+        2000,
+        1333
+      ],
+      "optimized_dimensions": [
+        2000,
+        1333
+      ],
+      "original_sha256": "84cd4915886149b9eaacb39939be111b3684f610cf943c6a060181491e50bc2f",
+      "optimized_sha256": "ad79f2c1c9b24f6fe097b7d6ff7f36a1d9b1d20209b9c692dcbc79669cb7257d"
+    },
+    "assets/meze/IMG_9003.JPG": {
+      "original_size_bytes": 5390877,
+      "optimized_size_bytes": 1091268,
+      "saved_bytes": 4299609,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "6d811843dc608c29444293ccc2b48027c4cc4c88494c7281d36c54f156d1d6d6",
+      "optimized_sha256": "f6f9e68a99fe55f3e8a405d8a3e7c6854178076e5bcf9f3f0fc5ee42bfa100cc"
+    },
+    "assets/one-of-summer-s-more.jpg": {
+      "original_size_bytes": 638673,
+      "optimized_size_bytes": 575677,
+      "saved_bytes": 62996,
+      "original_dimensions": [
+        1400,
+        1400
+      ],
+      "optimized_dimensions": [
+        1400,
+        1400
+      ],
+      "original_sha256": "202afb53603b42de9b1d063b2cf54040a7f09396aa48221f3ac8f714318f77dd",
+      "optimized_sha256": "6eb1174d79446fb75c30ded88d3d04668aab2c47dfbe4d71fd55f4742f44ff37"
+    },
+    "assets/saint-guilhierm/IMG_8993 2.JPG": {
+      "original_size_bytes": 5400463,
+      "optimized_size_bytes": 1132202,
+      "saved_bytes": 4268261,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "521b67f9b10292ba956df5482f9cc33d0f3af48267b20a026266811310077d15",
+      "optimized_sha256": "ec0add96efe95caee3e3fe678160d02364b5395c9c16ae5231adf5922eec120e"
+    },
+    "assets/saint-guilhierm/IMG_9334 4.JPG": {
+      "original_size_bytes": 6064799,
+      "optimized_size_bytes": 1220901,
+      "saved_bytes": 4843898,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "8d2666819e9c42ebe99e71b75e9d86c12c5652edc918c8cee0694eb029228baa",
+      "optimized_sha256": "55083813119d5ee6555604f868159620dd2dcb23c39fc189e19d905e17680684"
+    },
+    "assets/saint-guilhierm/IMG_9346 4.JPG": {
+      "original_size_bytes": 5356167,
+      "optimized_size_bytes": 1121738,
+      "saved_bytes": 4234429,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "a098f6f571b15503753b6250a796326e5de3d1b5878dfe0ed8fabfd0770cf53c",
+      "optimized_sha256": "dbe963c825797a7cc44592b560521118e5d47fce82dac07e44c36aa92f9eeefd"
+    },
+    "assets/saint-guilhierm/IMG_9353 4.JPG": {
+      "original_size_bytes": 3151134,
+      "optimized_size_bytes": 868191,
+      "saved_bytes": 2282943,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "9f8dfab57b975c5c99f04e0f7a6007b9d428933c2e782bc632a595af60ae46d9",
+      "optimized_sha256": "6d2a3b5929fb53c873e1cb4b732988ebcf7cf33860c2a19b18113cd581a5a9f7"
+    },
+    "assets/saint-guilhierm/IMG_9361 4.JPG": {
+      "original_size_bytes": 4853034,
+      "optimized_size_bytes": 858659,
+      "saved_bytes": 3994375,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "17ecaf33ddcfa35d2f50af7bd3339140f6f5d94991da0a0151d5464fd5a81c46",
+      "optimized_sha256": "39f134d79c0d8876aa97a38fa478092a8a6012a807489818f990adbf7ae72246"
+    },
+    "assets/saint-guilhierm/IMG_9370 4.JPG": {
+      "original_size_bytes": 5394084,
+      "optimized_size_bytes": 1076454,
+      "saved_bytes": 4317630,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "47042c46e854de3387a4669e4d397b1389680f9c123fcc0c6ed72914d55eea88",
+      "optimized_sha256": "85fd9f44b6fc644e91810fd3ef7330d4e2e89bfd957aff29ec888b97a86d9fe8"
+    },
+    "assets/saint-guilhierm/IMG_9386 4.JPG": {
+      "original_size_bytes": 5923242,
+      "optimized_size_bytes": 1164514,
+      "saved_bytes": 4758728,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        2400,
+        1800
+      ],
+      "original_sha256": "d63e830386ea65160342163dbafb945a16612cab7361aa84b196354b80bdaf86",
+      "optimized_sha256": "0e6f07a263733de9ab380377a9ae0cbeea9dd253a5c12a7a5651f7e4ee900922"
+    },
+    "assets/saint-guilhierm/IMG_9390 3.JPG": {
+      "original_size_bytes": 2969553,
+      "optimized_size_bytes": 705756,
+      "saved_bytes": 2263797,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "b47af8207ff74c8d34c159bee1346ba58e4b02ec2079f793fcd458255eb9b2ce",
+      "optimized_sha256": "795a50869a0d1be2636ec9278b142bf0d1cbeb9fc581fe1b2f130da8d7d53eeb"
+    },
+    "assets/saint-guilhierm/IMG_9433 4.JPG": {
+      "original_size_bytes": 5761735,
+      "optimized_size_bytes": 1164739,
+      "saved_bytes": 4596996,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        2400,
+        1800
+      ],
+      "original_sha256": "0a484e263bbc1f08cc5f263b782e8eee7a6dac95d63191fe197f1e23ec492725",
+      "optimized_sha256": "2c3448af647783f53e3f0a23ee2fb170949ff88fd84329275a2a472cbbd4fc2c"
+    },
+    "assets/voiles/catama1.jpg": {
+      "original_size_bytes": 583059,
+      "optimized_size_bytes": 540940,
+      "saved_bytes": 42119,
+      "original_dimensions": [
+        1920,
+        1080
+      ],
+      "optimized_dimensions": [
+        1920,
+        1080
+      ],
+      "original_sha256": "73f2746b92e30a5ab650d9e293515eb6e829524bb652bd3b577ca756beed7506",
+      "optimized_sha256": "03f697eb39b0e2e5cbc1b91729ef9b46f68bc35bd0d18628c233f476061142b4"
+    },
+    "assets/voiles/catamaran.jpg": {
+      "original_size_bytes": 996355,
+      "optimized_size_bytes": 252412,
+      "saved_bytes": 743943,
+      "original_dimensions": [
+        5184,
+        3456
+      ],
+      "optimized_dimensions": [
+        2400,
+        1600
+      ],
+      "original_sha256": "dc348d6db3bf3e4c9a950286c9a3c887e32368c2265a6cc7b558164d6b378f65",
+      "optimized_sha256": "57506fdc66430e87fa8ac32774ccd5b3d2b36aa73c705ca924144c755388f9ef"
+    },
+    "assets/voiles/kite.jpg": {
+      "original_size_bytes": 758843,
+      "optimized_size_bytes": 243181,
+      "saved_bytes": 515662,
+      "original_dimensions": [
+        5317,
+        3545
+      ],
+      "optimized_dimensions": [
+        2400,
+        1600
+      ],
+      "original_sha256": "0ab61efe29ac74a396ffa57a1cd09ecdfd6a5535139c35493e3a5f5b17afc20a",
+      "optimized_sha256": "f441b4dd334feb3bc967321639e59eb8e2c23accccd943718c3bae7837fcee28"
+    },
+    "assets/wine3/pexels-grape-things-2954924.jpg": {
+      "original_size_bytes": 1848767,
+      "optimized_size_bytes": 390303,
+      "saved_bytes": 1458464,
+      "original_dimensions": [
+        5879,
+        3919
+      ],
+      "optimized_dimensions": [
+        2400,
+        1600
+      ],
+      "original_sha256": "8f8c05b44acd597bb07752632cdd68aa6aa3f9d097f7dd4b294eaab6a6bad1ce",
+      "optimized_sha256": "bc9dcd381498004f5d1ef5b32ce39ff24f468f9dc74e80c739efc93fe52fe50d"
+    },
+    "assets/wine3/pexels-irina-sakovich-2150710912-32408187.jpg": {
+      "original_size_bytes": 2334322,
+      "optimized_size_bytes": 1170853,
+      "saved_bytes": 1163469,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "13f7d892180d535a7d2e20881eb23076ad0c49877b0c4968607742267627aa15",
+      "optimized_sha256": "15b6079e1a6c8a0dd6b6c8023bb2ef27a4cb8845fbb06d586f40c6b1b1f275a1"
+    },
+    "assets/wine3/pexels-kenneth-1469328-2836735.jpg": {
+      "original_size_bytes": 1380075,
+      "optimized_size_bytes": 681989,
+      "saved_bytes": 698086,
+      "original_dimensions": [
+        4256,
+        2254
+      ],
+      "optimized_dimensions": [
+        2400,
+        1271
+      ],
+      "original_sha256": "f632521321a302955a34e179b371ca7841a270c247157c9923442911c291bc62",
+      "optimized_sha256": "8d8a4f3d39bcb1b62848609f05f15c0ce3e2be9c0e2c45ac7375409d51b18530"
+    },
+    "assets/wine3/pexels-mali-110822.jpg": {
+      "original_size_bytes": 882578,
+      "optimized_size_bytes": 736669,
+      "saved_bytes": 145909,
+      "original_dimensions": [
+        3052,
+        2031
+      ],
+      "optimized_dimensions": [
+        2400,
+        1597
+      ],
+      "original_sha256": "47de08489b81c7f6b33f467e7d94cc6c2562b0c6f6d9c4563abe9e653e442dc6",
+      "optimized_sha256": "04fe75dbb2c778fc488498b7de8d5d8ed7bf69fe78e6cae315883b6cd92bc806"
+    },
+    "assets/wine3/pexels-pixabay-39511.jpg": {
+      "original_size_bytes": 1204356,
+      "optimized_size_bytes": 357618,
+      "saved_bytes": 846738,
+      "original_dimensions": [
+        5760,
+        3840
+      ],
+      "optimized_dimensions": [
+        2400,
+        1600
+      ],
+      "original_sha256": "3ed6740ad21d08abc6d8330c372850d4e853006fad8c466035201a12f3a20501",
+      "optimized_sha256": "72bc66d65bd8931c91a8335c279f207d312f0663110e84591f63611fae2bd79a"
+    },
+    "assets/wines/IMG_9242.JPG": {
+      "original_size_bytes": 781348,
+      "optimized_size_bytes": 495896,
+      "saved_bytes": 285452,
+      "original_dimensions": [
+        1536,
+        2048
+      ],
+      "optimized_dimensions": [
+        1536,
+        2048
+      ],
+      "original_sha256": "2c925655c5e809a23e4735bf4f50a12be84136f0e90504461dfc09e020c54872",
+      "optimized_sha256": "2e522e472ed1cd3b8fcb49e9f86cf36226188cdd70f53e6b0fc12254be00a4df"
+    },
+    "assets/wines/IMG_9244.JPG": {
+      "original_size_bytes": 697931,
+      "optimized_size_bytes": 451730,
+      "saved_bytes": 246201,
+      "original_dimensions": [
+        1536,
+        2048
+      ],
+      "optimized_dimensions": [
+        1536,
+        2048
+      ],
+      "original_sha256": "830e189a69bae036e2bd58f618182ac248a3ffdff51f5d7bb7f4cd681a3c378b",
+      "optimized_sha256": "dfa9d83844e2f240c24a9c8e6b0906b7bcdc256fdec40e8b31d1c5d8ee63218f"
+    },
+    "assets/wines/cava0168.JPG": {
+      "original_size_bytes": 493039,
+      "optimized_size_bytes": 241148,
+      "saved_bytes": 251891,
+      "original_dimensions": [
+        768,
+        1024
+      ],
+      "optimized_dimensions": [
+        768,
+        1024
+      ],
+      "original_sha256": "cea59e795a9d9614e68c81e46b08b276306e2a31786c7c4bfe02dbb6a6c6aeba",
+      "optimized_sha256": "5878dbd106dadd7e7e3b3ac51b5182228fba61b92f8ddb1c7fee6d11aadeefeb"
+    },
+    "assets/wines/puech-haut.jpg": {
+      "original_size_bytes": 496728,
+      "optimized_size_bytes": 81976,
+      "saved_bytes": 414752,
+      "original_dimensions": [
+        510,
+        640
+      ],
+      "optimized_dimensions": [
+        510,
+        640
+      ],
+      "original_sha256": "a94063dc28969eda8fd778fd496ac766cbd33218eec0e7894817d52640584de3",
+      "optimized_sha256": "a3193e8df5492fb4f50eeea33c281a392b40176f6c2eaabc08705985369f2877"
+    },
+    "assets/wines2/IMG_0118.JPG": {
+      "original_size_bytes": 4937960,
+      "optimized_size_bytes": 948459,
+      "saved_bytes": 3989501,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "16f7f080346283104d50e87c0241b1cc61e41f4ee5d218f9439f8db8afd7c466",
+      "optimized_sha256": "bfd821907dc46c29e4ad6d76a5d3b0b98c1f24eceb1a04c6af010fd9a2ea3a3c"
+    },
+    "assets/wines2/IMG_0155.JPG": {
+      "original_size_bytes": 4254548,
+      "optimized_size_bytes": 849533,
+      "saved_bytes": 3405015,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "68b4c123443d7a712771bc5f2abbf5f792daae7e62f9054b91f1407117d16ccf",
+      "optimized_sha256": "dbdd73ad5ce900e8d0618eb2785b05548044d9b18fdd41f826f53e1cf5a41e03"
+    },
+    "assets/wines2/IMG_0156.JPG": {
+      "original_size_bytes": 5973208,
+      "optimized_size_bytes": 1192519,
+      "saved_bytes": 4780689,
+      "original_dimensions": [
+        2813,
+        4032
+      ],
+      "optimized_dimensions": [
+        1674,
+        2400
+      ],
+      "original_sha256": "a6f901b33e107b17578de2f30fa3572c93cb5049bd4047b4b321e8105d85ba7c",
+      "optimized_sha256": "a4f757888d44ea07486f0e5558d7fe65d1b1cd6393121bca1edeb8406eb110c7"
+    },
+    "assets/wines2/IMG_0167.JPG": {
+      "original_size_bytes": 3449746,
+      "optimized_size_bytes": 710430,
+      "saved_bytes": 2739316,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "d640ae63d1290369102b35267a87bc35c1eea5fdcfb90e35a9831e8e2699cdf9",
+      "optimized_sha256": "3b975a7ced288474ae210a038abb5e78af1cc52870bd8a5aacca1cc2bf0da3ba"
+    },
+    "assets/wines2/IMG_0170.JPG": {
+      "original_size_bytes": 4869297,
+      "optimized_size_bytes": 820877,
+      "saved_bytes": 4048420,
+      "original_dimensions": [
+        3024,
+        4032
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "bb272a1341d709a0bb79c5c1999565f6cb58f69908db1b5e5a58e50f65fd9326",
+      "optimized_sha256": "1c23f8acda1e12f5f4f0880defa4ff12d84524ea3d592fd620fbc028a00dfdc2"
+    },
+    "assets/wines2/IMG_0173.JPG": {
+      "original_size_bytes": 4875704,
+      "optimized_size_bytes": 881998,
+      "saved_bytes": 3993706,
+      "original_dimensions": [
+        4032,
+        3024
+      ],
+      "optimized_dimensions": [
+        1800,
+        2400
+      ],
+      "original_sha256": "b9924b4f604c89aa8623353c4b13358eb04c91adf8ad0871089e05ef002b4656",
+      "optimized_sha256": "314f8835fdc4d02cefc6212ae042c6067cd14b3eca0611a5d6dbbae78a121568"
+    },
+    "assets/wines2/IMG_0177.jpg": {
+      "original_size_bytes": 2840618,
+      "optimized_size_bytes": 653585,
+      "saved_bytes": 2187033,
+      "original_dimensions": [
+        1980,
+        3520
+      ],
+      "optimized_dimensions": [
+        1350,
+        2400
+      ],
+      "original_sha256": "c23839a60661d52bff92fdcd1af79cefcd699e9be5abd658de2449edc2d7a8ce",
+      "optimized_sha256": "a3812a0cad9bb058248c748160e2b004454c231d1d98acce9792585ccb29b860"
+    }
+  }
+}
