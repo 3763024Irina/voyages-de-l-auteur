@@ -194,47 +194,6 @@ window.addEventListener('unhandledrejection', function(e){
   }
 });
 
-// ===== Mail builder (pure) + handler =====
-function buildMailtoURL(data){
-  const esc = encodeURIComponent;
-  const subject = 'LUX Day [Etang de Thau]';
-  const body = `Имя:${data.name||''}\nКонтакт:${data.contact||''}\nСтарт:${data.start||''}\nДата:${data.date||''}\nГостей:${data.guests||''}\nПожелания:\n${data.msg||''}`;
-  return `mailto:hello@your-domain.fr?subject=${esc(subject)}&body=${esc(body)}`;
-}
-function openMail(e){
-  e.preventDefault();
-  const f=e.target;
-  const data={
-    name:f.name.value, contact:f.contact.value, start:f.start.value,
-    date:f.date.value, guests:(f.guests && f.guests.value)||'', msg:f.msg.value
-  };
-  window.location.href = buildMailtoURL(data);
-}
-window.openMail = openMail;
-
-// ===== Tiny tests (run in console-friendly way, no external deps) =====
-(function runTests(){
-  const out = [];
-  function ok(name, cond){ out.push(`${cond? '✅':'❌'} ${name}`); return !!cond; }
-  // Test 1: mailto builder contains all fields
-  const m = buildMailtoURL({name:'Ирэн',contact:'test@example.com',start:'Montpellier',date:'2025-08-20',guests:'4',msg:'Без устриц'});
-  const pass1 = /mailto:/.test(m) && /subject=/.test(m) && /Ирэн/.test(decodeURIComponent(m));
-  ok('buildMailtoURL — базовая сборка', pass1);
-  // Test 2: handler exists
-  ok('openMail — функция определена', typeof openMail === 'function');
-  // Test 3: страница не содержит кода MetaMask
-  const html = document.documentElement.outerHTML;
-  ok('Нет прямых обращений к MetaMask/window.ethereum', !/window\.ethereum|MetaMask/i.test(html));
-  // Test 4: есть кнопка «Открыть маршрут» с корректной ссылкой
-  const route = document.querySelector('a.btn[href*="google.com/maps/dir/"]');
-  ok('Ссылка маршрута присутствует', !!route);
-  if(route) ok('Ссылка маршрута — https', /^https:\/\//.test(route.href));
-
-  // Render hidden panel (dev only)
-  const panel = document.getElementById('testpanel');
-  if(panel){ panel.textContent = out.join('\n'); /*panel.style.display='block';*/ }
-  console.log('%cLUX page tests:\n' + out.join('\n'), 'color:#0a0');
-})();
 </script>
 
 <!-- JSON-LD -->
