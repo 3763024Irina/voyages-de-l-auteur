@@ -111,22 +111,18 @@
     input, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
     textarea{min-height:110px; resize:vertical}
 
-    #book{ padding:32px 0 56px; }
-    #book .card{
-      max-width:720px; margin:0 auto;
-      padding:20px; border-radius:18px; border:1px solid #eee; background:#fff;
-      box-shadow:0 12px 30px rgba(0,0,0,.08);
-    }
-    #book .section-title{ font-size:28px; margin:0 0 6px; }
-    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
-    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    #book .fields .full{ grid-column:1 / -1; }
+    
+    
+    
+    
+    
+    
     #book input, #book textarea{ height:44px; }
     #book textarea{ min-height:110px; height:auto; }
-    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
-    #book .btn{ padding:10px 12px; border-radius:12px; }
-    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
-    #book .btn.primary:hover{ filter:brightness(.96); }
+    
+    
+    
+    
 
     /* admin gating */
     .admin-only{ display:none !important; }
@@ -137,7 +133,7 @@
     @media (max-width: 1000px){
       .info-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns:repeat(2,1fr)}
-      #book .fields{grid-template-columns:1fr}
+      
     }
     @media (max-width: 640px){
       .gallery{grid-template-columns:1fr}
@@ -194,7 +190,7 @@ window.ANALYTICS_CONFIG = {
         <ul>
           <li><a href="../index.html#tours" data-i18n="nav_all">← Все программы</a></li>
           <li><a href="../index.html#why" data-i18n="nav_why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook" data-i18n="nav_book">Забронировать</a></li>
+          <li></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active">RU</button>
@@ -299,51 +295,12 @@ window.ANALYTICS_CONFIG = {
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Mèze — дегустационный маршрут (Mèze & Montagnac)" data-program-id="DEGUST-MEZE">
-      <h3 class="section-title" data-i18n="form_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="form_sub">Ответим в течение дня и подтвердим записи в хозяйства.</p>
-
-      <!-- форма БЕЗ submit — только WA/TG -->
-      <form class="fields" data-contact-form novalidate onsubmit="event.preventDefault();return false;">
-        <div>
-          <label for="when" data-i18n="label_date">Дата</label>
-          <input id="when" name="date" type="date" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="label_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" max="6" value="2" required>
-        </div>
-
-        <div class="full">
-          <label for="name" data-i18n="label_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact" data-i18n="label_contact">Контакт (WhatsApp/Email)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… / email" required>
-        </div>
-
-        <div class="full">
-          <label for="msg" data-i18n="label_message">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пикап (адрес), пожелания по винам/опциям…"></textarea>
-        </div>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" target="_blank" rel="noopener" data-i18n="btn_whatsapp">Написать в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" target="_blank" rel="noopener" data-i18n="btn_telegram">Написать в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <footer>
     <div class="container">
       <div class="footgrid">
         <div><strong>Tours Languedoc by Irène</strong><p><span data-i18n="brand_sub_footer">Путешествия со вкусом</span></p></div>
         <div><p><a href="../index.html#why" data-i18n="nav_why_f">Почему с нами</a></p><p><a href="../index.html#tours" data-i18n="nav_all_f">Программы</a></p></div>
-        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p><a href="#book" data-i18n="nav_contacts_f">Контакты</a></p></div>
+        <div><p><a href="../index.html#format" data-i18n="nav_format_f">Формат</a></p><p></p></div>
       </div>
       <div class="copy" style="color:#9fb3a9; margin-top:18px">© 2025 — Languedoc, France</div>
     </div>
@@ -373,7 +330,7 @@ window.ANALYTICS_CONFIG = {
       ogTitle:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
       ogDesc:'Короткие переезды: Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки, опция устрицы.',
       brand_sub:'— Путешествия со вкусом', brand_sub_footer:'Путешествия со вкусом',
-      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
+      nav_all:'← Все программы', nav_why:'Почему с нами', nav_contacts:'Контакты',
       btn_whatsapp:'Написать в WhatsApp', btn_telegram:'Написать в Telegram',
       hero_badge:'Wine • Mèze & Montagnac',
       hero_title:'Mèze — дегустационный маршрут (Mèze & Montagnac)',
@@ -395,7 +352,7 @@ window.ANALYTICS_CONFIG = {
       tip_shoes:'Удобная обувь (камень/гравий у виноградников)',
       tip_sun:'Лёгкая защита от солнца и воды — рекомендована',
       tip_time:'Лучшее окно: 10:00–14:30 для компактного трека',
-      pricing_title:'Стоимость',
+      pricing_title:'Состав программы',
       pricing_base:'По запросу — зависит от состава группы и выбранных опций',
       pricing_note:'Маршрут: 4–5 часов, 3–4 остановки. Опции: устрицы Tarbouriech.',
       form_title:'Быстрый запрос / бронирование',
@@ -408,7 +365,7 @@ window.ANALYTICS_CONFIG = {
       ogTitle:'Mèze — route de dégustation (Mèze & Montagnac)',
       ogDesc:'Courtes distances : Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ option Belle Mare). 4–5 h, 3–4 arrêts, option huîtres.',
       brand_sub:'— Des voyages avec goût', brand_sub_footer:'Des voyages avec goût',
-      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_contacts:'Contact',
       btn_whatsapp:'Écrire sur WhatsApp', btn_telegram:'Écrire sur Telegram',
       hero_badge:'Vin • Mèze & Montagnac',
       hero_title:'Mèze — route de dégustation (Mèze & Montagnac)',
@@ -430,7 +387,7 @@ window.ANALYTICS_CONFIG = {
       tip_shoes:'Chaussures confortables (pierres/graviers)',
       tip_sun:'Protection soleil & eau conseillées',
       tip_time:'Plage idéale : 10:00–14:30 pour un circuit compact',
-      pricing_title:'Tarifs',
+      pricing_title:'Programme',
       pricing_base:'Sur demande — selon votre groupe et options',
       pricing_note:'Parcours : 4–5 h, 3–4 arrêts. Options : huîtres Tarbouriech.',
       form_title:'Demande rapide / réservation',
@@ -639,38 +596,7 @@ window.ANALYTICS_CONFIG = {
     if (document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', bind, {once:true}); }
     else { bind(); }
   })();
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "Mèze — дегустационный маршрут (Mèze & Montagnac)",
-  "description": "Château Saint-Martin de la Garrigue, Domaine Saint Hilaire, La Croix Gratiot, Mas du Novi (+ опция Belle Mare). 4–5 часов, 3–4 остановки.",
-  "brand": { "@type": "Brand", "name": "Tours Languedoc by Irène" },
-  "image": "https://goutvoyage.com/assets/wines/vinograd.jpg",
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "EUR",
-    "lowPrice": "250",
-    "highPrice": "650",
-    "offerCount": "1",
-    "availability": "https://schema.org/InStock",
-    "url": "https://goutvoyage.com/programations/degustation-meze.html",
-    "hasMerchantReturnPolicy": {
-      "@type": "MerchantReturnPolicy",
-      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-      "applicableCountry": "FR",
-      "merchantReturnLink": "https://goutvoyage.com/policy/returns.html"
-    },
-    "shippingDetails": {
-      "@type": "OfferShippingDetails",
-      "doesNotShip": true,
-      "shippingSettingsLink": "https://goutvoyage.com/policy/shipping.html",
-      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "FR" },
-      "availableDeliveryMethod": "https://schema.org/OnSitePickup"
-    }
-  }
-}
-</script>
+
 
   <!-- ==== Подключения (ВАЖНО: после APP_CONFIG) ==== -->
   <script src="..assets/js/contact.js" defer></script>
