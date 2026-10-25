@@ -1166,105 +1166,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 
-  <!-- Контакты (universal handlers) -->
+  <!-- Contact handlers: direct contact only, no order-form payload -->
   <script>
   (function () {
     const CFG = window.APP_CONFIG || {};
-    const $all = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-    const normalizePreUrl = (u)=>{
-      if(!u) return '';
-      try{
-        let url = new URL(u, location.origin);
-        if (url.protocol !== 'https:') url = new URL('https://' + url.host + url.pathname + url.search + url.hash);
-        if (/\/health\/?$/i.test(url.pathname)) url.pathname = url.pathname.replace(/\/health\/?$/i, '/prestart');
-        if (!/\/prestart\/?$/i.test(url.pathname)) {
-          if (!url.pathname.endsWith('/')) url.pathname += '/';
-          url.pathname += 'prestart';
-        }
-        return url.toString();
-      }catch{ return u; }
-    };
-    const PRE_URL = normalizePreUrl(CFG.bot_prestart_url || '');
-
-    const getForm = (btn) =>
-      btn?.closest?.('form[data-contact-form]') ||
-      document.querySelector('form[data-contact-form]') || null;
-
-    const buildPayload = (form)=>{
-      const q = (sel)=> form ? (form.querySelector(sel)?.value || '').trim() : '';
-      const program = {
-        title: form?.dataset?.programTitle
-            || document.documentElement.getAttribute('data-program-title')
-            || document.querySelector('meta[property="og:title"]')?.content
-            || document.title,
-        id: form?.dataset?.programId || document.documentElement.getAttribute('data-program-id') || '',
-        url: location.href
-      };
-      return {
-        name: q('[name="name"]'),
-        contact: q('[name="contact"]'),
-        date: q('[name="date"]'),
-        guests: q('[name="guests"]') || '1',
-        message: q('[name="message"]'),
-        program
-      };
-    };
-
-    const prestart = async (payload)=>{
-      if (!PRE_URL) return null;
-      try{
-        const r = await fetch(PRE_URL, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(payload)
-        });
-        const j = await r.json().catch(()=>null);
-        return j?.token || null;
-      }catch{ return null; }
-    };
-
-    const openTelegram = (token)=>{
-      const handle = (CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
-      if (!handle) { alert('В APP_CONFIG не задан telegram_user/telegram_bot'); return; }
-      const url = token
-        ? `https://t.me/${handle}?start=${encodeURIComponent(token)}`
-        : `https://t.me/${handle}`;
-      window.location.href = url;
-    };
-
-    // WhatsApp — любые элементы с data-whatsapp
-    $all('[data-whatsapp]').forEach((el)=>{
-      el.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const form = getForm(el);
-        const p = buildPayload(form);
-        const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
-        if (!phone) return alert('В APP_CONFIG не указан номер WhatsApp');
-
-        const lines = [
-          p.name ? `Имя: ${p.name}` : '',
-          p.contact ? `Контакт: ${p.contact}` : '',
-          p.date ? `Дата: ${p.date}` : '',
-          p.guests ? `Гостей: ${p.guests}` : '',
-          `Программа: ${p.program.title}${p.program.id ? ` (${p.program.id})` : ''}`,
-          `Страница: ${p.program.url}`,
-          p.message ? `Сообщение: ${p.message}` : ''
-        ].filter(Boolean);
-
-        window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(lines.join('\n'))}`;
-      }, {passive:false});
+    const $all = (selector) => Array.from(document.querySelectorAll(selector));
+    const isFr = String(document.documentElement.lang || '').toLowerCase().startsWith('fr');
+    function buildMessage(){
+      const title = document.documentElement.getAttribute('data-program-title')
+        || document.querySelector('meta[property="og:title"]')?.content
+        || document.title;
+      const id = document.documentElement.getAttribute('data-program-id') || '';
+      return [
+        isFr ? 'Message depuis le site Tours Languedoc by Irène' : 'Сообщение с сайта Tours Languedoc by Irène',
+        (isFr ? 'Programme : ' : 'Программа: ') + title + (id ? ' [' + id + ']' : ''),
+        (isFr ? 'Lien : ' : 'Ссылка: ') + location.href
+      ].join('\n');
+    }
+    $all('[data-whatsapp]').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const phone = String(CFG.whatsapp || '').replace(/\D/g, '');
+        if (!phone) { alert('В APP_CONFIG не указан номер WhatsApp'); return; }
+        location.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(buildMessage());
+      }, { passive: false });
     });
-
-    // Telegram — любые элементы с data-telegram (и .js-telegram)
-    $all('[data-telegram], .js-telegram').forEach((el)=>{
-      el.addEventListener('click', async (e)=>{
-        e.preventDefault();
-        const form = getForm(el);
-        const payload = buildPayload(form);
-        const token = await prestart(payload);
-        openTelegram(token);
-      }, {passive:false});
+    $all('[data-telegram], .js-telegram').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const handle = String(CFG.telegram_user || CFG.telegram_bot || '').replace(/^@/, '');
+        if (!handle) { alert('В APP_CONFIG не задан telegram_user/telegram_bot'); return; }
+        location.href = 'https://t.me/' + handle;
+      }, { passive: false });
     });
   })();
   </script>
@@ -1275,7 +1208,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const el   = document.getElementById('emailLink');
     const mail = (window.APP_CONFIG && window.APP_CONFIG.email) || '';
     if (el && mail) {
-      const sub = encodeURIComponent('Запрос с сайта');
+      const sub = encodeURIComponent('Сообщение с сайта');
       el.href = `mailto:${mail}?subject=${sub}`;
       el.textContent = mail;
     }
@@ -1351,7 +1284,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function buildText(){
       const title = document.querySelector('meta[property="og:title"]')?.content || document.title;
-      return `Запрос с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
+      return `Сообщение с сайта\nСтраница: ${location.href}\nПрограмма: ${title}`;
     }
     function openWhatsApp(){
       const phone = String(CFG.whatsapp||'').replace(/\D/g,'');
