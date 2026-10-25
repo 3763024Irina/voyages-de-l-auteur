@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://goutvoyage.com</loc>
+    <loc>https://goutvoyage.com/</loc>
     <lastmod>2026-10-25</lastmod>
   </url>
   <url>
@@ -50,6 +50,7 @@
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/Thau_LUX.html</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/Vins_Languedoc.html</loc>
@@ -78,6 +79,7 @@
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/oysters.html</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://goutvoyage.com/programations/sea.html</loc>
@@ -94,6 +96,7 @@
   </url>
   <url>
     <loc>https://goutvoyage.com/degustations/</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://goutvoyage.com/degustations/belle-mare.html</loc>
