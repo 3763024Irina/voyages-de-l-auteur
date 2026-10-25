@@ -386,8 +386,8 @@
       function buildText(){
         const isFr=(document.documentElement.lang||'').toLowerCase().startsWith('fr');
         return isFr
-          ? ['Demande du site Tours Languedoc by Irène','Page : Hub Canal du Midi','URL : '+location.href].join('\n')
-          : ['Заявка с сайта Tours Languedoc by Irène','Страница: Хаб Канал дю Миди','URL: '+location.href].join('\n');
+          ? ['Message depuis le site Tours Languedoc by Irène','Page : Hub Canal du Midi','URL : '+location.href].join('\n')
+          : ['Сообщение с сайта Tours Languedoc by Irène','Страница: Хаб Канал дю Миди','URL: '+location.href].join('\n');
       }
       function toast(msg){ const t=document.createElement('div'); t.style.cssText='position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#0D2B1E;color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.18);font-weight:700;z-index:10000'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2200); }
       function safeOpen(h){ const a=document.createElement('a'); a.href=h; a.target='_blank'; a.rel='noopener noreferrer'; document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),60); }
