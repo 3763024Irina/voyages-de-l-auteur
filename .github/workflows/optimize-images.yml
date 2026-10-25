@@ -1,0 +1,48 @@
+name: Optimize website images
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: optimize-images-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    # Avoid recursively processing the commit created by this workflow.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install image processing library
+        run: python -m pip install --disable-pip-version-check Pillow
+
+      - name: Compress oversized images
+        run: python scripts/optimize_images.py
+
+      - name: Commit optimized images when files changed
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.jpg' '*.JPG' '*.jpeg' '*.JPEG' '*.png' '*.PNG' .github/image-optimization-manifest.json
+          if git diff --cached --quiet; then
+            echo "No image changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: optimize large website images"
+          git push
