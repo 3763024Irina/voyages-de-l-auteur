@@ -42,69 +42,16 @@
     return ctx;
   }
 
-  // ---------- валидация формы ----------
-  function validate(form){
-    // подхватываем возможные синонимы
-    const req = {
-      date: ['date', 'in-when', 'when'],
-      guests: ['guests','persons','count','people'],
-      name: ['name','fullname','fio'],
-      contact: ['contact','phone','email','telegram','whatsapp']
-    };
-
-    function hasAny(names){
-      for (const n of names){
-        const el = form.querySelector(`[name="${n}"]`);
-        if (el && String(el.value||'').trim()) return true;
-      }
-      return false;
-    }
-
-    if (!hasAny(req.date))   { (form.querySelector('[name="date"],[name="in-when"],[name="when"]')||{}).focus?.();   throw new Error('Пожалуйста, укажите дату.'); }
-    if (!hasAny(req.guests)) { (form.querySelector('[name="guests"],[name="persons"],[name="count"],[name="people"]')||{}).focus?.(); throw new Error('Укажите количество гостей.'); }
-    if (!hasAny(req.name))   { (form.querySelector('[name="name"],[name="fullname"],[name="fio"]')||{}).focus?.();    throw new Error('Введите имя.'); }
-    if (!hasAny(req.contact)){ (form.querySelector('[name="contact"],[name="phone"],[name="email"],[name="telegram"],[name="whatsapp"]')||{}).focus?.(); throw new Error('Добавьте контакт для связи.'); }
-  }
-
-  // ---------- сбор текста заявки ----------
-  function buildMessage(form=null){
+  function buildMessage(){
     const ctx = pageContext();
-    const f = name => form?.querySelector(`[name="${name}"]`)?.value?.trim() || '';
-
-    const readGuests = () => f('guests') || f('persons') || f('count') || f('people') || '';
-    const readContact = () => f('contact') || f('phone') || f('email') || f('telegram') || f('whatsapp') || '';
-
-    const lines = [
-      `Заявка с сайта Tours Languedoc by Irène`,
-      ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      `URL: ${ctx.url}`
-    ];
-
-    if (form){
-      lines.push(
-        '—',
-        `Дата: ${f('date') || f('in-when') || f('when')}`,
-        `Гостей: ${readGuests()}`,
-        `Имя: ${f('name') || f('fullname') || f('fio')}`,
-        `Контакт: ${readContact()}`
-      );
-      const msg = f('message') || f('notes') || '';
-      if (msg) lines.push(`Сообщение: ${msg}`);
-    } else {
-      // быстрый сбор с страницы (если кто-то заполнил поля без формы)
-      const root = document;
-      const get = n => root.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const date   = get('date') || get('in-when') || get('when');
-      const guests = get('guests') || get('persons') || get('count') || get('people');
-      if (date || guests){
-        lines.push('—');
-        if (date)   lines.push(`Дата: ${date}`);
-        if (guests) lines.push(`Гостей: ${guests}`);
-      }
-    }
-    return lines.filter(Boolean).join('\n');
+    const isFr = String(document.documentElement.lang || '').toLowerCase().startsWith('fr');
+    const title = ctx.programTitle || ctx.title;
+    return [
+      isFr ? 'Message depuis le site Tours Languedoc by Irène' : 'Сообщение с сайта Tours Languedoc by Irène',
+      ctx.programId ? (isFr ? 'Programme : ' : 'Программа: ') + title + ' [' + ctx.programId + ']' : (isFr ? 'Page : ' : 'Страница: ') + ctx.title,
+      (isFr ? 'Lien : ' : 'Ссылка: ') + ctx.url
+    ].join('\n');
   }
-
   // ---------- каналы ----------
   function openWhatsApp(text, e){
     e?.preventDefault?.(); e?.stopPropagation?.();
@@ -130,7 +77,7 @@
       // встроенный Telegram share — текст сразу подставится, пользователь сам выбирает чат
       const shareUrl = `https://t.me/share/url?url=${enc(ctx.url)}&text=${enc(text)}`;
       navigateSafely(shareUrl);
-      toast('Текст заявки скопирован. Выберите чат в Telegram и отправьте.');
+      toast('Сообщение скопировано. Выберите чат в Telegram и отправьте.');
       return;
     }
 
@@ -145,7 +92,7 @@
     } else {
       navigateSafely(web);
     }
-    toast('Текст заявки скопирован. Вставьте в Telegram и отправьте.');
+    toast('Сообщение скопировано. Вставьте в Telegram и отправьте.');
   }
 
   // ---------- хелперы привязки ----------
@@ -163,86 +110,50 @@
 
   // ---------- кнопки глобально (герой, карточки, ФУТЕР) ----------
   function wireGlobalButtons(root=document){
-    const nearestForm = () => qs('[data-contact-form],[data-order-form]', document);
 
-    function withMaybeForm(handler){
+    function withMessage(handler){
       return (e)=>{
-        const form = nearestForm();
-        try{
-          if (form){
-            validate(form);
-            handler(buildMessage(form), e);
-          } else {
-            handler(buildMessage(null), e);
-          }
-        }catch(err){
-          alert(err.message || 'Заполните обязательные поля.');
-        }
+        try { handler(buildMessage(), e); }
+        catch(err){ alert(err.message || 'Не удалось открыть контакт'); }
       };
     }
 
     // data-атрибуты
     qsa('[data-whatsapp]', root).forEach(btn=>{
       if (btn.__wired) return; btn.__wired = true; hardenClickable(btn);
-      btn.addEventListener('click', withMaybeForm(openWhatsApp), { passive:false });
+      btn.addEventListener('click', withMessage(openWhatsApp), { passive:false });
     });
 
     qsa('[data-telegram]', root).forEach(btn=>{
       if (btn.__wired) return; btn.__wired = true; hardenClickable(btn);
-      btn.addEventListener('click', withMaybeForm(openTelegram), { passive:false });
+      btn.addEventListener('click', withMessage(openTelegram), { passive:false });
     });
 
     // футер: классы .js-whatsapp / .js-telegram
     qsa('footer .js-whatsapp', root).forEach(el=>{
       if (el.__wired) return; el.__wired = true; hardenClickable(el);
-      el.addEventListener('click', withMaybeForm(openWhatsApp), { passive:false });
+      el.addEventListener('click', withMessage(openWhatsApp), { passive:false });
     });
 
     qsa('footer .js-telegram', root).forEach(el=>{
       if (el.__wired) return; el.__wired = true; hardenClickable(el);
-      el.addEventListener('click', withMaybeForm(openTelegram), { passive:false });
+      el.addEventListener('click', withMessage(openTelegram), { passive:false });
     });
 
     // перехват готовых ссылок в футере
     qsa('footer a[href*="wa.me/"]', root).forEach(a=>{
       if (a.__wired) return; a.__wired = true; hardenClickable(a);
-      a.addEventListener('click', withMaybeForm(openWhatsApp), { passive:false });
+      a.addEventListener('click', withMessage(openWhatsApp), { passive:false });
     });
 
     qsa('footer a[href^="https://t.me/"], footer a[href^="tg://"]', root).forEach(a=>{
       if (a.__wired) return; a.__wired = true; hardenClickable(a);
-      a.addEventListener('click', withMaybeForm(openTelegram), { passive:false });
+      a.addEventListener('click', withMessage(openTelegram), { passive:false });
     });
-  }
-
-  // ---------- кнопки в форме (.form-actions ...) ----------
-  function wireForm(form){
-    if (!form || form.__wired) return; form.__wired = true;
-
-    const card = form.closest('.card') || form;
-    const waBtn = card.querySelector('.form-actions [data-whatsapp], .form-actions .js-whatsapp');
-    const tgBtn = card.querySelector('.form-actions [data-telegram], .form-actions .js-telegram');
-
-    if (waBtn && !waBtn.__wired){
-      waBtn.__wired = true; hardenClickable(waBtn);
-      waBtn.addEventListener('click', (e)=>{
-        try{ validate(form); openWhatsApp(buildMessage(form), e); }
-        catch(err){ alert(err.message||'Не удалось открыть WhatsApp'); }
-      }, { passive:false });
-    }
-    if (tgBtn && !tgBtn.__wired){
-      tgBtn.__wired = true; hardenClickable(tgBtn);
-      tgBtn.addEventListener('click', (e)=>{
-        e.preventDefault();
-        try { validate(form); openTelegram(buildMessage(form), e); }
-        catch(err){ alert(err.message || 'Не удалось открыть Telegram'); }
-      }, { passive:false });
-    }
   }
 
   function init(){
     wireGlobalButtons(document);
-    qsa('[data-contact-form], [data-order-form]').forEach(wireForm);
   }
 
   document.addEventListener('DOMContentLoaded', init, { once:true });
@@ -250,7 +161,6 @@
   // на случай динамической подгрузки футера/секции
   const mo = new MutationObserver(()=>{
     wireGlobalButtons(document);
-    qsa('[data-contact-form], [data-order-form]').forEach(wireForm);
   });
   mo.observe(document.documentElement, { childList:true, subtree:true });
 })();
