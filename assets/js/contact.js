@@ -30,14 +30,13 @@
   // ---------- контекст страницы ----------
   function pageContext(){
     const html = document.documentElement, body = document.body;
-    const any = qs('[data-program-id],[data-program-title],[data-program-price]');
+    const any = qs('[data-program-id],[data-program-title]');
 
     const ctx = {
       url: location.href,
       title: qs('h1, .page-title, .title')?.textContent?.trim() || document.title || '',
       programId:    (any && any.getAttribute('data-program-id'))    || body.getAttribute('data-program-id') || html.getAttribute('data-program-id') || '',
       programTitle: (any && any.getAttribute('data-program-title')) || body.getAttribute('data-program-title') || html.getAttribute('data-program-title') || '',
-      programPrice: (any && any.getAttribute('data-program-price')) || body.getAttribute('data-program-price') || html.getAttribute('data-program-price') || ''
     };
     if (!ctx.programTitle) ctx.programTitle = ctx.title;
     return ctx;
@@ -78,7 +77,6 @@
     const lines = [
       `Заявка с сайта Tours Languedoc by Irène`,
       ctx.programId ? `Программа: ${ctx.programTitle} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-      ctx.programPrice ? `Пакет/цена: ${ctx.programPrice}` : '',
       `URL: ${ctx.url}`
     ];
 
