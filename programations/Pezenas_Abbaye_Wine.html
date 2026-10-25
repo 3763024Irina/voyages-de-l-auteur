@@ -359,41 +359,16 @@ window.ANALYTICS_CONFIG = {
     const toast = (msg,ms=2400)=>{ const t=document.createElement('div'); t.className='form-toast'; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),ms); };
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\\n');
+}
+function validateForm(){ return true; }
 
-    const REQUIRED = ['date','guests','name','contact'];
-    function validateForm({scroll=true}={}){
-      const f = document.querySelector('[data-contact-form]');
-      if(!f){ toast('Форма не найдена'); return false; }
-      let firstBad=null;
-      for (const n of REQUIRED){
-        const el=f.querySelector(`[name="${n}"]`);
-        const val=el?.value?.trim();
-        const ok=Boolean(val && (n!=='guests' || Number(val)>0));
-        el?.classList.toggle('input-error', !ok);
-        if(!ok && !firstBad) firstBad=el;
-      }
-      if(firstBad){
-        if(scroll) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-        firstBad.focus(); toast('Заполните дату, гостей, имя и контакт');
-        return false;
-      }
-      return true;
-    }
 
     function safeOpen(href){
       const a=document.createElement('a');
