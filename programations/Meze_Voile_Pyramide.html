@@ -451,47 +451,17 @@ window.ANALYTICS_CONFIG = {
       });
     }
 
-    function validateRequired(){
-      if (!form) return false;
-      const req = [
-        form.querySelector('[name="date"]'),
-        form.querySelector('[name="guests"]'),
-        form.querySelector('[name="name"]'),
-        form.querySelector('[name="contact"]')
-      ];
-      for (const el of req){
-        if (!el || !isFilled(el)){ markInvalid(el); alert('Пожалуйста, заполните все обязательные поля.'); return false; }
-      }
-      if (!validContact(req[3].value)){ markInvalid(req[3]); alert('Контакт должен быть телефоном, @username или email.'); return false; }
-      return true;
-    }
-
-    // --- контекст + текст заявки ---
-    function pageCtx(){
-      const html = document.documentElement;
-      return {
-        url: location.href,
-        title: document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-               || document.title || '',
-        programId: document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-               || html.getAttribute('data-program-id') || ''
-      };
-    }
-    function buildText(){
-      const get = n => form?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const ctx = pageCtx();
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        ctx.programId ? `Программа: ${ctx.title} [${ctx.programId}]` : `Страница: ${ctx.title}`,
-        `Дата: ${get('date')}`,
-        `Гостей: ${get('guests')}`,
-        `Имя: ${get('name')}`,
-        `Контакт: ${get('contact')}`,
-        `Сообщение: ${get('message')||''}`,
-        `Ссылка: ${ctx.url}`
-      ].join('\n');
-    }
-    function safeOpen(href){
+    function validateRequired(){ return true; }
+function buildText(){
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.querySelector('h1, h2')?.textContent?.trim() || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\\n');
+}
+function safeOpen(href){
       const a = document.createElement('a');
       a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
       document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(), 50);
@@ -567,25 +537,15 @@ window.ANALYTICS_CONFIG = {
     const enc = s => encodeURIComponent(String(s||''));
 
     function buildText(){
-      const f = document.querySelector('[data-contact-form]');
-      const get = n => f?.querySelector(`[name="${n}"]`)?.value?.trim() || '';
-      const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title')
-                 || document.title || '';
-      const pid   = document.querySelector('[data-program-id]')?.getAttribute('data-program-id')
-                 || document.documentElement.getAttribute('data-program-id') || '';
-      return [
-        'Заявка с сайта Tours Languedoc by Irène',
-        pid ? `Программа: ${title} [${pid}]` : `Страница: ${title}`,
-        `Дата: ${get('date')||'-'}`,
-        `Гостей: ${get('guests')||'-'}`,
-        `Имя: ${get('name')||'-'}`,
-        `Контакт: ${get('contact')||'-'}`,
-        `Сообщение: ${get('message')||'-'}`,
-        `Ссылка: ${location.href}`
-      ].join('\n');
-    }
-
-    function safeOpen(href){
+  const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.querySelector('h1, h2')?.textContent?.trim() || document.title || '';
+  const pid = document.querySelector('[data-program-id]')?.getAttribute('data-program-id') || document.documentElement.getAttribute('data-program-id') || '';
+  return [
+    'Message depuis le site Tours Languedoc by Irène',
+    'Programme : ' + title + (pid ? ' [' + pid + ']' : ''),
+    'Page : ' + location.href
+  ].join('\\n');
+}
+function safeOpen(href){
       const a=document.createElement('a');
       a.href=href; a.target='_blank'; a.rel='noopener noreferrer';
       document.body.appendChild(a); a.click(); setTimeout(()=>a.remove(),100);
