@@ -426,31 +426,6 @@ window.ANALYTICS_CONFIG = {
     const $  = (s,r=document)=>r.querySelector(s);
     const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
 
-    // --- валидация ---
-    const form = $('[data-contact-form]');
-    function isFilled(el){ return !!String(el.value||'').trim(); }
-
-    function validContact(value){
-      const v = String(value||'').trim();
-      const isPhone   = digits(v).length >= 7;
-      const isTgUser  = /^@?[a-zA-Z0-9_]{5,}$/.test(v);
-      const isEmail   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-      return isPhone || isTgUser || isEmail;
-    }
-
-    function markInvalid(el){
-      el.classList.add('invalid');
-      el.setAttribute('aria-invalid','true');
-      el && el.focus({preventScroll:false});
-    }
-    function clearInvalidOnInput(){
-      if(!form) return;
-      $$('input, textarea, select', form).forEach(el=>{
-        el.addEventListener('input', ()=> el.classList.remove('invalid'));
-        el.addEventListener('change', ()=> el.classList.remove('invalid'));
-      });
-    }
-
     function validateRequired(){ return true; }
 function buildText(){
   const title = document.querySelector('[data-program-title]')?.getAttribute('data-program-title') || document.querySelector('h1, h2')?.textContent?.trim() || document.title || '';
@@ -500,7 +475,6 @@ function safeOpen(href){
 
     // --- привязка к кнопкам + вспомогательное ---
     function wire(){
-      clearInvalidOnInput();
       $$('[data-whatsapp]').forEach(el=>{
         el.addEventListener('click', (e)=>{ e.preventDefault(); openWhatsApp(); });
         el.setAttribute('href','javascript:void(0)');
