@@ -95,18 +95,18 @@
     .footgrid a{color:#cfd8d3}
 
     /* BOOK */
-    #book{ padding:32px 0 56px; }
-    #book .card{ max-width:780px; margin:0 auto; padding:20px; border-radius:18px; border:1px solid #eee; background:#fff; box-shadow:0 12px 30px rgba(0,0,0,.08); }
-    #book .section-title{ font-size:28px; margin:0 0 6px; }
-    #book .section-sub{ margin:0 0 14px; color:var(--muted); }
-    #book .fields{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-    #book .fields .full{ grid-column:1 / -1; }
+    
+    
+    
+    
+    
+    
     #book input, #book textarea{ height:44px; }
     #book textarea{ height:auto; min-height:110px; resize:vertical; }
-    #book .form-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; justify-content:flex-end; }
-    #book .btn{ padding:10px 12px; border-radius:12px; }
-    #book .btn.primary{ background:var(--brand); color:#fff; border-color:var(--brand); }
-    #book .btn.primary:hover{ filter:brightness(.96); }
+    
+    
+    
+    
 
     /* FAB */
     .chat-fab{position:fixed; right:16px; z-index:9999; border:0; padding:14px; border-radius:999px; background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.18); cursor:pointer; display:grid; place-items:center}
@@ -134,7 +134,7 @@
     .admin-ul { margin:0; padding-left:18px; }
     @media (max-width:800px){ .admin-grid { grid-template-columns:1fr; } }
 
-    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)} #book .fields{grid-template-columns:1fr} }
+    @media (max-width: 1000px){ .info-grid{grid-template-columns:1fr} .gallery{grid-template-columns:repeat(2,1fr)}  }
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:34px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
 
     /* === Rounded controls inside booking card === */
@@ -144,7 +144,7 @@
       background-repeat:no-repeat; background-position:right 12px center; background-size:16px; }
     #book input[type="date"]{ padding:12px; height:44px; }
     #book input:focus, #book select:focus, #book textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
-    #book .fields > div, #book .fields .full{ min-width:0; }
+    
     /* карта поменьше */
     .mapwrap{ max-width:520px; margin:0 auto; }
     .mapwrap .leaflet-container{ height:320px; border-radius:14px; box-shadow:var(--shadow); }
@@ -173,7 +173,7 @@
         <ul>
           <li><a href="../index.html#tours">← Все программы</a></li>
           <li><a href="../index.html#why">Почему с нами</a></li>
-          <li><a class="cta" href="#book" id="goBook">Забронировать</a></li>
+          <li></li>
         </ul>
         <div aria-label="Language switch">
           <button id="btn-ru" class="active" type="button">RU</button>
@@ -194,7 +194,7 @@
         <span class="badge">Provence • Valensole</span>
         <h2 class="title">Прованс — Лаванда, Мюстье и Вердон (2 дня)</h2>
         <p class="subtitle">Valensole • Moustiers-Sainte-Marie • Gorges du Verdon • Lac de Sainte-Croix. Лучший период: ~25.06—15.07 (варьируется по годам и полям).</p>
-        <div class="actions"><a class="btn primary" href="#book">Забронировать</a></div>
+        <div class="actions"></div>
       </div>
     </div>
   </section>
@@ -294,10 +294,10 @@
         <details class="admin-card" open>
           <summary><b>Проживание (ночь, BB, 2-мест.)</b></summary>
           <div class="admin-grid">
-            <div><div class="admin-tag">Гостевые дома</div> ~110–160 € / комната</div>
-            <div><div class="admin-tag">3★ видовые</div> ~170–220 € / комната</div>
-            <div><div class="admin-tag">Фаянс</div> Мастер-класс: 25–45 € / чел.</div>
-            <div><div class="admin-tag">Педало/лодка</div> 20–40 € / 1–2 часа</div>
+            
+            
+            
+            
           </div>
         </details>
         <details class="admin-card">
@@ -314,43 +314,6 @@
   </section>
 
   <!-- BOOK -->
-  <section id="book" class="container">
-    <div class="card" data-program data-program-title="Provence — Lavande, Moustiers & Verdon (2 jours)" data-program-id="PROVENCE-LAVANDE-VERDON-2D">
-      <h3 class="section-title" data-i18n="book_title">Быстрый запрос / бронирование</h3>
-      <p class="section-sub" data-i18n="book_sub">Пришлю свободные даты, варианты отелей и точный расчёт.</p>
-
-      <form class="fields" data-contact-form novalidate onsubmit="return false;">
-        <div>
-          <label for="when" data-i18n="lbl_date">Даты (2 дня)</label>
-          <input id="when" name="date" type="date" placeholder="dd/mm/aaaa" required>
-        </div>
-        <div>
-          <label for="guests" data-i18n="lbl_guests">Гостей</label>
-          <input id="guests" name="guests" type="number" min="2" value="2" required>
-        </div><div class="full">
-          <label for="name" data-i18n="lbl_name">Имя</label>
-          <input id="name" name="name" type="text" placeholder="Имя и фамилия" required>
-        </div>
-
-        <div class="full">
-          <label for="contact" data-i18n="lbl_contact">Контакт (WhatsApp/Telegram)</label>
-          <input id="contact" name="contact" type="text" placeholder="+33… или @username" required>
-        </div>
-
-        <div class="full">
-          <label for="msg" data-i18n="lbl_msg">Комментарий</label>
-          <textarea id="msg" name="message" placeholder="Пожелания по датам, пакет (Базовый/Comfort/Premium), примечания"></textarea>
-        </div>
-        <p class="section-sub" style="margin-top:6px">Точный расчёт зависит от дат/отелей/состава группы.</p>
-
-        <div class="form-actions full">
-          <a class="btn" data-whatsapp href="#" data-i18n="btn_whatsapp">Отправить в WhatsApp</a>
-          <a class="btn primary" data-telegram href="#" data-i18n="btn_telegram">Отправить в Telegram</a>
-        </div>
-      </form>
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer>
     <div class="container">
@@ -509,7 +472,7 @@
       brand_sub: document.querySelector('.brand small'),
       nav_all:   document.querySelector('nav ul li:nth-child(1) a'),
       nav_why:   document.querySelector('nav ul li:nth-child(2) a'),
-      nav_book:  document.getElementById('goBook'),
+      nav_contacts:  document.getElementById('goBook'),
       hero_title:document.querySelector('.hero h2.title'),
       hero_sub:  document.querySelector('.hero .subtitle'),
       gal_title: document.querySelectorAll('h3.section-title')[0],
@@ -521,54 +484,11 @@
       tips_title:   document.querySelectorAll('.info-grid article .section-title')[4],
       where_title:  document.querySelector('.info-grid aside .section-title'),
       where_sub:    document.querySelector('.info-grid aside .section-sub'),
-      book_title:   document.querySelector('#book .section-title'),
-      book_sub:     document.querySelector('#book .section-sub'),
-      lbl_date:     document.querySelector('label[for="when"]'),
-      lbl_guests:   document.querySelector('label[for="guests"]'),
-      lbl_name:     document.querySelector('label[for="name"]'),
-      lbl_contact:  document.querySelector('label[for="contact"]'),
-      lbl_msg:      document.querySelector('label[for="msg"]'),
-      btn_wa:       document.querySelector('[data-whatsapp]'),
-      btn_tg:       document.querySelector('[data-telegram]'),
-      f_why:        document.querySelector('footer a[href*="#why"]'),
-      f_tours:      document.querySelector('footer a[href*="#tours"]'),
-      f_format:     document.querySelector('footer a[href*="#format"]'),
-      f_write:      document.querySelector('footer .js-telegram'),
-    };
-    const TL = Array.from(document.querySelectorAll('.timeline li'));
-
-    const RU = {
-      brand_sub:'— Путешествия со вкусом',
-      nav_all:'← Все программы', nav_why:'Почему с нами', nav_book:'Забронировать',
-      hero_title:'Прованс — Лаванда, Мюстье и Вердон (2 дня)',
-      hero_sub:'Valensole • Moustiers-Sainte-Marie • Gorges du Verdon • Lac de Sainte-Croix. Лучший период: ~25.06—15.07 (варьируется).',
-      gal_title:'Как это выглядит',
-      gal_sub:'Лаванда Валенсоль, улочки Мюстье, смотровые Вердона, озеро Сент-Круа.',
-      desc_title:'Описание мест',
-      route_title:'Маршрут и тайминг (2 дня)',
-      inc_title:'Что включено',
-      notinc_title:'Что не включено',
-      tips_title:'Советы и сезонность',
-      where_title:'Где это',
-      where_sub:'Valensole • Moustiers-Sainte-Marie • Belvédères des Gorges du Verdon • Lac de Sainte-Croix.',
-      book_title:'Быстрый запрос / бронирование',
-      book_sub:'Пришлю свободные даты, варианты отелей и точный расчёт.',
-      lbl_date:'Даты (2 дня)', lbl_guests:'Гостей', lbl_name:'Имя', lbl_contact:'Контакт (WhatsApp/Telegram)', lbl_msg:'Комментарий',
-      btn_wa:'Отправить в WhatsApp', btn_tg:'Отправить в Telegram',
-      f_why:'Почему с нами', f_tours:'Программы', f_format:'Формат', f_write:'Написать',
-      title:'Прованс — Лаванда, Мюстье и Вердон (2 дня) | Tours Languedoc by Irène',
-      metaDesc:'Маршрут на 2 дня: Валенсоль (лаванда), Мюстье (фаянс), Вердон и озеро Сент-Круа. Приватно, RU/FR. Старт из Montpellier/Nîmes/Marseille/Aix.',
-      ogTitle:'Прованс — Лаванда, Мюстье и Вердон (2 дня)',
-      ogDesc:'Valensole • Moustiers • Verdon • Lac de Sainte-Croix. Приватный маршрут на 2 дня, RU/FR.',
-      tl:[
-        '<span class="time">День 1</span> — Старт MPL/Nîmes/Marseille/Aix → Valensole (лаванда, фото) → Moustiers (прогулка, мастерские, обед) → вечерний вид на Вердон → ночь (BB).',
-        '<span class="time">День 2</span> — Смотровые Вердона → озеро Сент-Круа (педало/лодка/пляж) → дегустация продуктов лаванды (по жел.) → возврат в точку старта.'
-      ]
-    };
+      book_title:   document.querySelector(';
 
     const FR = {
       brand_sub:'— Des voyages avec goût',
-      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_book:'Réserver',
+      nav_all:'← Toutes les offres', nav_why:'Pourquoi nous', nav_contacts:'Contact',
       hero_title:'Provence — Lavande, Moustiers & Verdon (2 jours)',
       hero_sub:'Valensole • Moustiers-Sainte-Marie • Gorges du Verdon • Lac de Sainte-Croix. Meilleure période ~25/06–15/07 (selon les années/lieux).',
       gal_title:'À quoi ça ressemble',
@@ -612,7 +532,7 @@
       setMeta('og:description', L.ogDesc, true);
 
       setText(N.brand_sub, L.brand_sub);
-      setText(N.nav_all, L.nav_all); setText(N.nav_why, L.nav_why); setText(N.nav_book, L.nav_book);
+      setText(N.nav_all, L.nav_all); setText(N.nav_why, L.nav_why); setText(N.nav_contacts, L.nav_contacts);
       setText(N.hero_title, L.hero_title); setText(N.hero_sub, L.hero_sub);
       setText(N.gal_title, L.gal_title); setText(N.gal_sub, L.gal_sub);
       setText(N.desc_title, L.desc_title); setText(N.route_title, L.route_title);
@@ -744,21 +664,7 @@
   </script>
 
   <!-- Калькулятор и фокус на дате при клике в шапке -->
-  <script>
-    (function(){
-      document.getElementById('goBook')?.addEventListener('click',()=> setTimeout(()=>document.getElementById('when')?.focus(),60));
-      const guests = document.getElementById('guests');
-      const fmtEUR = v => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v);
-      function refresh(){
-        const g = Math.max(2, Math.min(4, Number(guests?.value||2)));
-        const total = 430 + Math.max(0, g - 2) * 100;
-        // можно показать где-то сумму, но по умолчанию просто логируем (или расширим по желанию)
-        // console.log('Примерная цена: ', fmtEUR(total));
-      }
-      guests?.addEventListener('input', refresh);
-      refresh();
-    })();
-  </script>
+  
 
   <!-- Фокус + алерт при отправке (fallback) -->
   <script>
