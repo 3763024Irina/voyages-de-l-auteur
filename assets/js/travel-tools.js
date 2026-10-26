@@ -1,6 +1,7 @@
 (() => {
   "use strict";
-  let isFrench = (() => { const saved = localStorage.getItem("site:lang"); if (saved === "fr" || saved === "ru") return saved === "fr"; return /^fr/i.test(document.documentElement.lang || location.pathname) || ((navigator.language || "").toLowerCase().startsWith("fr")); })();
+  const isStandaloneFrenchPage = /^\/fr(?:\/|$)/i.test(location.pathname);
+  let isFrench = isStandaloneFrenchPage || (() => { const saved = localStorage.getItem("site:lang"); if (saved === "fr" || saved === "ru") return saved === "fr"; return /^fr/i.test(document.documentElement.lang || location.pathname) || ((navigator.language || "").toLowerCase().startsWith("fr")); })();
   const frenchT = {
     loading: "Chargement des données…", failedWeather: "Impossible de récupérer la météo pour le moment. Réessayez dans un instant.",
     failedRates: "Les taux de référence ne sont pas disponibles pour cette paire. Choisissez une autre devise ou réessayez plus tard.",
@@ -250,6 +251,7 @@
 
   updateStaticLanguage();
   const syncLanguage = () => {
+    if (isStandaloneFrenchPage) return;
     const saved = localStorage.getItem("site:lang");
     const nextIsFrench = saved === "fr" || saved === "ru" ? saved === "fr" :
       (/^fr/i.test(document.documentElement.lang || location.pathname) || ((navigator.language || "").toLowerCase().startsWith("fr")));
@@ -260,10 +262,12 @@
     loadWeather();
     loadRates();
   };
-  if (typeof MutationObserver !== "undefined") {
-    new MutationObserver(syncLanguage).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+  if (!isStandaloneFrenchPage) {
+    if (typeof MutationObserver !== "undefined") {
+      new MutationObserver(syncLanguage).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+    }
+    window.addEventListener("storage", syncLanguage);
   }
-  window.addEventListener("storage", syncLanguage);
 
   loadWeather();
   loadRates();
