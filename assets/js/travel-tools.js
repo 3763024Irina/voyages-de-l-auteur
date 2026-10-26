@@ -1,7 +1,7 @@
 (() => {
   "use strict";
-  const isFrench = /^fr/i.test(document.documentElement.lang || location.pathname);
-  const t = isFrench ? {
+  let isFrench = (() => { const saved = localStorage.getItem("site:lang"); if (saved === "fr" || saved === "ru") return saved === "fr"; return /^fr/i.test(document.documentElement.lang || location.pathname) || ((navigator.language || "").toLowerCase().startsWith("fr")); })();
+  const frenchT = {
     loading: "Chargement des données…", failedWeather: "Impossible de récupérer la météo pour le moment. Réessayez dans un instant.",
     failedRates: "Les taux de référence ne sont pas disponibles pour cette paire. Choisissez une autre devise ou réessayez plus tard.",
     fetchError: "Connexion temporairement indisponible. Vérifiez votre connexion et réessayez.",
@@ -10,7 +10,8 @@
     pair: "Paire de devises", from: "De", to: "Vers", refDate: "Dernier taux de référence", change7: "Variation sur 7 jours", change30: "Variation sur 30 jours", volatility: "Volatilité annualisée", range30: "Évolution du taux de référence sur 30 jours", dataNote: "Ces taux de référence sont mis à jour quotidiennement les jours ouvrés. Ils ne constituent pas des cotations de trading en temps réel.", rateErr: "Données de référence indisponibles pour cette paire.", refresh: "Actualiser", live: "En ligne", rateSource: "Source des taux", weatherSource: "Source météo", country: "Données météo",
     cities: {meze:"Mèze",montpellier:"Montpellier",sete:"Sète",carcassonne:"Carcassonne",nimes:"Nîmes",andorra:"Andorre-la-Vieille",barcelona:"Barcelone",madrid:"Madrid",paris:"Paris",nice:"Nice",rome:"Rome",lisbon:"Lisbonne"},
     currencies:{EUR:"Euro",USD:"Dollar américain",GBP:"Livre sterling",CHF:"Franc suisse",PLN:"Zloty polonais",CZK:"Couronne tchèque",HUF:"Forint hongrois",RON:"Leu roumain",SEK:"Couronne suédoise",NOK:"Couronne norvégienne",DKK:"Couronne danoise",TRY:"Livre turque",CAD:"Dollar canadien",AUD:"Dollar australien",JPY:"Yen japonais",RUB:"Rouble russe",MAD:"Dirham marocain"}
-  } : {
+  };
+  const russianT = {
     loading: "Загружаем данные…", failedWeather: "Не удалось загрузить погоду. Попробуйте ещё раз.",
     failedRates: "Для этой валютной пары сейчас нет доступных курсов. Выберите другую валюту или попробуйте позже.",
     fetchError: "Соединение временно недоступно. Проверьте интернет и попробуйте снова.",
@@ -20,6 +21,8 @@
     cities: {meze:"Мез",montpellier:"Монпелье",sete:"Сет",carcassonne:"Каркассон",nimes:"Ним",andorra:"Андорра-ла-Велья",barcelona:"Барселона",madrid:"Мадрид",paris:"Париж",nice:"Ницца",rome:"Рим",lisbon:"Лиссабон"},
     currencies:{EUR:"Евро",USD:"Доллар США",GBP:"Фунт стерлингов",CHF:"Швейцарский франк",PLN:"Польский злотый",CZK:"Чешская крона",HUF:"Венгерский форинт",RON:"Румынский лей",SEK:"Шведская крона",NOK:"Норвежская крона",DKK:"Датская крона",TRY:"Турецкая лира",CAD:"Канадский доллар",AUD:"Австралийский доллар",JPY:"Японская иена",RUB:"Российский рубль",MAD:"Марокканский дирхам"}
   };
+
+  let t = isFrench ? frenchT : russianT;
 
   const cities = {
     meze: {lat:43.425,lon:3.605}, montpellier:{lat:43.6119,lon:3.8772}, sete:{lat:43.4028,lon:3.6963},
@@ -185,6 +188,50 @@
     }
   }
 
+  function updateStaticLanguage() {
+    const setText = (selector, value) => {
+      const el = document.querySelector(selector);
+      if (el) el.textContent = value;
+    };
+    const setHTML = (selector, value) => {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = value;
+    };
+    setText(".travel-tools-section .tt-kicker", isFrench ? "Pratique en voyage · Données en ligne" : "Полезно в дороге · Данные онлайн");
+    setHTML("#tt-title", isFrench ? 'Météo et devises <em>avant le départ</em>' : 'Погода и валюты <em>перед поездкой</em>');
+    const intro = document.querySelector(".travel-tools-section .tt-heading > p");
+    if (intro) intro.textContent = isFrench
+      ? "Consultez la météo des villes de votre itinéraire et suivez l’évolution des taux de référence sur le dernier mois."
+      : "Проверьте погоду в городах маршрута и посмотрите, как менялся справочный курс валют за последний месяц.";
+    setText("#tt-weather-title", isFrench ? "Maintenant et sur 5 jours" : "Сейчас и на 5 дней");
+    setText("#tt-rates-title", isFrench ? "Taux et volatilité" : "Курс и волатильность");
+    const labels = document.querySelectorAll(".travel-tools-section .tt-label");
+    if (labels[0]) labels[0].textContent = isFrench ? "Météo · prévisions" : "Погода · прогноз";
+    if (labels[1]) labels[1].textContent = isFrench ? "Devises · évolution" : "Курсы валют · динамика";
+    const status = document.querySelectorAll(".travel-tools-section .tt-status");
+    status.forEach(el => el.textContent = isFrench ? "En ligne" : "Онлайн");
+    const cityLabel = document.querySelector(".travel-tools-section .tt-field span");
+    if (cityLabel) cityLabel.textContent = isFrench ? "Choisir une ville" : "Выберите город";
+    const baseLabel = document.querySelector('label[for="tt-base"]');
+    const quoteLabel = document.querySelector('label[for="tt-quote"]');
+    if (baseLabel) baseLabel.textContent = isFrench ? "Devise de départ" : "Из валюты";
+    if (quoteLabel) quoteLabel.textContent = isFrench ? "Devise d’arrivée" : "В валюту";
+    const cityOptions = document.querySelectorAll("#tt-city option");
+    cityOptions.forEach(option => { if (t.cities[option.value]) option.textContent = t.cities[option.value]; });
+    [baseSelect, quoteSelect].forEach(select => Array.from(select.options).forEach(option => {
+      if (t.currencies[option.value]) option.textContent = option.value + " — " + t.currencies[option.value];
+    }));
+    setText("#tt-refresh", isFrench ? "↻ Actualiser" : "↻ Обновить");
+    setText("#tt-rates-refresh", isFrench ? "↻ Actualiser" : "↻ Обновить");
+    const notes = document.querySelectorAll(".travel-tools-section .tt-card-foot .tt-note");
+    if (notes[0]) notes[0].innerHTML = isFrench
+      ? 'Données météo : <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.'
+      : 'Погодные данные: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.';
+    if (notes[1]) notes[1].innerHTML = isFrench
+      ? 'Taux de référence quotidiens : <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">Frankfurter</a>. Pas de cotations de trading.'
+      : 'Справочные дневные курсы: <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">Frankfurter</a>. Не для биржевых сделок.';
+  }
+
   if (!baseSelect.options.length) currencyCodes.forEach(code=>{
     [baseSelect,quoteSelect].forEach(select=>{
       const option=document.createElement("option");
@@ -200,6 +247,24 @@
   quoteSelect.addEventListener("change",loadRates);
   if (refreshButton) refreshButton.addEventListener("click",loadWeather);
   if (ratesRefreshButton) ratesRefreshButton.addEventListener("click",loadRates);
+
+  updateStaticLanguage();
+  const syncLanguage = () => {
+    const saved = localStorage.getItem("site:lang");
+    const nextIsFrench = saved === "fr" || saved === "ru" ? saved === "fr" :
+      (/^fr/i.test(document.documentElement.lang || location.pathname) || ((navigator.language || "").toLowerCase().startsWith("fr")));
+    if (nextIsFrench === isFrench) return;
+    isFrench = nextIsFrench;
+    t = isFrench ? frenchT : russianT;
+    updateStaticLanguage();
+    loadWeather();
+    loadRates();
+  };
+  if (typeof MutationObserver !== "undefined") {
+    new MutationObserver(syncLanguage).observe(document.documentElement,{attributes:true,attributeFilter:["lang"]});
+  }
+  window.addEventListener("storage", syncLanguage);
+
   loadWeather();
   loadRates();
 })();
