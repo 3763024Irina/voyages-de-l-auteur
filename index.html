@@ -477,9 +477,9 @@
       </div>
 
       <div class="lang" role="navigation" aria-label="Language switcher">
-        <a href="#" data-lang="ru" class="active">RU</a>
+        <a href="/" data-lang="ru" class="active">RU</a>
         <span aria-hidden>•</span>
-        <a href="#" data-lang="fr">FR</a>
+        <a href="/fr/" data-lang="fr">FR</a>
       </div>
     </div>
   </div><!-- /topbar -->
@@ -489,7 +489,7 @@
     <a class="brand" href="/" aria-label="На главную">
       <div class="logo" aria-hidden="true">Î</div>
       <div>
-        <h1>Авторские туры по Лангедоку <small>— Tours Languedoc by Irène</small></h1>
+        <h1><span data-i18n="brand.title">Авторские туры по Лангедоку</span> <small>— Tours Languedoc by Irène</small></h1>
       </div>
     </a>
 
@@ -560,7 +560,7 @@
 </section>
 
   <!-- ПРОГРАММЫ (карточки) — перенесены вверх -->
-<section id="tours-grid" class="container">
+<section id="tours" class="container">
   <div style="display:flex; align-items:end; justify-content:space-between; gap:16px">
     <div>
       <h3 class="section-title" data-i18n="tours.title">Лучшие программы на выбор</h3>
@@ -582,8 +582,8 @@
       <article class="card">
         <div class="cover"><img src="assets/thermes/PISCINE-GRX-037-BRUNO-FERT-edited-scaled.jpg" alt="Wellness и санатории Лангедока" loading="lazy" decoding="async"></div>
         <div class="body">
-          <h3>Wellness & Санатории</h3>
-          <div class="meta"><span>Оздоровительные программы, термальные курорты, спа. Помощь в получении приглашения из санатория для прохождения процедур.</span></div>
+          <h3 data-i18n="why.0.title">Wellness & Санатории</h3>
+          <div class="meta"><span data-i18n="why.0.text">Оздоровительные программы, термальные курорты, спа. Помощь в получении приглашения из санатория для прохождения процедур.</span></div>
         </div>
         <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
@@ -600,8 +600,8 @@
       <article class="card">
         <div class="cover"><img src="assets/wines/43759c1c37f30c1596868d12e888a94c.jpg" alt="Виноград и терруары" loading="lazy" decoding="async"></div>
         <div class="body">
-          <h3>Вино и терруары Лангедока</h3>
-          <div class="meta"><span>Посещение хозяйств, терруары и панорамы — Пик Сен-Лу, Минервуа, побережье.</span></div>
+          <h3 data-i18n="why.2.title">Вино и терруары Лангедока</h3>
+          <div class="meta"><span data-i18n="why.2.text">Посещение хозяйств, терруары и панорамы — Пик Сен-Лу, Минервуа, побережье.</span></div>
         </div>
         <div class="foot"><a class="btn" href="#tours">Смотреть программы</a></div>
       </article>
@@ -617,25 +617,7 @@
     </div>
   </section>
 
- <!-- TOURS (только хабы/навигация) -->
-
-
-
-<section id="tours" class="container">
-  <div class="hub-wrap" style="margin:28px 0 8px">
-    <div class="filters" id="filters" style="margin:0 0 14px"></div>
-
-    <nav class="actions" id="hubLinks" aria-label="Хабы"
-         style="display:flex; gap:10px; flex-wrap:wrap; margin:0">
-      <a class="btn" href="programations/wine.html"      data-i18n="hubs.wine">Винные туры — хаб</a>
-      <a class="btn" href="programations/oysters.html"   data-i18n="hubs.oysters">Лагуна Thau & устрицы — хаб</a>
-      <a class="btn" href="programations/sea.html"       data-i18n="hubs.sea">Море & актив — хаб</a>
-      <a class="btn" href="programations/castles.html"   data-i18n="hubs.castles">Замки & история — хаб</a>
-      <a class="btn" href="programations/wellness.html"  data-i18n="hubs.wellness">Wellness & термы — хаб</a>
-      <a class="btn" href="programations/canal.html"     data-i18n="hubs.canal">Канал дю Миди — хаб</a>
-    </nav>
-  </div>
-</section>
+ <!-- Category hub links removed; the cards above link directly to individual itineraries. -->
 
 <!-- ПРЕДЗАГРУЗКА СПРАЙТА (опц.) -->
 <link rel="preload" as="image" href="/assets/icons.svg" imagesrcset="/assets/icons.svg" />
@@ -773,9 +755,9 @@
 
 <!-- Добавлена секция с фото для якоря -->
 <section id="contactCard" style="margin-top:50px; text-align:center;">
-  <h2>Контакты</h2>
+  <h2 data-i18n="contact.title">Контакты</h2>
   <img src="favicon-180.png" alt="Irène" style="max-width:200px; border-radius:50%;">
-  <p>Irène — Tours Languedoc</p>
+  <p data-i18n="contact.name">Irène — Tours Languedoc</p>
 </section>
 
 <!-- Плавный скролл через CSS -->
@@ -842,11 +824,14 @@
 const dict = {
   ru: {
     'top.note':'Авторские туры по Югу Франции',
+    'brand.title':'Авторские туры по Лангедоку',
     'nav.home':'Главная','nav.why':'Почему с нами','nav.tours':'Программы','nav.format':'Формат','nav.contacts':'Контакты','nav.book':'Связаться',
     'hero.title':'Юг Франции без шаблонов: вино, море, замки, wellness',
     'hero.text':'Авторские туры Лангедока: 10 готовых маршрутов + эксклюзивные VIP-программы. Дегустации вин и устриц на лагуне Тау, походы к Пику Сен-Лу, средневековый Каркасон, кайтинг и катамаран на Средиземном море и утончённый wellness-отдых в лучших термальных спа региона.',
 
     'why.title':'Почему с нами','why.sub':'Локальная экспертиза, частный транспорт, акцент на гастрономии и природе.',
+    'why.0.title':'Wellness & Санатории','why.0.text':'Оздоровительные программы, термальные курорты и спа. Помощь с приглашением из санатория для прохождения процедур.',
+    'why.2.title':'Вино и терруары Лангедока','why.2.text':'Визиты в винодельни, знакомство с терруаром и панорамы Pic Saint-Loup, Minervois и побережья.',
     'why.1.title':'Гастрономия у истоков','why.1.text':'Дегустации прямо у производителей: устрицы на лодке, семейные винодельни, локальные рынки.',
     'why.3.title':'История и стиль','why.3.text':'Канал дю Миди в Бéзье: круиз через Фонсераны + панорамный обед.',
     'tours.title':'Лучшие программы на юге Франции',
@@ -867,19 +852,20 @@ const dict = {
     'about.title':'О проекте',
     'about.text':'Tours Languedoc by Irène — авторский проект, родившийся из любви к югу Франции. Я живу в Лангедоке и создаю камерные путешествия со вкусом: устрицы и вина лагуны Thau, термальные источники, винные долины и средневековые города. Каждый маршрут собираю лично — с акцентом на гастрономию, природу и культуру региона. Тур — это не «экскурсия на час», а погружение в атмосферу Лангедока. Работаю на русском и французском языках.',
     'about.photo.alt':'Irène — Tours Languedoc',
+    'contact.title':'Контакты','contact.name':'Irène — Tours Languedoc','privacy.link':'Политика конфиденциальности',
 
-    /* === ХАБЫ === */
-    'hubs.wine':'Винные туры — хаб','hubs.oysters':'Лагуна Thau & устрицы — хаб','hubs.castles':'Замки & Каркасон — хаб',
-    'hubs.sea':'Море & актив — хаб','hubs.wellness':'Wellness & термы — хаб','hubs.canal':'Канал дю Миди — хаб'
   },
 
   fr: {
     'top.note':'Voyages sur mesure dans le Sud de la France',
+    'brand.title':'Voyages sur mesure en Languedoc',
     'nav.home':'Accueil','nav.why':'Pourquoi nous','nav.tours':'Programmes','nav.format':'Format','nav.contacts':'Contacts','nav.book':'Contacter',
     'hero.title':'Sud de la France sans clichés : vin, mer, châteaux, bien-être',
     'hero.text':'Circuits d’auteur en Languedoc : 10 itinéraires prêts + programmes VIP exclusifs. Dégustations de vins et d’huîtres à l’étang de Thau, randonnées vers le Pic Saint-Loup, Carcassonne médiévale, kitesurf et catamaran en Méditerranée, détente bien-être dans les meilleurs thermes et spas de la région.',
 
     'why.title':'Pourquoi nous','why.sub':'Expertise locale, transport privé, focus gastronomie et nature.',
+    'why.0.title':'Thermalisme et bien-être','why.0.text':'Programmes de bien-être, stations thermales et spas. Aide à obtenir une invitation du centre pour les soins.',
+    'why.2.title':'Vins et terroirs du Languedoc','why.2.text':'Visites de domaines, découverte des terroirs et panoramas du Pic Saint-Loup, du Minervois et du littoral.',
     'why.1.title':'Gastronomie à la source','why.1.text':'Dégustations chez les producteurs : huîtres en bateau, domaines familiaux, marchés locaux.',
     'why.3.title':'Histoire & style','why.3.text':'Canal du Midi à Béziers : croisière par Fonseranes + déjeuner panoramique.',
     'tours.title':'Nos meilleurs programmes dans le sud de la France',
@@ -900,10 +886,8 @@ const dict = {
     'about.title':'À propos du projet',
     'about.text':'Tours Languedoc by Irène est un projet d’auteure né de l’amour pour le sud de la France. Basée en Languedoc, je conçois des voyages intimistes et gourmands : huîtres et vins de la lagune de Thau, sources thermales, vallées viticoles et cités médiévales. Chaque itinéraire est préparé personnellement avec un focus sur la gastronomie, la nature et la culture de la région. Un tour n’est pas une visite «expresse», mais une immersion dans l’atmosphère du Languedoc. J’opère en français et en russe.',
     'about.photo.alt':'Irène — Tours Languedoc',
+    'contact.title':'Contact','contact.name':'Irène — Tours Languedoc','privacy.link':'Politique de confidentialité',
 
-    /* === HUBS === */
-    'hubs.wine':'Circuits vins — hub','hubs.oysters':'Lagune de Thau & huîtres — hub','hubs.castles':'Châteaux & Carcassonne — hub',
-    'hubs.sea':'Mer & activités — hub','hubs.wellness':'Bien-être & thermes — hub','hubs.canal':'Canal du Midi — hub'
   }
 };
 
@@ -1050,44 +1034,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   ];
 
-  const HUBS = {
-    oysters:'programations/oysters.html',
-    wine:'programations/wine.html',
-    sea:'programations/sea.html',
-    mountains:'programations/sea.html#mountains',
-    castles:'programations/castles.html',
-    wellness:'programations/wellness.html',
-    canal:'programations/canal.html',
-    kiting:'programations/sea.html#kiting',
-    boats:'programations/sea.html#boats'
-  };
-
-  const TAGS = [
-    { id:'oysters',  label:'🦪 Устрицы' },
-    { id:'wine',     label:'🍷 Вино' },
-    { id:'sea',      label:'🌊 Море' },
-    { id:'kiting',   label:'🪁 Кайтинг' },
-    { id:'boats',    label:'⛵ Лодки' },
-    { id:'mountains',label:'⛰️ Горы' },
-    { id:'castles',  label:'🏰 Замки' },
-    { id:'wellness', label:'🧖 Wellness' },
-    { id:'canal',    label:'🚤 Канал дю Миди' }
-  ];
-
-  function renderTags(container, tags){
-    if (!container || container.children.length) return;
-    tags.forEach(t => {
-      const href = HUBS[t.id];
-      const el = document.createElement('a');
-      el.className = 'chip';
-      el.textContent = t.label;
-      el.setAttribute('data-id', t.id);
-      el.href = href || '#';
-      el.role = 'button';
-      container.appendChild(el);
-    });
-  }
-
   const badges = { hit:'HIT', vip:'VIP', new:'NEW', '18+':'18+' };
 
   function safeImg(url){
@@ -1127,7 +1073,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   function render(){
     const grid = document.querySelector('#grid');
-    const filters = document.querySelector('#filters');
     if(!grid) return;
 
     // Карточки туров
@@ -1137,9 +1082,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
       catch(e){ console.error('Ошибка карточки', it, e); }
     }
     grid.innerHTML = html;
-
-    // Чипы-хабы
-    renderTags(filters, TAGS);
 
     // Выровнять
     if(typeof equalizeAll==='function') equalizeAll();
@@ -1403,7 +1345,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   </script>
 
 
-  <a href="/privacy.html">Политика конфиденциальности</a>
+  <a href="/privacy.html" data-i18n="privacy.link">Политика конфиденциальности</a>
 
   <!-- Varioqub experiments -->
 <script type="text/javascript">
