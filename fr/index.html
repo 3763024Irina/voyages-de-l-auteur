@@ -58,6 +58,7 @@
     footer{border-top:1px solid #e2e0da;padding:24px 0 38px;color:var(--muted)}
     @media(max-width:720px){.cards{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}.hero{min-height:340px}}
   </style>
+  <link rel="stylesheet" href="../assets/css/travel-tools.css">
 </head>
 <body>
   <div class="wrap">
@@ -112,7 +113,40 @@
           </article>
         </div>
       </section>
-      <section>
+      
+<section class="travel-tools-section" id="travel-tools" aria-labelledby="tt-title">
+  <div class="travel-tools-wrap">
+    <div class="tt-heading">
+      <div><p class="tt-kicker">Pratique en voyage · Données en ligne</p><h2 id="tt-title">Météo et devises <em>avant le départ</em></h2></div>
+      <p>Consultez la météo des villes de votre itinéraire et suivez l’évolution des taux de référence sur le dernier mois.</p>
+    </div>
+    <div class="tt-grid">
+      <article class="tt-card" aria-labelledby="tt-weather-title">
+        <div class="tt-card-head"><div><p class="tt-label">Météo · prévisions</p><h3 id="tt-weather-title">Maintenant et sur 5 jours</h3></div><span class="tt-status">En ligne</span></div>
+        <label class="tt-field" for="tt-city"><span>Choisir une ville</span><select id="tt-city">
+          <option value="meze" selected>Mèze</option><option value="montpellier">Montpellier</option><option value="sete">Sète</option><option value="carcassonne">Carcassonne</option><option value="nimes">Nîmes</option><option value="andorra">Andorre-la-Vieille</option><option value="barcelona">Barcelone</option><option value="madrid">Madrid</option><option value="paris">Paris</option><option value="nice">Nice</option><option value="rome">Rome</option><option value="lisbon">Lisbonne</option>
+        </select></label>
+        <div id="tt-weather-body" aria-live="polite"><p class="tt-loading">Chargement de la météo…</p></div>
+        <div class="tt-card-foot"><p class="tt-note">Données météo : <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p><button type="button" class="tt-reload" id="tt-refresh">↻ Actualiser</button></div>
+      </article>
+      <article class="tt-card" aria-labelledby="tt-rates-title">
+        <div class="tt-card-head"><div><p class="tt-label">Devises · évolution</p><h3 id="tt-rates-title">Taux et volatilité</h3></div><span class="tt-status">En ligne</span></div>
+        <div class="tt-controls">
+          <div class="tt-control"><label for="tt-base">Devise de départ</label><select id="tt-base">
+            <option value="EUR" selected>EUR — Euro</option><option value="USD">USD — Dollar américain</option><option value="GBP">GBP — Livre sterling</option><option value="CHF">CHF — Franc suisse</option><option value="PLN">PLN — Zloty polonais</option><option value="CZK">CZK — Couronne tchèque</option><option value="HUF">HUF — Forint hongrois</option><option value="RON">RON — Leu roumain</option><option value="SEK">SEK — Couronne suédoise</option><option value="NOK">NOK — Couronne norvégienne</option><option value="DKK">DKK — Couronne danoise</option><option value="TRY">TRY — Livre turque</option><option value="CAD">CAD — Dollar canadien</option><option value="AUD">AUD — Dollar australien</option><option value="JPY">JPY — Yen japonais</option><option value="RUB">RUB — Rouble russe</option><option value="MAD">MAD — Dirham marocain</option>
+          </select></div>
+          <div class="tt-control"><label for="tt-quote">Devise d’arrivée</label><select id="tt-quote">
+            <option value="EUR">EUR — Euro</option><option value="USD" selected>USD — Dollar américain</option><option value="GBP">GBP — Livre sterling</option><option value="CHF">CHF — Franc suisse</option><option value="PLN">PLN — Zloty polonais</option><option value="CZK">CZK — Couronne tchèque</option><option value="HUF">HUF — Forint hongrois</option><option value="RON">RON — Leu roumain</option><option value="SEK">SEK — Couronne suédoise</option><option value="NOK">NOK — Couronne norvégienne</option><option value="DKK">DKK — Couronne danoise</option><option value="TRY">TRY — Livre turque</option><option value="CAD">CAD — Dollar canadien</option><option value="AUD">AUD — Dollar australien</option><option value="JPY">JPY — Yen japonais</option><option value="RUB">RUB — Rouble russe</option><option value="MAD">MAD — Dirham marocain</option>
+          </select></div>
+        </div>
+        <div id="tt-rates-body" aria-live="polite"><p class="tt-loading">Chargement des taux…</p></div>
+        <div class="tt-card-foot"><p class="tt-note">Taux de référence quotidiens : <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">Frankfurter</a>. Pas de cotations de trading.</p><button type="button" class="tt-reload" id="tt-rates-refresh">↻ Actualiser</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
         <h2>Une organisation claire</h2>
         <div class="note">Les prestations des hôtels, domaines, restaurants et autres partenaires sont réglées directement auprès d’eux. Les frais d’organisation et d’accompagnement sont communiqués et convenus avant la confirmation.</div>
       </section>
@@ -130,5 +164,6 @@
       <p><a href="/privacy.html">Politique de confidentialité</a> · <a href="/how-it-works.html">Fonctionnement et conditions</a> · <a href="/">Version russe</a></p>
     </footer>
   </div>
+  <script defer src="../assets/js/travel-tools.js"></script>
 </body>
 </html>
