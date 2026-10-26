@@ -526,6 +526,39 @@
       </div>
     </div>
   </section>
+
+<section class="travel-tools-section" id="travel-tools" aria-labelledby="tt-title">
+  <div class="travel-tools-wrap">
+    <div class="tt-heading">
+      <div><p class="tt-kicker">Полезно в дороге · Данные онлайн</p><h2 id="tt-title">Погода и валюты <em>перед поездкой</em></h2></div>
+      <p>Проверьте погоду в городах маршрута и посмотрите, как менялся справочный курс валют за последний месяц.</p>
+    </div>
+    <div class="tt-grid">
+      <article class="tt-card" aria-labelledby="tt-weather-title">
+        <div class="tt-card-head"><div><p class="tt-label">Погода · прогноз</p><h3 id="tt-weather-title">Сейчас и на 5 дней</h3></div><span class="tt-status">Онлайн</span></div>
+        <label class="tt-field" for="tt-city"><span>Выберите город</span><select id="tt-city">
+          <option value="meze" selected>Мез</option><option value="montpellier">Монпелье</option><option value="sete">Сет</option><option value="carcassonne">Каркассон</option><option value="nimes">Ним</option><option value="andorra">Андорра-ла-Велья</option><option value="barcelona">Барселона</option><option value="madrid">Мадрид</option><option value="paris">Париж</option><option value="nice">Ницца</option><option value="rome">Рим</option><option value="lisbon">Лиссабон</option>
+        </select></label>
+        <div id="tt-weather-body" aria-live="polite"><p class="tt-loading">Загружаем погоду…</p></div>
+        <div class="tt-card-foot"><p class="tt-note">Погодные данные: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p><button type="button" class="tt-reload" id="tt-refresh">↻ Обновить</button></div>
+      </article>
+      <article class="tt-card" aria-labelledby="tt-rates-title">
+        <div class="tt-card-head"><div><p class="tt-label">Курсы валют · динамика</p><h3 id="tt-rates-title">Курс и волатильность</h3></div><span class="tt-status">Онлайн</span></div>
+        <div class="tt-controls">
+          <div class="tt-control"><label for="tt-base">Из валюты</label><select id="tt-base">
+            <option value="EUR" selected>EUR — Евро</option><option value="USD">USD — Доллар США</option><option value="GBP">GBP — Фунт стерлингов</option><option value="CHF">CHF — Швейцарский франк</option><option value="PLN">PLN — Польский злотый</option><option value="CZK">CZK — Чешская крона</option><option value="HUF">HUF — Венгерский форинт</option><option value="RON">RON — Румынский лей</option><option value="SEK">SEK — Шведская крона</option><option value="NOK">NOK — Норвежская крона</option><option value="DKK">DKK — Датская крона</option><option value="TRY">TRY — Турецкая лира</option><option value="CAD">CAD — Канадский доллар</option><option value="AUD">AUD — Австралийский доллар</option><option value="JPY">JPY — Японская иена</option><option value="RUB">RUB — Российский рубль</option><option value="MAD">MAD — Марокканский дирхам</option>
+          </select></div>
+          <div class="tt-control"><label for="tt-quote">В валюту</label><select id="tt-quote">
+            <option value="EUR">EUR — Евро</option><option value="USD" selected>USD — Доллар США</option><option value="GBP">GBP — Фунт стерлингов</option><option value="CHF">CHF — Швейцарский франк</option><option value="PLN">PLN — Польский злотый</option><option value="CZK">CZK — Чешская крона</option><option value="HUF">HUF — Венгерский форинт</option><option value="RON">RON — Румынский лей</option><option value="SEK">SEK — Шведская крона</option><option value="NOK">NOK — Норвежская крона</option><option value="DKK">DKK — Датская крона</option><option value="TRY">TRY — Турецкая лира</option><option value="CAD">CAD — Канадский доллар</option><option value="AUD">AUD — Австралийский доллар</option><option value="JPY">JPY — Японская иена</option><option value="RUB">RUB — Российский рубль</option><option value="MAD">MAD — Марокканский дирхам</option>
+          </select></div>
+        </div>
+        <div id="tt-rates-body" aria-live="polite"><p class="tt-loading">Загружаем курсы валют…</p></div>
+        <div class="tt-card-foot"><p class="tt-note">Справочные дневные курсы: <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">Frankfurter</a>. Не для биржевых сделок.</p><button type="button" class="tt-reload" id="tt-rates-refresh">↻ Обновить</button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
   <!-- ПРОГРАММЫ (карточки) — перенесены вверх -->
 <section id="tours-grid" class="container">
   <div style="display:flex; align-items:end; justify-content:space-between; gap:16px">
@@ -586,37 +619,7 @@
 
  <!-- TOURS (только хабы/навигация) -->
 
-<section class="travel-tools-section" id="travel-tools" aria-labelledby="tt-title">
-  <div class="travel-tools-wrap">
-    <div class="tt-heading">
-      <div><p class="tt-kicker">Полезно в дороге · Данные онлайн</p><h2 id="tt-title">Погода и валюты <em>перед поездкой</em></h2></div>
-      <p>Проверьте погоду в городах маршрута и посмотрите, как менялся справочный курс валют за последний месяц.</p>
-    </div>
-    <div class="tt-grid">
-      <article class="tt-card" aria-labelledby="tt-weather-title">
-        <div class="tt-card-head"><div><p class="tt-label">Погода · прогноз</p><h3 id="tt-weather-title">Сейчас и на 5 дней</h3></div><span class="tt-status">Онлайн</span></div>
-        <label class="tt-field" for="tt-city"><span>Выберите город</span><select id="tt-city">
-          <option value="meze" selected>Мез</option><option value="montpellier">Монпелье</option><option value="sete">Сет</option><option value="carcassonne">Каркассон</option><option value="nimes">Ним</option><option value="andorra">Андорра-ла-Велья</option><option value="barcelona">Барселона</option><option value="madrid">Мадрид</option><option value="paris">Париж</option><option value="nice">Ницца</option><option value="rome">Рим</option><option value="lisbon">Лиссабон</option>
-        </select></label>
-        <div id="tt-weather-body" aria-live="polite"><p class="tt-loading">Загружаем погоду…</p></div>
-        <div class="tt-card-foot"><p class="tt-note">Погодные данные: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>.</p><button type="button" class="tt-reload" id="tt-refresh">↻ Обновить</button></div>
-      </article>
-      <article class="tt-card" aria-labelledby="tt-rates-title">
-        <div class="tt-card-head"><div><p class="tt-label">Курсы валют · динамика</p><h3 id="tt-rates-title">Курс и волатильность</h3></div><span class="tt-status">Онлайн</span></div>
-        <div class="tt-controls">
-          <div class="tt-control"><label for="tt-base">Из валюты</label><select id="tt-base">
-            <option value="EUR" selected>EUR — Евро</option><option value="USD">USD — Доллар США</option><option value="GBP">GBP — Фунт стерлингов</option><option value="CHF">CHF — Швейцарский франк</option><option value="PLN">PLN — Польский злотый</option><option value="CZK">CZK — Чешская крона</option><option value="HUF">HUF — Венгерский форинт</option><option value="RON">RON — Румынский лей</option><option value="SEK">SEK — Шведская крона</option><option value="NOK">NOK — Норвежская крона</option><option value="DKK">DKK — Датская крона</option><option value="TRY">TRY — Турецкая лира</option><option value="CAD">CAD — Канадский доллар</option><option value="AUD">AUD — Австралийский доллар</option><option value="JPY">JPY — Японская иена</option><option value="RUB">RUB — Российский рубль</option><option value="MAD">MAD — Марокканский дирхам</option>
-          </select></div>
-          <div class="tt-control"><label for="tt-quote">В валюту</label><select id="tt-quote">
-            <option value="EUR">EUR — Евро</option><option value="USD" selected>USD — Доллар США</option><option value="GBP">GBP — Фунт стерлингов</option><option value="CHF">CHF — Швейцарский франк</option><option value="PLN">PLN — Польский злотый</option><option value="CZK">CZK — Чешская крона</option><option value="HUF">HUF — Венгерский форинт</option><option value="RON">RON — Румынский лей</option><option value="SEK">SEK — Шведская крона</option><option value="NOK">NOK — Норвежская крона</option><option value="DKK">DKK — Датская крона</option><option value="TRY">TRY — Турецкая лира</option><option value="CAD">CAD — Канадский доллар</option><option value="AUD">AUD — Австралийский доллар</option><option value="JPY">JPY — Японская иена</option><option value="RUB">RUB — Российский рубль</option><option value="MAD">MAD — Марокканский дирхам</option>
-          </select></div>
-        </div>
-        <div id="tt-rates-body" aria-live="polite"><p class="tt-loading">Загружаем курсы валют…</p></div>
-        <div class="tt-card-foot"><p class="tt-note">Справочные дневные курсы: <a href="https://frankfurter.dev/" target="_blank" rel="noopener noreferrer">Frankfurter</a>. Не для биржевых сделок.</p><button type="button" class="tt-reload" id="tt-rates-refresh">↻ Обновить</button></div>
-      </article>
-    </div>
-  </div>
-</section>
+
 
 <section id="tours" class="container">
   <div class="hub-wrap" style="margin:28px 0 8px">
