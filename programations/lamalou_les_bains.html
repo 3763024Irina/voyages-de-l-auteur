@@ -121,6 +121,9 @@ window.ANALYTICS_CONFIG = {
 <script defer src="/assets/js/cookies.js"></script>
 
   <link rel="canonical" href="https://goutvoyage.com/programations/lamalou_les_bains.html" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/lamalou_les_bains.html" />
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/lamalou_les_bains.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/lamalou_les_bains.html" />
 </head>
 
 <body>
@@ -338,8 +341,10 @@ ogDesc: 'Séjour 14–21 nuits, programmes wellness + soins CTS, transferts priv
       }
 
       function initLang(){
+        const params = new URLSearchParams(location.search);
+        const requested = params.get('lang');
         const saved = localStorage.getItem('site:lang');
-        const lang = (saved==='fr'||saved==='ru') ? saved : (navigator.language||'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+        const lang = (requested==='fr'||requested==='ru') ? requested : (saved==='fr'||saved==='ru') ? saved : (navigator.language||'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
         applyText(lang);
         document.getElementById('btn-ru')?.addEventListener('click', ()=>applyText('ru'));
         document.getElementById('btn-fr')?.addEventListener('click', ()=>applyText('fr'));
