@@ -5,6 +5,9 @@
   <title>Domaine Bois Bories — дегустация вин у Салагу | Tours Languedoc</title>
   <meta name="description" content="Domaine Bois Bories рядом с Clermont-l’Hérault: вина Coteaux du Salagou, Syrah, Grenache и Viognier, история хозяйства и условия дегустаций по записи." />
   <link rel="canonical" href="https://goutvoyage.com/degustations/bois-bories.html" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/degustations/bois-bories.html" />
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/degustations/bois-bories.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/degustations/bois-bories.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- общий сайт-стиль -->
@@ -22,7 +25,7 @@
 <div class="topbar">
   <div class="inner">
     <div class="note">Авторские туры по Югу Франции</div>
-    <div class="lang"><a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a></div>
+    <div class="lang"><a href="/degustations/bois-bories.html" class="active" lang="ru">RU</a><span aria-hidden>•</span><a href="/degustations/bois-bories.html?lang=fr" lang="fr">FR</a></div>
   </div>
 </div>
 
@@ -230,18 +233,38 @@
     <script>
       (function(){
         const root = document.getElementById('domaine-bois-bories');
+        if (!root) return;
         const btns = root.querySelectorAll('.lang-btn');
         const blocks = root.querySelectorAll('[data-lang]');
-        btns.forEach(b=>{
-          b.addEventListener('click', ()=>{
-            btns.forEach(x=>x.classList.remove('active'));
-            b.classList.add('active');
-            const lang = b.getAttribute('data-choose-lang');
-            blocks.forEach(el=>{
-              el.classList.toggle('visible', el.getAttribute('data-lang')===lang);
-            });
+        const params = new URLSearchParams(location.search);
+        const ruTitle = "Domaine Bois Bories — дегустация вин у Салагу | Tours Languedoc";
+        const frTitle = "Domaine Bois Bories — dégustation de vins près du Salagou | Tours Languedoc";
+        const ruDescription = "Domaine Bois Bories рядом с Clermont-l’Hérault: вина Coteaux du Salagou, Syrah, Grenache и Viognier, история хозяйства и условия дегустаций по записи.";
+        const frDescription = "Découvrez le Domaine Bois Bories près de Clermont-l’Hérault : vins des Coteaux du Salagou, Syrah, Grenache et Viognier. Visites et dégustations selon les disponibilités du domaine.";
+        function setLang(lang, updateUrl){
+          btns.forEach(b=>{
+            const active = b.getAttribute('data-choose-lang')===lang;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
           });
-        });
+          blocks.forEach(el=>el.classList.toggle('visible', el.getAttribute('data-lang')===lang));
+          document.documentElement.lang = lang;
+          document.title = lang==='fr' ? frTitle : ruTitle;
+          const description = document.querySelector('meta[name="description"]');
+          if (description) description.setAttribute('content', lang==='fr' ? frDescription : ruDescription);
+          const ogTitle = document.querySelector('meta[property="og:title"]');
+          if (ogTitle) ogTitle.setAttribute('content', document.title);
+          const ogDescription = document.querySelector('meta[property="og:description"]');
+          if (ogDescription) ogDescription.setAttribute('content', lang==='fr' ? frDescription : ruDescription);
+          if (updateUrl && history.replaceState) {
+            const next = new URL(location.href);
+            if (lang==='fr') next.searchParams.set('lang','fr');
+            else next.searchParams.delete('lang');
+            history.replaceState({}, '', next.pathname + (next.search ? next.search : '') + next.hash);
+          }
+        }
+        btns.forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-choose-lang'),true)));
+        setLang(params.get('lang')==='fr' ? 'fr' : 'ru', false);
       })();
     </script>
   </section>
