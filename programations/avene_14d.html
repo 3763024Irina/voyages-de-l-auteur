@@ -7,6 +7,9 @@
   <title>Термальный отдых в Avène на 14 дней | Tours Languedoc by Irène</title>
   <meta name="description" content="Поездка на термальный курорт Avène, Hérault: помощь с проживанием, трансферами, маршрутом и организацией визита. Даты и детали согласуются индивидуально." />
   <link rel="canonical" href="https://goutvoyage.com/programations/avene_14d.html" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/programations/avene_14d.html" />
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/programations/avene_14d.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/programations/avene_14d.html" />
   <meta property="og:title" content="Avène — термальная дерматология & wellness (от 14 ночей)"/>
   <meta property="og:description" content="Курсы 6/12/18 дней, пост-онко и атопический дерматит, нейтральный pH и кремнезём Avène; прозрачная смета и сопровождение."/>
   <meta property="og:type" content="website"/>
@@ -427,8 +430,10 @@
     }
 
     function initLang(){
+      const params = new URLSearchParams(location.search);
+      const requested = params.get('lang');
       const saved = localStorage.getItem('site:lang');
-      const lang = (saved==='fr'||saved==='ru') ? saved : (navigator.language||'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
+      const lang = (requested==='fr'||requested==='ru') ? requested : (saved==='fr'||saved==='ru') ? saved : (navigator.language||'ru').toLowerCase().startsWith('fr') ? 'fr' : 'ru';
       applyText(lang);
       document.getElementById('btn-ru')?.addEventListener('click', ()=>applyText('ru'));
       document.getElementById('btn-fr')?.addEventListener('click', ()=>applyText('fr'));
