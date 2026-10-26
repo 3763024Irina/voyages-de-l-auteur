@@ -5,6 +5,9 @@
   <title>Domaine de Belle Mare — дегустация вина в Mèze | Tours Languedoc</title>
   <meta name="description" content="Посещение Domaine de Belle Mare рядом с Mèze и лагуной Étang de Thau: вина Picpoul de Pinet, терруар и варианты дегустаций. Уточняйте расписание у домена." />
   <link rel="canonical" href="https://goutvoyage.com/degustations/belle-mare.html" />
+  <link rel="alternate" hreflang="ru" href="https://goutvoyage.com/degustations/belle-mare.html" />
+  <link rel="alternate" hreflang="fr" href="https://goutvoyage.com/degustations/belle-mare.html?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://goutvoyage.com/degustations/belle-mare.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- общий сайт-стиль -->
 <link rel="stylesheet" href="/voyages-de-l-auteur/assets/style.css?v=14">
@@ -26,7 +29,7 @@
 <div class="topbar">
   <div class="inner">
     <div class="note">Авторские туры по Югу Франции</div>
-    <div class="lang"><a href="../index.html" class="active">RU</a><span aria-hidden>•</span><a href="../index.html">FR</a></div>
+    <div class="lang"><a href="/degustations/belle-mare.html" class="active" lang="ru">RU</a><span aria-hidden>•</span><a href="/degustations/belle-mare.html?lang=fr" lang="fr">FR</a></div>
   </div>
 </div>
 
@@ -210,18 +213,38 @@
     <script>
       (function(){
         const root = document.getElementById('domaine-belle-mare');
+        if (!root) return;
         const btns = root.querySelectorAll('.lang-btn');
         const blocks = root.querySelectorAll('[data-lang]');
-        btns.forEach(b=>{
-          b.addEventListener('click', ()=>{
-            btns.forEach(x=>x.classList.remove('active'));
-            b.classList.add('active');
-            const lang = b.getAttribute('data-choose-lang');
-            blocks.forEach(el=>{
-              el.classList.toggle('visible', el.getAttribute('data-lang')===lang);
-            });
+        const params = new URLSearchParams(location.search);
+        const ruTitle = "Domaine de Belle Mare — дегустация вина в Mèze | Tours Languedoc";
+        const frTitle = "Domaine de Belle Mare — dégustation de vins à Mèze | Tours Languedoc";
+        const ruDescription = "Посещение Domaine de Belle Mare рядом с Mèze и лагуной Étang de Thau: вина Picpoul de Pinet, терруар и варианты дегустаций. Уточняйте расписание у домена.";
+        const frDescription = "Découvrez le Domaine de Belle Mare près de Mèze et de l’Étang de Thau : Picpoul de Pinet, terroir méditerranéen et options de dégustation. Horaires à confirmer auprès du domaine.";
+        function setLang(lang, updateUrl){
+          btns.forEach(b=>{
+            const active = b.getAttribute('data-choose-lang')===lang;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
           });
-        });
+          blocks.forEach(el=>el.classList.toggle('visible', el.getAttribute('data-lang')===lang));
+          document.documentElement.lang = lang;
+          document.title = lang==='fr' ? frTitle : ruTitle;
+          const description = document.querySelector('meta[name="description"]');
+          if (description) description.setAttribute('content', lang==='fr' ? frDescription : ruDescription);
+          const ogTitle = document.querySelector('meta[property="og:title"]');
+          if (ogTitle) ogTitle.setAttribute('content', document.title);
+          const ogDescription = document.querySelector('meta[property="og:description"]');
+          if (ogDescription) ogDescription.setAttribute('content', lang==='fr' ? frDescription : ruDescription);
+          if (updateUrl && history.replaceState) {
+            const next = new URL(location.href);
+            if (lang==='fr') next.searchParams.set('lang','fr');
+            else next.searchParams.delete('lang');
+            history.replaceState({}, '', next.pathname + (next.search ? next.search : '') + next.hash);
+          }
+        }
+        btns.forEach(b=>b.addEventListener('click',()=>setLang(b.getAttribute('data-choose-lang'),true)));
+        setLang(params.get('lang')==='fr' ? 'fr' : 'ru', false);
       })();
     </script>
   </section>
