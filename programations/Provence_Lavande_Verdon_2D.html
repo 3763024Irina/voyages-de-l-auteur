@@ -343,32 +343,11 @@
     window.APP_CONFIG = {
       whatsapp: '33759644813',
       telegram_user: 'de_irene',
-      ADMIN_SECRET: 'capion2025'
     };
   </script>
 
   <!-- ==== Admin gate ( ?admin=capion2025 / ?admin=off ) ==== -->
-  <script>
-    (function(){
-      try{
-        const p = new URLSearchParams(location.search);
-        const t = p.get('admin');
-        if (t !== null){
-          if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
-          p.delete('admin');
-          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-        }
-        const isAdmin = localStorage.getItem('site:admin')==='1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn(e); }
-    })();
-  </script>
+  
 
   <!-- ==== Форма: валидация/открытия WA/TG (используется ниже) ==== -->
   <script>
