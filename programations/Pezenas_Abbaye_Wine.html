@@ -249,12 +249,12 @@
         <img src="/assets/pezenas/IMG_9180.jpeg" alt="Фото-схема маршрута: Mèze → Pézenas → Abbaye → дегустация → Mèze" loading="lazy" width="1200" height="800" style="width:100%; border-radius:18px">
       </div>
 
-      <!-- Admin quick links (включаются ?admin=capion2025) -->
+      
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Abbaye+de+Valmagne%2C+34560+Villeveyrac&output=classic">Abbaye</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Caveau+de+Valmagne%2C+34560&output=classic">Caveau</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Ferme-Auberge+Abbaye+Valmagne&output=classic">Auberge</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Parking+P%C3%A9zenas+centre+historique&output=classic">Pézenas Parking</a>
+        
+        
+        
+        
       </div>
 
       <!-- Admin dossier -->
@@ -314,32 +314,11 @@
     window.APP_CONFIG = {
       whatsapp: '33759644813',
       telegram_user: 'de_irene',
-      ADMIN_SECRET: 'capion2025'
+
     };
   </script>
 
-  <!-- ==== Admin gate (?admin=capion2025 / off) ==== -->
-  <script>
-    (function(){
-      try{
-        const p = new URLSearchParams(location.search);
-        const t = p.get('admin');
-        if (t !== null){
-          if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
-          p.delete('admin');
-          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-        }
-        const isAdmin = localStorage.getItem('site:admin')==='1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn(e); }
-    })();
-  </script>
+  
 
   <!-- ==== ЕДИНЫЙ скрипт: валидация, сбор текста, открытие WA/TG, биндинг ==== -->
   <script>
