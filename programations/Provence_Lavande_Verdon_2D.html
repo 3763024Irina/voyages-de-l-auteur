@@ -26,12 +26,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Leaflet CSS (OpenStreetMap) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-sA+e2H0FJw3gqTj4V7wJ7pZB2v1sNn8fFf4hP0t0hYg=" crossorigin=""/>
-
-  <style>
+<style>
     :root{
       --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c;
       --brand:#0D2B1E; --accent:#C9B886; --accent-2:#E9DFC5;
@@ -144,11 +139,7 @@
       background-repeat:no-repeat; background-position:right 12px center; background-size:16px; }
     #book input[type="date"]{ padding:12px; height:44px; }
     #book input:focus, #book select:focus, #book textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
-    
-    /* карта поменьше */
-    .mapwrap{ max-width:520px; margin:0 auto; }
-    .mapwrap .leaflet-container{ height:320px; border-radius:14px; box-shadow:var(--shadow); }
-  </style>
+</style>
 
   <!-- Analytics + Cookies (kept) -->
   
@@ -253,32 +244,7 @@
     <aside class="card">
       <h3 class="section-title">Где это</h3>
       <p class="section-sub">Valensole • Moustiers-Sainte-Marie • Belvédères des Gorges du Verdon • Lac de Sainte-Croix.</p>
-
-<section class="map-section" style="margin: 40px 0;">
-  <h2 style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:2rem; margin-bottom:20px;">
-    Карта маршрута
-  </h2>
-
-  <div style="display:flex; justify-content:center;">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186313.4422613201!2d6.039679198734775!3d43.75535319632498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c2f9c15c1c91%3A0x0!2zVmFsZW5zb2xlLCDQnNC-0YHQvtC60YPRgNCw0YDRgdC40Lkg0JHQtdC70LDRgNC-0YHQutC-0YHRgtGA0L7QstCw!5e0!3m2!1sru!2sfr!4v1699999999999!5m2!1sru!2sfr"
-      width="100%"
-      height="500"
-      style="max-width:900px; border:0; border-radius:12px;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-  </div>
-
-  <p style="text-align:center; font-size:0.95rem; color:#444; margin-top:10px;">
-    Точки интереса: Valensole — Moustiers-Sainte-Marie — Gorges du Verdon — Lac de Sainte-Croix
-  </p>
-</section>
-
-
-
-
-      <!-- Admin quick links -->
+<!-- Admin quick links -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; margin-top:10px">
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Plateau+de+Valensole&output=classic">Valensole</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Moustiers-Sainte-Marie&output=classic">Moustiers</a>
@@ -537,12 +503,7 @@ function validateForm(){ return true; }
     }]
   }
   </script>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-xwE/6rR0HfwL6v3gqXnX8eN3s4sS3m9dI6s+7U0M2Is=" crossorigin=""></script>
-
-  <!-- Map initialization -->
+<!-- Map initialization -->
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       // Координаты точек (источники: общественные геоданные)
