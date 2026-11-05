@@ -55,3 +55,49 @@
 .tt-card-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:17px}
 @media(max-width:800px){.tt-heading{display:block}.tt-heading p{margin-top:14px}.tt-grid{grid-template-columns:1fr}.tt-current{gap:14px}.tt-weather-icon{width:70px;height:70px;flex-basis:70px;font-size:2.2rem}.tt-temp{font-size:3.4rem}}
 @media(max-width:430px){.travel-tools-wrap{width:calc(100% - 24px)}.tt-card{padding:16px}.tt-card h3{font-size:1.23rem}.tt-status{font-size:.64rem;padding:6px 8px}.tt-weather-metrics{gap:6px}.tt-metric{padding:10px 8px}.tt-metric strong{font-size:.86rem}.tt-forecast{gap:4px}.tt-day{padding:9px 2px}.tt-day-temp{font-size:.7rem}.tt-stat-grid{gap:5px}.tt-stat{padding:10px 7px}.tt-stat small{font-size:.64rem}.tt-stat strong{font-size:.88rem}.tt-rate{font-size:1.75rem}}
+/* Compact display: weather and currency as slim horizontal rows */
+.travel-tools-section{padding:22px 0}
+.tt-heading{margin-bottom:12px}
+.tt-heading h2{font-size:1.6rem}
+.tt-heading>p{font-size:.76rem;line-height:1.35}
+.tt-grid{grid-template-columns:1fr;gap:8px}
+.tt-card{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:8px 14px;padding:10px 14px;border-radius:10px;box-shadow:none}
+.tt-card-head{margin:0;align-items:center}
+.tt-card h3{font-size:.9rem}
+.tt-label{font-size:.6rem;margin-bottom:2px}
+.tt-status{font-size:.58rem;padding:4px 7px}
+.tt-field{grid-column:2;grid-row:1;margin:0;font-size:.7rem}
+.tt-field select,.tt-control select{min-height:30px;padding:5px 8px;font-size:.7rem}
+#tt-weather-body,#tt-rates-body{grid-column:1/-1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tt-current{gap:8px;padding:3px 10px 3px 0;border:0;border-right:1px solid #edf0eb}
+.tt-weather-icon{width:34px;height:34px;flex-basis:34px;font-size:1.2rem;border-radius:8px}
+.tt-temp{font-size:1.4rem}
+.tt-condition{font-size:.7rem;margin-top:1px}
+.tt-updated{font-size:.6rem;margin-top:1px}
+.tt-weather-metrics{display:flex;gap:12px;margin:0}
+.tt-metric{display:flex;align-items:center;gap:4px;padding:0;background:transparent}
+.tt-metric small{font-size:.62rem;margin:0}
+.tt-metric strong{font-size:.7rem}
+.tt-forecast-title,.tt-chart-wrap,.tt-note{display:none!important}
+.tt-forecast{display:flex;flex:1;justify-content:space-between;gap:5px}
+.tt-day{display:flex;align-items:center;gap:3px;padding:2px;background:transparent}
+.tt-day-icon{font-size:.85rem;margin:0}
+.tt-day-name,.tt-day-temp,.tt-day-rain{font-size:.6rem}
+.tt-day-temp[style]{display:none}
+.tt-controls{grid-column:2;grid-row:1;display:flex;gap:7px;margin:0}
+.tt-control{display:flex;align-items:center;gap:4px}
+.tt-control label{font-size:.65rem;margin:0}
+.tt-control select{max-width:150px}
+.tt-rate-line{display:flex;align-items:center;gap:7px;margin:0;padding:5px 9px;border-radius:7px}
+.tt-rate-caption,.tt-rate-date{font-size:.62rem;margin:0}
+.tt-rate{font-size:1rem}
+.tt-stat-grid{display:flex;gap:12px}
+.tt-stat{display:flex;align-items:center;gap:4px;padding:0;border:0}
+.tt-stat small{font-size:.62rem;min-height:0;margin:0}
+.tt-stat strong{font-size:.7rem}
+.tt-card-foot{grid-column:1/-1;margin:0;justify-content:flex-end}
+.tt-card-foot .tt-note{display:none}
+.tt-reload{font-size:.65rem;padding:4px 8px}
+@media(max-width:700px){.tt-card{grid-template-columns:1fr;gap:7px}.tt-field,.tt-controls{grid-column:1;grid-row:auto}#tt-weather-body,#tt-rates-body{grid-column:1;gap:8px}.tt-forecast{flex-basis:100%}.tt-heading>p{display:none}}
+@media(max-width:430px){.travel-tools-wrap{width:calc(100% - 20px)}.tt-card{padding:9px 10px}.tt-weather-metrics,.tt-stat-grid{gap:7px}.tt-metric small,.tt-stat small{font-size:.57rem}.tt-metric strong,.tt-stat strong{font-size:.65rem}}
+
