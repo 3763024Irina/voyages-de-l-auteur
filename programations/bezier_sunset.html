@@ -295,12 +295,12 @@
         <img src="../assets/la-domitienne-olivier-octobre-mai2022-BD-29.jpg" alt="Béziers — coucher de soleil" loading="lazy" style="width:100%; border-radius:18px">
       </div>
 
-      <!-- Админ-ссылки (включаются ?admin=capion2025) -->
+      
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=%C3%89cluses%20de%20Fonseranes%2C%20B%C3%A9ziers&output=classic">Fonseranes</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Grand%20Bief%2C%20Canal%20du%20Midi&output=classic">Grand Bief</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tunnel%20du%20Malpas%2C%20Colombiers&output=classic">Tunnel du Malpas</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Cath%C3%A9drale%20Saint-Nazaire%2C%20B%C3%A9ziers&output=classic">Cathédrale Saint-Nazaire</a>
+        
+        
+        
+        
       </div>
     </aside>
   </section>
@@ -346,33 +346,11 @@
     window.APP_CONFIG = {
       whatsapp: '33759644813',
       telegram_user: 'de_irene',
-      
-      ADMIN_SECRET: 'capion2025'
+
     };
   </script>
 
-  <!-- ==== Admin gate (включение скрытых ссылок по ?admin=capion2025) ==== -->
-  <script>
-    (function(){
-      try{
-        const p = new URLSearchParams(location.search);
-        const t = p.get('admin');
-        if (t !== null){
-          if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'')) localStorage.setItem('site:admin','1');
-          p.delete('admin');
-          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-        }
-        const isAdmin = localStorage.getItem('site:admin')==='1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn(e); }
-    })();
-  </script>
+  
 
   <!-- ==== I18N RU ⇄ FR ==== -->
   <script>
