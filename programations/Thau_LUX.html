@@ -135,20 +135,11 @@
   </style>
 
   <!-- GA4 (замените ID) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 
-<script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
-
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
-
+  <!-- Analytics: loaded only after cookie consent -->
+  <script>window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v3" };</script>
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
 
 <body data-program data-program-title="LUX Étang de Thau — 1 день" data-program-id="THAU-LUX-1D">
