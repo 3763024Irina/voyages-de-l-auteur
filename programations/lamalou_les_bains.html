@@ -167,19 +167,16 @@
       <p class="section-sub" data-i18n="where.sub">Lamalou-les-Bains • Chaîne Thermale du Soleil • Haut Orb.</p>
 
       <div class="ph" style="margin-bottom:10px; aspect-ratio:16/10; border-radius:18px; overflow:hidden">
-        <iframe title="Lamalou-les-Bains — карта" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0; width:100%; height:100%;" src="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil&output=embed"></iframe>
+        
       </div>
 
       <p class="section-sub" style="margin-top:8px">
-        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lamalou-les-Bains%20Cha%C3%AEne%20Thermale%20du%20Soleil">
-          <span data-lang="ru">Открыть в Google Картах</span>
-          <span data-lang="fr">Ouvrir dans Google Maps</span>
-        </a>
+        
       </p>
 
       <!-- Админ-ссылки (включаются секретом) -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lamalou-les-Bains&output=classic" data-i18n="admin.map">Карта Lamalou</a>
+        
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/etablissement/lamalou-les-bains" data-i18n="admin.cts">CTS — Lamalou</a>
         <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.chainethermale.fr/checkout/reservation" data-i18n="admin.booking">Резервация процедур CTS</a>
       </div>
@@ -226,28 +223,7 @@
     };
   </script>
 
-  <!-- ==== Admin gate (как на PSL) ==== -->
-  <script>
-    (function(){
-      try{
-        const p = new URLSearchParams(location.search);
-        const t = p.get('admin');
-        if (t !== null){
-          if (t === 'off') localStorage.removeItem('site:admin');
-          else if (t === (window.APP_CONFIG?.ADMIN_SECRET||'') || t === 'lamalou2025') localStorage.setItem('site:admin','1');
-          p.delete('admin');
-          history.replaceState({},'', location.pathname + (p.toString()?('?'+p.toString()):'') + location.hash);
-        }
-        const isAdmin = localStorage.getItem('site:admin')==='1';
-        document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-        if (!isAdmin){
-          const s=document.createElement('style');
-          s.textContent='a[data-admin-link]{pointer-events:none;opacity:.65;cursor:not-allowed;}';
-          document.head.appendChild(s);
-        }
-      }catch(e){ console.warn(e); }
-    })();
-  </script>
+  
 
   <!-- ==== i18n словари RU/FR + переключатель ==== -->
   <script>
