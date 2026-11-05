@@ -28,7 +28,402 @@
     .admin-only{ display:none; }
     [data-admin="1"] .admin-only{ display:block; }
   </style>
+  <noscript><style>.admin-only{ display:none !important; }</style></noscript>
+
+  <!-- Базовые SEO -->
+  <title>Авторские туры по Лангедоку — Mèze, вино и море | Irène</title>
+  <meta name="description" content="Авторские туры по Лангедоку и югу Франции: Mèze, лагуна Thau, устрицы, винодельни, Каркассон и термальный отдых. Маршруты на русском и французском.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+
+  <!-- Canonical + hreflang -->
+  <link rel="canonical" href="https://goutvoyage.com/">
+  <link rel="alternate" href="https://goutvoyage.com/" hreflang="ru" />
+  <link rel="alternate" href="https://goutvoyage.com/fr/" hreflang="fr" />
+  <link rel="alternate" href="https://goutvoyage.com/" hreflang="x-default" />
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tours Languedoc by Irène"/>
+  <meta property="og:url" content="https://goutvoyage.com/"/>
+  <meta property="og:title" content="Авторские туры по Лангедоку — Mèze, вино и море | Irène" />
+  <meta property="og:description" content="Индивидуальные маршруты по Лангедоку: лагуна Thau, устрицы, винодельни, Каркассон и термальные курорты. На русском и французском." />
+  <meta property="og:image" content="https://goutvoyage.com/assets/wines/vinograd.jpg"/>
+  <meta property="og:locale" content="ru_RU"/>
+  <meta property="og:locale:alternate" content="fr_FR"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Авторские туры по Лангедоку — Mèze, вино и море | Irène" />
+  <meta name="twitter:description" content="Индивидуальные маршруты по Лангедоку: лагуна Thau, устрицы, винодельни, Каркассон и термальные курорты." />
+  <meta name="twitter:image" content="https://goutvoyage.com/assets/wines/vinograd.jpg"/>
+
+  <!-- Тема браузера -->
+  <meta name="theme-color" content="#0D2B1E" />
+
+  <!-- Конфиг аналитики -->
   
+
+  <!-- Cookie banner + отложенная загрузка аналитики -->
+
+  <!-- Шрифты + LCP-изображение -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" fetchpriority="high"
+        href="https://goutvoyage.com/assets/wines/vinograd.jpg"
+        imagesrcset="https://goutvoyage.com/assets/wines/vinograd.jpg 1200w"
+        imagesizes="100vw">
+
+  <!-- Favicons -->
+  <link rel="icon" href="https://goutvoyage.com/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://goutvoyage.com/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://goutvoyage.com/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://goutvoyage.com/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://goutvoyage.com/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="https://goutvoyage.com/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://goutvoyage.com/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://goutvoyage.com/favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://goutvoyage.com/favicon-180.png">
+
+  <!-- === Ранний BASE-инжектор (оставляем) === -->
+  <script>
+  (function(){
+    var baseEl = document.querySelector('base');
+    if (!baseEl) {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var base = (parts.length && parts[0] !== 'index.html') ? ('/' + parts[0] + '/') : '/';
+      baseEl = document.createElement('base');
+      baseEl.setAttribute('href', base);
+      document.head.prepend(baseEl);
+    }
+    window.__SITE_BASE__ = baseEl.getAttribute('href');
+    window.resolveHref = function(href){
+      if (!href) return '#';
+      if (/^(https?:|mailto:|tel:|sms:|whatsapp:|\/\/)/i.test(href) || href.startsWith('#')) return href;
+      var base = window.__SITE_BASE__ || '/';
+      if (href.startsWith(base)) return href;
+      var out;
+      if (href.startsWith('/')) out = base === '/' ? href : base + href.slice(1);
+      else out = (base.endsWith('/') ? base : base + '/') + href.replace(/^\//,'');
+      return out.replace(/([^:])\/{2,}/g, '$1/');
+    };
+  })();
+  </script>
+
+  <!-- Стили сайта -->
+  <style>
+    :root{
+      --bg:#f7f6f4; --paper:#ffffff; --ink:#1b1b1b; --muted:#6c6c6c;
+      --brand:#0D2B1E; --brand-2:#174936; --accent:#C9B886; --accent-2:#E9DFC5;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px; --radius-lg:26px; --container:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg);}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:auto; padding:0 20px}
+
+    .topbar{height:38px; display:flex; align-items:center; justify-content:center; padding:0 14px; background:#0d2b1e; color:#e9e9e9; border-bottom:1px solid rgba(255,255,255,.12)}
+    .topbar .inner{width:100%; max-width:var(--container); display:flex; align-items:center; justify-content:space-between}
+    .topbar .left{display:flex; align-items:center; gap:14px}
+    .lang{display:flex; gap:10px; font-weight:600}
+    .lang a{color:#e9e9e9; text-decoration:none; opacity:.8}
+    .lang a.active{opacity:1; text-decoration:underline}
+    .topbar .note{font-size:13px; opacity:.95; white-space:nowrap}
+    .topbar .social{display:flex; gap:8px}
+    .topbar .social .icon-btn{
+      width:30px; height:30px; border:1px solid rgba(255,255,255,.25);
+      border-radius:999px; background:transparent; color:#e9e9e9; box-shadow:none;
+      display:inline-flex; align-items:center; justify-content:center;
+    }
+    .topbar .social .icon-btn:hover{background:rgba(255,255,255,.08)}
+    .topbar .social .icon{width:18px; height:18px}
+
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(255,255,255,.7); border-bottom:1px solid #eee}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:46px; height:46px; border-radius:50%; background:linear-gradient(145deg,var(--brand),#123c2c); display:grid; place-items:center; color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .brand h1{font-family:"Cormorant Garamond",serif; font-weight:700; letter-spacing:.2px; font-size:22px; margin:0}
+    .brand small{display:block; font-size:12px; color:#fff; opacity:.7; margin-top:2px}
+    nav ul{display:flex; gap:22px; list-style:none; margin:0; padding:0}
+    nav a{display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-weight:600; padding:10px 12px; border-radius:12px}
+    nav a:hover{background:#f0f0f0}
+    .cta{background:var(--brand); color:#fff !important; border-radius:14px; padding:12px 16px; box-shadow:var(--shadow)}
+    .cta:hover{background:var(--brand-2)}
+
+    .hero{position:relative; isolation:isolate;}
+    .hero .bg{position:absolute; inset:0; z-index:-1;}
+    .hero .bg img{width:100%; height:100%; object-fit:cover; filter:brightness(.72)}
+    .hero .overlay{position:absolute; inset:0; background:radial-gradient(90% 70% at 80% 20%, rgba(201,184,134,.2), transparent), linear-gradient(to bottom, rgba(13,43,30,.5), rgba(13,43,30,.25));}
+    .hero .inner{display:grid; grid-template-columns:1.2fr auto; gap:28px; align-items:center; min-height:50vh}
+    .hero h2{font-family:"Cormorant Garamond",serif; font-size:46px; line-height:1.06; color:#fff; margin:0 0 12px}
+    .hero p{color:#f7f7f7; font-size:18px; max-width:640px}
+    .hero .card{background:rgba(255,255,255,.9); border:1px solid #eee; border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow)}
+
+    .filters{display:flex; flex-wrap:wrap; gap:10px; margin:34px 0}
+    .chip{padding:10px 14px; border-radius:999px; border:1px solid #e6e6e6; background:#fff; font-weight:600; cursor:pointer}
+    .chip.active{background:var(--brand); color:#fff; border-color:var(--brand)}
+
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch}
+    .card{position:relative; background:var(--paper); border:1px solid #eee; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); display:grid; grid-template-rows:auto 1fr auto; height:100%}
+    .card .cover{aspect-ratio:16/10; background:#ddd; position:relative}
+    .badge{position:absolute; top:12px; left:12px; background:rgba(255,255,255,.94); border:1px solid #eee; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px}
+    .card img{width:100%; height:100%; object-fit:cover}
+    .card .body{padding:16px 16px 12px; display:grid; grid-template-rows:auto 1fr; gap:6px}
+    .card h3{margin:0; font-size:20px}
+    .meta{display:flex; gap:12px; color:var(--muted); font-size:13px}
+    .meta span{display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+    .card .foot{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-top:1px solid #f0f0f0}
+    
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-weight:700; cursor:pointer}
+    .btn.primary{background:var(--brand); color:#fff; border-color:var(--brand)}
+    .card > a.stretched{position:absolute; inset:0; z-index:1; text-indent:-9999px}
+
+    section{padding:64px 0}
+    .section-title{font-family:"Cormorant Garamond",serif; font-size:36px; margin:0 0 10px}
+    .section-sub{color:var(--muted); margin:0 0 26px}
+    .about{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center}
+    .about .portrait{border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow)}
+    .about p{line-height:1.6}
+
+    .contact{display:grid; grid-template-columns:1.1fr .9fr; gap:18px}
+    .contact .card{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .stack{display:grid; gap:10px}
+    label{display:block; font-size:13px; color:var(--muted); margin:6px 0 4px}
+    input, select, textarea{width:100%; padding:12px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font:inherit}
+    textarea{min-height:100px}
+
+    footer{background:#0f1f19; color:#e7e7e7; padding:36px 0 20px}
+    .footgrid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:22px}
+    .footgrid a{color:#cfd8d3; text-decoration:none}
+    .copy{margin-top:24px; font-size:13px; color:#9fb3a9}
+
+    @media (max-width: 1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .about,.hero .inner,.contact{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:1fr}
+      .hero h2{font-size:36px}
+      nav ul{display:none}
+    }
+
+    /* HERO узкая форма */
+    .hero .contact-card{
+      width:360px; max-width:100%;
+      justify-self:end; align-self:end;
+      padding:14px 16px; border-radius:16px;
+      background:rgba(255,255,255,.92);
+      border:1px solid #eee; box-shadow:var(--shadow);
+    }
+    .hero .contact-card form{background:transparent; border:0; box-shadow:none; padding:0}
+    .hero .contact-card input, .hero .contact-card textarea{
+      height:40px; padding:8px 10px; font:inherit;
+      border-radius:10px; border:1px solid #e6e6e6; background:#fff; margin:6px 0 10px;
+    }
+    .hero .contact-card textarea{min-height:90px; height:auto; resize:vertical}
+    .hero .contact-card .btn{padding:10px 12px; border-radius:10px}
+    .hero .contact-card input:focus, .hero .contact-card textarea:focus{
+      outline:2px solid rgba(13,43,30,.28); border-color:var(--brand);
+    }
+    @media (max-width:1000px){
+      .hero .contact-card{width:100%; justify-self:stretch; align-self:start}
+    }
+
+    /* Соцсети общие */
+    .social{display:flex; align-items:center; gap:12px}
+    .icon-btn{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px;
+      border:1px solid #e6e6e6; border-radius:999px; background:#fff; box-shadow:var(--shadow)}
+    .icon-btn:hover{background:#f5f5f5}
+    .icon{width:20px; height:20px; display:block}
+    .icon path, .icon circle{fill:currentColor}
+    .sr-only{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,1,1); border:0}
+
+    /* FAB чат */
+    .fab{position:fixed; right:18px; bottom:18px; z-index:60; display:grid; gap:10px; justify-items:end}
+    .fab .bubble{
+      width:54px; height:54px; border-radius:999px; display:grid; place-items:center;
+      background:var(--brand); color:#fff; box-shadow:0 12px 28px rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.2);
+      cursor:pointer;
+    }
+    .fab .menu{display:none; padding-bottom:4px}
+    .fab.open .menu{display:grid; gap:8px; justify-items:end}
+    .fab .mini{width:44px; height:44px; border-radius:999px; display:grid; place-items:center; background:#fff; border:1px solid #e6e6e6; box-shadow:var(--shadow)}
+    .fab .mini:hover{background:#f5f5f5}
+    .fab .label{position:absolute; right:62px; margin-top:10px; background:#fff; border:1px solid #e6e6e6; border-radius:10px; padding:6px 10px; font-size:12px; color:var(--ink); box-shadow:var(--shadow)}
+    @media (prefers-reduced-motion:no-preference){
+      .fab .menu, .fab .bubble, .fab .mini{transition:transform .18s ease, opacity .18s ease, background .18s ease}
+      .fab.open .menu .mini{transform:translateY(0); opacity:1}
+    }
+
+    @media (max-width:560px){ .topbar .note{display:none} }
+
+    /* Features (лента в одну строку) */
+    .features{display:grid; grid-template-columns:1fr; gap:14px; margin:12px 0 22px}
+    @media (min-width:640px){ .features{grid-template-columns:repeat(3,1fr); gap:16px} }
+    .feature-card{
+      background:var(--paper); border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow);
+      padding:16px; display:flex; flex-direction:column; min-height:168px;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .feature-card:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.12)}
+    .feature-head{display:flex; align-items:center; gap:10px; margin-bottom:8px}
+    .feature-icon{width:34px; height:34px; flex:0 0 34px; display:grid; place-items:center; border-radius:12px; background:rgba(13,43,30,.08); color:var(--brand)}
+    .feature-title{font-weight:700; line-height:1.12; font-size:18px; color:var(--ink)}
+    .feature-text{margin-top:6px; color:var(--muted); line-height:1.45; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden}
+    .feature-price{margin:12px 0 0; padding:8px 10px; border-radius:10px; background:rgba(13,43,30,.06); color:var(--brand); font-size:14px; font-weight:700}
+    .feature-more{margin-top:auto; padding-top:10px; font-weight:600; color:var(--brand); text-decoration:none}
+    .feature-more:after{content:" →"}
+
+    .row-scroll{display:flex; flex-wrap:nowrap; gap:16px; overflow-x:auto; overflow-y:hidden; padding:4px 8px 12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch}
+    .row-scroll .card, .row-scroll article.card{flex:0 0 320px; max-width:320px; scroll-snap-align:start}
+    .row-scroll .card img, .row-scroll article.card img{display:block; width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0}
+    #why .card, #why article.card{margin:0}
+    .grid.cards, .cards.grid{display:contents !important}
+    @media (min-width:1024px){
+      .row-scroll .card, .row-scroll article.card{flex-basis:360px; max-width:360px}
+    }
+  </style>
+
+  <!-- JSON-LD: Organization (объединённый) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tours Languedoc by Irène",
+    "url":"https://goutvoyage.com/",
+    "logo":"https://goutvoyage.com/favicon-512.png",
+    "description":"Авторские туры по Югу Франции: вино, море, устрицы, замки, wellness.",
+    "sameAs":[
+      "https://www.instagram.com/gout.languedoc",
+      "https://vk.com/id611989815",
+      "https://t.me/de_irene",
+      "https://www.instagram.com/voyage_france_languedoc",
+      "https://t.me/voyage_languedoc"
+    ]
+  }
+  </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "Tours Languedoc by Irène",
+ "url": "https://goutvoyage.com",
+ "sameAs": [
+   "https://www.instagram.com/gout.languedoc",
+   "https://t.me/voyage_france_langeudoc"
+ ],
+ "description": "Приватные туры во Францию — Лангедок, вино, устрицы и замки. Авторские маршруты от Irène.",
+ "areaServed": "France"
+}
+</script>
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://goutvoyage.com/",
+    "name":"Tours Languedoc by Irène",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://goutvoyage.com/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: Каталог программ (ItemList) -->
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Туры во Францию — Лангедок и Прованс (подборка программ)",
+  "itemListOrder": "http://schema.org/ItemListOrderAscending",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://goutvoyage.com/programations/wine.html",
+      "name": "Винные туры — Pic Saint-Loup и Étang de Thau"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://goutvoyage.com/programations/oysters.html",
+      "name": "Лагуна Thau — устрицы, море, лодки"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://goutvoyage.com/programations/sea.html",
+      "name": "Средиземное море — пляжи, спорт, променады"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "url": "https://goutvoyage.com/programations/castles.html",
+      "name": "Замки и средневековые города — Carcassonne, Saint-Guilhem, Béziers"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "url": "https://goutvoyage.com/programations/bezier_sunset.html",
+      "name": "Béziers — круиз по Каналу дю Миди (закат)"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "url": "https://goutvoyage.com/programations/Balaruc_Hydro_relaxante.html",
+      "name": "Balaruc-les-Bains — «Hydro relaxante» (7 ночей) + экскурсии"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "url": "https://goutvoyage.com/programations/Pezenas_Abbaye_Wine.html",
+      "name": "Pézenas & Abbaye — винный BIO-день из Меза"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "url": "https://goutvoyage.com/programations/avene_14d.html",
+      "name": "Avène — термальное восстановление + 3 экскурсии (14 дней)"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "url": "https://goutvoyage.com/programations/lamalou_les_bains.html",
+      "name": "Lamalou-les-Bains — термальное восстановление"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "url": "https://goutvoyage.com/programations/capdagde-naturiste-7n.html",
+      "name": "Cap d’Agde — Village Naturiste + 2 экскурсии"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "url": "https://goutvoyage.com/programations/degustation-meze.html",
+      "name": "Mèze — дегустация (Mèze & Montagnac)"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "url": "https://goutvoyage.com/programations/Pic_Saint_Loup.html",
+      "name": "Grand Vin du Pic Saint-Loup — 1 день"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "url": "https://goutvoyage.com/programations/Provence_Lavande_Verdon_2D.html",
+      "name": "Прованс — Лаванда, Мюстье и Вердон (2 дня)"
+    }
+  ]
+}
+</script>
+
+  <!-- Yandex.Metrika counter -->
+
+
 <!-- /Yandex.Metrika counter -->
 
   <link rel="stylesheet" href="/assets/css/travel-tools.css">
