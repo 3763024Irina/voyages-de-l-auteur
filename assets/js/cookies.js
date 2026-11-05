@@ -7,6 +7,28 @@
   const VERSION  = String(CFG.consentVersion || "v1");
   const LS_KEY   = `cookieConsent.${VERSION}`;
 
+  // Исключение собственного трафика из аналитики на этом браузере.
+  // Включить один раз: добавить ?exclude_me=1 к адресу сайта.
+  const INTERNAL_KEY = "site:excludeAnalytics";
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("exclude_me") === "1") {
+      localStorage.setItem(INTERNAL_KEY, "1");
+      params.delete("exclude_me");
+      const query = params.toString();
+      history.replaceState({}, "", location.pathname + (query ? "?" + query : "") + location.hash);
+    } else if (params.get("exclude_me") === "0") {
+      localStorage.removeItem(INTERNAL_KEY);
+      params.delete("exclude_me");
+      const query = params.toString();
+      history.replaceState({}, "", location.pathname + (query ? "?" + query : "") + location.hash);
+    }
+  } catch (_) {}
+  const isInternalTraffic = () => {
+    try { return localStorage.getItem(INTERNAL_KEY) === "1"; }
+    catch (_) { return false; }
+  };
+
   // ====== Заглушка Consent Mode (v2): denied по умолчанию ======
   window.dataLayer = window.dataLayer || [];
   window.gtag = function(){ dataLayer.push(arguments); };
@@ -80,7 +102,7 @@
 
   // Google Analytics 4
   function enableGA() {
-    if (!GA_ID || window.__ga_enabled__) return;
+    if (isInternalTraffic() || !GA_ID || window.__ga_enabled__) return;
     window.__ga_enabled__ = true;
 
     // Разрешаем только аналитическое хранилище: рекламные функции сайту не нужны.
@@ -99,7 +121,7 @@
 
   // Яндекс.Метрика
   function enableYM() {
-    if (!YM_ID || window.__ym_enabled__) return;
+    if (isInternalTraffic() || !YM_ID || window.__ym_enabled__) return;
     window.__ym_enabled__ = true;
 
     (function(m,e,t,r,i,k,a){
@@ -116,6 +138,7 @@
   }
 
   function apply(consent) {
+    if (isInternalTraffic()) return;
     if (consent && consent.analytics) {
       enableGA();
       enableYM();
@@ -124,6 +147,7 @@
 
   // Единая аналитика событий на всех страницах сайта.
   function trackEvent(name, params) {
+    if (isInternalTraffic()) return;
     const data = params || {};
     if (window.__ga_enabled__ && typeof window.gtag === "function") {
       window.gtag("event", name, data);
@@ -193,7 +217,10 @@
   // ====== API доступно даже при ранее сохранённом выборе ======
   window.cookieConsent = {
     reset() { try { localStorage.removeItem(LS_KEY); } catch(_) {} location.reload(); },
-    open()  { show(); bind(); }
+    open()  { show(); bind(); },
+    excludeMyTraffic() { try { localStorage.setItem(INTERNAL_KEY, "1"); } catch(_) {} location.reload(); },
+    includeMyTraffic() { try { localStorage.removeItem(INTERNAL_KEY); } catch(_) {} location.reload(); },
+    isInternalTraffic: isInternalTraffic
   };
   window.cookieConsentReset = window.cookieConsent.reset;
 
