@@ -158,17 +158,10 @@
     @media (max-width: 640px){ .gallery{grid-template-columns:1fr} h2.title{font-size:36px} nav ul{display:none} .hero .inner{ min-height:auto; padding:28px 0 34px; } }
   </style>
 
- <script>
-window.ANALYTICS_CONFIG = {
-  GA_ID: "G-L9TR2VTDX2",   // ← твой реальный GA4 ID
-  YM_ID: 104246057,     // ← ID Яндекс.Метрики
-  consentVersion: "v2"  // ← версия, меняй при обновлении текста
-};
-</script>
-
-<link rel="preload" as="script" href="/assets/js/cookies.js">
-<script defer src="/assets/js/cookies.js"></script>
-
+  <!-- Analytics: loaded only after cookie consent -->
+  <script>window.ANALYTICS_CONFIG = { GA_ID: "G-L9TR2VTDX2", YM_ID: 104246057, consentVersion: "v3" };</script>
+  <link rel="preload" as="script" href="/assets/js/cookies.js">
+  <script defer src="/assets/js/cookies.js"></script>
 </head>
 
 <body>
