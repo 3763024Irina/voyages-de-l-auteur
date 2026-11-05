@@ -18,12 +18,6 @@
     wait_for_update: 500
   });
 
-  // ====== Если выбор уже сохранён — применяем и выходим ======
-  try {
-    const saved = JSON.parse(localStorage.getItem(LS_KEY) || "null");
-    if (saved) { apply(saved); return; }
-  } catch (_) {}
-
   // ====== Тексты RU/FR ======
   const lang = (document.documentElement.lang || "ru").toLowerCase().startsWith("fr") ? "fr" : "ru";
   const T = lang === "fr" ? {
@@ -196,14 +190,21 @@
     }
   }
 
-  // Показ при загрузке
-  show();
-  if (document.readyState === "complete" || document.readyState === "interactive") bind();
-  else document.addEventListener("DOMContentLoaded", bind, {once:true});
-
-  // ====== API для повторного открытия/сброса ======
+  // ====== API доступно даже при ранее сохранённом выборе ======
   window.cookieConsent = {
     reset() { try { localStorage.removeItem(LS_KEY); } catch(_) {} location.reload(); },
     open()  { show(); bind(); }
   };
+  window.cookieConsentReset = window.cookieConsent.reset;
+
+  // Сохранённый выбор применяем без повторного показа баннера.
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(LS_KEY) || "null"); } catch (_) {}
+  if (saved) {
+    apply(saved);
+  } else {
+    show();
+    if (document.readyState === "complete" || document.readyState === "interactive") bind();
+    else document.addEventListener("DOMContentLoaded", bind, {once:true});
+  }
 })();
