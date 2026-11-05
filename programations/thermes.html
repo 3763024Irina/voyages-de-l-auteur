@@ -350,33 +350,6 @@ function fillList(sel, arr){
   const el = $(sel); el.innerHTML = (arr||[]).map(x=>`<li>${x}</li>`).join('');
 }
 
-// ====== КАРТА (Leaflet + CartoDB Positron) ======
-function initMap(){
-  map = L.map('map');
-
-  // Бесплатный стильный слой CartoDB Positron
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    subdomains: 'abcd',
-    maxZoom: 19,
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-      '&copy; <a href="https://carto.com/attributions">CARTO</a>'
-  }).addTo(map);
-
-  markersGroup = L.featureGroup().addTo(map);
-}
-
-function refreshMarkers(){
-  markersGroup.clearLayers();
-  const list = THERMES.filter(t=>t.cat===state.cat && (!state.tag || t.tags.includes(state.tag)));
-  list.forEach(t=>{
-    const m = L.marker([t.lat,t.lon]).bindPopup(`<b>${t.name}</b><br>${t.city} • ${t.dept}`);
-    m.on('click',()=>{ state.therme=t.id; $('#therme').value=t.id; updateDesc(); });
-    markersGroup.addLayer(m);
-  });
-  if(list.length){ map.fitBounds(markersGroup.getBounds().pad(0.2)); }
-}
-
 // ====== ИНИЦИАЦИЯ ======
 function refreshAll(){ fillThermes(); updateDesc(); }
 
