@@ -246,11 +246,11 @@
       </div>
 
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; padding-top:2px">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Etang%20de%20Thau&output=classic">Étang de Thau</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Les%20Onglous&output=classic">Les Onglous</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Maison%20Noilly%20Prat%2C%20Marseillan&output=classic">Noilly Prat</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Tarbouriech%2C%20Marseillan&output=classic">Tarbouriech</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&origin=Marseillan&destination=Mas%20du%20Novi%2C%20Montagnac&waypoints=Les%20Onglous|Maison%20Noilly%20Prat|Domaine%20La%20Croix%20Gratiot">Маршрут дня</a>
+        
+        
+        
+        
+        
       </div>
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
@@ -481,7 +481,7 @@
     window.APP_CONFIG = {
       whatsapp: '33759644813',
       telegram_user: 'de_irene',
-      ADMIN_SECRET: 'capion2025'
+
     };
   </script>
 
@@ -571,66 +571,7 @@ function validateForm(){ return true; }
   })();
   </script>
 
-  <!-- Admin gate -->
-<script>
-  (function adminGate(){
-    try{
-      const CFG = window.APP_CONFIG || {};
-      const ADMIN_SECRET = String(CFG.ADMIN_SECRET || '');
-      const params = new URLSearchParams(location.search);
-      const qAdmin = params.get('admin');
-
-      // toggle по query: ?admin=SECRET  /  ?admin=off
-      if (qAdmin !== null) {
-        if (qAdmin === 'off') {
-          localStorage.removeItem('site:admin');
-        } else if (ADMIN_SECRET && qAdmin === ADMIN_SECRET) {
-          localStorage.setItem('site:admin','1');
-        }
-        params.delete('admin');
-        history.replaceState({},'', location.pathname + (params.toString()?('?'+params.toString()):'') + location.hash);
-      }
-
-      const isAdmin = localStorage.getItem('site:admin') === '1';
-      document.documentElement.setAttribute('data-admin', isAdmin ? '1' : '0');
-
-      // Усиленная защита ссылок
-      const adminLinks = Array.from(document.querySelectorAll('a[data-admin-link]'));
-
-      if (!isAdmin) {
-        // 1) полностью снимаем href
-        adminLinks.forEach(a=>{
-          a.setAttribute('data-preserve-href', a.getAttribute('href') || '');
-          a.removeAttribute('href');
-          a.setAttribute('role','link');
-          a.setAttribute('aria-disabled','true');
-          a.style.pointerEvents = 'none';
-          a.style.opacity = '.65';
-          a.title = 'Доступно только администратору';
-        });
-
-        // 2) на всякий случай блокируем клик
-        document.addEventListener('click', (e)=>{
-          const target = e.target.closest && e.target.closest('a[data-admin-link]');
-          if (target) e.preventDefault();
-        }, true);
-      } else {
-        // Восстановим href для админа (если скрывали ранее)
-        adminLinks.forEach(a=>{
-          const keep = a.getAttribute('data-preserve-href');
-          if (keep) a.setAttribute('href', keep);
-          a.removeAttribute('aria-disabled');
-          a.style.pointerEvents = '';
-          a.style.opacity = '';
-          a.title = a.title && a.title.includes('администратору') ? '' : a.title;
-        });
-      }
-
-    } catch(e){
-      console.warn('[adminGate]', e);
-    }
-  })();
-</script>
+  
 
   <!-- JSON-LD схемы: Organization, WebSite, BreadcrumbList, TouristTrip, FAQ -->
   <script type="application/ld+json">
