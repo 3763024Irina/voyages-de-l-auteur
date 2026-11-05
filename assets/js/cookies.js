@@ -89,16 +89,15 @@
     if (!GA_ID || window.__ga_enabled__) return;
     window.__ga_enabled__ = true;
 
-    gtag("js", new Date());
-    gtag("config", GA_ID, { anonymize_ip: true });
-
-    // Разрешаем хранилища после согласия
+    // Разрешаем только аналитическое хранилище: рекламные функции сайту не нужны.
     gtag('consent', 'update', {
-      ad_storage: 'granted',
       analytics_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted'
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
+    gtag("js", new Date());
+    gtag("config", GA_ID, { anonymize_ip: true, send_page_view: true });
 
     loadScript("https://www.googletagmanager.com/gtag/js?id="+encodeURIComponent(GA_ID));
     console.log("[cookies] GA4 enabled:", GA_ID);
@@ -128,6 +127,55 @@
       enableYM();
     }
   }
+
+  // Единая аналитика событий на всех страницах сайта.
+  function trackEvent(name, params) {
+    const data = params || {};
+    if (window.__ga_enabled__ && typeof window.gtag === "function") {
+      window.gtag("event", name, data);
+    }
+    if (window.__ym_enabled__ && typeof window.ym === "function") {
+      window.ym(YM_ID, "reachGoal", name, data);
+    }
+  }
+
+  document.addEventListener("click", function (event) {
+    const link = event.target && event.target.closest
+      ? event.target.closest("a, button, [data-whatsapp], [data-telegram]")
+      : null;
+    if (!link) return;
+
+    const href = (link.getAttribute("href") || "").toLowerCase();
+    const label = (link.innerText || link.getAttribute("aria-label") || link.title || "").trim().slice(0, 100);
+    let method = "";
+    if (link.hasAttribute("data-whatsapp") || /wa\.me|whatsapp/.test(href)) method = "whatsapp";
+    else if (link.hasAttribute("data-telegram") || /t\.me|telegram/.test(href)) method = "telegram";
+    else if (href.startsWith("tel:")) method = "phone";
+    else if (href.startsWith("mailto:")) method = "email";
+    if (method) trackEvent("contact_click", { contact_method: method, link_url: href, link_text: label });
+  }, true);
+
+  document.addEventListener("submit", function (event) {
+    const form = event.target;
+    if (form && form.tagName === "FORM") {
+      trackEvent("lead_form_submit", {
+        form_id: form.id || "",
+        form_name: form.getAttribute("name") || "",
+        page_path: location.pathname
+      });
+    }
+  }, true);
+
+  // Отдельное событие просмотра карточки программы.
+  document.addEventListener("DOMContentLoaded", function () {
+    const page = document.querySelector("[data-program-id]");
+    if (page) {
+      trackEvent("view_program", {
+        program_id: page.getAttribute("data-program-id") || "",
+        program_title: page.getAttribute("data-program-title") || document.title
+      });
+    }
+  }, { once: true });
 
   // ====== Обработчики ======
   function acceptAll() {
