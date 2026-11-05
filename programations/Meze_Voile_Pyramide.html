@@ -344,9 +344,7 @@
     <aside class="card">
       <h3 class="section-title" data-i18n="where_title">Где это</h3>
       <p class="section-sub" data-i18n="where_sub">Mèze • Étang de Thau • Yacht Club de Mèze • Bouzigues • Sète.</p>
-      <div class="mapwrap">
-        <iframe title="Карта: Mèze" src="https://www.google.com/maps?q=M%C3%A8ze%2C%20France&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      
 
       <h3 class="section-title" style="margin-top:20px" data-i18n="tips_title">Полезно знать</h3>
       <ul class="list">
@@ -939,17 +937,7 @@ ogTitle: "Mèze — Séjour voile sur la lagune de Thau (7+ nuits)",
 })();
 </script>
 
-<!-- ===== Admin toggle (?admin=on) ===== -->
-<script>
-(function(){
-  const p = new URLSearchParams(location.search);
-  if (!p.get('admin')) return;
-  document.body.classList.add('admin-on');
-  document.querySelectorAll('.admin-only').forEach(el=>{
-    el.style.display = el.getAttribute('data-display') || 'block';
-  });
-})();
-</script>
+
 
 <!-- ===== JSON-LD (SEO) ===== -->
 <script type="application/ld+json">
