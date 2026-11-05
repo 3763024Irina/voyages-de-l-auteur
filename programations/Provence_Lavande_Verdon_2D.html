@@ -28,9 +28,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Leaflet CSS (OpenStreetMap) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-sA+e2H0FJw3gqTj4V7wJ7pZB2v1sNn8fFf4hP0t0hYg=" crossorigin=""/>
-
   <style>
     :root{
       --bg:#f7f6f4; --paper:#fff; --ink:#1b1b1b; --muted:#6c6c6c;
@@ -146,9 +143,7 @@
     #book input:focus, #book select:focus, #book textarea:focus{ outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand); }
     
     /* карта поменьше */
-    .mapwrap{ max-width:520px; margin:0 auto; }
-    .mapwrap .leaflet-container{ height:320px; border-radius:14px; box-shadow:var(--shadow); }
-  </style>
+    </style>
 
   <!-- Analytics + Cookies (kept) -->
   
@@ -254,36 +249,17 @@
       <h3 class="section-title">Где это</h3>
       <p class="section-sub">Valensole • Moustiers-Sainte-Marie • Belvédères des Gorges du Verdon • Lac de Sainte-Croix.</p>
 
-<section class="map-section" style="margin: 40px 0;">
-  <h2 style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:2rem; margin-bottom:20px;">
-    Карта маршрута
-  </h2>
 
-  <div style="display:flex; justify-content:center;">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d186313.4422613201!2d6.039679198734775!3d43.75535319632498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12c9c2f9c15c1c91%3A0x0!2zVmFsZW5zb2xlLCDQnNC-0YHQvtC60YPRgNCw0YDRgdC40Lkg0JHQtdC70LDRgNC-0YHQutC-0YHRgtGA0L7QstCw!5e0!3m2!1sru!2sfr!4v1699999999999!5m2!1sru!2sfr"
-      width="100%"
-      height="500"
-      style="max-width:900px; border:0; border-radius:12px;"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-  </div>
-
-  <p style="text-align:center; font-size:0.95rem; color:#444; margin-top:10px;">
-    Точки интереса: Valensole — Moustiers-Sainte-Marie — Gorges du Verdon — Lac de Sainte-Croix
-  </p>
-</section>
 
 
 
 
       <!-- Admin quick links -->
       <div class="admin-only" data-display="flex" style="gap:8px; flex-wrap:wrap; margin-top:10px">
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Plateau+de+Valensole&output=classic">Valensole</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Moustiers-Sainte-Marie&output=classic">Moustiers</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Point+Sublime+Verdon&output=classic">Point Sublime</a>
-        <a class="btn" data-admin-link target="_blank" rel="noopener" href="https://www.google.com/maps?q=Lac+de+Sainte-Croix&output=classic">Lac de Sainte-Croix</a>
+        
+        
+        
+        
       </div>
 
       <!-- Admin dossier -->
@@ -539,81 +515,9 @@ function validateForm(){ return true; }
   </script>
 
   <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-xwE/6rR0HfwL6v3gqXnX8eN3s4sS3m9dI6s+7U0M2Is=" crossorigin=""></script>
+  
 
-  <!-- Map initialization -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      // Координаты точек (источники: общественные геоданные)
-      const points = [
-        {
-          id: 'valensole',
-          title: 'Valensole — Plateau de Valensole',
-          coords: [43.8370640, 5.9832420],
-          desc: 'Плато Валенсоль — лавандовые поля.'
-        },
-        {
-          id: 'moustiers',
-          title: 'Moustiers-Sainte-Marie',
-          coords: [43.846000, 6.221800],
-          desc: 'Мюстье-Сент-Мари — фаянс и улочки.'
-        },
-        {
-          id: 'point_sublime',
-          title: 'Point Sublime (Belvédère) — Gorges du Verdon',
-          coords: [43.793749, 6.398208],
-          desc: 'Один из классических смотровых в Verdon.'
-        },
-        {
-          id: 'lac_sainte_croix',
-          title: 'Lac de Sainte-Croix',
-          coords: [43.7715417, 6.1898262],
-          desc: 'Озеро Сент-Круа — пляж, педало, лодки.'
-        }
-      ];
-
-      // Инициализация карты
-      const map = L.map('map', {scrollWheelZoom: false});
-      // Подложка OSM
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
-
-      // Добавляем маркеры
-      const markers = [];
-      points.forEach(p => {
-        const m = L.marker(p.coords).addTo(map)
-          .bindPopup('<strong>' + p.title + '</strong><br>' + p.desc);
-        markers.push(m);
-      });
-
-      // Масштаб и центр: подогнать под все точки
-      const group = L.featureGroup(markers);
-      map.fitBounds(group.getBounds().pad(0.12));
-
-      // Линия маршрута (простая визуализация)
-      const polyline = L.polyline(points.map(p=>p.coords), {color:'#0D2B1E', weight:4, opacity:0.85, dashArray: '8 6'}).addTo(map);
-
-      // Кнопка "включить скролл" (чтобы пользователь мог включить колесо прокрутки)
-      const control = L.control({position: 'topright'});
-      control.onAdd = function(){
-        const div = L.DomUtil.create('div','leaflet-control-enable-scroll');
-        div.innerHTML = '<button title="Включить прокрутку карты" style="background:#fff;border-radius:6px;padding:6px 8px;border:1px solid #ddd;cursor:pointer;font-weight:600;">Открыть карту</button>';
-        L.DomEvent.disableClickPropagation(div);
-        div.addEventListener('click', function(){
-          map.scrollWheelZoom.enable();
-          div.style.display='none';
-        });
-        return div;
-      };
-      control.addTo(map);
-
-      // Показываем попап при клике на полосу маршрута
-      polyline.on('click', function(){ L.popup().setLatLng(polyline.getBounds().getCenter()).setContent('Предлагаемый порядок точек маршрута').openOn(map); });
-    });
-  </script>
+  
 
   </body>
 </html>
