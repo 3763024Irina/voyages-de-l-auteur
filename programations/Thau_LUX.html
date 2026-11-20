@@ -21,7 +21,7 @@
   <meta property="og:locale:alternate" content="fr_FR" />
   <meta property="og:title" content="LUX Étang de Thau — 1 день" />
   <meta property="og:description" content="Приватная лодка, устрицы на воде, Tarbouriech, Noilly Prat, винный финал. Без пеших прогулок." />
-  <meta property="og:url" content="https://goutvoyage.com/programations/Thau_LUX.html?lang=ru" />
+  <meta property="og:url" content="https://goutvoyage.com/programations/Thau_LUX.html" />
   <meta property="og:image" content="https://goutvoyage.com/assets/Etang-de-Thau.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -415,7 +415,7 @@
 
   function applyLang(lang){
     const L = I18N[lang] || I18N.ru;
-    const url = `${BASE_URL}${PAGE_PATH}?lang=${lang}`;
+    const url = lang === 'fr' ? `${BASE_URL}${PAGE_PATH}?lang=fr` : `${BASE_URL}${PAGE_PATH}`;
     document.documentElement.lang = (lang==='fr') ? 'fr' : 'ru';
 
     // Мета и OG/Twitter
@@ -432,7 +432,7 @@
     setRelHref('canonical', url);
 
     // hreflang (исправлено)
-    setHreflangHref('ru', `${BASE_URL}${PAGE_PATH}?lang=ru`);
+    setHreflangHref('ru', `${BASE_URL}${PAGE_PATH}`);
     setHreflangHref('fr', `${BASE_URL}${PAGE_PATH}?lang=fr`);
     // необязательно, но полезно: x-default без query
     const xdef = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
@@ -458,7 +458,8 @@
     // Сохраняем и чистим URL
     localStorage.setItem('site:lang', lang);
     const p = new URL(location.href);
-    p.searchParams.set('lang', lang);
+    if (lang === 'fr') p.searchParams.set('lang', 'fr');
+    else p.searchParams.delete('lang');
     history.replaceState({}, '', p.toString());
   }
 
